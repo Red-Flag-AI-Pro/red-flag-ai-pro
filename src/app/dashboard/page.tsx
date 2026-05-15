@@ -55,7 +55,7 @@ export default async function DashboardPage() {
   const avgScore =
     recentScans && recentScans.length > 0
       ? Math.round(
-          recentScans.reduce((sum: number, s: Scan) => sum + s.score, 0) /
+          (recentScans as Scan[]).reduce((sum: number, s: Scan) => sum + (s.score as number), 0) /
             recentScans.length
         )
       : null;
