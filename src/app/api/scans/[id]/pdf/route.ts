@@ -51,7 +51,7 @@ export async function GET(
 
   const pdfBytes = await generateScanPdf(scan, flags ?? []);
 
-  return new Response(pdfBytes as unknown as BodyInit, {
+  return new Response(Buffer.from(pdfBytes), {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename="scan-${id}.pdf"`,
