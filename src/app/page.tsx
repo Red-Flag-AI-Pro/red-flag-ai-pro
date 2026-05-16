@@ -363,10 +363,10 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 bg-gray-950 py-8 text-center text-sm text-gray-500">
+      <footer className="border-t border-gray-800 bg-gray-950 py-10 text-center text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
         <p className="mt-1 text-xs text-gray-600">FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences. Covering US, UK, EU, Australian, and Canadian marketing law.</p>
-        <div className="mt-3 flex justify-center gap-6">
+        <div className="mt-4 flex justify-center gap-6">
           <Link href="/pricing" className="hover:text-gray-300 transition-colors">
             Pricing
           </Link>
@@ -376,6 +376,17 @@ export default function LandingPage() {
           <Link href="/signup" className="hover:text-gray-300 transition-colors">
             Sign up
           </Link>
+        </div>
+        <div className="mt-4 border-t border-gray-800 pt-4">
+          <p className="text-xs text-gray-600">
+            Questions? Email us at{" "}
+            <a
+              href="mailto:support@redflagaipro.com"
+              className="font-semibold text-red-400 hover:text-red-300 transition-colors"
+            >
+              support@redflagaipro.com
+            </a>
+          </p>
         </div>
       </footer>
     </div>
