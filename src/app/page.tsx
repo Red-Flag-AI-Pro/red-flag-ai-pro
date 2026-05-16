@@ -134,8 +134,8 @@ export default function LandingPage() {
             1 free scan · No credit card required
           </p>
 
-          {/* Flag cards */}
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {/* Flag cards — 5 across on desktop, 2x2 + centred on mobile */}
+          <div className="mt-12 hidden lg:grid lg:grid-cols-5 gap-3">
             {[
               { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
               { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
@@ -148,16 +148,45 @@ export default function LandingPage() {
                 className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
               >
                 <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
-                  <img
-                    src={`https://flagcdn.com/w160/${j.code}.png`}
-                    alt={j.country}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
                 </div>
                 <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
                 <span className="text-xs font-bold text-white leading-relaxed">{j.acronyms}</span>
               </div>
             ))}
+          </div>
+
+          {/* Mobile flag cards — 2x2 top row, Canada centred below */}
+          <div className="mt-12 lg:hidden">
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
+                { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
+                { code: "eu", country: "EU", acronyms: "GDPR · UCPD · DSA" },
+                { code: "au", country: "Australia", acronyms: "ACCC · ACL" },
+              ].map((j) => (
+                <div
+                  key={j.country}
+                  className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
+                >
+                  <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
+                    <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
+                  </div>
+                  <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
+                  <span className="text-xs font-bold text-white leading-relaxed">{j.acronyms}</span>
+                </div>
+              ))}
+            </div>
+            {/* Canada centred */}
+            <div className="mt-3 flex justify-center">
+              <div className="flex w-1/2 flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors">
+                <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
+                  <img src="https://flagcdn.com/w160/ca.png" alt="Canada" className="h-full w-full object-cover" />
+                </div>
+                <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">Canada</span>
+                <span className="text-xs font-bold text-white leading-relaxed">CASL · PIPEDA</span>
+              </div>
+            </div>
           </div>
 
           {/* 13 categories pill */}
