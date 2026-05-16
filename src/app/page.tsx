@@ -155,7 +155,7 @@ export default function LandingPage() {
                   className="rounded-sm shadow-md"
                 />
                 <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
-                <span className="text-xs text-gray-500 leading-relaxed">{j.acronyms}</span>
+                <span className="text-xs font-bold text-red-400 leading-relaxed">{j.acronyms}</span>
               </div>
             ))}
           </div>
