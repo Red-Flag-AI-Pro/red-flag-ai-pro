@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 const PLANS = [
   {
     name: "Free",
-    price: "$0",
+    price: "£0",
     period: "forever",
     description: "For individuals who want to try it out.",
     features: [
@@ -20,9 +20,9 @@ const PLANS = [
   },
   {
     name: "Pro",
-    price: "$49",
-    period: "per month",
-    description: "For marketers and agencies running live funnels.",
+    price: "£49",
+    period: "per month — founder price",
+    description: "For marketers and agencies running live funnels. Price rises to £79 after 50 members.",
     features: [
       "Unlimited scans",
       "Risk score",
@@ -39,7 +39,7 @@ const PLANS = [
   },
   {
     name: "Enterprise",
-    price: "$199",
+    price: "£149",
     period: "per month",
     description: "For agencies managing multiple clients.",
     features: [
@@ -62,15 +62,25 @@ export default function PricingPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
+      {/* Founder pricing banner */}
+      <div className="bg-amber-400 py-3 text-center">
+        <p className="text-sm font-bold text-amber-900">
+          🚩 Founder Pricing — Pro locked at £49/month for the first 50 members only. Price rises to £79 after that.{" "}
+          <span className="underline">42 founder spots remaining.</span>
+        </p>
+      </div>
+
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-gray-900">
             Simple, transparent pricing
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Start for free. Upgrade when you need unlimited scans and PDF
-            reports.
+            Start for free. Upgrade when you need unlimited scans and PDF reports.
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-sm font-semibold text-amber-700">
+            ⚡ Founder pricing ends at 50 members — 42 spots left
+          </div>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
