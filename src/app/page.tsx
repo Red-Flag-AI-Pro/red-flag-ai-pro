@@ -94,66 +94,33 @@ export default function LandingPage() {
 
         <div className="relative mx-auto max-w-4xl px-6 text-center">
 
-          {/* World first badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
             <span>⚑</span>
-            <span>The world&apos;s only 5-jurisdiction marketing compliance scanner</span>
+            <span>The world&apos;s only 5-country marketing compliance scanner</span>
           </div>
 
-          {/* Headline — Option E */}
+          {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Nobody Tells You When Your
+            Nobody Tells You When
             <br />
-            Marketing Copy Is Illegal.
+            Your Marketing Is Illegal.
             <br />
             <span className="text-red-400">Until It&apos;s Too Late.</span>
           </h1>
 
-          {/* Subheadline — plain English */}
-          <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold text-gray-200">
-            Red Flag AI Pro is the world&apos;s first compliance scanner that checks your
-            sales pages, emails, and funnels against the advertising and consumer protection
-            laws of 5 countries — in plain English, in 60 seconds, free.
+          {/* One line solve */}
+          <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
+            We do. In plain English. In 60 seconds. Free.
           </p>
 
-          {/* Fine stat — validates the fear */}
-          <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-red-500/20 bg-red-500/10 px-6 py-4">
-            <p className="text-base text-gray-300">
-              Governments across the US, UK, EU, Australia, and Canada have handed out{" "}
-              <span className="font-extrabold text-red-400">over $6 billion in fines</span>{" "}
-              to ordinary businesses — not scammers — just marketers who never checked their copy.
-            </p>
-          </div>
-
-          {/* Jurisdiction pills — plain English first, acronyms visible */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            {[
-              { flag: "🇺🇸", plain: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
-              { flag: "🇬🇧", plain: "UK", acronyms: "CMA · ASA · ICO" },
-              { flag: "🇪🇺", plain: "EU", acronyms: "GDPR · UCPD · DSA" },
-              { flag: "🇦🇺", plain: "Australia", acronyms: "ACCC · ACL" },
-              { flag: "🇨🇦", plain: "Canada", acronyms: "CASL · Competition Bureau" },
-            ].map((j) => (
-              <div
-                key={j.plain}
-                className="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">{j.flag}</span>
-                  <span className="text-sm font-bold text-white">{j.plain}</span>
-                </div>
-                <span className="text-xs text-gray-500">{j.acronyms}</span>
-              </div>
-            ))}
-          </div>
-
           {/* CTAs */}
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/signup"
               className="rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
             >
-              Scan my copy free — 60 seconds →
+              Scan my copy free →
             </Link>
             <Link
               href="/pricing"
@@ -163,8 +130,34 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <p className="mt-5 text-sm text-gray-500">
-            1 free scan · No credit card · No other tool on the market covers all five
+          <p className="mt-4 text-sm text-gray-500">
+            1 free scan · No credit card required
+          </p>
+
+          {/* Flag cards */}
+          <div className="mt-12 grid grid-cols-5 gap-3">
+            {[
+              { flag: "🇺🇸", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
+              { flag: "🇬🇧", country: "UK", acronyms: "CMA · ASA · ICO" },
+              { flag: "🇪🇺", country: "EU", acronyms: "GDPR · UCPD · DSA" },
+              { flag: "🇦🇺", country: "Australia", acronyms: "ACCC · ACL" },
+              { flag: "🇨🇦", country: "Canada", acronyms: "CASL · PIPEDA" },
+            ].map((j) => (
+              <div
+                key={j.country}
+                className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-2 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
+              >
+                <span className="text-4xl leading-none">{j.flag}</span>
+                <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
+                <span className="text-xs text-gray-500 leading-relaxed">{j.acronyms}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Uniqueness statement */}
+          <p className="mt-5 text-sm font-semibold text-gray-400">
+            The <span className="text-white">only</span> compliance scanner in the world that covers all five.{" "}
+            <span className="text-red-400">No other tool comes close.</span>
           </p>
 
         </div>
