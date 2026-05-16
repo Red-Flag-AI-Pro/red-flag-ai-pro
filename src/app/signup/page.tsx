@@ -40,8 +40,8 @@ function SignupForm() {
       return;
     }
 
-    setSuccess(true);
-    setLoading(false);
+    router.push("/dashboard");
+    router.refresh();
   }
 
   if (success) {
