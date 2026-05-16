@@ -93,33 +93,67 @@ export default function LandingPage() {
         </div>
 
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm text-red-300">
+
+          {/* World first badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
             <span>⚑</span>
-            <span>The world's only 5-jurisdiction funnel compliance scanner</span>
+            <span>The world&apos;s only 5-jurisdiction marketing compliance scanner</span>
           </div>
 
+          {/* Headline — Option E */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            The FTC Has Fined Online Marketers
+            Nobody Tells You When Your
             <br />
-            <span className="text-red-400">Over $50 Million.</span>
+            Marketing Copy Is Illegal.
+            <br />
+            <span className="text-red-400">Until It&apos;s Too Late.</span>
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-xl font-semibold text-gray-200">
-            Income claims. Fake urgency. Guarantee contradictions. Is your funnel next?
+          {/* Subheadline — plain English */}
+          <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold text-gray-200">
+            Red Flag AI Pro is the world&apos;s first compliance scanner that checks your
+            sales pages, emails, and funnels against the advertising and consumer protection
+            laws of 5 countries — in plain English, in 60 seconds, free.
           </p>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
-            Red Flag AI Pro scans your sales pages, emails, and funnels for illegal income claims,
-            fake urgency, dark patterns, and contract contradictions — covering US, UK, EU, Australian,
-            and Canadian marketing law. In 60 seconds flat.
-          </p>
+          {/* Fine stat — validates the fear */}
+          <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-red-500/20 bg-red-500/10 px-6 py-4">
+            <p className="text-base text-gray-300">
+              Governments across the US, UK, EU, Australia, and Canada have handed out{" "}
+              <span className="font-extrabold text-red-400">over $6 billion in fines</span>{" "}
+              to ordinary businesses — not scammers — just marketers who never checked their copy.
+            </p>
+          </div>
 
+          {/* Jurisdiction pills — plain English first, acronyms visible */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {[
+              { flag: "🇺🇸", plain: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
+              { flag: "🇬🇧", plain: "UK", acronyms: "CMA · ASA · ICO" },
+              { flag: "🇪🇺", plain: "EU", acronyms: "GDPR · UCPD · DSA" },
+              { flag: "🇦🇺", plain: "Australia", acronyms: "ACCC · ACL" },
+              { flag: "🇨🇦", plain: "Canada", acronyms: "CASL · Competition Bureau" },
+            ].map((j) => (
+              <div
+                key={j.plain}
+                className="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">{j.flag}</span>
+                  <span className="text-sm font-bold text-white">{j.plain}</span>
+                </div>
+                <span className="text-xs text-gray-500">{j.acronyms}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/signup"
               className="rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
             >
-              Scan your funnel free — takes 60 seconds →
+              Scan my copy free — 60 seconds →
             </Link>
             <Link
               href="/pricing"
@@ -129,9 +163,10 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <p className="mt-5 text-sm font-medium text-gray-400">
-            1 free scan · No credit card · Covers 🇺🇸 🇬🇧 🇪🇺 🇦🇺 🇨🇦 · Used by 500+ marketers, agencies, and course creators
+          <p className="mt-5 text-sm text-gray-500">
+            1 free scan · No credit card · No other tool on the market covers all five
           </p>
+
         </div>
       </section>
 
@@ -139,15 +174,23 @@ export default function LandingPage() {
       <section className="bg-gray-950 py-16 text-white">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-extrabold text-white">
-            Here&apos;s What&apos;s Sitting In Your Funnel Right Now
+            You Don&apos;t Have To Be Doing Anything Wrong
+            <br />
+            <span className="text-red-400">To Get In Serious Trouble.</span>
           </h2>
+          <p className="mt-4 text-gray-400">
+            The businesses that get fined are not scammers. They are regular marketers,
+            course creators, and small business owners using the same copy everyone else uses.
+            That is exactly the problem.
+          </p>
           <ul className="mt-8 space-y-4 text-left">
             {[
-              "An income claim the FTC considers deceptive — even if you didn't mean it that way",
-              "A money-back guarantee that directly contradicts your Terms of Service",
-              "Fake urgency language that triggers platform bans and payment processor flags",
-              "A health or results claim with zero legal backing",
-              "One sentence that could cost you everything you have built",
+              "Saying you 'make six figures' in your sales page can be enough for a government fine — even if it's true",
+              "A countdown timer that resets is now specifically illegal in the UK and EU",
+              "A money-back guarantee that doesn't match your terms and conditions is a contract violation",
+              "Collecting someone's email without the right consent wording breaks Canadian and EU law",
+              "Claiming you're 'the best' or 'number one' without proof breaks advertising rules in every country we cover",
+              "None of this requires intent — regulators don't care if you didn't know",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-gray-300">
                 <span className="mt-0.5 text-red-500 text-lg">🚩</span>
@@ -156,10 +199,10 @@ export default function LandingPage() {
             ))}
           </ul>
           <p className="mt-8 text-lg font-semibold text-red-400">
-            You don&apos;t know it&apos;s there. That&apos;s the problem.
+            Red Flag AI Pro catches all of it before it costs you.
           </p>
           <p className="mt-2 text-gray-400">
-            Most marketers who get hit by the FTC weren&apos;t trying to break the law. They just never checked.
+            In plain English. With exactly what to fix. In 60 seconds.
           </p>
         </div>
       </section>
