@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { createServiceClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import type Stripe from "stripe";
+
+function getAdminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -22,7 +29,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  const supabase = await createServiceClient();
+  const supabase = getAdminClient();
 
   switch (event.type) {
     case "checkout.session.completed": {
