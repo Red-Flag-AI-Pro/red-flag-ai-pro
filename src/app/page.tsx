@@ -137,28 +137,43 @@ export default function LandingPage() {
           {/* Flag cards */}
           <div className="mt-12 grid grid-cols-5 gap-3">
             {[
-              { flag: "🇺🇸", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
-              { flag: "🇬🇧", country: "UK", acronyms: "CMA · ASA · ICO" },
-              { flag: "🇪🇺", country: "EU", acronyms: "GDPR · UCPD · DSA" },
-              { flag: "🇦🇺", country: "Australia", acronyms: "ACCC · ACL" },
-              { flag: "🇨🇦", country: "Canada", acronyms: "CASL · PIPEDA" },
+              { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
+              { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
+              { code: "eu", country: "EU", acronyms: "GDPR · UCPD · DSA" },
+              { code: "au", country: "Australia", acronyms: "ACCC · ACL" },
+              { code: "ca", country: "Canada", acronyms: "CASL · PIPEDA" },
             ].map((j) => (
               <div
                 key={j.country}
                 className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-2 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
               >
-                <span className="text-4xl leading-none">{j.flag}</span>
+                <img
+                  src={`https://flagcdn.com/w80/${j.code}.png`}
+                  alt={j.country}
+                  width={48}
+                  height={32}
+                  className="rounded-sm shadow-md"
+                />
                 <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
                 <span className="text-xs text-gray-500 leading-relaxed">{j.acronyms}</span>
               </div>
             ))}
           </div>
 
-          {/* Uniqueness statement */}
-          <p className="mt-5 text-sm font-semibold text-gray-400">
-            The <span className="text-white">only</span> compliance scanner in the world that covers all five.{" "}
-            <span className="text-red-400">No other tool comes close.</span>
-          </p>
+          {/* 13 categories + uniqueness */}
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
+              <span className="text-red-400 font-bold text-sm">13 risk categories</span>
+              <span className="text-gray-600">·</span>
+              <span className="text-gray-400 text-sm">5 countries</span>
+              <span className="text-gray-600">·</span>
+              <span className="text-gray-400 text-sm">60 seconds</span>
+            </div>
+            <p className="text-sm font-semibold text-gray-400">
+              The <span className="text-white">only</span> compliance scanner in the world that covers all five.{" "}
+              <span className="text-red-400">No other tool comes close.</span>
+            </p>
+          </div>
 
         </div>
       </section>
