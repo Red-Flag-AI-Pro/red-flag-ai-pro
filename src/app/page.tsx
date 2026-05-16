@@ -147,21 +147,21 @@ export default function LandingPage() {
                 key={j.country}
                 className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-2 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
               >
-                <img
-                  src={`https://flagcdn.com/w80/${j.code}.png`}
-                  alt={j.country}
-                  width={48}
-                  height={32}
-                  className="rounded-sm shadow-md"
-                />
+                <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
+                  <img
+                    src={`https://flagcdn.com/w160/${j.code}.png`}
+                    alt={j.country}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
                 <span className="text-xs font-bold text-red-400 leading-relaxed">{j.acronyms}</span>
               </div>
             ))}
           </div>
 
-          {/* 13 categories + uniqueness */}
-          <div className="mt-6 flex flex-col items-center gap-2">
+          {/* 13 categories pill */}
+          <div className="mt-6 flex justify-center">
             <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
               <span className="text-red-400 font-bold text-sm">13 risk categories</span>
               <span className="text-gray-600">·</span>
@@ -169,9 +169,16 @@ export default function LandingPage() {
               <span className="text-gray-600">·</span>
               <span className="text-gray-400 text-sm">60 seconds</span>
             </div>
-            <p className="text-sm font-semibold text-gray-400">
-              The <span className="text-white">only</span> compliance scanner in the world that covers all five.{" "}
-              <span className="text-red-400">No other tool comes close.</span>
+          </div>
+
+          {/* Bold uniqueness statement */}
+          <div className="mt-6 mx-auto max-w-2xl">
+            <p className="text-2xl font-extrabold text-white leading-snug">
+              The <span className="text-red-400">only</span> compliance scanner
+              in the world that covers all five.
+            </p>
+            <p className="mt-2 text-lg font-bold text-gray-300">
+              No other tool on the market comes close.
             </p>
           </div>
 
