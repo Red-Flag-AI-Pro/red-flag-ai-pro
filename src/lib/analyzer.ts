@@ -7,9 +7,11 @@ interface Rule {
   keywords: string[];
   flag_description: string;
   suggestion: string;
+  regulations: string[];
 }
 
 const RULES: Rule[] = [
+  // ─── INCOME CLAIMS ───────────────────────────────────────────────────────────
   {
     category: "income_claim",
     severity: "high",
@@ -17,19 +19,40 @@ const RULES: Rule[] = [
       "six figures",
       "seven figures",
       "earn $",
+      "earn £",
+      "earn €",
       "make $",
+      "make £",
+      "make €",
       "make money fast",
       "passive income",
       "quit your job",
       "financial freedom",
       "get rich",
       "unlimited income",
+      "replace your salary",
+      "income from home",
+      "work from home income",
+      "financial independence",
+      "extra income",
+      "side income",
+      "earn from home",
     ],
     flag_description:
-      "Contains an income or earnings claim that may require FTC substantiation.",
+      "Contains an income or earnings claim that may require substantiation. This is a high-priority violation across all major jurisdictions.",
     suggestion:
-      'Add a clear earnings disclaimer: "Results are not typical. Individual results will vary." Provide data on average results if available.',
+      'Add a clear earnings disclaimer: "Results are not typical. Individual results will vary based on effort, experience, and market conditions." Provide verified data on average customer results if available.',
+    regulations: [
+      "FTC (US)",
+      "CMA (UK)",
+      "ASA CAP Code (UK)",
+      "ACCC (AU)",
+      "Competition Bureau (CA)",
+      "UCPD (EU)",
+    ],
   },
+
+  // ─── FAKE URGENCY ─────────────────────────────────────────────────────────────
   {
     category: "urgency",
     severity: "medium",
@@ -43,30 +66,65 @@ const RULES: Rule[] = [
       "offer ends",
       "last chance",
       "ending soon",
+      "price goes up",
+      "doors closing",
+      "closing soon",
+      "this week only",
+      "midnight tonight",
+      "offer expires",
+      "final hours",
     ],
     flag_description:
-      "Uses urgency language that may be considered manipulative if the deadline is artificial.",
+      "Uses urgency language that may be considered a dark pattern or manipulative commercial practice if the deadline is artificial.",
     suggestion:
-      "Only use deadline language if the offer genuinely expires. Document the real end date and honor it.",
+      "Only use deadline language if the offer genuinely expires. Document the real end date and honour it. Do not reset countdown timers — this is specifically illegal under EU DSA and UCPD rules and targeted by the ACCC and CMA.",
+    regulations: [
+      "FTC (US)",
+      "ASA CAP Code (UK)",
+      "CMA (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "DSA (EU)",
+      "Competition Bureau (CA)",
+    ],
   },
+
+  // ─── FAKE SCARCITY ────────────────────────────────────────────────────────────
   {
     category: "scarcity",
     severity: "medium",
     keywords: [
       "only 3 left",
       "only 5 left",
+      "only 10 left",
       "limited spots",
       "limited seats",
       "almost sold out",
       "selling fast",
       "running out",
       "exclusive access",
+      "limited availability",
+      "nearly full",
+      "spaces filling up",
+      "high demand",
+      "going fast",
     ],
     flag_description:
-      "Claims scarcity of product or spots. Must be factually accurate or risks deceptive marketing.",
+      "Claims scarcity of product or spots. Must be factually accurate — fake scarcity is specifically named as an illegal dark pattern under EU DSA rules and is targeted by the ACCC and CMA.",
     suggestion:
-      "Ensure scarcity claims reflect real inventory counts. Use a live counter or remove if not verifiable.",
+      "Ensure all scarcity claims reflect real, verifiable inventory or availability. Use a live counter synced to actual stock or remove the claim entirely.",
+    regulations: [
+      "FTC (US)",
+      "CMA (UK)",
+      "ASA CAP Code (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "DSA (EU)",
+      "Competition Bureau (CA)",
+    ],
   },
+
+  // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
   {
     category: "testimonial",
     severity: "medium",
@@ -79,29 +137,57 @@ const RULES: Rule[] = [
       "client testimonial",
       "success story",
       "they said",
+      "real results",
+      "case study",
+      "here's what happened",
+      "before and after",
+      "transformed my",
     ],
     flag_description:
-      "Contains a testimonial. FTC guidelines require disclosure of material connections and typicality disclaimers.",
+      "Contains a testimonial or results claim. All major regulators require disclosure of material connections and typicality disclaimers.",
     suggestion:
-      'Add: "Results not typical. This individual\'s experience may not reflect yours." Disclose any paid endorsements.',
+      'Add: "Results not typical. Individual results will vary." Disclose any paid, gifted, or incentivised endorsements. Under ACCC rules testimonials must reflect genuine, typical experiences. Under EU UCPD rules fake reviews carry significant fines.',
+    regulations: [
+      "FTC (US)",
+      "ASA CAP Code (UK)",
+      "CMA (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "Competition Bureau (CA)",
+    ],
   },
+
+  // ─── GUARANTEES ───────────────────────────────────────────────────────────────
   {
     category: "guarantee",
     severity: "low",
     keywords: [
       "money back guarantee",
+      "money-back guarantee",
       "risk free",
       "risk-free",
       "100% guaranteed",
       "satisfaction guaranteed",
       "no questions asked",
       "full refund",
+      "guaranteed results",
+      "we guarantee",
+      "double your money back",
     ],
     flag_description:
-      "Offers a guarantee. Ensure the guarantee terms in the sales copy match those in your Terms of Service.",
+      "Offers a guarantee. Guarantee terms in your sales copy must exactly match those in your Terms of Service across all jurisdictions.",
     suggestion:
-      "Cross-check refund window, conditions, and process against your TOS. Any mismatch is a contract contradiction.",
+      "Cross-check all refund terms against your TOS. Note: UK consumers have a statutory 14-day cooling off period. EU consumers have 14 days. Australian Consumer Law provides non-waivable guarantees. Canadian consumers have provincial rights. None of these can be contracted out of.",
+    regulations: [
+      "FTC (US)",
+      "CMA + Consumer Rights Act 2015 (UK)",
+      "ACCC + Australian Consumer Law (AU)",
+      "Competition Bureau (CA)",
+      "Consumer Rights Directive (EU)",
+    ],
   },
+
+  // ─── HEALTH CLAIMS ────────────────────────────────────────────────────────────
   {
     category: "health_claim",
     severity: "high",
@@ -117,12 +203,29 @@ const RULES: Rule[] = [
       "burn fat",
       "detox",
       "boost immunity",
+      "mhra approved",
+      "nhs recommended",
+      "scientifically proven",
+      "guaranteed weight loss",
+      "tga approved",
+      "health canada approved",
+      "ce marked",
+      "evidence based",
     ],
     flag_description:
-      "Contains a health or medical claim that may require FDA approval or clinical substantiation.",
+      "Contains a health or medical claim. This is the highest-risk category across all jurisdictions — regulators in every major market actively pursue unsubstantiated health claims.",
     suggestion:
-      'Replace definitive health claims with qualified language: "may support," "some users report." Consult an FDA compliance attorney before launching.',
+      'Replace definitive health claims with qualified language: "may support," "some users report." Each country has its own health claims regulator: FDA/FTC (US), MHRA (UK), TGA (AU), Health Canada (CA), EMA (EU). Consult a specialist compliance attorney before launching any health-related product.',
+    regulations: [
+      "FTC + FDA (US)",
+      "MHRA + ASA (UK)",
+      "TGA + ACCC (AU)",
+      "Health Canada + Competition Bureau (CA)",
+      "EMA + UCPD (EU)",
+    ],
   },
+
+  // ─── LEGAL DISCLAIMER ─────────────────────────────────────────────────────────
   {
     category: "legal_disclaimer",
     severity: "low",
@@ -133,12 +236,25 @@ const RULES: Rule[] = [
       "individual results",
       "as seen on",
       "endorsed by",
+      "not affiliated",
+      "for entertainment only",
+      "no guarantee",
     ],
     flag_description:
-      "Disclaimer language detected. Verify it is complete, visible, and not buried in fine print.",
+      "Disclaimer language detected. Across all major jurisdictions, disclaimers must be clear, conspicuous, and cannot contradict the main claim they accompany.",
     suggestion:
-      "Disclaimers must be clear and conspicuous — not hidden in footers or fine print. Bold or increase font size.",
+      "Disclaimers must be prominently displayed — not hidden in footers or small print. A disclaimer cannot legally undo a false or misleading headline claim under FTC, ASA, ACCC, or UCPD rules.",
+    regulations: [
+      "FTC (US)",
+      "ASA CAP Code (UK)",
+      "CMA (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "Competition Bureau (CA)",
+    ],
   },
+
+  // ─── CONTRACT CONTRADICTION ───────────────────────────────────────────────────
   {
     category: "contract_contradiction",
     severity: "high",
@@ -148,11 +264,203 @@ const RULES: Rule[] = [
       "all sales final",
       "no cancellation",
       "cannot cancel",
+      "no returns",
+      "strictly no refunds",
+      "change of mind",
     ],
     flag_description:
-      'Sales copy may promise refunds while this clause says "no refunds" — a direct claim vs. contract contradiction.',
+      "Possible contradiction between sales copy guarantees and this no-refund clause. Statutory consumer rights in the UK, EU, Australia, and Canada cannot be contracted out of.",
     suggestion:
-      "Audit your TOS against all guarantee language in your funnel. One of them must change to eliminate the contradiction.",
+      "Audit all guarantee language against your TOS. Statutory rights override contract terms in every Big 5 jurisdiction — UK (14 days), EU (14 days), Australia (ACL guarantees), Canada (provincial rights). A 'no refunds' clause does not override these rights.",
+    regulations: [
+      "FTC (US)",
+      "Consumer Rights Act 2015 (UK)",
+      "Australian Consumer Law (AU)",
+      "Consumer Protection Act (CA)",
+      "Consumer Rights Directive (EU)",
+    ],
+  },
+
+  // ─── GDPR / ICO / DATA PRIVACY ────────────────────────────────────────────────
+  {
+    category: "data_privacy",
+    severity: "high",
+    keywords: [
+      "we collect your data",
+      "we share your information",
+      "third party",
+      "marketing partners",
+      "your details will be",
+      "we may contact you",
+      "opt out",
+      "unsubscribe",
+      "your email will",
+      "we store your",
+      "your information will",
+      "we use cookies",
+      "tracking",
+    ],
+    flag_description:
+      "Contains data collection or sharing language. Data privacy law applies across all major jurisdictions and carries some of the highest fines in marketing compliance.",
+    suggestion:
+      "Ensure your Privacy Policy is clearly linked. Key rules: UK GDPR/ICO requires explicit opt-in for email marketing. EU GDPR fines up to 4% of global turnover. CASL (Canada) requires express consent — fines up to $10M CAD. Australian Privacy Act requires transparency on all data use. Pre-ticked boxes are illegal in all Big 5 jurisdictions.",
+    regulations: [
+      "UK GDPR + ICO (UK)",
+      "GDPR (EU)",
+      "CASL + PIPEDA (CA)",
+      "Privacy Act + ACCC (AU)",
+      "CAN-SPAM + FTC (US)",
+    ],
+  },
+
+  // ─── DRIP PRICING / HIDDEN FEES ───────────────────────────────────────────────
+  {
+    category: "hidden_fees",
+    severity: "medium",
+    keywords: [
+      "plus shipping",
+      "plus processing",
+      "handling fee",
+      "administration fee",
+      "booking fee",
+      "setup fee",
+      "activation fee",
+      "additional charges may apply",
+      "fees may apply",
+      "taxes not included",
+      "delivery not included",
+    ],
+    flag_description:
+      "Possible drip pricing or hidden fees detected. Drip pricing is actively targeted by regulators across all Big 5 jurisdictions — the ACCC has fined airlines over $1M for this practice.",
+    suggestion:
+      "Display the full total price including all fees from the very first point of purchase. CMA (UK), ACCC (AU), FTC (US), Competition Bureau (CA), and EU UCPD all require complete upfront pricing transparency.",
+    regulations: [
+      "FTC (US)",
+      "CMA (UK)",
+      "ACCC (AU)",
+      "Competition Bureau (CA)",
+      "UCPD (EU)",
+    ],
+  },
+
+  // ─── FAKE REVIEWS ─────────────────────────────────────────────────────────────
+  {
+    category: "fake_reviews",
+    severity: "high",
+    keywords: [
+      "verified purchase",
+      "independent review",
+      "unbiased review",
+      "genuine customer",
+      "real customer review",
+      "trusted review",
+      "authentic review",
+      "verified buyer",
+    ],
+    flag_description:
+      "Review authenticity claim detected. Fake or misleading reviews are now a specific enforcement priority for regulators across all Big 5 jurisdictions.",
+    suggestion:
+      "Do not label reviews as verified or independent without a robust verification system. Under CMA (UK) and ACCC (AU) rules, paying for reviews without disclosure is illegal. Under EU UCPD rules, fake reviews are an unfair commercial practice. Use a recognised third-party review platform.",
+    regulations: [
+      "FTC (US)",
+      "CMA (UK)",
+      "ASA CAP Code (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "Competition Bureau (CA)",
+    ],
+  },
+
+  // ─── COMPARATIVE ADVERTISING ──────────────────────────────────────────────────
+  {
+    category: "comparative_advertising",
+    severity: "medium",
+    keywords: [
+      "better than",
+      "unlike our competitors",
+      "the only tool that",
+      "no other product",
+      "outperforms",
+      "beats",
+      "#1 rated",
+      "best in class",
+      "market leading",
+      "industry leading",
+      "number one",
+      "world's best",
+      "globally recognised",
+    ],
+    flag_description:
+      "Contains comparative or superlative claims. These must be objectively verifiable under advertising rules in all major jurisdictions.",
+    suggestion:
+      "All comparative claims must be based on objective, up-to-date, verifiable evidence. Claims like '#1 rated' or 'world's best' require documented proof. Remove or qualify with specific, sourced supporting data.",
+    regulations: [
+      "FTC (US)",
+      "ASA CAP Code (UK)",
+      "CMA (UK)",
+      "ACCC (AU)",
+      "UCPD (EU)",
+      "Competition Bureau (CA)",
+    ],
+  },
+
+  // ─── CASL / EMAIL MARKETING ───────────────────────────────────────────────────
+  {
+    category: "email_compliance",
+    severity: "high",
+    keywords: [
+      "you will receive emails",
+      "we will email you",
+      "join our mailing list",
+      "subscribe to our list",
+      "sign up for updates",
+      "receive our newsletter",
+      "marketing emails",
+      "promotional emails",
+      "you agree to receive",
+      "commercial messages",
+    ],
+    flag_description:
+      "Email marketing consent language detected. Canada's CASL carries fines up to $10 million CAD per violation — one of the strictest anti-spam laws in the world.",
+    suggestion:
+      "Ensure explicit opt-in consent is obtained before sending any commercial electronic messages to Canadian recipients. Under CASL, implied consent has a strict time limit. Under UK PECR and EU GDPR, pre-ticked opt-in boxes are illegal. Always include a working unsubscribe mechanism.",
+    regulations: [
+      "CASL + CRTC (CA)",
+      "PECR + ICO (UK)",
+      "GDPR (EU)",
+      "CAN-SPAM + FTC (US)",
+      "Spam Act + ACCC (AU)",
+    ],
+  },
+
+  // ─── DARK PATTERNS / MANIPULATIVE DESIGN ─────────────────────────────────────
+  {
+    category: "dark_patterns",
+    severity: "medium",
+    keywords: [
+      "you're missing out",
+      "everyone is buying",
+      "don't be left behind",
+      "your competitors are",
+      "people like you are",
+      "join thousands",
+      "be one of the few",
+      "exclusive members only",
+      "special invitation",
+      "you've been selected",
+      "you qualify for",
+    ],
+    flag_description:
+      "Contains psychological pressure language that may constitute a dark pattern or manipulative commercial practice under EU DSA rules and ACCC guidelines.",
+    suggestion:
+      "Avoid language designed to exploit psychological biases through false social proof or artificial exclusivity. The EU Digital Services Act specifically targets dark patterns — fines up to 6% of global annual turnover for platforms.",
+    regulations: [
+      "DSA (EU)",
+      "UCPD (EU)",
+      "ACCC (AU)",
+      "CMA (UK)",
+      "FTC (US)",
+    ],
   },
 ];
 
@@ -182,7 +490,7 @@ export function analyzeContent(
           category: rule.category,
           severity: rule.severity,
           text_excerpt: extractExcerpt(content, idx),
-          flag_description: rule.flag_description,
+          flag_description: `${rule.flag_description} [Regulations: ${rule.regulations.join(" · ")}]`,
           suggestion: rule.suggestion,
         });
         break;

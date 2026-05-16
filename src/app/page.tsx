@@ -95,7 +95,7 @@ export default function LandingPage() {
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm text-red-300">
             <span>⚑</span>
-            <span>FTC Compliance Scanner for Marketing Funnels</span>
+            <span>The world's only 5-jurisdiction funnel compliance scanner</span>
           </div>
 
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
@@ -110,7 +110,8 @@ export default function LandingPage() {
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
             Red Flag AI Pro scans your sales pages, emails, and funnels for illegal income claims,
-            fake urgency, and contradictions between your copy and your contracts — in 60 seconds flat.
+            fake urgency, dark patterns, and contract contradictions — covering US, UK, EU, Australian,
+            and Canadian marketing law. In 60 seconds flat.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -129,7 +130,7 @@ export default function LandingPage() {
           </div>
 
           <p className="mt-5 text-sm font-medium text-gray-400">
-            1 free scan · No credit card · Used by 500+ marketers, agencies, and course creators
+            1 free scan · No credit card · Covers 🇺🇸 🇬🇧 🇪🇺 🇦🇺 🇨🇦 · Used by 500+ marketers, agencies, and course creators
           </p>
         </div>
       </section>
@@ -306,7 +307,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-gray-800 bg-gray-950 py-8 text-center text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
-        <p className="mt-1 text-xs text-gray-600">FTC compliance scanner for marketing funnels, sales pages, and email sequences.</p>
+        <p className="mt-1 text-xs text-gray-600">FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences. Covering US, UK, EU, Australian, and Canadian marketing law.</p>
         <div className="mt-3 flex justify-center gap-6">
           <Link href="/pricing" className="hover:text-gray-300 transition-colors">
             Pricing
