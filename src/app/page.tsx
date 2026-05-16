@@ -43,7 +43,7 @@ const FEATURES = [
 const TESTIMONIALS = [
   {
     quote:
-      "We flagged a 'money-back guarantee' in our VSL that contradicted our TOS — literally the day before launch. Red Flag AI Pro saved us a potential chargeback nightmare.",
+      "We flagged a money-back guarantee in our VSL that contradicted our TOS, literally the day before launch. Red Flag AI Pro saved us a potential chargeback nightmare.",
     name: "Marcus T.",
     role: "Performance Marketer",
   },
@@ -55,7 +55,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "The income claim detection caught language we'd been using for years. The FTC has been cracking down — this gave us peace of mind.",
+      "The income claim detection caught language we had been using for years. The FTC has been cracking down and this gave us peace of mind.",
     name: "Jordan K.",
     role: "Course Creator",
   },
