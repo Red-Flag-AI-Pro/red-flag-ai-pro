@@ -135,7 +135,7 @@ export default function LandingPage() {
           </p>
 
           {/* Flag cards */}
-          <div className="mt-12 grid grid-cols-5 gap-3">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {[
               { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
               { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
@@ -145,7 +145,7 @@ export default function LandingPage() {
             ].map((j) => (
               <div
                 key={j.country}
-                className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-2 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
+                className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
               >
                 <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
                   <img
@@ -155,7 +155,7 @@ export default function LandingPage() {
                   />
                 </div>
                 <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
-                <span className="text-xs font-bold text-red-400 leading-relaxed">{j.acronyms}</span>
+                <span className="text-xs font-bold text-white leading-relaxed">{j.acronyms}</span>
               </div>
             ))}
           </div>
