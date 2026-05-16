@@ -64,7 +64,7 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: "Is this just another AI gimmick?",
-    a: "No. Red Flag AI Pro is trained specifically on FTC enforcement actions, GDPR guidelines, and real compliance cases — not generic marketing advice.",
+    a: "Red Flag AI Pro is trained specifically on FTC enforcement actions, GDPR guidelines, and real compliance cases. Not generic marketing advice.",
   },
   {
     q: "What if my copy is already compliant?",
@@ -165,9 +165,9 @@ export default function LandingPage() {
             <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
               <span className="text-red-400 font-bold text-sm">13 risk categories</span>
               <span className="text-gray-600">·</span>
-              <span className="text-gray-400 text-sm">5 countries</span>
+              <span className="text-red-400 font-bold text-sm">5 countries</span>
               <span className="text-gray-600">·</span>
-              <span className="text-gray-400 text-sm">60 seconds</span>
+              <span className="text-red-400 font-bold text-sm">60 seconds</span>
             </div>
           </div>
 
@@ -177,7 +177,7 @@ export default function LandingPage() {
               The <span className="text-red-400">only</span> compliance scanner
               in the world that covers all five.
             </p>
-            <p className="mt-2 text-lg font-bold text-gray-300">
+            <p className="mt-2 text-lg font-bold text-red-400">
               No other tool on the market comes close.
             </p>
           </div>
