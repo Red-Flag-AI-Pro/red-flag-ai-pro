@@ -59,7 +59,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             <>
               <Link
                 href="/pricing"
-                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100 hidden sm:block"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100"
               >
                 Pricing
               </Link>
