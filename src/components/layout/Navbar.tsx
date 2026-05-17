@@ -26,13 +26,11 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           <Image
             src="/redflag-logo.png"
             alt="Red Flag AI Pro"
-            width={36}
-            height={36}
+            width={44}
+            height={44}
             className="object-contain"
           />
-          <span className="text-lg font-bold text-gray-900">
-            Red Flag AI <span className="text-red-600">Pro</span>
-          </span>
+          <span className="text-2xl font-extrabold text-red-600">Pro</span>
         </Link>
 
         <nav className="flex items-center gap-2">
