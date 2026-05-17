@@ -95,7 +95,7 @@ export default function LoginPage() {
               alt="Red Flag AI Pro"
               width={64}
               height={64}
-              className="object-contain"
+              className="object-contain mix-blend-screen"
             />
             <span className="text-2xl font-extrabold text-red-600">Pro</span>
           </Link>

@@ -28,7 +28,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             alt="Red Flag AI Pro"
             width={72}
             height={72}
-            className="object-contain"
+            className="object-contain mix-blend-screen"
           />
           <span className="text-3xl font-extrabold text-red-600">Pro</span>
         </Link>
