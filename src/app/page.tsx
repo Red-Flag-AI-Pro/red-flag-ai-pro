@@ -87,6 +87,74 @@ const FEATURES = [
   },
 ];
 
+const SCAN_CATEGORIES = [
+  { icon: "💰", label: "Income Claims" },
+  { icon: "❤️", label: "Health Claims" },
+  { icon: "⏱️", label: "Fake Urgency" },
+  { icon: "🎭", label: "Dark Patterns" },
+  { icon: "🕵️", label: "Hidden Fees" },
+  { icon: "⭐", label: "Fake Reviews" },
+  { icon: "🔒", label: "Data Privacy" },
+  { icon: "📧", label: "Email Compliance" },
+  { icon: "⚖️", label: "Comparative Advertising" },
+  { icon: "🛡️", label: "Consumer Protection" },
+  { icon: "📢", label: "Advertising Standards" },
+  { icon: "🌍", label: "GDPR & Data Law" },
+  { icon: "📋", label: "Contract Contradictions" },
+];
+
+const PERSONAS = [
+  { icon: "🎓", label: "Course Creators", desc: "Selling online courses internationally" },
+  { icon: "🏢", label: "Marketing Agencies", desc: "Managing compliance for multiple clients" },
+  { icon: "🎯", label: "Coaches", desc: "Running high-ticket offers and VSLs" },
+  { icon: "💻", label: "SaaS Founders", desc: "Running paid ads across multiple markets" },
+  { icon: "🛒", label: "Ecommerce Brands", desc: "Selling across borders with ad funnels" },
+  { icon: "📊", label: "Compliance Consultants", desc: "Need faster, deeper audits for clients" },
+];
+
+const FINES = [
+  {
+    country: "🇺🇸 USA",
+    body: "FTC",
+    fine: "Up to $50,000",
+    detail: "per violation — per day",
+    colour: "border-blue-200 bg-blue-50",
+    textColour: "text-blue-700",
+  },
+  {
+    country: "🇬🇧 UK",
+    body: "CMA / ASA",
+    fine: "Up to £300,000",
+    detail: "plus full campaign takedown",
+    colour: "border-red-200 bg-red-50",
+    textColour: "text-red-700",
+  },
+  {
+    country: "🇪🇺 EU",
+    body: "GDPR",
+    fine: "Up to €20 million",
+    detail: "or 4% of global turnover",
+    colour: "border-yellow-200 bg-yellow-50",
+    textColour: "text-yellow-700",
+  },
+  {
+    country: "🇦🇺 Australia",
+    body: "ACCC",
+    fine: "Up to $50M AUD",
+    detail: "per breach under ACL",
+    colour: "border-green-200 bg-green-50",
+    textColour: "text-green-700",
+  },
+  {
+    country: "🇨🇦 Canada",
+    body: "CASL",
+    fine: "Up to $10M CAD",
+    detail: "per violation for businesses",
+    colour: "border-orange-200 bg-orange-50",
+    textColour: "text-orange-700",
+  },
+];
+
 const TESTIMONIALS = [
   {
     quote:
@@ -127,6 +195,11 @@ const FAQS = [
   },
 ];
 
+const TICKER_ITEMS = [
+  "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
+  "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
+];
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -135,6 +208,36 @@ export default function LandingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
+
+      {/* Scrolling compliance ticker */}
+      <div className="overflow-hidden bg-gray-950 border-b border-gray-800 py-2">
+        <style>{`
+          @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker 30s linear infinite;
+          }
+        `}</style>
+        <div className="ticker-track">
+          {TICKER_ITEMS.map((item, i) => (
+            <span key={i} className="mx-4 text-xs font-bold text-red-500 tracking-widest uppercase">
+              {item} <span className="text-gray-700 mx-2">·</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Founder pricing banner */}
+      <div className="bg-amber-400 py-2.5 text-center">
+        <p className="text-sm font-bold text-amber-900">
+          ⚡ Founder Pricing — Only <span className="underline">42 spots</span> left at £49/month. Price rises to £79 after 50 members.{" "}
+          <Link href="/pricing" className="underline hover:no-underline">Grab your spot →</Link>
+        </p>
+      </div>
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 pb-24 pt-24 text-white">
@@ -185,7 +288,7 @@ export default function LandingPage() {
             1 free scan · No credit card required
           </p>
 
-          {/* Flag cards — 5 across on desktop, 2x2 + centred on mobile */}
+          {/* Flag cards — 5 across on desktop */}
           <div className="mt-12 hidden lg:grid lg:grid-cols-5 gap-3">
             {[
               { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
@@ -207,7 +310,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Mobile flag cards — 2x2 top row, Canada centred below */}
+          {/* Mobile flag cards */}
           <div className="mt-12 lg:hidden">
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -218,7 +321,7 @@ export default function LandingPage() {
               ].map((j) => (
                 <div
                   key={j.country}
-                  className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
+                  className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm"
                 >
                   <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
                     <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
@@ -228,9 +331,8 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
-            {/* Canada centred */}
             <div className="mt-3 flex justify-center">
-              <div className="flex w-1/2 flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors">
+              <div className="flex w-1/2 flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm">
                 <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
                   <img src="https://flagcdn.com/w160/ca.png" alt="Canada" className="h-full w-full object-cover" />
                 </div>
@@ -240,7 +342,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* 13 categories pill */}
+          {/* Stats pill */}
           <div className="mt-6 flex justify-center">
             <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
               <span className="text-red-400 font-bold text-sm">13 risk categories</span>
@@ -251,7 +353,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Bold uniqueness statement */}
           <div className="mt-6 mx-auto max-w-2xl">
             <p className="text-2xl font-extrabold text-white leading-snug">
               The <span className="text-red-400">only</span> compliance scanner
@@ -261,7 +362,6 @@ export default function LandingPage() {
               No other tool on the market comes close.
             </p>
           </div>
-
         </div>
       </section>
 
@@ -302,7 +402,86 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Value stack / Hormozi math */}
+      {/* Fines & Penalties */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            What Ignoring Compliance Actually Costs
+          </h2>
+          <p className="mt-3 text-center text-gray-500">
+            These are real fines, from real regulators, handed to real businesses just like yours.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {FINES.map((f) => (
+              <div key={f.country} className={`rounded-2xl border-2 p-6 ${f.colour}`}>
+                <p className="text-lg font-bold text-gray-900">{f.country}</p>
+                <p className="text-sm text-gray-500">{f.body}</p>
+                <p className={`mt-3 text-3xl font-extrabold ${f.textColour}`}>{f.fine}</p>
+                <p className="mt-1 text-sm text-gray-600">{f.detail}</p>
+              </div>
+            ))}
+            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-6 flex flex-col justify-center">
+              <p className="text-2xl font-extrabold text-gray-900">$6 Billion+</p>
+              <p className="mt-1 text-sm text-gray-600">paid in marketing compliance fines globally in the last 3 years alone</p>
+            </div>
+          </div>
+          <p className="mt-8 text-center text-sm text-gray-400">
+            Red Flag AI Pro scans against all of the above — simultaneously — in 60 seconds.
+          </p>
+        </div>
+      </section>
+
+      {/* Before vs After */}
+      <section className="bg-gray-950 py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-center text-3xl font-extrabold text-white">
+            See It In Action
+          </h2>
+          <p className="mt-3 text-center text-gray-400">
+            Real example. Real flag. Real fix.
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {/* Before */}
+            <div className="rounded-2xl border-2 border-red-500/50 bg-red-950/30 p-6">
+              <div className="mb-4 flex items-center gap-2">
+                <span className="text-red-400 text-xl">🚩</span>
+                <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Flagged Copy</span>
+              </div>
+              <p className="text-white text-lg italic leading-relaxed">
+                &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
+              </p>
+              <div className="mt-4 rounded-lg bg-red-900/40 p-3">
+                <p className="text-xs text-red-300 font-semibold">⚠️ Flags triggered:</p>
+                <p className="text-xs text-red-200 mt-1">Income claim without disclaimer · Unsubstantiated earnings · Guarantee contradiction · FTC · ASA · ACCC</p>
+              </div>
+            </div>
+            {/* After */}
+            <div className="rounded-2xl border-2 border-green-500/50 bg-green-950/30 p-6">
+              <div className="mb-4 flex items-center gap-2">
+                <span className="text-green-400 text-xl">✓</span>
+                <span className="text-sm font-bold text-green-400 uppercase tracking-wider">Compliant Rewrite</span>
+              </div>
+              <p className="text-white text-lg italic leading-relaxed">
+                &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
+              </p>
+              <div className="mt-4 rounded-lg bg-green-900/40 p-3">
+                <p className="text-xs text-green-300 font-semibold">✅ Now compliant with:</p>
+                <p className="text-xs text-green-200 mt-1">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/signup"
+              className="inline-block rounded-xl bg-red-600 px-8 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
+            >
+              Scan your copy free →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Value stack */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-6">
           <div className="rounded-2xl border-2 border-red-100 bg-red-50 p-8 text-center">
@@ -334,13 +513,13 @@ export default function LandingPage() {
             {[
               {
                 step: "01",
-                title: "Paste your funnel",
+                title: "Paste your copy",
                 desc: "Sales page, VSL script, email sequence, ad copy — anything. Just paste it in.",
               },
               {
                 step: "02",
-                title: "AI scans 8 risk categories",
-                desc: "Income claims, fake urgency, health claims, guarantee contradictions, and more — all checked in seconds.",
+                title: "AI scans 13 risk categories",
+                desc: "Income claims, fake urgency, dark patterns, GDPR, hidden fees, and more — across all 5 jurisdictions simultaneously.",
               },
               {
                 step: "03",
@@ -356,6 +535,67 @@ export default function LandingPage() {
                 <p className="text-sm text-gray-600">{s.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who is this for */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            Who Uses Red Flag AI Pro?
+          </h2>
+          <p className="mt-3 text-center text-gray-500">
+            If you sell anything online — this is for you.
+          </p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PERSONAS.map((p) => (
+              <div key={p.label} className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-5 hover:shadow-md transition-shadow">
+                <span className="text-3xl">{p.icon}</span>
+                <div>
+                  <p className="font-bold text-gray-900">{p.label}</p>
+                  <p className="mt-0.5 text-sm text-gray-500">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What we scan for */}
+      <section className="bg-gray-950 py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-center text-3xl font-extrabold text-white">
+            13 Risk Categories. One Scan.
+          </h2>
+          <p className="mt-3 text-center text-gray-400">
+            Every category checked against all 5 jurisdictions simultaneously.
+          </p>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {SCAN_CATEGORIES.map((c) => (
+              <div key={c.label} className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 hover:border-red-500/50 transition-colors">
+                <span className="text-xl">{c.icon}</span>
+                <span className="text-sm font-medium text-gray-200">{c.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Credibility block */}
+          <div className="mt-12 rounded-2xl border border-gray-800 bg-gray-900 p-8">
+            <h3 className="text-center text-lg font-bold text-white mb-6">Trained On Real Compliance Sources</h3>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { label: "FTC Enforcement Actions", icon: "📋" },
+                { label: "GDPR Guidelines & Rulings", icon: "🇪🇺" },
+                { label: "ASA & CMA Case Library", icon: "🇬🇧" },
+                { label: "ACCC & CASL Decisions", icon: "⚖️" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-2 text-sm text-gray-300">
+                  <span>{item.icon}</span>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -418,6 +658,31 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Guarantee CTA block */}
+      <section className="bg-white py-10">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="rounded-2xl border-2 border-gray-900 bg-gray-950 p-10 text-center">
+            <p className="text-4xl">🛡️</p>
+            <h2 className="mt-4 text-2xl font-extrabold text-white">Either Way, You Win.</h2>
+            <p className="mt-4 text-lg text-gray-300 leading-relaxed">
+              If your scan finds <strong className="text-white">nothing</strong> — you launch with total confidence knowing your copy is clean.
+              <br /><br />
+              If your scan finds <strong className="text-red-400">something</strong> — it just saved you from a fine, a chargeback, or a takedown that could cost you thousands.
+            </p>
+            <p className="mt-6 text-xl font-bold text-red-400">
+              There is no losing scenario.
+            </p>
+            <Link
+              href="/signup"
+              className="mt-8 inline-block rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white hover:bg-red-500 transition-colors"
+            >
+              Scan my copy free →
+            </Link>
+            <p className="mt-3 text-sm text-gray-500">1 free scan · No credit card · No risk</p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="bg-gray-950 py-24 text-center text-white">
         <div className="mx-auto max-w-3xl px-6">
@@ -447,23 +712,14 @@ export default function LandingPage() {
         <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
         <p className="mt-1 text-xs text-gray-600">FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences. Covering US, UK, EU, Australian, and Canadian marketing law.</p>
         <div className="mt-4 flex justify-center gap-6">
-          <Link href="/pricing" className="hover:text-gray-300 transition-colors">
-            Pricing
-          </Link>
-          <Link href="/login" className="hover:text-gray-300 transition-colors">
-            Log in
-          </Link>
-          <Link href="/signup" className="hover:text-gray-300 transition-colors">
-            Sign up
-          </Link>
+          <Link href="/pricing" className="hover:text-gray-300 transition-colors">Pricing</Link>
+          <Link href="/login" className="hover:text-gray-300 transition-colors">Log in</Link>
+          <Link href="/signup" className="hover:text-gray-300 transition-colors">Sign up</Link>
         </div>
         <div className="mt-4 border-t border-gray-800 pt-4">
           <p className="text-xs text-gray-600">
             Questions? Email us at{" "}
-            <a
-              href="mailto:support@redflagaipro.com"
-              className="font-semibold text-red-400 hover:text-red-300 transition-colors"
-            >
+            <a href="mailto:support@redflagaipro.com" className="font-semibold text-red-400 hover:text-red-300 transition-colors">
               support@redflagaipro.com
             </a>
           </p>
