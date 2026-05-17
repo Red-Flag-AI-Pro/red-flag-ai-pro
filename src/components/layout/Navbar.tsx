@@ -22,7 +22,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-1">
           <Image
             src="/redflag-logo.png"
             alt="Red Flag AI Pro"
@@ -33,12 +33,12 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           <span className="text-3xl font-extrabold text-red-600">Pro</span>
         </Link>
 
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center gap-1 sm:gap-2">
           {isAuthenticated ? (
             <>
               <Link
                 href="/dashboard"
-                className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 hidden sm:block"
               >
                 Dashboard
               </Link>
@@ -50,7 +50,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               </Link>
               <button
                 onClick={handleSignOut}
-                className="rounded-md px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hidden sm:block"
               >
                 Sign out
               </button>
@@ -59,19 +59,19 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             <>
               <Link
                 href="/pricing"
-                className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100 hidden sm:block"
               >
                 Pricing
               </Link>
               <Link
                 href="/login"
-                className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100"
               >
                 Log in
               </Link>
               <Link
                 href="/signup"
-                className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+                className="rounded-md bg-red-600 px-3 py-1.5 text-xs sm:text-sm font-medium text-white hover:bg-red-700"
               >
                 Start free
               </Link>
