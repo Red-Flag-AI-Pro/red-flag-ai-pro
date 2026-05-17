@@ -20,7 +20,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-gray-800 bg-gray-950 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-1">
           <Image
@@ -38,19 +38,19 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             <>
               <Link
                 href="/dashboard"
-                className="rounded-md px-2 py-1.5 text-sm text-gray-600 hover:bg-gray-100 hidden sm:block"
+                className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors hidden sm:block"
               >
                 Dashboard
               </Link>
               <Link
                 href="/scans/new"
-                className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+                className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-500 transition-colors"
               >
                 New Scan
               </Link>
               <button
                 onClick={handleSignOut}
-                className="rounded-md px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hidden sm:block"
+                className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors hidden sm:block"
               >
                 Sign out
               </button>
@@ -59,19 +59,19 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             <>
               <Link
                 href="/pricing"
-                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
               >
                 Pricing
               </Link>
               <Link
                 href="/login"
-                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-600 hover:bg-gray-100"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
               >
                 Log in
               </Link>
               <Link
                 href="/signup"
-                className="rounded-md bg-red-600 px-3 py-1.5 text-xs sm:text-sm font-medium text-white hover:bg-red-700"
+                className="rounded-md bg-red-600 px-3 py-1.5 text-xs sm:text-sm font-medium text-white hover:bg-red-500 transition-colors"
               >
                 Start free
               </Link>

@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
@@ -135,24 +136,28 @@ function SignupForm() {
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-gray-950 px-4">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span className="text-2xl font-bold text-red-600">⚑</span>
-            <span className="text-xl font-bold text-gray-900">
-              Red Flag <span className="text-red-600">Pro</span>
-            </span>
+          <Link href="/" className="inline-flex items-center justify-center gap-1">
+            <Image
+              src="/redflag-logo.png"
+              alt="Red Flag AI Pro"
+              width={64}
+              height={64}
+              className="object-contain"
+            />
+            <span className="text-2xl font-extrabold text-red-600">Pro</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-gray-900">
+          <h1 className="mt-4 text-2xl font-bold text-white">
             Create your account
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-400">
             1 free scan · No credit card required
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="rounded-2xl border border-gray-800 bg-gray-900 p-8 shadow-sm">
           <Suspense>
             <SignupForm />
           </Suspense>
