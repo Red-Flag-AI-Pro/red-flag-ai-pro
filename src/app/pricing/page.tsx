@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
+
+export const metadata: Metadata = {
+  title: "Pricing — Start Free, Upgrade When Ready",
+  description:
+    "Start with 1 free scan. Upgrade to Pro for £49/month and get unlimited scans, PDF reports and full compliance history. Founder pricing — only 42 spots left.",
+  alternates: { canonical: "https://www.redflagaipro.com/pricing" },
+};
 
 const PLANS = [
   {

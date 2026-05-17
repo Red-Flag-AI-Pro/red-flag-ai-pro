@@ -5,9 +5,68 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro — Compliance Risk Scanner",
+  title: {
+    default: "Red Flag AI Pro — Marketing Compliance Scanner",
+    template: "%s | Red Flag AI Pro",
+  },
   description:
-    "The world's only marketing compliance scanner covering US, UK, EU, Australian and Canadian law. Scan your funnels for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
+    "The world's only 5-country marketing compliance scanner. Scan your funnels, ads and copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds. Get compliant rewrites instantly.",
+  keywords: [
+    "marketing compliance scanner",
+    "FTC compliance checker",
+    "GDPR compliance tool",
+    "ad compliance checker",
+    "marketing law checker",
+    "ASA compliance UK",
+    "CMA compliance",
+    "ACCC compliance Australia",
+    "CASL compliance Canada",
+    "funnel compliance",
+    "compliance risk score",
+    "marketing legal checker",
+  ],
+  authors: [{ name: "Red Flag AI Pro", url: "https://www.redflagaipro.com" }],
+  creator: "Red Flag AI Pro",
+  metadataBase: new URL("https://www.redflagaipro.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "https://www.redflagaipro.com",
+    siteName: "Red Flag AI Pro",
+    title: "Red Flag AI Pro — Marketing Compliance Scanner",
+    description:
+      "The world's only 5-country marketing compliance scanner. Scan for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
+    images: [
+      {
+        url: "/redflag-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Red Flag AI Pro — Marketing Compliance Scanner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Red Flag AI Pro — Marketing Compliance Scanner",
+    description:
+      "Scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. The world's only 5-country compliance scanner.",
+    images: ["/redflag-logo.png"],
+    creator: "@redflagaipro",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/redflag-logo.png",
     apple: "/redflag-logo.png",

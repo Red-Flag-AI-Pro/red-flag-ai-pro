@@ -1,5 +1,52 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+
+export const metadata: Metadata = {
+  title: "Red Flag AI Pro — Marketing Compliance Scanner",
+  description:
+    "The world's only 5-country marketing compliance scanner. Scan your funnels, ads and copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds. Free to start.",
+  alternates: { canonical: "https://www.redflagaipro.com" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Red Flag AI Pro",
+  url: "https://www.redflagaipro.com",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "The world's only 5-country marketing compliance scanner covering US, UK, EU, Australia and Canada. Scan marketing copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Free Plan",
+      price: "0",
+      priceCurrency: "GBP",
+      description: "1 free scan per month",
+    },
+    {
+      "@type": "Offer",
+      name: "Pro Plan",
+      price: "49",
+      priceCurrency: "GBP",
+      description: "Unlimited scans, PDF reports, scan history",
+    },
+    {
+      "@type": "Offer",
+      name: "Enterprise Plan",
+      price: "149",
+      priceCurrency: "GBP",
+      description: "Team seats, API access, priority support",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "12",
+  },
+};
 
 const FEATURES = [
   {
@@ -83,6 +130,10 @@ const FAQS = [
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       {/* Hero */}
