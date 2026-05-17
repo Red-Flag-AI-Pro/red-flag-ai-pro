@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { ExitIntent } from "@/components/marketing/ExitIntent";
+import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Marketing Compliance Scanner",
@@ -207,6 +209,7 @@ export default function LandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ExitIntent />
       <Navbar />
 
       {/* Scrolling compliance ticker */}
@@ -640,6 +643,13 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Risk Calculator */}
+      <section className="bg-gray-950 py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <RiskCalculator />
         </div>
       </section>
 
