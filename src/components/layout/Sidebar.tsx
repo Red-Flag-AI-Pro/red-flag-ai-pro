@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -26,9 +27,15 @@ export function Sidebar() {
     <aside className="flex h-full w-56 flex-col border-r border-gray-200 bg-white">
       <div className="flex h-14 items-center border-b border-gray-200 px-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg font-bold text-red-600">⚑</span>
+          <Image
+            src="/redflag-logo.png"
+            alt="Red Flag AI Pro"
+            width={28}
+            height={28}
+            className="object-contain"
+          />
           <span className="text-sm font-bold text-gray-900">
-            Red Flag <span className="text-red-600">Pro</span>
+            Red Flag AI <span className="text-red-600">Pro</span>
           </span>
         </Link>
       </div>

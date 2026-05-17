@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -22,7 +23,13 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
     <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg font-bold text-red-600">⚑</span>
+          <Image
+            src="/redflag-logo.png"
+            alt="Red Flag AI Pro"
+            width={36}
+            height={36}
+            className="object-contain"
+          />
           <span className="text-lg font-bold text-gray-900">
             Red Flag AI <span className="text-red-600">Pro</span>
           </span>
