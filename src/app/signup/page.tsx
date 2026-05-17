@@ -121,7 +121,10 @@ function SignupForm() {
       </Button>
 
       <p className="text-center text-xs text-gray-400">
-        By signing up you agree to our Terms of Service and Privacy Policy.
+        By signing up you agree to our{" "}
+        <a href="/terms" className="underline hover:text-gray-200">Terms of Service</a>
+        {" "}and{" "}
+        <a href="/privacy" className="underline hover:text-gray-200">Privacy Policy</a>.
       </p>
 
       <p className="text-center text-sm text-gray-500">

@@ -721,10 +721,12 @@ export default function LandingPage() {
       <footer className="border-t border-gray-800 bg-gray-950 py-10 text-center text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
         <p className="mt-1 text-xs text-gray-600">FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences. Covering US, UK, EU, Australian, and Canadian marketing law.</p>
-        <div className="mt-4 flex justify-center gap-6">
+        <div className="mt-4 flex flex-wrap justify-center gap-6">
           <Link href="/pricing" className="hover:text-gray-300 transition-colors">Pricing</Link>
           <Link href="/login" className="hover:text-gray-300 transition-colors">Log in</Link>
           <Link href="/signup" className="hover:text-gray-300 transition-colors">Sign up</Link>
+          <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+          <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
         </div>
         <div className="mt-4 border-t border-gray-800 pt-4">
           <p className="text-xs text-gray-600">
