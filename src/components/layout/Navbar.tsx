@@ -21,7 +21,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-gray-800 bg-gray-950 backdrop-blur-sm">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-32 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center">
           <Image
             src="/redflag-logo.png"
