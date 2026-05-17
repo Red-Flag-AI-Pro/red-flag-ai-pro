@@ -139,15 +139,14 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-950 px-4">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
-          <Link href="/" className="inline-flex items-center justify-center gap-1">
+          <Link href="/" className="inline-flex items-center justify-center">
             <Image
               src="/redflag-logo.png"
               alt="Red Flag AI Pro"
-              width={64}
-              height={64}
-              className="object-contain mix-blend-screen"
+              width={160}
+              height={160}
+              className="object-contain"
             />
-            <span className="text-2xl font-extrabold text-red-600">Pro</span>
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-white">
             Create your account

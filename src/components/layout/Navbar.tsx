@@ -22,15 +22,14 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-800 bg-gray-950 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-1">
+        <Link href="/" className="flex items-center">
           <Image
             src="/redflag-logo.png"
             alt="Red Flag AI Pro"
-            width={72}
-            height={72}
-            className="object-contain mix-blend-screen"
+            width={100}
+            height={100}
+            className="object-contain"
           />
-          <span className="text-3xl font-extrabold text-red-600">Pro</span>
         </Link>
 
         <nav className="flex items-center gap-1 sm:gap-2">
