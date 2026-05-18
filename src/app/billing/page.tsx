@@ -12,13 +12,13 @@ const PLANS = [
   {
     key: "pro" as const,
     name: "Pro",
-    price: "$49/mo",
+    price: "£49/mo",
     features: ["Unlimited scans", "PDF reports", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Enterprise",
-    price: "$199/mo",
+    price: "£149/mo",
     features: ["Everything in Pro", "Team seats", "API access", "Priority support"],
   },
 ];

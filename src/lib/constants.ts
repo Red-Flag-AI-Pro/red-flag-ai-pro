@@ -13,7 +13,7 @@ export const PLAN_PRICES = {
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
   enterprise: {
-    monthly: 199,
+    monthly: 149,
     label: "Enterprise",
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_ID!,
   },
