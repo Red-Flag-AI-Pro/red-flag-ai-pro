@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { GoogleConversion } from "@/components/marketing/GoogleConversion";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PlanBadge } from "@/components/billing/PlanBadge";
@@ -62,6 +63,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      <GoogleConversion />
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
