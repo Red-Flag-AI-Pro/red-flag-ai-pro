@@ -34,4 +34,13 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   health_claim: "Health Claim",
   legal_disclaimer: "Missing Disclaimer",
   contract_contradiction: "Claim vs. Contract",
+  data_privacy: "Data Privacy Violation",
+  hidden_fees: "Hidden Fees / Drip Pricing",
+  fake_reviews: "Fake Review Claim",
+  comparative_advertising: "Unverified Comparison",
+  email_compliance: "Email Marketing Consent",
+  dark_patterns: "Dark Pattern",
+  ai_disclosure: "AI Content — No Disclosure",
+  ai_endorsement: "AI Endorsement Violation",
+  automated_decisions: "Automated Decision Making",
 };
