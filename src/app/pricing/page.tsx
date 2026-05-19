@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Pricing — Start Free, Upgrade When Ready",
   description:
-    "Start with 1 free scan. Upgrade to Pro for £49/month and get unlimited scans, PDF reports and full compliance history across 16 risk categories including EU AI Act. Founder pricing — only 42 spots left.",
+    "Start with 1 free scan. Pro from £49/month — price rises to £99 after launch. Enterprise £149/month — rises to £299 after launch. 16 risk categories including EU AI Act across 5 jurisdictions.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -16,6 +15,7 @@ const PLANS = [
     price: "£0",
     period: "forever",
     description: "For individuals who want to try it out.",
+    badge: null,
     features: [
       "1 scan per month",
       "Risk score",
@@ -30,12 +30,14 @@ const PLANS = [
   {
     name: "Pro",
     price: "£49",
-    period: "per month — founder price",
-    description: "For marketers and agencies running live funnels. Price rises to £79 after 50 members.",
+    period: "per month",
+    description: "Launch price — rises to £99 after Product Hunt. Lock it in today.",
+    badge: "LAUNCH PRICE",
     features: [
       "Unlimited scans",
       "16 risk categories",
       "EU AI Act compliance",
+      "FTC · GDPR · ASA · ACCC · CASL",
       "Compliance flags",
       "Rewrite suggestions",
       "PDF reports",
@@ -43,7 +45,7 @@ const PLANS = [
       "Email support",
     ],
     excluded: [],
-    cta: "Start Pro",
+    cta: "Lock in £49 →",
     href: "/signup?plan=pro",
     highlight: true,
   },
@@ -51,7 +53,8 @@ const PLANS = [
     name: "Enterprise",
     price: "£149",
     period: "per month",
-    description: "For agencies managing multiple clients.",
+    description: "Launch price — rises to £299 after Product Hunt. For agencies managing multiple clients.",
+    badge: "LAUNCH PRICE",
     features: [
       "Everything in Pro",
       "Team seats",
@@ -61,7 +64,7 @@ const PLANS = [
       "Dedicated onboarding",
     ],
     excluded: [],
-    cta: "Start Enterprise",
+    cta: "Lock in £149 →",
     href: "/signup?plan=enterprise",
     highlight: false,
   },
@@ -72,11 +75,13 @@ export default function PricingPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Founder pricing banner */}
-      <div className="bg-amber-400 py-3 text-center">
-        <p className="text-sm font-bold text-amber-900">
-          🚩 Founder Pricing — Pro locked at £49/month for the first 50 members only. Price rises to £79 after that.{" "}
-          <span className="underline">42 founder spots remaining.</span>
+      {/* Launch banner */}
+      <div className="bg-red-600 py-3 text-center">
+        <p className="text-sm font-bold text-white">
+          🚀 Launching on Product Hunt — lock in founder pricing before it rises.{" "}
+          <Link href="/signup?plan=pro" className="underline hover:text-red-100">
+            Sign up now →
+          </Link>
         </p>
       </div>
 
@@ -86,14 +91,11 @@ export default function PricingPage() {
             Simple, transparent pricing
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Start for free. Upgrade when you need unlimited scans and PDF reports.
+            Start free. Upgrade when you need unlimited scans and full compliance coverage.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            16 risk categories · 5 jurisdictions · Now includes EU AI Act compliance
+            16 risk categories · 5 jurisdictions · EU AI Act · FTC · GDPR · ASA · ACCC · CASL
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-sm font-semibold text-amber-700">
-            ⚡ Founder pricing ends at 50 members — 42 spots left
-          </div>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -107,45 +109,40 @@ export default function PricingPage() {
                   : "border-gray-200 bg-white text-gray-900",
               ].join(" ")}
             >
-              {plan.highlight && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-4 py-1 text-xs font-bold text-amber-900">
-                  MOST POPULAR
+              {plan.badge && (
+                <div className={[
+                  "absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold whitespace-nowrap",
+                  plan.highlight ? "bg-amber-400 text-amber-900" : "bg-gray-800 text-gray-200",
+                ].join(" ")}>
+                  {plan.badge}
                 </div>
               )}
 
               <div>
-                <h2
-                  className={[
-                    "text-xl font-bold",
-                    plan.highlight ? "text-white" : "text-gray-900",
-                  ].join(" ")}
-                >
+                <h2 className={[
+                  "text-xl font-bold",
+                  plan.highlight ? "text-white" : "text-gray-900",
+                ].join(" ")}>
                   {plan.name}
                 </h2>
-                <p
-                  className={[
-                    "mt-1 text-sm",
-                    plan.highlight ? "text-red-100" : "text-gray-500",
-                  ].join(" ")}
-                >
+                <p className={[
+                  "mt-1 text-sm leading-relaxed",
+                  plan.highlight ? "text-red-100" : "text-gray-500",
+                ].join(" ")}>
                   {plan.description}
                 </p>
 
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span
-                    className={[
-                      "text-4xl font-extrabold",
-                      plan.highlight ? "text-white" : "text-gray-900",
-                    ].join(" ")}
-                  >
+                  <span className={[
+                    "text-4xl font-extrabold",
+                    plan.highlight ? "text-white" : "text-gray-900",
+                  ].join(" ")}>
                     {plan.price}
                   </span>
-                  <span
-                    className={[
-                      "text-sm",
-                      plan.highlight ? "text-red-200" : "text-gray-400",
-                    ].join(" ")}
-                  >
+                  <span className={[
+                    "text-sm",
+                    plan.highlight ? "text-red-200" : "text-gray-400",
+                  ].join(" ")}>
                     /{plan.period}
                   </span>
                 </div>
@@ -153,24 +150,13 @@ export default function PricingPage() {
 
               <ul className="mt-6 flex-1 space-y-2.5">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm">
-                    <span
-                      className={plan.highlight ? "text-red-200" : "text-green-500"}
-                    >
-                      ✓
-                    </span>
-                    <span
-                      className={plan.highlight ? "text-red-50" : "text-gray-700"}
-                    >
-                      {f}
-                    </span>
+                  <li key={f} className="flex items-start gap-2 text-sm">
+                    <span className={plan.highlight ? "text-red-200" : "text-green-500"}>✓</span>
+                    <span className={plan.highlight ? "text-red-50" : "text-gray-700"}>{f}</span>
                   </li>
                 ))}
                 {plan.excluded.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-center gap-2 text-sm text-gray-400 line-through"
-                  >
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-400 line-through">
                     <span>✕</span>
                     <span>{f}</span>
                   </li>
@@ -193,8 +179,35 @@ export default function PricingPage() {
         </div>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          All plans include a 14-day money-back guarantee. Cancel anytime.
+          All plans include a 14-day money-back guarantee. Cancel anytime. No contracts.
         </p>
+
+        {/* Sentinel coming soon */}
+        <div className="mt-16 rounded-2xl bg-gray-950 p-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Coming Q3 2026</span>
+          </div>
+          <h2 className="text-2xl font-bold text-white">
+            Sentinel — Compliance Infrastructure for Enterprise
+          </h2>
+          <p className="mt-3 text-gray-400 max-w-2xl leading-relaxed">
+            Built for legal teams, financial services firms and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. Financial promotions compliance for FCA-regulated businesses. Greenwashing scanner for EU Green Claims Directive. The audit trail your PI insurer needs. The documentation your regulator expects.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["Human Review Log", "Legal Timestamps", "FCA Financial Promotions", "Greenwashing Scanner", "Signed PDF Certificates", "3-Year Retention", "API Access", "Custom Rules"].map((f) => (
+              <span key={f} className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-400">
+                {f}
+              </span>
+            ))}
+          </div>
+          <Link
+            href="mailto:hello@redflagaipro.com?subject=Sentinel Waitlist"
+            className="mt-6 inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors"
+          >
+            Join the Sentinel waitlist →
+          </Link>
+        </div>
       </div>
     </div>
   );
