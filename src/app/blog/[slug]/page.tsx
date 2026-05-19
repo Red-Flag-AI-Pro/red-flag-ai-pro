@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { getBlogPost, BLOG_POSTS } from "@/lib/blog";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getBlogPost(params.slug);
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -156,8 +157,9 @@ const CATEGORY_COLOURS: Record<string, string> = {
   "Compliance": "bg-amber-100 text-amber-700",
 };
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   if (!post) notFound();
 
   const otherPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
