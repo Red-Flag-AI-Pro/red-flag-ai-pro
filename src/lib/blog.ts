@@ -507,6 +507,134 @@ Red Flag AI Pro scans your marketing copy against all 16 risk categories across 
 [Scan your copy free — no credit card required →](https://www.redflagaipro.com/signup)
     `,
   },
+  {
+    slug: "ai-insurance-exclusions-pi-policy-marketing",
+    title: "AI Insurance Exclusions — Why Your PI Policy May Not Cover AI-Generated Marketing Copy",
+    description: "Major insurers including Berkley and RSA are quietly adding AI exclusions to Professional Indemnity policies. If your agency uses AI to write marketing copy, your PI cover may already have a gap you don't know about.",
+    date: "2026-05-19",
+    readTime: "6 min read",
+    category: "Compliance",
+    content: `
+## The Coverage Gap Nobody Is Talking About
+
+You pay for Professional Indemnity insurance to protect your agency if a client claims your work caused them financial or reputational harm. But a quiet shift in the insurance market means that protection may now have a significant hole in it.
+
+Major insurers — including **Berkley Insurance**, the world's largest writer of specialty PI insurance, and **RSA**, one of the UK's leading commercial insurers — are adding AI-specific exclusions to their policies.
+
+If your agency uses AI writing tools like ChatGPT, Claude, Jasper, or Copy.ai to produce marketing copy for clients, this affects you directly.
+
+---
+
+## What the Insurers Are Saying
+
+### Berkley Insurance
+Berkley has introduced explicit AI exclusion endorsements on its professional liability policies. Their position is that the liability arising from AI-generated professional work represents an unquantified and unpriced risk — and until it can be properly modelled, they are excluding it.
+
+In practical terms: if a client suffers a loss because your agency produced AI-generated marketing copy that breached a regulation — say, an undisclosed AI-generated ad that violated EU AI Act Article 50 — Berkley's policy may not respond to that claim.
+
+### Verisk ISO Endorsements
+Verisk, the data analytics company that sets the standard exclusion language used by hundreds of insurers worldwide, has developed AI exclusion endorsements through its ISO commercial lines programme. As these standard clauses propagate through the market, AI-related professional liability exclusions are becoming the norm rather than the exception.
+
+### RSA UK — "Silent AI"
+RSA's Head of Professional Indemnity for the UK has publicly stated that the market is "assuming but not yet pricing for Gen AI exposures." This means RSA policies written today are effectively "silent" on AI — they don't explicitly cover it, and they may not respond to AI-related claims when the time comes.
+
+This is the same "silent cyber" problem that caused enormous coverage disputes in the 2010s — when policies didn't mention cyber risk and insurers denied claims on that basis.
+
+---
+
+## Why Marketing Agencies Are Particularly Exposed
+
+Most PI policies for marketing agencies cover claims arising from professional negligence — advice or work product that was professionally deficient.
+
+AI-generated marketing copy creates several new categories of potential claim:
+
+### Regulatory Breach by Client
+If your agency produces AI-generated copy for a client that breaches EU AI Act Article 50 (undisclosed AI content), FTC regulations, or ASA CAP Code rules, and the client suffers a fine or reputational damage as a result — they may claim against your agency.
+
+### Copyright Infringement
+AI writing tools have been trained on vast datasets that may include copyrighted content. If an AI generates copy that is substantially similar to an existing copyrighted work, the copyright owner can pursue the client — who may then pursue your agency.
+
+### Misrepresentation
+If AI-generated copy makes claims that turn out to be false — earnings claims, health claims, comparative claims — and those claims cause consumer harm, your agency may be in the chain of liability.
+
+Under traditional PI policies, all of these were clearly covered. Under the new AI exclusion clauses being added by Berkley, Verisk-standardised policies and potentially RSA, they may not be.
+
+---
+
+## The EU AI Act Makes This Worse
+
+EU AI Act Article 50(4) — coming into force on **2 August 2026** — requires that AI-generated marketing content is clearly disclosed. Failure to disclose is a regulatory violation carrying fines of up to **€15 million or 3% of global annual turnover**.
+
+A fine at this level imposed on a client as a result of your agency's undisclosed AI-generated copy is precisely the kind of claim your PI policy is supposed to cover. Under the new AI exclusion endorsements, it may not.
+
+The regulatory risk and the insurance gap are arriving simultaneously.
+
+---
+
+## What You Should Do Now
+
+### 1. Review Your PI Policy Immediately
+Read your current PI policy — specifically any endorsements added at renewal. Search for language referencing "artificial intelligence," "machine learning," "automated content" or "AI-generated." If you find an exclusion or a silence, speak to your broker.
+
+### 2. Ask Your Broker the Right Questions
+- Does our current policy cover claims arising from AI-generated work product?
+- Has any AI exclusion endorsement been added at our last renewal?
+- Is there specialist AI professional liability cover available?
+
+### 3. Document Your Human Review Process
+The best defence against both regulatory liability and PI claims is documented human editorial review. If a human professional reviewed, amended and approved every piece of AI-generated copy, you have a much stronger position — both under EU AI Act Article 50(4) exemptions and in any PI claim.
+
+Keep records of: who reviewed each piece of AI-generated content, what changes were made, and the date of review.
+
+### 4. Implement Compliance Scanning Before Delivery
+Scan every piece of AI-assisted marketing copy for compliance issues before it goes to the client. This demonstrates professional diligence — the standard that PI cover is designed to protect.
+
+### 5. Update Your Client Contracts
+Add clauses to your agency agreements that address AI tool usage, disclosure responsibilities, and liability allocation between your agency and the client. Your lawyer can advise on appropriate language.
+
+---
+
+## The Risk in Plain Numbers
+
+Consider a mid-size UK marketing agency with:
+- Annual fee income of £500,000
+- A PI policy with a £1 million limit
+- 12 active clients receiving AI-assisted copy
+
+A single EU AI Act violation fine against one client — potentially up to £1.3 million for a small business — could exceed the agency's annual revenue. If that fine arose from undisclosed AI-generated copy produced by the agency, the client has a clear professional negligence claim.
+
+If the PI policy contains an AI exclusion: the agency's £1 million policy does not respond. The agency faces that claim uninsured.
+
+This is not a theoretical risk. It is the realistic outcome of the insurance market changes already underway, combined with EU AI Act enforcement beginning in August 2026.
+
+---
+
+## Red Flag AI Pro: Your Compliance Paper Trail
+
+Red Flag AI Pro scans AI-generated and human-written marketing copy against 16 risk categories across 5 jurisdictions — including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR and CASL.
+
+Every scan produces a timestamped compliance report. That report is your documented evidence of professional diligence — exactly what your broker, your client and any claims handler would need to see.
+
+It takes 60 seconds. It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
+
+[Scan your first piece of copy free — no credit card required →](https://www.redflagaipro.com/signup)
+
+---
+
+## Summary
+
+| Risk | Status |
+|------|--------|
+| Berkley Insurance AI exclusions | Active — being added at renewal |
+| Verisk ISO AI endorsements | Rolling out across market |
+| RSA UK "Silent AI" | Unresolved — policies may not respond |
+| EU AI Act Article 50(4) | In force 2 August 2026 |
+| Maximum fine | €15m or 3% global turnover |
+| Your PI policy | Review it today |
+
+The insurance gap and the regulatory risk are arriving at the same time. The agencies that survive the next 12 months will be the ones who treated compliance as infrastructure — not an afterthought.
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
