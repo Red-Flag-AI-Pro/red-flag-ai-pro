@@ -105,6 +105,12 @@ const SCAN_CATEGORIES = [
   { icon: "📋", label: "Contract Contradictions" },
 ];
 
+const AI_CATEGORIES = [
+  { icon: "🤖", label: "AI Content Disclosure", tag: "EU AI Act Art. 50" },
+  { icon: "📢", label: "AI Endorsement Violations", tag: "FTC AI Guidelines" },
+  { icon: "⚙️", label: "Automated Decision Making", tag: "GDPR Article 22" },
+];
+
 const PERSONAS = [
   { icon: "🎓", label: "Course Creators", desc: "Selling online courses internationally" },
   { icon: "🏢", label: "Marketing Agencies", desc: "Managing compliance for multiple clients" },
@@ -348,7 +354,7 @@ export default function LandingPage() {
           {/* Stats pill */}
           <div className="mt-6 flex justify-center">
             <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
-              <span className="text-red-400 font-bold text-sm">13 risk categories</span>
+              <span className="text-red-400 font-bold text-sm">16 risk categories</span>
               <span className="text-gray-600">·</span>
               <span className="text-red-400 font-bold text-sm">5 countries</span>
               <span className="text-gray-600">·</span>
@@ -584,7 +590,7 @@ export default function LandingPage() {
               },
               {
                 step: "02",
-                title: "AI scans 13 risk categories",
+                title: "AI scans 16 risk categories",
                 desc: "Income claims, fake urgency, dark patterns, GDPR, hidden fees, and more — across all 5 jurisdictions simultaneously.",
               },
               {
@@ -632,7 +638,7 @@ export default function LandingPage() {
       <section className="bg-gray-950 py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-center text-3xl font-extrabold text-white">
-            13 Risk Categories. One Scan.
+            16 Risk Categories. One Scan.
           </h2>
           <p className="mt-3 text-center text-gray-400">
             Every category checked against all 5 jurisdictions simultaneously.
@@ -644,6 +650,29 @@ export default function LandingPage() {
                 <span className="text-sm font-medium text-gray-200">{c.label}</span>
               </div>
             ))}
+          </div>
+
+          {/* AI Law Categories */}
+          <div className="mt-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px flex-1 bg-gray-800" />
+              <span className="flex items-center gap-2 text-xs font-bold text-red-400 uppercase tracking-widest">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                New — AI Law Compliance
+              </span>
+              <div className="h-px flex-1 bg-gray-800" />
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {AI_CATEGORIES.map((c) => (
+                <div key={c.label} className="flex items-center gap-3 rounded-xl border border-red-500/30 bg-red-500/5 px-4 py-3 hover:border-red-500/60 transition-colors">
+                  <span className="text-xl">{c.icon}</span>
+                  <div>
+                    <p className="text-sm font-medium text-gray-200">{c.label}</p>
+                    <p className="text-xs text-red-400 mt-0.5">{c.tag}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Credibility block */}
