@@ -434,6 +434,69 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* AI Liability Section */}
+      <section className="relative overflow-hidden bg-gray-950 py-24">
+        {/* Grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        {/* Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/10 blur-[100px] rounded-full" />
+
+        <div className="relative mx-auto max-w-5xl px-6">
+          {/* Badge */}
+          <div className="flex justify-center mb-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-xs font-semibold text-red-400 uppercase tracking-widest">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+              New Threat — 2026
+            </span>
+          </div>
+
+          <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+            Using AI to Write Your Marketing Copy?
+            <span className="block text-red-500 mt-1">Your Insurer May Not Cover You.</span>
+          </h2>
+          <p className="mt-5 text-center text-gray-400 max-w-2xl mx-auto text-lg">
+            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span className="text-white font-semibold">uninsured liability</span>.
+          </p>
+
+          {/* Three columns */}
+          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
+                <span className="text-red-400 text-lg">⚠️</span>
+              </div>
+              <h3 className="text-white font-bold text-lg">Berkley Insurance</h3>
+              <p className="mt-2 text-gray-400 text-sm leading-relaxed">Introduced an <span className="text-red-400 font-semibold">absolute AI exclusion</span> on D&amp;O, E&amp;O and Fiduciary Liability policies — covering all AI use, not just generative.</p>
+            </div>
+            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
+                <span className="text-red-400 text-lg">🏛️</span>
+              </div>
+              <h3 className="text-white font-bold text-lg">EU AI Act — Aug 2026</h3>
+              <p className="mt-2 text-gray-400 text-sm leading-relaxed">Article 50(4) requires AI-assisted marketing content to carry <span className="text-red-400 font-semibold">disclosure or documented human review</span>. Non-compliance triggers regulatory action.</p>
+            </div>
+            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
+                <span className="text-red-400 text-lg">🔍</span>
+              </div>
+              <h3 className="text-white font-bold text-lg">RSA (UK)</h3>
+              <p className="mt-2 text-gray-400 text-sm leading-relaxed">RSA's UK Head of PI confirmed they are <span className="text-red-400 font-semibold">"assuming but not yet pricing"</span> AI exposures — meaning exclusions are coming at next renewal.</p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 rounded-2xl border border-red-500/20 bg-red-500/5 p-8 text-center">
+            <p className="text-white text-xl font-bold">Scan Your AI-Generated Copy Before Your Insurer Sees It First</p>
+            <p className="mt-2 text-gray-400">Red Flag AI Pro catches the compliance violations in your AI copy that could trigger an uninsured claim — before it goes live.</p>
+            <a
+              href="/signup"
+              className="mt-6 inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
+            >
+              Scan Your Copy Free →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Before vs After */}
       <section className="bg-gray-950 py-20">
         <div className="mx-auto max-w-4xl px-6">
