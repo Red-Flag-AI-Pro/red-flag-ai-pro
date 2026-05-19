@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "The world's only 5-country marketing compliance scanner. Scan your funnels, ads and copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds. Get compliant rewrites instantly.",
+    "The world's only 5-country marketing compliance scanner. 16 risk categories including EU AI Act. Scan your funnels, ads and AI-generated copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
   keywords: [
     "marketing compliance scanner",
     "FTC compliance checker",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Marketing Compliance Scanner",
     description:
-      "The world's only 5-country marketing compliance scanner. Scan for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
+      "The world's only 5-country marketing compliance scanner. 16 risk categories including EU AI Act Article 50. Scan for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
     images: [
       {
         url: "/redflag-logo.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Red Flag AI Pro — Marketing Compliance Scanner",
     description:
-      "Scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. The world's only 5-country compliance scanner.",
+      "Scan your marketing copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations in 60 seconds. 16 risk categories. The world's only 5-country compliance scanner.",
     images: ["/redflag-logo.png"],
     creator: "@redflagaipro",
   },

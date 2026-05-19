@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Pricing — Start Free, Upgrade When Ready",
   description:
-    "Start with 1 free scan. Upgrade to Pro for £49/month and get unlimited scans, PDF reports and full compliance history. Founder pricing — only 42 spots left.",
+    "Start with 1 free scan. Upgrade to Pro for £49/month and get unlimited scans, PDF reports and full compliance history across 16 risk categories including EU AI Act. Founder pricing — only 42 spots left.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -34,7 +34,8 @@ const PLANS = [
     description: "For marketers and agencies running live funnels. Price rises to £79 after 50 members.",
     features: [
       "Unlimited scans",
-      "Risk score",
+      "16 risk categories",
+      "EU AI Act compliance",
       "Compliance flags",
       "Rewrite suggestions",
       "PDF reports",
@@ -86,6 +87,9 @@ export default function PricingPage() {
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             Start for free. Upgrade when you need unlimited scans and PDF reports.
+          </p>
+          <p className="mt-2 text-sm text-gray-500">
+            16 risk categories · 5 jurisdictions · Now includes EU AI Act compliance
           </p>
           <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-sm font-semibold text-amber-700">
             ⚡ Founder pricing ends at 50 members — 42 spots left
