@@ -107,11 +107,11 @@ function renderContent(content: string) {
           ))}
         </ul>
       );
-    } else if (line.match(/^\*\*☐/)) {
+    } else if (line.includes("☐")) {
       elements.push(
-        <div key={key++} className="my-3 flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-          <span className="text-lg mt-0.5">☐</span>
-          <p className="text-gray-700 text-sm" dangerouslySetInnerHTML={{ __html: formatInline(line.replace(/^\*\*☐\s*/, "")) }} />
+        <div key={key++} className="my-2 flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 p-4">
+          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 border-green-500 bg-white text-green-600 text-xs font-bold">✓</span>
+          <p className="text-gray-700 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(line.replace(/\*\*☐\s*\d+\.\s*/, "").replace(/☐\s*/, "").replace(/^\*\*/, "").replace(/\*\*$/, "")) }} />
         </div>
       );
     } else if (line.startsWith("[") && line.includes("](")) {
