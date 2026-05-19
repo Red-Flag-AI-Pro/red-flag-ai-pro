@@ -423,89 +423,73 @@ Before you launch your next campaign, run through this checklist.
 
 ## Income & Earnings Claims
 
-**☐ 1. Remove or substantiate all earnings claims**
-Any claim that implies a consumer can achieve a specific income level — including lifestyle imagery — requires substantiation. Add an earnings disclaimer if you cannot remove the claim.
+☐ **Remove or substantiate all earnings claims** — Any claim that implies a consumer can achieve a specific income level — including lifestyle imagery — requires substantiation. Add an earnings disclaimer if you cannot remove the claim.
 
-**☐ 2. Ensure testimonials reflect typical results**
-If you feature a customer who achieved exceptional results, disclose that their results are not typical and provide context for what average customers achieve.
+☐ **Ensure testimonials reflect typical results** — If you feature a customer who achieved exceptional results, disclose that their results are not typical and provide context for what average customers achieve.
 
 ---
 
 ## Urgency & Scarcity
 
-**☐ 3. Verify all countdown timers are genuine**
-Countdown timers that reset are illegal under EU DSA rules and targeted by the CMA and ACCC. If your timer isn't counting down to a real deadline, remove it.
+☐ **Verify all countdown timers are genuine** — Countdown timers that reset are illegal under EU DSA rules and targeted by the CMA and ACCC. If your timer isn't counting down to a real deadline, remove it.
 
-**☐ 4. Confirm all scarcity claims are accurate**
-"Only 3 left" or "Limited to 10 spots" must be factually accurate. Fake scarcity is specifically named as an illegal dark pattern in multiple jurisdictions.
+☐ **Confirm all scarcity claims are accurate** — "Only 3 left" or "Limited to 10 spots" must be factually accurate. Fake scarcity is specifically named as an illegal dark pattern in multiple jurisdictions.
 
 ---
 
 ## Guarantees & Refunds
 
-**☐ 5. Match your guarantee language to your Terms of Service**
-If your copy says "no questions asked money back guarantee" but your ToS says "all sales final" — you have a contract contradiction. Fix one or the other.
+☐ **Match your guarantee language to your Terms of Service** — If your copy says "no questions asked money back guarantee" but your ToS says "all sales final" — you have a contract contradiction. Fix one or the other.
 
-**☐ 6. Never contract out of statutory rights**
-UK consumers have a 14-day cooling-off period. EU consumers have 14 days. Australian Consumer Law provides non-waivable guarantees. Your Terms cannot remove these rights.
+☐ **Never contract out of statutory rights** — UK consumers have a 14-day cooling-off period. EU consumers have 14 days. Australian Consumer Law provides non-waivable guarantees. Your Terms cannot remove these rights.
 
 ---
 
 ## Health Claims
 
-**☐ 7. Remove all unauthorised health claims**
-Claims that a product "cures," "treats," "heals" or "boosts" health require regulatory authorisation in every major jurisdiction. Replace with qualified language: "may support..." rather than "boosts..."
+☐ **Remove all unauthorised health claims** — Claims that a product "cures," "treats," "heals" or "boosts" health require regulatory authorisation in every major jurisdiction. Replace with qualified language: "may support..." rather than "boosts..."
 
 ---
 
 ## Data & Privacy
 
-**☐ 8. Verify email consent is GDPR-compliant**
-All email marketing consent must be freely given, specific, informed and unambiguous. Pre-ticked boxes are illegal. Check every opt-in mechanism.
+☐ **Verify email consent is GDPR-compliant** — All email marketing consent must be freely given, specific, informed and unambiguous. Pre-ticked boxes are illegal. Check every opt-in mechanism.
 
-**☐ 9. Ensure your Privacy Policy is current and linked**
-Your Privacy Policy must be clearly accessible from every page where you collect data. It must accurately describe what you collect and how you use it.
+☐ **Ensure your Privacy Policy is current and linked** — Your Privacy Policy must be clearly accessible from every page where you collect data. It must accurately describe what you collect and how you use it.
 
 ---
 
 ## Pricing & Fees
 
-**☐ 10. Display the full price upfront**
-All mandatory fees must be included in the advertised price. Drip pricing — adding fees at checkout that weren't shown upfront — is illegal in the UK, EU, US, Australia and Canada.
+☐ **Display the full price upfront** — All mandatory fees must be included in the advertised price. Drip pricing — adding fees at checkout that weren't shown upfront — is illegal in the UK, EU, US, Australia and Canada.
 
 ---
 
 ## Reviews & Testimonials
 
-**☐ 11. Disclose all incentivised reviews**
-If a customer was paid, gifted a product or incentivised in any way to leave a review, this must be disclosed. Failure to disclose is illegal under FTC, CMA and ACCC rules.
+☐ **Disclose all incentivised reviews** — If a customer was paid, gifted a product or incentivised in any way to leave a review, this must be disclosed. Failure to disclose is illegal under FTC, CMA and ACCC rules.
 
 ---
 
 ## Comparative Claims
 
-**☐ 12. Substantiate all comparative and superlative claims**
-"The UK's leading," "#1 rated," "better than competitors" — all require verifiable evidence. Remove or document the evidence for every such claim.
+☐ **Substantiate all comparative and superlative claims** — "The UK's leading," "#1 rated," "better than competitors" — all require verifiable evidence. Remove or document the evidence for every such claim.
 
 ---
 
 ## AI-Generated Content (New for 2026)
 
-**☐ 13. Disclose AI-generated content**
-EU AI Act Article 50(4) requires disclosure of AI-generated marketing content from 2 August 2026. Add disclosure language to all AI-generated or AI-assisted copy.
+☐ **Disclose AI-generated content** — EU AI Act Article 50(4) requires disclosure of AI-generated marketing content from 2 August 2026. Add disclosure language to all AI-generated or AI-assisted copy.
 
-**☐ 14. Review AI-generated endorsements**
-FTC guidelines require disclosure when AI systems generate or select endorsements shown to consumers. Review all AI-powered recommendation features.
+☐ **Review AI-generated endorsements** — FTC guidelines require disclosure when AI systems generate or select endorsements shown to consumers. Review all AI-powered recommendation features.
 
-**☐ 15. Check automated decision-making disclosures**
-GDPR Article 22 gives consumers rights around automated decisions. If your marketing uses AI to personalise pricing or eligibility, this must be disclosed in your Privacy Policy.
+☐ **Check automated decision-making disclosures** — GDPR Article 22 gives consumers rights around automated decisions. If your marketing uses AI to personalise pricing or eligibility, this must be disclosed in your Privacy Policy.
 
 ---
 
 ## Email Marketing
 
-**☐ 16. Audit your CASL compliance for Canadian recipients**
-CASL requires express consent and carries fines up to $10 million CAD per violation. If you have Canadian subscribers, verify your consent records are compliant.
+☐ **Audit your CASL compliance for Canadian recipients** — CASL requires express consent and carries fines up to $10 million CAD per violation. If you have Canadian subscribers, verify your consent records are compliant.
 
 ---
 
