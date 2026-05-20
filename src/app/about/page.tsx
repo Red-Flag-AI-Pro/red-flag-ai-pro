@@ -29,11 +29,6 @@ export default function AboutPage() {
       {/* Content */}
       <div className="mx-auto max-w-3xl px-6 py-16">
 
-        {/* Photo placeholder */}
-        <div className="mb-12 rounded-2xl bg-gray-100 h-72 flex items-center justify-center border border-gray-200">
-          <p className="text-gray-400 text-sm">Photo of James — coming soon</p>
-        </div>
-
         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
 
           <p>
