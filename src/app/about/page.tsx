@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
 
           <p>
-            For 33 years I was a flat out alcoholic and drug user. I bloated to 24 stone and could barely leave my flat. I had isolated myself completely from the world — from my family, from everything.
+            For 33 years I was a flat out alcoholic and drug user. I bloated to 24 stone and could barely leave my flat. I had isolated myself completely from the world, from my family, from everything.
           </p>
 
           <p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            That broke something in me that I couldn't put back together. I used more. I drank more. I barely ate. I drank through the night and through the day with no water. I tried rehabs, detoxes, understood all the principles — but I couldn't implement them. And yet somewhere underneath all of it, I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
+            That broke something in me that I couldn't put back together. I used more. I drank more. I barely ate. I drank through the night and through the day with no water. I tried rehabs, detoxes, understood all the principles, but I couldn't implement them. And yet somewhere underneath all of it, I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
           </p>
 
           <div className="border-l-4 border-red-500 pl-6 py-2 my-8">
@@ -54,11 +54,11 @@ export default function AboutPage() {
           </div>
 
           <p>
-            I was numb at first. It didn't sink in. And then I thought — at least I'll be with my daughter soon.
+            I was numb at first. It didn't sink in. And then I thought, at least I'll be with my daughter soon.
           </p>
 
           <p>
-            But something shifted. I'd always loved Eastern mysticism, Buddhism, Stoicism. I'd studied it for years without being able to live it. I found a place in Indonesia — military grade, no hot water, three cold baths a day, clothes folded in a specific way that most Westerners wouldn't understand. A call to prayer five times a day, including 4am. A language barrier. A jail attached to the building.
+            But something shifted. I'd always loved Eastern mysticism, Buddhism, Stoicism. I'd studied it for years without being able to live it. I found a place in Indonesia, military grade, no hot water, three cold baths a day, clothes folded in a specific way that most Westerners wouldn't understand. A call to prayer five times a day, including 4am. A language barrier. A jail attached to the building.
           </p>
 
           <p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            Something happened in Indonesia that I still can't fully explain. Too many coincidences to call coincidences. Energies I'd never felt before. A spiritual awakening that felt completely natural — as if I was being guided toward something. For the first time in my life, I felt it.
+            Something happened in Indonesia that I still can't fully explain. Too many coincidences to call coincidences. Energies I'd never felt before. A spiritual awakening that felt completely natural, as if I was being guided toward something. For the first time in my life, I felt it.
           </p>
 
           <p>
@@ -78,7 +78,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            I'd had an idea in Indonesia — something around affiliate marketing and men's supplements. But I quickly realised the brand wasn't the product. The brand was me. My story. That project still exists, quietly building — it's part of a bigger ecosystem I'm creating around giving back to broken, addicted, homeless and struggling men.
+            I'd had an idea in Indonesia, something around affiliate marketing and men's supplements. But I quickly realised the brand wasn't the product. The brand was me. My story. That project still exists, quietly building, part of a bigger ecosystem I'm creating around giving back to broken, addicted, homeless and struggling men.
           </p>
 
           <p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
           <div className="bg-red-50 border border-red-100 rounded-2xl p-8 my-10">
             <p className="text-gray-900 font-semibold text-lg mb-3">What I built</p>
             <p className="text-gray-700">
-              A scanner that checks marketing copy against real advertising law — FTC, GDPR, ASA, ACCC, CASL and EU AI Act — in 60 seconds, in plain English, with exact rewrite suggestions. No lawyers. No jargon. Just clarity.
+              A scanner that checks marketing copy against real advertising law: FTC, GDPR, ASA, ACCC, CASL and EU AI Act, in 60 seconds, in plain English, with exact rewrite suggestions. No lawyers. No jargon. Just clarity.
             </p>
             <p className="mt-4 text-gray-700 font-medium">
               I built it alone. With help from Claude. From a laptop. After being given a death sentence.
@@ -106,7 +106,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-extrabold text-gray-900 mt-12 mb-4">What I want for you</h2>
 
           <p>
-            When you use Red Flag AI Pro, I want you to feel something most people never feel when they're buying or selling online — genuine freedom and safety. The confidence that what you're putting out into the world is clean, honest and legal. The confidence that what you're buying is what it says it is.
+            When you use Red Flag AI Pro, I want you to feel something most people never feel when they're buying or selling online: genuine freedom and safety. The confidence that what you're putting out into the world is clean, honest and legal. The confidence that what you're buying is what it says it is.
           </p>
 
           <p>
@@ -114,7 +114,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            This is the beginning. There is so much more to come — tools, platforms, and projects all built around one simple idea: using AI for good.
+            This is the beginning. There is so much more to come, tools, platforms, and projects all built around one simple idea: using AI for good.
           </p>
 
           {/* Signature */}
