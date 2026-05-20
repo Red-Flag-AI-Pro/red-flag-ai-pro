@@ -20,6 +20,9 @@ export default function AboutPage() {
           <h1 className="text-4xl font-extrabold text-white leading-tight">
             This wasn't built in a boardroom.<br />It was built from the bottom.
           </h1>
+          <p className="mt-6 text-xl text-red-400 italic font-medium">
+            "Within adversity hides unstoppable strength"
+          </p>
         </div>
       </div>
 
