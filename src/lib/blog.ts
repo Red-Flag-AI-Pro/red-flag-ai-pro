@@ -19,7 +19,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: `
 ## The Clock Is Ticking
 
-On **2 August 2026** — just weeks away — EU AI Act Article 50(4) comes into force. It requires that AI-generated content intended for the public is clearly disclosed to consumers.
+On **2 August 2026**, just weeks away, EU AI Act Article 50(4) comes into force. It requires that AI-generated content intended for the public is clearly disclosed to consumers.
 
 If your marketing agency uses ChatGPT, Claude, Jasper, Copy.ai or any other AI writing tool to produce content for clients, this law applies to you.
 
@@ -44,7 +44,7 @@ This applies to:
 
 ## What Are the Penalties?
 
-Fines under the EU AI Act can reach **€15 million or 3% of global annual turnover** — whichever is higher.
+Fines under the EU AI Act can reach **€15 million or 3% of global annual turnover**, whichever is higher.
 
 For a marketing agency with £2 million annual revenue, that's a potential fine of up to **£600,000** for non-compliance.
 
@@ -81,7 +81,7 @@ This means a claim arising from undisclosed AI-generated content that breaches A
 
 **Your compliance risk is uninsured.**
 
-Red Flag AI Pro now scans marketing copy for EU AI Act Article 50 compliance — alongside 15 other risk categories covering FTC, CMA, ASA, GDPR, ACCC and CASL regulations.
+Red Flag AI Pro now scans marketing copy for EU AI Act Article 50 compliance, alongside 15 other risk categories covering FTC, CMA, ASA, GDPR, ACCC and CASL regulations.
 
 [Scan your copy free →](https://www.redflagaipro.com/signup)
 
@@ -97,7 +97,7 @@ Red Flag AI Pro now scans marketing copy for EU AI Act Article 50 compliance —
 | Update client contracts | Before 2 Aug 2026 |
 | Scan existing campaigns | Before 2 Aug 2026 |
 
-The EU AI Act is not optional. It is not a guideline. It is law — and enforcement begins in weeks.
+The EU AI Act is not optional. It is not a guideline. It is law. Enforcement begins in weeks.
 
 If you are a marketing agency using AI to write copy for clients, the time to act is now.
 
