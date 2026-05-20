@@ -131,6 +131,13 @@ export default function AboutPage() {
 
         </div>
 
+        {/* Quote */}
+        <div className="mt-12 text-center">
+          <p className="text-red-600 text-xl font-semibold italic">
+            "What's normal for the spider is chaos for the fly."
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="mt-16 rounded-2xl bg-gray-950 p-8 text-center">
           <p className="text-white font-bold text-xl mb-2">Try Red Flag AI Pro free</p>
