@@ -86,7 +86,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            I fell in love with AI. Started learning agentics, doing courses, building things off the top of my head. And then I went to buy one last course — and got burned. The terms and conditions I had to sign bore no resemblance to what the advert or the VSL had promised. I'd been ripped off again. At a time when I couldn't afford it.
+            I fell in love with AI. Started learning agentics, doing courses, building things off the top of my head. And then I went to buy one last course and got burned. The terms and conditions I had to sign bore no resemblance to what the advert or the VSL had promised. I'd been ripped off again. At a time when I couldn't afford it.
           </p>
 
           <p>
