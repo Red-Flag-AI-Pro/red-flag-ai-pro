@@ -98,6 +98,15 @@ export default function AboutPage() {
             <p className="text-gray-700">
               A scanner that checks marketing copy against real advertising law: FTC, GDPR, ASA, ACCC, CASL and EU AI Act, in 60 seconds, in plain English, with exact rewrite suggestions. No lawyers. No jargon. Just clarity.
             </p>
+            <p className="mt-4 text-gray-700">
+              16 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
+            </p>
+            <p className="mt-4 text-gray-700">
+              And this is just the start. Sentinel is coming in Q3 2026, compliance infrastructure built for legal teams, financial services firms and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. The audit trail your PI insurer needs. The documentation your regulator expects.
+            </p>
+            <p className="mt-4 text-gray-700">
+              There are more tools coming. More categories. More jurisdictions. A whole ecosystem built around one idea: making the internet a safer place to buy and sell.
+            </p>
             <p className="mt-4 text-gray-700 font-medium">
               I built it alone. With help from Claude. From a laptop. After being given a death sentence.
             </p>
