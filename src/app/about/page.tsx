@@ -32,11 +32,11 @@ export default function AboutPage() {
         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
 
           <p>
-            For 33 years I was a flat out alcoholic and drug user. I bloated to 24 stone and could barely leave my flat. I had isolated myself completely from the world, from my family, from everything.
+            For over 30 years I was a functioning addict and alcoholic. And I mean functioning. I held down sales jobs, hit targets, managed relationships, and kept a professional face while privately drinking and using drugs every single day. Nobody knew the full extent of it. I was good at hiding it. That duality nearly killed me.
           </p>
 
           <p>
-            Before that I had spent 5 years in prison. I had been homeless on and off for a sustained period, doing anything just to survive. That was my life for a long time. Not planning, not building, not dreaming — just surviving. Day to day. Whatever it took.
+            I've been to prison. Five years. I've been homeless on and off for sustained periods, doing whatever it took just to survive. I bloated to 24 stone and could barely leave my flat. I isolated myself completely from the world, from my family, from everyone who ever cared about me.
           </p>
 
           <p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            That broke something in me that I couldn't put back together. I used more. I drank more. I barely ate. I drank through the night and through the day with no water. I tried rehabs, detoxes, understood all the principles, but I couldn't implement them. And yet somewhere underneath all of it, I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
+            That broke something in me I couldn't put back together. I used more. I drank more. I drank through the night and through the day with no water and barely any food. I tried rehabs, detoxes, understood all the principles but couldn't implement them. And yet somewhere underneath all of it I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
           </p>
 
           <div className="border-l-4 border-red-500 pl-6 py-2 my-8">
