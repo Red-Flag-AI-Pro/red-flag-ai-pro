@@ -29,6 +29,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             width={110}
             height={110}
             className="object-contain"
+            priority
           />
         </Link>
 

@@ -5,7 +5,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -94,9 +98,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18172154544"></script>
+      <head />
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+        <CookieBanner />
         <script
+          defer
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18172154544"
+        />
+        <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -106,8 +119,7 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className={inter.className}>{children}<Analytics /><SpeedInsights /><CookieBanner /></body>
+      </body>
     </html>
   );
 }
