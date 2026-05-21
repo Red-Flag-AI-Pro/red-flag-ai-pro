@@ -16,7 +16,7 @@ export default function AboutPage() {
       {/* Hero */}
       <div className="bg-gray-950 py-20 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-red-400 text-sm font-semibold uppercase tracking-wider mb-4">The story behind the tool</p>
+          <p className="text-red-400 text-lg font-bold uppercase tracking-widest mb-6">The story behind the tool</p>
           <h1 className="text-4xl font-extrabold text-white leading-tight">
             This wasn't built in a boardroom.<br />It was built from the bottom.
           </h1>
