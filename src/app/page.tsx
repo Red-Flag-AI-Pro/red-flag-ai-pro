@@ -293,8 +293,11 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <p className="mt-4 text-sm text-gray-500">
-            1 free scan · No credit card required
+          <p className="mt-4 text-sm text-gray-400">
+            ✅ 1 free scan included · No credit card · Takes 60 seconds · Cancel anytime
+          </p>
+          <p className="mt-2 text-xs text-gray-500">
+            Sign up free, paste your copy, get your results instantly. No lawyer needed.
           </p>
 
           {/* Flag cards — 5 across on desktop */}
