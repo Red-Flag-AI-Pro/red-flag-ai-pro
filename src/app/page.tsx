@@ -257,6 +257,18 @@ export default function LandingPage() {
 
         <div className="relative mx-auto max-w-4xl px-6 text-center">
 
+          {/* Product Hunt Badge */}
+          <div className="mb-6 flex justify-center">
+            <a href="https://www.producthunt.com/posts/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=red-flag-ai-pro&theme=dark"
+                alt="Red Flag AI Pro - on Product Hunt"
+                width="220"
+                height="48"
+              />
+            </a>
+          </div>
+
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
             <span>⚑</span>
