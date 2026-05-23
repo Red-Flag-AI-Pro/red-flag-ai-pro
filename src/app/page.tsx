@@ -277,14 +277,14 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Is Your Marketing Copy
+            Scan It. Stay Protected.
             <br />
-            <span className="text-red-400">Breaking The Law?</span>
+            <span className="text-red-400">Stay Respected.</span>
           </h1>
 
           {/* One line solve */}
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Find out free in 60 seconds.
+            Used by buyers to stay safe. Used by sellers to stay compliant. Free in 60 seconds.
           </p>
 
           {/* CTAs */}
