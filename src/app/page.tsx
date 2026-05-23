@@ -506,7 +506,7 @@ export default function LandingPage() {
 
           {/* CTA */}
           <div className="mt-12 rounded-2xl border border-red-500/20 bg-red-500/5 p-8 text-center">
-            <p className="text-white text-xl font-bold">Scan It Before Your Insurer — Or Your Wallet — Pays The Price.</p>
+            <p className="text-white text-xl font-bold">Whether You&apos;re Selling It Or Buying It — Know The Truth First.</p>
             <p className="mt-2 text-gray-400"><span className="text-red-400 font-semibold">For sellers:</span> Red Flag AI Pro catches the compliance violations in your AI copy that could trigger an uninsured claim — before it goes live.</p>
             <p className="mt-2 text-gray-400"><span className="text-red-400 font-semibold">For buyers:</span> It spots the illegal claims in the ads targeting you — before you hand over your money.</p>
             <a
