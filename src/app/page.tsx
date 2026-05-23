@@ -5,7 +5,7 @@ import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro — Marketing Compliance Scanner",
+  title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
   description:
     "Buyers: spot illegal ads before you lose money. Sellers: scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. Free to start. The world's only 5-jurisdiction compliance scanner that protects both sides.",
   alternates: { canonical: "https://www.redflagaipro.com" },
