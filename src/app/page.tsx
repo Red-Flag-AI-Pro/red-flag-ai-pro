@@ -112,6 +112,9 @@ const AI_CATEGORIES = [
 ];
 
 const PERSONAS = [
+  { icon: "🛡️", label: "Online Shoppers", desc: "Checking if an offer is legitimate before buying" },
+  { icon: "📚", label: "Course Buyers", desc: "Verifying claims before investing in programmes" },
+  { icon: "💸", label: "Anyone Who's Been Ripped Off Before", desc: "Making sure it never happens again" },
   { icon: "🎓", label: "Course Creators", desc: "Selling online courses internationally" },
   { icon: "🏢", label: "Marketing Agencies", desc: "Managing compliance for multiple clients" },
   { icon: "🎯", label: "Coaches", desc: "Running high-ticket offers and VSLs" },
@@ -634,7 +637,7 @@ export default function LandingPage() {
             Who Uses Red Flag AI Pro?
           </h2>
           <p className="mt-3 text-center text-gray-500">
-            If you sell anything online — this is for you.
+            If you sell anything online — or buy anything online — this is for you.
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PERSONAS.map((p) => (
