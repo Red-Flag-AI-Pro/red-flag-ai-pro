@@ -52,6 +52,18 @@ const jsonLd = {
 
 const FEATURES = [
   {
+    icon: "🔍",
+    title: "Verify Before You Buy",
+    description:
+      "Paste any ad, sales page or VSL you are considering buying from. Know if the claims are legal before you hand over your money.",
+  },
+  {
+    icon: "🚨",
+    title: "Spot Fake Urgency",
+    description:
+      "That countdown timer and limited spots claim — find out if it is real or manufactured pressure designed to rush your decision.",
+  },
+  {
     icon: "🚩",
     title: "Know Your Risk Before You Spend On Ads",
     description:
@@ -73,7 +85,7 @@ const FEATURES = [
     icon: "📊",
     title: "0–100 Risk Score",
     description:
-      "One number that tells you exactly how safe your funnel is to launch. Green means go. Red means fix first.",
+      "One number that tells you exactly how safe your funnel is to launch — or buy from. Green means go. Red means stop.",
   },
   {
     icon: "📥",
@@ -167,6 +179,12 @@ const FINES = [
 ];
 
 const TESTIMONIALS = [
+  {
+    quote:
+      "I pasted the sales page of a course I was about to buy. It flagged three illegal claims in the first paragraph. Saved me £1,200.",
+    name: "Sarah M.",
+    role: "Online Learner",
+  },
   {
     quote:
       "We caught a guarantee in our VSL that directly contradicted our refund policy. The day before launch. This tool saved us a chargeback nightmare.",
@@ -717,7 +735,7 @@ export default function LandingPage() {
       {/* Features */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
-          Everything You Need to Launch Without Fear
+          Everything You Need To Buy Or Launch Without Fear
         </h2>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
@@ -737,7 +755,7 @@ export default function LandingPage() {
       <section className="bg-gray-50 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            What Marketers Are Saying
+            What People Are Saying
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {TESTIMONIALS.map((t) => (
