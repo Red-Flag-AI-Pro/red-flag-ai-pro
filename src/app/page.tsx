@@ -338,7 +338,7 @@ export default function LandingPage() {
             ✅ 1 free scan included · No credit card · Takes 60 seconds · Cancel anytime
           </p>
           <p className="mt-2 text-xs text-gray-500">
-            Sign up free, paste your copy, get your results instantly. No lawyer needed.
+            Sellers: paste your copy and get your compliance score. Buyers: paste any ad you are about to buy from. No lawyer needed. Free in 60 seconds.
           </p>
 
           {/* Flag cards — 5 across on desktop */}
@@ -409,7 +409,7 @@ export default function LandingPage() {
           <div className="mt-6 mx-auto max-w-2xl">
             <p className="text-2xl font-extrabold text-white leading-snug">
               The <span className="text-red-400">only</span> compliance scanner
-              in the world that covers all five.
+              in the world that protects both sides across all five jurisdictions.
             </p>
             <p className="mt-2 text-lg font-bold text-red-400">
               No other tool on the market comes close.
