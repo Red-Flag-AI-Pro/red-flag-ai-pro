@@ -686,7 +686,7 @@ export default function LandingPage() {
             16 Risk Categories. One Scan.
           </h2>
           <p className="mt-3 text-center text-gray-400">
-            Every category checked against all 5 jurisdictions simultaneously.
+            Every category checked against all 5 jurisdictions simultaneously. Protecting sellers from liability. Protecting buyers from being misled.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {SCAN_CATEGORIES.map((c) => (
