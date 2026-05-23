@@ -207,6 +207,14 @@ const TESTIMONIALS = [
 
 const FAQS = [
   {
+    q: "Can I use this to check something before I buy it?",
+    a: "Yes. Paste any sales page, ad or VSL you are considering. If it flags illegal claims, walk away. If it comes back clean, buy with confidence.",
+  },
+  {
+    q: "I have been ripped off by misleading marketing before. Would this have caught it?",
+    a: "In most cases yes. Fake scarcity, guaranteed results, income claims without proof — these are exactly what we scan for.",
+  },
+  {
     q: "Is this just another AI gimmick?",
     a: "Red Flag AI Pro is trained specifically on FTC enforcement actions, GDPR guidelines, and real compliance cases. Not generic marketing advice.",
   },
@@ -220,7 +228,7 @@ const FAQS = [
   },
   {
     q: "Why is there a free scan?",
-    a: "Because once you see what it finds in your copy, you will never launch without it again.",
+    a: "Because once you see what it finds — whether in your own copy or in an ad you were about to buy from — you will never skip it again.",
   },
 ];
 
