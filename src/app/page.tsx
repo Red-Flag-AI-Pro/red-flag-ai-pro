@@ -478,6 +478,37 @@ export default function LandingPage() {
               <p className="mt-1 text-sm text-gray-600">paid in marketing compliance fines globally in the last 3 years alone</p>
             </div>
           </div>
+          <div className="mt-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-gray-200" />
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">What Buyers Lose</span>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
+              <p className="text-lg font-bold text-gray-900">🛍️ Ecommerce</p>
+              <p className="text-sm text-gray-500">Misleading product claims</p>
+              <p className="mt-3 text-3xl font-extrabold text-purple-700">£200–£800</p>
+              <p className="mt-1 text-sm text-gray-600">average loss per purchase</p>
+            </div>
+            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
+              <p className="text-lg font-bold text-gray-900">📚 Course Buyers</p>
+              <p className="text-sm text-gray-500">Fake income claims and guarantees</p>
+              <p className="mt-3 text-3xl font-extrabold text-purple-700">£500–£5k</p>
+              <p className="mt-1 text-sm text-gray-600">average loss per course</p>
+            </div>
+            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
+              <p className="text-lg font-bold text-gray-900">💊 Health Products</p>
+              <p className="text-sm text-gray-500">Unsubstantiated health claims</p>
+              <p className="mt-3 text-3xl font-extrabold text-purple-700">£100–£2k</p>
+              <p className="mt-1 text-sm text-gray-600">average loss per product</p>
+            </div>
+            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
+              <p className="text-lg font-bold text-gray-900">🔁 Subscriptions</p>
+              <p className="text-sm text-gray-500">Hidden recurring charges</p>
+              <p className="mt-3 text-3xl font-extrabold text-purple-700">£300–£1.2k</p>
+              <p className="mt-1 text-sm text-gray-600">average annual loss</p>
+            </div>
+          </div>
           <p className="mt-8 text-center text-sm text-gray-400">
             Red Flag AI Pro scans against all of the above — simultaneously — in 60 seconds.
           </p>
