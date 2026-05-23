@@ -667,7 +667,7 @@ export default function LandingPage() {
               {
                 step: "01",
                 title: "Paste your copy",
-                desc: "Sales page, VSL script, email sequence, ad copy — anything. Just paste it in.",
+                desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish. Just paste it in.",
               },
               {
                 step: "02",
@@ -676,8 +676,8 @@ export default function LandingPage() {
               },
               {
                 step: "03",
-                title: "Fix, download, launch",
-                desc: "Every flag comes with a compliant rewrite. Download your PDF report. Launch with confidence.",
+                title: "Buyers get the truth. Sellers get the fix.",
+                desc: "Every flag comes with a plain English explanation and a compliant rewrite. Know before you spend. Launch with confidence.",
               },
             ].map((s) => (
               <div key={s.step} className="text-center">
