@@ -7,7 +7,7 @@ import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Marketing Compliance Scanner",
   description:
-    "The world's only 5-country marketing compliance scanner. Scan your funnels, ads and AI-generated copy for FTC, CMA, ASA, GDPR, EU AI Act, ACCC and CASL violations in 60 seconds. Free to start.",
+    "Buyers: spot illegal ads before you lose money. Sellers: scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. Free to start. The world's only 5-jurisdiction compliance scanner that protects both sides.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "The world's only 5-country marketing compliance scanner. 16 risk categories including EU AI Act. Scan your funnels, ads and AI-generated copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations in 60 seconds.",
+    "Buyers: spot illegal ads before you lose money. Sellers: scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. Free to start. The world's only 5-jurisdiction compliance scanner that protects both sides.",
   keywords: [
     "marketing compliance scanner",
     "FTC compliance checker",
