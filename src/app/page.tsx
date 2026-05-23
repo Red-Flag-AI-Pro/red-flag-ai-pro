@@ -19,7 +19,7 @@ const jsonLd = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "The world's only 5-country marketing compliance scanner covering US, UK, EU, Australia and Canada. 16 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
+    "The world's only compliance scanner that protects buyers and sellers across 5 countries. 16 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
   offers: [
     {
       "@type": "Offer",
