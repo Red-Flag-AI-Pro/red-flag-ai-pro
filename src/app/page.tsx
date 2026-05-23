@@ -277,16 +277,14 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Nobody Tells You When
+            Is Your Marketing Copy
             <br />
-            Your Marketing Is Illegal.
-            <br />
-            <span className="text-red-400">Until It&apos;s Too Late.</span>
+            <span className="text-red-400">Breaking The Law?</span>
           </h1>
 
           {/* One line solve */}
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            We do. In plain English. In 60 seconds. Free.
+            Find out free in 60 seconds.
           </p>
 
           {/* CTAs */}
