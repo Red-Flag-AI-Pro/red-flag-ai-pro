@@ -393,23 +393,23 @@ export default function LandingPage() {
       <section className="bg-gray-950 py-16 text-white">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-extrabold text-white">
-            You Don&apos;t Have To Be Doing Anything Wrong
+            The Ad That Just Convinced You To Buy Could Be Breaking The Law.
             <br />
-            <span className="text-red-400">To Get In Serious Trouble.</span>
+            <span className="text-red-400">So Could The One You Just Wrote.</span>
           </h2>
           <p className="mt-4 text-gray-400">
-            The businesses that get fined are not scammers. They are regular marketers,
-            course creators, and small business owners using the same copy everyone else uses.
-            That is exactly the problem.
+            Most people who get ripped off online are not stupid. They are trusting people responding to convincing ads that are illegal.
+            And most sellers doing it are not scammers. They are regular marketers, course creators and small business owners using the same copy everyone else uses — without knowing it crosses the line.
           </p>
+          <p className="mt-2 text-gray-400 font-semibold">Red Flag AI Pro protects both sides.</p>
           <ul className="mt-8 space-y-4 text-left">
             {[
-              "Saying you 'make six figures' in your sales page can be enough for a government fine — even if it's true",
-              "A countdown timer that resets is now specifically illegal in the UK and EU",
-              "A money-back guarantee that doesn't match your terms and conditions is a contract violation",
-              "Collecting someone's email without the right consent wording breaks Canadian and EU law",
-              "Claiming you're 'the best' or 'number one' without proof breaks advertising rules in every country we cover",
-              "None of this requires intent — regulators don't care if you didn't know",
+              "That limited time offer you almost bought — countdown timers that reset are now specifically illegal in the UK and EU",
+              "That six figure income claim you wrote — it can trigger a government fine even if it is true",
+              "That money back guarantee you trusted — if it contradicts the terms and conditions it is a contract violation",
+              "That email list you signed up to — collecting emails without the right consent wording breaks Canadian and EU law",
+              "That number one claim that convinced you — without proof it breaks advertising rules in every country we cover",
+              "Nobody needs intent. Buyers still lose money. Sellers still get fined. Regulators do not care if you did not know.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-gray-300">
                 <span className="mt-0.5 text-red-500 text-lg">🚩</span>
