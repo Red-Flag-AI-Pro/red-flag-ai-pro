@@ -811,11 +811,20 @@ export default function LandingPage() {
           <div className="rounded-2xl border-2 border-gray-900 bg-gray-950 p-10 text-center">
             <p className="text-4xl">🛡️</p>
             <h2 className="mt-4 text-2xl font-extrabold text-white">Either Way, You Win.</h2>
-            <p className="mt-4 text-lg text-gray-300 leading-relaxed">
-              If your scan finds <strong className="text-white">nothing</strong> — you launch with total confidence knowing your copy is clean.
-              <br /><br />
-              If your scan finds <strong className="text-red-400">something</strong> — it just saved you from a fine, a chargeback, or a takedown that could cost you thousands.
-            </p>
+            <div className="mt-4 space-y-4 text-left">
+              <p className="text-gray-300 leading-relaxed">
+                <span className="text-red-400 font-semibold">Buyer:</span> If the scan comes back <strong className="text-white">clean</strong> — buy with total confidence knowing the ad is legitimate.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                <span className="text-red-400 font-semibold">Seller:</span> If your scan finds <strong className="text-white">nothing</strong> — you launch with total confidence knowing your copy is clean.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                <span className="text-red-400 font-semibold">Buyer:</span> If the scan <strong className="text-red-400">flags something</strong> — you just saved yourself from losing your money to an illegal ad.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                <span className="text-red-400 font-semibold">Seller:</span> If your scan finds <strong className="text-red-400">something</strong> — it just saved you from a fine, a chargeback, or a takedown that could cost you thousands.
+              </p>
+            </div>
             <p className="mt-6 text-xl font-bold text-red-400">
               There is no losing scenario.
             </p>
