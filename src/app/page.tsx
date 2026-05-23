@@ -459,10 +459,10 @@ export default function LandingPage() {
       <section className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            What Ignoring Compliance Actually Costs
+            The Cost Of Getting It Wrong. For Everyone.
           </h2>
           <p className="mt-3 text-center text-gray-500">
-            These are real fines, from real regulators, handed to real businesses just like yours.
+            Real fines handed to sellers. Real money lost by buyers. All from the same illegal marketing copy.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FINES.map((f) => (
