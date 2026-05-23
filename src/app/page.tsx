@@ -573,19 +573,19 @@ export default function LandingPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-6">
           <div className="rounded-2xl border-2 border-red-100 bg-red-50 p-8 text-center">
-            <h2 className="text-2xl font-extrabold text-gray-900">Let&apos;s Do The Maths.</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900">Let&apos;s Do The Maths. For Both Sides.</h2>
             <div className="mt-6 space-y-3 text-gray-700 text-lg">
-              <p>A compliance lawyer charges <strong>£400/hour.</strong></p>
-              <p>A proper funnel audit takes <strong>4–6 hours.</strong></p>
-              <p>That&apos;s <strong>£2,400 minimum.</strong></p>
+              <p><span className="text-red-500 font-semibold">For sellers:</span> A compliance lawyer charges <strong>£400 per hour.</strong></p>
+              <p><span className="text-red-500 font-semibold">For sellers:</span> A proper funnel audit takes <strong>4 to 6 hours.</strong> That is <strong>£2,400 minimum.</strong></p>
+              <p><span className="text-red-500 font-semibold">For buyers:</span> The average person loses <strong>£500 to £2,000</strong> on a misleading course or offer before they realise something was wrong.</p>
+              <p><span className="text-red-500 font-semibold">For buyers:</span> A solicitor to pursue a refund costs more than the money you lost.</p>
             </div>
             <div className="mt-6 text-3xl font-extrabold text-red-600">
               Red Flag AI Pro does it in 60 seconds.
             </div>
             <div className="mt-2 text-2xl font-bold text-gray-900">For free.</div>
             <p className="mt-4 text-gray-600">
-              If it catches one thing that saves you from a single chargeback, refund dispute, or FTC complaint —
-              it has paid for itself a thousand times over.
+              Whether you are protecting your business or protecting your wallet — if it catches one thing, it has paid for itself a thousand times over.
             </p>
           </div>
         </div>
