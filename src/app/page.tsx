@@ -464,20 +464,6 @@ export default function LandingPage() {
           <p className="mt-3 text-center text-gray-500">
             Real fines handed to sellers. Real money lost by buyers. All from the same illegal marketing copy.
           </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {FINES.map((f) => (
-              <div key={f.country} className={`rounded-2xl border-2 p-6 ${f.colour}`}>
-                <p className="text-lg font-bold text-gray-900">{f.country}</p>
-                <p className="text-sm text-gray-500">{f.body}</p>
-                <p className={`mt-3 text-3xl font-extrabold ${f.textColour}`}>{f.fine}</p>
-                <p className="mt-1 text-sm text-gray-600">{f.detail}</p>
-              </div>
-            ))}
-            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-6 flex flex-col justify-center">
-              <p className="text-2xl font-extrabold text-gray-900">$6 Billion+</p>
-              <p className="mt-1 text-sm text-gray-600">paid in marketing compliance fines globally in the last 3 years alone</p>
-            </div>
-          </div>
           <div className="mt-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200" />
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">What Buyers Lose</span>
@@ -507,6 +493,25 @@ export default function LandingPage() {
               <p className="text-sm text-gray-500">Hidden recurring charges</p>
               <p className="mt-3 text-3xl font-extrabold text-purple-700">£300–£1.2k</p>
               <p className="mt-1 text-sm text-gray-600">average annual loss</p>
+            </div>
+          </div>
+          <div className="mt-10 flex items-center gap-3">
+            <div className="h-px flex-1 bg-gray-200" />
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">What Sellers Face</span>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {FINES.map((f) => (
+              <div key={f.country} className={`rounded-2xl border-2 p-6 ${f.colour}`}>
+                <p className="text-lg font-bold text-gray-900">{f.country}</p>
+                <p className="text-sm text-gray-500">{f.body}</p>
+                <p className={`mt-3 text-3xl font-extrabold ${f.textColour}`}>{f.fine}</p>
+                <p className="mt-1 text-sm text-gray-600">{f.detail}</p>
+              </div>
+            ))}
+            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-6 flex flex-col justify-center">
+              <p className="text-2xl font-extrabold text-gray-900">$6 Billion+</p>
+              <p className="mt-1 text-sm text-gray-600">paid in marketing compliance fines globally in the last 3 years alone</p>
             </div>
           </div>
           <p className="mt-8 text-center text-sm text-gray-400">
