@@ -472,11 +472,11 @@ export default function LandingPage() {
           </div>
 
           <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            Using AI to Write Your Marketing Copy?
-            <span className="block text-red-500 mt-1">Your Insurer May Not Cover You.</span>
+            AI Generated It. That Doesn&apos;t Make It Legal To Write.
+            <span className="block text-red-500 mt-1">Or Safe To Buy.</span>
           </h2>
           <p className="mt-5 text-center text-gray-400 max-w-2xl mx-auto text-lg">
-            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span className="text-white font-semibold">uninsured liability</span>.
+            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span className="text-white font-semibold">uninsured liability</span> for the seller — and an invisible risk for the buyer.
           </p>
 
           {/* Three columns */}
