@@ -848,14 +848,13 @@ export default function LandingPage() {
             <span className="text-red-400">Start Knowing.</span>
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Scan your funnel free right now — before your ads go live, before your launch,
-            before the FTC does it for you.
+            Scan before you buy. Scan before you launch. Know the truth in 60 seconds — before it costs you.
           </p>
           <Link
             href="/signup"
             className="mt-10 inline-block rounded-xl bg-red-600 px-12 py-4 text-lg font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
           >
-            Scan my funnel free →
+            Scan free now →
           </Link>
           <p className="mt-4 text-sm text-gray-500">
             1 free scan · No credit card · No risk
