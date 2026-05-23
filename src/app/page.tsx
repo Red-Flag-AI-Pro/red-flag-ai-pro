@@ -466,7 +466,7 @@ export default function LandingPage() {
           </p>
           <div className="mt-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200" />
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">What Buyers Lose</span>
+            <span className="text-sm font-bold text-red-500 uppercase tracking-widest">What Buyers Lose</span>
             <div className="h-px flex-1 bg-gray-200" />
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -497,7 +497,7 @@ export default function LandingPage() {
           </div>
           <div className="mt-10 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200" />
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">What Sellers Face</span>
+            <span className="text-sm font-bold text-red-500 uppercase tracking-widest">What Sellers Face</span>
             <div className="h-px flex-1 bg-gray-200" />
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
