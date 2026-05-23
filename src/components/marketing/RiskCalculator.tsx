@@ -46,21 +46,27 @@ function SellerCalculator() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 text-center">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Annual spend at risk</p>
-          <p className="mt-2 text-2xl font-extrabold text-amber-400">{format(atRisk)}</p>
-          <p className="mt-1 text-xs text-gray-500">if 15% of campaigns flag</p>
+      <div className="mt-6 space-y-3">
+        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Annual spend at risk</p>
+            <p className="text-xs text-gray-500 mt-0.5">if 15% of campaigns flag</p>
+          </div>
+          <p className="text-2xl font-extrabold text-amber-400 ml-4 shrink-0">{format(atRisk)}</p>
         </div>
-        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 text-center">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Potential FTC fine</p>
-          <p className="mt-2 text-2xl font-extrabold text-red-400">£50k+</p>
-          <p className="mt-1 text-xs text-gray-500">per violation, per day</p>
+        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Potential FTC fine</p>
+            <p className="text-xs text-gray-500 mt-0.5">per violation, per day</p>
+          </div>
+          <p className="text-2xl font-extrabold text-red-400 ml-4 shrink-0">£50k+</p>
         </div>
-        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-4 text-center">
-          <p className="text-xs text-red-300 uppercase tracking-wider">Total exposure</p>
-          <p className="mt-2 text-2xl font-extrabold text-white">{format(totalRisk)}+</p>
-          <p className="mt-1 text-xs text-red-300">if left unchecked</p>
+        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-red-300 uppercase tracking-wider">Total exposure</p>
+            <p className="text-xs text-red-300 mt-0.5">if left unchecked</p>
+          </div>
+          <p className="text-2xl font-extrabold text-white ml-4 shrink-0">{format(totalRisk)}+</p>
         </div>
       </div>
 
@@ -149,21 +155,27 @@ function BuyerCalculator() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 text-center">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Annual spend online</p>
-          <p className="mt-2 text-2xl font-extrabold text-amber-400">{format(totalExposure)}</p>
-          <p className="mt-1 text-xs text-gray-500">total at stake per year</p>
+      <div className="mt-6 space-y-3">
+        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Annual spend online</p>
+            <p className="text-xs text-gray-500 mt-0.5">total at stake per year</p>
+          </div>
+          <p className="text-2xl font-extrabold text-amber-400 ml-4 shrink-0">{format(totalExposure)}</p>
         </div>
-        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 text-center">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Misleading ads rate</p>
-          <p className="mt-2 text-2xl font-extrabold text-red-400">30%</p>
-          <p className="mt-1 text-xs text-gray-500">of online ads break the law</p>
+        <div className="rounded-xl bg-gray-800 border border-gray-700 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-gray-500 uppercase tracking-wider">Misleading ads rate</p>
+            <p className="text-xs text-gray-500 mt-0.5">of online ads break the law</p>
+          </div>
+          <p className="text-2xl font-extrabold text-red-400 ml-4 shrink-0">30%</p>
         </div>
-        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-4 text-center">
-          <p className="text-xs text-red-300 uppercase tracking-wider">Your money at risk</p>
-          <p className="mt-2 text-2xl font-extrabold text-white">{format(atRisk)}+</p>
-          <p className="mt-1 text-xs text-red-300">from misleading marketing</p>
+        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-4 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-red-300 uppercase tracking-wider">Your money at risk</p>
+            <p className="text-xs text-red-300 mt-0.5">from misleading marketing</p>
+          </div>
+          <p className="text-2xl font-extrabold text-white ml-4 shrink-0">{format(atRisk)}+</p>
         </div>
       </div>
 
