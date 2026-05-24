@@ -158,6 +158,7 @@ export default function SignupPage() {
               width={160}
               height={160}
               className="object-contain"
+              priority
             />
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-white">
