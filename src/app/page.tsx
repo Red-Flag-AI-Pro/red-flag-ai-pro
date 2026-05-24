@@ -327,12 +327,12 @@ export default function LandingPage() {
             >
               Scan my copy free →
             </Link>
-            <Link
-              href="/pricing"
+            <a
+              href="#demo"
               className="rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors"
             >
-              See pricing
-            </Link>
+              Try without signing up ↓
+            </a>
           </div>
 
           <p className="mt-4 text-sm text-gray-400">

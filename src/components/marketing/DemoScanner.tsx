@@ -89,7 +89,7 @@ export function DemoScanner() {
     : "text-red-400";
 
   return (
-    <section className="bg-gray-950 py-20">
+    <section id="demo" className="bg-gray-950 py-20">
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-xs font-bold text-red-400 uppercase tracking-widest mb-4">
