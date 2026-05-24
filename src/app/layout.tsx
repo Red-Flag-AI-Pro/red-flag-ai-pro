@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Buyers: spot illegal ads before you lose money. Sellers: scan your marketing copy for FTC, GDPR, ASA, ACCC and CASL violations in 60 seconds. Free to start. The world's only 5-jurisdiction compliance scanner that protects both sides.",
+    "Paste any ad or sales page and find out in 60 seconds if it is breaking the law. No account needed. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Try free. No signup required. The world's only 5-jurisdiction compliance scanner that protects both sides.",
   keywords: [
     // Seller keywords
     "marketing compliance scanner",
@@ -64,6 +64,15 @@ export const metadata: Metadata = {
     "fake testimonials checker",
     "consumer protection tool",
     "spot fake urgency in ads",
+    // Demo scanner keywords
+    "free compliance scan no signup",
+    "scan marketing copy free",
+    "try compliance scanner free",
+    "check if ad is legal free",
+    "free ad compliance checker",
+    "paste and scan marketing copy",
+    "no account compliance scanner",
+    "instant compliance check free",
   ],
   authors: [{ name: "Red Flag AI Pro", url: "https://www.redflagaipro.com" }],
   creator: "Red Flag AI Pro",
@@ -78,7 +87,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
     description:
-      "Buyers: find out if the ad you are about to buy from is breaking the law. Sellers: scan your copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations. The world's only compliance scanner that protects both sides across 5 countries.",
+      "Paste any ad or sales page — find out in 60 seconds if it is breaking the law. No signup needed. Sellers: scan your copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations and get a plain English fix. Try free. No account required.",
     images: [
       {
         url: "/og-image.png",
@@ -92,7 +101,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
     description:
-      "Buyers: find out if the ad you are about to buy from is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations. Free. 60 seconds. 5 countries.",
+      "Paste any ad and find out if it is breaking the law. No signup needed. Sellers: scan your copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations. Free. 60 seconds. No account required.",
     images: ["/og-image.png"],
     creator: "@redflagaipro",
   },
