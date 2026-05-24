@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Paste any ad or sales page and find out in 60 seconds if it is breaking the law. No account needed. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Try free. No signup required. The world's only 5-jurisdiction compliance scanner that protects both sides.",
+    "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Free. No account needed. The world's only 5-jurisdiction compliance scanner protecting both sides.",
   keywords: [
     // Seller keywords
     "marketing compliance scanner",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
     description:
-      "Paste any ad or sales page — find out in 60 seconds if it is breaking the law. No signup needed. Sellers: scan your copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations and get a plain English fix. Try free. No account required.",
+      "Buyers: paste any ad and find out if it is breaking the law. Sellers: scan your copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations. Free. No account needed. Protecting both sides in 60 seconds.",
     images: [
       {
         url: "/og-image.png",
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
     description:
-      "Paste any ad and find out if it is breaking the law. No signup needed. Sellers: scan your copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations. Free. 60 seconds. No account required.",
+      "Buyers: paste any ad and find out if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations. Free. No account needed. Both sides. 60 seconds.",
     images: ["/og-image.png"],
     creator: "@redflagaipro",
   },

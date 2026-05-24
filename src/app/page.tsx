@@ -8,7 +8,7 @@ import { DemoScanner } from "@/components/marketing/DemoScanner";
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
   description:
-    "Paste any ad or sales page and find out in 60 seconds if it is breaking the law. No account needed. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Try free. No signup required. The world's only 5-jurisdiction compliance scanner that protects both sides.",
+    "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Free. No account needed. The world's only 5-jurisdiction compliance scanner protecting both sides.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
