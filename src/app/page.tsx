@@ -455,6 +455,56 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Before vs After — moved high for trust */}
+      <section className="bg-gray-950 py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-center text-3xl font-extrabold text-white">
+            See It In Action
+          </h2>
+          <p className="mt-3 text-center text-gray-400">
+            Real example. Real flag. Real fix.
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {/* Before */}
+            <div className="rounded-2xl border-2 border-red-500/50 bg-red-950/30 p-6">
+              <div className="mb-4 flex items-center gap-2">
+                <span className="text-red-400 text-xl">🚩</span>
+                <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Flagged Copy</span>
+              </div>
+              <p className="text-white text-lg italic leading-relaxed">
+                &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
+              </p>
+              <div className="mt-4 rounded-lg bg-red-900/40 p-3">
+                <p className="text-xs text-red-300 font-semibold">⚠️ Flags triggered:</p>
+                <p className="text-xs text-red-200 mt-1">Income claim without disclaimer · Unsubstantiated earnings · Guarantee contradiction · FTC · ASA · ACCC</p>
+              </div>
+            </div>
+            {/* After */}
+            <div className="rounded-2xl border-2 border-green-500/50 bg-green-950/30 p-6">
+              <div className="mb-4 flex items-center gap-2">
+                <span className="text-green-400 text-xl">✓</span>
+                <span className="text-sm font-bold text-green-400 uppercase tracking-wider">Compliant Rewrite</span>
+              </div>
+              <p className="text-white text-lg italic leading-relaxed">
+                &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
+              </p>
+              <div className="mt-4 rounded-lg bg-green-900/40 p-3">
+                <p className="text-xs text-green-300 font-semibold">✅ Now compliant with:</p>
+                <p className="text-xs text-green-200 mt-1">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/signup"
+              className="inline-block rounded-xl bg-red-600 px-8 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
+            >
+              Scan your copy free →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Fines & Penalties */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6">
@@ -580,56 +630,6 @@ export default function LandingPage() {
             >
               Scan Your Copy Free →
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Before vs After */}
-      <section className="bg-gray-950 py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-white">
-            See It In Action
-          </h2>
-          <p className="mt-3 text-center text-gray-400">
-            Real example. Real flag. Real fix.
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {/* Before */}
-            <div className="rounded-2xl border-2 border-red-500/50 bg-red-950/30 p-6">
-              <div className="mb-4 flex items-center gap-2">
-                <span className="text-red-400 text-xl">🚩</span>
-                <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Flagged Copy</span>
-              </div>
-              <p className="text-white text-lg italic leading-relaxed">
-                &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
-              </p>
-              <div className="mt-4 rounded-lg bg-red-900/40 p-3">
-                <p className="text-xs text-red-300 font-semibold">⚠️ Flags triggered:</p>
-                <p className="text-xs text-red-200 mt-1">Income claim without disclaimer · Unsubstantiated earnings · Guarantee contradiction · FTC · ASA · ACCC</p>
-              </div>
-            </div>
-            {/* After */}
-            <div className="rounded-2xl border-2 border-green-500/50 bg-green-950/30 p-6">
-              <div className="mb-4 flex items-center gap-2">
-                <span className="text-green-400 text-xl">✓</span>
-                <span className="text-sm font-bold text-green-400 uppercase tracking-wider">Compliant Rewrite</span>
-              </div>
-              <p className="text-white text-lg italic leading-relaxed">
-                &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
-              </p>
-              <div className="mt-4 rounded-lg bg-green-900/40 p-3">
-                <p className="text-xs text-green-300 font-semibold">✅ Now compliant with:</p>
-                <p className="text-xs text-green-200 mt-1">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/signup"
-              className="inline-block rounded-xl bg-red-600 px-8 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
-            >
-              Scan your copy free →
-            </Link>
           </div>
         </div>
       </section>
