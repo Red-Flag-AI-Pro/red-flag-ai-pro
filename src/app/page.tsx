@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { RiskCalculator } from "@/components/marketing/RiskCalculator";
+import { DemoScanner } from "@/components/marketing/DemoScanner";
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
@@ -417,6 +418,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Demo Scanner */}
+      <DemoScanner />
 
       {/* Pain section */}
       <section className="bg-gray-950 py-16 text-white">
