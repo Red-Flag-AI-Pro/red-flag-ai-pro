@@ -41,6 +41,15 @@ function SignupForm() {
       return;
     }
 
+    // Fire Google Ads signup conversion
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "conversion", {
+        send_to: "AW-18172154544/1F0dCKvqqa8cELCllNlD",
+        value: 49.0,
+        currency: "GBP",
+      });
+    }
+
     router.push("/dashboard");
     router.refresh();
   }
