@@ -837,29 +837,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-gray-50 py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            What People Are Saying
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
-              <div
-                key={t.name}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
-              >
-                <div className="mb-4 text-2xl text-red-500">★★★★★</div>
-                <p className="text-sm italic text-gray-700">&ldquo;{t.quote}&rdquo;</p>
-                <div className="mt-4 border-t border-gray-100 pt-4">
-                  <p className="font-bold text-gray-900">{t.name}</p>
-                  <p className="text-xs text-gray-500">{t.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Risk Calculator */}
       <section className="bg-gray-950 py-20">
