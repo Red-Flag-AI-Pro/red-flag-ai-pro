@@ -635,8 +635,6 @@ It takes 60 seconds. It costs less than a single billable hour. And it may be th
 The insurance gap and the regulatory risk are arriving at the same time. The agencies that survive the next 12 months will be the ones who treated compliance as infrastructure — not an afterthought.
     `,
   },
-];
-
   {
     slug: "no-refunds-digital-products-illegal-uk",
     title: "No Refunds on Digital Products Is Illegal in the UK — What Every Buyer Needs to Know",
