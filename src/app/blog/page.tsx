@@ -16,6 +16,8 @@ const CATEGORY_COLOURS: Record<string, string> = {
   "ASA / UK": "bg-red-100 text-red-700",
   "GDPR": "bg-green-100 text-green-700",
   "Compliance": "bg-amber-100 text-amber-700",
+  "For Buyers": "bg-emerald-100 text-emerald-700",
+  "For Sellers": "bg-orange-100 text-orange-700",
 };
 
 export default function BlogPage() {

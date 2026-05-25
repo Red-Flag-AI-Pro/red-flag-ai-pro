@@ -637,6 +637,411 @@ The insurance gap and the regulatory risk are arriving at the same time. The age
   },
 ];
 
+  {
+    slug: "no-refunds-digital-products-illegal-uk",
+    title: "No Refunds on Digital Products Is Illegal in the UK — What Every Buyer Needs to Know",
+    description: "Most online sellers claim 'all sales final' on digital products. Under UK law, that policy is void. You have a 14-day right to cancel — and most sellers don't want you to know that.",
+    date: "2026-05-26",
+    readTime: "5 min read",
+    category: "For Buyers",
+    content: `
+## The Refund Myth That Costs Buyers Millions Every Year
+
+You buy an online course. It is nothing like what was advertised. You ask for a refund. The seller points to their Terms: "All digital sales are final. No refunds."
+
+You assume they are right. You walk away. You lose your money.
+
+But that seller was wrong — and under UK law, their "no refunds" policy was void before you even clicked the buy button.
+
+---
+
+## What the Law Actually Says
+
+The **Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013** gives UK consumers a 14-day right to cancel most purchases made online — including digital products.
+
+This right applies to:
+- Online courses and coaching programmes
+- Ebooks and digital guides
+- Software subscriptions
+- Membership sites
+- Digital templates and downloads
+
+The 14-day period begins the day after you purchase. During this window, you are entitled to a full refund — no questions asked — under UK law.
+
+---
+
+## The One Exception Sellers Misuse
+
+There is one legal exception to the 14-day rule for digital products: if the seller provides the digital content immediately and you give **express consent** to waive your right to cancel before downloading begins.
+
+For this waiver to be legally valid, all of the following must happen:
+
+1. The seller must clearly explain that your cancellation right will be lost once download begins
+2. You must actively confirm you understand and accept this
+3. The seller must provide written confirmation of your acknowledgement
+
+A buried clause in terms and conditions does not constitute valid waiver. A pre-ticked box does not constitute valid waiver. A general "all sales final" notice does not constitute valid waiver.
+
+If the seller didn't explicitly ask you to waive your cancellation right — and you didn't actively agree — the waiver is invalid and your 14-day right remains intact.
+
+---
+
+## What This Means for Online Courses
+
+Online courses are one of the most common areas where this right is violated.
+
+A course sold via a platform like Kajabi, Teachable or Thinkific typically grants access to the course materials at the point of purchase. Many sellers claim that because you have accessed the content, you have waived your cancellation right.
+
+This is only legal if you were clearly informed of this before purchase and actively agreed to it.
+
+If you were not — you still have your 14-day cancellation right.
+
+---
+
+## Your Rights If a Seller Refuses a Refund
+
+If a UK seller refuses a refund and your 14-day right is intact:
+
+1. **Write to the seller formally** — state that you are exercising your right to cancel under the Consumer Contracts Regulations 2013, regulation 29, and request a refund within 14 days.
+
+2. **Raise a chargeback with your bank or card provider** — for purchases made by debit or credit card, your bank can often reverse the transaction. Cite "non-delivery of contracted services" or "misrepresentation."
+
+3. **Report to Trading Standards** — UK sellers who refuse legal refund rights can be reported to your local Trading Standards authority or to the Citizens Advice consumer helpline (0808 223 1133).
+
+4. **File with the CMA** — The Competition and Markets Authority accepts reports of businesses that systematically deny consumer rights. Reports can be submitted at gov.uk/report-trading-standards.
+
+---
+
+## The Bigger Picture: Why This Matters
+
+Most buyers never claim the refund they are legally entitled to. Sellers rely on this.
+
+A seller who includes "all sales final" in their terms knows that most buyers will assume they have no recourse. For every buyer who fights back, dozens walk away without the refund they were owed.
+
+This is why Red Flag AI Pro includes a scan for contract contradictions — checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
+
+Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you in 60 seconds whether their refund policy is legal — and what your rights actually are.
+
+[Check a seller's copy for free — no signup needed →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "influencer-affiliate-disclosure-what-buyers-need-to-know",
+    title: "The Person Who Recommended That Product May Have Been Breaking the Law",
+    description: "The influencer, reviewer or friend who recommended that product may have been paid to do so — and never told you. Under FTC, ASA and CMA rules, that is illegal. Here is what it means for you.",
+    date: "2026-05-26",
+    readTime: "5 min read",
+    category: "For Buyers",
+    content: `
+## The Recommendation You Trusted May Have Been Bought
+
+You saw a YouTube video. A blogger wrote a glowing review. Someone in a Facebook group mentioned a product that changed their life. You bought it. It didn't work.
+
+What you probably didn't know: that person may have been paid to recommend it. And they may not have told you.
+
+Under UK, US and EU law — that is illegal.
+
+---
+
+## What the Law Requires
+
+### United Kingdom — ASA and CMA Rules
+The ASA CAP Code and the CMA's guidelines on online reviews require that any material commercial relationship between an advertiser and a person promoting their product must be clearly disclosed.
+
+This includes:
+- Being paid to review a product
+- Receiving a free product in exchange for coverage
+- Earning commission on sales through an affiliate link
+- Having any financial relationship with the brand
+
+The disclosure must be **prominent and clear** — not buried in a caption, not hidden below a fold, not in a hashtag list where it blends in.
+
+### United States — FTC Endorsement Guides
+The Federal Trade Commission's Endorsement Guides require that any material connection between an endorser and an advertiser is "clearly and conspicuously disclosed."
+
+The FTC has specifically stated that disclosures like "#collab," "#partner" or a generic "#ad" buried among other hashtags do not meet the standard. The disclosure must be hard to miss.
+
+In 2023, the FTC updated its guidance to explicitly cover AI-generated endorsements and algorithm-driven recommendations — expanding the disclosure requirement significantly.
+
+### European Union — DSA and UCPD
+The Digital Services Act and the Unfair Commercial Practices Directive both require that paid or incentivised content is clearly identified as advertising before a consumer engages with it. This applies to influencers, affiliates, comparison sites and review platforms operating in or targeting EU consumers.
+
+---
+
+## The Specific Practices That Are Illegal
+
+### Affiliate Links Without Disclosure
+If someone includes a link to a product and earns commission when you click and buy — without telling you they earn commission — that is an undisclosed material connection. It is illegal under FTC rules and UK Consumer Protection Regulations.
+
+### Free Product Reviews Without Disclosure
+If a reviewer received a product free of charge in exchange for coverage — even if they weren't paid cash — they must disclose it. "I received this product for free to review" is required. Failing to say so is a violation.
+
+### Paid Social Media Posts Without Labels
+Instagram, TikTok and YouTube posts that are paid promotions must be clearly labelled as such before a viewer engages with the content — not at the end, not in small print, not in a hashtag group.
+
+### Comparison Sites Ranked by Commission
+Price comparison and review sites that rank products by commission rate rather than objective criteria — without disclosing this — are operating illegally under CMA guidelines issued in 2021.
+
+---
+
+## Why "Organic" Reviews Are Often Anything But
+
+The course creator space, supplement industry, software market and online education sector all rely heavily on affiliate marketing. Commission rates of 30% to 50% are common. A single high-ticket course sale can earn an affiliate hundreds of pounds.
+
+This creates a powerful financial incentive to recommend products — and a powerful incentive not to disclose it, because disclosed ads convert worse than organic-looking recommendations.
+
+The result: a large proportion of online recommendations you encounter are paid. Many are undisclosed.
+
+---
+
+## What To Do If You Were Misled by an Undisclosed Paid Endorsement
+
+1. **Check for disclosure** — look carefully at the content. Is there a clear #ad, #sponsored, or "paid partnership" label? Is the affiliate relationship disclosed in the first line?
+
+2. **Report to the ASA** — UK consumers can report undisclosed advertising at asa.org.uk. The ASA investigates and publishes rulings.
+
+3. **Report to the FTC** — US consumers can report at reportfraud.ftc.gov.
+
+4. **Chargeback if misled** — if you purchased a product based on what turned out to be an undisclosed paid endorsement, and the product didn't match what was implied, you may have grounds for a chargeback with your card provider on the basis of misrepresentation.
+
+---
+
+## Before You Buy: Check the Sales Page
+
+Red Flag AI Pro scans sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials — alongside income claims, fake urgency, hidden fees and 12 other risk categories.
+
+Paste any sales page, course landing page or promotional email into the scanner before you buy. Free. No account needed.
+
+[Check any ad or sales page for free — 60 seconds →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "trigger-words-ftc-investigation-what-to-say-instead",
+    title: "The Words That Flag Your Copy to the FTC — And What to Say Instead",
+    description: "The FTC uses language pattern analysis to identify marketing copy for investigation. These specific words and phrases are known triggers. Here is what to remove and what to replace them with.",
+    date: "2026-05-26",
+    readTime: "6 min read",
+    category: "For Sellers",
+    content: `
+## How the FTC Identifies Targets
+
+The Federal Trade Commission does not wait for consumer complaints to find violators. It actively monitors online advertising — using both staff review and increasingly, automated scanning — to identify marketing copy that contains high-risk language patterns.
+
+If your copy contains certain phrases, it is statistically more likely to be flagged for review. Some of these phrases are obvious. Many are not.
+
+Here is what to remove from your copy — and what to say instead.
+
+---
+
+## The High-Risk Word List
+
+### "Guaranteed"
+
+**Why it triggers scrutiny**: "Guaranteed" implies a promise of a specific result. Under FTC Section 5, any guarantee claim must be substantiated and the full terms of the guarantee must be clearly disclosed.
+
+**The specific problem**: "Guaranteed results" or "guaranteed income" claims require that you can document what a typical customer actually achieves — and that the guarantee matches those results. Most marketers cannot.
+
+**What to say instead**: "We stand behind our product with a 30-day money-back guarantee" — specific, time-bound, unambiguous. Or remove the guarantee language entirely and lead with social proof instead.
+
+---
+
+### "Proven"
+
+**Why it triggers scrutiny**: "Proven system," "proven method," "proven results" — the word "proven" implies scientific or empirical validation. The FTC requires that claims of proof are backed by reliable, competent evidence.
+
+**The specific problem**: "Proven" in marketing almost never means what it claims. "Proven to work" for a business course would require a controlled study showing results across a representative sample. No course creator has that.
+
+**What to say instead**: "Based on results from over 300 students" — specific, quantified, verifiable. Or "This approach has worked for [specific named customers]" with their permission to use their names and results.
+
+---
+
+### "Scientifically"
+
+**Why it triggers scrutiny**: "Scientifically formulated," "scientifically proven," "science-backed" — any scientific claim requires supporting scientific evidence that would withstand peer review.
+
+**The specific problem**: Supplement, health and wellness marketers use "scientifically" as a credibility signal without any actual science behind it. The FTC specifically targets this in its health and supplement enforcement.
+
+**What to say instead**: If you have a genuine scientific basis — cite the specific study. "A 2024 study published in [journal] found..." Otherwise remove the claim entirely.
+
+---
+
+### "Effortless" / "Easy" / "Simple"
+
+**Why it triggers scrutiny**: Claims that a process requires minimal effort directly conflict with earnings claim rules. If your product promises income or results and describes the process as effortless, you are making an implied claim that typical users can achieve those results without significant work.
+
+**The specific problem**: "Make money while you sleep," "effortless passive income," "simple system anyone can follow" — all of these are implied earnings claims. They require the same substantiation as direct income claims.
+
+**What to say instead**: "Our step-by-step framework walks you through each stage" — describes the process without implying it requires no effort.
+
+---
+
+### "Risk-Free"
+
+**Why it triggers scrutiny**: "Risk-free" is a specific legal term. If you use it, the FTC expects there to be genuinely zero financial risk to the consumer. That means a clear, easy-to-claim refund with no conditions.
+
+**The specific problem**: Many marketers say "risk-free" but their refund policy has conditions — time limits, proof of completion requirements, "no questions asked" language that is contradicted by the actual refund process.
+
+**What to say instead**: "Try it for 30 days. If you're not satisfied, contact us for a full refund — no hoops." Specific, honest, and legally defensible.
+
+---
+
+### "As Seen On" / "Featured In"
+
+**Why it triggers scrutiny**: These phrases imply editorial endorsement. The FTC requires that any implied endorsement by a media outlet is genuine and not paid placement, and that the brand actually appeared in an editorial context — not just paid advertising.
+
+**The specific problem**: Logos of media outlets displayed without context imply that those outlets have endorsed or recommended your product. If your "feature" was a press release pickup or a paid content placement — this is misleading.
+
+**What to say instead**: Link to the actual article. Quote the specific editorial mention. If the coverage was paid, label it as such.
+
+---
+
+### "Limited Time" / "Ends Tonight"
+
+**Why it triggers scrutiny**: The CMA, ASA, ACCC and FTC all specifically target false urgency. "Limited time offer" that never actually ends, countdown timers that reset and "tonight only" deals that run indefinitely are identified dark patterns.
+
+**The specific problem**: Beyond being illegal, fake urgency is increasingly recognisable to consumers. It actively damages trust.
+
+**What to say instead**: Use real deadlines that you honour. "This price is available until Friday 30 May at midnight" — with a countdown that actually counts down to that moment and stops. Or remove the urgency entirely and lead with value.
+
+---
+
+## The Underlying Principle
+
+The FTC's standard for all advertising claims is that they must be:
+
+1. **Truthful** — not false or misleading
+2. **Substantiated** — backed by evidence before you make them
+3. **Fair** — not causing unreasonable harm to consumers
+
+If you apply these three tests to every claim in your copy before you publish, you eliminate the vast majority of FTC risk.
+
+---
+
+## Scan Your Copy Before You Publish
+
+Red Flag AI Pro scans your marketing copy for FTC trigger phrases and high-risk language patterns — alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations.
+
+Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions in 60 seconds.
+
+[Scan your copy free — no account needed →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "money-back-guarantee-legal-liability-sellers",
+    title: "Why Your Money-Back Guarantee Might Be Legally Worthless — And What It Is Actually Costing You",
+    description: "Most online sellers use a money-back guarantee to reduce purchase anxiety. But most guarantees are legally void, create chargeback liability and fail to do what sellers think they do.",
+    date: "2026-05-26",
+    readTime: "6 min read",
+    category: "For Sellers",
+    content: `
+## The Guarantee Paradox
+
+The money-back guarantee is one of the most widely used conversion tools in online marketing. The logic is simple: remove the risk from the buyer, increase conversions, and trust that most buyers won't claim it.
+
+But most sellers don't understand two things about their guarantee:
+
+1. It may be legally void before a single customer ever claims it
+2. It may be creating liability rather than reducing it
+
+---
+
+## Why Most Guarantees Are Legally Void
+
+### The Statutory Rights Problem
+
+In the UK, EU, Australia and Canada, consumers have statutory rights that cannot be contracted away. In the UK, these are set out in the Consumer Rights Act 2015 and the Consumer Contracts Regulations 2013.
+
+For digital products sold online, UK consumers have a **14-day right to cancel** and receive a full refund — regardless of what your terms say.
+
+Here is where most sellers go wrong: they offer a 30-day money-back guarantee, thinking this is generous. But if their actual terms say the 30-day guarantee requires the buyer to complete the course, submit evidence of attempts, or go through an approval process — those conditions conflict with statutory rights that cannot be removed.
+
+A consumer can bypass your guarantee entirely and claim their statutory right to cancel. No completion requirement. No proof of attempts. No approval process.
+
+Your guarantee with conditions is legally unenforceable — and if it is presented in a way that misleads consumers about their statutory rights, it is itself a violation.
+
+### The Contract Contradiction Problem
+
+Many sellers have a "60-day money-back guarantee" in their marketing copy and "all sales final — no refunds on digital products" in their terms of service.
+
+These two statements are in direct contradiction. Under ASA CAP Code Rule 3.1 and FTC Section 5, marketing claims must be truthful and consistent with actual terms. A guarantee advertised in the copy that is contradicted by the terms is a misrepresentation.
+
+Red Flag AI Pro specifically scans for contract contradictions — this is one of the most common violations we identify in sales page copy.
+
+---
+
+## What Guarantees Actually Do to Your Chargeback Rate
+
+Many sellers believe that a visible money-back guarantee reduces chargebacks, because dissatisfied customers will claim the guarantee rather than going to their bank.
+
+This is sometimes true. But it creates a less obvious problem.
+
+### The Chargeback Pathway
+
+When a buyer makes a chargeback claim with their bank, the seller is required to demonstrate that the product was delivered as described and that the buyer's refund request was handled appropriately.
+
+If your guarantee has conditions that conflict with statutory rights, or if your refund process is difficult, the buyer has a straightforward route: they claim the chargeback on the grounds that your guarantee was misrepresented and your refund process violated consumer law.
+
+In this scenario, you lose the chargeback AND face a potential regulatory complaint.
+
+### The Chargeback Rate Threshold
+
+Payment processors including Stripe and PayPal operate chargeback rate thresholds. Typically, a chargeback rate above 1% puts your account at risk. Above 1.5% can trigger account termination.
+
+A poorly structured guarantee — one that creates more disputes than it resolves — can contribute to your chargeback rate creeping toward these thresholds.
+
+---
+
+## What a Legally Sound Guarantee Actually Looks Like
+
+### Simple, Unconditional, Time-Bounded
+
+The most legally defensible guarantee is the simplest one:
+
+*"If you're not satisfied for any reason within 30 days of purchase, contact us at [email] for a full refund. No conditions."*
+
+This works because:
+- It is consistent with your statutory obligations (UK statutory right is 14 days — you are offering more)
+- It has no conditions that could be challenged
+- It is clearly stated and easy to claim
+- It creates a documented refund pathway that protects you against chargeback claims
+
+### Document Everything
+
+Keep records of every refund request:
+- Date received
+- Date processed
+- Amount refunded
+- Communication with the customer
+
+This documentation is your defence in any chargeback dispute or regulatory investigation.
+
+---
+
+## The Guarantee Trap: Why Low Refund Rates Are Not Always a Good Sign
+
+Many sellers celebrate a low refund rate as evidence of a good product. Sometimes it is. But sometimes a low refund rate simply means your refund process is difficult enough that dissatisfied buyers give up — and go to their bank instead.
+
+A buyer who receives a refund is a resolved dispute. A buyer who gives up and charges back is an unresolved dispute that costs you the product value plus a chargeback fee, damages your processor relationship, and may trigger regulatory interest.
+
+A clear, easy guarantee process that results in more refunds can actually be better for your business than a complicated process that routes dissatisfied buyers to chargebacks.
+
+---
+
+## Scan Your Copy for Guarantee Violations
+
+Red Flag AI Pro checks your marketing copy for:
+
+- Guarantee language that conflicts with your terms of service
+- Guarantee claims that remove or misrepresent statutory consumer rights
+- Refund policy language that creates regulatory risk
+
+Paste your sales page or email sequence and get a plain English explanation of any issues found — plus exact rewrite suggestions.
+
+[Scan your copy free — no account or card needed →](https://www.redflagaipro.com)
+    `,
+  },
+];
+
 export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.slug === slug);
 }
