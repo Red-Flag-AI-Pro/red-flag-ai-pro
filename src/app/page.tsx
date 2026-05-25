@@ -41,14 +41,9 @@ const jsonLd = {
       name: "Enterprise Plan",
       price: "149",
       priceCurrency: "GBP",
-      description: "Team seats, API access, priority support",
+      description: "Team seats, priority support, custom compliance rules",
     },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "12",
-  },
 };
 
 const FEATURES = [
@@ -179,33 +174,6 @@ const FINES = [
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "I pasted the sales page of a course I was about to buy. It flagged three illegal claims in the first paragraph. Saved me £1,200.",
-    name: "Sarah M.",
-    role: "Online Learner",
-  },
-  {
-    quote:
-      "We caught a guarantee in our VSL that directly contradicted our refund policy. The day before launch. This tool saved us a chargeback nightmare.",
-    name: "Marcus T.",
-    role: "Performance Marketer",
-  },
-  {
-    quote:
-      "I review compliance for 12 clients. This went from 4 hours per funnel to 20 minutes. It's not optional for my workflow anymore.",
-    name: "Priya N.",
-    role: "Marketing Compliance Consultant",
-  },
-  {
-    quote:
-      "We had been using the same income claim language for 3 years. The FTC has been cracking down hard. Finding it when we did was a relief I cannot put a price on.",
-    name: "Jordan K.",
-    role: "Course Creator",
-  },
-];
-
 const FAQS = [
   {
     q: "Can I use this to check something before I buy it?",
@@ -247,6 +215,18 @@ export default function LandingPage() {
       />
       <ExitIntent />
       <Navbar />
+
+      {/* Product Hunt launch banner */}
+      <div className="bg-amber-400 py-2.5 text-center">
+        <a
+          href="https://www.producthunt.com/products/red-flag-ai-pro?launch=red-flag-ai-pro"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-bold text-amber-900 hover:text-amber-800 transition-colors"
+        >
+          🚀 Launching on Product Hunt Wednesday 27th May — Support us and get early access →
+        </a>
+      </div>
 
       {/* Scrolling compliance ticker */}
       <div className="overflow-hidden bg-gray-950 border-b border-gray-800 py-2">
