@@ -58,7 +58,6 @@ const PLANS = [
     features: [
       "Everything in Pro",
       "Team seats",
-      "API access",
       "Priority support",
       "Custom compliance rules",
       "Dedicated onboarding",
