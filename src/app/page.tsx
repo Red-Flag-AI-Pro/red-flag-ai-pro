@@ -402,6 +402,17 @@ export default function LandingPage() {
       {/* Demo Scanner */}
       <DemoScanner />
 
+      {/* Feedback CTA */}
+      <div className="bg-gray-950 pb-10 text-center">
+        <p className="text-gray-500 text-sm mb-3">Tried the scanner? Let us know what you found.</p>
+        <a
+          href="mailto:support@redflagaipro.com?subject=Red Flag AI Pro Feedback&body=Hi James, I just tried the scanner and wanted to share my thoughts..."
+          className="inline-block rounded-lg border border-gray-700 bg-gray-800 px-6 py-2.5 text-sm font-semibold text-gray-300 hover:border-red-500 hover:text-white transition-colors"
+        >
+          Leave Feedback →
+        </a>
+      </div>
+
       {/* Pain section */}
       <section className="bg-gray-950 py-16 text-white">
         <div className="mx-auto max-w-3xl px-6 text-center">
