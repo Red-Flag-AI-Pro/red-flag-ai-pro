@@ -273,7 +273,7 @@ export default function LandingPage() {
       {/* Founder pricing banner */}
       <div className="bg-amber-400 py-2.5 text-center">
         <p className="text-sm font-bold text-amber-900">
-          ⚡ Founder Pricing — Only <span className="underline">42 spots</span> left at £49/month. Price rises to £79 after 50 members.{" "}
+          ⚡ Founder Pricing — Lock in £49/month before the price rises at launch.{" "}
           <Link href="/pricing" className="underline hover:no-underline">Grab your spot →</Link>
         </p>
       </div>
@@ -321,18 +321,18 @@ export default function LandingPage() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/signup"
-              className="rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
-            >
-              Scan my copy free →
-            </Link>
             <a
               href="#demo"
+              className="rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
+            >
+              Try Free — No Signup Needed ↓
+            </a>
+            <Link
+              href="/signup"
               className="rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors"
             >
-              Try without signing up ↓
-            </a>
+              Create Free Account →
+            </Link>
           </div>
 
           <p className="mt-4 text-sm text-gray-400">

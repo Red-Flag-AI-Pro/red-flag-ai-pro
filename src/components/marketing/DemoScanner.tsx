@@ -101,6 +101,9 @@ export function DemoScanner() {
           <p className="mt-3 text-gray-400">
             Buyers: paste any ad before you buy. Sellers: paste your copy before you publish. 60 seconds. No signup.
           </p>
+          <p className="mt-4 text-lg font-bold text-white">
+            No account. No card. Paste anything. See what we find.
+          </p>
         </div>
 
         {/* Input */}
