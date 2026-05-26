@@ -821,20 +821,16 @@ export default function LandingPage() {
       </section>
 
       {/* Founder story teaser */}
-      <section className="bg-gray-950 py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <p className="text-red-400 text-xs font-bold uppercase tracking-widest mb-4">The founder</p>
-          <blockquote className="text-2xl font-bold text-white leading-snug">
-            &ldquo;I built this from a laptop on my mum&apos;s sofa. After prison. After homelessness. After losing my daughter. After being given two years to live.&rdquo;
-          </blockquote>
-          <p className="mt-4 text-gray-400 text-sm">
-            Red Flag AI Pro was built by James Stokes — a solo founder from Bristol with a reason to build something that actually protects people.
+      <section className="bg-gray-950 py-10">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <p className="text-gray-400 text-sm">
+            Built alone, from a laptop, after a life that gave every reason not to.
           </p>
           <Link
             href="/about"
-            className="mt-6 inline-block text-sm font-semibold text-red-400 hover:text-red-300 transition-colors"
+            className="mt-3 inline-block text-sm font-semibold text-red-400 hover:text-red-300 transition-colors"
           >
-            Read the full story →
+            Read the story →
           </Link>
         </div>
       </section>
