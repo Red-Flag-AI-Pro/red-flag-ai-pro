@@ -344,35 +344,23 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Mobile flag cards */}
-          <div className="mt-12 lg:hidden">
-            <div className="grid grid-cols-2 gap-3">
+          {/* Mobile flag row - compact */}
+          <div className="mt-8 lg:hidden">
+            <div className="flex justify-center gap-4">
               {[
-                { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
-                { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
-                { code: "eu", country: "EU", acronyms: "GDPR · UCPD · DSA" },
-                { code: "au", country: "Australia", acronyms: "ACCC · ACL" },
+                { code: "us", country: "USA" },
+                { code: "gb", country: "UK" },
+                { code: "eu", country: "EU" },
+                { code: "au", country: "AUS" },
+                { code: "ca", country: "CAN" },
               ].map((j) => (
-                <div
-                  key={j.country}
-                  className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm"
-                >
-                  <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
+                <div key={j.country} className="flex flex-col items-center gap-1">
+                  <div className="h-6 w-9 overflow-hidden rounded-sm shadow-md">
                     <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
                   </div>
-                  <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
-                  <span className="text-xs font-bold text-white leading-relaxed">{j.acronyms}</span>
+                  <span className="text-xs font-bold text-gray-400">{j.country}</span>
                 </div>
               ))}
-            </div>
-            <div className="mt-3 flex justify-center">
-              <div className="flex w-1/2 flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm">
-                <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
-                  <img src="https://flagcdn.com/w160/ca.png" alt="Canada" className="h-full w-full object-cover" />
-                </div>
-                <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">Canada</span>
-                <span className="text-xs font-bold text-white leading-relaxed">CASL · PIPEDA</span>
-              </div>
             </div>
           </div>
 
