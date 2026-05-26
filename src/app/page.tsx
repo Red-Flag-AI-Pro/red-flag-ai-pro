@@ -250,14 +250,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Founder pricing banner */}
-      <div className="bg-amber-400 py-2.5 text-center">
-        <p className="text-sm font-bold text-amber-900">
-          ⚡ Founder Pricing — Lock in £49/month before the price rises at launch.{" "}
-          <Link href="/pricing" className="underline hover:no-underline">Grab your spot →</Link>
-        </p>
-      </div>
-
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 pb-24 pt-24 text-white">
         <div className="absolute inset-0 opacity-10">
