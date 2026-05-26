@@ -431,7 +431,7 @@ export default function LandingPage() {
       </section>
 
       {/* Before vs After — moved high for trust */}
-      <section className="bg-gray-950 py-20">
+      <section className="bg-gray-950 py-10 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-3xl font-extrabold text-white">
             Before You Buy It. Before You Build It. See What We Find.
