@@ -2,7 +2,7 @@ import type { Plan } from "@/types";
 
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 1,
-  pro: Infinity,
+  pro: 30,
   enterprise: Infinity,
 };
 

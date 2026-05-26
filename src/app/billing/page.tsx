@@ -13,13 +13,13 @@ const PLANS = [
     key: "pro" as const,
     name: "Pro",
     price: "£49/mo",
-    features: ["Unlimited scans", "PDF reports", "Scan history", "Email support"],
+    features: ["30 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Enterprise",
     price: "£149/mo",
-    features: ["Everything in Pro", "Team seats", "API access", "Priority support"],
+    features: ["Everything in Pro", "Unlimited scans", "PDF compliance reports", "Dedicated onboarding call", "Priority support", "Invoice billing"],
   },
 ];
 
@@ -172,13 +172,13 @@ export default function BillingPage() {
           <div className="flex justify-between">
             <dt className="text-gray-500">Scans per month</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "free" ? "1" : "Unlimited"}
+              {plan === "free" ? "1" : plan === "pro" ? "30" : "Unlimited"}
             </dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-gray-500">PDF reports</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "free" ? "No" : "Yes"}
+              {plan === "enterprise" ? "Yes" : "No"}
             </dd>
           </div>
           <div className="flex justify-between">

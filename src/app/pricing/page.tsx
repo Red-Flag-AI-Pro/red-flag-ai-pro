@@ -22,7 +22,7 @@ const PLANS = [
       "Compliance flags",
       "Rewrite suggestions",
     ],
-    excluded: ["PDF reports", "Unlimited scans", "Priority support"],
+    excluded: ["PDF reports", "30 scans per month", "Priority support"],
     cta: "Start free",
     href: "/signup",
     highlight: false,
@@ -92,7 +92,7 @@ export default function PricingPage() {
             Simple, transparent pricing
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Start free. Upgrade when you need unlimited scans and full compliance coverage.
+            Start free. Upgrade for more scans, PDF reports and full compliance coverage.
           </p>
           <p className="mt-2 text-sm text-gray-500">
             16 risk categories · 5 jurisdictions · EU AI Act · FTC · GDPR · ASA · ACCC · CASL

@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   const plan: Plan = (profile?.plan as Plan) ?? "free";
   const limit = PLAN_LIMITS[plan];
 
-  // Quota check (only for free plan)
+  // Quota check
   if (limit !== Infinity) {
     const startOfMonth = new Date();
     startOfMonth.setDate(1);
@@ -38,10 +38,11 @@ export async function POST(request: Request) {
       .gte("created_at", startOfMonth.toISOString());
 
     if ((count ?? 0) >= limit) {
+      const upgradeMessage = plan === "free"
+        ? `You've used your 1 free scan this month. Upgrade to Pro for 30 scans per month.`
+        : `You've used all ${limit} scans this month. Upgrade to Enterprise for unlimited scans.`;
       return NextResponse.json(
-        {
-          error: `You've used all ${limit} free scans this month. Upgrade to Pro for unlimited scans.`,
-        },
+        { error: upgradeMessage },
         { status: 403 }
       );
     }

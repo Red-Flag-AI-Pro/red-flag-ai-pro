@@ -51,8 +51,9 @@ export default async function NewScanPage() {
             Monthly scan limit reached
           </h2>
           <p className="mt-2 text-sm text-red-600">
-            You&apos;ve used all {limit} free scans this month. Upgrade to Pro for
-            unlimited scans.
+            {plan === "free"
+              ? "You've used your 1 free scan this month. Upgrade to Pro for 30 scans per month."
+              : `You've used all ${limit} Pro scans this month. Upgrade to Enterprise for unlimited scans.`}
           </p>
           <Link
             href="/billing"
@@ -63,14 +64,14 @@ export default async function NewScanPage() {
         </div>
       ) : (
         <>
-          {plan === "free" && limit !== Infinity && (
+          {limit !== Infinity && (
             <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
               You&apos;ve used <strong>{scansUsed}</strong> of <strong>{limit}</strong>{" "}
-              free scans this month.{" "}
+              scans this month.{" "}
               <Link href="/billing" className="font-semibold underline">
-                Upgrade to Pro
+                {plan === "free" ? "Upgrade to Pro" : "Upgrade to Enterprise"}
               </Link>{" "}
-              for unlimited scans.
+              for {plan === "free" ? "30 scans per month" : "unlimited scans"}.
             </div>
           )}
           <div className="rounded-xl border border-gray-200 bg-white p-6">
