@@ -65,7 +65,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               </Link>
               <Link
                 href="/about"
-                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors hidden sm:block"
               >
                 About
               </Link>
