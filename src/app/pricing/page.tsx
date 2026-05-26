@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Pricing — Start Free, Upgrade When Ready",
   description:
-    "Start with 1 free scan. Pro from £49/month — price rises to £99 after launch. Enterprise £149/month — rises to £299 after launch. 16 risk categories including EU AI Act across 5 jurisdictions.",
+    "Start with 1 free scan. Pro £49/month. Enterprise £149/month. 16 risk categories including EU AI Act across 5 jurisdictions. No credit card to start.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -31,8 +31,8 @@ const PLANS = [
     name: "Pro",
     price: "£49",
     period: "per month",
-    description: "Launch price — rises to £99 after Product Hunt. Lock it in today.",
-    badge: "LAUNCH PRICE",
+    description: "For marketers and copywriters who want to stay compliant.",
+    badge: null,
     features: [
       "30 scans per month",
       "16 risk categories",
@@ -52,8 +52,8 @@ const PLANS = [
     name: "Enterprise",
     price: "£149",
     period: "per month",
-    description: "Launch price — rises to £299 after Product Hunt. For agencies and compliance teams.",
-    badge: "LAUNCH PRICE",
+    description: "For agencies and compliance teams managing multiple clients.",
+    badge: null,
     features: [
       "Everything in Pro",
       "Unlimited scans",
@@ -75,16 +75,6 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-
-      {/* Launch banner */}
-      <div className="bg-red-600 py-3 text-center">
-        <p className="text-sm font-bold text-white">
-          🚀 Launching on Product Hunt — lock in founder pricing before it rises.{" "}
-          <Link href="/signup?plan=pro" className="underline hover:text-red-100">
-            Sign up now →
-          </Link>
-        </p>
-      </div>
 
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="text-center">

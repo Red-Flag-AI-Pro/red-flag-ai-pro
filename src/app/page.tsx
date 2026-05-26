@@ -911,7 +911,7 @@ export default function LandingPage() {
       <div className="bg-gray-950 py-10 text-center">
         <p className="text-red-400 text-sm font-bold uppercase tracking-widest mb-2">Live now at a discount price</p>
         <p className="text-white text-lg font-bold mb-1">Full launch Wednesday 27th May on Product Hunt</p>
-        <p className="text-gray-400 text-sm mb-6">Price increases at launch. Lock in your discount now.</p>
+        <p className="text-gray-400 text-sm mb-6">Free to start. Pro from £49/month. No credit card needed.</p>
         <a href="https://www.producthunt.com/posts/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=red-flag-ai-pro&theme=dark"
