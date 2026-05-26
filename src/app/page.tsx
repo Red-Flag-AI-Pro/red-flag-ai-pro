@@ -812,6 +812,10 @@ export default function LandingPage() {
       {/* Risk Calculator */}
       <section className="bg-gray-950 py-20">
         <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-extrabold text-white">What Is Your Compliance Risk Actually Worth?</h2>
+            <p className="mt-3 text-gray-400">Move the slider to see your personal exposure based on your ad spend.</p>
+          </div>
           <RiskCalculator />
         </div>
       </section>
