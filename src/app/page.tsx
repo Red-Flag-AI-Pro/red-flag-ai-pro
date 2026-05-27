@@ -314,6 +314,12 @@ export default function LandingPage() {
             Sellers: paste your copy and get your compliance score. Buyers: paste any ad you are about to buy from. No lawyer needed. Free in 60 seconds.
           </p>
 
+          <div className="mt-6 flex justify-center">
+            <a href="https://www.producthunt.com/products/red-flag-ai-pro?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+              <img alt="Red Flag AI Pro - Spot illegal ads before buying. Scan copy before you publish | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" />
+            </a>
+          </div>
+
           {/* Flag cards — 5 across on desktop */}
           <div className="mt-12 hidden lg:grid lg:grid-cols-5 gap-3">
             {[
