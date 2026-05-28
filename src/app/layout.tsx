@@ -19,59 +19,63 @@ export const metadata: Metadata = {
   description:
     "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Free. No account needed. The world's only 5-jurisdiction compliance scanner protecting both sides.",
   keywords: [
-    // Seller keywords
+    // Core product
     "marketing compliance scanner",
-    "FTC compliance checker",
-    "GDPR compliance tool",
     "ad compliance checker",
     "marketing law checker",
-    "ASA compliance UK",
-    "CMA compliance",
-    "ACCC compliance Australia",
-    "CASL compliance Canada",
-    "funnel compliance",
     "compliance risk score",
     "marketing legal checker",
-    "EU AI Act compliance",
+    "false advertising checker",
+    "misleading marketing detector",
+    // Jurisdiction keywords
+    "FTC compliance checker",
+    "GDPR compliance tool",
+    "ASA compliance UK",
+    "CMA compliance UK",
+    "ACCC compliance Australia",
+    "CASL compliance Canada",
+    "FCA financial promotions compliance",
+    "EU AI Act compliance checker",
+    "EU Green Claims Directive",
+    "greenwashing compliance checker",
+    // Agency keywords
+    "marketing compliance tool for agencies",
+    "agency ad compliance software",
+    "compliance audit trail agencies",
+    "signed compliance certificate",
+    "ad copy compliance review",
+    "marketing agency compliance UK",
+    "compliance infrastructure agencies",
+    "legal timestamp ad review",
+    "PI insurance compliance evidence",
+    "ASA complaint defence",
+    // AI compliance
     "EU AI Act Article 50",
     "AI content disclosure",
     "AI generated content compliance",
     "AI marketing compliance",
-    "AI endorsement FTC",
-    "automated decision making GDPR",
     "AI copy checker",
     "AI ad compliance",
-    "marketing agency AI compliance",
-    "PI insurance AI exclusion",
+    // Seller keywords
+    "funnel compliance checker",
     "sales page compliance checker",
     "VSL compliance",
     "email marketing compliance",
-    "false advertising checker",
-    "misleading marketing detector",
+    "income claim checker",
+    "influencer disclosure checker",
+    "subscription trap compliance",
     // Buyer keywords
     "how to spot misleading advertising",
     "is this ad legal",
     "fake scarcity checker",
-    "fake countdown timer",
     "misleading claims checker",
-    "check before you buy online",
-    "verify ad claims",
     "illegal advertising checker",
-    "online shopping scam detector",
-    "sales page checker",
-    "guaranteed results claim illegal",
-    "income claim checker",
     "fake testimonials checker",
     "consumer protection tool",
-    "spot fake urgency in ads",
-    // Demo scanner keywords
+    // Free scan keywords
     "free compliance scan no signup",
     "scan marketing copy free",
-    "try compliance scanner free",
-    "check if ad is legal free",
     "free ad compliance checker",
-    "paste and scan marketing copy",
-    "no account compliance scanner",
     "instant compliance check free",
   ],
   authors: [{ name: "Red Flag AI Pro", url: "https://www.redflagaipro.com" }],
@@ -135,6 +139,54 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <CookieBanner />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Red Flag AI Pro",
+              "url": "https://www.redflagaipro.com",
+              "description": "The world's only 5-jurisdiction marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, EU AI Act and FCA rules. Used by solopreneurs, agencies and regulated businesses.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Pro",
+                  "price": "49",
+                  "priceCurrency": "GBP",
+                  "billingPeriod": "P1M"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Growth",
+                  "price": "199",
+                  "priceCurrency": "GBP",
+                  "billingPeriod": "P1M"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Sentinel",
+                  "price": "999",
+                  "priceCurrency": "GBP",
+                  "billingPeriod": "P1M"
+                }
+              ],
+              "publisher": {
+                "@type": "Organization",
+                "name": "Red Flag AI Pro",
+                "url": "https://www.redflagaipro.com",
+                "logo": "https://www.redflagaipro.com/redflag-logo.png",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "support@redflagaipro.com",
+                  "contactType": "customer support"
+                }
+              }
+            })
+          }}
+        />
         <script
           defer
           src="https://www.googletagmanager.com/gtag/js?id=AW-18172154544"
