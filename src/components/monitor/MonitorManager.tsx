@@ -182,9 +182,11 @@ export function MonitorManager({ initialUrls, plan }: Props) {
                         <span className="text-xs text-gray-400">Not yet scanned</span>
                       )}
                       {u.last_scan_id && (
-                        <Link href={`/scans/${u.last_scan_id}`} className="text-xs text-red-600 hover:underline">
-                          View last report →
-                        </Link>
+                        <>
+                          <Link href={`/scans/${u.last_scan_id}`} className="text-xs text-red-600 hover:underline">
+                            View last report →
+                          </Link>
+                        </>
                       )}
                     </div>
                   </div>

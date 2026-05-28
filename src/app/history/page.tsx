@@ -93,12 +93,20 @@ export default async function HistoryPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 bg-white">
-                {(scans as Scan[]).map((scan) => (
+                {(scans as Scan[]).map((scan, i) => {
+                  const next = (scans as Scan[])[i + 1];
+                  const canCompare = next && scan.title === next.title;
+                  return (
                   <tr key={scan.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-5 py-3.5">
                       <p className="text-sm font-medium text-gray-900">
                         {scan.title}
                       </p>
+                      {canCompare && (
+                        <Link href={`/compare/${next.id}/${scan.id}`} className="text-xs text-red-600 hover:underline">
+                          Compare with previous →
+                        </Link>
+                      )}
                     </td>
                     <td className="px-5 py-3.5 text-sm text-gray-500 whitespace-nowrap">
                       {new Date(scan.created_at).toLocaleDateString("en-US", {
@@ -143,7 +151,8 @@ export default async function HistoryPage() {
                       </Link>
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>

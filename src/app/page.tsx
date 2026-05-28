@@ -32,16 +32,23 @@ const jsonLd = {
     {
       "@type": "Offer",
       name: "Pro Plan",
-      price: "49",
+      price: "29",
       priceCurrency: "GBP",
-      description: "30 scans per month, full compliance coverage, scan history",
+      description: "20 scans per month, 16 risk categories, PDF reports, scan history",
     },
     {
       "@type": "Offer",
-      name: "Enterprise Plan",
-      price: "149",
+      name: "Growth Plan",
+      price: "199",
       priceCurrency: "GBP",
-      description: "Team seats, priority support, custom compliance rules",
+      description: "Unlimited scans, URL scanning, VSL script scanning, site audit, client workspaces",
+    },
+    {
+      "@type": "Offer",
+      name: "Sentinel Plan",
+      price: "999",
+      priceCurrency: "GBP",
+      description: "All 21 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
     },
   ],
 };
@@ -84,16 +91,40 @@ const FEATURES = [
       "One number that tells you exactly how safe your funnel is to launch — or buy from. Green means go. Red means stop.",
   },
   {
-    icon: "📥",
-    title: "Branded PDF Reports",
+    icon: "🌐",
+    title: "Scan Any Live URL",
     description:
-      "Download a professional compliance report to share with clients, legal teams, or your ad agency in one click.",
+      "Paste a URL and we fetch the live page, strip navigation and boilerplate, and run the full compliance scan against what is actually published.",
+  },
+  {
+    icon: "🎬",
+    title: "VSL and Video Script Scanning",
+    description:
+      "Paste a YouTube URL and we fetch the transcript automatically. Or upload the audio and Whisper transcribes it. Full 21-category scan on every word.",
+  },
+  {
+    icon: "🔍",
+    title: "Full Site Audit",
+    description:
+      "Enter a domain and we find the sitemap, scan every page, and rank them by risk. The fastest way to audit a new client on day one.",
+  },
+  {
+    icon: "📡",
+    title: "Weekly Monitoring",
+    description:
+      "Add URLs to monitoring and we rescan them every week automatically. If something changes and a new compliance issue appears, you know Monday morning.",
+  },
+  {
+    icon: "📥",
+    title: "White-Label PDF Reports",
+    description:
+      "Download a compliance report under your agency name. Send it to clients looking like you built the whole system yourself.",
   },
   {
     icon: "🕓",
-    title: "Full Scan History",
+    title: "Full Scan History and Changelog",
     description:
-      "Every scan is saved so you can track compliance improvements across every version of your funnel.",
+      "Every scan is saved. Compare any two scans side by side to see exactly what improved, what got worse, and what still needs fixing.",
   },
 ];
 
@@ -272,16 +303,16 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Before You Buy It.
+            Your Copy Is Either
             <br />
-            Before You Build It.
+            Legal or It Isn&apos;t.
             <br />
-            <span className="text-red-400">Scan It.</span>
+            <span className="text-red-400">Find Out in 60 Seconds.</span>
           </h1>
 
           {/* One line solve */}
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Find out if the marketing is legal. Free in 60 seconds.
+            Compliance scanner for agencies, funnel builders and anyone who writes marketing copy. Paste text, scan a URL, audit a whole site. Plain English results. No lawyer needed.
           </p>
 
           {/* CTAs */}
@@ -301,10 +332,7 @@ export default function LandingPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-400">
-            ✅ 1 free scan included · No credit card · Takes 60 seconds · Cancel anytime
-          </p>
-          <p className="mt-2 text-xs text-gray-500">
-            Sellers: paste your copy and get your compliance score. Buyers: paste any ad you are about to buy from. No lawyer needed. Free in 60 seconds.
+            ✅ Free scan — no signup · Pro from £29/mo · Agencies from £999/mo · Cancel anytime
           </p>
 
           <div className="mt-6 flex justify-center">
@@ -357,10 +385,12 @@ export default function LandingPage() {
 
           {/* Stats pill */}
           <div className="mt-6 flex justify-center">
-            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2">
+            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 rounded-full border border-white/10 bg-white/5 px-5 py-2">
               <span className="text-red-400 font-bold text-sm">21 risk categories</span>
               <span className="text-gray-600">·</span>
               <span className="text-red-400 font-bold text-sm">5 countries</span>
+              <span className="text-gray-600">·</span>
+              <span className="text-red-400 font-bold text-sm">URL + VSL + site audit</span>
               <span className="text-gray-600">·</span>
               <span className="text-red-400 font-bold text-sm">60 seconds</span>
             </div>
