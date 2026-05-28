@@ -203,7 +203,11 @@ const FAQS = [
 
 const TICKER_ITEMS = [
   "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
+  "EU AI Act", "FCA", "FSMA 2000", "EU Green Claims", "PECR", "MHRA", "TGA", "ESMA", "ASIC",
+  "FTC Negative Option Rule", "CMA Green Claims Code", "FTC Green Guides", "BCAP Code", "OSC",
   "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
+  "EU AI Act", "FCA", "FSMA 2000", "EU Green Claims", "PECR", "MHRA", "TGA", "ESMA", "ASIC",
+  "FTC Negative Option Rule", "CMA Green Claims Code", "FTC Green Guides", "BCAP Code", "OSC",
 ];
 
 export default function LandingPage() {
