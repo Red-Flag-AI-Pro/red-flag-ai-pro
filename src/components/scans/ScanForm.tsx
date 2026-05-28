@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/Button";
 
 export function ScanForm() {
   const router = useRouter();
-  const [tab, setTab] = useState<"paste" | "upload">("paste");
+  const [tab, setTab] = useState<"paste" | "upload" | "url">("paste");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -23,19 +24,30 @@ export function ScanForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!content.trim()) return;
     setLoading(true);
     setError(null);
 
     try {
-      const res = await fetch("/api/scans", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: title.trim() || "Untitled Scan",
-          content: content.trim(),
-        }),
-      });
+      let res: Response;
+
+      if (tab === "url") {
+        if (!url.trim()) return;
+        res = await fetch("/api/scans/url", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: url.trim() }),
+        });
+      } else {
+        if (!content.trim()) return;
+        res = await fetch("/api/scans", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: title.trim() || "Untitled Scan",
+            content: content.trim(),
+          }),
+        });
+      }
 
       const data = await res.json();
 
@@ -52,25 +64,30 @@ export function ScanForm() {
     }
   }
 
+  const canSubmit = tab === "url" ? url.trim().length > 0 : content.trim().length > 0;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Scan title
-        </label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. Homepage Funnel — April 2025"
-          className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
-        />
-      </div>
+
+      {tab !== "url" && (
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Scan title
+          </label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="e.g. Homepage Funnel — April 2025"
+            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+          />
+        </div>
+      )}
 
       {/* Tabs */}
       <div>
         <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
-          {(["paste", "upload"] as const).map((t) => (
+          {(["paste", "url", "upload"] as const).map((t) => (
             <button
               key={t}
               type="button"
@@ -82,21 +99,44 @@ export function ScanForm() {
                   : "text-gray-500 hover:text-gray-700",
               ].join(" ")}
             >
-              {t === "paste" ? "Paste text" : "Upload .txt"}
+              {t === "paste" ? "Paste text" : t === "url" ? "🌐 Scan URL" : "Upload .txt"}
             </button>
           ))}
         </div>
 
         <div className="mt-3">
-          {tab === "paste" ? (
+          {tab === "paste" && (
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows={16}
-              placeholder="Paste your sales page, email sequence, landing page copy, or any funnel content here…"
+              placeholder="Paste your sales page, email sequence, landing page copy, VSL script or any funnel content here…"
               className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
-          ) : (
+          )}
+
+          {tab === "url" && (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Page URL
+                </label>
+                <input
+                  type="text"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="https://yourlandingpage.com/sales"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                />
+              </div>
+              <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs text-blue-700 space-y-1">
+                <p className="font-semibold">What URL scanning does:</p>
+                <p>We fetch the live page, strip navigation and boilerplate, and run the full compliance scan against the copy. Works on sales pages, landing pages, product pages and any publicly accessible URL.</p>
+              </div>
+            </div>
+          )}
+
+          {tab === "upload" && (
             <div
               className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-10 text-center hover:border-red-400 hover:bg-red-50 transition-colors cursor-pointer"
               onClick={() => fileRef.current?.click()}
@@ -133,10 +173,10 @@ export function ScanForm() {
         type="submit"
         size="lg"
         loading={loading}
-        disabled={!content.trim()}
+        disabled={!canSubmit}
         className="w-full"
       >
-        Analyze for compliance risks
+        {tab === "url" ? "Scan this page →" : "Analyze for compliance risks"}
       </Button>
     </form>
   );
