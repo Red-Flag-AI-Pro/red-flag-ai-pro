@@ -128,14 +128,13 @@ export default function PricingPage() {
 
           {/* Sentinel */}
           <style>{`
-            @keyframes sentinelSheen {
-              0% { background-position: -100% center; }
-              100% { background-position: 200% center; }
+            @keyframes sentinelGlow {
+              0%, 100% { opacity: 0.15; }
+              50% { opacity: 0.5; }
             }
             .sentinel-sheen {
-              background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%);
-              background-size: 300% 100%;
-              animation: sentinelSheen 8s ease-in-out infinite alternate;
+              background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 50%, rgba(255,255,255,0.3) 100%);
+              animation: sentinelGlow 10s ease-in-out infinite;
             }
           `}</style>
           <div
