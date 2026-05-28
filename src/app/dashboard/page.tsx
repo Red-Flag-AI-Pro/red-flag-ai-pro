@@ -5,6 +5,7 @@ import { GoogleConversion } from "@/components/marketing/GoogleConversion";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PlanBadge } from "@/components/billing/PlanBadge";
+import { ScoreTrend } from "@/components/ui/ScoreTrend";
 import { PLAN_LIMITS } from "@/lib/constants";
 import type { Plan, Scan } from "@/types";
 
@@ -48,7 +49,13 @@ export default async function DashboardPage() {
     .from("scans")
     .select("id, title, score, created_at, status")
     .order("created_at", { ascending: false })
-    .limit(5);
+    .limit(10);
+
+  const trendScansQuery = supabase
+    .from("scans")
+    .select("score, created_at")
+    .order("created_at", { ascending: true })
+    .limit(20);
 
   const monthCountQuery = supabase
     .from("scans")
@@ -57,13 +64,17 @@ export default async function DashboardPage() {
 
   if (!hasTeam) {
     recentScansQuery.eq("user_id", user.id);
+    trendScansQuery.eq("user_id", user.id);
     monthCountQuery.eq("user_id", user.id);
   }
 
-  const [{ data: recentScans }, { count: monthCount }] = await Promise.all([
+  const [{ data: recentScans }, { data: trendScans }, { count: monthCount }] = await Promise.all([
     recentScansQuery,
+    trendScansQuery,
     monthCountQuery,
   ]);
+
+  const trendScores = (trendScans ?? []).map((s) => s.score as number);
 
   const scansThisMonth = monthCount ?? 0;
   const scansRemaining =
@@ -115,18 +126,20 @@ export default async function DashboardPage() {
           )}
         </Card>
         <Card>
-          <p className="text-sm text-gray-500">Avg. compliance score</p>
-          <p
-            className={[
-              "mt-1 text-3xl font-bold",
-              avgScore !== null ? scoreColor(avgScore) : "text-gray-300",
-            ].join(" ")}
-          >
-            {avgScore ?? "—"}
-          </p>
-          <p className="mt-1 text-xs text-gray-400">
-            {hasTeam ? "from last 5 team scans" : "from last 5 scans"}
-          </p>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <p className="text-sm text-gray-500">Avg. compliance score</p>
+              <p className={["mt-1 text-3xl font-bold", avgScore !== null ? scoreColor(avgScore) : "text-gray-300"].join(" ")}>
+                {avgScore ?? "—"}
+              </p>
+              <p className="mt-1 text-xs text-gray-400">
+                {hasTeam ? "across your team" : "last 10 scans"}
+              </p>
+            </div>
+            {trendScores.length >= 2 && (
+              <ScoreTrend scores={trendScores} width={100} height={40} className="mt-1 flex-shrink-0" />
+            )}
+          </div>
         </Card>
         <Card>
           <p className="text-sm text-gray-500">Current plan</p>

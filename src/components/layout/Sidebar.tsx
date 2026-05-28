@@ -10,6 +10,8 @@ const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: "▤" },
   { href: "/scans/new", label: "New Scan", icon: "+" },
   { href: "/history", label: "Scan History", icon: "☰" },
+  { href: "/clients", label: "Clients", icon: "🏢" },
+  { href: "/monitor", label: "Monitoring", icon: "📡" },
   { href: "/team", label: "Team", icon: "⬡" },
   { href: "/billing", label: "Billing", icon: "◈" },
 ];
