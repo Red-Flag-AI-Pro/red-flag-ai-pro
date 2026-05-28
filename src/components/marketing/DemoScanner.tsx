@@ -21,6 +21,10 @@ const CATEGORY_LABELS: Record<string, string> = {
   ai_endorsement: "AI Endorsement",
   automated_decisions: "Automated Decisions",
   dark_patterns: "Dark Patterns",
+  financial_promotion: "FCA Financial Promotion",
+  greenwashing: "Greenwashing",
+  subscription_trap: "Subscription Trap",
+  influencer_disclosure: "Influencer Disclosure",
 };
 
 const SEVERITY_STYLES: Record<string, string> = {
@@ -145,16 +149,6 @@ export function DemoScanner() {
               </div>
             </div>
 
-            {result.totalFlags === 0 && (
-              <div className="rounded-2xl border border-green-500/30 bg-green-950/30 p-6 text-center">
-                <p className="text-2xl mb-2">✅</p>
-                <p className="text-white font-bold">No flags detected</p>
-                <p className="text-gray-400 text-sm mt-1">
-                  Your copy looks clean against our 21 risk categories. Sign up to save this result and get a PDF report.
-                </p>
-              </div>
-            )}
-
             {/* Preview flags */}
             {result.flags.map((flag, i) => (
               <div key={i} className="rounded-2xl border border-gray-700 bg-gray-900 p-5">
@@ -196,16 +190,35 @@ export function DemoScanner() {
             )}
 
             {result.hiddenCount === 0 && result.totalFlags > 0 && (
-              <div className="rounded-2xl border border-gray-700 bg-gray-900 p-6 text-center">
-                <p className="text-white font-bold">Want the full report with compliant rewrites?</p>
-                <p className="text-gray-400 text-sm mt-1 mb-4">
-                  Sign up free to get your compliant rewrite suggestions and a downloadable PDF report.
+              <div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-6 text-center">
+                <p className="text-2xl mb-3">🚩</p>
+                <p className="text-white font-bold text-lg">
+                  {result.totalFlags} violation{result.totalFlags !== 1 ? "s" : ""} found. Get the exact rewrite.
+                </p>
+                <p className="text-gray-400 text-sm mt-2 mb-5">
+                  Free account gives you plain English fixes for every flag, a compliance score history and a downloadable PDF report. Takes 30 seconds.
                 </p>
                 <Link
                   href="/signup"
                   className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
                 >
-                  Get the Full Report — Free
+                  Fix This Copy — Free →
+                </Link>
+                <p className="mt-3 text-xs text-gray-600">No credit card. No commitment. Cancel any time.</p>
+              </div>
+            )}
+
+            {result.hiddenCount === 0 && result.totalFlags === 0 && (
+              <div className="rounded-2xl border border-green-500/20 bg-green-950/20 p-6 text-center">
+                <p className="text-white font-bold">Your copy looks clean. Save this result.</p>
+                <p className="text-gray-400 text-sm mt-2 mb-4">
+                  Free account lets you save scan results, track compliance over time and download a PDF certificate.
+                </p>
+                <Link
+                  href="/signup"
+                  className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
+                >
+                  Save My Results — Free →
                 </Link>
               </div>
             )}
