@@ -99,7 +99,7 @@ export default function AboutPage() {
               A scanner that checks marketing copy against real advertising law: FTC, GDPR, ASA, ACCC, CASL and EU AI Act, in 60 seconds, in plain English, with exact rewrite suggestions. No lawyers. No jargon. Just clarity.
             </p>
             <p className="mt-4 text-gray-700">
-              16 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
+              21 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
             </p>
             <p className="mt-4 text-gray-700">
               And this is just the start. Sentinel is coming in Q3 2026, compliance infrastructure built for legal teams, financial services firms and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. The audit trail your PI insurer needs. The documentation your regulator expects.
@@ -145,7 +145,7 @@ export default function AboutPage() {
         {/* CTA */}
         <div className="mt-16 rounded-2xl bg-gray-950 p-8 text-center">
           <p className="text-white font-bold text-xl mb-2">Try Red Flag AI Pro free</p>
-          <p className="text-gray-400 text-sm mb-6">16 risk categories. 5 jurisdictions. 60 seconds. No credit card.</p>
+          <p className="text-gray-400 text-sm mb-6">21 risk categories. 5 jurisdictions. 60 seconds. No credit card.</p>
           <Link
             href="/signup"
             className="inline-block rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"

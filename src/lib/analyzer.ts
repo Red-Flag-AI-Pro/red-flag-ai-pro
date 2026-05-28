@@ -557,6 +557,162 @@ const RULES: Rule[] = [
       "FTC (US)",
     ],
   },
+
+  // ─── FCA FINANCIAL PROMOTIONS ─────────────────────────────────────────────────
+  {
+    category: "financial_promotion",
+    severity: "high",
+    keywords: [
+      "invest now",
+      "investment opportunity",
+      "guaranteed returns",
+      "guaranteed profit",
+      "fixed return",
+      "annual return",
+      "high yield",
+      "capital growth",
+      "risk-free investment",
+      "financial advice",
+      "we advise",
+      "portfolio growth",
+      "beat inflation",
+      "outperform the market",
+      "forex trading",
+      "crypto investment",
+      "trading signals",
+      "past performance",
+      "returns of",
+      "yield of",
+      "interest rate of",
+    ],
+    flag_description:
+      "Contains financial promotion language. In the UK, any communication that invites or induces someone to engage in investment activity must be approved by an FCA-authorised person or fall within an exemption. Unapproved financial promotions are a criminal offence under Section 21 of the Financial Services and Markets Act 2000.",
+    suggestion:
+      "If this is a financial promotion: (1) ensure it is approved by an FCA-authorised person before publication, (2) include required risk warnings prominently, (3) do not imply guaranteed returns — past performance is not a reliable indicator of future results. For crypto promotions, FCA rules effective October 2023 require specific consumer warnings. Consult an FCA-authorised compliance specialist before publishing.",
+    regulations: [
+      "FSMA 2000 Section 21 (UK)",
+      "FCA Financial Promotions Rules (UK)",
+      "FCA Crypto Promotions Rules 2023 (UK)",
+      "SEC + FINRA (US)",
+      "ASIC (AU)",
+      "OSC + CSA (CA)",
+      "ESMA (EU)",
+    ],
+  },
+
+  // ─── GREENWASHING / EU GREEN CLAIMS DIRECTIVE ─────────────────────────────────
+  {
+    category: "greenwashing",
+    severity: "high",
+    keywords: [
+      "carbon neutral",
+      "net zero",
+      "carbon negative",
+      "climate positive",
+      "eco-friendly",
+      "environmentally friendly",
+      "sustainable",
+      "green product",
+      "planet friendly",
+      "zero emissions",
+      "carbon offset",
+      "fully recyclable",
+      "biodegradable",
+      "plastic free",
+      "zero waste",
+      "renewable",
+      "clean energy",
+      "carbon footprint",
+      "good for the planet",
+      "earth friendly",
+    ],
+    flag_description:
+      "Contains an environmental or sustainability claim. The EU Green Claims Directive (proposed 2023, enforcement from 2026) prohibits unsubstantiated green claims. The CMA Green Claims Code (UK) and FTC Green Guides (US) require all environmental claims to be specific, accurate, and substantiated with verifiable evidence.",
+    suggestion:
+      "All environmental claims must be: (1) substantiated with independently verified evidence, (2) specific — 'carbon neutral' requires a recognised offsetting standard, (3) not misleading by omission. Remove vague claims like 'eco-friendly' or 'sustainable' unless supported by a recognised certification scheme. Under the EU Green Claims Directive, non-compliant claims can result in significant fines and removal of products from the EU market.",
+    regulations: [
+      "EU Green Claims Directive (EU)",
+      "UCPD (EU)",
+      "CMA Green Claims Code (UK)",
+      "ASA CAP Code (UK)",
+      "FTC Green Guides (US)",
+      "ACCC (AU)",
+      "Competition Bureau (CA)",
+    ],
+  },
+
+  // ─── SUBSCRIPTION TRAPS / NEGATIVE OPTION BILLING ────────────────────────────
+  {
+    category: "subscription_trap",
+    severity: "high",
+    keywords: [
+      "free trial",
+      "cancel anytime",
+      "cancel any time",
+      "try free",
+      "no commitment",
+      "auto-renews",
+      "automatically renews",
+      "recurring charge",
+      "subscription renews",
+      "billed monthly",
+      "billed annually",
+      "charged after trial",
+      "trial converts",
+      "ongoing subscription",
+    ],
+    flag_description:
+      "Subscription or free trial language detected. Negative option billing — where silence is treated as consent to be charged — is one of the fastest-growing enforcement areas across all major jurisdictions. The FTC's updated Negative Option Rule (2024) requires clear upfront disclosure of all charges, a simple cancellation mechanism, and explicit consent before billing.",
+    suggestion:
+      "You must clearly and conspicuously disclose: (1) that the trial converts to a paid subscription, (2) the exact amount and date of the first charge, (3) how to cancel — before the consumer commits. 'Cancel anytime' must mean exactly that — a simple, single-step process. Under the FTC Negative Option Rule 2024, violations carry fines up to $51,744 per incident. UK CMA and EU UCPD carry similar requirements.",
+    regulations: [
+      "FTC Negative Option Rule 2024 (US)",
+      "CMA Subscription Guidance (UK)",
+      "Consumer Contracts Regulations 2013 (UK)",
+      "Consumer Rights Directive (EU)",
+      "UCPD (EU)",
+      "ACCC (AU)",
+      "Competition Bureau (CA)",
+    ],
+  },
+
+  // ─── INFLUENCER / PAID PROMOTION NON-DISCLOSURE ───────────────────────────────
+  {
+    category: "influencer_disclosure",
+    severity: "high",
+    keywords: [
+      "ambassador",
+      "brand ambassador",
+      "partner",
+      "in partnership with",
+      "sponsored by",
+      "gifted",
+      "gifted by",
+      "gifted product",
+      "ad",
+      "#ad",
+      "#sponsored",
+      "in collaboration with",
+      "collab",
+      "paid partnership",
+      "affiliate",
+      "affiliate link",
+      "commission",
+      "referral link",
+    ],
+    flag_description:
+      "Paid promotion, sponsorship or affiliate relationship detected. All major regulators require that paid relationships are disclosed clearly and upfront — not buried in hashtags, disclaimers or small print. The ASA and CMA launched a major influencer enforcement crackdown in 2023 and continue active monitoring.",
+    suggestion:
+      "Disclose the commercial relationship clearly and immediately — before any promotional content. 'AD', 'PAID PARTNERSHIP' or 'GIFTED' must appear at the start of the content, not at the end. Affiliate links must be disclosed as such. Under FTC and ASA rules, 'in partnership with' without explicit 'AD' is insufficient. The CMA has issued enforcement notices to major influencers for this exact wording.",
+    regulations: [
+      "FTC Endorsement Guides 2023 (US)",
+      "ASA CAP/BCAP Code (UK)",
+      "CMA Influencer Guidance (UK)",
+      "UCPD (EU)",
+      "ACCC (AU)",
+      "Competition Bureau (CA)",
+    ],
+  },
 ];
 
 function extractExcerpt(content: string, index: number): string {

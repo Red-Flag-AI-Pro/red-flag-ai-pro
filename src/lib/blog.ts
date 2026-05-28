@@ -497,7 +497,7 @@ Before you launch your next campaign, run through this checklist.
 
 Checking all 16 points manually takes time -and it's easy to miss something.
 
-Red Flag AI Pro scans your marketing copy against all 16 risk categories across 5 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
+Red Flag AI Pro scans your marketing copy against all 21 risk categories across 5 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
 
 ✅ A 0-100 compliance risk score
 ✅ Every violation explained in plain English
@@ -611,7 +611,7 @@ This is not a theoretical risk. It is the realistic outcome of the insurance mar
 
 ## Red Flag AI Pro: Your Compliance Paper Trail
 
-Red Flag AI Pro scans AI-generated and human-written marketing copy against 16 risk categories across 5 jurisdictions -including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR and CASL.
+Red Flag AI Pro scans AI-generated and human-written marketing copy against 21 risk categories across 5 jurisdictions -including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR and CASL.
 
 Every scan produces a timestamped compliance report. That report is your documented evidence of professional diligence -exactly what your broker, your client and any claims handler would need to see.
 

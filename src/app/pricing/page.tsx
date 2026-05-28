@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Pricing — Start Free, Upgrade When Ready",
   description:
-    "Start with 1 free scan. Pro £49/month. Enterprise £149/month. 16 risk categories including EU AI Act across 5 jurisdictions. No credit card to start.",
+    "Start with 1 free scan. Pro £49/month. Enterprise £149/month. 21 risk categories including EU AI Act across 5 jurisdictions. No credit card to start.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -35,7 +35,7 @@ const PLANS = [
     badge: null,
     features: [
       "30 scans per month",
-      "16 risk categories",
+      "21 risk categories",
       "EU AI Act compliance",
       "FTC · GDPR · ASA · ACCC · CASL",
       "Compliance flags",
@@ -85,7 +85,7 @@ export default function PricingPage() {
             Start free. Upgrade for more scans, PDF reports and full compliance coverage.
           </p>
           <p className="mt-2 text-sm text-gray-500">
-            16 risk categories · 5 jurisdictions · EU AI Act · FTC · GDPR · ASA · ACCC · CASL
+            21 risk categories · 5 jurisdictions · EU AI Act · FTC · GDPR · ASA · ACCC · CASL
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export default function PricingPage() {
         <div className="mt-16 rounded-2xl bg-gray-950 p-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Coming Q3 2026</span>
+            <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Enterprise — available now</span>
           </div>
           <h2 className="text-2xl font-bold text-white">
             Sentinel — Compliance Infrastructure for Enterprise
@@ -196,7 +196,7 @@ export default function PricingPage() {
             href="/sentinel"
             className="mt-6 inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
-            Join the Sentinel waitlist →
+            Learn more about Sentinel →
           </Link>
         </div>
       </div>

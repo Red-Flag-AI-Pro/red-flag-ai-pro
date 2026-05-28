@@ -69,7 +69,7 @@ export default function BlogPage() {
             Stop Reading About Compliance. Start Scanning.
           </h2>
           <p className="mt-3 text-gray-400">
-            Red Flag AI Pro checks your copy against 16 risk categories across 5 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your copy against 21 risk categories across 5 jurisdictions in 60 seconds.
           </p>
           <Link
             href="/signup"

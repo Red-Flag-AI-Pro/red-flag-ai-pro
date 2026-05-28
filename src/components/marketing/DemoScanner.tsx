@@ -150,7 +150,7 @@ export function DemoScanner() {
                 <p className="text-2xl mb-2">✅</p>
                 <p className="text-white font-bold">No flags detected</p>
                 <p className="text-gray-400 text-sm mt-1">
-                  Your copy looks clean against our 16 risk categories. Sign up to save this result and get a PDF report.
+                  Your copy looks clean against our 21 risk categories. Sign up to save this result and get a PDF report.
                 </p>
               </div>
             )}

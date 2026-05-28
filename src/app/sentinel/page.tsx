@@ -92,7 +92,7 @@ export default function SentinelPage() {
           <div className="inline-flex items-center gap-2.5 rounded-full border border-red-500/20 bg-red-500/5 px-5 py-2 mb-12">
             <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
             <span className="text-xs font-bold text-red-400 uppercase tracking-[0.18em]">
-              Launching Q3 2026 — now taking enquiries
+              Now available — enterprise enquiries welcome
             </span>
           </div>
 
@@ -330,7 +330,7 @@ export default function SentinelPage() {
               Ready when you are.
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto mb-12">
-              Sentinel launches Q3 2026. We are taking early enquiries from agencies, legal teams and regulated businesses now. Get in touch to discuss your requirements.
+              Sentinel is available now for agencies, legal teams and regulated businesses. Get in touch to discuss your requirements and get set up.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
