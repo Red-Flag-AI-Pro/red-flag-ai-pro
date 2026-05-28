@@ -916,6 +916,105 @@ export default function LandingPage() {
         </a>
       </div>
 
+      {/* Sentinel Section */}
+      <div className="relative overflow-hidden" style={{ backgroundColor: "#07070f" }}>
+        {/* Red glow top */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[800px] opacity-20"
+            style={{ background: "radial-gradient(ellipse at center top, #dc2626 0%, transparent 65%)" }}
+          />
+        </div>
+        {/* Grid */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-5xl px-6 py-24">
+          {/* Label */}
+          <div className="flex items-center gap-2.5 mb-8">
+            <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-xs font-bold text-red-500 uppercase tracking-[0.18em]">
+              Sentinel — enterprise compliance
+            </span>
+          </div>
+
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            {/* Left: copy */}
+            <div>
+              <h2
+                className="text-5xl font-black tracking-tight leading-none"
+                style={{
+                  background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #dc2626 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Sentinel
+              </h2>
+              <p className="mt-4 text-lg font-semibold text-gray-300 leading-snug">
+                Compliance infrastructure for agencies, legal teams and regulated businesses.
+              </p>
+              <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+                Red Flag AI Pro scans copy. Sentinel does everything beyond that — human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a full 3-year audit trail. Built for the teams where a compliance failure is a regulatory event, not just an embarrassment.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {["Human Review Log", "Legal Timestamps", "FCA Promotions", "Greenwashing Scanner", "Signed Certificates", "3-Year Retention", "API Access"].map((f) => (
+                  <span
+                    key={f}
+                    className="rounded-full border border-gray-700/60 bg-gray-900/60 px-3 py-1 text-xs font-medium text-gray-400"
+                  >
+                    {f}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/sentinel"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-7 py-3.5 text-sm font-bold text-white hover:bg-red-500 transition-all shadow-lg shadow-red-600/20"
+                >
+                  Learn about Sentinel →
+                </Link>
+                <a
+                  href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-700 px-7 py-3.5 text-sm font-medium text-gray-400 hover:border-red-500/40 hover:text-white transition-all"
+                >
+                  Get in touch
+                </a>
+              </div>
+            </div>
+
+            {/* Right: feature cards */}
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { icon: "📋", title: "Human Review Log", desc: "Every review logged and timestamped" },
+                { icon: "⏱️", title: "Legal Timestamps", desc: "Cryptographic proof of when you checked" },
+                { icon: "📄", title: "Signed Certificates", desc: "PDF certificates for every campaign" },
+                { icon: "🏦", title: "FCA Promotions", desc: "Financial promotions checked at source" },
+                { icon: "🌿", title: "Greenwashing", desc: "EU Green Claims Directive compliance" },
+                { icon: "🔌", title: "API Access", desc: "Plug into your existing workflow" },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-gray-800/60 bg-gray-900/40 p-4 hover:border-red-500/20 transition-all"
+                >
+                  <div className="text-lg mb-2">{item.icon}</div>
+                  <p className="text-xs font-bold text-white mb-1">{item.title}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="border-t border-gray-800 bg-gray-950 py-10 text-center text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
