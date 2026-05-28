@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Pricing — Red Flag AI Pro",
   description:
-    "Pro £49/month for solopreneurs. Growth £199/month for funnel builders and agencies. Sentinel £999/month for regulated businesses and agencies that need a full audit trail.",
+    "Starter £29/month for bootstrapped funnel builders. Pro £49/month for solopreneurs. Growth £199/month for high-volume creators. Sentinel £999/month for agencies and regulated businesses.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -39,16 +39,59 @@ export default function PricingPage() {
         {/* 3-column plans */}
         <div className="grid gap-5 lg:grid-cols-3">
 
-          {/* Pro */}
+          {/* Starter */}
           <div className="relative flex flex-col rounded-2xl border border-gray-800 bg-gray-900/40 p-8">
             <div>
-              <h2 className="text-xl font-bold text-white">Pro</h2>
+              <h2 className="text-xl font-bold text-white">Starter</h2>
               <p className="mt-1 text-sm text-gray-500 leading-relaxed">
-                For solopreneurs and buyers checking copy before they spend.
+                For bootstrapped funnel builders and affiliate marketers just getting started.
+              </p>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-extrabold text-white">£29</span>
+                <span className="text-sm text-gray-500">/month</span>
+              </div>
+            </div>
+
+            <ul className="mt-6 flex-1 space-y-2.5">
+              {[
+                "10 scans per month",
+                "16 risk categories scanned",
+                "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
+                "EU AI Act compliance",
+                "Compliance flags in plain English",
+                "Compliant rewrite suggestions",
+                "Scan history",
+                "Email support",
+              ].map((f) => (
+                <li key={f} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-500 flex-shrink-0">✓</span>
+                  <span className="text-gray-400">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/signup?plan=starter"
+              className="mt-8 block rounded-xl border border-gray-700 py-3 text-center text-sm font-semibold text-white hover:border-red-500/50 hover:bg-gray-800 transition-colors"
+            >
+              Get started →
+            </Link>
+          </div>
+
+          {/* Pro */}
+          <div className="relative flex flex-col rounded-2xl border border-red-500 p-8 shadow-xl shadow-red-500/10" style={{ background: "linear-gradient(160deg, #1a0a0a 0%, #0f0810 100%)" }}>
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-4 py-1 text-xs font-bold text-amber-900 whitespace-nowrap">
+              Most popular
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold text-white">Pro</h2>
+              <p className="mt-1 text-sm text-red-300/70 leading-relaxed">
+                For solopreneurs and buyers running proper campaigns.
               </p>
               <div className="mt-4 flex items-baseline gap-1">
                 <span className="text-4xl font-extrabold text-white">£49</span>
-                <span className="text-sm text-gray-500">/month</span>
+                <span className="text-sm text-red-300/60">/month</span>
               </div>
             </div>
 
@@ -64,38 +107,30 @@ export default function PricingPage() {
                 "Email support",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm">
-                  <span className="text-green-500 flex-shrink-0">✓</span>
-                  <span className="text-gray-400">{f}</span>
+                  <span className="text-red-400 flex-shrink-0">✓</span>
+                  <span className="text-red-50/80">{f}</span>
                 </li>
               ))}
-              <li className="flex items-start gap-2 text-sm">
-                <span className="text-gray-700 flex-shrink-0">✕</span>
-                <span className="text-gray-700">PDF compliance reports</span>
-              </li>
             </ul>
 
             <Link
               href="/signup?plan=pro"
-              className="mt-8 block rounded-xl border border-gray-700 py-3 text-center text-sm font-semibold text-white hover:border-red-500/50 hover:bg-gray-800 transition-colors"
+              className="mt-8 block rounded-xl bg-white py-3 text-center text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors"
             >
               Get started →
             </Link>
           </div>
 
           {/* Growth */}
-          <div className="relative flex flex-col rounded-2xl border border-red-500 p-8 shadow-xl shadow-red-500/10" style={{ background: "linear-gradient(160deg, #1a0a0a 0%, #0f0810 100%)" }}>
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-4 py-1 text-xs font-bold text-amber-900 whitespace-nowrap">
-              Most popular
-            </div>
-
+          <div className="relative flex flex-col rounded-2xl border border-gray-800 bg-gray-900/40 p-8">
             <div>
               <h2 className="text-xl font-bold text-white">Growth</h2>
-              <p className="mt-1 text-sm text-red-300/70 leading-relaxed">
+              <p className="mt-1 text-sm text-gray-500 leading-relaxed">
                 For funnel builders, affiliate marketers and high-volume creators.
               </p>
               <div className="mt-4 flex items-baseline gap-1">
                 <span className="text-4xl font-extrabold text-white">£199</span>
-                <span className="text-sm text-red-300/60">/month</span>
+                <span className="text-sm text-gray-500">/month</span>
               </div>
             </div>
 
@@ -112,15 +147,15 @@ export default function PricingPage() {
                 "Priority email support",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm">
-                  <span className="text-red-400 flex-shrink-0">✓</span>
-                  <span className="text-red-50/80">{f}</span>
+                  <span className="text-green-500 flex-shrink-0">✓</span>
+                  <span className="text-gray-400">{f}</span>
                 </li>
               ))}
             </ul>
 
             <Link
               href="/signup?plan=enterprise"
-              className="mt-8 block rounded-xl bg-white py-3 text-center text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors"
+              className="mt-8 block rounded-xl border border-gray-700 py-3 text-center text-sm font-semibold text-white hover:border-red-500/50 hover:bg-gray-800 transition-colors"
             >
               Get started →
             </Link>

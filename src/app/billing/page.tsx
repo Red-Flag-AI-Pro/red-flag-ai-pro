@@ -10,16 +10,22 @@ import { createClient } from "@/lib/supabase/client";
 
 const PLANS = [
   {
+    key: "starter" as const,
+    name: "Starter",
+    price: "£29/mo",
+    features: ["10 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
+  },
+  {
     key: "pro" as const,
     name: "Pro",
     price: "£49/mo",
-    features: ["30 scans per month", "21 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
+    features: ["20 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
-    name: "Enterprise",
-    price: "£149/mo",
-    features: ["Everything in Pro", "Unlimited scans", "PDF compliance reports", "Dedicated onboarding call", "Priority support", "Invoice billing"],
+    name: "Growth",
+    price: "£199/mo",
+    features: ["Unlimited scans", "16 risk categories", "PDF compliance reports", "Priority support"],
   },
 ];
 
@@ -67,7 +73,7 @@ export default function BillingPage() {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  async function handleCheckout(planKey: "pro" | "enterprise") {
+  async function handleCheckout(planKey: "starter" | "pro" | "enterprise") {
     setLoading(planKey);
     const res = await fetch("/api/stripe/checkout", {
       method: "POST",
@@ -172,13 +178,13 @@ export default function BillingPage() {
           <div className="flex justify-between">
             <dt className="text-gray-500">Scans per month</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "free" ? "0" : plan === "pro" ? "20" : "Unlimited"}
+              {plan === "free" ? "0" : plan === "starter" ? "10" : plan === "pro" ? "20" : "Unlimited"}
             </dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-gray-500">Risk categories</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "sentinel" ? "21" : "16"}
+              {plan === "sentinel" ? "21" : plan === "starter" ? "16" : "16"}
             </dd>
           </div>
           <div className="flex justify-between">
