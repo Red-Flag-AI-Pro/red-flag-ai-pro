@@ -3,71 +3,57 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "Pricing — Start Free, Upgrade When Ready",
+  title: "Pricing — Red Flag AI Pro",
   description:
-    "Start with 1 free scan. Pro £49/month. Enterprise £149/month. 21 risk categories including EU AI Act across 5 jurisdictions. No credit card to start.",
+    "Try free on the homepage. Pro £49/month for buyers and solopreneurs. Growth £199/month for funnel builders and affiliate marketers. Sentinel £999/month for agencies and regulated businesses.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
 const PLANS = [
   {
-    name: "Free",
-    price: "£0",
-    period: "forever",
-    description: "For individuals who want to try it out.",
-    badge: null,
-    features: [
-      "1 scan per month",
-      "Risk score",
-      "Compliance flags",
-      "Rewrite suggestions",
-    ],
-    excluded: ["PDF reports", "30 scans per month", "Priority support"],
-    cta: "Start free",
-    href: "/signup",
-    highlight: false,
-  },
-  {
     name: "Pro",
     price: "£49",
     period: "per month",
-    description: "For marketers and copywriters who want to stay compliant.",
+    description: "For buyers checking before they spend and solopreneurs scanning their own copy.",
     badge: null,
     features: [
-      "30 scans per month",
+      "20 scans per month",
       "21 risk categories",
+      "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
       "EU AI Act compliance",
-      "FTC · GDPR · ASA · ACCC · CASL",
-      "Compliance flags",
-      "Rewrite suggestions",
+      "Compliance flags in plain English",
+      "Compliant rewrite suggestions",
       "Scan history",
       "Email support",
     ],
     excluded: [],
-    cta: "Lock in £49 →",
+    cta: "Get started →",
     href: "/signup?plan=pro",
-    highlight: true,
+    highlight: false,
   },
   {
-    name: "Enterprise",
-    price: "£149",
+    name: "Growth",
+    price: "£199",
     period: "per month",
-    description: "For agencies and compliance teams managing multiple clients.",
-    badge: null,
+    description: "For funnel builders, affiliate marketers and high-volume creators.",
+    badge: "Most popular",
     features: [
-      "Everything in Pro",
       "Unlimited scans",
+      "21 risk categories",
+      "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
+      "EU AI Act compliance",
+      "FCA financial promotions",
+      "Greenwashing scanner",
       "PDF compliance reports",
-      "Dedicated onboarding call",
-      "Monthly compliance review call",
-      "Priority support (2 business days)",
-      "Invoice billing",
-      "Early access to new features",
+      "Compliance flags in plain English",
+      "Compliant rewrite suggestions",
+      "Full scan history",
+      "Priority email support",
     ],
     excluded: [],
-    cta: "Lock in £149 →",
+    cta: "Get started →",
     href: "/signup?plan=enterprise",
-    highlight: false,
+    highlight: true,
   },
 ];
 
@@ -82,14 +68,24 @@ export default function PricingPage() {
             Simple, transparent pricing
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Start free. Upgrade for more scans, PDF reports and full compliance coverage.
+            Try one scan free on the homepage. No account needed.
           </p>
           <p className="mt-2 text-sm text-gray-500">
             21 risk categories · 5 jurisdictions · EU AI Act · FTC · GDPR · ASA · ACCC · CASL
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        {/* Demo CTA */}
+        <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50 px-6 py-4 text-center">
+          <p className="text-sm text-gray-600">
+            Want to try before you buy?{" "}
+            <Link href="/#demo" className="font-semibold text-red-600 hover:text-red-500 transition-colors">
+              Run a free scan on the homepage - no account needed →
+            </Link>
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2 max-w-3xl mx-auto">
           {PLANS.map((plan) => (
             <div
               key={plan.name}
@@ -146,12 +142,6 @@ export default function PricingPage() {
                     <span className={plan.highlight ? "text-red-50" : "text-gray-700"}>{f}</span>
                   </li>
                 ))}
-                {plan.excluded.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-gray-400 line-through">
-                    <span>✕</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
               </ul>
 
               <Link
@@ -173,20 +163,26 @@ export default function PricingPage() {
           All plans include a 14-day money-back guarantee. Cancel anytime. No contracts.
         </p>
 
-        {/* Sentinel coming soon */}
+        {/* Sentinel */}
         <div className="mt-16 rounded-2xl bg-gray-950 p-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Enterprise — available now</span>
+            <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Sentinel — for agencies and regulated businesses</span>
           </div>
-          <h2 className="text-2xl font-bold text-white">
-            Sentinel — Compliance Infrastructure for Enterprise
-          </h2>
-          <p className="mt-3 text-gray-400 max-w-2xl leading-relaxed">
-            Built for legal teams, financial services firms and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. Financial promotions compliance for FCA-regulated businesses. Greenwashing scanner for EU Green Claims Directive. The audit trail your PI insurer needs. The documentation your regulator expects.
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-2xl font-bold text-white">
+              Sentinel
+            </h2>
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-extrabold text-white">£999</span>
+              <span className="text-gray-400 text-sm">/month</span>
+            </div>
+          </div>
+          <p className="text-gray-400 max-w-2xl leading-relaxed">
+            Built for agencies and regulated businesses where a compliance failure is a regulatory event. Human review logs with legal timestamps. Signed compliance certificates. FCA financial promotions. Greenwashing scanner for EU Green Claims Directive. The audit trail your PI insurer needs and your regulator expects.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {["Human Review Log", "Legal Timestamps", "FCA Financial Promotions", "Greenwashing Scanner", "Signed PDF Certificates", "3-Year Retention", "API Access", "Custom Rules"].map((f) => (
+            {["Unlimited scans", "Human Review Log", "Legal Timestamps", "FCA Financial Promotions", "Greenwashing Scanner", "Signed PDF Certificates", "3-Year Retention", "API Access", "Custom Rules", "Dedicated onboarding", "Monthly compliance review"].map((f) => (
               <span key={f} className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-400">
                 {f}
               </span>
