@@ -92,7 +92,7 @@ export default function SentinelPage() {
           <div className="inline-flex items-center gap-2.5 rounded-full border border-red-500/20 bg-red-500/5 px-5 py-2 mb-12">
             <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
             <span className="text-xs font-bold text-red-400 uppercase tracking-[0.18em]">
-              Now available — enterprise enquiries welcome
+              Stay compliant. Stay protected. Stay ahead.
             </span>
           </div>
 
@@ -132,7 +132,7 @@ export default function SentinelPage() {
               href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry"
               className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-8 py-4 text-sm font-bold text-white hover:bg-red-500 transition-all shadow-xl shadow-red-600/20"
             >
-              Request early access →
+              Get compliant today →
             </a>
             <Link
               href="/pricing#sentinel"
@@ -330,7 +330,7 @@ export default function SentinelPage() {
               Ready when you are.
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto mb-12">
-              Sentinel is available now for agencies, legal teams and regulated businesses. Get in touch to discuss your requirements and get set up.
+              Compliance is not a one-off task. It is a constant. Sentinel keeps your agency protected every time copy is created, reviewed and published. Get in touch and we will get you set up.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
