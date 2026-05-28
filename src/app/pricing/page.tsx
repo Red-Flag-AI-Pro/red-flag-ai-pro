@@ -193,7 +193,7 @@ export default function PricingPage() {
             ))}
           </div>
           <Link
-            href="mailto:support@redflagaipro.com?subject=Sentinel Waitlist"
+            href="/sentinel"
             className="mt-6 inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
             Join the Sentinel waitlist →
