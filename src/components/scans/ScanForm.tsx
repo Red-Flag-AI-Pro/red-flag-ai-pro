@@ -11,7 +11,7 @@ interface Props {
 }
 
 type Tab = "paste" | "url" | "upload" | "vsl";
-type VslMode = "youtube" | "script";
+type VslMode = "youtube" | "audio" | "script";
 
 export function ScanForm({ plan = "free" }: Props) {
   const router = useRouter();
@@ -23,9 +23,11 @@ export function ScanForm({ plan = "free" }: Props) {
   const [vslUrl, setVslUrl] = useState("");
   const [vslScript, setVslScript] = useState("");
   const [vslTitle, setVslTitle] = useState("");
+  const [audioFile, setAudioFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const audioRef = useRef<HTMLInputElement>(null);
 
   const isSentinel = plan === "sentinel";
 
@@ -60,6 +62,14 @@ export function ScanForm({ plan = "free" }: Props) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ mode: "youtube", url: vslUrl.trim() }),
+          });
+        } else if (vslMode === "audio") {
+          if (!audioFile) { setLoading(false); return; }
+          const fd = new FormData();
+          fd.append("file", audioFile);
+          res = await fetch("/api/scans/transcribe", {
+            method: "POST",
+            body: fd,
           });
         } else {
           if (!vslScript.trim()) { setLoading(false); return; }
@@ -105,14 +115,20 @@ export function ScanForm({ plan = "free" }: Props) {
     if (tab === "url") return url.trim().length > 0;
     if (tab === "vsl") {
       if (!isSentinel) return false;
-      return vslMode === "youtube" ? vslUrl.trim().length > 0 : vslScript.trim().length > 0;
+      if (vslMode === "youtube") return vslUrl.trim().length > 0;
+      if (vslMode === "audio") return audioFile !== null;
+      return vslScript.trim().length > 0;
     }
     return content.trim().length > 0;
   }
 
   function submitLabel(): string {
     if (tab === "url") return "Scan this page →";
-    if (tab === "vsl") return vslMode === "youtube" ? "Fetch and scan VSL →" : "Scan VSL script →";
+    if (tab === "vsl") {
+      if (vslMode === "youtube") return "Fetch and scan VSL →";
+      if (vslMode === "audio") return loading ? "Transcribing audio…" : "Transcribe and scan →";
+      return "Scan VSL script →";
+    }
     return "Analyze for compliance risks";
   }
 
@@ -222,7 +238,7 @@ export function ScanForm({ plan = "free" }: Props) {
             <div className="space-y-4">
               {/* VSL mode toggle */}
               <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
-                {([["youtube", "YouTube URL"], ["script", "Paste script"]] as const).map(([mode, label]) => (
+                {([["youtube", "YouTube URL"], ["audio", "Upload audio"], ["script", "Paste script"]] as const).map(([mode, label]) => (
                   <button
                     key={mode}
                     type="button"
@@ -254,6 +270,47 @@ export function ScanForm({ plan = "free" }: Props) {
                   <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
                     <p className="font-semibold">How VSL scanning works</p>
                     <p>We fetch the video&apos;s captions from YouTube and scan the full transcript for compliance risks. The video must have captions enabled. If it doesn&apos;t, use Paste script instead.</p>
+                  </div>
+                </div>
+              )}
+
+              {vslMode === "audio" && (
+                <div className="space-y-3">
+                  <div
+                    className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-10 text-center hover:border-red-400 hover:bg-red-50 transition-colors cursor-pointer"
+                    onClick={() => audioRef.current?.click()}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      const f = e.dataTransfer.files?.[0];
+                      if (f) setAudioFile(f);
+                    }}
+                  >
+                    <p className="text-2xl">🎙️</p>
+                    <p className="mt-2 text-sm font-medium text-gray-700">
+                      {audioFile ? audioFile.name : "Drop audio or video file here, or click to browse"}
+                    </p>
+                    {audioFile ? (
+                      <p className="mt-1 text-xs text-green-600 font-medium">
+                        ✓ {(audioFile.size / 1024 / 1024).toFixed(1)} MB — ready to transcribe
+                      </p>
+                    ) : (
+                      <p className="text-xs text-gray-400 mt-1">MP3, MP4, M4A, WAV, WebM — max 25 MB</p>
+                    )}
+                    <input
+                      ref={audioRef}
+                      type="file"
+                      accept=".mp3,.mp4,.m4a,.wav,.webm,.ogg,.mov"
+                      className="hidden"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0];
+                        if (f) setAudioFile(f);
+                      }}
+                    />
+                  </div>
+                  <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
+                    <p className="font-semibold">How audio transcription works</p>
+                    <p>We send your file to OpenAI Whisper, the most accurate speech-to-text model available. The transcript is then scanned for all 21 compliance risk categories. Works on any VSL, webinar recording, podcast or ad voiceover.</p>
                   </div>
                 </div>
               )}
