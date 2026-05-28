@@ -1,7 +1,58 @@
+"use client";
+
+import { useState } from "react";
 import type { Scan, ScanFlag, Plan } from "@/types";
 import { ScoreGauge } from "@/components/ui/ScoreGauge";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
+
+function BadgeButton({ scanId }: { scanId: string }) {
+  const [open, setOpen] = useState(false);
+  const badgeUrl = `${typeof window !== "undefined" ? window.location.origin : "https://redflagaipro.com"}/api/badge/${scanId}`;
+  const embedCode = `<a href="https://redflagaipro.com" target="_blank" rel="noopener"><img src="${badgeUrl}" alt="Compliance verified by Red Flag AI Pro" style="height:60px;border:none;"/></a>`;
+  const [copied, setCopied] = useState(false);
+
+  function copy() {
+    navigator.clipboard.writeText(embedCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(!open)}
+        className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+      >
+        🏷️ Embed badge
+      </button>
+      {open && (
+        <div className="w-full mt-1 rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3">
+          <div>
+            <p className="text-xs font-semibold text-gray-700 mb-2">Preview</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={badgeUrl} alt="Compliance badge" style={{ height: 60 }} />
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-700 mb-1">Embed code — paste into your website or client portal</p>
+            <div className="flex gap-2">
+              <code className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs text-gray-600 break-all font-mono">
+                {embedCode}
+              </code>
+              <button
+                onClick={copy}
+                className="shrink-0 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
+          </div>
+          <p className="text-xs text-gray-400">The badge updates automatically when you rescan. Share with clients as proof of compliance review.</p>
+        </div>
+      )}
+    </>
+  );
+}
 
 interface ScanResultCardProps {
   scan: Scan;
@@ -80,6 +131,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             >
               New scan
             </Link>
+            <BadgeButton scanId={scan.id} />
           </div>
         </div>
       </div>
