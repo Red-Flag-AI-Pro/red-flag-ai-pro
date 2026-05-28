@@ -87,7 +87,7 @@ export default function SentinelPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-32 text-center">
+        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-16 text-center">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-red-500/20 bg-red-500/5 px-5 py-2 mb-12">
             <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
             <span className="text-xs font-bold text-red-400 uppercase tracking-[0.18em]">
@@ -152,8 +152,8 @@ export default function SentinelPage() {
       </div>
 
       {/* Benefits */}
-      <div className="mx-auto max-w-5xl px-6 py-28">
-        <div className="text-center mb-16">
+      <div className="mx-auto max-w-5xl px-6 py-14">
+        <div className="text-center mb-10">
           <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Why Sentinel</p>
           <h2 className="text-5xl sm:text-6xl font-extrabold text-white leading-tight">
             What it actually means<br className="hidden sm:block" /> for your agency
@@ -181,8 +181,8 @@ export default function SentinelPage() {
 
       {/* Who it's for */}
       <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-5xl px-6 py-28">
-          <div className="text-center mb-16">
+        <div className="mx-auto max-w-5xl px-6 py-14">
+          <div className="text-center mb-10">
             <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Who it&apos;s for</p>
             <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
               Built for teams where<br className="hidden sm:block" /> compliance is not optional
@@ -208,8 +208,8 @@ export default function SentinelPage() {
 
       {/* Before / After */}
       <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-3xl px-6 py-28">
-          <div className="text-center mb-14">
+        <div className="mx-auto max-w-3xl px-6 py-14">
+          <div className="text-center mb-10">
             <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">The difference</p>
             <h2 className="text-5xl sm:text-6xl font-extrabold text-white">Replace your compliance spreadsheet</h2>
           </div>
@@ -272,7 +272,7 @@ export default function SentinelPage() {
             }}
           />
 
-          <div className="relative mx-auto max-w-3xl px-6 py-32 text-center">
+          <div className="relative mx-auto max-w-3xl px-6 py-16 text-center">
             <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-6">Get started</p>
             <h2
               className="text-5xl sm:text-6xl font-black tracking-tight mb-6"
