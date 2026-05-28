@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Pricing — Red Flag AI Pro",
   description:
-    "Starter £29/month for bootstrapped funnel builders. Pro £49/month for solopreneurs. Growth £199/month for high-volume creators. Sentinel £999/month for agencies and regulated businesses.",
+    "Pro £29/month for solopreneurs and funnel builders. Growth £199/month for high-volume creators. Sentinel £999/month for agencies and regulated businesses.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -29,45 +29,8 @@ export default function PricingPage() {
           </p>
         </div>
 
-        {/* 4-column plans */}
-        <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-
-          {/* Starter */}
-          <div className="relative flex flex-col rounded-2xl border border-gray-800 bg-gray-900/40 p-6">
-            <h2 className="text-lg font-bold text-white">Starter</h2>
-            <p className="mt-1 text-xs text-gray-500 leading-relaxed">
-              For bootstrapped funnel builders just getting started.
-            </p>
-            <div className="mt-3 flex items-baseline gap-1">
-              <span className="text-3xl font-extrabold text-white">£29</span>
-              <span className="text-xs text-gray-500">/month</span>
-            </div>
-
-            <ul className="mt-4 flex-1 space-y-2">
-              {[
-                "10 scans per month",
-                "16 risk categories",
-                "5 jurisdictions",
-                "EU AI Act compliance",
-                "Plain English flags",
-                "Rewrite suggestions",
-                "Scan history",
-                "Email support",
-              ].map((f) => (
-                <li key={f} className="flex items-start gap-2 text-xs">
-                  <span className="text-green-500 flex-shrink-0">✓</span>
-                  <span className="text-gray-400">{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="/signup?plan=starter"
-              className="mt-6 block rounded-xl border border-gray-700 py-2.5 text-center text-sm font-semibold text-white hover:border-red-500/50 hover:bg-gray-800 transition-colors"
-            >
-              Get started →
-            </Link>
-          </div>
+        {/* 3-column plans */}
+        <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
 
           {/* Pro */}
           <div className="relative flex flex-col rounded-2xl border border-red-500 p-6 shadow-xl shadow-red-500/10" style={{ background: "linear-gradient(160deg, #1a0a0a 0%, #0f0810 100%)" }}>
@@ -76,10 +39,10 @@ export default function PricingPage() {
             </div>
             <h2 className="text-lg font-bold text-white">Pro</h2>
             <p className="mt-1 text-xs text-red-300/70 leading-relaxed">
-              For solopreneurs running proper campaigns.
+              For solopreneurs, funnel builders and buyers checking copy before they spend.
             </p>
             <div className="mt-3 flex items-baseline gap-1">
-              <span className="text-3xl font-extrabold text-white">£49</span>
+              <span className="text-3xl font-extrabold text-white">£29</span>
               <span className="text-xs text-red-300/60">/month</span>
             </div>
 
@@ -87,7 +50,7 @@ export default function PricingPage() {
               {[
                 "20 scans per month",
                 "16 risk categories",
-                "5 jurisdictions",
+                "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
                 "EU AI Act compliance",
                 "Plain English flags",
                 "Rewrite suggestions",
@@ -124,7 +87,7 @@ export default function PricingPage() {
               {[
                 "Unlimited scans",
                 "16 risk categories",
-                "5 jurisdictions",
+                "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
                 "EU AI Act compliance",
                 "Plain English flags",
                 "Rewrite suggestions",

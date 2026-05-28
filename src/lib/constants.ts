@@ -2,7 +2,6 @@ import type { Plan } from "@/types";
 
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 0,
-  starter: 10,
   pro: 20,
   enterprise: Infinity,
   sentinel: Infinity,
@@ -17,13 +16,8 @@ export const SENTINEL_ONLY_CATEGORIES = [
 ] as const;
 
 export const PLAN_PRICES = {
-  starter: {
-    monthly: 29,
-    label: "Starter",
-    priceId: process.env.STRIPE_PRICE_STARTER_ID!,
-  },
   pro: {
-    monthly: 49,
+    monthly: 29,
     label: "Pro",
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
