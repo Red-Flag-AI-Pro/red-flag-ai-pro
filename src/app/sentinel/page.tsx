@@ -132,22 +132,84 @@ export default function SentinelPage() {
         </div>
       </div>
 
-      {/* EU AI Act urgency */}
-      <div className="border-y border-red-500/10 bg-gradient-to-r from-red-950/25 via-red-900/10 to-red-950/25">
-        <div className="mx-auto max-w-5xl px-6 py-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <div className="flex-shrink-0 rounded-xl border border-red-500/20 bg-red-500/8 p-3.5">
-              <span className="text-2xl">⚠️</span>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-red-400 uppercase tracking-[0.15em] mb-1.5">
-                EU AI Act enforcement begins August 2026
-              </p>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
-                If your agency uses AI to write copy for clients, disclosure requirements become enforceable in August 2026. Agencies that cannot prove they reviewed AI-assisted content before publication face the same penalties as the brand. Sentinel is the audit trail that proves you were compliant.
-              </p>
-            </div>
+      {/* Regulations agencies don't know about */}
+      <div className="border-y border-gray-800/40 bg-gray-900/20">
+        <div className="mx-auto max-w-5xl px-6 py-14">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">What is already coming for your agency</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+              The rules your clients expect you<br className="hidden sm:block" /> to know. Most agencies don&apos;t.
+            </h2>
+            <p className="mt-4 text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
+              These are not future risks. They are current obligations. If your agency writes copy that touches any of these areas and a complaint lands, you are named alongside your client.
+            </p>
           </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                law: "EU AI Act",
+                date: "Enforceable August 2026",
+                description: "If you use AI to write copy for clients, you must disclose it and prove it was reviewed before publication. The obligation sits with the creator, not just the brand.",
+                hot: true,
+              },
+              {
+                law: "FCA Financial Promotions",
+                date: "Active now",
+                description: "Any copy touching investments, returns, crypto or financial products must be pre-approved by an FCA-authorised person. One unapproved ad triggers an investigation for you and your client.",
+                hot: false,
+              },
+              {
+                law: "EU Green Claims Directive",
+                date: "Enforcement ramping 2026",
+                description: "Sustainability claims like carbon neutral, eco-friendly or net zero require substantiated evidence. Writing them for a client without proof is now a regulatory offence across the EU.",
+                hot: false,
+              },
+              {
+                law: "ASA CAP Code",
+                date: "Active now",
+                description: "UK advertising rules cover every ad your agency produces. Income claims, guarantees, testimonials and urgency tactics are all regulated. Agencies are routinely named in upheld complaints.",
+                hot: false,
+              },
+              {
+                law: "FTC Endorsement Guides",
+                date: "Updated 2023 - active now",
+                description: "Influencer content, affiliate links and paid partnerships for US-facing clients must all be clearly disclosed. Agencies managing these relationships carry liability if disclosure is missing.",
+                hot: false,
+              },
+              {
+                law: "CMA Green Claims Code",
+                date: "Active now - UK",
+                description: "The Competition and Markets Authority is actively pursuing greenwashing cases in the UK. Environmental claims in ad copy must be accurate, clear and substantiated or your agency is exposed.",
+                hot: false,
+              },
+            ].map((item) => (
+              <div
+                key={item.law}
+                className={[
+                  "rounded-2xl border p-7",
+                  item.hot
+                    ? "border-red-500/30 bg-red-950/20"
+                    : "border-gray-800/60 bg-gray-900/30",
+                ].join(" ")}
+              >
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="text-base font-extrabold text-white leading-snug">{item.law}</h3>
+                  {item.hot && (
+                    <span className="flex-shrink-0 rounded-full bg-red-500/20 border border-red-500/30 px-2 py-0.5 text-xs font-bold text-red-400 uppercase">
+                      Urgent
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs font-semibold text-red-400 mb-3">{item.date}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-sm text-gray-600">
+            Sentinel checks copy against all of these, automatically, before it publishes.
+          </p>
         </div>
       </div>
 
