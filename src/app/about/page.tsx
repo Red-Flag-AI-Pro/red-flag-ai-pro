@@ -102,7 +102,7 @@ export default function AboutPage() {
               21 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
             </p>
             <p className="mt-4 text-gray-700">
-              And this is just the start. Sentinel is coming in Q3 2026, compliance infrastructure built for legal teams, financial services firms and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. The audit trail your PI insurer needs. The documentation your regulator expects.
+              And Sentinel is now live. Compliance infrastructure built for agencies, legal teams and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. URL scanning. The audit trail your PI insurer needs. The documentation your regulator expects.
             </p>
             <p className="mt-4 text-gray-700">
               There are more tools coming. More categories. More jurisdictions. A whole ecosystem built around one idea: making the internet a safer place to buy and sell.

@@ -316,6 +316,57 @@ export default function SentinelPage() {
         </div>
       </div>
 
+      {/* Competitor comparison */}
+      <div className="border-t border-gray-800/40">
+        <div className="mx-auto max-w-4xl px-6 py-14">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">How we compare</p>
+            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
+              Enterprise compliance.<br className="hidden sm:block" /> Without the enterprise price.
+            </h2>
+            <p className="mt-4 text-gray-500 text-sm max-w-lg mx-auto">
+              The tools agencies traditionally use cost £2,000-£10,000 a month and take weeks to onboard. Sentinel is live in a day.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-800">
+                  <th className="text-left py-3 pr-6 text-gray-500 font-medium w-1/3">Feature</th>
+                  <th className="text-center py-3 px-4 text-gray-500 font-medium">Red Marker / Blee</th>
+                  <th className="text-center py-3 px-4 font-bold text-white">Sentinel</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Multi-jurisdiction scanning", "Sometimes", "✓ FTC, GDPR, ASA, FCA, ACCC, CASL"],
+                  ["EU AI Act compliance", "Partial", "✓ Full"],
+                  ["FCA financial promotions", "Enterprise only", "✓ Included"],
+                  ["Greenwashing scanner", "Limited", "✓ EU Green Claims Directive"],
+                  ["Signed PDF certificates", "✓", "✓"],
+                  ["URL page scanning", "✓", "✓"],
+                  ["Legal timestamps", "✓", "✓"],
+                  ["3-year audit retention", "✓", "✓"],
+                  ["Onboarding time", "Weeks", "Same day"],
+                  ["Typical monthly cost", "£2,000 - £10,000", "£999"],
+                ].map(([feature, them, us]) => (
+                  <tr key={feature} className="border-b border-gray-800/40">
+                    <td className="py-3 pr-6 text-gray-400">{feature}</td>
+                    <td className="py-3 px-4 text-center text-gray-600">{them}</td>
+                    <td className="py-3 px-4 text-center text-red-400 font-medium">{us}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="mt-6 text-center text-xs text-gray-600">
+            Competitor pricing based on publicly available information and industry estimates.
+          </p>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="border-t border-gray-800/40">
         <div className="relative overflow-hidden">
