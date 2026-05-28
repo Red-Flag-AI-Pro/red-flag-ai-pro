@@ -128,44 +128,33 @@ export default function PricingPage() {
 
           {/* Sentinel */}
           <style>{`
-            @keyframes shimmer {
-              0% { transform: translateX(-100%) skewX(-15deg); }
-              100% { transform: translateX(250%) skewX(-15deg); }
+            @keyframes sentinelSheen {
+              0% { opacity: 0.4; background-position: -200% center; }
+              50% { opacity: 0.7; }
+              100% { opacity: 0.4; background-position: 200% center; }
             }
-            @keyframes sparkle {
-              0%, 100% { opacity: 0; transform: scale(0.5); }
-              50% { opacity: 1; transform: scale(1); }
+            .sentinel-sheen {
+              background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%);
+              background-size: 200% 100%;
+              animation: sentinelSheen 6s ease-in-out infinite;
             }
-            .sentinel-shimmer { animation: shimmer 3s ease-in-out infinite; }
-            .sparkle-1 { animation: sparkle 2.1s ease-in-out infinite; }
-            .sparkle-2 { animation: sparkle 2.1s ease-in-out infinite 0.7s; }
-            .sparkle-3 { animation: sparkle 2.1s ease-in-out infinite 1.4s; }
           `}</style>
           <div
             className="relative flex flex-col rounded-2xl p-8 overflow-hidden"
             style={{
-              background: "linear-gradient(160deg, #d4d4de 0%, #b8b8cc 30%, #9c9cb4 60%, #b0b0c8 100%)",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.3)",
+              background: "linear-gradient(160deg, #d0d0da 0%, #b4b4c8 35%, #9a9ab2 65%, #acacc0 100%)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -1px 0 rgba(0,0,0,0.2)",
             }}
           >
-            {/* Sweeping shimmer */}
-            <div
-              className="sentinel-shimmer pointer-events-none absolute inset-y-0 w-1/3 rounded-2xl"
-              style={{
-                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent)",
-              }}
-            />
-            {/* Static sheen */}
+            {/* Slow elegant sheen */}
+            <div className="sentinel-sheen pointer-events-none absolute inset-0 rounded-2xl" />
+            {/* Top highlight */}
             <div
               className="pointer-events-none absolute inset-0 rounded-2xl"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.08) 100%)",
+                background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 40%)",
               }}
             />
-            {/* Sparkle dots */}
-            <div className="sparkle-1 pointer-events-none absolute top-6 right-10 h-1 w-1 rounded-full bg-white" />
-            <div className="sparkle-2 pointer-events-none absolute top-14 right-6 h-1.5 w-1.5 rounded-full bg-white/80" />
-            <div className="sparkle-3 pointer-events-none absolute top-10 right-16 h-0.5 w-0.5 rounded-full bg-white" />
 
             <div className="relative flex items-center gap-2 mb-5">
               <div className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
