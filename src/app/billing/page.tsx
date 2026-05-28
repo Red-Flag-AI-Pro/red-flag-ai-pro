@@ -176,6 +176,12 @@ export default function BillingPage() {
             </dd>
           </div>
           <div className="flex justify-between">
+            <dt className="text-gray-500">Risk categories</dt>
+            <dd className="font-medium text-gray-900">
+              {plan === "sentinel" ? "21" : "16"}
+            </dd>
+          </div>
+          <div className="flex justify-between">
             <dt className="text-gray-500">PDF reports</dt>
             <dd className="font-medium text-gray-900">
               {plan === "pro" || plan === "free" ? "No" : "Yes"}

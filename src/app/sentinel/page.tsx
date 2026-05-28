@@ -112,7 +112,7 @@ export default function SentinelPage() {
           </p>
 
           <p className="mt-5 text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-            Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is not an embarrassment. It is a regulatory event.
+            All 21 risk categories, legally mapped across 5 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is not an embarrassment. It is a regulatory event.
           </p>
 
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">

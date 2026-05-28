@@ -18,6 +18,7 @@ const PLANS = [
     badge: null,
     features: [
       "20 scans per month",
+      "16 risk categories scanned",
       "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
       "EU AI Act compliance",
       "Compliance flags in plain English",
@@ -38,6 +39,7 @@ const PLANS = [
     badge: "Most popular",
     features: [
       "Unlimited scans",
+      "16 risk categories scanned",
       "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
       "EU AI Act compliance",
       "Compliance flags in plain English",
@@ -178,7 +180,7 @@ export default function PricingPage() {
             Built for agencies and regulated businesses where a compliance failure is a regulatory event. Human review logs with legal timestamps. Signed compliance certificates. FCA financial promotions. Greenwashing scanner for EU Green Claims Directive. The audit trail your PI insurer needs and your regulator expects.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {["Unlimited scans", "21 risk categories", "Human Review Log", "Legal Timestamps", "FCA Financial Promotions", "Greenwashing Scanner", "Signed PDF Certificates", "3-Year Retention", "API Access", "Custom Rules", "Dedicated onboarding", "Monthly compliance review"].map((f) => (
+            {["Unlimited scans", "All 21 risk categories", "Human Review Log", "Legal Timestamps", "FCA Financial Promotions", "Greenwashing Scanner", "Signed PDF Certificates", "3-Year Retention", "API Access", "Custom Rules", "Dedicated onboarding", "Monthly compliance review"].map((f) => (
               <span key={f} className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-400">
                 {f}
               </span>
