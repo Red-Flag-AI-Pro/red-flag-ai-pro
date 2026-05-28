@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { analyzeContent } from "@/lib/analyzer";
+import { SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
 
 const PREVIEW_COUNT = 3;
 
@@ -18,7 +19,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const { score, flags } = analyzeContent("Demo Scan", content);
+  const { flags: allFlags } = analyzeContent("Demo Scan", content);
+
+  // Demo never shows Sentinel-only categories
+  const flags = allFlags.filter(
+    (f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category)
+  );
+
+  // Recalculate score from allowed flags only
+  const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
   const preview = flags.slice(0, PREVIEW_COUNT);
   const totalFlags = flags.length;

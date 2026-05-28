@@ -4,7 +4,16 @@ export const PLAN_LIMITS: Record<Plan, number> = {
   free: 0,
   pro: 20,
   enterprise: Infinity,
+  sentinel: Infinity,
 };
+
+// These 4 categories are exclusive to Sentinel. All other plans see the original 17.
+export const SENTINEL_ONLY_CATEGORIES = [
+  "financial_promotion",
+  "greenwashing",
+  "subscription_trap",
+  "influencer_disclosure",
+] as const;
 
 export const PLAN_PRICES = {
   pro: {

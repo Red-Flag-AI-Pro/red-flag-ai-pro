@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
-import { PLAN_LIMITS } from "@/lib/constants";
+import { PLAN_LIMITS, SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
 import type { Plan } from "@/types";
 
 export async function POST(request: Request) {
@@ -38,9 +38,9 @@ export async function POST(request: Request) {
       .gte("created_at", startOfMonth.toISOString());
 
     if ((count ?? 0) >= limit) {
-      const upgradeMessage = plan === "free"
-        ? `You've used your 1 free scan this month. Upgrade to Pro for 30 scans per month.`
-        : `You've used all ${limit} scans this month. Upgrade to Enterprise for unlimited scans.`;
+      const upgradeMessage = plan === "pro"
+        ? `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`
+        : `You've reached your scan limit. Please upgrade to continue.`;
       return NextResponse.json(
         { error: upgradeMessage },
         { status: 403 }
@@ -56,7 +56,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Content is required." }, { status: 400 });
   }
 
-  const { score, flags } = analyzeContent(title, content);
+  const { flags: allFlags } = analyzeContent(title, content);
+
+  // Sentinel-only categories are filtered out for all plans except sentinel
+  const flags = plan === "sentinel"
+    ? allFlags
+    : allFlags.filter((f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category));
+
+  // Recalculate score from the allowed flags only
+  const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
   const { data: scan, error: scanError } = await supabase
     .from("scans")
