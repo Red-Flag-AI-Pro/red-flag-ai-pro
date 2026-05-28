@@ -173,6 +173,35 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
+      {/* First-time welcome */}
+      {scansThisMonth === 0 && !recentScans?.length && (
+        <div className="rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-white p-6">
+          <h2 className="text-base font-bold text-gray-900 mb-1">Welcome — run your first scan</h2>
+          <p className="text-sm text-gray-500 mb-4">Paste any marketing copy, sales page or ad and get a compliance score in 60 seconds.</p>
+          <div className="grid gap-3 sm:grid-cols-3 mb-4">
+            {[
+              { step: "1", title: "Paste your copy", desc: "Sales page, email, VSL script or ad" },
+              { step: "2", title: "Get your score", desc: "0–100 compliance score with plain English flags" },
+              { step: "3", title: "Fix and relaunch", desc: "Every flag includes a suggested rewrite" },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-3">
+                <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold">{s.step}</span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">{s.title}</p>
+                  <p className="text-xs text-gray-500">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/scans/new"
+            className="inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+          >
+            Run your first scan →
+          </Link>
+        </div>
+      )}
+
       {/* Sentinel upsell for non-Sentinel plans */}
       {plan !== "sentinel" && (
         <div className="rounded-xl border border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-4 flex items-center justify-between gap-4">

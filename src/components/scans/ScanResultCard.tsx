@@ -6,6 +6,26 @@ import { ScoreGauge } from "@/components/ui/ScoreGauge";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
 
+function ShareButton({ scanId }: { scanId: string }) {
+  const [copied, setCopied] = useState(false);
+  const shareUrl = `${typeof window !== "undefined" ? window.location.origin : "https://redflagaipro.com"}/share/${scanId}`;
+
+  function copy() {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <button
+      onClick={copy}
+      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+    >
+      {copied ? "✓ Link copied" : "🔗 Share"}
+    </button>
+  );
+}
+
 function BadgeButton({ scanId }: { scanId: string }) {
   const [open, setOpen] = useState(false);
   const badgeUrl = `${typeof window !== "undefined" ? window.location.origin : "https://redflagaipro.com"}/api/badge/${scanId}`;
@@ -131,6 +151,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             >
               New scan
             </Link>
+            <ShareButton scanId={scan.id} />
             <BadgeButton scanId={scan.id} />
           </div>
         </div>

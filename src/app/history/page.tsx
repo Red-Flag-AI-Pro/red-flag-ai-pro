@@ -47,12 +47,20 @@ export default async function HistoryPage() {
             {hasTeam ? "All scans across your team" : "All your compliance scans"}
           </p>
         </div>
-        <Link
-          href="/scans/new"
-          className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors"
-        >
-          + New Scan
-        </Link>
+        <div className="flex items-center gap-2">
+          <a
+            href="/api/export/csv"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            Export CSV
+          </a>
+          <Link
+            href="/scans/new"
+            className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors"
+          >
+            + New Scan
+          </Link>
+        </div>
       </div>
 
       <Card padding="none">
