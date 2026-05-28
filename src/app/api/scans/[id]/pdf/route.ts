@@ -26,9 +26,9 @@ export async function GET(
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  if (plan === "free") {
+  if (plan === "free" || plan === "pro") {
     return NextResponse.json(
-      { error: "PDF reports are a Pro feature. Please upgrade." },
+      { error: "PDF reports are available on the Growth plan and above. Please upgrade." },
       { status: 403 }
     );
   }

@@ -172,13 +172,13 @@ export default function BillingPage() {
           <div className="flex justify-between">
             <dt className="text-gray-500">Scans per month</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "free" ? "1" : plan === "pro" ? "30" : "Unlimited"}
+              {plan === "free" ? "0" : plan === "pro" ? "20" : "Unlimited"}
             </dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-gray-500">PDF reports</dt>
             <dd className="font-medium text-gray-900">
-              {plan === "enterprise" ? "Yes" : "No"}
+              {plan === "pro" || plan === "free" ? "No" : "Yes"}
             </dd>
           </div>
           <div className="flex justify-between">
