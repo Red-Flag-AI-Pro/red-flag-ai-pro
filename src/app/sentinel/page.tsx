@@ -155,7 +155,7 @@ export default function SentinelPage() {
       <div className="mx-auto max-w-5xl px-6 py-28">
         <div className="text-center mb-16">
           <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Why Sentinel</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+          <h2 className="text-5xl sm:text-6xl font-extrabold text-white leading-tight">
             What it actually means<br className="hidden sm:block" /> for your agency
           </h2>
           <p className="mt-5 text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
@@ -184,7 +184,7 @@ export default function SentinelPage() {
         <div className="mx-auto max-w-5xl px-6 py-28">
           <div className="text-center mb-16">
             <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Who it&apos;s for</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-white">
+            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
               Built for teams where<br className="hidden sm:block" /> compliance is not optional
             </h2>
           </div>
@@ -211,7 +211,7 @@ export default function SentinelPage() {
         <div className="mx-auto max-w-3xl px-6 py-28">
           <div className="text-center mb-14">
             <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">The difference</p>
-            <h2 className="text-4xl font-extrabold text-white">Replace your compliance spreadsheet</h2>
+            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">Replace your compliance spreadsheet</h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
