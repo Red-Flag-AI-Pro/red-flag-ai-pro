@@ -127,24 +127,60 @@ export default function PricingPage() {
           </div>
 
           {/* Sentinel */}
-          <div className="relative flex flex-col rounded-2xl border border-gray-700/60 p-8" style={{ background: "linear-gradient(160deg, #0d0d14 0%, #07070f 100%)" }}>
-            <div className="flex items-center gap-2 mb-5">
+          <div
+            className="relative flex flex-col rounded-2xl p-8"
+            style={{
+              background: "linear-gradient(160deg, #1c1c24 0%, #0f0f17 100%)",
+              border: "1px solid transparent",
+              backgroundClip: "padding-box",
+              boxShadow: "0 0 0 1px rgba(192,192,220,0.15), 0 8px 32px rgba(192,192,220,0.05)",
+            }}
+          >
+            {/* Silver shimmer border overlay */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, rgba(220,220,255,0.12) 0%, rgba(180,180,210,0.04) 40%, rgba(220,220,255,0.10) 100%)",
+              }}
+            />
+
+            <div className="relative flex items-center gap-2 mb-5">
               <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs font-bold text-red-400 uppercase tracking-widest">For agencies</span>
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#b0b0c8" }}>For agencies</span>
             </div>
 
-            <div>
-              <h2 className="text-xl font-bold text-white">Sentinel</h2>
-              <p className="mt-1 text-sm text-gray-500 leading-relaxed">
+            <div className="relative">
+              <h2
+                className="text-xl font-bold"
+                style={{
+                  background: "linear-gradient(135deg, #ffffff 0%, #c8c8e0 50%, #a0a0c0 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Sentinel
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "#7a7a96" }}>
                 For agencies and regulated businesses where compliance is not optional.
               </p>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-white">£999</span>
-                <span className="text-sm text-gray-500">/month</span>
+                <span
+                  className="text-4xl font-extrabold"
+                  style={{
+                    background: "linear-gradient(135deg, #ffffff 0%, #c8c8e0 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  £999
+                </span>
+                <span className="text-sm" style={{ color: "#6a6a84" }}>/month</span>
               </div>
             </div>
 
-            <ul className="mt-6 flex-1 space-y-2.5">
+            <ul className="relative mt-6 flex-1 space-y-2.5">
               {[
                 "Unlimited scans",
                 "All 21 risk categories",
@@ -159,15 +195,20 @@ export default function PricingPage() {
                 "Dedicated onboarding",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm">
-                  <span className="text-red-500 flex-shrink-0">✓</span>
-                  <span className="text-gray-400">{f}</span>
+                  <span className="flex-shrink-0" style={{ color: "#a0a0c0" }}>✓</span>
+                  <span style={{ color: "#9090aa" }}>{f}</span>
                 </li>
               ))}
             </ul>
 
             <Link
               href="/sentinel"
-              className="mt-8 block rounded-xl bg-red-600 py-3 text-center text-sm font-semibold text-white hover:bg-red-500 transition-colors"
+              className="relative mt-8 block rounded-xl py-3 text-center text-sm font-semibold transition-all hover:opacity-90"
+              style={{
+                background: "linear-gradient(135deg, #3a3a50 0%, #2a2a3e 100%)",
+                color: "#d0d0e8",
+                border: "1px solid rgba(200,200,230,0.2)",
+              }}
             >
               Learn more about Sentinel →
             </Link>
