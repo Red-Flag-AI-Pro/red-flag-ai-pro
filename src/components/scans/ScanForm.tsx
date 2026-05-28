@@ -2,17 +2,32 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import type { Plan } from "@/types";
 
-export function ScanForm() {
+interface Props {
+  plan?: Plan;
+}
+
+type Tab = "paste" | "url" | "upload" | "vsl";
+type VslMode = "youtube" | "script";
+
+export function ScanForm({ plan = "free" }: Props) {
   const router = useRouter();
-  const [tab, setTab] = useState<"paste" | "upload" | "url">("paste");
+  const [tab, setTab] = useState<Tab>("paste");
+  const [vslMode, setVslMode] = useState<VslMode>("youtube");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [url, setUrl] = useState("");
+  const [vslUrl, setVslUrl] = useState("");
+  const [vslScript, setVslScript] = useState("");
+  const [vslTitle, setVslTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const isSentinel = plan === "sentinel";
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -31,14 +46,36 @@ export function ScanForm() {
       let res: Response;
 
       if (tab === "url") {
-        if (!url.trim()) return;
+        if (!url.trim()) { setLoading(false); return; }
         res = await fetch("/api/scans/url", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ url: url.trim() }),
         });
+
+      } else if (tab === "vsl") {
+        if (vslMode === "youtube") {
+          if (!vslUrl.trim()) { setLoading(false); return; }
+          res = await fetch("/api/scans/vsl", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ mode: "youtube", url: vslUrl.trim() }),
+          });
+        } else {
+          if (!vslScript.trim()) { setLoading(false); return; }
+          res = await fetch("/api/scans/vsl", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              mode: "script",
+              title: vslTitle.trim() || "VSL Script",
+              content: vslScript.trim(),
+            }),
+          });
+        }
+
       } else {
-        if (!content.trim()) return;
+        if (!content.trim()) { setLoading(false); return; }
         res = await fetch("/api/scans", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -64,12 +101,32 @@ export function ScanForm() {
     }
   }
 
-  const canSubmit = tab === "url" ? url.trim().length > 0 : content.trim().length > 0;
+  function canSubmit(): boolean {
+    if (tab === "url") return url.trim().length > 0;
+    if (tab === "vsl") {
+      if (!isSentinel) return false;
+      return vslMode === "youtube" ? vslUrl.trim().length > 0 : vslScript.trim().length > 0;
+    }
+    return content.trim().length > 0;
+  }
+
+  function submitLabel(): string {
+    if (tab === "url") return "Scan this page →";
+    if (tab === "vsl") return vslMode === "youtube" ? "Fetch and scan VSL →" : "Scan VSL script →";
+    return "Analyze for compliance risks";
+  }
+
+  const TABS: { id: Tab; label: string }[] = [
+    { id: "paste", label: "Paste text" },
+    { id: "url", label: "🌐 Scan URL" },
+    { id: "vsl", label: "🎬 VSL" },
+    { id: "upload", label: "Upload .txt" },
+  ];
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
 
-      {tab !== "url" && (
+      {(tab === "paste" || tab === "upload") && (
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Scan title
@@ -86,25 +143,32 @@ export function ScanForm() {
 
       {/* Tabs */}
       <div>
-        <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
-          {(["paste", "url", "upload"] as const).map((t) => (
+        <div className="flex flex-wrap gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
+          {TABS.map((t) => (
             <button
-              key={t}
+              key={t.id}
               type="button"
-              onClick={() => setTab(t)}
+              onClick={() => setTab(t.id)}
               className={[
-                "rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
-                tab === t
+                "flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
+                tab === t.id
                   ? "bg-white shadow text-gray-900"
                   : "text-gray-500 hover:text-gray-700",
               ].join(" ")}
             >
-              {t === "paste" ? "Paste text" : t === "url" ? "🌐 Scan URL" : "Upload .txt"}
+              {t.label}
+              {t.id === "vsl" && !isSentinel && (
+                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
+                  Sentinel
+                </span>
+              )}
             </button>
           ))}
         </div>
 
         <div className="mt-3">
+
+          {/* Paste tab */}
           {tab === "paste" && (
             <textarea
               value={content}
@@ -115,6 +179,7 @@ export function ScanForm() {
             />
           )}
 
+          {/* URL tab */}
           {tab === "url" && (
             <div className="space-y-4">
               <div>
@@ -130,12 +195,101 @@ export function ScanForm() {
                 />
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs text-blue-700 space-y-1">
-                <p className="font-semibold">What URL scanning does:</p>
+                <p className="font-semibold">What URL scanning does</p>
                 <p>We fetch the live page, strip navigation and boilerplate, and run the full compliance scan against the copy. Works on sales pages, landing pages, product pages and any publicly accessible URL.</p>
               </div>
             </div>
           )}
 
+          {/* VSL tab */}
+          {tab === "vsl" && !isSentinel && (
+            <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+              <p className="text-3xl">🎬</p>
+              <h3 className="mt-3 text-base font-semibold text-gray-900">VSL scanning is Sentinel-only</h3>
+              <p className="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
+                Fetch live transcripts from YouTube VSLs or paste your script for a full 21-category compliance scan including FCA, greenwashing and influencer disclosure rules.
+              </p>
+              <Link
+                href="/sentinel"
+                className="mt-5 inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+              >
+                Explore Sentinel →
+              </Link>
+            </div>
+          )}
+
+          {tab === "vsl" && isSentinel && (
+            <div className="space-y-4">
+              {/* VSL mode toggle */}
+              <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
+                {([["youtube", "YouTube URL"], ["script", "Paste script"]] as const).map(([mode, label]) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setVslMode(mode)}
+                    className={[
+                      "rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
+                      vslMode === mode ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700",
+                    ].join(" ")}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {vslMode === "youtube" && (
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      YouTube video URL or ID
+                    </label>
+                    <input
+                      type="text"
+                      value={vslUrl}
+                      onChange={(e) => setVslUrl(e.target.value)}
+                      placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                    />
+                  </div>
+                  <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
+                    <p className="font-semibold">How VSL scanning works</p>
+                    <p>We fetch the video&apos;s captions from YouTube and scan the full transcript for compliance risks. The video must have captions enabled. If it doesn&apos;t, use Paste script instead.</p>
+                  </div>
+                </div>
+              )}
+
+              {vslMode === "script" && (
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      VSL title (optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={vslTitle}
+                      onChange={(e) => setVslTitle(e.target.value)}
+                      placeholder="e.g. Product Launch VSL — June 2025"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      VSL script
+                    </label>
+                    <textarea
+                      value={vslScript}
+                      onChange={(e) => setVslScript(e.target.value)}
+                      rows={14}
+                      placeholder="Paste your full video sales letter script here. Include the complete voiceover text for the most accurate scan."
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Upload tab */}
           {tab === "upload" && (
             <div
               className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-10 text-center hover:border-red-400 hover:bg-red-50 transition-colors cursor-pointer"
@@ -169,15 +323,18 @@ export function ScanForm() {
         </div>
       )}
 
-      <Button
-        type="submit"
-        size="lg"
-        loading={loading}
-        disabled={!canSubmit}
-        className="w-full"
-      >
-        {tab === "url" ? "Scan this page →" : "Analyze for compliance risks"}
-      </Button>
+      {/* Don't show submit button when VSL tab is open for non-Sentinel */}
+      {!(tab === "vsl" && !isSentinel) && (
+        <Button
+          type="submit"
+          size="lg"
+          loading={loading}
+          disabled={!canSubmit()}
+          className="w-full"
+        >
+          {submitLabel()}
+        </Button>
+      )}
     </form>
   );
 }

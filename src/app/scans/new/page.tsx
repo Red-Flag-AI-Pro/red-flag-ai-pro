@@ -52,8 +52,8 @@ export default async function NewScanPage() {
           </h2>
           <p className="mt-2 text-sm text-red-600">
             {plan === "free"
-              ? "You've used your 1 free scan this month. Upgrade to Pro for 30 scans per month."
-              : `You've used all ${limit} Pro scans this month. Upgrade to Enterprise for unlimited scans.`}
+              ? "You're on the free plan. Upgrade to Pro for 20 scans a month."
+              : `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`}
           </p>
           <Link
             href="/billing"
@@ -69,13 +69,13 @@ export default async function NewScanPage() {
               You&apos;ve used <strong>{scansUsed}</strong> of <strong>{limit}</strong>{" "}
               scans this month.{" "}
               <Link href="/billing" className="font-semibold underline">
-                {plan === "free" ? "Upgrade to Pro" : "Upgrade to Enterprise"}
+                {plan === "free" ? "Upgrade to Pro" : "Upgrade to Growth"}
               </Link>{" "}
-              for {plan === "free" ? "30 scans per month" : "unlimited scans"}.
+              for {plan === "free" ? "20 scans per month" : "unlimited scans"}.
             </div>
           )}
           <div className="rounded-xl border border-gray-200 bg-white p-6">
-            <ScanForm />
+            <ScanForm plan={plan} />
           </div>
         </>
       )}
