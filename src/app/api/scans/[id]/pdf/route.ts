@@ -20,11 +20,12 @@ export async function GET(
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("plan")
+    .select("plan, agency_name")
     .eq("user_id", user.id)
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
+  const agencyName = (profile as { agency_name?: string | null })?.agency_name ?? null;
 
   if (plan === "free" || plan === "pro") {
     return NextResponse.json(
@@ -49,7 +50,7 @@ export async function GET(
     .select("*")
     .eq("scan_id", id);
 
-  const pdfBytes = await generateScanPdf(scan, flags ?? []);
+  const pdfBytes = await generateScanPdf(scan, flags ?? [], agencyName);
 
   return new Response(Buffer.from(pdfBytes), {
     headers: {

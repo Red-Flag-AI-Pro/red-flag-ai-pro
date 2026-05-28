@@ -38,7 +38,8 @@ function wrapText(text: string, maxChars: number): string[] {
 
 export async function generateScanPdf(
   scan: Scan,
-  flags: ScanFlag[]
+  flags: ScanFlag[],
+  agencyName?: string | null
 ): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
   const boldFont = await doc.embedFont(StandardFonts.HelveticaBold);
@@ -60,7 +61,10 @@ export async function generateScanPdf(
     color: rgb(0.1, 0.1, 0.15),
   });
 
-  page1.drawText("Red Flag AI Pro", {
+  const headerTitle = agencyName || "Red Flag AI Pro";
+  const headerSub = agencyName ? "Compliance Risk Report — Powered by Red Flag AI Pro" : "Compliance Risk Report";
+
+  page1.drawText(headerTitle, {
     x: margin,
     y: H - 44,
     size: 22,
@@ -68,7 +72,7 @@ export async function generateScanPdf(
     color: rgb(1, 1, 1),
   });
 
-  page1.drawText("Compliance Risk Report", {
+  page1.drawText(headerSub, {
     x: margin,
     y: H - 62,
     size: 11,
@@ -188,7 +192,7 @@ export async function generateScanPdf(
   // ── Page 2+: Flags ────────────────────────────────────────────────────────────
   if (flags.length === 0) {
     const pg = doc.addPage([W, H]);
-    drawPageHeader(pg, boldFont, W, H, margin);
+    drawPageHeader(pg, boldFont, W, H, margin, agencyName);
     pg.drawText("No compliance flags detected.", {
       x: margin,
       y: H - 120,
@@ -200,7 +204,7 @@ export async function generateScanPdf(
   } else {
     let pg = doc.addPage([W, H]);
     let pageNum = 2;
-    drawPageHeader(pg, boldFont, W, H, margin);
+    drawPageHeader(pg, boldFont, W, H, margin, agencyName);
     let y = H - 110;
 
     for (const flag of flags) {
@@ -216,7 +220,7 @@ export async function generateScanPdf(
         drawFooter(pg, regularFont, pageNum, W, margin);
         pg = doc.addPage([W, H]);
         pageNum++;
-        drawPageHeader(pg, boldFont, W, H, margin);
+        drawPageHeader(pg, boldFont, W, H, margin, agencyName);
         y = H - 110;
       }
 
@@ -317,7 +321,8 @@ function drawPageHeader(
   font: Awaited<ReturnType<PDFDocument["embedFont"]>>,
   W: number,
   H: number,
-  margin: number
+  margin: number,
+  agencyName?: string | null
 ) {
   page.drawRectangle({
     x: 0,
@@ -326,7 +331,7 @@ function drawPageHeader(
     height: 50,
     color: rgb(0.1, 0.1, 0.15),
   });
-  page.drawText("Red Flag AI Pro — Flag Details", {
+  page.drawText(`${agencyName || "Red Flag AI Pro"} — Flag Details`, {
     x: margin,
     y: H - 32,
     size: 14,
