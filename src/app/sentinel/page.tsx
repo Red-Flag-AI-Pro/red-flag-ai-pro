@@ -163,15 +163,15 @@ export default function SentinelPage() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BENEFITS.map((b) => (
             <div
               key={b.headline}
-              className="group rounded-2xl border border-gray-800/60 bg-gradient-to-b from-gray-900/70 to-transparent p-7 hover:border-red-500/20 hover:from-gray-900 transition-all duration-300"
+              className="group rounded-2xl border border-gray-800/60 bg-gradient-to-b from-gray-900/70 to-transparent p-9 hover:border-red-500/20 hover:from-gray-900 transition-all duration-300"
             >
-              <div className="text-2xl mb-4">{b.icon}</div>
-              <h3 className="text-sm font-bold text-white mb-3 leading-snug">{b.headline}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-500 transition-colors">
+              <div className="text-3xl mb-5">{b.icon}</div>
+              <h3 className="text-lg font-extrabold text-white mb-4 leading-snug">{b.headline}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors">
                 {b.body}
               </p>
             </div>
@@ -189,17 +189,17 @@ export default function SentinelPage() {
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             {WHO_ITS_FOR.map((item) => (
               <div
                 key={item.label}
-                className="group rounded-2xl border border-gray-800/60 bg-gray-900/30 p-8 hover:border-red-500/25 hover:bg-gray-900/60 transition-all duration-300 cursor-default"
+                className="group rounded-2xl border border-gray-800/60 bg-gray-900/30 p-10 hover:border-red-500/25 hover:bg-gray-900/60 transition-all duration-300 cursor-default"
               >
-                <span className="inline-block rounded-full border border-red-500/20 bg-red-500/8 px-3 py-1 text-xs font-bold text-red-400 mb-5">
+                <span className="inline-block rounded-full border border-red-500/20 bg-red-500/8 px-4 py-1.5 text-xs font-bold text-red-400 uppercase tracking-widest mb-7">
                   {item.label}
                 </span>
-                <h3 className="text-base font-bold text-white mb-3 leading-snug">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-extrabold text-white mb-4 leading-snug">{item.title}</h3>
+                <p className="text-gray-400 text-base leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
