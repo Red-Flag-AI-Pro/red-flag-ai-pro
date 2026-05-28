@@ -113,7 +113,7 @@ export default function SentinelPage() {
           </p>
 
           <p className="mt-5 text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-            Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is not an embarrassment — it is a regulatory event.
+            Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is not an embarrassment. It is a regulatory event.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-2">
