@@ -36,6 +36,16 @@ const BENEFITS = [
     body: "The EU Green Claims Directive and the CMA Green Claims Code are actively enforced. Agencies writing sustainability copy for clients are exposed if those claims are unsubstantiated. Sentinel catches greenwashing before it becomes a headline.",
   },
   {
+    icon: "🌐",
+    headline: "Scan live pages, not just copy you paste.",
+    body: "Give Sentinel a URL and it fetches the live page, strips navigation and boilerplate, and runs the full compliance scan against the actual published copy. No copying and pasting. If the page changes, run it again in seconds.",
+  },
+  {
+    icon: "🎬",
+    headline: "VSLs checked before they cost you money.",
+    body: "Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Either way the entire script goes through all 21 risk categories, including FCA, greenwashing and influencer disclosure rules, before a penny is spent on traffic.",
+  },
+  {
     icon: "🤖",
     headline: "AI copy. August 2026. Your responsibility.",
     body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you as the creator. Sentinel records what was checked, when, and by whom. That is your audit trail.",
@@ -344,10 +354,12 @@ export default function SentinelPage() {
                   ["EU AI Act compliance", "Partial", "✓ Full"],
                   ["FCA financial promotions", "Enterprise only", "✓ Included"],
                   ["Greenwashing scanner", "Limited", "✓ EU Green Claims Directive"],
+                  ["URL page scanning", "✗", "✓ Live page fetch"],
+                  ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
+                  ["Audio transcription", "✗", "✓ Whisper AI"],
+                  ["Multi-user team seats", "✗", "✓ Included"],
                   ["Signed PDF certificates", "✓", "✓"],
-                  ["URL page scanning", "✓", "✓"],
                   ["Legal timestamps", "✓", "✓"],
-                  ["3-year audit retention", "✓", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
                   ["Typical monthly cost", "£2,000 - £10,000", "£999"],
                 ].map(([feature, them, us]) => (

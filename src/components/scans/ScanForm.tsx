@@ -30,6 +30,7 @@ export function ScanForm({ plan = "free" }: Props) {
   const audioRef = useRef<HTMLInputElement>(null);
 
   const isSentinel = plan === "sentinel";
+  const isGrowthOrAbove = plan === "enterprise" || plan === "sentinel";
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -114,9 +115,9 @@ export function ScanForm({ plan = "free" }: Props) {
   function canSubmit(): boolean {
     if (tab === "url") return url.trim().length > 0;
     if (tab === "vsl") {
-      if (!isSentinel) return false;
-      if (vslMode === "youtube") return vslUrl.trim().length > 0;
-      if (vslMode === "audio") return audioFile !== null;
+      if (!isGrowthOrAbove) return false;
+      if (vslMode === "youtube") return isSentinel && vslUrl.trim().length > 0;
+      if (vslMode === "audio") return isSentinel && audioFile !== null;
       return vslScript.trim().length > 0;
     }
     return content.trim().length > 0;
@@ -173,9 +174,9 @@ export function ScanForm({ plan = "free" }: Props) {
               ].join(" ")}
             >
               {t.label}
-              {t.id === "vsl" && !isSentinel && (
+              {t.id === "vsl" && !isGrowthOrAbove && (
                 <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
-                  Sentinel
+                  Growth+
                 </span>
               )}
             </button>
@@ -218,31 +219,34 @@ export function ScanForm({ plan = "free" }: Props) {
           )}
 
           {/* VSL tab */}
-          {tab === "vsl" && !isSentinel && (
+          {tab === "vsl" && !isGrowthOrAbove && (
             <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
               <p className="text-3xl">🎬</p>
-              <h3 className="mt-3 text-base font-semibold text-gray-900">VSL scanning is Sentinel-only</h3>
+              <h3 className="mt-3 text-base font-semibold text-gray-900">VSL scanning starts on Growth</h3>
               <p className="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
-                Fetch live transcripts from YouTube VSLs or paste your script for a full 21-category compliance scan including FCA, greenwashing and influencer disclosure rules.
+                Growth lets you paste and scan VSL scripts. Sentinel adds YouTube transcript fetching and audio transcription via Whisper.
               </p>
               <Link
-                href="/sentinel"
+                href="/pricing"
                 className="mt-5 inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
               >
-                Explore Sentinel →
+                See plans →
               </Link>
             </div>
           )}
 
-          {tab === "vsl" && isSentinel && (
+          {tab === "vsl" && isGrowthOrAbove && (
             <div className="space-y-4">
               {/* VSL mode toggle */}
               <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
-                {([["youtube", "YouTube URL"], ["audio", "Upload audio"], ["script", "Paste script"]] as const).map(([mode, label]) => (
+                {(isSentinel
+                  ? [["youtube", "YouTube URL"], ["audio", "Upload audio"], ["script", "Paste script"]] as [string, string][]
+                  : [["script", "Paste script"]] as [string, string][]
+                ).map(([mode, label]) => (
                   <button
                     key={mode}
                     type="button"
-                    onClick={() => setVslMode(mode)}
+                    onClick={() => setVslMode(mode as VslMode)}
                     className={[
                       "rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
                       vslMode === mode ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700",
@@ -252,6 +256,17 @@ export function ScanForm({ plan = "free" }: Props) {
                   </button>
                 ))}
               </div>
+
+              {!isSentinel && isGrowthOrAbove && (
+                <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 flex items-center justify-between gap-3">
+                  <p className="text-xs text-gray-500">
+                    <span className="font-semibold text-gray-700">Sentinel</span> adds YouTube transcript fetching and audio transcription via Whisper.
+                  </p>
+                  <Link href="/sentinel" className="shrink-0 text-xs font-semibold text-red-600 hover:underline">
+                    Upgrade →
+                  </Link>
+                </div>
+              )}
 
               {vslMode === "youtube" && (
                 <div className="space-y-3">

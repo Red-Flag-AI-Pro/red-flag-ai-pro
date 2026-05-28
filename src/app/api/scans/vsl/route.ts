@@ -32,10 +32,11 @@ export async function POST(request: Request) {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  // VSL scanning is Sentinel-only
-  if (plan !== "sentinel") {
+  // YouTube and audio VSL is Sentinel-only; script paste is Growth+
+  const isGrowthOrAbove = plan === "enterprise" || plan === "sentinel";
+  if (!isGrowthOrAbove) {
     return NextResponse.json(
-      { error: "VSL scanning is available on the Sentinel plan only." },
+      { error: "VSL scanning is available on Growth and Sentinel plans." },
       { status: 403 }
     );
   }
@@ -83,6 +84,14 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ id: scan.id, source: "script", wordCount: content.split(/\s+/).length });
+  }
+
+  // YouTube URL mode is Sentinel-only (Growth gets script paste only)
+  if (mode === "youtube" && plan !== "sentinel") {
+    return NextResponse.json(
+      { error: "YouTube VSL scanning is available on the Sentinel plan only. Paste your script to scan on Growth." },
+      { status: 403 }
+    );
   }
 
   // --- YouTube URL mode ---

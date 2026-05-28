@@ -87,10 +87,10 @@ export default function PricingPage() {
               {[
                 "Unlimited scans",
                 "16 risk categories",
+                "URL page scanning",
+                "VSL script scanning",
                 "5 jurisdictions - FTC, GDPR, ASA, ACCC, CASL",
                 "EU AI Act compliance",
-                "Plain English flags",
-                "Rewrite suggestions",
                 "PDF compliance reports",
                 "Priority support",
               ].map((f) => (
@@ -147,13 +147,13 @@ export default function PricingPage() {
               {[
                 "Unlimited scans",
                 "All 21 risk categories",
+                "URL page scanning",
+                "YouTube VSL scanning",
+                "Audio transcription (Whisper)",
                 "FCA financial promotions",
                 "Greenwashing scanner",
-                "Human review log",
-                "Legal timestamps",
+                "Multi-user team seats",
                 "Signed PDF certificates",
-                "3-year audit retention",
-                "API access",
                 "Dedicated onboarding",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs">
