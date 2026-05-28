@@ -129,14 +129,13 @@ export default function PricingPage() {
           {/* Sentinel */}
           <style>{`
             @keyframes sentinelSheen {
-              0% { opacity: 0.4; background-position: -200% center; }
-              50% { opacity: 0.7; }
-              100% { opacity: 0.4; background-position: 200% center; }
+              0% { background-position: -100% center; }
+              100% { background-position: 200% center; }
             }
             .sentinel-sheen {
-              background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%);
-              background-size: 200% 100%;
-              animation: sentinelSheen 6s ease-in-out infinite;
+              background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%);
+              background-size: 300% 100%;
+              animation: sentinelSheen 8s ease-in-out infinite alternate;
             }
           `}</style>
           <div
