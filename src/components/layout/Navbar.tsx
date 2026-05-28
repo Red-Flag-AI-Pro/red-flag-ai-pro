@@ -71,9 +71,15 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               </Link>
               <Link
                 href="/pricing"
-                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors hidden sm:block"
               >
                 Pricing
+              </Link>
+              <Link
+                href="/sentinel"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm font-semibold text-red-400 hover:bg-gray-800 hover:text-red-300 transition-colors hidden sm:block"
+              >
+                Sentinel
               </Link>
               <Link
                 href="/login"

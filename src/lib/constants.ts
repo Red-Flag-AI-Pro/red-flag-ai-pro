@@ -43,4 +43,8 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   ai_disclosure: "AI Content — No Disclosure",
   ai_endorsement: "AI Endorsement Violation",
   automated_decisions: "Automated Decision Making",
+  financial_promotion: "FCA Financial Promotion",
+  greenwashing: "Greenwashing",
+  subscription_trap: "Subscription Trap",
+  influencer_disclosure: "Influencer Disclosure",
 };
