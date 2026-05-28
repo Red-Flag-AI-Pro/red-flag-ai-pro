@@ -216,17 +216,6 @@ export default function LandingPage() {
       <ExitIntent />
       <Navbar />
 
-      {/* Product Hunt launch banner */}
-      <div className="bg-amber-400 py-2.5 text-center">
-        <a
-          href="https://www.producthunt.com/products/red-flag-ai-pro?launch=red-flag-ai-pro"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-bold text-amber-900 hover:text-amber-800 transition-colors"
-        >
-          🚀 Launching on Product Hunt Wednesday 27th May — Support us and get early access →
-        </a>
-      </div>
 
       {/* Scrolling compliance ticker */}
       <div className="overflow-hidden bg-gray-950 border-b border-gray-800 py-2">
@@ -915,13 +904,11 @@ export default function LandingPage() {
 
       {/* Product Hunt Badge */}
       <div className="bg-gray-950 py-10 text-center">
-        <p className="text-red-400 text-sm font-bold uppercase tracking-widest mb-2">Live now at a discount price</p>
-        <p className="text-white text-lg font-bold mb-1">Full launch Wednesday 27th May on Product Hunt</p>
         <p className="text-gray-400 text-sm mb-6">Free to start. Pro from £49/month. No credit card needed.</p>
-        <a href="https://www.producthunt.com/posts/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.producthunt.com/products/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
           <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=red-flag-ai-pro&theme=dark"
-            alt="Red Flag AI Pro - on Product Hunt"
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522"
+            alt="Red Flag AI Pro - Spot illegal ads before buying. Scan copy before you publish | Product Hunt"
             width="250"
             height="54"
             className="mx-auto"
