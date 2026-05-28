@@ -8,6 +8,13 @@ import { PlanBadge } from "@/components/billing/PlanBadge";
 import { PLAN_LIMITS } from "@/lib/constants";
 import type { Plan, Scan } from "@/types";
 
+const PLAN_DISPLAY: Record<Plan, string> = {
+  free: "Free",
+  pro: "Pro",
+  enterprise: "Growth",
+  sentinel: "Sentinel",
+};
+
 function scoreColor(score: number) {
   if (score >= 70) return "text-green-600";
   if (score >= 40) return "text-amber-600";
@@ -30,23 +37,32 @@ export default async function DashboardPage() {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
   const limit = PLAN_LIMITS[plan];
+  const hasTeam = plan === "sentinel" && !!profile?.organisation_id;
 
   const startOfMonth = new Date();
   startOfMonth.setDate(1);
   startOfMonth.setHours(0, 0, 0, 0);
 
+  // Sentinel team members see all org scans; others see only their own
+  const recentScansQuery = supabase
+    .from("scans")
+    .select("id, title, score, created_at, status")
+    .order("created_at", { ascending: false })
+    .limit(5);
+
+  const monthCountQuery = supabase
+    .from("scans")
+    .select("id", { count: "exact", head: true })
+    .gte("created_at", startOfMonth.toISOString());
+
+  if (!hasTeam) {
+    recentScansQuery.eq("user_id", user.id);
+    monthCountQuery.eq("user_id", user.id);
+  }
+
   const [{ data: recentScans }, { count: monthCount }] = await Promise.all([
-    supabase
-      .from("scans")
-      .select("id, title, score, created_at, status")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(5),
-    supabase
-      .from("scans")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", user.id)
-      .gte("created_at", startOfMonth.toISOString()),
+    recentScansQuery,
+    monthCountQuery,
   ]);
 
   const scansThisMonth = monthCount ?? 0;
@@ -91,8 +107,11 @@ export default async function DashboardPage() {
           </p>
           {scansRemaining !== null && (
             <p className="mt-1 text-xs text-gray-400">
-              {scansRemaining} remaining on Free plan
+              {scansRemaining} of {limit} remaining this month
             </p>
+          )}
+          {hasTeam && (
+            <p className="mt-1 text-xs text-gray-400">across your whole team</p>
           )}
         </Card>
         <Card>
@@ -105,12 +124,14 @@ export default async function DashboardPage() {
           >
             {avgScore ?? "—"}
           </p>
-          <p className="mt-1 text-xs text-gray-400">from last 5 scans</p>
+          <p className="mt-1 text-xs text-gray-400">
+            {hasTeam ? "from last 5 team scans" : "from last 5 scans"}
+          </p>
         </Card>
         <Card>
           <p className="text-sm text-gray-500">Current plan</p>
-          <p className="mt-1 text-3xl font-bold capitalize text-gray-900">
-            {plan}
+          <p className="mt-1 text-3xl font-bold text-gray-900">
+            {PLAN_DISPLAY[plan]}
           </p>
           {plan === "free" && (
             <Link
@@ -120,8 +141,46 @@ export default async function DashboardPage() {
               Upgrade to Pro →
             </Link>
           )}
+          {plan === "pro" && (
+            <Link
+              href="/sentinel"
+              className="mt-1 block text-xs font-medium text-red-600 hover:underline"
+            >
+              Explore Sentinel →
+            </Link>
+          )}
+          {plan === "enterprise" && (
+            <Link
+              href="/sentinel"
+              className="mt-1 block text-xs font-medium text-red-600 hover:underline"
+            >
+              Upgrade to Sentinel →
+            </Link>
+          )}
         </Card>
       </div>
+
+      {/* Sentinel upsell for non-Sentinel plans */}
+      {plan !== "sentinel" && (
+        <div className="rounded-xl border border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-4 flex items-center justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold text-gray-900">
+              {plan === "free" ? "Scan smarter with Pro" : "Need team access? Try Sentinel"}
+            </p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              {plan === "free"
+                ? "20 scans/month, PDF reports, 16 risk categories. From £29/mo."
+                : "Team seats, 21 risk categories including FCA and greenwashing. £999/mo."}
+            </p>
+          </div>
+          <Link
+            href={plan === "free" ? "/billing" : "/sentinel"}
+            className="shrink-0 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+          >
+            {plan === "free" ? "Upgrade" : "Learn more"}
+          </Link>
+        </div>
+      )}
 
       {/* Recent scans */}
       <Card padding="none">

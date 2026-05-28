@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import type { Scan } from "@/types";
+import type { Plan, Scan } from "@/types";
 
 function scoreColor(score: number) {
   if (score >= 70) return "text-green-600";
@@ -19,19 +19,33 @@ export default async function HistoryPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: scans } = await supabase
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("plan, organisation_id")
+    .eq("user_id", user.id)
+    .single();
+
+  const plan: Plan = (profile?.plan as Plan) ?? "free";
+  const hasTeam = plan === "sentinel" && !!profile?.organisation_id;
+
+  const scansQuery = supabase
     .from("scans")
     .select("id, title, score, status, created_at")
-    .eq("user_id", user.id)
     .order("created_at", { ascending: false })
-    .limit(50);
+    .limit(100);
+
+  if (!hasTeam) scansQuery.eq("user_id", user.id);
+
+  const { data: scans } = await scansQuery;
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Scan History</h1>
-          <p className="text-sm text-gray-500">All your compliance scans</p>
+          <p className="text-sm text-gray-500">
+            {hasTeam ? "All scans across your team" : "All your compliance scans"}
+          </p>
         </div>
         <Link
           href="/scans/new"
