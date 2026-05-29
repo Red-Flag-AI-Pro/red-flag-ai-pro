@@ -510,62 +510,82 @@ export default function LandingPage() {
             {/* SELLER EXAMPLE */}
             <div className="flex flex-col gap-4">
               <div className="inline-flex items-center gap-2 self-start rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-400 uppercase tracking-widest">For Sellers</div>
-              <div className="rounded-2xl border-2 border-red-500/50 bg-red-950/30 p-6">
+
+              <div className="rounded-2xl border border-red-500/40 bg-red-950/20 p-6">
                 <div className="mb-4 flex items-center gap-2">
-                  <span className="text-red-400 text-xl">🚩</span>
+                  <span className="text-xl">🚩</span>
                   <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Flagged Copy</span>
                 </div>
-                <p className="text-white text-lg italic leading-relaxed">
+                <p className="text-white text-base italic leading-relaxed">
                   &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
                 </p>
-                <div className="mt-4 rounded-lg bg-red-900/40 p-3">
-                  <p className="text-xs text-red-300 font-semibold">⚠️ Flags triggered:</p>
-                  <p className="text-xs text-red-200 mt-1">Income claim without disclaimer · Unsubstantiated earnings · Guarantee contradiction · FTC · ASA · ACCC</p>
+                <div className="mt-5 border-t border-red-500/20 pt-4 space-y-3">
+                  <p className="text-xs font-bold text-red-400 uppercase tracking-widest">⚠️ Flags triggered</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Income claim without disclaimer", "Unsubstantiated earnings", "Guarantee contradiction"].map((f) => (
+                      <span key={f} className="rounded-full border border-red-700/50 bg-red-900/40 px-3 py-1 text-xs font-medium text-red-200">{f}</span>
+                    ))}
+                  </div>
+                  <p className="text-xs text-red-400/80 font-medium">FTC · ASA · ACCC</p>
                 </div>
               </div>
-              <div className="rounded-2xl border-2 border-green-500/50 bg-green-950/30 p-6">
+
+              <div className="rounded-2xl border border-green-500/40 bg-green-950/20 p-6">
                 <div className="mb-4 flex items-center gap-2">
-                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-xl">✓</span>
                   <span className="text-sm font-bold text-green-400 uppercase tracking-wider">Compliant Rewrite</span>
                 </div>
-                <p className="text-white text-lg italic leading-relaxed">
+                <p className="text-white text-base italic leading-relaxed">
                   &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
                 </p>
-                <div className="mt-4 rounded-lg bg-green-900/40 p-3">
-                  <p className="text-xs text-green-300 font-semibold">✅ Now compliant with:</p>
-                  <p className="text-xs text-green-200 mt-1">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
+                <div className="mt-5 border-t border-green-500/20 pt-4">
+                  <p className="text-xs font-bold text-green-400 uppercase tracking-widest mb-2">✅ Now compliant with</p>
+                  <p className="text-xs text-green-300/80">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
                 </div>
               </div>
             </div>
 
             {/* BUYER EXAMPLE */}
             <div className="flex flex-col gap-4">
-              <div className="inline-flex items-center gap-2 self-start rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-bold text-purple-400 uppercase tracking-widest">For Buyers</div>
-              <div className="rounded-2xl border-2 border-gray-600/50 bg-gray-800/50 p-6">
+              <div className="inline-flex items-center gap-2 self-start rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-400 uppercase tracking-widest">For Buyers</div>
+
+              <div className="rounded-2xl border border-gray-600/50 bg-gray-800/40 p-6">
                 <div className="mb-4 flex items-center gap-2">
-                  <span className="text-gray-400 text-xl">👀</span>
+                  <span className="text-xl">👀</span>
                   <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">Looks Legitimate</span>
                 </div>
-                <p className="text-white text-lg italic leading-relaxed">
+                <p className="text-white text-base italic leading-relaxed">
                   &ldquo;Over 2,400 students have completed this programme. Our top performers report life-changing results. Enrol today and get our 30-day satisfaction guarantee — we are so confident in our method that we offer a full refund if you do not see results within the first month.&rdquo;
                 </p>
-                <div className="mt-4 rounded-lg bg-gray-700/40 p-3">
-                  <p className="text-xs text-gray-400 font-semibold">Passed your gut check. Failed ours.</p>
+                <div className="mt-5 border-t border-gray-700 pt-4">
+                  <p className="text-sm font-bold text-amber-400">Passed your gut check. Failed ours.</p>
                 </div>
               </div>
-              <div className="rounded-2xl border-2 border-red-500/50 bg-red-950/30 p-6">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="text-red-400 text-xl">🚩</span>
+
+              <div className="rounded-2xl border border-red-500/40 bg-red-950/20 p-6">
+                <div className="mb-5 flex items-center gap-2">
+                  <span className="text-xl">🚩</span>
                   <span className="text-sm font-bold text-red-400 uppercase tracking-wider">What We Found</span>
                 </div>
-                <ul className="space-y-2">
-                  <li className="text-xs text-red-200"><span className="font-semibold text-red-300">Unverified social proof</span> — 2,400 students with no independent verification · FTC violation</li>
-                  <li className="text-xs text-red-200"><span className="font-semibold text-red-300">Vague results claim</span> — life-changing results with no data or disclaimer · ASA violation</li>
-                  <li className="text-xs text-red-200"><span className="font-semibold text-red-300">Conditional guarantee</span> — refund tied to results, contradicts UK statutory consumer rights · CMA violation</li>
-                  <li className="text-xs text-red-200"><span className="font-semibold text-red-300">Missing income disclaimer</span> — implied financial outcomes without mandatory disclosure · ACCC violation</li>
-                </ul>
-                <div className="mt-4 rounded-lg bg-red-900/40 p-3">
-                  <p className="text-xs text-red-300 font-semibold">Scan before you buy. Free. 60 seconds.</p>
+                <div className="space-y-4">
+                  {[
+                    { flag: "Unverified social proof", detail: "2,400 students — no independent verification", reg: "FTC violation" },
+                    { flag: "Vague results claim", detail: '"Life-changing results" — no data or disclaimer', reg: "ASA violation" },
+                    { flag: "Conditional guarantee", detail: "Refund tied to results — contradicts UK statutory consumer rights", reg: "CMA violation" },
+                    { flag: "Missing income disclaimer", detail: "Implied financial outcomes without mandatory disclosure", reg: "ACCC violation" },
+                  ].map((item) => (
+                    <div key={item.flag} className="flex items-start gap-3">
+                      <span style={{ color: "#ef4444" }} className="flex-shrink-0 mt-0.5">✕</span>
+                      <div>
+                        <p className="text-sm font-semibold text-white">{item.flag}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{item.detail}</p>
+                        <p className="text-xs text-red-400/80 mt-0.5 font-medium">{item.reg}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 border-t border-red-500/20 pt-4">
+                  <p className="text-sm font-bold text-white mb-3">Scan before you buy. Free. 60 seconds.</p>
                 </div>
               </div>
             </div>
