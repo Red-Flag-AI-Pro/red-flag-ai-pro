@@ -165,8 +165,8 @@ export default function PricingPage() {
           <div
             className="relative flex flex-col rounded-2xl p-7 overflow-hidden"
             style={{
-              background: "linear-gradient(160deg, #d4d4de 0%, #b8b8cc 35%, #9c9cb6 65%, #b0b0c4 100%)",
-              boxShadow: "0 8px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.15)",
+              background: "linear-gradient(160deg, #f0f0f8 0%, #d8d8ec 35%, #bfbfd8 65%, #d4d4e8 100%)",
+              boxShadow: "0 8px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(0,0,0,0.1)",
             }}
           >
             <div className="sentinel-sheen pointer-events-none absolute inset-0 rounded-2xl" />
