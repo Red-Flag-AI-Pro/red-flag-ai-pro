@@ -342,7 +342,7 @@ export default function LandingPage() {
             <p className="text-2xl sm:text-3xl font-bold text-gray-400 tracking-wide">Are you a Builder?</p>
             <p className="text-2xl sm:text-3xl font-bold text-gray-400 tracking-wide">Are you a Buyer?</p>
             <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl pt-2">
-              <span className="text-red-400">Scan it before it&apos;s too late.</span>
+              <span className="text-red-400">Scan it before it&apos;s too late!</span>
             </h1>
           </div>
 
