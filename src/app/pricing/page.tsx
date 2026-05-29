@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 const PRO_FEATURES = [
   "20 scans per month",
   "16 risk categories",
-  "URL page scanning",
   "Paste text and upload .txt",
   "Plain English flags + rewrite suggestions",
   "0–100 compliance score",

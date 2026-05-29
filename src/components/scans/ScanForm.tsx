@@ -31,6 +31,7 @@ export function ScanForm({ plan = "free" }: Props) {
 
   const isSentinel = plan === "sentinel";
   const isGrowthOrAbove = plan === "enterprise" || plan === "sentinel";
+  const canScanUrl = isGrowthOrAbove;
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -113,7 +114,7 @@ export function ScanForm({ plan = "free" }: Props) {
   }
 
   function canSubmit(): boolean {
-    if (tab === "url") return url.trim().length > 0;
+    if (tab === "url") return canScanUrl && url.trim().length > 0;
     if (tab === "vsl") {
       if (!isGrowthOrAbove) return false;
       if (vslMode === "youtube") return isSentinel && vslUrl.trim().length > 0;
@@ -174,7 +175,12 @@ export function ScanForm({ plan = "free" }: Props) {
               ].join(" ")}
             >
               {t.label}
-              {t.id === "vsl" && !isGrowthOrAbove && (
+              {t.id === "url" && !canScanUrl && (
+                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
+                  Growth+
+                </span>
+              )}
+          {t.id === "vsl" && !isGrowthOrAbove && (
                 <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
                   Growth+
                 </span>
@@ -196,9 +202,25 @@ export function ScanForm({ plan = "free" }: Props) {
             />
           )}
 
+          {/* URL tab - locked for free/pro */}
+          {tab === "url" && !canScanUrl && (
+            <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+              <p className="text-3xl mb-3">🌐</p>
+              <h3 className="text-base font-semibold text-gray-900">URL scanning starts on Growth</h3>
+              <p className="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
+                Paste a URL and we fetch the live page and scan what is actually published. Available on Growth and Sentinel plans.
+              </p>
+              <Link
+                href="/pricing"
+                className="mt-5 inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+              >
+                See plans →
+              </Link>
+            </div>
+          )}
+
           {/* URL tab */}
-          {tab === "url" && (
-            <div className="space-y-4">
+          {tab === "url" && canScanUrl && (<div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Page URL

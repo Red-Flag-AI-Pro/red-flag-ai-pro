@@ -23,6 +23,15 @@ export async function POST(request: Request) {
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
+
+  // URL scanning is Growth+ only
+  if (plan === "free" || plan === "pro") {
+    return NextResponse.json(
+      { error: "URL scanning is available on Growth and Sentinel plans. Upgrade to scan live pages." },
+      { status: 403 }
+    );
+  }
+
   const limit = PLAN_LIMITS[plan];
 
   // Quota check
