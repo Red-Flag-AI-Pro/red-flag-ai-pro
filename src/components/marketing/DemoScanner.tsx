@@ -110,6 +110,14 @@ export function DemoScanner() {
           </p>
         </div>
 
+        {/* Founder voice */}
+        <div className="mb-6 rounded-xl border border-gray-800 bg-gray-900/50 px-6 py-5">
+          <p className="text-gray-300 text-sm leading-relaxed italic">
+            &ldquo;I spent years writing funnels and running ads without knowing half of what I was doing was illegal. Not because I was trying to break the law, because nobody told me where the line was. This is what I needed back then. Sixty seconds. Free.&rdquo;
+          </p>
+          <p className="mt-2 text-red-400 text-xs font-semibold">— James, Founder. Try it below.</p>
+        </div>
+
         {/* Input */}
         <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
           <textarea
