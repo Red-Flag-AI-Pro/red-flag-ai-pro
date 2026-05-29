@@ -78,22 +78,21 @@ export default function PricingPage() {
           </p>
         </div>
 
+        {/* Founder note */}
+        <div className="mb-6 rounded-xl border border-gray-700 bg-gray-900/50 p-5 max-w-lg">
+          <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">From the founder</p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            I built Pro for the person I used to be — running funnels alone, no legal budget, spending what little I had on ads and just hoping the copy was okay. I know what it costs when it isn&apos;t. £39 is what I wished existed back then.
+          </p>
+          <p className="mt-2 text-gray-500 text-xs">— James</p>
+        </div>
+
         {/* 3-column plans */}
         <div className="grid gap-5 grid-cols-1 lg:grid-cols-3 items-start">
 
-          {/* Founder note — Pro plan */}
-          <div className="lg:col-span-1 flex flex-col">
-            <div className="rounded-xl border border-gray-700 bg-gray-900/50 p-4 mb-3">
-              <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">From the founder</p>
-              <p className="text-gray-300 text-xs leading-relaxed">
-                I built Pro for the person I used to be — running funnels alone, no legal budget, spending what little I had on ads and just hoping the copy was okay. I know what it costs when it isn&apos;t. £39 is what I wished existed back then.
-              </p>
-              <p className="mt-2 text-gray-500 text-xs">— James</p>
-            </div>
-
           {/* Pro */}
           <div
-            className="relative flex flex-col rounded-2xl border border-red-500/60 p-7 flex-1"
+            className="relative flex flex-col rounded-2xl border border-red-500/60 p-7"
             style={{ background: "linear-gradient(160deg, #1a0808 0%, #0f0810 100%)" }}
           >
             <div className="absolute -top-3 left-6 rounded-full bg-amber-400 px-3 py-0.5 text-xs font-bold text-amber-900">
@@ -128,7 +127,6 @@ export default function PricingPage() {
               </ul>
             </div>
           </div>
-          </div>{/* end founder+pro wrapper */}
 
           {/* Growth */}
           <div className="relative flex flex-col rounded-2xl border border-gray-700 bg-gray-900/60 p-7">
