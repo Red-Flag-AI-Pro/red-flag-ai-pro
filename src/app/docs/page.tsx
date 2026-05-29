@@ -33,9 +33,15 @@ export default function DocsPage() {
         <div>
           <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">Developer Docs</p>
           <h1 className="text-4xl font-extrabold text-white mb-3">Red Flag AI Pro API</h1>
-          <p className="text-gray-400 text-base max-w-xl">
+          <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
             Scan marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Available on the Sentinel plan.
           </p>
+          <div className="mt-6 rounded-xl border border-gray-800 bg-gray-900/50 p-6 max-w-2xl">
+            <p className="text-sm font-semibold text-white mb-2">Why agencies use the API</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Instead of your team manually pasting copy into the dashboard, the API lets you plug compliance scanning directly into the tools you already use. Your CMS can scan a page the moment it is published. Your project management tool can flag a task when copy fails. Your client portal can show a live compliance score without anyone lifting a finger. If it can make an HTTP request, it can use this API.
+            </p>
+          </div>
           <div className="mt-4 flex gap-3">
             <Link href="/settings" className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors">
               Get API key →
