@@ -46,6 +46,16 @@ const BENEFITS = [
     body: "Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Either way the entire script goes through all 21 risk categories, including FCA, greenwashing and influencer disclosure rules, before a penny is spent on traffic.",
   },
   {
+    icon: "🧩",
+    headline: "Scan any page without leaving your browser.",
+    body: "The Red Flag AI Pro Chrome extension puts a compliance scan one click away. Open any page, click the icon, see the score and top flags in seconds. No copy-paste, no switching tabs. Install it once, use it on every client review.",
+  },
+  {
+    icon: "⚡",
+    headline: "Compliance in your workflow, not outside it.",
+    body: "Every scan fires a webhook to any URL. Paste your Zapier hook into Settings and scan results flow directly into Slack, your CRM, Google Sheets or any tool your team already uses. The REST API lets you embed scanning into your own systems.",
+  },
+  {
     icon: "🤖",
     headline: "AI copy. August 2026. Your responsibility.",
     body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you as the creator. Sentinel records what was checked, when, and by whom. That is your audit trail.",
@@ -56,22 +66,22 @@ const WHO_ITS_FOR = [
   {
     label: "Digital agencies",
     title: "You write copy for clients. Their compliance failure is your liability.",
-    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a signed record proving you reviewed it before it went out. That is the difference between a claim dismissed and a claim upheld.",
+    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a signed record proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and auto-monitoring that makes compliance a service you deliver, not a risk you carry.",
   },
   {
     label: "Legal and compliance teams",
     title: "Your review process lives in inboxes. That is not a system.",
-    description: "Sentinel replaces informal email-based review with a logged, timestamped, signed process. Every piece of copy has a record. Every certificate is retrievable in seconds. When the audit arrives, you are ready.",
+    description: "Sentinel replaces informal email review with a logged, timestamped, signed process. API access and webhooks let you integrate scanning into your existing workflow. Every certificate is retrievable in seconds. When the audit arrives, you are ready.",
   },
   {
     label: "FCA-regulated businesses",
     title: "Financial promotions carry the heaviest penalties in UK advertising law.",
-    description: "Sentinel checks copy against FCA financial promotion rules before publication and issues a signed certificate confirming it was checked. The protection your compliance officer has been asking for, built into your content workflow.",
+    description: "Sentinel checks copy against FCA financial promotion rules before publication and issues a signed certificate confirming it was checked. The Chrome extension means your team can scan any page they are reviewing without leaving the browser.",
   },
   {
     label: "Enterprise marketing teams",
     title: "Multi-jurisdiction campaigns. One failure can shut a campaign in five countries.",
-    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. One certificate covers all jurisdictions. One source of truth for your compliance record, however many markets you operate in.",
+    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Site audit scans your entire domain in one run. Weekly monitoring flags changes before they become complaints. One compliance record for your whole operation.",
   },
 ];
 
@@ -357,9 +367,13 @@ export default function SentinelPage() {
                   ["URL page scanning", "✗", "✓ Live page fetch"],
                   ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
                   ["Audio transcription", "✗", "✓ Whisper AI"],
+                  ["Full site audit", "✗", "✓ Up to 50 pages"],
+                  ["Weekly auto-monitoring", "✗", "✓ Unlimited URLs"],
+                  ["Chrome extension", "✗", "✓ Included"],
+                  ["REST API + webhooks", "✗", "✓ Zapier ready"],
                   ["Multi-user team seats", "✗", "✓ Included"],
+                  ["White-label PDF reports", "✗", "✓ Your branding"],
                   ["Signed PDF certificates", "✓", "✓"],
-                  ["Legal timestamps", "✓", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
                   ["Typical monthly cost", "£2,000 - £10,000", "£999"],
                 ].map(([feature, them, us]) => (
