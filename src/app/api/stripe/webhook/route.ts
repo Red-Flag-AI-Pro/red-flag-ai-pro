@@ -56,6 +56,7 @@ export async function POST(request: Request) {
       const planMap: Record<string, string> = {
         [process.env.STRIPE_PRICE_PRO_ID!]: "pro",
         [process.env.STRIPE_PRICE_ENTERPRISE_ID!]: "enterprise",
+        [process.env.STRIPE_PRICE_SENTINEL_ID!]: "sentinel",
       };
 
       const priceId = sub.items.data[0]?.price.id;
