@@ -56,12 +56,21 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
             <p className="text-sm text-gray-500 mt-1">{client.notes}</p>
           )}
         </div>
-        <Link
-          href={`/scans/new?client=${id}`}
-          className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors whitespace-nowrap"
-        >
-          + New scan
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href={`/portal/${id}`}
+            target="_blank"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap"
+          >
+            Client portal →
+          </Link>
+          <Link
+            href={`/scans/new?client=${id}`}
+            className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors whitespace-nowrap"
+          >
+            + New scan
+          </Link>
+        </div>
       </div>
 
       {/* Stats */}

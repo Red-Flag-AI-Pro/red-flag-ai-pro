@@ -284,6 +284,18 @@ export default function LandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": FAQS.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a }
+          }))
+        }) }}
+      />
       <ExitIntent />
       <Navbar />
 
@@ -917,6 +929,44 @@ export default function LandingPage() {
           >
             Read the story →
           </Link>
+        </div>
+      </section>
+
+      {/* Email lead magnet */}
+      <section className="bg-gray-950 py-14">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Free download</p>
+          <h2 className="text-3xl font-extrabold text-white mb-3">
+            The 16-Point Marketing Compliance Checklist
+          </h2>
+          <p className="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
+            For sellers: every compliance check you need before you launch. For buyers: every red flag to look for before you buy. Free — no spam, one email.
+          </p>
+          <form
+            action="https://redflagaipro.com/api/checklist-signup"
+            method="POST"
+            className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement)?.value;
+              window.location.href = `/blog/marketing-compliance-checklist-2026?email=${encodeURIComponent(email)}`;
+            }}
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-red-500 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors whitespace-nowrap"
+            >
+              Send me the checklist →
+            </button>
+          </form>
+          <p className="text-xs text-gray-600 mt-3">No account needed. Instant access.</p>
         </div>
       </section>
 

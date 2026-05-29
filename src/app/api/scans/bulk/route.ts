@@ -104,22 +104,23 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const domain: string = (body.domain ?? "").trim();
-
-  if (!domain) return NextResponse.json({ error: "Domain is required." }, { status: 400 });
-
-  const fullDomain = domain.startsWith("http") ? domain : `https://${domain}`;
-  try { new URL(fullDomain); } catch {
-    return NextResponse.json({ error: "Please enter a valid domain." }, { status: 400 });
-  }
-
+  const pastedUrls: string[] = body.urls ?? [];
   const urlLimit = plan === "sentinel" ? SENTINEL_LIMIT : GROWTH_LIMIT;
 
-  // Extract URLs from sitemap
-  const allUrls = await extractUrlsFromSitemap(fullDomain);
-  const urls = allUrls.slice(0, urlLimit);
+  let urls: string[] = [];
 
-  if (urls.length === 0) {
-    return NextResponse.json({ error: "No URLs found for this domain." }, { status: 400 });
+  if (pastedUrls.length > 0) {
+    urls = pastedUrls.filter((u: string) => { try { new URL(u); return true; } catch { return false; } }).slice(0, urlLimit);
+    if (urls.length === 0) return NextResponse.json({ error: "No valid URLs found. Make sure URLs start with https://" }, { status: 400 });
+  } else {
+    if (!domain) return NextResponse.json({ error: "Domain is required." }, { status: 400 });
+    const fullDomain = domain.startsWith("http") ? domain : `https://${domain}`;
+    try { new URL(fullDomain); } catch {
+      return NextResponse.json({ error: "Please enter a valid domain." }, { status: 400 });
+    }
+    const allUrls = await extractUrlsFromSitemap(fullDomain);
+    urls = allUrls.slice(0, urlLimit);
+    if (urls.length === 0) return NextResponse.json({ error: "No URLs found for this domain." }, { status: 400 });
   }
 
   // Scan all URLs (sequential to avoid hammering servers)
@@ -132,13 +133,14 @@ export async function POST(request: Request) {
   // Save a summary scan
   const avgScore = Math.round(results.reduce((s, r) => s + r.score, 0) / results.length);
   const highRisk = results.filter((r) => r.score < 40).length;
-  const summary = `Bulk scan of ${fullDomain} — ${urls.length} pages scanned. Average score: ${avgScore}. High risk pages: ${highRisk}.`;
+  const scanLabel = pastedUrls.length > 0 ? `${urls[0]} +${urls.length - 1} more` : (domain.startsWith("http") ? domain : `https://${domain}`);
+  const summary = `Bulk scan of ${scanLabel} — ${urls.length} pages scanned. Average score: ${avgScore}. High risk pages: ${highRisk}.`;
 
   const { data: scan } = await supabase
     .from("scans")
     .insert({
       user_id: user.id,
-      title: `[Bulk] ${fullDomain}`,
+      title: `[Bulk] ${scanLabel}`,
       content: summary,
       score: avgScore,
       status: "complete",
@@ -148,7 +150,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     scanId: scan?.id,
-    domain: fullDomain,
+    domain: scanLabel,
     total: results.length,
     avgScore,
     highRisk,

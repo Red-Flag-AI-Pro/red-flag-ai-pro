@@ -1513,6 +1513,440 @@ Paste your pricing page, onboarding emails or sales copy and get a compliance sc
 [Scan your SaaS copy free →](https://www.redflagaipro.com/signup)
     `,
   },
+  {
+    slug: "how-to-check-if-an-ad-is-legal-uk",
+    title: "How to Check If an Ad Is Legal in the UK — A Plain English Guide for Buyers and Sellers",
+    description: "Before you buy from an ad or publish one, here is exactly how to check if it is legal under UK law. No lawyer needed. Takes 60 seconds.",
+    date: "2026-05-29",
+    readTime: "5 min read",
+    category: "For Buyers",
+    content: `
+## Before You Hand Over Your Money — or Spend It on Ads
+
+Every day, thousands of people in the UK buy from ads that are breaking the law. And thousands of marketers publish ads that could get them fined without knowing it.
+
+The good news: checking whether an ad is legal does not require a lawyer or a compliance team. This guide walks you through exactly what to look for.
+
+---
+
+## What Makes an Ad Illegal in the UK?
+
+The Advertising Standards Authority (ASA) and the Competition and Markets Authority (CMA) regulate advertising in the UK. The core rules come from the CAP Code, the Consumer Protection from Unfair Trading Regulations, and the Consumer Rights Act 2015.
+
+An ad is illegal if it:
+
+- Makes **false or misleading claims** — including claims that are technically true but create a false impression
+- Uses **fake urgency** — countdown timers that reset, "limited time" offers that never end
+- Uses **fake scarcity** — "only 3 left" when there is no actual limit
+- Contains **unsubstantiated testimonials** — reviews or case studies that cannot be verified
+- Makes **income or earnings claims** without substantiation and without an earnings disclaimer
+- Contains **health claims** that are not authorised under UK regulations
+- Uses **drip pricing** — showing a price that increases with hidden fees at checkout
+- Makes a **guarantee** that contradicts the Terms of Service
+- Uses **AI-generated content** without disclosure from August 2026
+
+---
+
+## The Quickest Way to Check: Both Sides
+
+**If you are a buyer:**
+
+Paste the sales page, ad or email into Red Flag AI Pro. In 60 seconds you get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials — walk away. If it comes back clean — buy with confidence.
+
+Free. No account needed. [redflagaipro.com](https://www.redflagaipro.com)
+
+**If you are a seller:**
+
+Run your copy through the same tool before you spend a penny on ads. Every flag comes with a suggested rewrite. Fix it before it reaches the ASA.
+
+---
+
+## The 5 Most Common Illegal Ads in the UK Right Now
+
+### 1. The Reset Countdown Timer
+"Offer ends in 02:47:33" — timer resets every time you reload the page. Illegal under CMA dark patterns guidance. Specifically named in the Digital Markets, Competition and Consumers Act.
+
+### 2. The Income Claim Without a Disclaimer
+"Our members earn £5,000 per month." Without an earnings disclaimer showing typical results, this violates ASA CAP Code rules and CMA guidance on misleading commercial practices.
+
+### 3. The "Limited Spots" That Never Run Out
+"Only 10 places available." You come back a week later — still 10 places available. Illegal under CAP Code Rule 3.22 and CMA dark patterns enforcement.
+
+### 4. The Conditional Refund That Contradicts Statutory Rights
+"30-day money back guarantee — but you must complete all modules first." UK consumers have a statutory 14-day right to cancel digital purchases. Any condition that makes a refund harder to claim than the statutory right is unenforceable — and advertising it is misleading.
+
+### 5. The Testimonial Without Disclosure
+"I made £20,000 in my first month." The person who said this received a free product or commission. The commercial relationship was not disclosed. ASA CAP Code Rule 2.1 and FTC Endorsement Guides both require disclosure of any material relationship.
+
+---
+
+## Report It If You Find It
+
+**ASA complaints**: asa.org.uk — free, online, takes 5 minutes
+**CMA reports**: gov.uk/report-trading-standards
+**Trading Standards**: Citizens Advice consumer helpline 0808 223 1133
+
+If you have been financially harmed by an illegal ad — contact your bank about a chargeback on grounds of misrepresentation.
+
+---
+
+## Scan Any Ad Right Now
+
+Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup. 60 seconds.
+
+[Check if it is legal →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "asa-complaint-what-happens-to-agency",
+    title: "Your Client Got an ASA Complaint. What Happens to Your Agency?",
+    description: "When a client campaign triggers an ASA complaint, agencies are increasingly named alongside brands. Here is exactly what happens and how to protect yourself.",
+    date: "2026-05-29",
+    readTime: "5 min read",
+    category: "For Agencies",
+    content: `
+## The Call You Do Not Want to Receive
+
+A client calls. They have received a letter from the ASA. One of the campaigns you wrote and managed is under investigation.
+
+What happens next — and what does it mean for your agency?
+
+---
+
+## How ASA Investigations Work
+
+The ASA receives a complaint — from a consumer, a competitor or its own proactive monitoring team. It reviews the ad and decides whether to open a formal investigation.
+
+If it opens an investigation:
+
+1. The ASA contacts the **advertiser** (your client) asking for evidence to substantiate the claims
+2. If the ad was produced by an agency, the ASA may contact the agency directly
+3. The client and agency submit their response
+4. The ASA adjudicates — usually within 3-4 months
+5. The ruling is published publicly on the ASA website
+6. If upheld, the ad must be withdrawn and not appear again in that form
+
+---
+
+## When Is the Agency Named?
+
+Historically, ASA rulings named the brand. But since 2022, the ASA has increasingly:
+
+- Referenced agencies in published rulings
+- Contacted agencies directly for substantiation evidence
+- Named agencies in cases involving influencer campaigns they managed
+- Required agencies to have substantiation processes in place
+
+The FTC in the US goes further — agencies that organise and manage influencer campaigns are held directly responsible for disclosure failures under the 2023 Endorsement Guides.
+
+---
+
+## The PI Insurance Problem
+
+Your Professional Indemnity insurance covers professional negligence — work that was below the standard expected of a competent professional.
+
+If a client suffers loss because your agency produced non-compliant marketing copy, they have a claim against you.
+
+The problem: many PI policies now include AI exclusions. If the copy was AI-generated and not properly disclosed, the claim may fall outside your policy.
+
+Ask your broker this question now: **"Does our current policy cover claims arising from AI-generated copy that breaches advertising regulations?"**
+
+---
+
+## Your Protection: A Documented Review Process
+
+The single best protection against an ASA complaint affecting your agency is a documented compliance review process. Specifically:
+
+- A timestamped record showing the copy was reviewed before publication
+- Who reviewed it and on what date
+- What was checked
+- What changes were made as a result
+
+This is exactly what Red Flag AI Pro creates automatically. Every scan produces a timestamped compliance report. If the ASA or a client asks "can you prove you reviewed this before it went live?" — the answer is yes, with a signed PDF certificate showing exactly what was checked and when.
+
+---
+
+## What to Do If You Get the Call
+
+1. **Do not panic.** An ASA investigation is not a prosecution. Most investigations are resolved with an agreement to amend or withdraw the ad.
+2. **Gather your evidence.** What substantiation do you have for the claims made? Do you have proof of a compliance review?
+3. **Contact your PI insurer.** Notify them immediately — even if you are not sure a claim will follow.
+4. **Review your process.** Use the investigation as the trigger to put a proper compliance review process in place.
+
+---
+
+## Start Before the Complaint Arrives
+
+Red Flag AI Pro scans client copy against the full ASA CAP Code before it publishes — alongside FTC, GDPR, FCA, ACCC and CASL simultaneously.
+
+Every scan produces a signed PDF certificate. Sentinel plan includes team seats, client workspaces and weekly monitoring of live pages.
+
+[See Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
+    `,
+  },
+  {
+    slug: "income-claim-disclaimer-example-uk",
+    title: "Income Claim Disclaimer — Examples and Templates for UK Marketers",
+    description: "If your marketing copy contains income or earnings claims, you need a disclaimer. Here are compliant templates for UK, EU, US and Australian regulations with plain English guidance.",
+    date: "2026-05-29",
+    readTime: "4 min read",
+    category: "For Sellers",
+    content: `
+## Why You Need an Earnings Disclaimer
+
+If your marketing copy contains any claim — direct or implied — that a person can earn money, generate income, or achieve financial results from your product or service, you need a disclaimer.
+
+Without one, you are in breach of:
+
+- **FTC guidelines** (US) on income representations
+- **ASA CAP Code** (UK) on testimonials and results claims
+- **CMA guidance** (UK) on misleading commercial practices
+- **ACCC rules** (Australia) on earnings representations
+- **CASL/Competition Bureau** (Canada) on misleading advertising
+
+The disclaimer does not make a false claim legal. But it is a required element of any legally compliant income claim.
+
+---
+
+## The Standard Disclaimer — Use This as a Starting Point
+
+*"Results are not typical. Individual results will vary based on effort, experience, market conditions and other factors. The income figures shown represent exceptional results achieved by a small number of customers and are not intended as a representation of what you will earn. Past results are not indicative of future performance."*
+
+---
+
+## Variants by Jurisdiction
+
+### UK (ASA / CMA)
+
+*"The results shown are not typical. Our customers report a wide range of results. Factors including your prior experience, effort, market conditions and business decisions will significantly affect your results. We cannot guarantee any specific outcome."*
+
+### EU (UCPD)
+
+*"Individual results vary significantly. The outcomes shown are achieved by customers who have applied the programme consistently over time and who had prior relevant experience. These results are not typical and should not be taken as a representation of what you will achieve."*
+
+### US (FTC)
+
+*"Results not typical. Individual results will vary. Many people who purchase online business programmes never earn any money at all. The income examples shown are exceptional results and are not what you should expect to achieve."*
+
+The FTC requires that if you show a testimonial with above-average results, you also disclose what typical customers earn. If most customers earn nothing, you must say so.
+
+### Australia (ACCC)
+
+*"The results shown are not representative of the typical customer experience. Results depend on individual effort, experience, and market conditions. Please read our full Income Disclosure Statement before purchasing."*
+
+---
+
+## Where to Put the Disclaimer
+
+- **On the sales page** — prominently, near the income claims — not buried in the footer
+- **On the order page** — visible before the customer pays
+- **In any email** containing income claims
+- **In video content** — as an on-screen text overlay or spoken disclosure
+
+The ASA and FTC are both explicit: a disclaimer in small print that contradicts a bold headline claim does not make the headline legal.
+
+---
+
+## What the Disclaimer Cannot Do
+
+A disclaimer cannot save a claim that is factually false. If your copy says "earn £10,000 per month" and typical customers earn nothing, no disclaimer makes that headline legal.
+
+The disclaimer accompanies a substantiated claim — it does not replace substantiation.
+
+---
+
+## Scan Your Income Claims
+
+Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all five jurisdictions simultaneously.
+
+[Scan your copy free →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "marketing-compliance-software-comparison-2026",
+    title: "Marketing Compliance Software 2026 — What Actually Exists and What It Costs",
+    description: "A plain English comparison of the tools agencies and marketers use for compliance checking. What they do, what they cost, and the gap Red Flag AI Pro fills.",
+    date: "2026-05-29",
+    readTime: "6 min read",
+    category: "Compliance",
+    content: `
+## The Honest State of Marketing Compliance Software
+
+If you search for "marketing compliance software" you will find enterprise tools built for legal teams at FTSE 100 companies, manual compliance consultants charging by the hour, and a handful of specialist tools for specific niches like financial services or pharmaceuticals.
+
+Most of them have three things in common: they are expensive, they are slow, and they were not built for the people who actually write marketing copy — course creators, digital agencies, funnel builders, SaaS founders.
+
+This is the honest comparison.
+
+---
+
+## The Compliance Tool Landscape in 2026
+
+### Enterprise Compliance Platforms (Red Marker, Blee, Veeva Vault)
+
+**What they do**: Workflow-based review platforms used by enterprise legal and compliance teams. Copy is submitted, reviewed by compliance officers, approved or rejected with comments.
+
+**Who they are for**: Banks, pharmaceuticals, insurance companies — regulated industries with dedicated compliance headcount.
+
+**What they cost**: £2,000–£10,000 per month. Minimum contract terms. Weeks of onboarding.
+
+**The gap**: Not designed for agencies or digital marketers. Not real-time. Requires compliance staff to operate. No multi-jurisdiction scanning.
+
+---
+
+### Manual Compliance Consultants
+
+**What they do**: A compliance specialist reviews your copy, flags issues, provides written advice.
+
+**Who they are for**: Businesses that need expert advice on specific, complex compliance questions.
+
+**What they cost**: £150–£400 per hour. 48–72 hour turnaround. Ongoing retainer £500–£2,000 per month.
+
+**The gap**: Does not scale. Cannot review copy at the speed modern marketing requires. Does not produce automated audit trails.
+
+---
+
+### Ad Platform Compliance Tools (Google, Meta)
+
+**What they do**: Check ads against platform policies before they run. Block ads that violate platform rules.
+
+**Who they are for**: Advertisers running paid campaigns.
+
+**What they cost**: Included in the ad platform.
+
+**The gap**: Platform-specific. Does not check for FTC, ASA, GDPR or FCA violations. Does not cover landing pages, VSLs, email copy. Does not produce compliance records.
+
+---
+
+### Red Flag AI Pro
+
+**What it does**: Scans any marketing copy — text, URLs, YouTube VSLs, audio files, entire websites — against 21 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
+
+**Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
+
+**What it costs**: Pro £39/month. Growth £199/month. Sentinel £999/month.
+
+**What makes it different**:
+- Real-time — results in 60 seconds, not 48-72 hours
+- Multi-jurisdiction — all five major markets in one scan
+- Covers all formats — text, URL, VSL transcript, audio, whole website
+- Produces signed PDF certificates as audit evidence
+- Sentinel includes team seats, client workspaces, weekly monitoring, white-label reports, API and webhooks
+- Live in a day — not weeks of onboarding
+
+---
+
+## What Still Requires a Human
+
+Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high-stakes decisions — FCA-regulated financial promotions, pharmaceutical claims, specific regulatory advice — you need qualified legal counsel.
+
+What Red Flag AI Pro does is catch the 90% of compliance issues that are detectable through language pattern analysis: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
+
+It is the first line of defence that means fewer problems reach the lawyer's desk — and when they do, there is already a documented review trail.
+
+---
+
+## The Right Tool for the Right Job
+
+| Need | Best option |
+|------|-------------|
+| Quick check before publishing | Red Flag AI Pro free scan |
+| Agency compliance infrastructure | Red Flag AI Pro Sentinel |
+| FCA-regulated financial promotions | Red Flag AI Pro Sentinel + FCA-authorised approver |
+| Enterprise workflow management | Red Marker / Blee |
+| Complex legal advice | Qualified compliance solicitor |
+
+[Try Red Flag AI Pro free →](https://www.redflagaipro.com)
+    `,
+  },
+  {
+    slug: "fake-urgency-countdown-timers-illegal-uk-eu",
+    title: "Fake Urgency and Countdown Timers — When They Are Illegal and What to Do Instead",
+    description: "Countdown timers that reset, limited time offers that never end and fake scarcity are now specifically illegal under UK CMA guidance and EU DSA rules. Here is what you need to know.",
+    date: "2026-05-29",
+    readTime: "5 min read",
+    category: "For Sellers",
+    content: `
+## The Timer That Could Get You Fined
+
+You have seen them everywhere. A sales page with a countdown timer showing 02:47:33. You reload the page an hour later — it still shows 02:47:33. You come back the next day — it still shows 02:47:33.
+
+In 2026, that countdown timer is specifically illegal.
+
+---
+
+## What Changed
+
+The UK's **Digital Markets, Competition and Consumers Act** (DMCC Act) came into force in 2024 and gave the CMA direct fining powers — without needing to go to court — for the first time.
+
+The **EU Digital Services Act** (DSA) explicitly names fake countdown timers, fabricated scarcity indicators and manufactured social proof as illegal dark patterns.
+
+Both regulators have signalled that enforcement is a priority.
+
+---
+
+## Exactly What Is Illegal
+
+### Fake countdown timers
+
+A countdown timer that:
+- Resets to a fixed time when it reaches zero
+- Resets when the user visits in a new browser or clears cookies
+- Counts down to a date that has already passed and the offer continues
+
+All of these are illegal under CMA guidance and EU DSA Article 25.
+
+### Fake scarcity
+
+Claiming:
+- "Only 3 spots left" when there is no actual limit
+- "Almost sold out" when stock is plentiful
+- "Limited availability" when the offer is permanently available
+- Live visitor counts that are fabricated or inflated
+
+### "Offer ends tonight" that never ends
+
+A "today only" price that continues the next day. A "last chance" banner that appears on every visit.
+
+---
+
+## What Is Legal
+
+Genuine urgency and genuine scarcity are completely legal — and highly effective.
+
+**Legal urgency examples**:
+- A cart countdown that expires unused baskets after 30 minutes (genuine, documented)
+- An early-bird price that ends on a specified date and is honoured
+- A cohort-based course with a genuine enrolment close date
+
+**Legal scarcity examples**:
+- Live inventory counts synced to actual stock levels
+- Event tickets where the number available is fixed and accurate
+- Coaching programmes with a genuine capacity limit
+
+The test is simple: is the claim factually accurate? Can you verify it?
+
+---
+
+## What the Regulators Are Actually Doing
+
+The CMA has published enforcement notices and required businesses to remove fake countdown timers. The ASA has upheld complaints against advertisers using manufactured urgency.
+
+The EU Commission has run coordinated sweeps of e-commerce sites and found dark patterns including fake timers on a significant proportion of sites reviewed.
+
+Neither regulator is waiting for complaints. Both are proactively monitoring.
+
+---
+
+## How to Check Your Own Copy
+
+Red Flag AI Pro scans your marketing copy for fake urgency language, artificial scarcity claims and dark patterns — alongside 18 other compliance risk categories.
+
+Paste your sales page or email sequence and see exactly which claims are at risk.
+
+[Scan your copy free — no signup →](https://www.redflagaipro.com)
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

@@ -41,6 +41,8 @@ function scoreBg(score: number) {
 
 export function BulkScanner({ plan }: Props) {
   const [domain, setDomain] = useState("");
+  const [pastedUrls, setPastedUrls] = useState("");
+  const [mode, setMode] = useState<"domain" | "paste">("domain");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<ScanResponse | null>(null);
@@ -48,15 +50,20 @@ export function BulkScanner({ plan }: Props) {
   const limit = plan === "sentinel" ? 50 : 10;
 
   async function handleScan() {
-    if (!domain.trim()) return;
+    if (mode === "domain" && !domain.trim()) return;
+    if (mode === "paste" && !pastedUrls.trim()) return;
     setLoading(true);
     setError(null);
     setResponse(null);
 
+    const body = mode === "paste"
+      ? { urls: pastedUrls.split("\n").map((u) => u.trim()).filter((u) => u.startsWith("http")) }
+      : { domain: domain.trim() };
+
     const res = await fetch("/api/scans/bulk", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ domain: domain.trim() }),
+      body: JSON.stringify(body),
     });
 
     const data = await res.json();
@@ -72,24 +79,53 @@ export function BulkScanner({ plan }: Props) {
     <div className="space-y-5">
       {/* Input */}
       <div className="rounded-xl border border-gray-200 bg-white p-6">
-        <h2 className="text-sm font-semibold text-gray-900 mb-1">Enter a domain to audit</h2>
-        <p className="text-xs text-gray-500 mb-4">
-          We find your sitemap, pull up to {limit} pages, and scan each one. Results appear below within a minute.
-        </p>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={domain}
-            onChange={(e) => setDomain(e.target.value)}
-            placeholder="e.g. youragencyclient.co.uk"
-            className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
-            onKeyDown={(e) => e.key === "Enter" && handleScan()}
-            disabled={loading}
-          />
-          <Button onClick={handleScan} loading={loading} disabled={!domain.trim()}>
-            {loading ? "Scanning…" : "Audit site →"}
-          </Button>
+        <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit mb-4">
+          {(["domain", "paste"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              className={["rounded-md px-4 py-1.5 text-sm font-medium transition-colors", mode === m ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700"].join(" ")}
+            >
+              {m === "domain" ? "Scan domain" : "Paste URLs"}
+            </button>
+          ))}
         </div>
+
+        {mode === "domain" ? (
+          <>
+            <p className="text-xs text-gray-500 mb-3">We find your sitemap, pull up to {limit} pages, and scan each one.</p>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={domain}
+                onChange={(e) => setDomain(e.target.value)}
+                placeholder="e.g. youragencyclient.co.uk"
+                className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                onKeyDown={(e) => e.key === "Enter" && handleScan()}
+                disabled={loading}
+              />
+              <Button onClick={handleScan} loading={loading} disabled={!domain.trim()}>
+                {loading ? "Scanning…" : "Audit site →"}
+              </Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="text-xs text-gray-500 mb-3">Paste up to {limit} URLs — one per line. We scan each one individually.</p>
+            <textarea
+              value={pastedUrls}
+              onChange={(e) => setPastedUrls(e.target.value)}
+              rows={6}
+              placeholder={"https://example.com/sales\nhttps://example.com/landing\nhttps://example.com/checkout"}
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 mb-3"
+              disabled={loading}
+            />
+            <Button onClick={handleScan} loading={loading} disabled={!pastedUrls.trim()}>
+              {loading ? "Scanning…" : `Scan ${pastedUrls.split("\n").filter((u) => u.trim().startsWith("http")).length || ""} pages →`}
+            </Button>
+          </>
+        )}
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         {loading && (
           <p className="mt-3 text-xs text-gray-400 animate-pulse">

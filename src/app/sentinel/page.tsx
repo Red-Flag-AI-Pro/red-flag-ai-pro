@@ -397,6 +397,64 @@ export default function SentinelPage() {
         </div>
       </div>
 
+      {/* ROI Calculator */}
+      <div className="border-t border-gray-800/40">
+        <div className="mx-auto max-w-3xl px-6 py-14">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">The numbers</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white">What one complaint actually costs</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-red-900/40 bg-red-950/20 p-6 space-y-4">
+              <p className="text-xs font-bold text-red-400 uppercase tracking-widest">The risk without Sentinel</p>
+              {[
+                { label: "ASA investigation", cost: "£5,000–£50,000", detail: "legal costs, campaign takedown, management time" },
+                { label: "FCA unapproved promotion", cost: "Criminal liability", detail: "fine, public censure, FCA investigation" },
+                { label: "GDPR violation", cost: "Up to €20 million", detail: "or 4% of global annual turnover" },
+                { label: "CMA dark pattern complaint", cost: "Up to £300,000", detail: "per violation plus injunction" },
+                { label: "Client claim against agency", cost: "Your PI excess", detail: "plus policy review, possible non-renewal" },
+              ].map((r) => (
+                <div key={r.label} className="flex items-start justify-between gap-4 border-b border-red-900/20 pb-3 last:border-0 last:pb-0">
+                  <div>
+                    <p className="text-sm font-semibold text-white">{r.label}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{r.detail}</p>
+                  </div>
+                  <span className="text-sm font-bold text-red-400 whitespace-nowrap">{r.cost}</span>
+                </div>
+              ))}
+            </div>
+            <div className="rounded-2xl border border-green-900/40 bg-green-950/20 p-6 flex flex-col justify-between">
+              <div>
+                <p className="text-xs font-bold text-green-400 uppercase tracking-widest mb-4">Sentinel</p>
+                <div className="text-center py-6">
+                  <p className="text-6xl font-extrabold text-white">£999</p>
+                  <p className="text-gray-400 text-sm mt-1">per month</p>
+                  <p className="text-gray-500 text-xs mt-1">£11,988 per year</p>
+                </div>
+                {[
+                  "Unlimited scans across your whole team",
+                  "Every campaign reviewed before it goes live",
+                  "Signed PDF certificate on every review",
+                  "Weekly monitoring of live pages",
+                  "The paper trail your PI insurer needs",
+                ].map((b) => (
+                  <div key={b} className="flex items-start gap-2 mb-2">
+                    <span className="text-green-400 flex-shrink-0 text-sm">✓</span>
+                    <span className="text-gray-300 text-sm">{b}</span>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/signup"
+                className="mt-6 block rounded-xl bg-red-600 py-3 text-center text-sm font-bold text-white hover:bg-red-500 transition-colors"
+              >
+                Get started →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="border-t border-gray-800/40">
         <div className="relative overflow-hidden">
