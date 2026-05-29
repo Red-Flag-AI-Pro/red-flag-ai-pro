@@ -79,12 +79,12 @@ export default function PricingPage() {
         </div>
 
         {/* Founder note */}
-        <div className="mb-6 rounded-xl border border-gray-700 bg-gray-900/50 p-5 max-w-lg">
+        <div className="mb-8 rounded-xl border border-red-500/40 p-5 max-w-lg" style={{ background: "rgba(220,38,38,0.08)" }}>
           <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">From the founder</p>
-          <p className="text-gray-300 text-sm leading-relaxed">
+          <p className="text-white text-sm leading-relaxed">
             I built Pro for the person I used to be — running funnels alone, no legal budget, spending what little I had on ads and just hoping the copy was okay. I know what it costs when it isn&apos;t. £39 is what I wished existed back then.
           </p>
-          <p className="mt-2 text-gray-500 text-xs">— James</p>
+          <p className="mt-3 text-gray-400 text-xs font-medium">— James, Founder</p>
         </div>
 
         {/* 3-column plans */}
