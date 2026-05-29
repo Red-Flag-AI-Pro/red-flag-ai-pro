@@ -4,6 +4,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 import { DemoScanner } from "@/components/marketing/DemoScanner";
+import { ScanCounter } from "@/components/marketing/ScanCounter";
+import { StickyCTA } from "@/components/marketing/StickyCTA";
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
@@ -296,8 +298,19 @@ export default function LandingPage() {
           }))
         }) }}
       />
+      <StickyCTA />
       <ExitIntent />
       <Navbar />
+
+      {/* Urgency bar — EU AI Act countdown */}
+      <div className="bg-red-600 py-2 px-4 text-center">
+        <p className="text-xs font-bold text-white">
+          ⚡ EU AI Act Article 50 comes into force August 2026 — AI-generated marketing copy must be disclosed. Is yours ready?{" "}
+          <Link href="/blog/eu-ai-act-article-50-marketing-agencies" className="underline hover:no-underline">
+            Learn more →
+          </Link>
+        </p>
+      </div>
 
 
       {/* Scrolling compliance ticker */}
@@ -380,8 +393,17 @@ export default function LandingPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-400">
-            ✅ Free scan — no signup · Pro from £29/mo · Agencies from £999/mo · Cancel anytime
+            ✅ No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee
           </p>
+
+          {/* Live scan counter + social proof */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-500">
+            <ScanCounter />
+            <span className="text-gray-700">·</span>
+            <span>73% UK traffic</span>
+            <span className="text-gray-700">·</span>
+            <span>Works on mobile, desktop and tablet</span>
+          </div>
 
           <div className="mt-6 flex justify-center">
             <a href="https://www.producthunt.com/products/red-flag-ai-pro?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
@@ -455,6 +477,24 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Trust bar */}
+      <div className="bg-gray-900 border-b border-gray-800 py-4 px-4">
+        <div className="mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-gray-400">
+          {[
+            { icon: "🔒", text: "No data stored beyond your account" },
+            { icon: "⚡", text: "Results in under 60 seconds" },
+            { icon: "🌍", text: "FTC · GDPR · ASA · FCA · ACCC · CASL" },
+            { icon: "✅", text: "14-day money-back guarantee" },
+            { icon: "🎯", text: "21 risk categories" },
+          ].map((t) => (
+            <span key={t.text} className="flex items-center gap-1.5">
+              <span>{t.icon}</span>
+              <span>{t.text}</span>
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Demo Scanner */}
       <DemoScanner />
@@ -1044,7 +1084,7 @@ export default function LandingPage() {
 
       {/* Product Hunt Badge */}
       <div className="bg-gray-950 py-10 text-center">
-        <p className="text-gray-400 text-sm mb-6">Free to start. Pro from £49/month. No credit card needed.</p>
+        <p className="text-gray-400 text-sm mb-6">Free to start. Pro from £39/month. No credit card needed.</p>
         <a href="https://www.producthunt.com/products/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522"
