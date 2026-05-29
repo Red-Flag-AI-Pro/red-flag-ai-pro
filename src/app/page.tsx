@@ -982,30 +982,12 @@ export default function LandingPage() {
           <p className="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
             For sellers: every compliance check you need before you launch. For buyers: every red flag to look for before you buy. Free — no spam, one email.
           </p>
-          <form
-            action="https://redflagaipro.com/api/checklist-signup"
-            method="POST"
-            className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement)?.value;
-              window.location.href = `/blog/marketing-compliance-checklist-2026?email=${encodeURIComponent(email)}`;
-            }}
+          <Link
+            href="/blog/marketing-compliance-checklist-2026"
+            className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-              className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-red-500 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors whitespace-nowrap"
-            >
-              Send me the checklist →
-            </button>
-          </form>
+            Get the free checklist →
+          </Link>
           <p className="text-xs text-gray-600 mt-3">No account needed. Instant access.</p>
         </div>
       </section>
