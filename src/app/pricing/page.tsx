@@ -83,7 +83,7 @@ export default function PricingPage() {
           <span className="text-lg flex-shrink-0 mt-0.5">🚩</span>
           <div>
             <p className="text-white text-sm leading-relaxed">
-              I&apos;ve never forgotten the struggle — running funnels alone, no legal budget, hoping the copy was okay. I know what it costs when it isn&apos;t. That&apos;s why I made this accessible. And at agency level, I feel that pain too. <span className="text-red-400 font-semibold">This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge.</span>
+              I&apos;ve been on both sides of this. I&apos;ve bought courses that promised everything and delivered nothing, misled by income claims I now know were illegal. And I&apos;ve built funnels alone, no legal budget, hoping my own copy was okay — not knowing it probably wasn&apos;t. I know what it costs when you&apos;re the buyer who got burned. And I know what it costs when you&apos;re the seller who didn&apos;t know the rules. That&apos;s why I built this for both sides. And at agency level, I feel that pain too. <span className="text-red-400 font-semibold">This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge.</span>
             </p>
             <p className="text-gray-600 text-xs mt-1.5">— James, Founder</p>
           </div>
