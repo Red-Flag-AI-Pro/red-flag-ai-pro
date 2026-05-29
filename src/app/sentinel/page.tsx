@@ -344,7 +344,7 @@ export default function SentinelPage() {
             <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
               Enterprise compliance.<br className="hidden sm:block" /> Without the enterprise price.
             </h2>
-            <p className="mt-4 text-gray-500 text-sm max-w-lg mx-auto">
+            <p className="mt-4 text-gray-300 text-sm max-w-lg mx-auto">
               The tools agencies traditionally use cost £2,000-£10,000 a month and take weeks to onboard. Sentinel is live in a day.
             </p>
           </div>
@@ -382,8 +382,8 @@ export default function SentinelPage() {
                   ["Typical monthly cost", "£2,000 - £10,000", "£999"],
                 ].map(([feature, them, us]) => (
                   <tr key={feature} className="border-b border-gray-800/40">
-                    <td className="py-3 pr-6 text-gray-400">{feature}</td>
-                    <td className="py-3 px-4 text-center text-gray-600">{them}</td>
+                    <td className="py-3 pr-6 text-gray-300">{feature}</td>
+                    <td className="py-3 px-4 text-center text-gray-400">{them}</td>
                     <td className="py-3 px-4 text-center text-red-400 font-medium">{us}</td>
                   </tr>
                 ))}
@@ -391,7 +391,7 @@ export default function SentinelPage() {
             </table>
           </div>
 
-          <p className="mt-6 text-center text-xs text-gray-600">
+          <p className="mt-6 text-center text-xs text-gray-500">
             Competitor pricing based on publicly available information and industry estimates.
           </p>
         </div>
