@@ -1040,7 +1040,7 @@ Paste your sales page or email sequence and get a plain English explanation of a
   },
   {
     slug: "fca-financial-promotions-marketing-agencies",
-    title: "FCA Financial Promotions — What Every Marketing Agency Writing for Financial Clients Must Know",
+    title: "FCA Financial Promotions, What Every Marketing Agency Writing for Financial Clients Must Know",
     description: "Writing copy for a financial services client without FCA approval is a criminal offence. Here is what every UK marketing agency needs to know before publishing financial promotions.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -1048,7 +1048,7 @@ Paste your sales page or email sequence and get a plain English explanation of a
     content: `
 ## The Offence Most Agencies Don't Know They're Committing
 
-If your agency writes marketing copy for a financial services client — an investment firm, a trading platform, a mortgage broker, an insurance company, a fintech — and that copy contains a financial promotion, it must be approved by an FCA-authorised person before it is published.
+If your agency writes marketing copy for a financial services client, an investment firm, a trading platform, a mortgage broker, an insurance company, a fintech, and that copy contains a financial promotion, it must be approved by an FCA-authorised person before it is published.
 
 If it isn't, the person who communicated the promotion has committed a criminal offence under Section 21 of the Financial Services and Markets Act 2000.
 
@@ -1076,8 +1076,8 @@ If your client's campaign does any of the above, it is a financial promotion.
 
 A financial promotion must either be:
 
-1. **Communicated by an FCA-authorised firm** — if your client is directly FCA-regulated (most financial services firms are), they must approve the copy before it is published, or
-2. **Approved by an FCA-authorised firm** — if the promoter is not FCA-regulated, a regulated firm must approve the communication
+1. **Communicated by an FCA-authorised firm**, if your client is directly FCA-regulated (most financial services firms are), they must approve the copy before it is published, or
+2. **Approved by an FCA-authorised firm**, if the promoter is not FCA-regulated, a regulated firm must approve the communication
 
 In either case, this approval must happen before publication. A "we'll sort the compliance later" approach is a criminal liability.
 
@@ -1085,11 +1085,11 @@ In either case, this approval must happen before publication. A "we'll sort the 
 
 ## The Crypto Extension
 
-Since October 2023, the FCA has extended financial promotion rules to cover cryptoassets. Any promotion of crypto trading, crypto investment products or NFTs must now comply with FCA financial promotion rules — including specific risk warnings.
+Since October 2023, the FCA has extended financial promotion rules to cover cryptoassets. Any promotion of crypto trading, crypto investment products or NFTs must now comply with FCA financial promotion rules, including specific risk warnings.
 
 The required risk warning for crypto promotions reads: *"Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment and you are unlikely to be protected if something goes wrong. Take 2 minutes to learn more."*
 
-If your agency produces social media content, landing pages or email campaigns for a crypto brand without this warning, the brand is in violation — and your agency produced the non-compliant material.
+If your agency produces social media content, landing pages or email campaigns for a crypto brand without this warning, the brand is in violation, and your agency produced the non-compliant material.
 
 ---
 
@@ -1118,7 +1118,7 @@ Build a process where every piece of copy containing financial claims is approve
 
 ### 3. Scan Every Financial Promotion Before Submission
 
-Red Flag AI Pro includes FCA financial promotion scanning as part of the Sentinel plan. Every scan checks for financial promotion language, missing risk warnings and claims that require FCA approval — before the copy leaves your agency.
+Red Flag AI Pro includes FCA financial promotion scanning as part of the Sentinel plan. Every scan checks for financial promotion language, missing risk warnings and claims that require FCA approval, before the copy leaves your agency.
 
 ### 4. Update Your Agency Contracts
 
@@ -1133,14 +1133,14 @@ Include a clause in your client agreements that:
 
 Writing an unapproved financial promotion is a criminal offence. It doesn't matter that you are a marketing agency and not a financial firm. The person who communicates the promotion bears criminal liability.
 
-The protection is a documented approval process — and it starts with identifying which of your copy contains financial promotions before it leaves your desk.
+The protection is a documented approval process, and it starts with identifying which of your copy contains financial promotions before it leaves your desk.
 
 [Scan your financial client copy for FCA compliance →](https://www.redflagaipro.com/sentinel)
     `,
   },
   {
     slug: "greenwashing-laws-2026-brand-guide",
-    title: "Greenwashing Laws 2026 — Every Environmental Claim on Your Website Is Now a Legal Risk",
+    title: "Greenwashing Laws 2026, Every Environmental Claim on Your Website Is Now a Legal Risk",
     description: "The EU Green Claims Directive, CMA Green Claims Code and FTC Green Guides are actively enforced. Here is what every brand needs to know about sustainability claims before publishing.",
     date: "2026-05-29",
     readTime: "5 min read",
@@ -1148,13 +1148,13 @@ The protection is a documented approval process — and it starts with identifyi
     content: `
 ## "Eco-Friendly" Is Now a Regulated Claim
 
-If your website, product packaging or marketing copy includes any of these words — sustainable, eco-friendly, carbon neutral, net zero, green, planet friendly, biodegradable, recyclable — regulators want to see your evidence.
+If your website, product packaging or marketing copy includes any of these words, sustainable, eco-friendly, carbon neutral, net zero, green, planet friendly, biodegradable, recyclable, regulators want to see your evidence.
 
 In 2026, three major regulatory frameworks are actively targeting greenwashing:
 
-1. **EU Green Claims Directive** — proposed 2023, entering enforcement phase 2026
-2. **CMA Green Claims Code** — UK guidance backed by Competition Act enforcement powers
-3. **FTC Green Guides** — US framework with Section 5 enforcement authority
+1. **EU Green Claims Directive**, proposed 2023, entering enforcement phase 2026
+2. **CMA Green Claims Code**, UK guidance backed by Competition Act enforcement powers
+3. **FTC Green Guides**, US framework with Section 5 enforcement authority
 
 All three carry the same message: environmental claims must be specific, substantiated and not misleading.
 
@@ -1169,7 +1169,7 @@ The EU Green Claims Directive sets the highest standard. A claim is substantiate
 - It is independently verified by an accredited third party
 - The verification is kept up to date
 
-"Carbon neutral" requires a recognised offsetting standard — not an internal calculation. "Sustainable" requires a specific, verifiable basis — not a general company ethos.
+"Carbon neutral" requires a recognised offsetting standard, not an internal calculation. "Sustainable" requires a specific, verifiable basis, not a general company ethos.
 
 A marketing team deciding that a product "feels" sustainable is not substantiation.
 
@@ -1181,7 +1181,7 @@ A marketing team deciding that a product "feels" sustainable is not substantiati
 Carbon neutrality claims require verified offsets under a recognised standard such as Gold Standard or VCS. Self-reported calculations do not qualify.
 
 ### 2. "Sustainable" With No Definition
-"Sustainable" is meaningless without specifying what dimension of sustainability — materials, supply chain, energy, water, packaging — and providing evidence for that specific dimension.
+"Sustainable" is meaningless without specifying what dimension of sustainability, materials, supply chain, energy, water, packaging, and providing evidence for that specific dimension.
 
 ### 3. "Eco-Friendly" Packaging That Isn't
 Claiming packaging is eco-friendly when it contains non-recyclable elements or is not accepted by most UK local authorities is misleading under the CMA Code.
@@ -1196,7 +1196,7 @@ Biodegradable claims require disclosure of the conditions under which biodegrada
 Claiming a product is recyclable when most consumers cannot actually recycle it through standard collection channels is a violation under both FTC Green Guides and CMA Code.
 
 ### 7. "Plastic Free" Claims With Plastic Components
-Any product claiming to be plastic free must contain no plastic in any component — including packaging, labels and adhesives.
+Any product claiming to be plastic free must contain no plastic in any component, including packaging, labels and adhesives.
 
 ### 8. Future Commitments Stated as Current Claims
 "We will be net zero by 2030" is acceptable if honest. "We are committed to net zero" presented in the context of current environmental claims is misleading.
@@ -1214,8 +1214,8 @@ Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking co
   },
   {
     slug: "vsl-compliance-checklist-video-sales-letters",
-    title: "VSL Compliance Checklist — What Every Video Sales Letter Must Include (and Avoid)",
-    description: "Video sales letters face the same compliance requirements as written copy — but with higher stakes. One viral VSL with illegal claims can generate thousands of complaints. Here is the complete checklist.",
+    title: "VSL Compliance Checklist, What Every Video Sales Letter Must Include (and Avoid)",
+    description: "Video sales letters face the same compliance requirements as written copy, but with higher stakes. One viral VSL with illegal claims can generate thousands of complaints. Here is the complete checklist.",
     date: "2026-05-29",
     readTime: "6 min read",
     category: "For Sellers",
@@ -1224,7 +1224,7 @@ Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking co
 
 A written sales page gets a few thousand visitors. A VSL can reach millions. When the FTC or ASA investigate, the scale of a VSL's reach directly affects the severity of the enforcement action and the size of any fine.
 
-VSLs also have a specific problem: every word of a 30-minute video is indexed, archived and can be submitted as evidence in a complaint. The voiceover script is your compliance record — make sure it passes before you spend money on traffic.
+VSLs also have a specific problem: every word of a 30-minute video is indexed, archived and can be submitted as evidence in a complaint. The voiceover script is your compliance record, make sure it passes before you spend money on traffic.
 
 Here is the complete compliance checklist.
 
@@ -1232,57 +1232,57 @@ Here is the complete compliance checklist.
 
 ## Income and Earnings Claims
 
-☐ **Remove or substantiate every income figure** — "Earn £10,000 per month," "six figures," "replace your salary," "financial freedom" — all require substantiation. If you cannot produce documented evidence of typical customer results, remove the claim.
+☐ **Remove or substantiate every income figure**, "Earn £10,000 per month," "six figures," "replace your salary," "financial freedom", all require substantiation. If you cannot produce documented evidence of typical customer results, remove the claim.
 
-☐ **Add an earnings disclaimer** — Every VSL containing income claims must include a prominently stated earnings disclaimer. It must appear early in the VSL, not just in the small print beneath the video.
+☐ **Add an earnings disclaimer**, Every VSL containing income claims must include a prominently stated earnings disclaimer. It must appear early in the VSL, not just in the small print beneath the video.
 
 Standard FTC/ASA format: *"Results are not typical. Individual results will vary based on effort, experience, and market conditions. The income figures shown represent exceptional results achieved by a small number of customers."*
 
-☐ **Disclose typical results alongside exceptional results** — If you feature a testimonial claiming exceptional income, you must disclose what typical customers actually achieve.
+☐ **Disclose typical results alongside exceptional results**, If you feature a testimonial claiming exceptional income, you must disclose what typical customers actually achieve.
 
 ---
 
 ## Urgency and Scarcity
 
-☐ **Verify any countdown mentioned in the script is genuine** — If your VSL says "this offer closes at midnight tonight," that deadline must be real and honoured.
+☐ **Verify any countdown mentioned in the script is genuine**, If your VSL says "this offer closes at midnight tonight," that deadline must be real and honoured.
 
-☐ **Remove "limited spots" language if spots aren't actually limited** — "Only 10 people will be accepted" must reflect a genuine limit. Fake scarcity in a VSL is the same violation as fake scarcity on a sales page.
+☐ **Remove "limited spots" language if spots aren't actually limited**, "Only 10 people will be accepted" must reflect a genuine limit. Fake scarcity in a VSL is the same violation as fake scarcity on a sales page.
 
 ---
 
 ## Health and Medical Claims
 
-☐ **Remove all unsubstantiated health claims** — "Cures," "treats," "heals," "boost immunity," "burn fat," "detox" — all require regulatory authorisation. Replace with qualified language.
+☐ **Remove all unsubstantiated health claims**, "Cures," "treats," "heals," "boost immunity," "burn fat," "detox", all require regulatory authorisation. Replace with qualified language.
 
-☐ **Add medical disclaimers if health claims remain** — If any health claims survive after substantiation, a disclaimer must appear on screen and in audio.
+☐ **Add medical disclaimers if health claims remain**, If any health claims survive after substantiation, a disclaimer must appear on screen and in audio.
 
 ---
 
 ## Guarantees
 
-☐ **Match spoken guarantee terms to written Terms of Service** — If the voiceover says "60-day money-back guarantee, no questions asked" but your Terms say "all sales final," you have a contract contradiction. Fix one or the other before the VSL goes live.
+☐ **Match spoken guarantee terms to written Terms of Service**, If the voiceover says "60-day money-back guarantee, no questions asked" but your Terms say "all sales final," you have a contract contradiction. Fix one or the other before the VSL goes live.
 
 ---
 
 ## AI Disclosure (New for 2026)
 
-☐ **Disclose if the VSL script was AI-generated** — EU AI Act Article 50(4) requires disclosure of AI-generated content from August 2026. If your script was written by AI, this must be disclosed.
+☐ **Disclose if the VSL script was AI-generated**, EU AI Act Article 50(4) requires disclosure of AI-generated content from August 2026. If your script was written by AI, this must be disclosed.
 
-☐ **Disclose AI-generated voiceover or video** — If you are using an AI-generated voice or video avatar, this must be clearly disclosed to viewers in the EU.
+☐ **Disclose AI-generated voiceover or video**, If you are using an AI-generated voice or video avatar, this must be clearly disclosed to viewers in the EU.
 
 ---
 
 ## Testimonials
 
-☐ **Disclose paid or incentivised testimonials** — If anyone featured in the VSL was paid, gifted a product, or incentivised to provide a testimonial, this must be disclosed.
+☐ **Disclose paid or incentivised testimonials**, If anyone featured in the VSL was paid, gifted a product, or incentivised to provide a testimonial, this must be disclosed.
 
-☐ **Verify testimonial results are achievable** — If a testimonial claims specific results, those results must be achievable by typical customers following your programme.
+☐ **Verify testimonial results are achievable**, If a testimonial claims specific results, those results must be achievable by typical customers following your programme.
 
 ---
 
 ## Scan Your VSL Script Before You Film
 
-Red Flag AI Pro can scan your VSL script for all 21 compliance risk categories — paste the script or upload the audio file and Whisper transcribes it automatically.
+Red Flag AI Pro can scan your VSL script for all 21 compliance risk categories, paste the script or upload the audio file and Whisper transcribes it automatically.
 
 Catch compliance issues before you spend money on production and traffic.
 
@@ -1291,7 +1291,7 @@ Catch compliance issues before you spend money on production and traffic.
   },
   {
     slug: "marketing-compliance-agencies-cold-email-guide",
-    title: "The Marketing Agency's Guide to Compliance — How to Protect Yourself When a Client Campaign Gets a Complaint",
+    title: "The Marketing Agency's Guide to Compliance, How to Protect Yourself When a Client Campaign Gets a Complaint",
     description: "When a client's campaign triggers a regulatory complaint, agencies are increasingly named alongside brands. Here is how to structure your compliance process to protect your agency.",
     date: "2026-05-29",
     readTime: "7 min read",
@@ -1299,7 +1299,7 @@ Catch compliance issues before you spend money on production and traffic.
     content: `
 ## The Complaint Is Filed. Now What?
 
-A client's campaign triggers an ASA complaint or an FCA investigation. The regulator doesn't just look at the brand — they want to know who produced the copy, who approved it, and what compliance checks were in place before it was published.
+A client's campaign triggers an ASA complaint or an FCA investigation. The regulator doesn't just look at the brand, they want to know who produced the copy, who approved it, and what compliance checks were in place before it was published.
 
 If your agency produced that copy without a documented compliance review process, you are exposed.
 
@@ -1314,7 +1314,7 @@ Ten years ago, regulatory enforcement focused almost exclusively on the brand. T
 - The CMA's updated guidance explicitly states that agencies that produce misleading marketing materials can share liability with the advertiser
 - The FTC's Endorsement Guides hold agencies responsible for influencer campaigns they organise and manage
 - EU DSA rules on dark patterns can apply to the agency that implemented them, not just the brand that requested them
-- FCA financial promotion rules make the communicator of an unapproved promotion criminally liable — which can mean the agency
+- FCA financial promotion rules make the communicator of an unapproved promotion criminally liable, which can mean the agency
 
 The legal and regulatory environment has shifted. Agencies can no longer rely on "we just did what the client asked."
 
@@ -1322,7 +1322,7 @@ The legal and regulatory environment has shifted. Agencies can no longer rely on
 
 ## Building Your Compliance Process
 
-### Step 1 — Compliance Review Before Submission
+### Step 1, Compliance Review Before Submission
 
 Every piece of copy should go through a compliance review before it is submitted to the client. This review should check for:
 
@@ -1336,18 +1336,18 @@ Every piece of copy should go through a compliance review before it is submitted
 
 Document that this review happened, who conducted it, and what was changed as a result.
 
-### Step 2 — Client Sign-Off as a Compliance Document
+### Step 2, Client Sign-Off as a Compliance Document
 
-Client approval is not just project management — it is compliance documentation. Your sign-off process should require the client to confirm:
+Client approval is not just project management, it is compliance documentation. Your sign-off process should require the client to confirm:
 
 - They have reviewed the copy for compliance with applicable regulations
 - They take responsibility for the factual accuracy of all claims
 - They have obtained any necessary regulatory approvals (FCA, for financial promotions)
 - They confirm the copy is consistent with their Terms of Service
 
-This sign-off should be in writing — email is sufficient, but a documented approval workflow is better.
+This sign-off should be in writing, email is sufficient, but a documented approval workflow is better.
 
-### Step 3 — Timestamped Records
+### Step 3, Timestamped Records
 
 Keep timestamped records of:
 
@@ -1358,7 +1358,7 @@ Keep timestamped records of:
 
 When a regulator asks "what compliance checks were in place and when?" you need to be able to answer with dates and documents.
 
-### Step 4 — Compliance Clauses in Your Agency Agreement
+### Step 4, Compliance Clauses in Your Agency Agreement
 
 Your standard client contract should include:
 
@@ -1367,13 +1367,13 @@ Your standard client contract should include:
 - A clause giving your agency the right to refuse to produce copy that you believe is non-compliant
 - A clause specifying that the client takes responsibility for the factual accuracy of all claims
 
-Have your solicitor review these clauses — generic templates are not sufficient for regulated industries.
+Have your solicitor review these clauses, generic templates are not sufficient for regulated industries.
 
 ---
 
 ## The Compliance Audit Tool Agencies Are Using
 
-Red Flag AI Pro runs compliance checks against 21 risk categories across 5 jurisdictions — including FCA financial promotions, ASA CAP Code, GDPR, EU AI Act and FTC requirements.
+Red Flag AI Pro runs compliance checks against 21 risk categories across 5 jurisdictions, including FCA financial promotions, ASA CAP Code, GDPR, EU AI Act and FTC requirements.
 
 On the Sentinel plan, agencies can:
 
@@ -1383,14 +1383,14 @@ On the Sentinel plan, agencies can:
 - Monitor live client URLs weekly for changes that introduce new compliance risks
 - White-label PDF reports under the agency's own branding
 
-The timestamped PDF certificate is exactly the kind of documented evidence that demonstrates professional diligence — to clients, to regulators, and to PI insurers.
+The timestamped PDF certificate is exactly the kind of documented evidence that demonstrates professional diligence, to clients, to regulators, and to PI insurers.
 
 [Learn about Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
     `,
   },
   {
     slug: "saas-founder-compliance-marketing-checklist",
-    title: "SaaS Founder Marketing Compliance — The 10 Mistakes That Lead to FTC and GDPR Investigations",
+    title: "SaaS Founder Marketing Compliance, The 10 Mistakes That Lead to FTC and GDPR Investigations",
     description: "SaaS companies are the fastest-growing target of FTC and GDPR enforcement. Subscription practices, free trial terms, data collection and earnings claims are all in the crosshairs. Here are the 10 most common mistakes.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -1400,13 +1400,13 @@ The timestamped PDF certificate is exactly the kind of documented evidence that 
 
 The FTC's updated Negative Option Rule (2024) was written with SaaS companies in mind. The EU's revised Consumer Rights Directive has specific provisions for digital subscriptions. The ICO has made subscription consent and free-trial-to-paid-conversion one of its enforcement priorities.
 
-SaaS marketing — with its reliance on free trials, recurring billing, and conversion-optimised onboarding — is a particularly high-risk category. Here are the 10 most common compliance mistakes.
+SaaS marketing, with its reliance on free trials, recurring billing, and conversion-optimised onboarding, is a particularly high-risk category. Here are the 10 most common compliance mistakes.
 
 ---
 
 ## 1. Free Trial Conversion Without Clear Disclosure
 
-**The violation**: Offering a free trial that automatically converts to a paid subscription without clearly disclosing the conversion date, the amount that will be charged, and how to cancel — before the user enters their payment details.
+**The violation**: Offering a free trial that automatically converts to a paid subscription without clearly disclosing the conversion date, the amount that will be charged, and how to cancel, before the user enters their payment details.
 
 **The rule**: FTC Negative Option Rule 2024 requires clear and conspicuous disclosure of all material terms before the customer is charged. This includes the exact amount, the exact date, and an easy cancellation mechanism.
 
@@ -1418,7 +1418,7 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 **The violation**: Advertising "cancel anytime" when the cancellation process requires contacting support, waiting for a response, or navigating multiple steps.
 
-**The rule**: "Cancel anytime" is a promise. Under FTC Negative Option Rule 2024, cancellation must be as easy as subscription — one click, or a simple online form.
+**The rule**: "Cancel anytime" is a promise. Under FTC Negative Option Rule 2024, cancellation must be as easy as subscription, one click, or a simple online form.
 
 **The fix**: Build a self-serve cancellation flow. One-click cancellation from the account settings page. No hoops, no "are you sure" gauntlets that delay the cancellation.
 
@@ -1430,13 +1430,13 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 **The rule**: UK GDPR and EU GDPR require that data collection is limited to what was explicitly consented to or is strictly necessary for the service.
 
-**The fix**: Audit every third-party tool in your stack — analytics, session recording, marketing pixels, A/B testing platforms. Ensure each one is covered by your privacy policy and your consent mechanism.
+**The fix**: Audit every third-party tool in your stack, analytics, session recording, marketing pixels, A/B testing platforms. Ensure each one is covered by your privacy policy and your consent mechanism.
 
 ---
 
 ## 4. Marketing Copy That Implies Guaranteed Results
 
-**The violation**: SaaS marketing frequently implies that using the product will produce specific outcomes — "increase revenue by 30%," "save 10 hours a week," "reduce churn by 50%." These are implied earnings or performance claims.
+**The violation**: SaaS marketing frequently implies that using the product will produce specific outcomes, "increase revenue by 30%," "save 10 hours a week," "reduce churn by 50%." These are implied earnings or performance claims.
 
 **The rule**: Any specific outcome claim requires substantiation. The FTC requires that performance claims are backed by reliable evidence and that typical results are disclosed.
 
@@ -1460,7 +1460,7 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 **The rule**: Pricing transparency requirements in the UK, EU, US, Australia and Canada require that the actual billing amount and frequency is clearly disclosed before purchase.
 
-**The fix**: Display the annual amount explicitly: "£199/year, billed as a single payment" — not just "£16.58/month" with the annual billing buried in the terms.
+**The fix**: Display the annual amount explicitly: "£199/year, billed as a single payment", not just "£16.58/month" with the annual billing buried in the terms.
 
 ---
 
@@ -1476,7 +1476,7 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 ## 8. Free Plan Limitations Not Disclosed Upfront
 
-**The violation**: Offering a "free" plan that has material limitations — usage caps, feature locks, data limits — without clearly disclosing these limitations at signup.
+**The violation**: Offering a "free" plan that has material limitations, usage caps, feature locks, data limits, without clearly disclosing these limitations at signup.
 
 **The rule**: Material terms of a free offer must be clearly disclosed before a consumer commits time and data to the service.
 
@@ -1486,7 +1486,7 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 ## 9. Testimonials From Compensated Customers
 
-**The violation**: Featuring customer testimonials or case studies from customers who received a discount, extended trial, or any other benefit in exchange for their feedback — without disclosing the incentive.
+**The violation**: Featuring customer testimonials or case studies from customers who received a discount, extended trial, or any other benefit in exchange for their feedback, without disclosing the incentive.
 
 **The rule**: FTC Endorsement Guides 2023 require disclosure of any material connection between the endorser and the company, including discounted pricing.
 
@@ -1496,7 +1496,7 @@ SaaS marketing — with its reliance on free trials, recurring billing, and conv
 
 ## 10. AI-Powered Features Without Disclosure
 
-**The violation**: Using AI to personalise pricing, generate recommendations, or score users without disclosing this in your Privacy Policy — and without providing a mechanism for users to opt out or request human review.
+**The violation**: Using AI to personalise pricing, generate recommendations, or score users without disclosing this in your Privacy Policy, and without providing a mechanism for users to opt out or request human review.
 
 **The rule**: GDPR Article 22 gives consumers the right not to be subject to solely automated decisions that significantly affect them. Your Privacy Policy must disclose automated decision-making and provide users with their rights.
 
@@ -1515,13 +1515,13 @@ Paste your pricing page, onboarding emails or sales copy and get a compliance sc
   },
   {
     slug: "how-to-check-if-an-ad-is-legal-uk",
-    title: "How to Check If an Ad Is Legal in the UK — A Plain English Guide for Buyers and Sellers",
+    title: "How to Check If an Ad Is Legal in the UK, A Plain English Guide for Buyers and Sellers",
     description: "Before you buy from an ad or publish one, here is exactly how to check if it is legal under UK law. No lawyer needed. Takes 60 seconds.",
     date: "2026-05-29",
     readTime: "5 min read",
     category: "For Buyers",
     content: `
-## Before You Hand Over Your Money — or Spend It on Ads
+## Before You Hand Over Your Money, or Spend It on Ads
 
 Every day, thousands of people in the UK buy from ads that are breaking the law. And thousands of marketers publish ads that could get them fined without knowing it.
 
@@ -1535,13 +1535,13 @@ The Advertising Standards Authority (ASA) and the Competition and Markets Author
 
 An ad is illegal if it:
 
-- Makes **false or misleading claims** — including claims that are technically true but create a false impression
-- Uses **fake urgency** — countdown timers that reset, "limited time" offers that never end
-- Uses **fake scarcity** — "only 3 left" when there is no actual limit
-- Contains **unsubstantiated testimonials** — reviews or case studies that cannot be verified
+- Makes **false or misleading claims**, including claims that are technically true but create a false impression
+- Uses **fake urgency**, countdown timers that reset, "limited time" offers that never end
+- Uses **fake scarcity**, "only 3 left" when there is no actual limit
+- Contains **unsubstantiated testimonials**, reviews or case studies that cannot be verified
 - Makes **income or earnings claims** without substantiation and without an earnings disclaimer
 - Contains **health claims** that are not authorised under UK regulations
-- Uses **drip pricing** — showing a price that increases with hidden fees at checkout
+- Uses **drip pricing**, showing a price that increases with hidden fees at checkout
 - Makes a **guarantee** that contradicts the Terms of Service
 - Uses **AI-generated content** without disclosure from August 2026
 
@@ -1551,7 +1551,7 @@ An ad is illegal if it:
 
 **If you are a buyer:**
 
-Paste the sales page, ad or email into Red Flag AI Pro. In 60 seconds you get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials — walk away. If it comes back clean — buy with confidence.
+Paste the sales page, ad or email into Red Flag AI Pro. In 60 seconds you get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials, walk away. If it comes back clean, buy with confidence.
 
 Free. No account needed. [redflagaipro.com](https://www.redflagaipro.com)
 
@@ -1564,16 +1564,16 @@ Run your copy through the same tool before you spend a penny on ads. Every flag 
 ## The 5 Most Common Illegal Ads in the UK Right Now
 
 ### 1. The Reset Countdown Timer
-"Offer ends in 02:47:33" — timer resets every time you reload the page. Illegal under CMA dark patterns guidance. Specifically named in the Digital Markets, Competition and Consumers Act.
+"Offer ends in 02:47:33", timer resets every time you reload the page. Illegal under CMA dark patterns guidance. Specifically named in the Digital Markets, Competition and Consumers Act.
 
 ### 2. The Income Claim Without a Disclaimer
 "Our members earn £5,000 per month." Without an earnings disclaimer showing typical results, this violates ASA CAP Code rules and CMA guidance on misleading commercial practices.
 
 ### 3. The "Limited Spots" That Never Run Out
-"Only 10 places available." You come back a week later — still 10 places available. Illegal under CAP Code Rule 3.22 and CMA dark patterns enforcement.
+"Only 10 places available." You come back a week later, still 10 places available. Illegal under CAP Code Rule 3.22 and CMA dark patterns enforcement.
 
 ### 4. The Conditional Refund That Contradicts Statutory Rights
-"30-day money back guarantee — but you must complete all modules first." UK consumers have a statutory 14-day right to cancel digital purchases. Any condition that makes a refund harder to claim than the statutory right is unenforceable — and advertising it is misleading.
+"30-day money back guarantee, but you must complete all modules first." UK consumers have a statutory 14-day right to cancel digital purchases. Any condition that makes a refund harder to claim than the statutory right is unenforceable, and advertising it is misleading.
 
 ### 5. The Testimonial Without Disclosure
 "I made £20,000 in my first month." The person who said this received a free product or commission. The commercial relationship was not disclosed. ASA CAP Code Rule 2.1 and FTC Endorsement Guides both require disclosure of any material relationship.
@@ -1582,11 +1582,11 @@ Run your copy through the same tool before you spend a penny on ads. Every flag 
 
 ## Report It If You Find It
 
-**ASA complaints**: asa.org.uk — free, online, takes 5 minutes
+**ASA complaints**: asa.org.uk, free, online, takes 5 minutes
 **CMA reports**: gov.uk/report-trading-standards
 **Trading Standards**: Citizens Advice consumer helpline 0808 223 1133
 
-If you have been financially harmed by an illegal ad — contact your bank about a chargeback on grounds of misrepresentation.
+If you have been financially harmed by an illegal ad, contact your bank about a chargeback on grounds of misrepresentation.
 
 ---
 
@@ -1609,20 +1609,20 @@ Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup. 60 s
 
 A client calls. They have received a letter from the ASA. One of the campaigns you wrote and managed is under investigation.
 
-What happens next — and what does it mean for your agency?
+What happens next, and what does it mean for your agency?
 
 ---
 
 ## How ASA Investigations Work
 
-The ASA receives a complaint — from a consumer, a competitor or its own proactive monitoring team. It reviews the ad and decides whether to open a formal investigation.
+The ASA receives a complaint, from a consumer, a competitor or its own proactive monitoring team. It reviews the ad and decides whether to open a formal investigation.
 
 If it opens an investigation:
 
 1. The ASA contacts the **advertiser** (your client) asking for evidence to substantiate the claims
 2. If the ad was produced by an agency, the ASA may contact the agency directly
 3. The client and agency submit their response
-4. The ASA adjudicates — usually within 3-4 months
+4. The ASA adjudicates, usually within 3-4 months
 5. The ruling is published publicly on the ASA website
 6. If upheld, the ad must be withdrawn and not appear again in that form
 
@@ -1637,13 +1637,13 @@ Historically, ASA rulings named the brand. But since 2022, the ASA has increasin
 - Named agencies in cases involving influencer campaigns they managed
 - Required agencies to have substantiation processes in place
 
-The FTC in the US goes further — agencies that organise and manage influencer campaigns are held directly responsible for disclosure failures under the 2023 Endorsement Guides.
+The FTC in the US goes further, agencies that organise and manage influencer campaigns are held directly responsible for disclosure failures under the 2023 Endorsement Guides.
 
 ---
 
 ## The PI Insurance Problem
 
-Your Professional Indemnity insurance covers professional negligence — work that was below the standard expected of a competent professional.
+Your Professional Indemnity insurance covers professional negligence, work that was below the standard expected of a competent professional.
 
 If a client suffers loss because your agency produced non-compliant marketing copy, they have a claim against you.
 
@@ -1662,7 +1662,7 @@ The single best protection against an ASA complaint affecting your agency is a d
 - What was checked
 - What changes were made as a result
 
-This is exactly what Red Flag AI Pro creates automatically. Every scan produces a timestamped compliance report. If the ASA or a client asks "can you prove you reviewed this before it went live?" — the answer is yes, with a signed PDF certificate showing exactly what was checked and when.
+This is exactly what Red Flag AI Pro creates automatically. Every scan produces a timestamped compliance report. If the ASA or a client asks "can you prove you reviewed this before it went live?", the answer is yes, with a signed PDF certificate showing exactly what was checked and when.
 
 ---
 
@@ -1670,14 +1670,14 @@ This is exactly what Red Flag AI Pro creates automatically. Every scan produces 
 
 1. **Do not panic.** An ASA investigation is not a prosecution. Most investigations are resolved with an agreement to amend or withdraw the ad.
 2. **Gather your evidence.** What substantiation do you have for the claims made? Do you have proof of a compliance review?
-3. **Contact your PI insurer.** Notify them immediately — even if you are not sure a claim will follow.
+3. **Contact your PI insurer.** Notify them immediately, even if you are not sure a claim will follow.
 4. **Review your process.** Use the investigation as the trigger to put a proper compliance review process in place.
 
 ---
 
 ## Start Before the Complaint Arrives
 
-Red Flag AI Pro scans client copy against the full ASA CAP Code before it publishes — alongside FTC, GDPR, FCA, ACCC and CASL simultaneously.
+Red Flag AI Pro scans client copy against the full ASA CAP Code before it publishes, alongside FTC, GDPR, FCA, ACCC and CASL simultaneously.
 
 Every scan produces a signed PDF certificate. Sentinel plan includes team seats, client workspaces and weekly monitoring of live pages.
 
@@ -1686,7 +1686,7 @@ Every scan produces a signed PDF certificate. Sentinel plan includes team seats,
   },
   {
     slug: "income-claim-disclaimer-example-uk",
-    title: "Income Claim Disclaimer — Examples and Templates for UK Marketers",
+    title: "Income Claim Disclaimer, Examples and Templates for UK Marketers",
     description: "If your marketing copy contains income or earnings claims, you need a disclaimer. Here are compliant templates for UK, EU, US and Australian regulations with plain English guidance.",
     date: "2026-05-29",
     readTime: "4 min read",
@@ -1694,7 +1694,7 @@ Every scan produces a signed PDF certificate. Sentinel plan includes team seats,
     content: `
 ## Why You Need an Earnings Disclaimer
 
-If your marketing copy contains any claim — direct or implied — that a person can earn money, generate income, or achieve financial results from your product or service, you need a disclaimer.
+If your marketing copy contains any claim, direct or implied, that a person can earn money, generate income, or achieve financial results from your product or service, you need a disclaimer.
 
 Without one, you are in breach of:
 
@@ -1708,7 +1708,7 @@ The disclaimer does not make a false claim legal. But it is a required element o
 
 ---
 
-## The Standard Disclaimer — Use This as a Starting Point
+## The Standard Disclaimer, Use This as a Starting Point
 
 *"Results are not typical. Individual results will vary based on effort, experience, market conditions and other factors. The income figures shown represent exceptional results achieved by a small number of customers and are not intended as a representation of what you will earn. Past results are not indicative of future performance."*
 
@@ -1738,10 +1738,10 @@ The FTC requires that if you show a testimonial with above-average results, you 
 
 ## Where to Put the Disclaimer
 
-- **On the sales page** — prominently, near the income claims — not buried in the footer
-- **On the order page** — visible before the customer pays
+- **On the sales page**, prominently, near the income claims, not buried in the footer
+- **On the order page**, visible before the customer pays
 - **In any email** containing income claims
-- **In video content** — as an on-screen text overlay or spoken disclosure
+- **In video content**, as an on-screen text overlay or spoken disclosure
 
 The ASA and FTC are both explicit: a disclaimer in small print that contradicts a bold headline claim does not make the headline legal.
 
@@ -1751,7 +1751,7 @@ The ASA and FTC are both explicit: a disclaimer in small print that contradicts 
 
 A disclaimer cannot save a claim that is factually false. If your copy says "earn £10,000 per month" and typical customers earn nothing, no disclaimer makes that headline legal.
 
-The disclaimer accompanies a substantiated claim — it does not replace substantiation.
+The disclaimer accompanies a substantiated claim, it does not replace substantiation.
 
 ---
 
@@ -1764,7 +1764,7 @@ Red Flag AI Pro flags income claims, guarantee contradictions and missing discla
   },
   {
     slug: "marketing-compliance-software-comparison-2026",
-    title: "Marketing Compliance Software 2026 — What Actually Exists and What It Costs",
+    title: "Marketing Compliance Software 2026, What Actually Exists and What It Costs",
     description: "A plain English comparison of the tools agencies and marketers use for compliance checking. What they do, what they cost, and the gap Red Flag AI Pro fills.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -1774,7 +1774,7 @@ Red Flag AI Pro flags income claims, guarantee contradictions and missing discla
 
 If you search for "marketing compliance software" you will find enterprise tools built for legal teams at FTSE 100 companies, manual compliance consultants charging by the hour, and a handful of specialist tools for specific niches like financial services or pharmaceuticals.
 
-Most of them have three things in common: they are expensive, they are slow, and they were not built for the people who actually write marketing copy — course creators, digital agencies, funnel builders, SaaS founders.
+Most of them have three things in common: they are expensive, they are slow, and they were not built for the people who actually write marketing copy, course creators, digital agencies, funnel builders, SaaS founders.
 
 This is the honest comparison.
 
@@ -1786,7 +1786,7 @@ This is the honest comparison.
 
 **What they do**: Workflow-based review platforms used by enterprise legal and compliance teams. Copy is submitted, reviewed by compliance officers, approved or rejected with comments.
 
-**Who they are for**: Banks, pharmaceuticals, insurance companies — regulated industries with dedicated compliance headcount.
+**Who they are for**: Banks, pharmaceuticals, insurance companies, regulated industries with dedicated compliance headcount.
 
 **What they cost**: £2,000–£10,000 per month. Minimum contract terms. Weeks of onboarding.
 
@@ -1820,29 +1820,29 @@ This is the honest comparison.
 
 ### Red Flag AI Pro
 
-**What it does**: Scans any marketing copy — text, URLs, YouTube VSLs, audio files, entire websites — against 21 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
+**What it does**: Scans any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 21 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
 
 **Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
 
 **What it costs**: Pro £39/month. Growth £199/month. Sentinel £999/month.
 
 **What makes it different**:
-- Real-time — results in 60 seconds, not 48-72 hours
-- Multi-jurisdiction — all five major markets in one scan
-- Covers all formats — text, URL, VSL transcript, audio, whole website
+- Real-time, results in 60 seconds, not 48-72 hours
+- Multi-jurisdiction, all five major markets in one scan
+- Covers all formats, text, URL, VSL transcript, audio, whole website
 - Produces signed PDF certificates as audit evidence
 - Sentinel includes team seats, client workspaces, weekly monitoring, white-label reports, API and webhooks
-- Live in a day — not weeks of onboarding
+- Live in a day, not weeks of onboarding
 
 ---
 
 ## What Still Requires a Human
 
-Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high-stakes decisions — FCA-regulated financial promotions, pharmaceutical claims, specific regulatory advice — you need qualified legal counsel.
+Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high-stakes decisions, FCA-regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
 
 What Red Flag AI Pro does is catch the 90% of compliance issues that are detectable through language pattern analysis: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
 
-It is the first line of defence that means fewer problems reach the lawyer's desk — and when they do, there is already a documented review trail.
+It is the first line of defence that means fewer problems reach the lawyer's desk, and when they do, there is already a documented review trail.
 
 ---
 
@@ -1861,7 +1861,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
   },
   {
     slug: "fake-urgency-countdown-timers-illegal-uk-eu",
-    title: "Fake Urgency and Countdown Timers — When They Are Illegal and What to Do Instead",
+    title: "Fake Urgency and Countdown Timers, When They Are Illegal and What to Do Instead",
     description: "Countdown timers that reset, limited time offers that never end and fake scarcity are now specifically illegal under UK CMA guidance and EU DSA rules. Here is what you need to know.",
     date: "2026-05-29",
     readTime: "5 min read",
@@ -1869,7 +1869,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
     content: `
 ## The Timer That Could Get You Fined
 
-You have seen them everywhere. A sales page with a countdown timer showing 02:47:33. You reload the page an hour later — it still shows 02:47:33. You come back the next day — it still shows 02:47:33.
+You have seen them everywhere. A sales page with a countdown timer showing 02:47:33. You reload the page an hour later, it still shows 02:47:33. You come back the next day, it still shows 02:47:33.
 
 In 2026, that countdown timer is specifically illegal.
 
@@ -1877,7 +1877,7 @@ In 2026, that countdown timer is specifically illegal.
 
 ## What Changed
 
-The UK's **Digital Markets, Competition and Consumers Act** (DMCC Act) came into force in 2024 and gave the CMA direct fining powers — without needing to go to court — for the first time.
+The UK's **Digital Markets, Competition and Consumers Act** (DMCC Act) came into force in 2024 and gave the CMA direct fining powers, without needing to go to court, for the first time.
 
 The **EU Digital Services Act** (DSA) explicitly names fake countdown timers, fabricated scarcity indicators and manufactured social proof as illegal dark patterns.
 
@@ -1912,7 +1912,7 @@ A "today only" price that continues the next day. A "last chance" banner that ap
 
 ## What Is Legal
 
-Genuine urgency and genuine scarcity are completely legal — and highly effective.
+Genuine urgency and genuine scarcity are completely legal, and highly effective.
 
 **Legal urgency examples**:
 - A cart countdown that expires unused baskets after 30 minutes (genuine, documented)
@@ -1940,11 +1940,11 @@ Neither regulator is waiting for complaints. Both are proactively monitoring.
 
 ## How to Check Your Own Copy
 
-Red Flag AI Pro scans your marketing copy for fake urgency language, artificial scarcity claims and dark patterns — alongside 18 other compliance risk categories.
+Red Flag AI Pro scans your marketing copy for fake urgency language, artificial scarcity claims and dark patterns, alongside 18 other compliance risk categories.
 
 Paste your sales page or email sequence and see exactly which claims are at risk.
 
-[Scan your copy free — no signup →](https://www.redflagaipro.com)
+[Scan your copy free, no signup →](https://www.redflagaipro.com)
     `,
   },
 ];
