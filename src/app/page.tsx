@@ -54,77 +54,103 @@ const jsonLd = {
 };
 
 const FEATURES = [
+  // --- BUYER SIDE ---
+  {
+    icon: "🛡️",
+    title: "Verify Before You Buy",
+    description:
+      "Paste any ad, sales page or VSL you are considering buying from. Know if the claims are legal before you hand over your money. Free — no signup needed.",
+  },
+  {
+    icon: "🚨",
+    title: "Spot Fake Urgency and Fake Scarcity",
+    description:
+      "That countdown timer and limited spots claim — find out if it is real or manufactured pressure. Fake urgency is specifically illegal under EU DSA and CMA rules.",
+  },
+  {
+    icon: "📋",
+    title: "Catch Contract Contradictions",
+    description:
+      "Spots the gap between what the sales page promises and what the Terms of Service actually delivers — before you screenshot it too late and lose your money.",
+  },
   {
     icon: "📊",
     title: "0–100 Compliance Score",
     description:
-      "One number tells you exactly how safe your copy is to publish — or buy from. Green means go. Red means stop. Every flag explained in plain English with a suggested fix.",
+      "One number tells you exactly how safe an offer is — or how safe your copy is to publish. Green means go. Red means stop. Every flag in plain English with a fix.",
+  },
+  // --- SELLER / FOUNDER / AGENCY SIDE ---
+  {
+    icon: "🚩",
+    title: "Know Your Risk Before You Spend on Ads",
+    description:
+      "Stop paying to amplify illegal copy. Red Flag AI Pro surfaces income claims, health claims, fake urgency and FTC red flags before your campaign goes live.",
+  },
+  {
+    icon: "💡",
+    title: "Compliant Rewrites Included",
+    description:
+      "Every flag comes with a concrete, compliant rewrite. No lawyer, no guesswork, no waiting. Fix it in the same session you found it.",
   },
   {
     icon: "🌐",
     title: "Scan Any Live URL",
     description:
-      "Paste a URL and we fetch the live page, strip navigation and boilerplate, and scan what is actually published — not what you think is there.",
+      "Paste a URL and we fetch the live page and scan what is actually published — not what you think is there. Works on sales pages, landing pages, product pages.",
   },
   {
     icon: "🎬",
     title: "YouTube VSL and Audio Scanning",
     description:
-      "Paste a YouTube URL and we fetch the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Every word scanned against all 21 categories.",
+      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 21 risk categories.",
   },
   {
     icon: "🔍",
     title: "Full Site Audit",
     description:
-      "Enter a domain and we find the sitemap, scan every page, and rank them by risk. Audit a new client's entire website in under two minutes.",
+      "Enter a domain and we find the sitemap, scan every page, and rank them by risk. Audit a new client's entire website in under two minutes on day one.",
   },
   {
     icon: "📡",
     title: "Weekly Auto-Monitoring",
     description:
-      "Add pages to monitoring. We rescan them every Monday and email you if anything changes. Know about new compliance issues before your client does.",
+      "Add URLs to monitoring and we rescan them every Monday. Email digest lands in your inbox if anything changes. Know about new compliance issues before anyone complains.",
   },
   {
     icon: "🏢",
-    title: "Client Workspaces",
+    title: "Client Workspaces and Auto-Reports",
     description:
-      "Organise scans by client. Each client has their own workspace showing all scans, score trends over time and compliance history. Auto-reports sent to client contacts.",
+      "Organise scans by client. Each workspace shows scan history, score trends and compliance records. Weekly reports sent automatically to your client contacts.",
   },
   {
     icon: "📥",
     title: "White-Label PDF Reports",
     description:
-      "Download compliance reports under your agency name. Set it in Settings once — every report shows your branding. Clients never know the tool behind it.",
-  },
-  {
-    icon: "🔗",
-    title: "Embeddable Compliance Badge",
-    description:
-      "A live SVG badge showing the compliance score. Agencies embed it on client sites or include it in deliverables as verifiable proof of review.",
+      "Download compliance reports under your agency name. Set it once in Settings — every PDF shows your branding. Clients see your name on the certificate, not ours.",
   },
   {
     icon: "⚡",
-    title: "Zapier and Webhook Integration",
+    title: "Zapier, Webhooks and REST API",
     description:
-      "Every scan fires a webhook to any URL. Connect to Zapier, Make, Slack or your own system. Compliance results flow into your existing workflow automatically.",
+      "Every scan fires a webhook to any URL. Connect Zapier, Make, Slack or your own system in minutes. REST API with full docs at /docs lets you embed scanning in your own tools.",
   },
   {
     icon: "🧩",
     title: "Chrome Extension",
     description:
-      "Scan any page without leaving your browser. Click the extension icon, see the compliance score and top flags in seconds. Available to Sentinel users.",
+      "Scan any page without leaving your browser. Click the icon, see the score and top flags in seconds. No copy-paste, no tab-switching. Sentinel users only.",
   },
   {
-    icon: "🔑",
-    title: "Public REST API",
+    icon: "🔗",
+    title: "Embeddable Compliance Badge and Sharing",
     description:
-      "Integrate compliance scanning into your own tools, CMS or client portal. API keys, full documentation at /docs, JSON responses with scores and flags.",
+      "A live SVG badge agencies embed on client sites as verifiable proof of review. Share any scan with a public link — clients see the full report without an account.",
   },
   {
     icon: "🕓",
     title: "Compliance Changelog",
     description:
-      "Compare any two scans side by side. See exactly what improved, what got worse, and what new flags appeared — with the fix for each one.",
+      "Compare any two scans side by side. Score delta, new flags, resolved flags, what still needs fixing — with the suggested rewrite for every issue.",
   },
 ];
 
@@ -159,15 +185,17 @@ const AI_CATEGORIES = [
 ];
 
 const PERSONAS = [
-  { icon: "🏢", label: "Marketing Agencies", desc: "Scan client copy before it publishes. White-label reports. Team seats. Auto-monitoring." },
-  { icon: "🏦", label: "FCA-Regulated Businesses", desc: "Financial promotions checked before publication. Signed certificates as audit evidence." },
-  { icon: "🎓", label: "Course Creators", desc: "Selling internationally. Income claims, guarantees and testimonials checked across all 5 jurisdictions." },
-  { icon: "🎯", label: "Coaches and Consultants", desc: "High-ticket VSLs and sales pages scanned before traffic. YouTube transcript fetching included." },
-  { icon: "💻", label: "SaaS Founders", desc: "Free trial terms, subscription language, data collection claims — all checked before ads run." },
-  { icon: "🛒", label: "Ecommerce Brands", desc: "Product claims, sustainability assertions and pricing language across UK, EU, US, AUS and Canada." },
-  { icon: "📊", label: "Compliance Teams", desc: "API access, webhooks and bulk scanning. Integrate compliance into your existing review workflow." },
-  { icon: "🛡️", label: "Buyers and Consumers", desc: "Paste any sales page before you buy. Know if the claims are legal. Free — no signup needed." },
-  { icon: "🌿", label: "Sustainable Brands", desc: "Greenwashing scanner checks every environmental claim against the EU Green Claims Directive and CMA Code." },
+  // Buyers
+  { icon: "🛡️", label: "Online Shoppers", desc: "Checking if an offer is legitimate before buying. Paste any ad — know in 60 seconds if the claims are legal." },
+  { icon: "📚", label: "Course Buyers", desc: "Verifying income claims and guarantees before investing in a programme. Free, no account needed." },
+  { icon: "💸", label: "Anyone Who's Been Ripped Off Before", desc: "Paste any sales page you are unsure about. We flag exactly what is illegal and why." },
+  // Sellers and founders
+  { icon: "🏢", label: "Marketing Agencies", desc: "Client workspaces, team seats, white-label PDFs, auto-monitoring and Zapier — compliance as a service." },
+  { icon: "🎓", label: "Course Creators", desc: "Income claims, testimonials and guarantees checked across FTC, ASA, ACCC and CASL before you spend on ads." },
+  { icon: "🎯", label: "Coaches Running VSLs", desc: "YouTube transcript fetching and audio transcription. Scan every word of your VSL before it goes live." },
+  { icon: "💻", label: "SaaS Founders", desc: "Free trial terms, subscription language, data collection and pricing claims — all checked before ads run." },
+  { icon: "🛒", label: "Ecommerce Brands", desc: "Product claims, sustainability assertions and pricing language checked across 5 jurisdictions simultaneously." },
+  { icon: "🏦", label: "FCA-Regulated Businesses", desc: "Financial promotions checked against FCA rules before publication. Signed PDF certificates as audit evidence." },
 ];
 
 const FINES = [
