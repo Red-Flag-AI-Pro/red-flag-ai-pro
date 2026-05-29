@@ -12,14 +12,20 @@ const PLANS = [
   {
     key: "pro" as const,
     name: "Pro",
-    price: "£29/mo",
+    price: "£39/mo",
     features: ["20 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Growth",
     price: "£199/mo",
-    features: ["Unlimited scans", "16 risk categories", "PDF compliance reports", "Priority support"],
+    features: ["Unlimited scans", "16 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
+  },
+  {
+    key: "sentinel" as const,
+    name: "Sentinel",
+    price: "£999/mo",
+    features: ["Unlimited scans", "All 21 risk categories", "URL + YouTube VSL + audio scanning", "Site audit (50 pages)", "Weekly monitoring", "Client workspaces", "Team seats", "White-label PDF reports", "Dedicated onboarding"],
   },
 ];
 
@@ -67,7 +73,7 @@ export default function BillingPage() {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  async function handleCheckout(planKey: "pro" | "enterprise") {
+  async function handleCheckout(planKey: "pro" | "enterprise" | "sentinel") {
     setLoading(planKey);
     const res = await fetch("/api/stripe/checkout", {
       method: "POST",
@@ -128,7 +134,7 @@ export default function BillingPage() {
           <h2 className="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wide">
             Upgrade your plan
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-3">
             {PLANS.map((p) => (
               <Card key={p.key}>
                 <div className="flex items-start justify-between">

@@ -17,7 +17,7 @@ export const SENTINEL_ONLY_CATEGORIES = [
 
 export const PLAN_PRICES = {
   pro: {
-    monthly: 29,
+    monthly: 39,
     label: "Pro",
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
@@ -25,6 +25,11 @@ export const PLAN_PRICES = {
     monthly: 199,
     label: "Growth",
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_ID!,
+  },
+  sentinel: {
+    monthly: 999,
+    label: "Sentinel",
+    priceId: process.env.STRIPE_PRICE_SENTINEL_ID!,
   },
 };
 
