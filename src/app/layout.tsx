@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Free. No account needed. The world's only 5-jurisdiction compliance scanner protecting both sides.",
+    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC and CASL. 21 risk categories. Free scan — no account needed.",
   keywords: [
     // Core product
     "marketing compliance scanner",
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     "marketing legal checker",
     "false advertising checker",
     "misleading marketing detector",
+    "URL compliance scanner",
+    "VSL compliance scanner",
+    "YouTube VSL compliance check",
+    "audio transcription compliance",
+    "site audit compliance",
+    "bulk website compliance scan",
     // Jurisdiction keywords
     "FTC compliance checker",
     "GDPR compliance tool",
@@ -49,6 +55,13 @@ export const metadata: Metadata = {
     "legal timestamp ad review",
     "PI insurance compliance evidence",
     "ASA complaint defence",
+    "white label compliance reports",
+    "client compliance workspace",
+    "compliance API for agencies",
+    "Zapier compliance webhook",
+    "Chrome extension compliance scanner",
+    "weekly compliance monitoring",
+    "team compliance seats",
     // AI compliance
     "EU AI Act Article 50",
     "AI content disclosure",
@@ -64,6 +77,7 @@ export const metadata: Metadata = {
     "income claim checker",
     "influencer disclosure checker",
     "subscription trap compliance",
+    "compliance changelog",
     // Buyer keywords
     "how to spot misleading advertising",
     "is this ad legal",
@@ -89,9 +103,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.redflagaipro.com",
     siteName: "Red Flag AI Pro",
-    title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
+    title: "Red Flag AI Pro — Are you a Builder? Are you a Buyer? Scan it before it's too late.",
     description:
-      "Buyers: paste any ad and find out if it is breaking the law. Sellers: scan your copy for FTC, CMA, ASA, GDPR, ACCC and CASL violations. Free. No account needed. Protecting both sides in 60 seconds.",
+      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL. 21 risk categories. Free — no account needed.",
     images: [
       {
         url: "/og-image.png",

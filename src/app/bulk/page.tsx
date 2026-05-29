@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import { BulkScanner } from "@/components/bulk/BulkScanner";
 import type { Plan } from "@/types";
+
+export const metadata: Metadata = {
+  title: "Site Audit — Scan Every Page of a Website for Compliance",
+  description: "Enter a domain and Red Flag AI Pro scans every page from the sitemap for compliance risks. Up to 50 pages on Sentinel. Fastest way to audit a new client on day one.",
+};
 
 export default async function BulkPage() {
   const supabase = await createClient();
