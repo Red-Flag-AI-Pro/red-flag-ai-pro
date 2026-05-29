@@ -298,7 +298,7 @@ export default function SentinelPage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-gray-800/50 bg-gray-900/30 p-7">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.15em] mb-6">Without Sentinel</p>
+              <p className="text-xs font-bold text-gray-300 uppercase tracking-[0.15em] mb-6">Without Sentinel</p>
               {[
                 "Copy reviewed over email threads",
                 "No record of what was checked",
@@ -308,8 +308,8 @@ export default function SentinelPage() {
                 "PI insurer asks: can you prove it?",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 mb-3">
-                  <span className="text-gray-500 mt-0.5 text-sm flex-shrink-0">✕</span>
-                  <span className="text-gray-300 text-sm">{item}</span>
+                  <span className="text-red-400 mt-0.5 text-sm flex-shrink-0">✕</span>
+                  <span className="text-white text-sm">{item}</span>
                 </div>
               ))}
             </div>
