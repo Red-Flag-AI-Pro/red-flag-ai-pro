@@ -339,16 +339,14 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Your Copy Is Either
+            Builder? Buyer?
             <br />
-            Legal or It Isn&apos;t.
-            <br />
-            <span className="text-red-400">Find Out in 60 Seconds.</span>
+            <span className="text-red-400">Scan it before it&apos;s too late.</span>
           </h1>
 
           {/* One line solve */}
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Compliance scanner for agencies, funnel builders and anyone who writes marketing copy. Paste text, scan a URL, audit a whole site. Plain English results. No lawyer needed.
+            Selling it? Check your copy is legal before you spend on ads. Buying it? Check their claims before you hand over your money. 21 risk categories. 5 countries. 60 seconds. Free.
           </p>
 
           {/* CTAs */}
