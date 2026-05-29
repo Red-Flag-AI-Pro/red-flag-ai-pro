@@ -339,7 +339,9 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-            Builder? Buyer?
+            Builder?
+            <br />
+            Buyer?
             <br />
             <span className="text-red-400">Scan it before it&apos;s too late.</span>
           </h1>
