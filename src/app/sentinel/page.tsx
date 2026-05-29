@@ -308,7 +308,7 @@ export default function SentinelPage() {
                 "PI insurer asks: can you prove it?",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 mb-3">
-                  <span className="text-red-400 mt-0.5 text-sm flex-shrink-0">✕</span>
+                  <span style={{ color: "#ef4444" }} className="mt-0.5 text-sm flex-shrink-0">✕</span>
                   <span className="text-white text-sm">{item}</span>
                 </div>
               ))}
