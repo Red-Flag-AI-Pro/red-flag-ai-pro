@@ -447,6 +447,121 @@ export default function LandingPage() {
       {/* Demo Scanner */}
       <DemoScanner />
 
+      {/* Real Examples Section */}
+      <section className="bg-gray-950 py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Real examples</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+              Before You Buy It. Before You Build It.<br className="hidden sm:block" />
+              <span className="text-red-400"> See What We Find.</span>
+            </h2>
+            <p className="mt-4 text-gray-400 text-sm">Real flags. Plain English. Both sides.</p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-2">
+
+            {/* FOR SELLERS */}
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-4 py-1.5">
+                <span className="text-xs font-bold text-red-400 uppercase tracking-widest">For Sellers</span>
+              </div>
+
+              {/* Flagged copy */}
+              <div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">🚩</span>
+                  <span className="text-xs font-bold text-red-400 uppercase tracking-widest">Flagged Copy</span>
+                </div>
+                <p className="text-gray-200 text-sm leading-relaxed italic">
+                  &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
+                </p>
+                <div className="mt-4 border-t border-red-500/20 pt-4">
+                  <p className="text-xs font-semibold text-red-400 mb-2">⚠️ Flags triggered</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Income claim without disclaimer", "Unsubstantiated earnings", "Guarantee contradiction"].map((f) => (
+                      <span key={f} className="rounded-full bg-red-900/40 border border-red-700/40 px-2.5 py-1 text-xs text-red-300">{f}</span>
+                    ))}
+                  </div>
+                  <p className="mt-2 text-xs text-red-400/70">FTC · ASA · ACCC</p>
+                </div>
+              </div>
+
+              {/* Compliant rewrite */}
+              <div className="rounded-2xl border border-green-500/30 bg-green-950/20 p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">✓</span>
+                  <span className="text-xs font-bold text-green-400 uppercase tracking-widest">Compliant Rewrite</span>
+                </div>
+                <p className="text-gray-200 text-sm leading-relaxed italic">
+                  &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
+                </p>
+                <div className="mt-4 border-t border-green-500/20 pt-4">
+                  <p className="text-xs font-semibold text-green-400 mb-2">✅ Now compliant with</p>
+                  <p className="text-xs text-green-400/70">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
+                </div>
+              </div>
+            </div>
+
+            {/* FOR BUYERS */}
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5">
+                <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">For Buyers</span>
+              </div>
+
+              {/* Looks legitimate */}
+              <div className="rounded-2xl border border-gray-700 bg-gray-900/50 p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">👀</span>
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Looks Legitimate</span>
+                </div>
+                <p className="text-gray-200 text-sm leading-relaxed italic">
+                  &ldquo;Over 2,400 students have completed this programme. Our top performers report life-changing results. Enrol today and get our 30-day satisfaction guarantee — we are so confident in our method that we offer a full refund if you do not see results within the first month.&rdquo;
+                </p>
+                <div className="mt-4 border-t border-gray-700 pt-4">
+                  <p className="text-sm font-bold text-amber-400">Passed your gut check. Failed ours.</p>
+                </div>
+              </div>
+
+              {/* What we found */}
+              <div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🚩</span>
+                  <span className="text-xs font-bold text-red-400 uppercase tracking-widest">What We Found</span>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { flag: "Unverified social proof", detail: "2,400 students — no independent verification", reg: "FTC violation" },
+                    { flag: "Vague results claim", detail: '"Life-changing results" with no data or disclaimer', reg: "ASA violation" },
+                    { flag: "Conditional guarantee", detail: "Refund tied to results — contradicts UK statutory consumer rights", reg: "CMA violation" },
+                    { flag: "Missing income disclaimer", detail: "Implied financial outcomes without mandatory disclosure", reg: "ACCC violation" },
+                  ].map((item) => (
+                    <div key={item.flag} className="flex items-start gap-3">
+                      <span style={{ color: "#ef4444" }} className="flex-shrink-0 text-sm mt-0.5">✕</span>
+                      <div>
+                        <p className="text-sm font-semibold text-white">{item.flag}</p>
+                        <p className="text-xs text-gray-400">{item.detail}</p>
+                        <p className="text-xs text-red-400/70 mt-0.5">{item.reg}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 border-t border-red-500/20 pt-4">
+                  <p className="text-sm font-bold text-white mb-3">Scan before you buy. Free. 60 seconds.</p>
+                  <a
+                    href="/#demo"
+                    className="inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-red-500 transition-colors"
+                  >
+                    Scan your copy free →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Feedback CTA */}
       <div className="bg-gray-950 pb-10 text-center">
         <p className="text-gray-500 text-sm mb-3">Tried the scanner? Let us know what you found.</p>
