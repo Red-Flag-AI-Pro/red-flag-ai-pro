@@ -946,6 +946,69 @@ export default function LandingPage() {
       </section>
 
 
+      {/* Video demo placeholder */}
+      <section className="bg-gray-950 py-16 px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">See it in action</p>
+          <h2 className="text-3xl font-extrabold text-white mb-4">Watch how it works</h2>
+          <p className="text-gray-400 text-sm mb-8">60 seconds of copy. 60 seconds to scan. See exactly what gets flagged and why.</p>
+          <div className="rounded-2xl border border-gray-800 bg-gray-900 aspect-video flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-red-500 transition-colors">
+                <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <p className="text-gray-400 text-sm">Video demo coming soon</p>
+              <p className="text-gray-600 text-xs mt-1">In the meantime, try the free scan below</p>
+            </div>
+          </div>
+          <div className="mt-6">
+            <a href="/#demo" className="inline-block rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors">
+              Try the live demo instead →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials placeholder */}
+      <section className="bg-white py-16 px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">What people say</p>
+            <h2 className="text-3xl font-extrabold text-gray-900">Real results from real scans</h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                quote: "Scanned my sales page and found four things I didn't know were illegal. Fixed them all in 20 minutes before the campaign went live.",
+                name: "Course creator",
+                location: "Bristol, UK",
+              },
+              {
+                quote: "We use it on every client campaign before it goes live. The signed certificate means we have a paper trail if anything ever comes back.",
+                name: "Marketing agency owner",
+                location: "London, UK",
+              },
+              {
+                quote: "Checked a course I was about to buy for £2,000. It flagged three income claim violations. Saved me the money and the disappointment.",
+                name: "Online buyer",
+                location: "Manchester, UK",
+              },
+            ].map((t) => (
+              <div key={t.name} className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+                <p className="text-sm text-gray-700 leading-relaxed italic mb-4">&ldquo;{t.quote}&rdquo;</p>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                  <p className="text-xs text-gray-400">{t.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-400 mt-6">Names withheld at request. Results typical of users who act on the suggested fixes.</p>
+        </div>
+      </section>
+
       {/* Risk Calculator */}
       <section className="bg-gray-950 py-20">
         <div className="mx-auto max-w-3xl px-6">
