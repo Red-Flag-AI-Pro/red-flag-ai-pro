@@ -232,6 +232,15 @@ export default function PricingPage() {
           <Link href="/docs" className="text-gray-500 hover:text-gray-400">API docs →</Link>
         </p>
 
+        {/* Founder note */}
+        <div className="mt-10 rounded-2xl border border-gray-800 bg-gray-900/30 p-6 max-w-2xl mx-auto">
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">A note from the founder</p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            I built the Pro plan for the person I used to be. Running funnels alone, no legal budget, no compliance team — just hoping the copy was okay and spending what little I had on ads. I know what it costs when it isn&apos;t. £39 is what I wished existed back then. If you&apos;re in that place right now, this is for you.
+          </p>
+          <p className="mt-3 text-gray-500 text-sm font-medium">— James, Founder</p>
+        </div>
+
       </div>
     </div>
   );
