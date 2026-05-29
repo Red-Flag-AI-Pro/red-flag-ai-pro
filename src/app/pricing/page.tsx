@@ -81,9 +81,19 @@ export default function PricingPage() {
         {/* 3-column plans */}
         <div className="grid gap-5 grid-cols-1 lg:grid-cols-3 items-start">
 
+          {/* Founder note — Pro plan */}
+          <div className="lg:col-span-1 flex flex-col">
+            <div className="rounded-xl border border-gray-700 bg-gray-900/50 p-4 mb-3">
+              <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">From the founder</p>
+              <p className="text-gray-300 text-xs leading-relaxed">
+                I built Pro for the person I used to be — running funnels alone, no legal budget, spending what little I had on ads and just hoping the copy was okay. I know what it costs when it isn&apos;t. £39 is what I wished existed back then.
+              </p>
+              <p className="mt-2 text-gray-500 text-xs">— James</p>
+            </div>
+
           {/* Pro */}
           <div
-            className="relative flex flex-col rounded-2xl border border-red-500/60 p-7"
+            className="relative flex flex-col rounded-2xl border border-red-500/60 p-7 flex-1"
             style={{ background: "linear-gradient(160deg, #1a0808 0%, #0f0810 100%)" }}
           >
             <div className="absolute -top-3 left-6 rounded-full bg-amber-400 px-3 py-0.5 text-xs font-bold text-amber-900">
@@ -118,6 +128,7 @@ export default function PricingPage() {
               </ul>
             </div>
           </div>
+          </div>{/* end founder+pro wrapper */}
 
           {/* Growth */}
           <div className="relative flex flex-col rounded-2xl border border-gray-700 bg-gray-900/60 p-7">
@@ -232,14 +243,6 @@ export default function PricingPage() {
           <Link href="/docs" className="text-gray-500 hover:text-gray-400">API docs →</Link>
         </p>
 
-        {/* Founder note */}
-        <div className="mt-10 rounded-2xl border border-gray-800 bg-gray-900/30 p-6 max-w-2xl mx-auto">
-          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">A note from the founder</p>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            I built the Pro plan for the person I used to be. Running funnels alone, no legal budget, no compliance team — just hoping the copy was okay and spending what little I had on ads. I know what it costs when it isn&apos;t. £39 is what I wished existed back then. If you&apos;re in that place right now, this is for you.
-          </p>
-          <p className="mt-3 text-gray-500 text-sm font-medium">— James, Founder</p>
-        </div>
 
       </div>
     </div>
