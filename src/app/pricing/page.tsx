@@ -221,8 +221,8 @@ export default function PricingPage() {
               <p className="text-xs text-gray-500 mt-1">Jurisdictions — FTC, GDPR, ASA, FCA, ACCC, CASL</p>
             </div>
             <div>
-              <p className="text-2xl font-extrabold text-white">£0</p>
-              <p className="text-xs text-gray-500 mt-1">Running cost until you have customers</p>
+              <p className="text-2xl font-extrabold text-white">60s</p>
+              <p className="text-xs text-gray-500 mt-1">From paste to compliance score</p>
             </div>
           </div>
         </div>
