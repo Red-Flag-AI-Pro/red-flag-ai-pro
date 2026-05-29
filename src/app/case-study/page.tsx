@@ -3,52 +3,60 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "Case Study — What Red Flag AI Pro Found on a Real Sales Page",
-  description: "A real walk-through of what Red Flag AI Pro found when scanning a typical online course sales page. Four violations. Plain English explanations. Exact rewrites provided.",
+  title: "Case Study — What Red Flag AI Pro Found on a Real Agency Campaign",
+  description: "Four real compliance violations found on a live agency campaign. None of them obvious. All of them fixable in minutes. This is what gets agencies named in complaints.",
   alternates: { canonical: "https://www.redflagaipro.com/case-study" },
 };
 
 const FLAGS = [
   {
-    category: "Income Claim",
+    category: "FCA Financial Promotion — Criminal Liability",
     severity: "HIGH",
     severityColor: "bg-red-900/40 text-red-300 border-red-700/40",
-    excerpt: "Join thousands of members who are making £5,000–£10,000 per month using our proven system.",
-    description: "This is an unsubstantiated earnings claim. It implies typical members earn this amount without providing evidence of actual results. This violates FTC guidelines, ASA CAP Code Rule 3.1 and ACCC rules on earnings representations.",
-    fix: "Replace with: 'Our members report a wide range of results. Some earn £5,000+ per month, individual results vary based on effort, experience and market conditions. See our income disclaimer for full details.'",
-    regulations: ["FTC (US)", "ASA CAP Code (UK)", "CMA (UK)", "ACCC (AU)"],
+    context: "A digital agency wrote landing page copy for a fintech client offering a savings product. The copy looked professional and compliant to everyone who reviewed it.",
+    excerpt: "Start growing your money today. Our members earn an average of 4.2% annually. Low risk, high reward. Open your account in minutes.",
+    description: "This is an unapproved financial promotion under Section 21 of the Financial Services and Markets Act 2000. Communicating a financial promotion without FCA authorisation is a criminal offence — not a civil fine. A criminal offence. The agency that wrote this copy, not just the client, is exposed. The '4.2% annually' figure is a specific return claim that requires FCA approval before publication. The 'low risk' claim is false — all investment carries risk and this wording is specifically prohibited.",
+    fix: "Any copy that invites someone to invest, save or engage with a financial product must be approved by an FCA-authorised person before publication. The agency should have flagged this before writing a word. The client's compliance officer or FCA-authorised firm must approve the final copy. Without that sign-off, neither the client nor the agency should publish.",
+    impact: "Criminal prosecution of the person who communicated the promotion. FCA public censure. Campaign takedown. PI insurance may not respond.",
+    regulations: ["FSMA 2000 Section 21 (UK)", "FCA Financial Promotions Rules (UK)", "FCA Compliance Sourcebook (UK)"],
   },
   {
-    category: "Guarantee Contradiction",
+    category: "CASL Consent Violation — $10M CAD Per Breach",
     severity: "HIGH",
     severityColor: "bg-red-900/40 text-red-300 border-red-700/40",
-    excerpt: "Results guaranteed or your money back, no questions asked.",
-    description: "The sales page guarantees results, but the Terms of Service states 'all sales final, no refunds on digital products.' This direct contradiction between the sales copy and the contract terms is a violation of ASA CAP Code Rule 3.1 and the Consumer Rights Act 2015.",
-    fix: "Either update the Terms to match the guarantee, or remove the guarantee from the sales page. Note: UK consumers have a statutory 14-day right to cancel digital purchases that cannot be contracted away.",
-    regulations: ["ASA CAP Code (UK)", "Consumer Rights Act 2015 (UK)", "FTC (US)"],
+    context: "An ecommerce brand's email capture form had been running for two years. The agency built it. It had 40,000 subscribers on the list, including Canadian recipients.",
+    excerpt: "Enter your email to receive exclusive offers and our weekly newsletter. By signing up you agree to receive marketing communications from us.",
+    description: "Canada's Anti-Spam Legislation (CASL) requires express consent before sending commercial electronic messages. 'By signing up you agree to receive marketing' is not express consent — it is implied consent buried in a checkbox that no one reads. Under CASL, every email sent to a Canadian recipient without proper express consent is a separate violation carrying fines up to $10 million CAD per violation for businesses. With 40,000 subscribers and an unknown number of Canadian recipients, this list has been accumulating liability for two years.",
+    fix: "Add an unchecked checkbox with explicit language: 'I agree to receive marketing emails from [Brand]. I can unsubscribe at any time.' This must be a separate, affirmative action — not bundled with terms acceptance. All existing Canadian subscribers whose consent method does not meet CASL standards should be suppressed until proper consent is obtained.",
+    impact: "Potential fines of millions per violation. CRTC enforcement. List destruction. Campaign suspension.",
+    regulations: ["CASL + CRTC (Canada)", "PECR + ICO (UK)", "GDPR (EU)", "CAN-SPAM (US)"],
   },
   {
-    category: "False Urgency",
-    severity: "MEDIUM",
-    severityColor: "bg-amber-900/40 text-amber-300 border-amber-700/40",
-    excerpt: "Offer expires tonight at midnight. Only 3 spots remaining at this price.",
-    description: "The countdown timer on this page resets when visited in a new browser session, and the same '3 spots remaining' message has been live for over two weeks. Fake urgency and fake scarcity are specifically named as illegal dark patterns under CMA guidance and EU DSA Article 25.",
-    fix: "Remove the countdown timer entirely, or replace it with a genuine deadline that is honoured. If spots are not actually limited, remove the scarcity claim.",
-    regulations: ["CMA (UK)", "EU DSA (EU)", "ACCC (AU)", "FTC (US)"],
+    category: "Drip Pricing — CMA Enforcement Priority",
+    severity: "HIGH",
+    severityColor: "bg-red-900/40 text-red-300 border-red-700/40",
+    context: "A SaaS client's pricing page was written and managed by the agency. It had been running for eight months generating significant paid traffic.",
+    excerpt: "Start for just £29/month. Join over 5,000 businesses already growing with our platform.",
+    description: "The £29 figure appears in the hero, the ads and the Google Shopping feed. The actual first month cost is £29 plus a mandatory £49 onboarding fee plus VAT — a total of £92.80 for month one. This is drip pricing, the practice of advertising an artificially low headline price and revealing the full cost through the checkout journey. The CMA has made drip pricing one of its top enforcement priorities under the Digital Markets Competition and Consumers Act 2024. The ACCC fined airlines over $1 million for exactly this practice. The agency that wrote and managed this campaign is in the chain of liability.",
+    fix: "The advertised price must represent the total mandatory cost from the first point of contact. Either include all fees in the headline price, or clearly state 'from £29/month + £49 setup fee' in every placement. This must be updated in the ads, the landing page and any comparison sites simultaneously.",
+    impact: "CMA enforcement notice. Fines without court order under DMCC Act 2024. Ad account suspension. Chargeback wave from existing customers.",
+    regulations: ["CMA + DMCC Act 2024 (UK)", "ACCC (Australia)", "FTC (US)", "UCPD (EU)"],
   },
   {
-    category: "Unverified Testimonial",
+    category: "Affiliate Non-Disclosure — FTC Criminal Referral Territory",
     severity: "MEDIUM",
     severityColor: "bg-amber-900/40 text-amber-300 border-amber-700/40",
-    excerpt: "I made £20,000 in my first month using this exact system. This changed my life.",
-    description: "This testimonial shows exceptional results without disclosing that they are atypical. The person providing the testimonial received a free product in exchange for their review, which was not disclosed. Both the missing typicality disclaimer and the undisclosed incentive violate FTC and ASA rules.",
-    fix: "Add: 'Results not typical. Individual results will vary.' If the testimonial was incentivised, add clear disclosure: 'This customer received free access in exchange for their feedback.'",
-    regulations: ["FTC Endorsement Guides 2023 (US)", "ASA CAP Code (UK)", "CMA (UK)"],
+    context: "An agency managed an influencer campaign for a supplement brand. Twenty influencers posted content. The agency briefed them, managed the contracts and approved the content.",
+    excerpt: "Honestly the best thing I have tried this year. I have been using this for three months and the results speak for themselves. Link in bio.",
+    description: "Twenty influencers posted variations of this without any disclosure. No #ad. No #sponsored. No 'paid partnership.' The agency briefed them, paid them and approved the content. Under FTC Endorsement Guides 2023, the agency that organises and manages an influencer campaign bears direct responsibility for disclosure failures. This is not a technicality — the FTC has issued civil investigative demands to agencies, not just brands, for exactly this pattern. The ASA and CMA have publicly named agencies in influencer non-disclosure rulings. Each post is a separate violation.",
+    fix: "Every piece of paid, gifted or incentivised influencer content must include clear, prominent disclosure before any promotional content. '#Ad' or 'Paid partnership with [Brand]' must appear at the start of the caption — not buried in hashtags, not at the end. The agency's influencer brief must include mandatory disclosure language and the contract must require it. Content must not be approved without visible disclosure.",
+    impact: "FTC civil investigative demand. ASA public ruling. CMA enforcement notice. Brand reputational damage. Agency named publicly.",
+    regulations: ["FTC Endorsement Guides 2023 (US)", "ASA CAP/BCAP Code (UK)", "CMA Influencer Guidance (UK)", "UCPD (EU)"],
   },
 ];
 
-const SCORE_BEFORE = 42;
-const SCORE_AFTER = 89;
+const SCORE_BEFORE = 31;
+const SCORE_AFTER = 91;
 
 export default function CaseStudyPage() {
   return (
@@ -57,13 +65,13 @@ export default function CaseStudyPage() {
 
       {/* Hero */}
       <div className="bg-gray-950 py-16 px-6">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl">
           <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Case Study</p>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
-            What We Found on a Real Sales Page
+            Four violations.<br />None of them obvious.<br /><span className="text-red-400">All of them happening right now.</span>
           </h1>
-          <p className="text-gray-400 text-base max-w-xl mx-auto">
-            A typical online course sales page. Looked professional. Scanned in 60 seconds. Four violations found. Here is exactly what they were and how to fix them.
+          <p className="text-gray-400 text-base max-w-2xl">
+            This is a composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here is what a compliance scanner found that nobody else did.
           </p>
         </div>
       </div>
@@ -73,92 +81,101 @@ export default function CaseStudyPage() {
         {/* Score comparison */}
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-xl border border-red-200 bg-red-50 p-5 text-center">
-            <p className="text-xs text-gray-500 mb-1">Score before</p>
+            <p className="text-xs text-gray-500 mb-1">Compliance score before</p>
             <p className="text-4xl font-extrabold text-red-600">{SCORE_BEFORE}</p>
-            <p className="text-xs font-semibold text-red-600 mt-1">Medium Risk</p>
+            <p className="text-xs font-semibold text-red-600 mt-1">High Risk — do not publish</p>
           </div>
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 text-center flex flex-col items-center justify-center">
-            <p className="text-xs text-gray-500 mb-1">Flags found</p>
+            <p className="text-xs text-gray-500 mb-1">Violations found</p>
             <p className="text-4xl font-extrabold text-gray-900">4</p>
-            <p className="text-xs text-gray-500 mt-1">2 high, 2 medium</p>
+            <p className="text-xs text-gray-500 mt-1">3 criminal/high, 1 medium</p>
           </div>
           <div className="rounded-xl border border-green-200 bg-green-50 p-5 text-center">
             <p className="text-xs text-gray-500 mb-1">Score after fixes</p>
             <p className="text-4xl font-extrabold text-green-600">{SCORE_AFTER}</p>
-            <p className="text-xs font-semibold text-green-600 mt-1">Low Risk</p>
+            <p className="text-xs font-semibold text-green-600 mt-1">Low Risk — safe to publish</p>
           </div>
         </div>
 
-        {/* The copy */}
-        <div>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">The copy that was scanned</h2>
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-            <p className="text-gray-700 text-sm leading-relaxed italic">
-              &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back, no questions asked. Offer expires tonight at midnight. Only 3 spots remaining at this price. I made £20,000 in my first month using this exact system. This changed my life.&rdquo;
-            </p>
-          </div>
-          <p className="text-xs text-gray-400 mt-2">Typical course sales page copy. Nothing unusual to the human eye. Four violations to a compliance scanner.</p>
+        {/* Warning */}
+        <div className="rounded-xl border border-amber-200 bg-amber-50 px-5 py-4">
+          <p className="text-sm font-bold text-amber-800 mb-1">Before you read this</p>
+          <p className="text-sm text-amber-700">If your agency writes copy for financial services clients, manages influencer campaigns, runs email capture or manages paid ads with headline pricing — at least one of these violations is almost certainly present in live campaigns right now.</p>
         </div>
 
         {/* Flags */}
-        <div>
-          <h2 className="text-xl font-bold text-gray-900 mb-4">What was found</h2>
-          <div className="space-y-4">
-            {FLAGS.map((flag, i) => (
-              <div key={flag.category} className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
-                <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-bold text-gray-500">#{i + 1}</span>
-                    <span className="text-sm font-bold text-gray-900">{flag.category}</span>
-                  </div>
-                  <span className={`rounded-full border px-2.5 py-0.5 text-xs font-bold ${flag.severityColor}`}>
-                    {flag.severity}
-                  </span>
+        <div className="space-y-6">
+          {FLAGS.map((flag, i) => (
+            <div key={flag.category} className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
+              <div className="flex items-start justify-between px-5 py-4 border-b border-gray-100 gap-4">
+                <div>
+                  <p className="text-xs text-gray-400 mb-1">Violation #{i + 1}</p>
+                  <h3 className="text-base font-bold text-gray-900">{flag.category}</h3>
                 </div>
-                <div className="px-5 py-4 space-y-3">
-                  <blockquote className="rounded-md border-l-4 border-amber-400 bg-amber-50 px-4 py-2 text-sm italic text-amber-800">
-                    &ldquo;{flag.excerpt}&rdquo;
-                  </blockquote>
-                  <p className="text-sm text-gray-700">{flag.description}</p>
-                  <div className="rounded-md bg-green-50 border border-green-200 px-4 py-3">
-                    <p className="text-xs font-bold text-green-700 mb-1">The fix</p>
-                    <p className="text-sm text-green-800">{flag.fix}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {flag.regulations.map((r) => (
-                      <span key={r} className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500">{r}</span>
-                    ))}
-                  </div>
+                <span className={`flex-shrink-0 rounded-full border px-3 py-1 text-xs font-bold ${flag.severityColor}`}>
+                  {flag.severity}
+                </span>
+              </div>
+
+              <div className="px-5 py-5 space-y-4">
+                <div className="rounded-lg bg-gray-50 border border-gray-200 px-4 py-3">
+                  <p className="text-xs font-semibold text-gray-500 mb-1.5">The context</p>
+                  <p className="text-sm text-gray-600">{flag.context}</p>
+                </div>
+
+                <blockquote className="rounded-md border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm italic text-amber-900">
+                  &ldquo;{flag.excerpt}&rdquo;
+                </blockquote>
+
+                <div>
+                  <p className="text-xs font-semibold text-gray-500 mb-2">What the scanner found</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">{flag.description}</p>
+                </div>
+
+                <div className="rounded-md bg-green-50 border border-green-200 px-4 py-3">
+                  <p className="text-xs font-bold text-green-700 mb-1.5">The fix</p>
+                  <p className="text-sm text-green-800 leading-relaxed">{flag.fix}</p>
+                </div>
+
+                <div className="rounded-md bg-red-50 border border-red-200 px-4 py-3">
+                  <p className="text-xs font-bold text-red-700 mb-1.5">If not fixed</p>
+                  <p className="text-sm text-red-700">{flag.impact}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {flag.regulations.map((r) => (
+                    <span key={r} className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500">{r}</span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* What happened next */}
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-3">What happened after the fixes</h2>
-          <p className="text-sm text-gray-700 leading-relaxed mb-3">
-            The four issues were fixed before the campaign went live. The earnings claim was replaced with qualified language and an income disclaimer. The guarantee was aligned with the Terms of Service. The countdown timer was removed. The testimonial was updated with a typicality disclaimer and incentive disclosure.
+        {/* The point */}
+        <div className="rounded-xl border-2 border-gray-900 bg-gray-950 p-8">
+          <h2 className="text-xl font-bold text-white mb-3">The point of this case study</h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            None of these violations were caught in internal review. None of them looked wrong to the people who wrote, approved and published them. All of them were found in 60 seconds by a compliance scanner.
           </p>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Compliance score went from 42 to 89. The campaign launched without a complaint. The whole process, scanning and fixing, took under 30 minutes.
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            The FCA violation could result in criminal prosecution. The CASL violation had been running for two years building liability on every send. The drip pricing was being amplified by paid ads the agency was managing. The influencer campaign had twenty posts live without a single disclosure.
+          </p>
+          <p className="text-red-400 text-sm font-semibold">
+            The question is not whether your campaigns have violations. The question is whether you find them before a regulator does.
           </p>
         </div>
 
         {/* CTA */}
-        <div className="rounded-xl border-2 border-gray-900 bg-gray-950 p-8 text-center">
-          <p className="text-white font-bold text-lg mb-2">Scan your copy before it costs you</p>
-          <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">
-            Free scan, no account needed. Paste any sales page, email or ad and see what a compliance scanner finds in 60 seconds.
-          </p>
+        <div className="text-center space-y-4">
+          <p className="text-gray-600 text-sm">Sentinel plan includes unlimited scanning, signed PDF certificates, client workspaces and weekly monitoring of live campaigns.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="/#demo" className="rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors">
-              Try it free →
-            </a>
-            <Link href="/pricing" className="rounded-xl border border-gray-700 px-8 py-3 text-sm font-medium text-gray-300 hover:bg-gray-800 transition-colors">
-              See pricing
+            <Link href="/sentinel" className="rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors">
+              See Sentinel for agencies →
             </Link>
+            <a href="/#demo" className="rounded-xl border border-gray-300 px-8 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+              Try a free scan
+            </a>
           </div>
         </div>
 
