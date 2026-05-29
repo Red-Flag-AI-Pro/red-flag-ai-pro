@@ -79,22 +79,18 @@ export default function PricingPage() {
         </div>
 
         {/* Founder message */}
-        <div className="mb-10 max-w-3xl mx-auto rounded-2xl border border-red-500/20 p-8" style={{ background: "linear-gradient(135deg, rgba(220,38,38,0.1) 0%, rgba(15,8,16,0.8) 100%)" }}>
-          <div className="flex items-start gap-4">
-            <div className="text-3xl flex-shrink-0">🚩</div>
-            <div>
-              <p className="text-white text-base leading-relaxed mb-4">
-                I have never forgotten the struggle. Running campaigns alone with no legal budget, spending everything on ads and just hoping the copy was okay. I know exactly what it costs when it isn&apos;t — the chargebacks, the takedowns, the panic.
-              </p>
-              <p className="text-gray-300 text-base leading-relaxed mb-4">
-                That&apos;s why I made so much of this accessible. And now we&apos;re operating at agency level — I feel that pain too. Agencies are being charged £2,000–£10,000 a month for tools that take weeks to set up and still don&apos;t cover everything.
-              </p>
-              <p className="text-red-400 text-base font-semibold leading-relaxed">
-                This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge — and always will.
-              </p>
-              <p className="mt-4 text-gray-500 text-sm">— James, Founder</p>
-            </div>
-          </div>
+        <div className="mb-10 max-w-3xl mx-auto rounded-2xl p-8" style={{ background: "#1a0a0a", border: "2px solid #dc2626" }}>
+          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-5">🚩 From the founder</p>
+          <p className="text-white text-base leading-relaxed mb-4">
+            I have never forgotten the struggle. Running campaigns alone with no legal budget, spending everything on ads and just hoping the copy was okay. I know exactly what it costs when it isn&apos;t — the chargebacks, the takedowns, the panic.
+          </p>
+          <p className="text-gray-200 text-base leading-relaxed mb-4">
+            That&apos;s why I made so much of this accessible. And now we&apos;re operating at agency level — I feel that pain too. Agencies are being charged £2,000–£10,000 a month for tools that take weeks to set up and still don&apos;t cover everything.
+          </p>
+          <p className="text-red-400 text-base font-bold leading-relaxed">
+            This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge — and always will.
+          </p>
+          <p className="mt-5 text-gray-500 text-sm font-medium">— James, Founder</p>
         </div>
 
         {/* 3-column plans */}
