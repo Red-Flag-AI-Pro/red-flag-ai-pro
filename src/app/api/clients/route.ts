@@ -39,12 +39,13 @@ export async function POST(request: Request) {
   const name: string = (body.name ?? "").trim();
   const website: string = (body.website ?? "").trim();
   const notes: string = (body.notes ?? "").trim();
+  const contact_email: string = (body.contact_email ?? "").trim();
 
   if (!name) return NextResponse.json({ error: "Client name is required." }, { status: 400 });
 
   const { data, error } = await supabase
     .from("clients")
-    .insert({ user_id: user.id, name, website: website || null, notes: notes || null })
+    .insert({ user_id: user.id, name, website: website || null, notes: notes || null, contact_email: contact_email || null })
     .select()
     .single();
 

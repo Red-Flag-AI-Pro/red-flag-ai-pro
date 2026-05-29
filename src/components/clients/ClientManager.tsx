@@ -25,6 +25,7 @@ export function ClientManager({ initialClients, plan }: Props) {
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
   const [notes, setNotes] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,7 +37,7 @@ export function ClientManager({ initialClients, plan }: Props) {
     const res = await fetch("/api/clients", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.trim(), website: website.trim(), notes: notes.trim() }),
+      body: JSON.stringify({ name: name.trim(), website: website.trim(), notes: notes.trim(), contact_email: contactEmail.trim() }),
     });
     const data = await res.json();
     if (!res.ok) {
@@ -46,6 +47,7 @@ export function ClientManager({ initialClients, plan }: Props) {
       setName("");
       setWebsite("");
       setNotes("");
+      setContactEmail("");
       setShowForm(false);
     }
     setLoading(false);
@@ -88,6 +90,13 @@ export function ClientManager({ initialClients, plan }: Props) {
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
               placeholder="Website (optional)"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            />
+            <input
+              type="email"
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
+              placeholder="Client contact email (for auto-reports)"
               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
             <textarea

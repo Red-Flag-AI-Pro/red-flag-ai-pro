@@ -1038,6 +1038,481 @@ Paste your sales page or email sequence and get a plain English explanation of a
 [Scan your copy free -no account or card needed →](https://www.redflagaipro.com)
     `,
   },
+  {
+    slug: "fca-financial-promotions-marketing-agencies",
+    title: "FCA Financial Promotions — What Every Marketing Agency Writing for Financial Clients Must Know",
+    description: "Writing copy for a financial services client without FCA approval is a criminal offence. Here is what every UK marketing agency needs to know before publishing financial promotions.",
+    date: "2026-05-29",
+    readTime: "6 min read",
+    category: "FCA / UK",
+    content: `
+## The Offence Most Agencies Don't Know They're Committing
+
+If your agency writes marketing copy for a financial services client — an investment firm, a trading platform, a mortgage broker, an insurance company, a fintech — and that copy contains a financial promotion, it must be approved by an FCA-authorised person before it is published.
+
+If it isn't, the person who communicated the promotion has committed a criminal offence under Section 21 of the Financial Services and Markets Act 2000.
+
+Not the client. You.
+
+---
+
+## What Is a Financial Promotion?
+
+Under FSMA 2000, a financial promotion is any communication that invites or induces someone to engage in investment activity or claim to be a professional investor.
+
+In practice, this means copy that:
+
+- Mentions returns, yields or performance on investments
+- Promotes trading in securities, funds or derivatives
+- Encourages people to take out a loan, mortgage or insurance product
+- Promotes cryptocurrency or digital asset investment
+- Describes the benefits of a financial product without adequate risk warnings
+
+If your client's campaign does any of the above, it is a financial promotion.
+
+---
+
+## What Approval Do You Need?
+
+A financial promotion must either be:
+
+1. **Communicated by an FCA-authorised firm** — if your client is directly FCA-regulated (most financial services firms are), they must approve the copy before it is published, or
+2. **Approved by an FCA-authorised firm** — if the promoter is not FCA-regulated, a regulated firm must approve the communication
+
+In either case, this approval must happen before publication. A "we'll sort the compliance later" approach is a criminal liability.
+
+---
+
+## The Crypto Extension
+
+Since October 2023, the FCA has extended financial promotion rules to cover cryptoassets. Any promotion of crypto trading, crypto investment products or NFTs must now comply with FCA financial promotion rules — including specific risk warnings.
+
+The required risk warning for crypto promotions reads: *"Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment and you are unlikely to be protected if something goes wrong. Take 2 minutes to learn more."*
+
+If your agency produces social media content, landing pages or email campaigns for a crypto brand without this warning, the brand is in violation — and your agency produced the non-compliant material.
+
+---
+
+## What the FCA Actually Does to Non-Compliant Promotions
+
+The FCA has become significantly more aggressive in enforcement since 2023:
+
+- Issued 10,000 alerts about unauthorised financial promotions in 2023 alone
+- Required Google and Meta to block unauthorised financial ads
+- Pursued criminal prosecutions against individuals communicating unapproved promotions
+- Required major platforms to delist non-compliant financial promoters
+
+The regulator is watching social media, search ads, email and landing pages. It is not waiting for complaints.
+
+---
+
+## How to Protect Your Agency
+
+### 1. Identify Every Financial Client
+
+Audit your client list. Which clients operate in financial services? Which campaigns touch investment, lending, insurance or crypto?
+
+### 2. Require Client Sign-Off on All Financial Promotions
+
+Build a process where every piece of copy containing financial claims is approved in writing by your client's compliance team before publication. Get this approval in writing and keep the record.
+
+### 3. Scan Every Financial Promotion Before Submission
+
+Red Flag AI Pro includes FCA financial promotion scanning as part of the Sentinel plan. Every scan checks for financial promotion language, missing risk warnings and claims that require FCA approval — before the copy leaves your agency.
+
+### 4. Update Your Agency Contracts
+
+Include a clause in your client agreements that:
+- Requires the client to confirm they have the necessary FCA authorisations
+- Places responsibility on the client to approve all financial promotions
+- Indemnifies your agency against claims arising from the client's failure to obtain approval
+
+---
+
+## The Bottom Line
+
+Writing an unapproved financial promotion is a criminal offence. It doesn't matter that you are a marketing agency and not a financial firm. The person who communicates the promotion bears criminal liability.
+
+The protection is a documented approval process — and it starts with identifying which of your copy contains financial promotions before it leaves your desk.
+
+[Scan your financial client copy for FCA compliance →](https://www.redflagaipro.com/sentinel)
+    `,
+  },
+  {
+    slug: "greenwashing-laws-2026-brand-guide",
+    title: "Greenwashing Laws 2026 — Every Environmental Claim on Your Website Is Now a Legal Risk",
+    description: "The EU Green Claims Directive, CMA Green Claims Code and FTC Green Guides are actively enforced. Here is what every brand needs to know about sustainability claims before publishing.",
+    date: "2026-05-29",
+    readTime: "5 min read",
+    category: "Greenwashing",
+    content: `
+## "Eco-Friendly" Is Now a Regulated Claim
+
+If your website, product packaging or marketing copy includes any of these words — sustainable, eco-friendly, carbon neutral, net zero, green, planet friendly, biodegradable, recyclable — regulators want to see your evidence.
+
+In 2026, three major regulatory frameworks are actively targeting greenwashing:
+
+1. **EU Green Claims Directive** — proposed 2023, entering enforcement phase 2026
+2. **CMA Green Claims Code** — UK guidance backed by Competition Act enforcement powers
+3. **FTC Green Guides** — US framework with Section 5 enforcement authority
+
+All three carry the same message: environmental claims must be specific, substantiated and not misleading.
+
+---
+
+## What "Substantiated" Actually Means
+
+The EU Green Claims Directive sets the highest standard. A claim is substantiated when:
+
+- It is based on internationally recognised scientific methods
+- It accounts for the full lifecycle of the product
+- It is independently verified by an accredited third party
+- The verification is kept up to date
+
+"Carbon neutral" requires a recognised offsetting standard — not an internal calculation. "Sustainable" requires a specific, verifiable basis — not a general company ethos.
+
+A marketing team deciding that a product "feels" sustainable is not substantiation.
+
+---
+
+## The 8 Most Common Greenwashing Violations
+
+### 1. "Carbon Neutral" Without an Accredited Offset
+Carbon neutrality claims require verified offsets under a recognised standard such as Gold Standard or VCS. Self-reported calculations do not qualify.
+
+### 2. "Sustainable" With No Definition
+"Sustainable" is meaningless without specifying what dimension of sustainability — materials, supply chain, energy, water, packaging — and providing evidence for that specific dimension.
+
+### 3. "Eco-Friendly" Packaging That Isn't
+Claiming packaging is eco-friendly when it contains non-recyclable elements or is not accepted by most UK local authorities is misleading under the CMA Code.
+
+### 4. "Biodegradable" Without Time Frame or Conditions
+Biodegradable claims require disclosure of the conditions under which biodegradation occurs and the time frame. "Biodegradable in industrial composting facilities only" is very different from "biodegrades naturally."
+
+### 5. Offsetting Claims That Omit the Fine Print
+"We offset our carbon footprint" without disclosing that this applies only to shipping, or only to 50% of emissions, is misleading by omission.
+
+### 6. Recycling Claims for Non-Recyclable Packaging
+Claiming a product is recyclable when most consumers cannot actually recycle it through standard collection channels is a violation under both FTC Green Guides and CMA Code.
+
+### 7. "Plastic Free" Claims With Plastic Components
+Any product claiming to be plastic free must contain no plastic in any component — including packaging, labels and adhesives.
+
+### 8. Future Commitments Stated as Current Claims
+"We will be net zero by 2030" is acceptable if honest. "We are committed to net zero" presented in the context of current environmental claims is misleading.
+
+---
+
+## What the Regulators Are Actually Doing
+
+The CMA has already required multiple major UK brands to remove or amend green claims following investigation. The EU Commission has identified greenwashing in over 40% of all environmental claims reviewed. The FTC has issued guidance letters and opened investigations into green claims in sectors including textiles, cleaning products and food packaging.
+
+Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking copy against the CMA Green Claims Code, EU Green Claims Directive standards and FTC Green Guides.
+
+[Scan your environmental claims for greenwashing risks →](https://www.redflagaipro.com/sentinel)
+    `,
+  },
+  {
+    slug: "vsl-compliance-checklist-video-sales-letters",
+    title: "VSL Compliance Checklist — What Every Video Sales Letter Must Include (and Avoid)",
+    description: "Video sales letters face the same compliance requirements as written copy — but with higher stakes. One viral VSL with illegal claims can generate thousands of complaints. Here is the complete checklist.",
+    date: "2026-05-29",
+    readTime: "6 min read",
+    category: "For Sellers",
+    content: `
+## Why VSLs Carry Extra Compliance Risk
+
+A written sales page gets a few thousand visitors. A VSL can reach millions. When the FTC or ASA investigate, the scale of a VSL's reach directly affects the severity of the enforcement action and the size of any fine.
+
+VSLs also have a specific problem: every word of a 30-minute video is indexed, archived and can be submitted as evidence in a complaint. The voiceover script is your compliance record — make sure it passes before you spend money on traffic.
+
+Here is the complete compliance checklist.
+
+---
+
+## Income and Earnings Claims
+
+☐ **Remove or substantiate every income figure** — "Earn £10,000 per month," "six figures," "replace your salary," "financial freedom" — all require substantiation. If you cannot produce documented evidence of typical customer results, remove the claim.
+
+☐ **Add an earnings disclaimer** — Every VSL containing income claims must include a prominently stated earnings disclaimer. It must appear early in the VSL, not just in the small print beneath the video.
+
+Standard FTC/ASA format: *"Results are not typical. Individual results will vary based on effort, experience, and market conditions. The income figures shown represent exceptional results achieved by a small number of customers."*
+
+☐ **Disclose typical results alongside exceptional results** — If you feature a testimonial claiming exceptional income, you must disclose what typical customers actually achieve.
+
+---
+
+## Urgency and Scarcity
+
+☐ **Verify any countdown mentioned in the script is genuine** — If your VSL says "this offer closes at midnight tonight," that deadline must be real and honoured.
+
+☐ **Remove "limited spots" language if spots aren't actually limited** — "Only 10 people will be accepted" must reflect a genuine limit. Fake scarcity in a VSL is the same violation as fake scarcity on a sales page.
+
+---
+
+## Health and Medical Claims
+
+☐ **Remove all unsubstantiated health claims** — "Cures," "treats," "heals," "boost immunity," "burn fat," "detox" — all require regulatory authorisation. Replace with qualified language.
+
+☐ **Add medical disclaimers if health claims remain** — If any health claims survive after substantiation, a disclaimer must appear on screen and in audio.
+
+---
+
+## Guarantees
+
+☐ **Match spoken guarantee terms to written Terms of Service** — If the voiceover says "60-day money-back guarantee, no questions asked" but your Terms say "all sales final," you have a contract contradiction. Fix one or the other before the VSL goes live.
+
+---
+
+## AI Disclosure (New for 2026)
+
+☐ **Disclose if the VSL script was AI-generated** — EU AI Act Article 50(4) requires disclosure of AI-generated content from August 2026. If your script was written by AI, this must be disclosed.
+
+☐ **Disclose AI-generated voiceover or video** — If you are using an AI-generated voice or video avatar, this must be clearly disclosed to viewers in the EU.
+
+---
+
+## Testimonials
+
+☐ **Disclose paid or incentivised testimonials** — If anyone featured in the VSL was paid, gifted a product, or incentivised to provide a testimonial, this must be disclosed.
+
+☐ **Verify testimonial results are achievable** — If a testimonial claims specific results, those results must be achievable by typical customers following your programme.
+
+---
+
+## Scan Your VSL Script Before You Film
+
+Red Flag AI Pro can scan your VSL script for all 21 compliance risk categories — paste the script or upload the audio file and Whisper transcribes it automatically.
+
+Catch compliance issues before you spend money on production and traffic.
+
+[Scan your VSL script →](https://www.redflagaipro.com/scans/new)
+    `,
+  },
+  {
+    slug: "marketing-compliance-agencies-cold-email-guide",
+    title: "The Marketing Agency's Guide to Compliance — How to Protect Yourself When a Client Campaign Gets a Complaint",
+    description: "When a client's campaign triggers a regulatory complaint, agencies are increasingly named alongside brands. Here is how to structure your compliance process to protect your agency.",
+    date: "2026-05-29",
+    readTime: "7 min read",
+    category: "Compliance",
+    content: `
+## The Complaint Is Filed. Now What?
+
+A client's campaign triggers an ASA complaint or an FCA investigation. The regulator doesn't just look at the brand — they want to know who produced the copy, who approved it, and what compliance checks were in place before it was published.
+
+If your agency produced that copy without a documented compliance review process, you are exposed.
+
+Here is how to build a compliance process that protects your agency before a complaint ever arrives.
+
+---
+
+## Why Agencies Are Increasingly in the Frame
+
+Ten years ago, regulatory enforcement focused almost exclusively on the brand. Today, that has changed:
+
+- The CMA's updated guidance explicitly states that agencies that produce misleading marketing materials can share liability with the advertiser
+- The FTC's Endorsement Guides hold agencies responsible for influencer campaigns they organise and manage
+- EU DSA rules on dark patterns can apply to the agency that implemented them, not just the brand that requested them
+- FCA financial promotion rules make the communicator of an unapproved promotion criminally liable — which can mean the agency
+
+The legal and regulatory environment has shifted. Agencies can no longer rely on "we just did what the client asked."
+
+---
+
+## Building Your Compliance Process
+
+### Step 1 — Compliance Review Before Submission
+
+Every piece of copy should go through a compliance review before it is submitted to the client. This review should check for:
+
+- Income or earnings claims requiring substantiation
+- Health claims requiring regulatory authorisation
+- Urgency and scarcity language that may be artificial
+- Guarantee language that contradicts terms
+- Endorsement and testimonial disclosures
+- Financial promotion language requiring FCA approval
+- AI-generated content requiring disclosure
+
+Document that this review happened, who conducted it, and what was changed as a result.
+
+### Step 2 — Client Sign-Off as a Compliance Document
+
+Client approval is not just project management — it is compliance documentation. Your sign-off process should require the client to confirm:
+
+- They have reviewed the copy for compliance with applicable regulations
+- They take responsibility for the factual accuracy of all claims
+- They have obtained any necessary regulatory approvals (FCA, for financial promotions)
+- They confirm the copy is consistent with their Terms of Service
+
+This sign-off should be in writing — email is sufficient, but a documented approval workflow is better.
+
+### Step 3 — Timestamped Records
+
+Keep timestamped records of:
+
+- The version of copy submitted to the client
+- The client's approval
+- Any compliance amendments made at your agency's initiative
+- The date the campaign went live
+
+When a regulator asks "what compliance checks were in place and when?" you need to be able to answer with dates and documents.
+
+### Step 4 — Compliance Clauses in Your Agency Agreement
+
+Your standard client contract should include:
+
+- A clause requiring the client to confirm they hold any necessary regulatory approvals
+- A clause requiring the client to indemnify the agency against claims arising from the client's failure to meet regulatory requirements
+- A clause giving your agency the right to refuse to produce copy that you believe is non-compliant
+- A clause specifying that the client takes responsibility for the factual accuracy of all claims
+
+Have your solicitor review these clauses — generic templates are not sufficient for regulated industries.
+
+---
+
+## The Compliance Audit Tool Agencies Are Using
+
+Red Flag AI Pro runs compliance checks against 21 risk categories across 5 jurisdictions — including FCA financial promotions, ASA CAP Code, GDPR, EU AI Act and FTC requirements.
+
+On the Sentinel plan, agencies can:
+
+- Run unlimited compliance scans on client copy
+- Organise scans by client workspace
+- Generate signed PDF compliance certificates showing the scan was run, when, and what was found
+- Monitor live client URLs weekly for changes that introduce new compliance risks
+- White-label PDF reports under the agency's own branding
+
+The timestamped PDF certificate is exactly the kind of documented evidence that demonstrates professional diligence — to clients, to regulators, and to PI insurers.
+
+[Learn about Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
+    `,
+  },
+  {
+    slug: "saas-founder-compliance-marketing-checklist",
+    title: "SaaS Founder Marketing Compliance — The 10 Mistakes That Lead to FTC and GDPR Investigations",
+    description: "SaaS companies are the fastest-growing target of FTC and GDPR enforcement. Subscription practices, free trial terms, data collection and earnings claims are all in the crosshairs. Here are the 10 most common mistakes.",
+    date: "2026-05-29",
+    readTime: "6 min read",
+    category: "For Sellers",
+    content: `
+## Why SaaS Is in the Regulatory Crosshairs
+
+The FTC's updated Negative Option Rule (2024) was written with SaaS companies in mind. The EU's revised Consumer Rights Directive has specific provisions for digital subscriptions. The ICO has made subscription consent and free-trial-to-paid-conversion one of its enforcement priorities.
+
+SaaS marketing — with its reliance on free trials, recurring billing, and conversion-optimised onboarding — is a particularly high-risk category. Here are the 10 most common compliance mistakes.
+
+---
+
+## 1. Free Trial Conversion Without Clear Disclosure
+
+**The violation**: Offering a free trial that automatically converts to a paid subscription without clearly disclosing the conversion date, the amount that will be charged, and how to cancel — before the user enters their payment details.
+
+**The rule**: FTC Negative Option Rule 2024 requires clear and conspicuous disclosure of all material terms before the customer is charged. This includes the exact amount, the exact date, and an easy cancellation mechanism.
+
+**The fix**: Before the payment screen, display: "Your free trial ends on [date]. You will be charged [amount] on [date]. Cancel anytime at [specific URL]."
+
+---
+
+## 2. "Cancel Anytime" That Isn't Simple
+
+**The violation**: Advertising "cancel anytime" when the cancellation process requires contacting support, waiting for a response, or navigating multiple steps.
+
+**The rule**: "Cancel anytime" is a promise. Under FTC Negative Option Rule 2024, cancellation must be as easy as subscription — one click, or a simple online form.
+
+**The fix**: Build a self-serve cancellation flow. One-click cancellation from the account settings page. No hoops, no "are you sure" gauntlets that delay the cancellation.
+
+---
+
+## 3. Data Collection Beyond What Was Consented To
+
+**The violation**: Collecting usage data, behaviour analytics, or third-party tracking data that was not clearly disclosed and consented to at signup.
+
+**The rule**: UK GDPR and EU GDPR require that data collection is limited to what was explicitly consented to or is strictly necessary for the service.
+
+**The fix**: Audit every third-party tool in your stack — analytics, session recording, marketing pixels, A/B testing platforms. Ensure each one is covered by your privacy policy and your consent mechanism.
+
+---
+
+## 4. Marketing Copy That Implies Guaranteed Results
+
+**The violation**: SaaS marketing frequently implies that using the product will produce specific outcomes — "increase revenue by 30%," "save 10 hours a week," "reduce churn by 50%." These are implied earnings or performance claims.
+
+**The rule**: Any specific outcome claim requires substantiation. The FTC requires that performance claims are backed by reliable evidence and that typical results are disclosed.
+
+**The fix**: Use qualified language: "Customers report saving an average of 8 hours per week in beta testing." Cite the source, the sample size, and the conditions.
+
+---
+
+## 5. Pre-Checked Boxes for Email Marketing Consent
+
+**The violation**: Using a pre-ticked checkbox at signup to obtain consent for marketing emails.
+
+**The rule**: UK GDPR, EU GDPR and CASL all require that consent to marketing emails is an active, affirmative action. Pre-ticked boxes are explicitly illegal.
+
+**The fix**: Use an unchecked checkbox with clear language: "I'd like to receive product updates and marketing emails from [Company]. You can unsubscribe at any time."
+
+---
+
+## 6. Annual Plans Billed Without Clear Upfront Disclosure
+
+**The violation**: Charging an annual subscription without clearly disclosing at the point of purchase that the charge is annual rather than monthly.
+
+**The rule**: Pricing transparency requirements in the UK, EU, US, Australia and Canada require that the actual billing amount and frequency is clearly disclosed before purchase.
+
+**The fix**: Display the annual amount explicitly: "£199/year, billed as a single payment" — not just "£16.58/month" with the annual billing buried in the terms.
+
+---
+
+## 7. Price Increases Without Adequate Notice
+
+**The violation**: Increasing subscription prices without providing adequate notice and the opportunity to cancel before the new price takes effect.
+
+**The rule**: The CMA (UK) requires reasonable notice of price increases for subscription services. The EU Consumer Rights Directive requires consumers be given the opportunity to cancel when prices increase.
+
+**The fix**: Email subscribers 30 days before any price increase with the new price, the effective date, and clear instructions to cancel if they choose not to continue.
+
+---
+
+## 8. Free Plan Limitations Not Disclosed Upfront
+
+**The violation**: Offering a "free" plan that has material limitations — usage caps, feature locks, data limits — without clearly disclosing these limitations at signup.
+
+**The rule**: Material terms of a free offer must be clearly disclosed before a consumer commits time and data to the service.
+
+**The fix**: Display free plan limitations clearly on the pricing page and at signup. Don't hide caps in the fine print.
+
+---
+
+## 9. Testimonials From Compensated Customers
+
+**The violation**: Featuring customer testimonials or case studies from customers who received a discount, extended trial, or any other benefit in exchange for their feedback — without disclosing the incentive.
+
+**The rule**: FTC Endorsement Guides 2023 require disclosure of any material connection between the endorser and the company, including discounted pricing.
+
+**The fix**: Add disclosure to any testimonial from an incentivised customer: "This customer received a 50% discount in exchange for their feedback."
+
+---
+
+## 10. AI-Powered Features Without Disclosure
+
+**The violation**: Using AI to personalise pricing, generate recommendations, or score users without disclosing this in your Privacy Policy — and without providing a mechanism for users to opt out or request human review.
+
+**The rule**: GDPR Article 22 gives consumers the right not to be subject to solely automated decisions that significantly affect them. Your Privacy Policy must disclose automated decision-making and provide users with their rights.
+
+**The fix**: Add a section to your Privacy Policy describing all automated decision-making. Provide a contact email for users who want human review of automated decisions.
+
+---
+
+## Scan Your SaaS Marketing Copy
+
+Red Flag AI Pro checks subscription trap language, data privacy violations, earnings claims, email marketing consent and 17 other compliance categories simultaneously.
+
+Paste your pricing page, onboarding emails or sales copy and get a compliance score and plain English fixes in 60 seconds.
+
+[Scan your SaaS copy free →](https://www.redflagaipro.com/signup)
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
