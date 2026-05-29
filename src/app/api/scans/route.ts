@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   // Fetch profile for plan info
   const { data: profile } = await supabase
     .from("profiles")
-    .select("plan")
+    .select("plan, webhook_url")
     .eq("user_id", user.id)
     .single();
 
@@ -83,6 +83,25 @@ export async function POST(request: Request) {
     await supabase.from("scan_flags").insert(
       flags.map((f) => ({ ...f, scan_id: scan.id }))
     );
+  }
+
+  // Fire webhook if configured
+  const webhookUrl = (profile as { webhook_url?: string | null })?.webhook_url;
+  if (webhookUrl) {
+    fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: "scan.completed",
+        scan_id: scan.id,
+        title,
+        score,
+        flag_count: flags.length,
+        flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
+        scanned_at: new Date().toISOString(),
+      }),
+      signal: AbortSignal.timeout(5000),
+    }).catch(() => {});
   }
 
   return NextResponse.json({ id: scan.id });

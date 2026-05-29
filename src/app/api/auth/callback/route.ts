@@ -11,14 +11,20 @@ export async function GET(request: Request) {
     const supabase = await createClient();
     const { error, data } = await supabase.auth.exchangeCodeForSession(code);
     if (!error && data?.user) {
-      // Add new user to Loops for welcome email
       const user = data.user;
       const name = user.user_metadata?.full_name ?? "";
-      await addContactToLoops({
-        email: user.email!,
-        name,
-        plan: "free",
-      });
+
+      // Add to Loops for welcome email
+      await addContactToLoops({ email: user.email!, name, plan: "free" });
+
+      // Track referral if present
+      const ref = searchParams.get("ref");
+      if (ref) {
+        await supabase
+          .from("profiles")
+          .update({ referred_by: ref.toUpperCase() })
+          .eq("user_id", user.id);
+      }
 
       return NextResponse.redirect(`${origin}${next}`);
     }

@@ -82,6 +82,12 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 Sentinel
               </Link>
               <Link
+                href="/docs"
+                className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors hidden sm:block"
+              >
+                API
+              </Link>
+              <Link
                 href="/login"
                 className="rounded-md px-2 py-1.5 text-xs sm:text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
               >
