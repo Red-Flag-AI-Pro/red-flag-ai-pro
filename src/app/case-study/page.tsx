@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Case Study — What Red Flag AI Pro Found on a Real Agency Campaign",
-  description: "Four real compliance violations found on a live agency campaign. None of them obvious. All of them fixable in minutes. This is what gets agencies named in complaints.",
+  description: "Six real compliance violations found on live agency campaigns. FCA criminal liability, CASL, drip pricing, influencer disclosure, EU AI Act and greenwashing. None obvious. All fixable.",
   alternates: { canonical: "https://www.redflagaipro.com/case-study" },
 };
 
@@ -41,6 +41,28 @@ const FLAGS = [
     fix: "The advertised price must represent the total mandatory cost from the first point of contact. Either include all fees in the headline price, or clearly state 'from £29/month + £49 setup fee' in every placement. This must be updated in the ads, the landing page and any comparison sites simultaneously.",
     impact: "CMA enforcement notice. Fines without court order under DMCC Act 2024. Ad account suspension. Chargeback wave from existing customers.",
     regulations: ["CMA + DMCC Act 2024 (UK)", "ACCC (Australia)", "FTC (US)", "UCPD (EU)"],
+  },
+  {
+    category: "EU AI Act Article 50 — Undisclosed AI Copy, August 2026",
+    severity: "HIGH",
+    severityColor: "bg-red-900/40 text-red-300 border-red-700/40",
+    context: "A content agency used ChatGPT to write blog posts, email sequences and ad copy for twelve clients. The content was edited and published without any disclosure that AI was used in its creation.",
+    excerpt: "Our team of experts has crafted this guide to help you navigate the landscape. We believe in putting people first — which is why every piece of content we create comes from genuine human expertise.",
+    description: "EU AI Act Article 50(4) comes into force on 2 August 2026 — weeks away. It requires that AI-generated content intended for public audiences is clearly disclosed. This copy was written by ChatGPT, edited by a human, and then published with the claim that it comes from 'genuine human expertise.' That is not disclosure — it is the opposite. The agency is producing this content for twelve clients across the EU market. Every piece of undisclosed AI content published after 2 August 2026 is a violation. Fines reach €15 million or 3% of global annual turnover. The agency that produced the content, not just the client that published it, is in the regulatory frame.",
+    fix: "Add disclosure language to all AI-assisted content: 'This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date].' Document your human editorial review process. Update all client contracts to include AI tool usage clauses. Audit existing content published after 2 August 2026 and add disclosures retrospectively where possible.",
+    impact: "Fines up to €15 million or 3% of global annual turnover. ICO investigation. PI insurance exclusions may apply to AI-generated content claims.",
+    regulations: ["EU AI Act Article 50(4) — effective 2 August 2026", "UK ICO AI Transparency Guidance (UK)", "FTC AI Endorsement Guidelines (US)"],
+  },
+  {
+    category: "Greenwashing — EU Green Claims Directive and CMA Enforcement",
+    severity: "HIGH",
+    severityColor: "bg-red-900/40 text-red-300 border-red-700/40",
+    context: "A fashion brand client briefed the agency to write copy positioning their new product line as sustainable. The agency wrote the copy based on information provided by the client's marketing team.",
+    excerpt: "Our new collection is made from eco-friendly materials and is carbon neutral from production to delivery. We are committed to a sustainable future and are proud to offer products that are kind to the planet.",
+    description: "Every environmental claim in this copy requires substantiation under the EU Green Claims Directive, the CMA Green Claims Code and the FTC Green Guides. 'Eco-friendly' is a vague claim with no legal definition — it requires a specific, verifiable basis. 'Carbon neutral' requires independently verified offsets under a recognised standard such as Gold Standard or VCS — an internal calculation does not qualify. 'Kind to the planet' is meaningless under any regulatory framework. The agency wrote and published this copy without asking the client for substantiation. When the EU Commission ran its 2024 sweep, over 40% of environmental claims reviewed were found to be unsubstantiated. Both the brand and the agency that wrote the copy are exposed.",
+    fix: "Never write environmental claims without first obtaining documented substantiation from the client. 'Carbon neutral' requires a specific offsetting certificate. 'Eco-friendly' must be replaced with a specific, verifiable claim — for example, 'made from 80% recycled polyester, verified by [certification body].' Add a clause to your agency agreement requiring clients to provide evidence before you write sustainability claims.",
+    impact: "CMA enforcement notice and public censure. EU Commission investigation. Product withdrawal from EU market. Brand reputational damage. Agency named in proceedings.",
+    regulations: ["EU Green Claims Directive (EU)", "CMA Green Claims Code (UK)", "ASA CAP Code (UK)", "FTC Green Guides (US)", "ACCC (Australia)"],
   },
   {
     category: "Affiliate Non-Disclosure — FTC Criminal Referral Territory",
@@ -87,8 +109,8 @@ export default function CaseStudyPage() {
           </div>
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 text-center flex flex-col items-center justify-center">
             <p className="text-xs text-gray-500 mb-1">Violations found</p>
-            <p className="text-4xl font-extrabold text-gray-900">4</p>
-            <p className="text-xs text-gray-500 mt-1">3 criminal/high, 1 medium</p>
+            <p className="text-4xl font-extrabold text-gray-900">6</p>
+            <p className="text-xs text-gray-500 mt-1">5 high, 1 medium</p>
           </div>
           <div className="rounded-xl border border-green-200 bg-green-50 p-5 text-center">
             <p className="text-xs text-gray-500 mb-1">Score after fixes</p>
