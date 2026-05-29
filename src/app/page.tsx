@@ -338,13 +338,13 @@ export default function LandingPage() {
           </div>
 
           {/* Headline */}
-          <div className="space-y-2">
-            <p className="text-2xl sm:text-3xl font-bold text-gray-400 tracking-wide">Are you a Builder?</p>
-            <p className="text-2xl sm:text-3xl font-bold text-gray-400 tracking-wide">Are you a Buyer?</p>
-            <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl pt-2">
-              <span className="text-red-400">Scan it before it&apos;s too late!</span>
-            </h1>
-          </div>
+          <h1 className="text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
+            Are you a Builder?
+            <br /><br />
+            Are you a Buyer?
+            <br /><br />
+            <span className="text-red-400">Scan it before it&apos;s too late!</span>
+          </h1>
 
           {/* One line solve */}
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
