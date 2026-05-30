@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 
 const CATEGORY_LABELS: Record<string, string> = {
   income_claim: "Income Claim",
@@ -79,6 +80,7 @@ export function DemoScanner() {
       }
 
       setResult(data);
+      track("demo_scan_completed", { score: data.score, flags: data.totalFlags });
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
