@@ -29,7 +29,10 @@ export async function POST(request: Request) {
   // Recalculate score from allowed flags only
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
-  const preview = flags.slice(0, PREVIEW_COUNT);
+  const preview = flags.slice(0, PREVIEW_COUNT).map((f) => ({
+    category: f.category,
+    severity: f.severity,
+  }));
   const totalFlags = flags.length;
   const hiddenCount = Math.max(0, totalFlags - PREVIEW_COUNT);
 

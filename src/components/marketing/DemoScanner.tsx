@@ -159,66 +159,54 @@ export function DemoScanner() {
               </div>
             </div>
 
-            {/* Preview flags */}
-            {result.flags.map((flag, i) => (
-              <div key={i} className="rounded-2xl border border-gray-700 bg-gray-900 p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`rounded-full border px-2 py-0.5 text-xs font-bold uppercase ${SEVERITY_STYLES[flag.severity] ?? SEVERITY_STYLES.low}`}>
-                    {flag.severity}
-                  </span>
-                  <span className="text-sm font-semibold text-white">
-                    {CATEGORY_LABELS[flag.category] ?? flag.category}
-                  </span>
-                </div>
-                {flag.text_excerpt && (
-                  <p className="text-xs text-gray-500 bg-gray-800 rounded px-3 py-2 mb-3 italic">
-                    &ldquo;{flag.text_excerpt}&rdquo;
-                  </p>
-                )}
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  {flag.flag_description}
-                </p>
-              </div>
-            ))}
-
-            {/* Locked flags CTA */}
-            {result.hiddenCount > 0 && (
-              <div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-6 text-center">
-                <p className="text-white font-bold text-lg">
-                  + {result.hiddenCount} more violation{result.hiddenCount !== 1 ? "s" : ""} found
-                </p>
-                <p className="text-gray-400 text-sm mt-1 mb-4">
-                  Sign up free to see every flag, get compliant rewrites and download your PDF report.
-                </p>
-                <Link
-                  href="/signup"
-                  className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
-                >
-                  See All {result.totalFlags} Flags — Free
-                </Link>
+            {/* Flags — show category/severity only, blur details */}
+            {result.totalFlags > 0 && (
+              <div className="space-y-3">
+                {result.flags.map((flag, i) => (
+                  <div key={i} className="rounded-2xl border border-gray-700 bg-gray-900 p-5 relative overflow-hidden">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={`rounded-full border px-2 py-0.5 text-xs font-bold uppercase ${SEVERITY_STYLES[flag.severity] ?? SEVERITY_STYLES.low}`}>
+                        {flag.severity}
+                      </span>
+                      <span className="text-sm font-semibold text-white">
+                        {CATEGORY_LABELS[flag.category] ?? flag.category}
+                      </span>
+                    </div>
+                    {/* Blurred content */}
+                    <div className="relative">
+                      <p className="text-sm text-gray-300 leading-relaxed blur-sm select-none">
+                        Your copy contains a violation in this category that could trigger regulatory action. Sign up to see the exact line, the regulation it breaks, and the compliant rewrite.
+                      </p>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-xs font-bold text-red-400 bg-gray-900/90 px-3 py-1 rounded-full border border-red-500/30">🔒 Sign up to unlock</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
 
-            {result.hiddenCount === 0 && result.totalFlags > 0 && (
+            {/* Single strong CTA after flags */}
+            {result.totalFlags > 0 && (
               <div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-6 text-center">
-                <p className="text-2xl mb-3">🚩</p>
-                <p className="text-white font-bold text-lg">
-                  {result.totalFlags} violation{result.totalFlags !== 1 ? "s" : ""} found. Get the exact rewrite.
+                <p className="text-2xl mb-2">🚩</p>
+                <p className="text-white font-bold text-xl mb-1">
+                  {result.totalFlags} violation{result.totalFlags !== 1 ? "s" : ""} found in your copy.
                 </p>
                 <p className="text-gray-400 text-sm mt-2 mb-5">
-                  Free account gives you plain English fixes for every flag, a compliance score history and a downloadable PDF report. Takes 30 seconds.
+                  Sign up free to see exactly what&apos;s wrong, which regulation it breaks, and the compliant rewrite — ready to use immediately.
                 </p>
                 <Link
                   href="/signup"
                   className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
                 >
-                  Fix This Copy — Free →
+                  See Exactly What&apos;s Wrong — Free →
                 </Link>
-                <p className="mt-3 text-xs text-gray-600">No credit card. No commitment. Cancel any time.</p>
+                <p className="mt-3 text-xs text-gray-600">No credit card. No commitment. 30 seconds to sign up.</p>
               </div>
             )}
 
-            {result.hiddenCount === 0 && result.totalFlags === 0 && (
+            {result.totalFlags === 0 && (
               <div className="rounded-2xl border border-green-500/20 bg-green-950/20 p-6 text-center">
                 <p className="text-white font-bold">Your copy looks clean. Save this result.</p>
                 <p className="text-gray-400 text-sm mt-2 mb-4">
