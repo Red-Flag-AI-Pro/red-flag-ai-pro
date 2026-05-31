@@ -17,8 +17,8 @@ const COMPARISON = [
   { feature: "Audio transcription", rfp: "✓ Whisper AI", redmarker: "✗", consultant: "Manual" },
   { feature: "Full site audit", rfp: "✓ Up to 50 pages", redmarker: "✗", consultant: "Extra charge" },
   { feature: "Weekly auto-monitoring", rfp: "✓", redmarker: "✗", consultant: "✗" },
-  { feature: "FCA financial promotions", rfp: "✓", redmarker: "Enterprise only", consultant: "Specialist only" },
-  { feature: "Greenwashing scanner", rfp: "✓", redmarker: "Limited", consultant: "Specialist only" },
+  { feature: "FCA financial promotions", rfp: "✓ Growth & Sentinel", redmarker: "Enterprise only", consultant: "Specialist only" },
+  { feature: "Greenwashing scanner", rfp: "✓ Growth & Sentinel", redmarker: "Limited", consultant: "Specialist only" },
   { feature: "EU AI Act compliance", rfp: "✓ Full", redmarker: "Partial", consultant: "Variable" },
   { feature: "Multi-jurisdiction", rfp: "✓ 5 countries", redmarker: "Sometimes", consultant: "Variable" },
   { feature: "Team seats", rfp: "✓", redmarker: "✓", consultant: "N/A" },
@@ -26,6 +26,7 @@ const COMPARISON = [
   { feature: "REST API + webhooks", rfp: "✓", redmarker: "✗", consultant: "✗" },
   { feature: "Chrome extension", rfp: "✓", redmarker: "✗", consultant: "✗" },
   { feature: "Signed PDF certificates", rfp: "✓", redmarker: "✓", consultant: "✓" },
+  { feature: "Risk categories covered", rfp: "21 categories", redmarker: "8 – 12", consultant: "Variable" },
   { feature: "Free scan available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
 ];
 
