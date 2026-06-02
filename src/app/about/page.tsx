@@ -31,12 +31,33 @@ export default function AboutPage() {
 
         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
 
+          <div className="bg-red-50 border border-red-100 rounded-2xl p-8 my-10">
+            <p className="text-gray-900 font-semibold text-lg mb-3">What I built</p>
+            <p className="text-gray-700">
+              A scanner that checks marketing copy against real advertising law. FTC, GDPR, ASA, ACCC, CASL and EU AI Act. In 60 seconds. In plain English. With exact rewrite suggestions. No lawyers. No jargon. Just clarity.
+            </p>
+            <p className="mt-4 text-gray-700">
+              21 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
+            </p>
+            <p className="mt-4 text-gray-700">
+              And Sentinel is now live. Compliance infrastructure built for agencies, legal teams and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. URL scanning. The audit trail your PI insurer needs. The documentation your regulator expects.
+            </p>
+            <p className="mt-4 text-gray-700">
+              There are more tools coming. More categories. More jurisdictions. A whole ecosystem built around one idea: making the internet a safer place to buy and sell.
+            </p>
+            <p className="mt-4 text-gray-700 font-medium">
+              I built it alone. With help from Claude. From a laptop. Against all odds.
+            </p>
+          </div>
+
+          <h2 className="text-2xl font-extrabold text-gray-900 mt-12 mb-4">Why I built it</h2>
+
           <p>
-            For over 30 years I was a functioning addict and alcoholic. And I mean functioning. I held down sales jobs, hit targets, managed relationships, and kept a professional face while privately drinking and using drugs every single day. Nobody knew the full extent of it. I was good at hiding it. That duality nearly killed me.
+            I've lived on both sides of misleading marketing. As a buyer who got ripped off repeatedly. And as a seller who didn't always know where the line was.
           </p>
 
           <p>
-            I've been to prison. Five years. I've been homeless on and off for sustained periods, doing whatever it took just to survive. I bloated to 24 stone and could barely leave my flat. I isolated myself completely from the world, from my family, from everyone who ever cared about me.
+            For most of my adult life I was privately fighting battles nobody around me could see. I've been to the lowest places a person can reach and somehow come back from them. I've lost people I loved. I've been given timelines that should have ended this story before it began.
           </p>
 
           <p>
@@ -44,7 +65,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            That broke something in me I couldn't put back together. I used more. I drank more. I drank through the night and through the day with no water and barely any food. I tried rehabs, detoxes, understood all the principles but couldn't implement them. And yet somewhere underneath all of it I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
+            That broke something in me I couldn't put back together for a long time. And yet somewhere underneath everything I always knew there was something bigger. A calling. Something I was meant to do. I just couldn't get there.
           </p>
 
           <div className="border-l-4 border-red-500 pl-6 py-2 my-8">
@@ -58,59 +79,20 @@ export default function AboutPage() {
           </p>
 
           <p>
-            But something shifted. I'd always loved Eastern mysticism, Buddhism, Stoicism. I'd studied it for years without being able to live it. I found a place in Indonesia, military grade, no hot water, three cold baths a day, clothes folded in a specific way that most Westerners wouldn't understand. A call to prayer five times a day, including 4am. A language barrier. A jail attached to the building.
+            But something shifted. I'd always loved Eastern mysticism, Buddhism, Stoicism. I'd studied it for years without being able to live it. I found a place in Indonesia, military grade, no hot water, three cold baths a day, a call to prayer five times a day including 4am. It was the hardest thing I've ever done. And it saved my life.
           </p>
 
           <p>
-            It was the hardest thing I've ever done. And it saved my life.
+            Something happened in Indonesia that I still can't fully explain. Too many coincidences to call coincidences. A spiritual awakening that felt completely natural, as if I was being guided toward something. For the first time in my life, I felt it.
           </p>
 
           <p>
-            Something happened in Indonesia that I still can't fully explain. Too many coincidences to call coincidences. Energies I'd never felt before. A spiritual awakening that felt completely natural, as if I was being guided toward something. For the first time in my life, I felt it.
-          </p>
-
-          <p>
-            I came back to the UK and stayed on my mum's sofa. Disconnected from the world. Quietly going to groups each week. Zoom calls with Indonesia twice a week. Trying to figure out who I was now and whether I'd changed enough to stay alive.
-          </p>
-
-          <p>
-            Then I got a new computer.
-          </p>
-
-          <p>
-            I'd had an idea in Indonesia, something around affiliate marketing and men's supplements. But I quickly realised the brand wasn't the product. The brand was me. My story. That project still exists, quietly building, part of a bigger ecosystem I'm creating around giving back to broken, addicted, homeless and struggling men.
-          </p>
-
-          <p>
-            But first, this.
-          </p>
-
-          <p>
-            I fell in love with AI. Started learning agentics, doing courses, building things off the top of my head. And then I went to buy one last course and got burned. The terms and conditions I had to sign bore no resemblance to what the advert or the VSL had promised. I'd been ripped off again. At a time when I couldn't afford it.
+            I came back to the UK quietly rebuilding. I fell in love with AI. Started learning, building things off the top of my head. And then I went to buy one last course and got burned. The terms and conditions bore no resemblance to what the advert had promised. I'd been ripped off again. At a time when I couldn't afford it.
           </p>
 
           <p>
             I was furious. I started talking to AI about it. And Red Flag AI Pro was born.
           </p>
-
-          <div className="bg-red-50 border border-red-100 rounded-2xl p-8 my-10">
-            <p className="text-gray-900 font-semibold text-lg mb-3">What I built</p>
-            <p className="text-gray-700">
-              A scanner that checks marketing copy against real advertising law: FTC, GDPR, ASA, ACCC, CASL and EU AI Act, in 60 seconds, in plain English, with exact rewrite suggestions. No lawyers. No jargon. Just clarity.
-            </p>
-            <p className="mt-4 text-gray-700">
-              21 risk categories and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions and more. Five jurisdictions simultaneously. No other tool on the planet does this.
-            </p>
-            <p className="mt-4 text-gray-700">
-              And Sentinel is now live. Compliance infrastructure built for agencies, legal teams and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. URL scanning. The audit trail your PI insurer needs. The documentation your regulator expects.
-            </p>
-            <p className="mt-4 text-gray-700">
-              There are more tools coming. More categories. More jurisdictions. A whole ecosystem built around one idea: making the internet a safer place to buy and sell.
-            </p>
-            <p className="mt-4 text-gray-700 font-medium">
-              I built it alone. With help from Claude. From a laptop. After being given a death sentence.
-            </p>
-          </div>
 
           <h2 className="text-2xl font-extrabold text-gray-900 mt-12 mb-4">What I want for you</h2>
 
