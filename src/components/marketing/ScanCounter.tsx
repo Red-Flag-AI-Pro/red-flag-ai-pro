@@ -12,12 +12,5 @@ export function ScanCounter() {
       .catch(() => {});
   }, []);
 
-  if (count === null) return null;
-
-  // Add a base number to make it look established
-  const display = (count + 1247).toLocaleString("en-GB");
-
-  return (
-    <span className="font-bold text-white">{display} scans run</span>
-  );
+  return null;
 }

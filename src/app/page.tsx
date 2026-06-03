@@ -359,16 +359,16 @@ export default function LandingPage() {
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
             <span>⚑</span>
-            <span>The world&apos;s only 5-country marketing compliance scanner</span>
+            <span>The only compliance scanner covering all 5 major jurisdictions simultaneously</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-5xl font-extrabold leading-none tracking-tight sm:text-6xl">
-            Are you a Builder<span className="text-4xl sm:text-5xl ml-1">?</span>
+            Building it.
             <br />
-            Are you a Buyer<span className="text-4xl sm:text-5xl ml-1">?</span>
+            Buying it.
             <br />
-            <span className="text-red-400">Scan it before it&apos;s too late!</span>
+            <span className="text-red-400">Scan it.</span>
           </h1>
 
           {/* One line solve */}
@@ -393,7 +393,7 @@ export default function LandingPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-400">
-            ✅ No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee
+            ✅ No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee (see terms)
           </p>
 
           {/* Live scan counter + social proof */}
@@ -469,10 +469,10 @@ export default function LandingPage() {
           <div className="mt-6 mx-auto max-w-2xl">
             <p className="text-2xl font-extrabold text-white leading-snug">
               The <span className="text-red-400">only</span> compliance scanner
-              in the world that protects both sides across all five jurisdictions.
+              that protects both buyers and sellers across all five jurisdictions simultaneously.
             </p>
             <p className="mt-2 text-lg font-bold text-red-400">
-              No other tool on the market comes close.
+              No comparable tool covers all five jurisdictions at this price point.
             </p>
           </div>
         </div>
@@ -716,6 +716,9 @@ export default function LandingPage() {
           </div>
           <p className="mt-8 text-center text-sm text-gray-400">
             Red Flag AI Pro scans against all of the above — simultaneously — in 60 seconds.
+          </p>
+          <p className="mt-2 text-center text-xs text-gray-500">
+            Fine amounts based on published maximum penalties under GDPR Art. 83, FTC Act, CMA/ASA guidelines, ACL and CASL. Individual penalties vary. Not legal advice.
           </p>
         </div>
       </section>
