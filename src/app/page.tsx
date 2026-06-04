@@ -1142,10 +1142,13 @@ export default function LandingPage() {
       <footer style={{background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 1.5rem 3rem", textAlign: "center"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
 
-          {/* Product Hunt badge */}
-          <div style={{marginBottom: "2.5rem", opacity: 0.6}}>
+          {/* Badges */}
+          <div style={{marginBottom: "2.5rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap", opacity: 0.7}}>
             <a href="https://www.producthunt.com/products/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img alt="Red Flag AI Pro on Product Hunt" width="200" height="44" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" style={{margin: "0 auto"}} />
+              <img alt="Red Flag AI Pro on Product Hunt" width="200" height="44" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" />
+            </a>
+            <a href="https://peerpush.net/p/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+              <img src="https://peerpush.net/p/red-flag-ai-pro/badge.png" alt="Red Flag AI Pro on PeerPush" style={{width: "200px"}} />
             </a>
           </div>
 
