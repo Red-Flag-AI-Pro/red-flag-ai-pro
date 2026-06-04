@@ -1151,7 +1151,7 @@ export default function LandingPage() {
               <img src="https://peerpush.net/p/red-flag-ai-pro/badge.png" alt="Red Flag AI Pro on PeerPush" style={{width: "180px"}} />
             </a>
             <a href="https://peerpush.net/p/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img src="https://peerpush.net/p/red-flag-ai-pro/rating-badge.png" alt="Red Flag AI Pro rating on PeerPush" style={{width: "180px"}} />
+              <img src="https://peerpush.net/p/red-flag-ai-pro/rating-badge.png" alt="Red Flag AI Pro rating on PeerPush" style={{width: "280px"}} />
             </a>
           </div>
 
