@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne, DM_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -11,13 +11,27 @@ const inter = Inter({
   preload: true,
 });
 
+const syne = Syne({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500"],
+  variable: "--font-dm-mono",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC and CASL. 21 risk categories. Free scan — no account needed.",
+    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC and CASL. 24 risk categories. Free scan — no account needed.",
   keywords: [
     // Core product
     "marketing compliance scanner",
@@ -105,7 +119,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Are you a Builder? Are you a Buyer? Scan it before it's too late.",
     description:
-      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL. 21 risk categories. Free — no account needed.",
+      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL. 24 risk categories. Free — no account needed.",
     images: [
       {
         url: "/og-image.png",
@@ -146,7 +160,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
       <head />
       <body className={inter.className}>
         {children}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Sentinel — Compliance Infrastructure for Agencies and Regulated Businesses",
@@ -9,296 +10,308 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.redflagaipro.com/sentinel" },
 };
 
+const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
+const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
+
 const BENEFITS = [
   {
-    icon: "🛡️",
     headline: "A complaint lands. You have proof.",
     body: "Without a record, your agency has no defence. Sentinel logs every review with a legal timestamp and issues a signed certificate. When the regulator or client asks what you checked and when, the answer is instant.",
   },
   {
-    icon: "📋",
     headline: "Your PI insurer will ask. Now you can answer.",
-    body: "Professional indemnity insurers increasingly require documented compliance processes. A signed audit trail showing you reviewed copy before it published is exactly the kind of evidence they expect. Sentinel creates it automatically.",
+    body: "Professional indemnity insurers increasingly require documented compliance processes. A signed audit trail showing you reviewed copy before it published is exactly the kind of evidence they expect.",
   },
   {
-    icon: "⚡",
     headline: "Compliance that keeps pace with delivery.",
-    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act in under 60 seconds, so the compliance review happens before the brief leaves your desk, not after the complaint.",
+    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act in under 60 seconds — the compliance review happens before the brief leaves your desk.",
   },
   {
-    icon: "🏦",
     headline: "FCA and financial promotions handled.",
-    body: "Financial promotion rules are the highest-stakes area of UK advertising law. One unapproved copy can trigger an FCA investigation for both you and your client. Sentinel checks financial copy against FCA rules at source, before it publishes.",
+    body: "Financial promotion rules are the highest-stakes area of UK advertising law. One unapproved copy can trigger an FCA investigation for both you and your client. Sentinel checks financial copy at source, before it publishes.",
   },
   {
-    icon: "🌿",
     headline: "Greenwashing is now an enforcement priority.",
-    body: "The EU Green Claims Directive and the CMA Green Claims Code are actively enforced. Agencies writing sustainability copy for clients are exposed if those claims are unsubstantiated. Sentinel catches greenwashing before it becomes a headline.",
+    body: "The EU Green Claims Directive and CMA Green Claims Code are actively enforced. Agencies writing sustainability copy for clients are exposed if claims are unsubstantiated. Sentinel catches it before it becomes a headline.",
   },
   {
-    icon: "🌐",
     headline: "Scan live pages, not just copy you paste.",
-    body: "Give Sentinel a URL and it fetches the live page, strips navigation and boilerplate, and runs the full compliance scan against the actual published copy. No copying and pasting. If the page changes, run it again in seconds.",
+    body: "Give Sentinel a URL and it fetches the live page, strips navigation and boilerplate, and runs a full compliance scan against the actual published copy. If the page changes, run it again in seconds.",
   },
   {
-    icon: "🎬",
     headline: "VSLs checked before they cost you money.",
-    body: "Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Either way the entire script goes through all 21 risk categories, including FCA, greenwashing and influencer disclosure rules, before a penny is spent on traffic.",
+    body: "Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Every word goes through all 24 risk categories before a penny is spent on traffic.",
   },
   {
-    icon: "🧩",
-    headline: "Scan any page without leaving your browser.",
-    body: "The Red Flag AI Pro Chrome extension puts a compliance scan one click away. Open any page, click the icon, see the score and top flags in seconds. No copy-paste, no switching tabs. Install it once, use it on every client review.",
-  },
-  {
-    icon: "⚡",
     headline: "Compliance in your workflow, not outside it.",
-    body: "Every scan fires a webhook to any URL. Paste your Zapier hook into Settings and scan results flow directly into Slack, your CRM, Google Sheets or any tool your team already uses. The REST API lets you embed scanning into your own systems.",
+    body: "Every scan fires a webhook to any URL. Paste your Zapier hook into Settings and scan results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed scanning into your own systems.",
   },
   {
-    icon: "🤖",
     headline: "AI copy. August 2026. Your responsibility.",
-    body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you as the creator. Sentinel records what was checked, when, and by whom. That is your audit trail.",
+    body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
   },
 ];
 
-const WHO_ITS_FOR = [
+const WHO = [
   {
     label: "Digital agencies",
     title: "You write copy for clients. Their compliance failure is your liability.",
-    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a signed record proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and auto-monitoring that makes compliance a service you deliver, not a risk you carry.",
+    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a signed record proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and auto-monitoring.",
   },
   {
     label: "Legal and compliance teams",
     title: "Your review process lives in inboxes. That is not a system.",
-    description: "Sentinel replaces informal email review with a logged, timestamped, signed process. API access and webhooks let you integrate scanning into your existing workflow. Every certificate is retrievable in seconds. When the audit arrives, you are ready.",
+    description: "Sentinel replaces informal email review with a logged, timestamped, signed process. API access and webhooks let you integrate scanning into your existing workflow. Every certificate is retrievable in seconds.",
   },
   {
     label: "FCA-regulated businesses",
     title: "Financial promotions carry the heaviest penalties in UK advertising law.",
-    description: "Sentinel checks copy against FCA financial promotion rules before publication and issues a signed certificate confirming it was checked. The Chrome extension means your team can scan any page they are reviewing without leaving the browser.",
+    description: "Sentinel checks copy against FCA financial promotion rules before publication and issues a signed certificate confirming it was checked. The Chrome extension means your team can scan any page without leaving the browser.",
   },
   {
     label: "Enterprise marketing teams",
     title: "Multi-jurisdiction campaigns. One failure can shut a campaign in five countries.",
-    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Site audit scans your entire domain in one run. Weekly monitoring flags changes before they become complaints. One compliance record for your whole operation.",
+    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Site audit scans your entire domain in one run. Weekly monitoring flags changes before they become complaints.",
   },
+];
+
+const LAWS = [
+  { law: "EU AI Act", date: "Enforceable August 2026", description: "If you use AI to write copy for clients, you must disclose it and prove it was reviewed before publication. The obligation sits with the creator, not just the brand.", hot: true },
+  { law: "FCA Financial Promotions", date: "Active now", description: "Any copy touching investments, returns, crypto or financial products must be pre-approved by an FCA-authorised person. One unapproved ad triggers an investigation.", hot: false },
+  { law: "EU Green Claims Directive", date: "Enforcement ramping 2026", description: "Sustainability claims like carbon neutral, eco-friendly or net zero require substantiated evidence. Writing them without proof is now a regulatory offence across the EU.", hot: false },
+  { law: "ASA CAP Code", date: "Active now", description: "UK advertising rules cover every ad your agency produces. Income claims, guarantees, testimonials and urgency tactics are all regulated. Agencies are routinely named in upheld complaints.", hot: false },
+  { law: "FTC Endorsement Guides", date: "Updated 2023 — active now", description: "Influencer content, affiliate links and paid partnerships for US-facing clients must all be clearly disclosed. Agencies managing these relationships carry liability if disclosure is missing.", hot: false },
+  { law: "CMA Green Claims Code", date: "Active now — UK", description: "The CMA is actively pursuing greenwashing cases. Environmental claims must be accurate, clear and substantiated or your agency is exposed.", hot: false },
+];
+
+const RISKS = [
+  { label: "ASA investigation", cost: "£5k–£50k", detail: "legal costs, campaign takedown, management time" },
+  { label: "FCA unapproved promotion", cost: "Criminal", detail: "fine, public censure, FCA investigation" },
+  { label: "GDPR violation", cost: "€20m", detail: "or 4% of global annual turnover" },
+  { label: "CMA dark pattern", cost: "£300k", detail: "per violation plus injunction" },
+  { label: "Client claim vs agency", cost: "PI excess", detail: "plus policy review, possible non-renewal" },
 ];
 
 export default function SentinelPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#07070f" }}>
+    <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
 
-      {/* Hero */}
-      <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute left-1/2 -top-20 -translate-x-1/2 h-[700px] w-[1000px] opacity-25"
-            style={{ background: "radial-gradient(ellipse at center top, #dc2626 0%, transparent 65%)" }}
-          />
-        </div>
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
+      {/* ── HERO ── */}
+      <section style={{
+        position: "relative", overflow: "hidden",
+        padding: "10rem 1.5rem 8rem",
+        borderBottom: "1px solid rgba(255,255,255,0.05)"
+      }}>
+        {/* Red glow */}
+        <div style={{
+          position: "absolute", top: "-150px", left: "50%", transform: "translateX(-50%)",
+          width: "1000px", height: "700px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.2) 0%, transparent 60%)"
+        }} />
+        {/* Grid */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.025,
+          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }} />
 
-        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-16 text-center">
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-red-500/20 bg-red-500/5 px-5 py-2 mb-12">
-            <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-xs font-bold text-red-400 uppercase tracking-[0.18em]">
-              Stay compliant. Stay protected. Stay ahead.
+        <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "2.5rem" }}>
+            <span className="flag-wave" style={{ display: "inline-block" }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+              </svg>
             </span>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>
+              Stay compliant. Stay protected. Stay ahead.
+            </p>
           </div>
 
-          <h1
-            className="text-[clamp(4rem,12vw,8rem)] font-black tracking-tighter leading-none"
-            style={{
-              background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 35%, #dc2626 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <h1 style={{
+            ...syne,
+            fontSize: "clamp(3rem, 8vw, 6rem)",
+            fontWeight: 800,
+            lineHeight: 1.0,
+            letterSpacing: "-0.04em",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            marginBottom: "2.5rem"
+          }}>
             Sentinel
           </h1>
 
-          <p className="mt-6 text-xl sm:text-2xl font-semibold text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p style={{ ...syne, fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)", fontWeight: 600, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, maxWidth: "600px", margin: "0 auto 1rem" }}>
             Compliance infrastructure for agencies, legal teams and regulated businesses.
           </p>
 
-          <p className="mt-5 text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-            All 21 risk categories, legally mapped across 5 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is not an embarrassment. It is a regulatory event.
+          <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, maxWidth: "520px", margin: "0 auto 3.5rem" }}>
+            All 24 risk categories, legally mapped across 5 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
-          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry"
-              className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-8 py-4 text-sm font-bold text-white hover:bg-red-500 transition-all shadow-xl shadow-red-600/20"
-            >
-              Get compliant today →
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: "#cc0000", color: "white",
+              ...syne, fontSize: "0.9rem", fontWeight: 700,
+              padding: "14px 32px", borderRadius: "9999px",
+              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              textDecoration: "none", letterSpacing: "0.02em"
+            }}>
+              Get compliant today
             </a>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 rounded-xl border border-gray-700 bg-gray-900/60 px-8 py-4 text-sm font-medium text-gray-300 hover:border-red-500/40 hover:text-white transition-all backdrop-blur-sm"
-            >
+            <Link href="/pricing" style={{
+              display: "inline-flex", alignItems: "center",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.55)",
+              ...syne, fontSize: "0.9rem", fontWeight: 600,
+              padding: "14px 32px", borderRadius: "9999px",
+              textDecoration: "none"
+            }}>
               View pricing
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* ── LIVE THREAT BAR ── */}
+      <div style={{
+        background: "#0f0505",
+        borderBottom: "1px solid rgba(239,68,68,0.15)",
+        padding: "1rem 1.5rem",
+        display: "flex", alignItems: "center", justifyContent: "center", gap: "12px"
+      }}>
+        <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", flexShrink: 0, animation: "pulseRed 2s ease-in-out infinite" }} />
+        <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.05em" }}>
+          EU AI Act Article 50 enforcement begins <span style={{ color: "#ef4444" }}>2 August 2026</span> — AI-generated marketing copy must be disclosed or documented. Agencies are in the frame.
+        </p>
       </div>
 
-      {/* Regulations agencies don't know about */}
-      <div className="border-y border-gray-800/40 bg-gray-900/20">
-        <div className="mx-auto max-w-5xl px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">What is already coming for your agency</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              The rules your clients expect you<br className="hidden sm:block" /> to know. Most agencies don&apos;t.
+      {/* ── COMPLIANCE CLOCK ── striking design moment */}
+      <section style={{
+        padding: "7rem 1.5rem",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        background: "linear-gradient(180deg, #080808 0%, #0f0505 100%)"
+      }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What is already coming for your agency</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              The rules your clients expect you to know.<br />
+              <span style={{ color: "rgba(255,255,255,0.35)" }}>Most agencies don&apos;t.</span>
             </h2>
-            <p className="mt-4 text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
-              These are not future risks. They are current obligations. If your agency writes copy that touches any of these areas and a complaint lands, you are named alongside your client.
-            </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                law: "EU AI Act",
-                date: "Enforceable August 2026",
-                description: "If you use AI to write copy for clients, you must disclose it and prove it was reviewed before publication. The obligation sits with the creator, not just the brand.",
-                hot: true,
-              },
-              {
-                law: "FCA Financial Promotions",
-                date: "Active now",
-                description: "Any copy touching investments, returns, crypto or financial products must be pre-approved by an FCA-authorised person. One unapproved ad triggers an investigation for you and your client.",
-                hot: false,
-              },
-              {
-                law: "EU Green Claims Directive",
-                date: "Enforcement ramping 2026",
-                description: "Sustainability claims like carbon neutral, eco-friendly or net zero require substantiated evidence. Writing them for a client without proof is now a regulatory offence across the EU.",
-                hot: false,
-              },
-              {
-                law: "ASA CAP Code",
-                date: "Active now",
-                description: "UK advertising rules cover every ad your agency produces. Income claims, guarantees, testimonials and urgency tactics are all regulated. Agencies are routinely named in upheld complaints.",
-                hot: false,
-              },
-              {
-                law: "FTC Endorsement Guides",
-                date: "Updated 2023 - active now",
-                description: "Influencer content, affiliate links and paid partnerships for US-facing clients must all be clearly disclosed. Agencies managing these relationships carry liability if disclosure is missing.",
-                hot: false,
-              },
-              {
-                law: "CMA Green Claims Code",
-                date: "Active now - UK",
-                description: "The Competition and Markets Authority is actively pursuing greenwashing cases in the UK. Environmental claims in ad copy must be accurate, clear and substantiated or your agency is exposed.",
-                hot: false,
-              },
-            ].map((item) => (
-              <div
-                key={item.law}
-                className={[
-                  "rounded-2xl border p-7",
-                  item.hot
-                    ? "border-red-500/30 bg-red-950/20"
-                    : "border-gray-800/60 bg-gray-900/30",
-                ].join(" ")}
-              >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <h3 className="text-base font-extrabold text-white leading-snug">{item.law}</h3>
-                  {item.hot && (
-                    <span className="flex-shrink-0 rounded-full bg-red-500/20 border border-red-500/30 px-2 py-0.5 text-xs font-bold text-red-400 uppercase">
-                      Urgent
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs font-semibold text-red-400 mb-3">{item.date}</p>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            {LAWS.map((item, i) => (
+              <div key={item.law} style={{
+                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
+                padding: "2rem"
+              }}>
+                {item.hot && (
+                  <span style={{
+                    ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em",
+                    textTransform: "uppercase", color: "#ef4444",
+                    background: "rgba(239,68,68,0.1)",
+                    border: "1px solid rgba(239,68,68,0.25)",
+                    padding: "3px 10px", borderRadius: "9999px",
+                    display: "inline-block", marginBottom: "1rem"
+                  }}>Urgent</span>
+                )}
+                <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{item.law}</h3>
+                <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>{item.date}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item.description}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-center text-sm text-gray-600">
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2rem" }}>
             Sentinel checks copy against all of these, automatically, before it publishes.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Benefits */}
-      <div className="mx-auto max-w-5xl px-6 py-14">
-        <div className="text-center mb-10">
-          <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Why Sentinel</p>
-          <h2 className="text-5xl sm:text-6xl font-extrabold text-white leading-tight">
-            What it actually means<br className="hidden sm:block" /> for your agency
-          </h2>
-          <p className="mt-5 text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
-            Compliance is not a feature. It is commercial protection. Here is what Sentinel gives you in practice.
-          </p>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {BENEFITS.map((b) => (
-            <div
-              key={b.headline}
-              className="group rounded-2xl border border-gray-800/60 bg-gradient-to-b from-gray-900/70 to-transparent p-9 hover:border-red-500/20 hover:from-gray-900 transition-all duration-300"
-            >
-              <div className="text-3xl mb-5">{b.icon}</div>
-              <h3 className="text-lg font-extrabold text-white mb-4 leading-snug">{b.headline}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors">
-                {b.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Who it's for */}
-      <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-5xl px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">Who it&apos;s for</p>
-            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
-              Built for teams where<br className="hidden sm:block" /> compliance is not optional
+      {/* ── BENEFITS ── */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Why Sentinel</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              What it actually means<br />for your agency
             </h2>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {WHO_ITS_FOR.map((item) => (
-              <div
-                key={item.label}
-                className="group rounded-2xl border border-gray-800/60 bg-gray-900/30 p-10 hover:border-red-500/25 hover:bg-gray-900/60 transition-all duration-300 cursor-default"
-              >
-                <span className="inline-block rounded-full border border-red-500/20 bg-red-500/8 px-4 py-1.5 text-xs font-bold text-red-400 uppercase tracking-widest mb-7">
-                  {item.label}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
+            {BENEFITS.map((b, i) => (
+              <div key={b.headline} style={{
+                background: i % 2 === 0 ? "#0f0505" : "#0a0a0a",
+                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(255,255,255,0.05)"}`,
+                padding: "2rem"
+              }}>
+                <span className="flag-wave" style={{ display: "inline-block", marginBottom: "1rem" }}>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+                  </svg>
                 </span>
-                <h3 className="text-xl font-extrabold text-white mb-4 leading-snug">{item.title}</h3>
-                <p className="text-gray-400 text-base leading-relaxed">{item.description}</p>
+                <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem", lineHeight: 1.4 }}>{b.headline}</h3>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{b.body}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Before / After */}
-      <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-3xl px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">The difference</p>
-            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">Replace your compliance spreadsheet</h2>
+      {/* ── WHO IT'S FOR ── */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Who it&apos;s for</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              Built for teams where<br />compliance is not optional
+            </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-gray-800/50 bg-gray-900/30 p-7">
-              <p className="text-xs font-bold text-gray-300 uppercase tracking-[0.15em] mb-6">Without Sentinel</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "2px" }}>
+            {WHO.map((item, i) => (
+              <div key={item.label} style={{
+                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.1)"}`,
+                padding: "2.5rem"
+              }}>
+                <span style={{
+                  ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em",
+                  textTransform: "uppercase", color: "#ef4444",
+                  border: "1px solid rgba(239,68,68,0.25)",
+                  padding: "4px 12px", borderRadius: "9999px",
+                  display: "inline-block", marginBottom: "1.5rem"
+                }}>{item.label}</span>
+                <h3 style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "1rem", lineHeight: 1.4 }}>{item.title}</h3>
+                <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8 }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BEFORE / AFTER ── */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The difference</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em" }}>
+              Replace your compliance spreadsheet
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "2rem" }}>Without Sentinel</p>
               {[
                 "Copy reviewed over email threads",
                 "No record of what was checked",
@@ -307,17 +320,23 @@ export default function SentinelPage() {
                 "One complaint, no evidence",
                 "PI insurer asks: can you prove it?",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-3 mb-3">
-                  <span style={{ color: "#ef4444" }} className="mt-0.5 text-sm flex-shrink-0">✕</span>
-                  <span className="text-white text-sm">{item}</span>
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.875rem" }}>
+                  <span style={{ color: "#ef4444", flexShrink: 0, ...syne, fontSize: "12px", marginTop: "2px" }}>✕</span>
+                  <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>{item}</span>
                 </div>
               ))}
             </div>
-            <div
-              className="rounded-2xl border border-red-500/15 p-7"
-              style={{ background: "linear-gradient(135deg, rgba(127,29,29,0.15) 0%, rgba(9,7,15,0.8) 100%)" }}
-            >
-              <p className="text-xs font-bold text-red-500 uppercase tracking-[0.15em] mb-6">With Sentinel</p>
+            <div style={{
+              background: "#0f0505",
+              border: "1px solid rgba(239,68,68,0.2)",
+              padding: "2.5rem",
+              position: "relative"
+            }}>
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                background: "linear-gradient(90deg, #cc0000, transparent)"
+              }} />
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>With Sentinel</p>
               {[
                 "Copy reviewed in a proper system",
                 "Every check logged and timestamped",
@@ -326,36 +345,102 @@ export default function SentinelPage() {
                 "One complaint, instant evidence",
                 "PI insurer asks: yes, here it is.",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-3 mb-3">
-                  <span className="text-red-500 mt-0.5 text-sm flex-shrink-0">✓</span>
-                  <span className="text-gray-300 text-sm">{item}</span>
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.875rem" }}>
+                  <span style={{ color: "#4ade80", flexShrink: 0, ...syne, fontSize: "12px", marginTop: "2px" }}>✓</span>
+                  <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.7)" }}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Competitor comparison */}
-      <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-4xl px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">How we compare</p>
-            <h2 className="text-5xl sm:text-6xl font-extrabold text-white">
-              Enterprise compliance.<br className="hidden sm:block" /> Without the enterprise price.
+      {/* ── RISK VS COST ── Bloomberg numbers */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The numbers</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em" }}>
+              What one complaint actually costs
             </h2>
-            <p className="mt-4 text-gray-300 text-sm max-w-lg mx-auto">
-              The tools agencies traditionally use cost £2,000-£10,000 a month and take weeks to onboard. Sentinel is live in a day.
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+            {/* Risk column */}
+            <div style={{ background: "#0f0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2.5rem" }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>The risk without Sentinel</p>
+              {RISKS.map((r) => (
+                <div key={r.label} style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "flex-start",
+                  gap: "1rem",
+                  borderBottom: "1px solid rgba(239,68,68,0.1)",
+                  paddingBottom: "1rem", marginBottom: "1rem"
+                }}>
+                  <div>
+                    <p style={{ ...syne, fontSize: "13px", fontWeight: 600, color: "white", marginBottom: "2px" }}>{r.label}</p>
+                    <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>{r.detail}</p>
+                  </div>
+                  <span style={{ ...mono, fontSize: "14px", fontWeight: 700, color: "#ef4444", flexShrink: 0 }}>{r.cost}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Sentinel cost */}
+            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.08)", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "2rem" }}>Sentinel</p>
+                <div style={{ textAlign: "center", padding: "2rem 0" }}>
+                  <p style={{ ...mono, fontSize: "4rem", fontWeight: 700, color: "white", lineHeight: 1, letterSpacing: "-0.04em" }}>£999</p>
+                  <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginTop: "8px" }}>per month</p>
+                </div>
+                {[
+                  "Unlimited scans across your whole team",
+                  "Every campaign reviewed before it goes live",
+                  "Signed PDF certificate on every review",
+                  "Weekly monitoring of live pages",
+                  "The paper trail your PI insurer needs",
+                ].map((b) => (
+                  <div key={b} style={{ display: "flex", gap: "8px", marginBottom: "0.75rem" }}>
+                    <span style={{ color: "#4ade80", flexShrink: 0 }}>✓</span>
+                    <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)" }}>{b}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/signup" style={{
+                display: "block", textAlign: "center",
+                background: "#cc0000", color: "white",
+                ...syne, fontSize: "0.875rem", fontWeight: 700,
+                padding: "13px 24px", borderRadius: "9999px",
+                boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+                textDecoration: "none", marginTop: "1.5rem"
+              }}>
+                Get started
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMPARISON TABLE ── */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How we compare</p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+              Enterprise compliance.<br />Without the enterprise price.
+            </h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.35)", marginTop: "1rem" }}>
+              The tools agencies traditionally use cost £2,000–£10,000 a month. Sentinel is live in a day.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
-                <tr className="border-b border-gray-800">
-                  <th className="text-left py-3 pr-6 text-gray-500 font-medium w-1/3">Feature</th>
-                  <th className="text-center py-3 px-4 text-gray-500 font-medium">Red Marker / Blee</th>
-                  <th className="text-center py-3 px-4 font-bold text-white">Sentinel</th>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                  <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "40%" }}>Feature</th>
+                  <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "center", padding: "1rem" }}>Red Marker / Blee</th>
+                  <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", textAlign: "center", padding: "1rem" }}>Sentinel</th>
                 </tr>
               </thead>
               <tbody>
@@ -366,169 +451,87 @@ export default function SentinelPage() {
                   ["Greenwashing scanner", "Limited", "✓ EU Green Claims Directive"],
                   ["URL page scanning", "✗", "✓ Live page fetch"],
                   ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
-                  ["Audio transcription", "✗", "✓ Whisper AI"],
                   ["Full site audit", "✗", "✓ Up to 50 pages"],
                   ["Weekly auto-monitoring", "✗", "✓ Unlimited URLs"],
                   ["Chrome extension", "✗", "✓ Included"],
                   ["REST API + webhooks", "✗", "✓ Zapier ready"],
-                  ["Multi-user team seats", "✗", "✓ Included"],
                   ["White-label PDF reports", "✗", "✓ Your branding"],
-                  ["Weekly email digest", "✗", "✓ Monday morning"],
-                  ["Compliance changelog", "✗", "✓ Scan vs scan diff"],
-                  ["Embeddable badge + sharing", "✗", "✓ Included"],
-                  ["CSV export", "✗", "✓ Included"],
                   ["Signed PDF certificates", "✓", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
-                  ["Typical monthly cost", "£2,000 - £10,000", "£999"],
-                ].map(([feature, them, us]) => (
-                  <tr key={feature} className="border-b border-gray-800/40">
-                    <td className="py-3 pr-6 text-gray-300">{feature}</td>
-                    <td className="py-3 px-4 text-center text-gray-400">{them}</td>
-                    <td className="py-3 px-4 text-center text-red-400 font-medium">{us}</td>
+                  ["Typical monthly cost", "£2,000 – £10,000", "£999"],
+                ].map(([feature, them, us], i) => (
+                  <tr key={feature} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                    <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", padding: "0.875rem 1rem 0.875rem 0" }}>{feature}</td>
+                    <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textAlign: "center", padding: "0.875rem 1rem", background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)" }}>{them}</td>
+                    <td style={{ ...syne, fontSize: "13px", color: us.startsWith("✓") ? "#4ade80" : "#ef4444", textAlign: "center", padding: "0.875rem 1rem", fontWeight: 600, background: i % 2 === 0 ? "rgba(204,0,0,0.03)" : "rgba(204,0,0,0.05)" }}>{us}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
-          <p className="mt-6 text-center text-xs text-gray-500">
+          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "1.5rem" }}>
             Competitor pricing based on publicly available information and industry estimates.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* ROI Calculator */}
-      <div className="border-t border-gray-800/40">
-        <div className="mx-auto max-w-3xl px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-4">The numbers</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-white">What one complaint actually costs</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-red-900/40 bg-red-950/20 p-6 space-y-4">
-              <p className="text-xs font-bold text-red-400 uppercase tracking-widest">The risk without Sentinel</p>
-              {[
-                { label: "ASA investigation", cost: "£5,000–£50,000", detail: "legal costs, campaign takedown, management time" },
-                { label: "FCA unapproved promotion", cost: "Criminal liability", detail: "fine, public censure, FCA investigation" },
-                { label: "GDPR violation", cost: "Up to €20 million", detail: "or 4% of global annual turnover" },
-                { label: "CMA dark pattern complaint", cost: "Up to £300,000", detail: "per violation plus injunction" },
-                { label: "Client claim against agency", cost: "Your PI excess", detail: "plus policy review, possible non-renewal" },
-              ].map((r) => (
-                <div key={r.label} className="flex items-start justify-between gap-4 border-b border-red-900/20 pb-3 last:border-0 last:pb-0">
-                  <div>
-                    <p className="text-sm font-semibold text-white">{r.label}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">{r.detail}</p>
-                  </div>
-                  <span className="text-sm font-bold text-red-400 whitespace-nowrap">{r.cost}</span>
-                </div>
-              ))}
-            </div>
-            <div className="rounded-2xl border border-green-900/40 bg-green-950/20 p-6 flex flex-col justify-between">
-              <div>
-                <p className="text-xs font-bold text-green-400 uppercase tracking-widest mb-4">Sentinel</p>
-                <div className="text-center py-6">
-                  <p className="text-6xl font-extrabold text-white">£999</p>
-                  <p className="text-gray-400 text-sm mt-1">per month</p>
-                  <p className="text-gray-500 text-xs mt-1">£11,988 per year</p>
-                </div>
-                {[
-                  "Unlimited scans across your whole team",
-                  "Every campaign reviewed before it goes live",
-                  "Signed PDF certificate on every review",
-                  "Weekly monitoring of live pages",
-                  "The paper trail your PI insurer needs",
-                ].map((b) => (
-                  <div key={b} className="flex items-start gap-2 mb-2">
-                    <span className="text-green-400 flex-shrink-0 text-sm">✓</span>
-                    <span className="text-gray-300 text-sm">{b}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/signup"
-                className="mt-6 block rounded-xl bg-red-600 py-3 text-center text-sm font-bold text-white hover:bg-red-500 transition-colors"
-              >
-                Get started →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* ── FINAL CTA ── */}
+      <section style={{
+        padding: "10rem 1.5rem",
+        textAlign: "center",
+        position: "relative", overflow: "hidden",
+        background: "linear-gradient(180deg, #0a0a0a 0%, #0f0505 100%)"
+      }}>
+        <div style={{
+          position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
+          width: "700px", height: "400px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center bottom, rgba(204,0,0,0.2) 0%, transparent 65%)"
+        }} />
 
-      {/* CTA */}
-      <div className="border-t border-gray-800/40">
-        <div className="relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0">
-            <div
-              className="absolute left-1/2 bottom-0 -translate-x-1/2 h-[500px] w-[700px] opacity-20"
-              style={{ background: "radial-gradient(ellipse at center bottom, #dc2626 0%, transparent 65%)" }}
-            />
-          </div>
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.025]"
-            style={{
-              backgroundImage:
-                "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-            }}
-          />
-
-          <div className="relative mx-auto max-w-3xl px-6 py-16 text-center">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-[0.2em] mb-6">Get started</p>
-            <h2
-              className="text-5xl sm:text-6xl font-black tracking-tight mb-6"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #dc2626 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Ready when you are.
-            </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto mb-12">
-              Compliance is not a one-off task. It is a constant. Sentinel keeps your agency protected every time copy is created, reviewed and published. Get in touch and we will get you set up.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry"
-                className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white hover:bg-red-500 transition-all shadow-2xl shadow-red-600/25"
-              >
-                Get in touch →
-              </a>
-              <Link
-                href="/signup"
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-700 bg-gray-900/60 px-10 py-4 text-base font-medium text-gray-300 hover:border-red-500/40 hover:text-white transition-all"
-              >
-                Try Red Flag AI Pro free
-              </Link>
-            </div>
-
-            <p className="mt-8 text-xs text-gray-600">
-              Or email us directly at{" "}
-              <a href="mailto:support@redflagaipro.com" className="text-gray-500 hover:text-red-400 transition-colors">
-                support@redflagaipro.com
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer strip */}
-      <div className="border-t border-gray-800/40 py-10">
-        <div className="mx-auto max-w-5xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-700 text-sm">
-            Red Flag AI Pro — compliance scanning available now
+        <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Get started</p>
+          <h2 style={{
+            ...syne, fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800,
+            color: "white", letterSpacing: "-0.04em", lineHeight: 1.0, marginBottom: "1.5rem"
+          }}>
+            Ready when you are.
+          </h2>
+          <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "3rem" }}>
+            Compliance is not a one-off task. It is a constant. Sentinel keeps your agency protected every time copy is created, reviewed and published.
           </p>
-          <Link
-            href="/"
-            className="rounded-lg border border-gray-800 px-5 py-2 text-sm font-medium text-gray-500 hover:border-red-500/40 hover:text-white transition-all"
-          >
-            Start free today →
-          </Link>
+
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
+            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: "#cc0000", color: "white",
+              ...syne, fontSize: "0.9rem", fontWeight: 700,
+              padding: "14px 32px", borderRadius: "9999px",
+              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              textDecoration: "none", letterSpacing: "0.02em"
+            }}>
+              Get in touch
+            </a>
+            <Link href="/signup" style={{
+              display: "inline-flex", alignItems: "center",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.55)",
+              ...syne, fontSize: "0.9rem", fontWeight: 600,
+              padding: "14px 32px", borderRadius: "9999px",
+              textDecoration: "none"
+            }}>
+              Try Red Flag AI Pro free
+            </Link>
+          </div>
+
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)" }}>
+            Or email{" "}
+            <a href="mailto:support@redflagaipro.com" style={{ color: "rgba(239,68,68,0.5)", textDecoration: "none" }}>
+              support@redflagaipro.com
+            </a>
+          </p>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }

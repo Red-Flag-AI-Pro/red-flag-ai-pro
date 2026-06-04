@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+﻿﻿﻿﻿﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { HeroNew } from "@/components/marketing/HeroNew";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 import { DemoScanner } from "@/components/marketing/DemoScanner";
@@ -22,7 +23,7 @@ const jsonLd = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "The world's only compliance scanner that protects buyers and sellers across 5 countries. 21 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
+    "The world's only compliance scanner that protects buyers and sellers across 5 countries. 24 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
   offers: [
     {
       "@type": "Offer",
@@ -104,7 +105,7 @@ const FEATURES = [
     icon: "🎬",
     title: "YouTube VSL and Audio Scanning",
     description:
-      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 21 risk categories.",
+      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 24 risk categories.",
   },
   {
     icon: "🔍",
@@ -202,7 +203,7 @@ const PERSONAS = [
 
 const FINES = [
   {
-    country: "🇺🇸 USA",
+    country: "USA",
     body: "FTC",
     fine: "Up to $50,000",
     detail: "per violation — per day",
@@ -210,7 +211,7 @@ const FINES = [
     textColour: "text-blue-700",
   },
   {
-    country: "🇬🇧 UK",
+    country: "UK",
     body: "CMA / ASA",
     fine: "Up to £300,000",
     detail: "plus full campaign takedown",
@@ -218,7 +219,7 @@ const FINES = [
     textColour: "text-red-700",
   },
   {
-    country: "🇪🇺 EU",
+    country: "EU",
     body: "GDPR",
     fine: "Up to €20 million",
     detail: "or 4% of global turnover",
@@ -226,7 +227,7 @@ const FINES = [
     textColour: "text-yellow-700",
   },
   {
-    country: "🇦🇺 Australia",
+    country: "Australia",
     body: "ACCC",
     fine: "Up to $50M AUD",
     detail: "per breach under ACL",
@@ -234,7 +235,7 @@ const FINES = [
     textColour: "text-green-700",
   },
   {
-    country: "🇨🇦 Canada",
+    country: "Canada",
     body: "CASL",
     fine: "Up to $10M CAD",
     detail: "per violation for businesses",
@@ -302,566 +303,351 @@ export default function LandingPage() {
       <ExitIntent />
       <Navbar />
 
-      {/* Urgency bar — EU AI Act countdown */}
-      <div className="bg-red-600 py-2 px-4 text-center">
-        <p className="text-xs font-bold text-white">
-          ⚡ EU AI Act Article 50 comes into force August 2026 — AI-generated marketing copy must be disclosed. Is yours ready?{" "}
-          <Link href="/blog/eu-ai-act-article-50-marketing-agencies" className="underline hover:no-underline">
-            Learn more →
-          </Link>
-        </p>
-      </div>
-
-
-      {/* Scrolling compliance ticker */}
-      <div className="overflow-hidden bg-gray-950 border-b border-gray-800 py-2">
-        <style>{`
-          @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .ticker-track {
-            display: flex;
-            width: max-content;
-            animation: ticker 30s linear infinite;
-          }
-        `}</style>
-        <div className="ticker-track">
-          {TICKER_ITEMS.map((item, i) => (
-            <span key={i} className="mx-4 text-xs font-bold text-red-500 tracking-widest uppercase">
-              {item} <span className="text-gray-700 mx-2">·</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 pb-12 pt-8 sm:pb-24 sm:pt-24 text-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-red-500 blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-red-700 blur-3xl" />
-        </div>
-
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-
-          {/* Product Hunt Badge */}
-          <div className="mb-6 flex justify-center">
-            <a href="https://www.producthunt.com/posts/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=red-flag-ai-pro&theme=dark"
-                alt="Red Flag AI Pro - on Product Hunt"
-                width="220"
-                height="48"
-              />
-            </a>
-          </div>
-
-          {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold text-red-300">
-            <span>⚑</span>
-            <span>The only compliance scanner covering all 5 major jurisdictions simultaneously</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-5xl font-extrabold leading-none tracking-tight sm:text-6xl">
-            Building it.
-            <br />
-            Buying it.
-            <br />
-            <span className="text-red-400">Scan it.</span>
-          </h1>
-
-          {/* One line solve */}
-          <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Selling it? Check your copy is legal before you spend on ads. Buying it? Check their claims before you hand over your money. 21 risk categories. 5 countries. 60 seconds. Free.
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="#demo"
-              className="rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
-            >
-              Try Free — No Signup Needed ↓
-            </a>
-            <Link
-              href="/signup"
-              className="rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors"
-            >
-              Create Free Account →
-            </Link>
-          </div>
-
-          <p className="mt-4 text-sm text-gray-400">
-            ✅ No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee (see terms)
-          </p>
-
-          {/* Live scan counter + social proof */}
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-500">
-            <ScanCounter />
-            <span className="text-gray-700">·</span>
-            <span>73% UK traffic</span>
-            <span className="text-gray-700">·</span>
-            <span>Works on mobile, desktop and tablet</span>
-          </div>
-
-          <div className="mt-6 flex justify-center">
-            <a href="https://www.producthunt.com/products/red-flag-ai-pro?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img alt="Red Flag AI Pro - Spot illegal ads before buying. Scan copy before you publish | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" />
-            </a>
-          </div>
-
-          {/* Flag cards — 5 across on desktop */}
-          <div className="mt-12 hidden lg:grid lg:grid-cols-5 gap-3">
-            {[
-              { code: "us", country: "USA", acronyms: "FTC · FDA · CAN-SPAM" },
-              { code: "gb", country: "UK", acronyms: "CMA · ASA · ICO" },
-              { code: "eu", country: "EU", acronyms: "GDPR · UCPD · DSA" },
-              { code: "au", country: "Australia", acronyms: "ACCC · ACL" },
-              { code: "ca", country: "Canada", acronyms: "CASL · PIPEDA" },
-            ].map((j) => (
-              <div
-                key={j.country}
-                className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors"
-              >
-                <div className="h-8 w-12 overflow-hidden rounded-sm shadow-md">
-                  <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
-                </div>
-                <span className="mt-1 text-xs font-extrabold uppercase tracking-widest text-white">{j.country}</span>
-                <span className="text-xs font-bold text-white leading-relaxed">{j.acronyms}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile flag row - compact */}
-          <div className="mt-8 lg:hidden">
-            <div className="flex justify-center gap-4">
-              {[
-                { code: "us", country: "USA" },
-                { code: "gb", country: "UK" },
-                { code: "eu", country: "EU" },
-                { code: "au", country: "AUS" },
-                { code: "ca", country: "CAN" },
-              ].map((j) => (
-                <div key={j.country} className="flex flex-col items-center gap-1">
-                  <div className="h-6 w-9 overflow-hidden rounded-sm shadow-md">
-                    <img src={`https://flagcdn.com/w160/${j.code}.png`} alt={j.country} className="h-full w-full object-cover" />
-                  </div>
-                  <span className="text-xs font-bold text-gray-400">{j.country}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats pill */}
-          <div className="mt-6 flex justify-center">
-            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 rounded-full border border-white/10 bg-white/5 px-5 py-2">
-              <span className="text-red-400 font-bold text-sm">21 risk categories</span>
-              <span className="text-gray-600">·</span>
-              <span className="text-red-400 font-bold text-sm">5 countries</span>
-              <span className="text-gray-600">·</span>
-              <span className="text-red-400 font-bold text-sm">URL + VSL + site audit</span>
-              <span className="text-gray-600">·</span>
-              <span className="text-red-400 font-bold text-sm">60 seconds</span>
-            </div>
-          </div>
-
-          <div className="mt-6 mx-auto max-w-2xl">
-            <p className="text-2xl font-extrabold text-white leading-snug">
-              The <span className="text-red-400">only</span> compliance scanner
-              that protects both buyers and sellers across all five jurisdictions simultaneously.
-            </p>
-            <p className="mt-2 text-lg font-bold text-red-400">
-              No comparable tool covers all five jurisdictions at this price point.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust bar */}
-      <div className="bg-gray-900 border-b border-gray-800 py-4 px-4">
-        <div className="mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-gray-400">
-          {[
-            { icon: "🔒", text: "No data stored beyond your account" },
-            { icon: "⚡", text: "Results in under 60 seconds" },
-            { icon: "🌍", text: "FTC · GDPR · ASA · FCA · ACCC · CASL" },
-            { icon: "✅", text: "14-day money-back guarantee" },
-            { icon: "🎯", text: "21 risk categories" },
-          ].map((t) => (
-            <span key={t.text} className="flex items-center gap-1.5">
-              <span>{t.icon}</span>
-              <span>{t.text}</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      <HeroNew />
 
       {/* Demo Scanner */}
       <DemoScanner />
 
-      {/* Feedback CTA */}
-      <div className="bg-gray-950 pb-10 text-center">
-        <p className="text-gray-500 text-sm mb-3">Tried the scanner? Let us know what you found.</p>
-        <a
-          href="mailto:support@redflagaipro.com?subject=Red Flag AI Pro Feedback&body=Hi James, I just tried the scanner and wanted to share my thoughts..."
-          className="inline-block rounded-lg border border-gray-700 bg-gray-800 px-6 py-2.5 text-sm font-semibold text-gray-300 hover:border-red-500 hover:text-white transition-colors"
-        >
-          Leave Feedback →
-        </a>
-      </div>
 
       {/* Pain section */}
-      <section className="bg-gray-950 py-16 text-white">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-extrabold text-white">
-            The Ad That Just Convinced You To Buy Could Be Breaking The Law.
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
+
+          {/* Section label */}
+          <p style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "11px", fontWeight: 700,
+            letterSpacing: "0.2em", textTransform: "uppercase",
+            color: "#ef4444", marginBottom: "2rem"
+          }}>
+            The problem
+          </p>
+
+          {/* Main statement */}
+          <h2 style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontWeight: 700, lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            color: "white", marginBottom: "1.5rem"
+          }}>
+            The ad that just convinced you to buy
+            <br />could be breaking the law.
             <br />
-            <span className="text-red-400">So Could The One You Just Wrote.</span>
+            <span style={{color: "#ef4444", fontStyle: "italic"}}>So could the one you just wrote.</span>
           </h2>
-          <p className="mt-4 text-gray-400">
-            Most people who get ripped off online are not stupid. They are trusting people responding to convincing ads that are illegal.
-            And most sellers doing it are not scammers. They are regular marketers, course creators and small business owners using the same copy everyone else uses — without knowing it crosses the line.
+
+          <p style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "1.1rem", lineHeight: 1.7,
+            color: "rgba(255,255,255,0.5)",
+            maxWidth: "640px", marginBottom: "4rem"
+          }}>
+            Most people who get ripped off online are not stupid. Most sellers who break the rules are not scammers. Nobody tells you where the line is. Until you cross it.
           </p>
-          <p className="mt-2 text-gray-400 font-semibold">Red Flag AI Pro protects both sides.</p>
-          <ul className="mt-8 space-y-4 text-left">
+
+          {/* Violations — each as a bold statement */}
+          <div style={{display: "flex", flexDirection: "column", gap: "0"}}>
             {[
-              "That limited time offer you almost bought — countdown timers that reset are now specifically illegal in the UK and EU",
-              "That six figure income claim you wrote — it can trigger a government fine even if it is true",
-              "That money back guarantee you trusted — if it contradicts the terms and conditions it is a contract violation",
-              "That email list you signed up to — collecting emails without the right consent wording breaks Canadian and EU law",
-              "That number one claim that convinced you — without proof it breaks advertising rules in every country we cover",
-              "Nobody needs intent. Buyers still lose money. Sellers still get fined. Regulators do not care if you did not know.",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-gray-300">
-                <span className="mt-0.5 text-red-500 text-lg">🚩</span>
-                <span>{item}</span>
-              </li>
+              { claim: "That limited time offer", detail: "Countdown timers that reset are specifically illegal in the UK and EU." },
+              { claim: "That six figure income claim", detail: "It can trigger a government fine even if it is true." },
+              { claim: "That money back guarantee", detail: "If it contradicts the terms and conditions, it is a contract violation." },
+              { claim: "That email list", detail: "Collecting emails without the right consent wording breaks Canadian and EU law." },
+              { claim: "That number one claim", detail: "Without proof, it breaks advertising rules in every country we cover." },
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "2rem",
+                padding: "2rem 0",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+                alignItems: "start"
+              }}>
+                <p style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "1.3rem", fontWeight: 700,
+                  color: "white", lineHeight: 1.2,
+                  letterSpacing: "-0.02em"
+                }}>
+                  {item.claim}
+                </p>
+                <p style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "1.15rem", lineHeight: 1.6,
+                  color: "#fca5a5",
+                  borderLeft: "3px solid #ef4444",
+                  paddingLeft: "1.25rem",
+                  fontWeight: 500
+                }}>
+                  {item.detail}
+                </p>
+              </div>
             ))}
-          </ul>
-          <p className="mt-8 text-lg font-semibold text-red-400">
+            <div style={{
+              padding: "2rem 0",
+              borderTop: "1px solid rgba(255,255,255,0.06)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)"
+            }}>
+              <p style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "1.1rem", fontWeight: 600,
+                color: "#ef4444", letterSpacing: "0.01em"
+              }}>
+                Nobody needs intent. Regulators do not care if you did not know.
+              </p>
+            </div>
+          </div>
+
+          {/* Closing statement */}
+          <p style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "1.5rem", fontWeight: 700,
+            color: "white", marginTop: "3rem",
+            letterSpacing: "-0.02em", lineHeight: 1.3
+          }}>
             Red Flag AI Pro catches all of it before it costs you.
+            <span style={{color: "rgba(255,255,255,0.4)", fontWeight: 400, display: "block", fontSize: "1rem", marginTop: "0.5rem"}}>
+              In plain English. With exactly what to fix. In 60 seconds.
+            </span>
           </p>
-          <p className="mt-2 text-gray-400">
-            In plain English. With exactly what to fix. In 60 seconds.
-          </p>
+
         </div>
       </section>
 
-      {/* Before vs After — moved high for trust */}
-      <section className="bg-gray-950 py-10 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-white">
-            Before You Buy It. Before You Build It. See What We Find.
+      {/* Before vs After */}
+      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Real examples</p>
+
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>
+            Before you buy it. Before you build it.
           </h2>
-          <p className="mt-3 text-center text-gray-400">
-            Real examples. Real flags. Both sides.
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>
+            Real flags. Both sides. See exactly what we find.
           </p>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: "2px"}}>
 
-            {/* SELLER EXAMPLE */}
-            <div className="flex flex-col gap-4">
-              <div className="inline-flex items-center gap-2 self-start rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-400 uppercase tracking-widest">For Sellers</div>
-
-              <div className="rounded-2xl border border-red-500/40 bg-red-950/20 p-6">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="text-xl">🚩</span>
-                  <span className="text-sm font-bold text-red-400 uppercase tracking-wider">Flagged Copy</span>
-                </div>
-                <p className="text-white text-base italic leading-relaxed">
+            {/* SELLER */}
+            <div style={{display: "flex", flexDirection: "column", gap: "2px"}}>
+              <div style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", flex: 1}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>For Sellers — Flagged Copy</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem"}}>
                   &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
                 </p>
-                <div className="mt-5 border-t border-red-500/20 pt-4 space-y-3">
-                  <p className="text-xs font-bold text-red-400 uppercase tracking-widest">⚠️ Flags triggered</p>
-                  <div className="flex flex-wrap gap-2">
+                <div style={{borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem"}}>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.75rem"}}>Flags triggered</p>
+                  <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "0.75rem"}}>
                     {["Income claim without disclaimer", "Unsubstantiated earnings", "Guarantee contradiction"].map((f) => (
-                      <span key={f} className="rounded-full border border-red-700/50 bg-red-900/40 px-3 py-1 text-xs font-medium text-red-200">{f}</span>
+                      <span key={f} style={{background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.25)", padding: "4px 12px", fontSize: "11px", fontWeight: 600, color: "#fca5a5", fontFamily: "'Syne', sans-serif"}}>{f}</span>
                     ))}
                   </div>
-                  <p className="text-xs text-red-400/80 font-medium">FTC · ASA · ACCC</p>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(239,68,68,0.6)", fontWeight: 600}}>FTC · ASA · ACCC</p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-green-500/40 bg-green-950/20 p-6">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="text-xl">✓</span>
-                  <span className="text-sm font-bold text-green-400 uppercase tracking-wider">Compliant Rewrite</span>
-                </div>
-                <p className="text-white text-base italic leading-relaxed">
+              <div style={{background: "#0a1a0a", border: "1px solid rgba(34,197,94,0.12)", padding: "2rem", flex: 1}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#4ade80", marginBottom: "1.5rem"}}>Compliant Rewrite</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem"}}>
                   &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
                 </p>
-                <div className="mt-5 border-t border-green-500/20 pt-4">
-                  <p className="text-xs font-bold text-green-400 uppercase tracking-widest mb-2">✅ Now compliant with</p>
-                  <p className="text-xs text-green-300/80">FTC · CMA · ASA · ACCC · CASL guidelines on earnings claims and guarantees</p>
+                <div style={{borderTop: "1px solid rgba(34,197,94,0.1)", paddingTop: "1.25rem"}}>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(74,222,128,0.7)", fontWeight: 600}}>Now compliant with FTC · CMA · ASA · ACCC · CASL</p>
                 </div>
               </div>
             </div>
 
-            {/* BUYER EXAMPLE */}
-            <div className="flex flex-col gap-4">
-              <div className="inline-flex items-center gap-2 self-start rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-400 uppercase tracking-widest">For Buyers</div>
-
-              <div className="rounded-2xl border border-gray-600/50 bg-gray-800/40 p-6">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="text-xl">👀</span>
-                  <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">Looks Legitimate</span>
-                </div>
-                <p className="text-white text-base italic leading-relaxed">
-                  &ldquo;Over 2,400 students have completed this programme. Our top performers report life-changing results. Enrol today and get our 30-day satisfaction guarantee — we are so confident in our method that we offer a full refund if you do not see results within the first month.&rdquo;
+            {/* BUYER */}
+            <div style={{display: "flex", flexDirection: "column", gap: "2px"}}>
+              <div style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", flex: 1}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem"}}>For Buyers — Looks Legitimate</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem"}}>
+                  &ldquo;Over 2,400 students have completed this programme. Our top performers report life-changing results. Enrol today and get our 30-day satisfaction guarantee — full refund if you do not see results within the first month.&rdquo;
                 </p>
-                <div className="mt-5 border-t border-gray-700 pt-4">
-                  <p className="text-sm font-bold text-amber-400">Passed your gut check. Failed ours.</p>
+                <div style={{borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem"}}>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#fbbf24"}}>Passed your gut check. Failed ours.</p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-red-500/40 bg-red-950/20 p-6">
-                <div className="mb-5 flex items-center gap-2">
-                  <span className="text-xl">🚩</span>
-                  <span className="text-sm font-bold text-red-400 uppercase tracking-wider">What We Found</span>
-                </div>
-                <div className="space-y-4">
+              <div style={{background: "#110808", border: "1px solid rgba(239,68,68,0.12)", padding: "2rem", flex: 1}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What We Found</p>
+                <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
                   {[
                     { flag: "Unverified social proof", detail: "2,400 students — no independent verification", reg: "FTC violation" },
                     { flag: "Vague results claim", detail: '"Life-changing results" — no data or disclaimer', reg: "ASA violation" },
                     { flag: "Conditional guarantee", detail: "Refund tied to results — contradicts UK statutory consumer rights", reg: "CMA violation" },
                     { flag: "Missing income disclaimer", detail: "Implied financial outcomes without mandatory disclosure", reg: "ACCC violation" },
                   ].map((item) => (
-                    <div key={item.flag} className="flex items-start gap-3">
-                      <span style={{ color: "#ef4444" }} className="flex-shrink-0 mt-0.5">✕</span>
+                    <div key={item.flag} style={{display: "flex", gap: "12px", alignItems: "flex-start"}}>
+                      <span style={{color: "#ef4444", fontWeight: 700, fontSize: "14px", flexShrink: 0, marginTop: "2px"}}>✕</span>
                       <div>
-                        <p className="text-sm font-semibold text-white">{item.flag}</p>
-                        <p className="text-xs text-gray-400 mt-0.5">{item.detail}</p>
-                        <p className="text-xs text-red-400/80 mt-0.5 font-medium">{item.reg}</p>
+                        <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "2px"}}>{item.flag}</p>
+                        <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "2px"}}>{item.detail}</p>
+                        <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "#ef4444", fontWeight: 600}}>{item.reg}</p>
                       </div>
                     </div>
                   ))}
-                </div>
-                <div className="mt-5 border-t border-red-500/20 pt-4">
-                  <p className="text-sm font-bold text-white mb-3">Scan before you buy. Free. 60 seconds.</p>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/signup"
-              className="inline-block rounded-xl bg-red-600 px-8 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
-            >
-              Scan your copy free →
+          <div style={{textAlign: "center", marginTop: "3rem"}}>
+            <Link href="/signup" style={{
+              display: "inline-flex", alignItems: "center", gap: "10px",
+              background: "#cc0000", color: "white",
+              fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700,
+              padding: "14px 36px", borderRadius: "9999px",
+              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              transition: "all 0.2s"
+            }}>
+              Scan your copy free
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Fines & Penalties */}
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>The cost of getting it wrong</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>Real fines. Real losses. Both sides.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>All from the same illegal marketing copy.</p>
+
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem"}}>What buyers lose</p>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px", marginBottom: "4rem"}}>
+            {[
+              { label: "Ecommerce", sub: "Misleading product claims", amount: "£200–£800", detail: "average loss per purchase" },
+              { label: "Course buyers", sub: "Fake income claims", amount: "£500–£5k", detail: "average loss per course" },
+              { label: "Health products", sub: "Unsubstantiated claims", amount: "£100–£2k", detail: "average loss per product" },
+              { label: "Subscriptions", sub: "Hidden recurring charges", amount: "£300–£1.2k", detail: "average annual loss" },
+            ].map((item) => (
+              <div key={item.label} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem"}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px"}}>{item.label}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem"}}>{item.sub}</p>
+                <p style={{fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "2.25rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px"}}>{item.amount}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)"}}>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem"}}>What sellers face</p>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "2rem"}}>
+            {FINES.map((f) => (
+              <div key={f.country} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem"}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px"}}>{f.country}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem"}}>{f.body}</p>
+                <p style={{fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "2rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px"}}>{f.fine}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)"}}>{f.detail}</p>
+              </div>
+            ))}
+            <div style={{background: "#1a0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+              <p style={{fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "3rem", fontWeight: 800, color: "#ef4444", lineHeight: 1, marginBottom: "8px"}}>$6B+</p>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.5)"}}>in marketing compliance fines globally in the last 3 years</p>
+            </div>
+          </div>
+
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center"}}>Fine amounts based on published maximum penalties. Individual penalties vary. Not legal advice.</p>
+        </div>
+      </section>
+
+      {/* AI Liability */}
+      <section style={{background: "#050505", padding: "8rem 1.5rem", position: "relative", overflow: "hidden"}}>
+        <div style={{position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.15), transparent 70%)", pointerEvents: "none"}} />
+        <div style={{maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>New threat — 2026</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem", lineHeight: 1.2}}>
+            AI generated it.<br />That does not make it legal.
+            <span style={{display: "block", color: "#ef4444", fontStyle: "italic"}}>Or safe to buy.</span>
+          </h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", marginBottom: "4rem", maxWidth: "600px", lineHeight: 1.7}}>
+            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span style={{color: "white", fontWeight: 600}}>uninsured liability</span>.
+          </p>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px", marginBottom: "3rem"}}>
+            {[
+              { title: "Berkley Insurance", body: "Introduced an absolute AI exclusion on D&O, E&O and Fiduciary Liability policies — covering all AI use, not just generative." },
+              { title: "EU AI Act — Aug 2026", body: "Article 50(4) requires AI-assisted marketing content to carry disclosure or documented human review. Non-compliance triggers regulatory action." },
+              { title: "RSA (UK)", body: 'RSA\'s UK Head of PI confirmed they are "assuming but not yet pricing" AI exposures — meaning exclusions are coming at next renewal.' },
+            ].map((item) => (
+              <div key={item.title} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem"}}>
+                <div style={{width: "8px", height: "8px", borderRadius: "50%", background: "#ef4444", marginBottom: "1.25rem"}} />
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem"}}>{item.title}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{textAlign: "center"}}>
+            <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "10px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, padding: "14px 36px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)"}}>
+              Scan your copy free
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Fines & Penalties */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            The Cost Of Getting It Wrong. For Everyone.
-          </h2>
-          <p className="mt-3 text-center text-gray-500">
-            Real fines handed to sellers. Real money lost by buyers. All from the same illegal marketing copy.
-          </p>
-          <div className="mt-6 flex items-center gap-3">
-            <div className="h-px flex-1 bg-gray-200" />
-            <span className="text-sm font-bold text-red-500 uppercase tracking-widest">What Buyers Lose</span>
-            <div className="h-px flex-1 bg-gray-200" />
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
-              <p className="text-lg font-bold text-gray-900">🛍️ Ecommerce</p>
-              <p className="text-sm text-gray-500">Misleading product claims</p>
-              <p className="mt-3 text-3xl font-extrabold text-purple-700">£200–£800</p>
-              <p className="mt-1 text-sm text-gray-600">average loss per purchase</p>
-            </div>
-            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
-              <p className="text-lg font-bold text-gray-900">📚 Course Buyers</p>
-              <p className="text-sm text-gray-500">Fake income claims and guarantees</p>
-              <p className="mt-3 text-3xl font-extrabold text-purple-700">£500–£5k</p>
-              <p className="mt-1 text-sm text-gray-600">average loss per course</p>
-            </div>
-            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
-              <p className="text-lg font-bold text-gray-900">💊 Health Products</p>
-              <p className="text-sm text-gray-500">Unsubstantiated health claims</p>
-              <p className="mt-3 text-3xl font-extrabold text-purple-700">£100–£2k</p>
-              <p className="mt-1 text-sm text-gray-600">average loss per product</p>
-            </div>
-            <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6">
-              <p className="text-lg font-bold text-gray-900">🔁 Subscriptions</p>
-              <p className="text-sm text-gray-500">Hidden recurring charges</p>
-              <p className="mt-3 text-3xl font-extrabold text-purple-700">£300–£1.2k</p>
-              <p className="mt-1 text-sm text-gray-600">average annual loss</p>
-            </div>
-          </div>
-          <div className="mt-10 flex items-center gap-3">
-            <div className="h-px flex-1 bg-gray-200" />
-            <span className="text-sm font-bold text-red-500 uppercase tracking-widest">What Sellers Face</span>
-            <div className="h-px flex-1 bg-gray-200" />
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {FINES.map((f) => (
-              <div key={f.country} className={`rounded-2xl border-2 p-6 ${f.colour}`}>
-                <p className="text-lg font-bold text-gray-900">{f.country}</p>
-                <p className="text-sm text-gray-500">{f.body}</p>
-                <p className={`mt-3 text-3xl font-extrabold ${f.textColour}`}>{f.fine}</p>
-                <p className="mt-1 text-sm text-gray-600">{f.detail}</p>
+      {/* Value stack */}
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "800px", margin: "0 auto", textAlign: "center"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>The maths</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "3rem"}}>For both sides.</h2>
+          <div style={{display: "flex", flexDirection: "column", gap: "0", marginBottom: "3rem", textAlign: "left"}}>
+            {[
+              { label: "Compliance lawyer", value: "£400 per hour" },
+              { label: "Full funnel audit", value: "£2,400 minimum" },
+              { label: "Average buyer loss", value: "£500–£2,000" },
+              { label: "Red Flag AI Pro", value: "Free. 60 seconds.", highlight: true },
+            ].map((item, i) => (
+              <div key={i} style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", padding: "1.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)"}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", color: item.highlight ? "white" : "rgba(255,255,255,0.7)", fontWeight: item.highlight ? 700 : 500}}>{item.label}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: item.highlight ? "#ef4444" : "rgba(255,255,255,0.7)", textAlign: "right"}}>{item.value}</p>
               </div>
             ))}
-            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-6 flex flex-col justify-center">
-              <p className="text-2xl font-extrabold text-gray-900">$6 Billion+</p>
-              <p className="mt-1 text-sm text-gray-600">paid in marketing compliance fines globally in the last 3 years alone</p>
-            </div>
           </div>
-          <p className="mt-8 text-center text-sm text-gray-400">
-            Red Flag AI Pro scans against all of the above — simultaneously — in 60 seconds.
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7}}>
+            If it catches one thing, it has paid for itself a thousand times over.
           </p>
-          <p className="mt-2 text-center text-xs text-gray-500">
-            Fine amounts based on published maximum penalties under GDPR Art. 83, FTC Act, CMA/ASA guidelines, ACL and CASL. Individual penalties vary. Not legal advice.
-          </p>
-        </div>
-      </section>
-
-      {/* AI Liability Section */}
-      <section className="relative overflow-hidden bg-gray-950 py-24">
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        {/* Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/10 blur-[100px] rounded-full" />
-
-        <div className="relative mx-auto max-w-5xl px-6">
-          {/* Badge */}
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-xs font-semibold text-red-400 uppercase tracking-widest">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-              New Threat — 2026
-            </span>
-          </div>
-
-          <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            AI Generated It. That Doesn&apos;t Make It Legal To Write.
-            <span className="block text-red-500 mt-1">Or Safe To Buy.</span>
-          </h2>
-          <p className="mt-5 text-center text-gray-400 max-w-2xl mx-auto text-lg">
-            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span className="text-white font-semibold">uninsured liability</span> for the seller — and an invisible risk for the buyer.
-          </p>
-
-          {/* Three columns */}
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
-                <span className="text-red-400 text-lg">⚠️</span>
-              </div>
-              <h3 className="text-white font-bold text-lg">Berkley Insurance</h3>
-              <p className="mt-2 text-gray-400 text-sm leading-relaxed">Introduced an <span className="text-red-400 font-semibold">absolute AI exclusion</span> on D&amp;O, E&amp;O and Fiduciary Liability policies — covering all AI use, not just generative.</p>
-            </div>
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
-                <span className="text-red-400 text-lg">🏛️</span>
-              </div>
-              <h3 className="text-white font-bold text-lg">EU AI Act — Aug 2026</h3>
-              <p className="mt-2 text-gray-400 text-sm leading-relaxed">Article 50(4) requires AI-assisted marketing content to carry <span className="text-red-400 font-semibold">disclosure or documented human review</span>. Non-compliance triggers regulatory action.</p>
-            </div>
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 backdrop-blur">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20">
-                <span className="text-red-400 text-lg">🔍</span>
-              </div>
-              <h3 className="text-white font-bold text-lg">RSA (UK)</h3>
-              <p className="mt-2 text-gray-400 text-sm leading-relaxed">RSA's UK Head of PI confirmed they are <span className="text-red-400 font-semibold">"assuming but not yet pricing"</span> AI exposures — meaning exclusions are coming at next renewal.</p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-12 rounded-2xl border border-red-500/20 bg-red-500/5 p-8 text-center">
-            <p className="text-white text-xl font-bold">Whether You&apos;re Selling It Or Buying It — Know The Truth First.</p>
-            <p className="mt-2 text-gray-400"><span className="text-red-400 font-semibold">For sellers:</span> Red Flag AI Pro catches the compliance violations in your AI copy that could trigger an uninsured claim — before it goes live.</p>
-            <p className="mt-2 text-gray-400"><span className="text-red-400 font-semibold">For buyers:</span> It spots the illegal claims in the ads targeting you — before you hand over your money.</p>
-            <a
-              href="/signup"
-              className="mt-6 inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
-            >
-              Scan Your Copy Free →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Value stack */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="rounded-2xl border-2 border-red-100 bg-red-50 p-8 text-center">
-            <h2 className="text-2xl font-extrabold text-gray-900">Let&apos;s Do The Maths. For Both Sides.</h2>
-            <div className="mt-6 space-y-3 text-gray-700 text-lg">
-              <p><span className="text-red-500 font-semibold">For sellers:</span> A compliance lawyer charges <strong>£400 per hour.</strong></p>
-              <p><span className="text-red-500 font-semibold">For sellers:</span> A proper funnel audit takes <strong>4 to 6 hours.</strong> That is <strong>£2,400 minimum.</strong></p>
-              <p><span className="text-red-500 font-semibold">For buyers:</span> The average person loses <strong>£500 to £2,000</strong> on a misleading course or offer before they realise something was wrong.</p>
-              <p><span className="text-red-500 font-semibold">For buyers:</span> A solicitor to pursue a refund costs more than the money you lost.</p>
-            </div>
-            <div className="mt-6 text-3xl font-extrabold text-red-600">
-              Red Flag AI Pro does it in 60 seconds.
-            </div>
-            <div className="mt-2 text-2xl font-bold text-gray-900">For free.</div>
-            <p className="mt-4 text-gray-600">
-              Whether you are protecting your business or protecting your wallet — if it catches one thing, it has paid for itself a thousand times over.
-            </p>
-          </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="bg-gray-50 py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            Three Steps. 60 Seconds. Total Clarity.
-          </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1000px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>How it works</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem"}}>Three steps. 60 seconds.</h2>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px"}}>
             {[
-              {
-                step: "01",
-                title: "Paste your copy",
-                desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish. Just paste it in.",
-              },
-              {
-                step: "02",
-                title: "AI scans 21 risk categories",
-                desc: "Income claims, fake urgency, dark patterns, GDPR, hidden fees, and more — across all 5 jurisdictions simultaneously.",
-              },
-              {
-                step: "03",
-                title: "Buyers get the truth. Sellers get the fix.",
-                desc: "Every flag comes with a plain English explanation and a compliant rewrite. Know before you spend. Launch with confidence.",
-              },
+              { step: "01", title: "Paste your copy", desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish." },
+              { step: "02", title: "24 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing — across all 5 jurisdictions simultaneously." },
+              { step: "03", title: "Truth or fix. Instantly.", desc: "Every flag explained in plain English with a compliant rewrite. Know before you spend. Launch with confidence." },
             ].map((s) => (
-              <div key={s.step} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-lg font-bold text-white shadow-lg">
-                  {s.step}
-                </div>
-                <h3 className="mb-2 text-lg font-bold text-gray-900">{s.title}</h3>
-                <p className="text-sm text-gray-600">{s.desc}</p>
+              <div key={s.step} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem"}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "3.5rem", fontWeight: 800, color: "#ef4444", lineHeight: 1, marginBottom: "1.5rem", letterSpacing: "-0.03em"}}>{s.step}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.75rem"}}>{s.title}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{s.desc}</p>
               </div>
             ))}
           </div>
+
+          {/* closing */}
         </div>
       </section>
 
       {/* Who is this for */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            Who Uses Red Flag AI Pro?
-          </h2>
-          <p className="mt-3 text-center text-gray-500">
-            If you sell anything online — or buy anything online — this is for you.
-          </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Who it is for</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>If you buy or sell online, this was built for you.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Both sides. Every jurisdiction. 60 seconds.</p>
+
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px"}}>
             {PERSONAS.map((p) => (
-              <div key={p.label} className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-5 hover:shadow-md transition-shadow">
-                <span className="text-3xl">{p.icon}</span>
-                <div>
-                  <p className="font-bold text-gray-900">{p.label}</p>
-                  <p className="mt-0.5 text-sm text-gray-500">{p.desc}</p>
-                </div>
+              <div key={p.label} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", transition: "border-color 0.2s"}}
+              >
+                <span className="flag-wave" style={{display: "inline-block", flexShrink: 0, marginBottom: "1.25rem"}}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/><path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/></svg></span>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>{p.label}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{p.desc}</p>
               </div>
             ))}
           </div>
@@ -869,40 +655,45 @@ export default function LandingPage() {
       </section>
 
       {/* What we scan for */}
-      <section className="bg-gray-950 py-20">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-extrabold text-white">
-            21 risk categories. One Scan.
-          </h2>
-          <p className="mt-3 text-center text-gray-400">
-            Every category checked against all 5 jurisdictions simultaneously. Protecting sellers from liability. Protecting buyers from being misled.
-          </p>
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>24 categories. One scan.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every category checked against all 5 jurisdictions simultaneously.</p>
+
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px"}}>
             {SCAN_CATEGORIES.map((c) => (
-              <div key={c.label} className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 hover:border-red-500/50 transition-colors">
-                <span className="text-xl">{c.icon}</span>
-                <span className="text-sm font-medium text-gray-200">{c.label}</span>
+              <div key={c.label} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem 1.5rem", display: "flex", alignItems: "center", gap: "10px"}}
+              >
+                <span className="flag-wave" style={{display: "inline-block", flexShrink: 0}}><svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/><path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/></svg></span>
+                <span style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.75)"}}>{c.label}</span>
               </div>
             ))}
           </div>
 
           {/* AI Law Categories */}
-          <div className="mt-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px flex-1 bg-gray-800" />
-              <span className="flex items-center gap-2 text-xs font-bold text-red-400 uppercase tracking-widest">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                New — AI Law Compliance
+          <div style={{marginTop: "2px", borderTop: "2px solid #ef4444"}}>
+            <div style={{background: "#0a0505", padding: "12px 20px", display: "flex", alignItems: "center", gap: "10px", borderBottom: "1px solid rgba(255,255,255,0.06)"}}>
+              <span className="flag-wave">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+                </svg>
               </span>
-              <div className="h-px flex-1 bg-gray-800" />
+              <span style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>New — AI Law Compliance</span>
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
               {AI_CATEGORIES.map((c) => (
-                <div key={c.label} className="flex items-center gap-3 rounded-xl border border-red-500/30 bg-red-500/5 px-4 py-3 hover:border-red-500/60 transition-colors">
-                  <span className="text-xl">{c.icon}</span>
+                <div key={c.label} style={{background: "#0a0505", border: "1px solid rgba(239,68,68,0.1)", padding: "1.25rem 1.5rem", display: "flex", alignItems: "flex-start", gap: "12px"}}>
+                  <span className="flag-wave" style={{marginTop: "2px"}}>
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+                    </svg>
+                  </span>
                   <div>
-                    <p className="text-sm font-medium text-gray-200">{c.label}</p>
-                    <p className="text-xs text-red-400 mt-0.5">{c.tag}</p>
+                    <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "white", marginBottom: "4px"}}>{c.label}</p>
+                    <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "#ef4444", letterSpacing: "0.04em"}}>{c.tag}</p>
                   </div>
                 </div>
               ))}
@@ -910,78 +701,75 @@ export default function LandingPage() {
           </div>
 
           {/* Credibility block */}
-          <div className="mt-12 rounded-2xl border border-gray-800 bg-gray-900 p-8">
-            <h3 className="text-center text-lg font-bold text-white mb-6">Trained On Real Compliance Sources</h3>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { label: "FTC Enforcement Actions", icon: "📋" },
-                { label: "GDPR Guidelines & Rulings", icon: "🇪🇺" },
-                { label: "ASA & CMA Case Library", icon: "🇬🇧" },
-                { label: "ACCC & CASL Decisions", icon: "⚖️" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2 text-sm text-gray-300">
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
-                </div>
+          <div style={{marginTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem"}}>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "1.5rem", textAlign: "center"}}>Trained on real compliance sources</p>
+            <div style={{display: "flex", flexWrap: "wrap", gap: "8px 40px", justifyContent: "center"}}>
+              {["FTC Enforcement Actions", "GDPR Guidelines & Rulings", "ASA & CMA Case Library", "ACCC & CASL Decisions"].map((item) => (
+                <span key={item} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.45)", display: "flex", alignItems: "center", gap: "8px"}}>
+                  <span style={{width: "4px", height: "4px", borderRadius: "50%", background: "#ef4444", flexShrink: 0}} />
+                  {item}
+                </span>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">
-          Everything You Need To Buy Or Launch Without Fear
-        </h2>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f) => (
-            <div
-              key={f.title}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="mb-3 text-3xl">{f.icon}</div>
-              <h3 className="mb-2 font-bold text-gray-900">{f.title}</h3>
-              <p className="text-sm text-gray-600">{f.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Features — Asymmetric Bento */}
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1200px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Everything included</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>Buy or launch without fear.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every tool you need. Both sides protected.</p>
 
-
-      {/* Video demo placeholder */}
-      <section className="bg-gray-950 py-16 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">See it in action</p>
-          <h2 className="text-3xl font-extrabold text-white mb-4">Watch how it works</h2>
-          <p className="text-gray-400 text-sm mb-8">60 seconds of copy. 60 seconds to scan. See exactly what gets flagged and why.</p>
-          <div className="rounded-2xl border border-gray-800 bg-gray-900 aspect-video flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-red-500 transition-colors">
-                <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+          {/* Buyer features — first 4, with one spanning wide */}
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>For buyers</p>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2px", marginBottom: "2px"}}>
+            {FEATURES.slice(0, 4).map((f, i) => (
+              <div key={f.title} style={{
+                background: i % 2 === 0 ? "#0f0505" : "#0f0f0f",
+                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
+                padding: "2rem",
+                gridColumn: i === 0 ? "span 2" : "span 1"
+              }}>
+                <p style={{fontFamily: "'DM Mono', monospace", fontSize: "2.5rem", fontWeight: 700, color: i % 2 === 0 ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.25)", lineHeight: 1, marginBottom: "1.5rem", letterSpacing: "-0.03em"}}>
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: i === 0 ? "1.2rem" : "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem"}}>{f.title}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{f.description}</p>
               </div>
-              <p className="text-gray-400 text-sm">Video demo coming soon</p>
-              <p className="text-gray-600 text-xs mt-1">In the meantime, try the free scan below</p>
-            </div>
+            ))}
           </div>
-          <div className="mt-6">
-            <a href="/#demo" className="inline-block rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors">
-              Try the live demo instead →
-            </a>
+
+          {/* Seller/Agency features — next 12 */}
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", margin: "3rem 0 1rem"}}>For sellers and agencies</p>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px"}}>
+            {FEATURES.slice(4).map((f, i) => (
+              <div key={f.title} style={{
+                background: i % 2 === 0 ? "#0f0505" : "#0f0f0f",
+                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
+                padding: "2rem"
+              }}>
+                <p style={{fontFamily: "'DM Mono', monospace", fontSize: "1.75rem", fontWeight: 700, color: i % 2 === 0 ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.25)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.03em"}}>
+                  {String(i + 5).padStart(2, "0")}
+                </p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>{f.title}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7}}>{f.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+
 
       {/* Testimonials placeholder */}
-      <section className="bg-white py-16 px-6">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">What people say</p>
-            <h2 className="text-3xl font-extrabold text-gray-900">Real results from real scans</h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-3">
+      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What people say</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem"}}>Real results from real scans.</h2>
+
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px"}}>
             {[
               {
                 quote: "Scanned my sales page and found four things I didn't know were illegal. Fixed them all in 20 minutes before the campaign went live.",
@@ -998,274 +786,398 @@ export default function LandingPage() {
                 name: "Online buyer",
                 location: "Manchester, UK",
               },
-            ].map((t) => (
-              <div key={t.name} className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-                <p className="text-sm text-gray-700 leading-relaxed italic mb-4">&ldquo;{t.quote}&rdquo;</p>
+            ].map((t, i) => (
+              <div key={t.name} style={{
+                background: i % 2 === 0 ? "#0f0505" : "#0f0f0f",
+                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.15)" : "rgba(255,255,255,0.06)"}`,
+                padding: "2.5rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "220px"
+              }}>
+                {/* Large opening quote mark */}
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                  <p className="text-xs text-gray-400">{t.location}</p>
+                  <p style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "4rem",
+                    color: "#ef4444",
+                    lineHeight: 1,
+                    marginBottom: "0.5rem",
+                    opacity: 0.4
+                  }}>&ldquo;</p>
+                  <p style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.7,
+                    color: "rgba(255,255,255,0.85)",
+                    fontStyle: "italic",
+                    marginBottom: "2rem"
+                  }}>{t.quote}</p>
+                </div>
+                <div style={{borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem"}}>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "white"}}>{t.name}</p>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)", marginTop: "2px"}}>{t.location}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-center text-xs text-gray-400 mt-6">Names withheld at request. Results typical of users who act on the suggested fixes.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2rem"}}>Names withheld at request. Results typical of users who act on the suggested fixes.</p>
         </div>
       </section>
 
       {/* Risk Calculator */}
-      <section className="bg-gray-950 py-20">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-extrabold text-white">What Is Your Compliance Risk Actually Worth?</h2>
-            <p className="mt-3 text-gray-400">Move the slider to see your personal exposure based on your ad spend.</p>
-          </div>
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <RiskCalculator />
         </div>
       </section>
 
-      {/* Founder story teaser */}
-      <section className="bg-gray-950 py-10">
-        <div className="mx-auto max-w-2xl px-6 text-center">
-          <p className="text-gray-400 text-sm">
-            Built alone, from a laptop, after a life that gave every reason not to.
+      {/* Founder story teaser — full width cinematic */}
+      <section style={{
+        background: "linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%)",
+        padding: "6rem 1.5rem",
+        position: "relative",
+        overflow: "hidden",
+        borderTop: "1px solid rgba(239,68,68,0.1)",
+        borderBottom: "1px solid rgba(239,68,68,0.1)"
+      }}>
+        {/* Background text */}
+        <div style={{
+          position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+          overflow: "hidden", pointerEvents: "none"
+        }}>
+          <p style={{
+            fontFamily: "'Syne', sans-serif", fontSize: "clamp(4rem, 15vw, 14rem)",
+            fontWeight: 800, color: "rgba(239,68,68,0.04)", letterSpacing: "-0.04em",
+            whiteSpace: "nowrap", userSelect: "none"
+          }}>BUILT FROM PAIN</p>
+        </div>
+
+        <div style={{maxWidth: "800px", margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1}}>
+          <p style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
+            fontWeight: 700, color: "white",
+            letterSpacing: "-0.02em", lineHeight: 1.3,
+            marginBottom: "2rem"
+          }}>
+            Built alone, from a laptop,<br />
+            <span style={{color: "#ef4444", fontStyle: "italic"}}>after a life that gave every reason not to.</span>
           </p>
-          <Link
-            href="/about"
-            className="mt-3 inline-block text-sm font-semibold text-red-400 hover:text-red-300 transition-colors"
-          >
-            Read the story →
+          <Link href="/about" style={{
+            fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700,
+            letterSpacing: "0.1em", textTransform: "uppercase",
+            color: "rgba(255,255,255,0.5)", textDecoration: "none",
+            borderBottom: "1px solid rgba(239,68,68,0.4)",
+            paddingBottom: "2px",
+            transition: "color 0.2s"
+          }}>
+            Read the story
           </Link>
         </div>
       </section>
 
-      {/* Email lead magnet */}
-      <section className="bg-gray-950 py-14">
-        <div className="mx-auto max-w-2xl px-6 text-center">
-          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Free download</p>
-          <h2 className="text-3xl font-extrabold text-white mb-3">
+      {/* Email lead magnet — premium dark */}
+      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>
             The 16-Point Marketing Compliance Checklist
           </h2>
-          <p className="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
-            For sellers: every compliance check you need before you launch. For buyers: every red flag to look for before you buy. Free — no spam, one email.
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
+            Every compliance check you need before you launch. Every red flag to look for before you buy. Free. No spam.
           </p>
-          <Link
-            href="/blog/marketing-compliance-checklist-2026"
-            className="inline-block rounded-lg bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
-          >
-            Get the free checklist →
+          <Link href="/blog/marketing-compliance-checklist-2026" style={{
+            display: "inline-flex", alignItems: "center", gap: "10px",
+            background: "#cc0000", color: "white",
+            fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
+            padding: "14px 32px", borderRadius: "9999px",
+            boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+            textDecoration: "none"
+          }}>
+            Get the free checklist
           </Link>
-          <p className="text-xs text-gray-600 mt-3">No account needed. Instant access.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No account needed. Instant access.</p>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-6 py-20">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">
-          Still On The Fence?
-        </h2>
-        <div className="mt-10 space-y-6">
-          {FAQS.map((faq) => (
-            <div key={faq.q} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <h3 className="font-bold text-gray-900">&ldquo;{faq.q}&rdquo;</h3>
-              <p className="mt-2 text-sm text-gray-600">{faq.a}</p>
-            </div>
-          ))}
+      {/* FAQ — Editorial luxury style */}
+      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Questions</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "5rem"}}>Still on the fence?</h2>
+
+          <div>
+            {FAQS.map((faq, i) => (
+              <div key={faq.q} style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "3rem",
+                padding: "2.5rem 0",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+                alignItems: "start"
+              }}>
+                {/* Question — large, bold */}
+                <p style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "1.2rem",
+                  fontWeight: 700,
+                  color: "white",
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em"
+                }}>
+                  {faq.q}
+                </p>
+                {/* Answer — smaller, muted, red left border */}
+                <p style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "1rem",
+                  lineHeight: 1.7,
+                  color: "#fca5a5",
+                  borderLeft: "2px solid #ef4444",
+                  paddingLeft: "1.5rem"
+                }}>
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Guarantee CTA block */}
-      <section className="bg-white py-10">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="rounded-2xl border-2 border-gray-900 bg-gray-950 p-10 text-center">
-            <p className="text-4xl">🛡️</p>
-            <h2 className="mt-4 text-2xl font-extrabold text-white">Either Way, You Win.</h2>
-            <div className="mt-4 space-y-4 text-left">
-              <p className="text-gray-300 leading-relaxed">
-                <span className="text-red-400 font-semibold">Buyer:</span> If the scan comes back <strong className="text-white">clean</strong> — buy with total confidence knowing the ad is legitimate.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                <span className="text-red-400 font-semibold">Seller:</span> If your scan finds <strong className="text-white">nothing</strong> — you launch with total confidence knowing your copy is clean.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                <span className="text-red-400 font-semibold">Buyer:</span> If the scan <strong className="text-red-400">flags something</strong> — you just saved yourself from losing your money to an illegal ad.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                <span className="text-red-400 font-semibold">Seller:</span> If your scan finds <strong className="text-red-400">something</strong> — it just saved you from a fine, a chargeback, or a takedown that could cost you thousands.
-              </p>
-            </div>
-            <p className="mt-6 text-xl font-bold text-red-400">
+      {/* Either Way You Win + Final CTA — combined knockout closer */}
+      <section style={{background: "#050505", padding: "8rem 1.5rem", position: "relative", overflow: "hidden"}}>
+
+        {/* Massive background text */}
+        <div style={{position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", overflow: "hidden"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(4rem, 18vw, 18rem)", fontWeight: 900, color: "rgba(239,68,68,0.03)", letterSpacing: "-0.04em", whiteSpace: "nowrap", userSelect: "none"}}>NO LOSE</p>
+        </div>
+
+        <div style={{maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 1}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Either way, you win</p>
+
+          {/* Big statement + CTA first */}
+          <div style={{textAlign: "center", marginBottom: "5rem"}}>
+            <p style={{
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
+              fontWeight: 800, color: "white",
+              letterSpacing: "-0.03em", lineHeight: 1.1,
+              marginBottom: "3rem"
+            }}>
               There is no losing scenario.
             </p>
-            <Link
-              href="/signup"
-              className="mt-8 inline-block rounded-xl bg-red-600 px-10 py-4 text-base font-bold text-white hover:bg-red-500 transition-colors"
-            >
-              Scan my copy free →
+            <Link href="/signup" style={{
+              display: "inline-flex", alignItems: "center", gap: "12px",
+              background: "#cc0000", color: "white",
+              fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700,
+              padding: "16px 40px", borderRadius: "9999px",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.05), 0 16px 48px rgba(204,0,0,0.45)",
+              textDecoration: "none"
+            }}>
+              Scan my copy free
+              <span style={{
+                display: "flex", alignItems: "center", justifyContent: "center",
+                width: "32px", height: "32px", borderRadius: "50%",
+                background: "rgba(255,255,255,0.15)", fontSize: "14px"
+              }}>→</span>
             </Link>
-            <p className="mt-3 text-sm text-gray-500">1 free scan · No credit card · No risk</p>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>
+              No credit card · No commitment · One free scan
+            </p>
           </div>
+
+          {/* Four statements — proof below */}
+          <div style={{display: "flex", flexDirection: "column", gap: "0"}}>
+            {[
+              { who: "Buyer", outcome: "Scan comes back clean", result: "Buy with total confidence knowing the ad is legitimate." },
+              { who: "Seller", outcome: "Scan finds nothing", result: "Launch with total confidence knowing your copy is clean." },
+              { who: "Buyer", outcome: "Scan flags something", result: "You just saved yourself from losing money to an illegal ad." },
+              { who: "Seller", outcome: "Scan finds something", result: "You just avoided a fine, a chargeback, or a takedown that could cost thousands." },
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "grid", gridTemplateColumns: "160px 1fr",
+                gap: "2rem", padding: "2rem 0",
+                borderTop: "1px solid rgba(255,255,255,0.05)",
+                alignItems: "start"
+              }}>
+                <div>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "4px"}}>{item.who}</p>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)"}}>{item.outcome}</p>
+                </div>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 600, color: "white", lineHeight: 1.5}}>{item.result}</p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-gray-950 py-24 text-center text-white">
-        <div className="mx-auto max-w-3xl px-6">
-          <h2 className="text-4xl font-extrabold leading-tight">
-            Stop Guessing.
-            <br />
-            <span className="text-red-400">Start Knowing.</span>
-          </h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Scan before you buy. Scan before you launch. Know the truth in 60 seconds — before it costs you.
-          </p>
-          <Link
-            href="/signup"
-            className="mt-10 inline-block rounded-xl bg-red-600 px-12 py-4 text-lg font-bold text-white shadow-lg hover:bg-red-500 transition-colors"
-          >
-            Scan free now →
-          </Link>
-          <p className="mt-4 text-sm text-gray-500">
-            1 free scan · No credit card · No risk
-          </p>
-        </div>
-      </section>
 
-      {/* Product Hunt Badge */}
-      <div className="bg-gray-950 py-10 text-center">
-        <p className="text-gray-400 text-sm mb-6">Free to start. Pro from £39/month. No credit card needed.</p>
-        <a href="https://www.producthunt.com/products/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522"
-            alt="Red Flag AI Pro - Spot illegal ads before buying. Scan copy before you publish | Product Hunt"
-            width="250"
-            height="54"
-            className="mx-auto"
-          />
-        </a>
-      </div>
+      {/* Sentinel Section — premium dark cinematic */}
+      <section style={{
+        background: "linear-gradient(180deg, #0a0a0a 0%, #0d0010 50%, #0a0a0a 100%)",
+        padding: "8rem 1.5rem",
+        position: "relative",
+        overflow: "hidden",
+        borderTop: "1px solid rgba(255,255,255,0.05)"
+      }}>
+        {/* Top glow */}
+        <div style={{
+          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: "800px", height: "300px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center top, rgba(139,0,255,0.12) 0%, transparent 70%)"
+        }} />
 
-      {/* Sentinel Section */}
-      <div className="relative overflow-hidden" style={{ backgroundColor: "#07070f" }}>
-        {/* Red glow top */}
-        <div className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[800px] opacity-20"
-            style={{ background: "radial-gradient(ellipse at center top, #dc2626 0%, transparent 65%)" }}
-          />
-        </div>
-        {/* Grid */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
+        {/* Subtle grid */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.025,
+          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }} />
 
-        <div className="relative mx-auto max-w-5xl px-6 py-24">
-          {/* Label */}
-          <div className="flex items-center gap-2.5 mb-8">
-            <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-xs font-bold text-red-500 uppercase tracking-[0.18em]">
-              Sentinel — enterprise compliance
-            </span>
+        <div style={{maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1}}>
+
+          {/* Header */}
+          <div style={{display: "flex", alignItems: "center", gap: "10px", marginBottom: "3rem"}}>
+            <span style={{width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", animation: "pulseRed 2s ease-in-out infinite"}} />
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>Sentinel — enterprise compliance</p>
           </div>
 
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            {/* Left: copy */}
+          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start"}}>
+
+            {/* Left */}
             <div>
-              <h2
-                className="text-5xl font-black tracking-tight leading-none"
-                style={{
-                  background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #dc2626 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
+              <h2 style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "clamp(3rem, 8vw, 6rem)",
+                fontWeight: 800, lineHeight: 0.95,
+                letterSpacing: "-0.04em",
+                background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                marginBottom: "1.5rem"
+              }}>
                 Sentinel
               </h2>
-              <p className="mt-4 text-lg font-semibold text-gray-300 leading-snug">
+
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.15rem", fontWeight: 600, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, marginBottom: "1rem"}}>
                 Compliance infrastructure for agencies, legal teams and regulated businesses.
               </p>
-              <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2.5rem"}}>
                 Red Flag AI Pro scans copy. Sentinel does everything beyond that — human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a full 3-year audit trail. Built for the teams where a compliance failure is a regulatory event, not just an embarrassment.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-2">
+              {/* Feature pills */}
+              <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2.5rem"}}>
                 {["Human Review Log", "Legal Timestamps", "FCA Promotions", "Greenwashing Scanner", "Signed Certificates", "3-Year Retention", "API Access"].map((f) => (
-                  <span
-                    key={f}
-                    className="rounded-full border border-gray-700/60 bg-gray-900/60 px-3 py-1 text-xs font-medium text-gray-400"
-                  >
-                    {f}
-                  </span>
+                  <span key={f} style={{
+                    fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600,
+                    color: "rgba(255,255,255,0.5)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    padding: "5px 12px", borderRadius: "9999px"
+                  }}>{f}</span>
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/sentinel"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-7 py-3.5 text-sm font-bold text-white hover:bg-red-500 transition-all shadow-lg shadow-red-600/20"
-                >
-                  Learn about Sentinel →
+              <div style={{display: "flex", gap: "12px", flexWrap: "wrap"}}>
+                <Link href="/sentinel" style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  background: "#cc0000", color: "white",
+                  fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700,
+                  padding: "12px 28px", borderRadius: "9999px",
+                  boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+                  textDecoration: "none"
+                }}>
+                  Learn about Sentinel
                 </Link>
-                <a
-                  href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-700 px-7 py-3.5 text-sm font-medium text-gray-400 hover:border-red-500/40 hover:text-white transition-all"
-                >
+                <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
+                  display: "inline-flex", alignItems: "center",
+                  fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600,
+                  color: "rgba(255,255,255,0.4)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  padding: "12px 28px", borderRadius: "9999px",
+                  textDecoration: "none"
+                }}>
                   Get in touch
                 </a>
               </div>
             </div>
 
-            {/* Right: feature cards */}
-            <div className="grid grid-cols-2 gap-3">
+            {/* Right — feature grid with animated flags */}
+            <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px"}}>
               {[
-                { icon: "📋", title: "Human Review Log", desc: "Every review logged and timestamped" },
-                { icon: "⏱️", title: "Legal Timestamps", desc: "Cryptographic proof of when you checked" },
-                { icon: "📄", title: "Signed Certificates", desc: "PDF certificates for every campaign" },
-                { icon: "🏦", title: "FCA Promotions", desc: "Financial promotions checked at source" },
-                { icon: "🌿", title: "Greenwashing", desc: "EU Green Claims Directive compliance" },
-                { icon: "🔌", title: "API Access", desc: "Plug into your existing workflow" },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-xl border border-gray-800/60 bg-gray-900/40 p-4 hover:border-red-500/20 transition-all"
-                >
-                  <div className="text-lg mb-2">{item.icon}</div>
-                  <p className="text-xs font-bold text-white mb-1">{item.title}</p>
-                  <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
+                { title: "Human Review Log", desc: "Every review logged and timestamped" },
+                { title: "Legal Timestamps", desc: "Cryptographic proof of when you checked" },
+                { title: "Signed Certificates", desc: "PDF certificates for every campaign" },
+                { title: "FCA Promotions", desc: "Financial promotions checked at source" },
+                { title: "Greenwashing", desc: "EU Green Claims Directive compliance" },
+                { title: "API Access", desc: "Plug into your existing workflow" },
+              ].map((item, i) => (
+                <div key={item.title} style={{
+                  background: i % 2 === 0 ? "#0f0505" : "#0a0010",
+                  border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(139,0,255,0.08)"}`,
+                  padding: "1.5rem"
+                }}>
+                  <span className="flag-wave" style={{display: "inline-block", marginBottom: "0.75rem"}}>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+                    </svg>
+                  </span>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 700, color: "white", marginBottom: "4px"}}>{item.title}</p>
+                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)", lineHeight: 1.6}}>{item.desc}</p>
                 </div>
               ))}
             </div>
+
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 bg-gray-950 py-10 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
-        <p className="mt-1 text-xs text-gray-600">FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences. Covering US, UK, EU, Australian, and Canadian marketing law.</p>
-        <div className="mt-4 flex flex-wrap justify-center gap-6">
-          <Link href="/pricing" className="hover:text-gray-300 transition-colors">Pricing</Link>
-          <Link href="/login" className="hover:text-gray-300 transition-colors">Log in</Link>
-          <Link href="/signup" className="hover:text-gray-300 transition-colors">Sign up</Link>
-          <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
-          <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-        </div>
-        <div className="mt-4 flex justify-center">
-          <a href="https://www.producthunt.com/products/red-flag-ai-pro?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-            <img alt="Red Flag AI Pro - Spot illegal ads before buying. Scan copy before you publish | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" />
-          </a>
-        </div>
-        <div className="mt-4 border-t border-gray-800 pt-4">
-          <p className="text-xs text-gray-600">
-            Questions? Email us at{" "}
-            <a href="mailto:support@redflagaipro.com" className="font-semibold text-red-400 hover:text-red-300 transition-colors">
+      <footer style={{background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 1.5rem 3rem", textAlign: "center"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
+
+          {/* Product Hunt badge */}
+          <div style={{marginBottom: "2.5rem", opacity: 0.6}}>
+            <a href="https://www.producthunt.com/products/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+              <img alt="Red Flag AI Pro on Product Hunt" width="200" height="44" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" style={{margin: "0 auto"}} />
+            </a>
+          </div>
+
+          {/* Nav links */}
+          <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 32px", marginBottom: "2rem"}}>
+            {[
+              { label: "Pricing", href: "/pricing" },
+              { label: "Log in", href: "/login" },
+              { label: "Sign up", href: "/signup" },
+              { label: "Terms", href: "/terms" },
+              { label: "Privacy", href: "/privacy" },
+            ].map((link) => (
+              <Link key={link.href} href={link.href} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.3)", textDecoration: "none"}}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Legal */}
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.15)", lineHeight: 1.6, marginBottom: "1.5rem", maxWidth: "600px", margin: "0 auto 1.5rem"}}>
+            FTC · CMA · ASA · ICO · ACCC · CASL · GDPR · UCPD compliance scanner for marketing funnels, sales pages, and email sequences.
+          </p>
+
+          <div style={{borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "1.5rem", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "1rem"}}>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)"}}>
+              © {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.
+            </p>
+            <span style={{color: "rgba(255,255,255,0.1)", fontSize: "10px"}}>·</span>
+            <a href="mailto:support@redflagaipro.com" style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "#ef4444", textDecoration: "none"}}>
               support@redflagaipro.com
             </a>
-          </p>
+          </div>
         </div>
       </footer>
     </div>

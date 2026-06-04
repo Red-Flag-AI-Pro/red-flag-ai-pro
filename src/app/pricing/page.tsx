@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Pricing — Red Flag AI Pro",
-  description:
-    "Pro from £39/month. Growth £199/month. Sentinel £999/month for agencies — URL scanning, VSL scanning, site audit, team seats, API access and white-label reports.",
+  description: "Pro from £39/month. Growth £199/month. Sentinel £999/month for agencies — URL scanning, VSL scanning, site audit, team seats, API access and white-label reports.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
+
+const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
+const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const PRO_FEATURES = [
   "20 scans per month",
@@ -37,7 +40,7 @@ const GROWTH_FEATURES = [
 
 const SENTINEL_FEATURES = [
   "Everything in Growth",
-  "All 21 risk categories",
+  "All 24 risk categories",
   "FCA financial promotions",
   "Greenwashing scanner",
   "YouTube VSL transcript scanning",
@@ -58,192 +61,218 @@ const SENTINEL_FEATURES = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#07070f" }}>
+    <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
 
-      <div className="mx-auto max-w-7xl px-4 py-12">
-
-        {/* Header */}
-        <div className="text-center mb-8">
-          <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Pricing</p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">
-            Compliance infrastructure.<br className="hidden sm:block" /> Choose your level.
+      {/* HERO */}
+      <section style={{
+        padding: "8rem 1.5rem 6rem",
+        textAlign: "center",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        position: "relative", overflow: "hidden"
+      }}>
+        <div style={{
+          position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
+          width: "700px", height: "500px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.15) 0%, transparent 65%)"
+        }} />
+        <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
+            <span className="flag-wave" style={{ display: "inline-block" }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+              </svg>
+            </span>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Pricing</p>
+          </div>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem" }}>
+            Compliance infrastructure.<br />Choose your level.
           </h1>
-          <p className="text-gray-500 text-sm max-w-lg mx-auto">
+          <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
             Try one scan free on the homepage — no account needed.{" "}
-            <Link href="/#demo" className="text-red-400 hover:text-red-300 font-medium">
-              Run a free scan →
-            </Link>
+            <Link href="/#demo" style={{ color: "#ef4444", textDecoration: "none", fontWeight: 600 }}>Run a free scan →</Link>
           </p>
         </div>
+      </section>
 
-        {/* Founder message */}
-        <div className="mb-8 max-w-3xl mx-auto rounded-xl px-5 py-4 flex items-start gap-3" style={{ background: "#1a0a0a", border: "1px solid #dc2626" }}>
-          <span className="text-lg flex-shrink-0 mt-0.5">🚩</span>
+      {/* FOUNDER NOTE */}
+      <div style={{
+        background: "#0f0505",
+        borderBottom: "1px solid rgba(239,68,68,0.15)",
+        padding: "1.5rem"
+      }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto", display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
+          <span className="flag-wave" style={{ display: "inline-block", flexShrink: 0, marginTop: "3px" }}>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+            </svg>
+          </span>
           <div>
-            <p className="text-white text-sm leading-relaxed">
-              I&apos;ve been on both sides of this. I&apos;ve bought courses that promised everything and delivered nothing, misled by income claims I now know were illegal. And I&apos;ve built funnels alone, no legal budget, hoping my own copy was okay — not knowing it probably wasn&apos;t. I know what it costs when you&apos;re the buyer who got burned. And I know what it costs when you&apos;re the seller who didn&apos;t know the rules. That&apos;s why I built this for both sides. And at agency level, I feel that pain too. <span className="text-red-400 font-semibold">This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge.</span>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8 }}>
+              I&apos;ve been on both sides of this. I&apos;ve bought courses that promised everything and delivered nothing, misled by income claims I now know were illegal. And I&apos;ve built funnels alone, no legal budget, hoping my own copy was okay — not knowing it probably wasn&apos;t.{" "}
+              <span style={{ color: "#ef4444", fontWeight: 700 }}>This wasn&apos;t built for profit. It was built from pain. That&apos;s why we outperform and undercharge.</span>
             </p>
-            <p className="text-gray-600 text-xs mt-1.5">— James, Founder</p>
+            <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "0.5rem" }}>— James, Founder</p>
           </div>
         </div>
-
-        {/* 3-column plans */}
-        <div className="grid gap-5 grid-cols-1 lg:grid-cols-3 items-start">
-
-          {/* Pro */}
-          <div
-            className="relative flex flex-col rounded-2xl border border-red-500/60 p-7"
-            style={{ background: "linear-gradient(160deg, #1a0808 0%, #0f0810 100%)" }}
-          >
-            <div className="absolute -top-3 left-6 rounded-full bg-amber-400 px-3 py-0.5 text-xs font-bold text-amber-900">
-              Most popular
-            </div>
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white">Pro</h2>
-              <p className="mt-1 text-xs text-red-300/60 leading-relaxed">
-                Solopreneurs, funnel builders and buyers checking copy before they spend.
-              </p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-white">£39</span>
-                <span className="text-sm text-red-300/60">/month</span>
-              </div>
-              <Link
-                href="/signup?plan=pro"
-                className="mt-4 block rounded-xl bg-white py-2.5 text-center text-sm font-bold text-red-600 hover:bg-red-50 transition-colors"
-              >
-                Get started →
-              </Link>
-            </div>
-
-            <div className="border-t border-red-900/40 pt-6">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">What&apos;s included</p>
-              <ul className="space-y-2.5">
-                {PRO_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <span className="text-red-400 flex-shrink-0 mt-0.5">✓</span>
-                    <span className="text-red-50/75">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Growth */}
-          <div className="relative flex flex-col rounded-2xl border border-gray-700 bg-gray-900/60 p-7">
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-white">Growth</h2>
-              <p className="mt-1 text-xs text-gray-500 leading-relaxed">
-                Agencies managing client copy and high-volume creators who scan daily.
-              </p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-white">£199</span>
-                <span className="text-sm text-gray-500">/month</span>
-              </div>
-              <Link
-                href="/signup?plan=enterprise"
-                className="mt-4 block rounded-xl border border-gray-600 py-2.5 text-center text-sm font-bold text-white hover:border-red-500/50 hover:bg-gray-800 transition-colors"
-              >
-                Get started →
-              </Link>
-            </div>
-
-            <div className="border-t border-gray-800 pt-6">
-              <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest mb-3">What&apos;s included</p>
-              <ul className="space-y-2.5">
-                {GROWTH_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <span className="text-green-500 flex-shrink-0 mt-0.5">✓</span>
-                    <span className="text-gray-300">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Sentinel */}
-          <style>{`
-            @keyframes sentinelGlow {
-              0%, 100% { opacity: 0.12; }
-              50% { opacity: 0.45; }
-            }
-            .sentinel-sheen {
-              background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, transparent 50%, rgba(255,255,255,0.25) 100%);
-              animation: sentinelGlow 10s ease-in-out infinite;
-            }
-          `}</style>
-          <div
-            className="relative flex flex-col rounded-2xl p-7 overflow-hidden"
-            style={{
-              background: "linear-gradient(160deg, #f0f0f8 0%, #d8d8ec 35%, #bfbfd8 65%, #d4d4e8 100%)",
-              boxShadow: "0 8px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(0,0,0,0.1)",
-            }}
-          >
-            <div className="sentinel-sheen pointer-events-none absolute inset-0 rounded-2xl" />
-            <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 35%)" }} />
-
-            <div className="relative mb-6">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-600">Agency plan</span>
-              </div>
-              <h2 className="text-xl font-bold text-gray-900">Sentinel</h2>
-              <p className="mt-1 text-xs text-gray-600 leading-relaxed">
-                Agencies and regulated businesses where compliance is not optional.
-              </p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-gray-900">£999</span>
-                <span className="text-sm text-gray-600">/month</span>
-              </div>
-              <Link
-                href="/sentinel"
-                className="relative mt-4 block rounded-xl py-2.5 text-center text-sm font-bold transition-all hover:opacity-90"
-                style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%)", color: "#e0e0f0" }}
-              >
-                Learn more →
-              </Link>
-            </div>
-
-            <div className="relative border-t border-gray-400/30 pt-6">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">What&apos;s included</p>
-              <ul className="space-y-2.5">
-                {SENTINEL_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <span className="text-red-600 flex-shrink-0 mt-0.5">✓</span>
-                    <span className="text-gray-800">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Comparison note */}
-        <div className="mt-10 rounded-2xl border border-gray-800 bg-gray-900/30 p-6">
-          <div className="grid gap-6 sm:grid-cols-3 text-center">
-            <div>
-              <p className="text-2xl font-extrabold text-white">21</p>
-              <p className="text-xs text-gray-500 mt-1">Risk categories on Sentinel</p>
-            </div>
-            <div>
-              <p className="text-2xl font-extrabold text-white">5</p>
-              <p className="text-xs text-gray-500 mt-1">Jurisdictions — FTC, GDPR, ASA, FCA, ACCC, CASL</p>
-            </div>
-            <div>
-              <p className="text-2xl font-extrabold text-white">60s</p>
-              <p className="text-xs text-gray-500 mt-1">From paste to compliance score</p>
-            </div>
-          </div>
-        </div>
-
-        <p className="mt-6 text-center text-xs text-gray-600">
-          All plans include a 14-day money-back guarantee. Cancel anytime. No contracts.{" "}
-          <Link href="/docs" className="text-gray-500 hover:text-gray-400">API docs →</Link>
-        </p>
-
-
       </div>
+
+      {/* PLANS */}
+      <section style={{ padding: "6rem 1.5rem" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
+
+            {/* PRO */}
+            <div style={{
+              background: "#0f0505",
+              border: "1px solid rgba(239,68,68,0.3)",
+              padding: "2.5rem",
+              position: "relative"
+            }}>
+              <div style={{
+                position: "absolute", top: "-1px", left: "2rem",
+                background: "#fbbf24",
+                ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.12em",
+                textTransform: "uppercase", color: "#78350f",
+                padding: "4px 12px"
+              }}>Most popular</div>
+
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Solopreneurs, funnel builders and buyers checking copy before they spend.</p>
+              <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                £39<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+              </p>
+              <Link href="/signup?plan=pro" style={{
+                display: "block", textAlign: "center",
+                background: "white", color: "#cc0000",
+                ...syne, fontSize: "0.875rem", fontWeight: 700,
+                padding: "12px 24px", borderRadius: "9999px",
+                textDecoration: "none", marginTop: "1.5rem"
+              }}>
+                Get started
+              </Link>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What&apos;s included</p>
+                {PRO_FEATURES.map((f) => (
+                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+                    <span style={{ color: "#ef4444", flexShrink: 0 }}>✓</span>
+                    <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* GROWTH */}
+            <div style={{
+              background: "#0a0a0a",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: "2.5rem"
+            }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Growth</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Agencies managing client copy and high-volume creators who scan daily.</p>
+              <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                £199<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+              </p>
+              <Link href="/signup?plan=enterprise" style={{
+                display: "block", textAlign: "center",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "rgba(255,255,255,0.7)",
+                ...syne, fontSize: "0.875rem", fontWeight: 700,
+                padding: "12px 24px", borderRadius: "9999px",
+                textDecoration: "none", marginTop: "1.5rem"
+              }}>
+                Get started
+              </Link>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What&apos;s included</p>
+                {GROWTH_FEATURES.map((f) => (
+                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+                    <span style={{ color: "#4ade80", flexShrink: 0 }}>✓</span>
+                    <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* SENTINEL */}
+            <div style={{
+              background: "linear-gradient(160deg, #f0f0f8 0%, #d8d8ec 35%, #bfbfd8 65%, #d4d4e8 100%)",
+              padding: "2.5rem",
+              position: "relative", overflow: "hidden",
+              boxShadow: "0 8px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.9)"
+            }}>
+              <div style={{
+                position: "absolute", inset: 0, pointerEvents: "none",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, transparent 50%, rgba(255,255,255,0.25) 100%)",
+                opacity: 0.15
+              }} />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#cc0000", animation: "pulseRed 2s ease-in-out infinite" }} />
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Agency plan</p>
+                </div>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
+                <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>Agencies and regulated businesses where compliance is not optional.</p>
+                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#111", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                  £999<span style={{ fontSize: "1rem", color: "#666" }}>/mo</span>
+                </p>
+                <Link href="/sentinel" style={{
+                  display: "block", textAlign: "center",
+                  background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%)",
+                  color: "#e0e0f0",
+                  ...syne, fontSize: "0.875rem", fontWeight: 700,
+                  padding: "12px 24px", borderRadius: "9999px",
+                  textDecoration: "none", marginTop: "1.5rem"
+                }}>
+                  Learn more
+                </Link>
+                <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)", marginTop: "2rem", paddingTop: "2rem" }}>
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "1rem" }}>What&apos;s included</p>
+                  {SENTINEL_FEATURES.map((f) => (
+                    <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+                      <span style={{ color: "#cc0000", flexShrink: 0 }}>✓</span>
+                      <span style={{ ...syne, fontSize: "13px", color: "rgba(0,0,0,0.65)" }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Stats strip */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+            borderTop: "1px solid rgba(255,255,255,0.05)",
+            marginTop: "2px"
+          }}>
+            {[
+              { value: "24", label: "Risk categories on Sentinel" },
+              { value: "5", label: "Jurisdictions — FTC, GDPR, ASA, FCA, ACCC, CASL" },
+              { value: "60s", label: "From paste to compliance score" },
+            ].map((s, i) => (
+              <div key={s.label} style={{
+                padding: "2rem 1.5rem",
+                textAlign: "center",
+                background: "#0a0a0a",
+                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none"
+              }}>
+                <p style={{ ...mono, fontSize: "2rem", fontWeight: 700, color: "white", letterSpacing: "-0.03em" }}>{s.value}</p>
+                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "4px" }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2rem" }}>
+            All plans include a 14-day money-back guarantee. Cancel anytime. No contracts.{" "}
+            <Link href="/docs" style={{ color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>API docs →</Link>
+          </p>
+
+        </div>
+      </section>
+
     </div>
   );
 }

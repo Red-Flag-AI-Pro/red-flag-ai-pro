@@ -22,14 +22,14 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-800 bg-gray-950 backdrop-blur-sm">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl" style={{background: "#050505"}}>
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
           <Image
             src="/redflag-logo.png"
             alt="Red Flag AI Pro"
-            width={72}
-            height={72}
+            width={48}
+            height={48}
             className="object-contain"
             priority
           />
@@ -39,21 +39,21 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
         <nav className="hidden sm:flex items-center gap-1 sm:gap-2">
           {isAuthenticated ? (
             <>
-              <Link href="/dashboard" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Dashboard</Link>
-              <Link href="/scans/new" className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-500 transition-colors">New Scan</Link>
-              <button onClick={handleSignOut} className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Sign out</button>
+              <Link href="/dashboard" className="nav-link px-3 py-1.5 text-sm">Dashboard</Link>
+              <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs">New Scan</Link>
+              <button onClick={handleSignOut} className="nav-link px-3 py-1.5 text-sm">Sign out</button>
             </>
           ) : (
             <>
-              <Link href="/case-study" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Case Study</Link>
-              <Link href="/compare" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Compare</Link>
-              <Link href="/blog" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Blog</Link>
-              <Link href="/about" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">About</Link>
-              <Link href="/pricing" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Pricing</Link>
-              <Link href="/sentinel" className="rounded-md px-2 py-1.5 text-sm font-semibold text-red-400 hover:bg-gray-800 hover:text-red-300 transition-colors">Sentinel</Link>
-              <Link href="/docs" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">API</Link>
-              <Link href="/login" className="rounded-md px-2 py-1.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Log in</Link>
-              <Link href="/signup" className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-500 transition-colors">Start free</Link>
+              <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
+              <Link href="/compare" className="nav-link px-3 py-1.5 text-sm">Compare</Link>
+              <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Blog</Link>
+              <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
+              <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
+              <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm font-semibold !text-red-400 hover:!text-red-300">Sentinel</Link>
+              <Link href="/docs" className="nav-link px-3 py-1.5 text-sm">API</Link>
+              <Link href="/login" className="nav-link px-3 py-1.5 text-sm">Log in</Link>
+              <Link href="/signup" className="btn-primary !py-2 !px-4 !text-xs">Start free</Link>
             </>
           )}
         </nav>

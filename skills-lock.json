@@ -78,6 +78,12 @@
       "sourceType": "github",
       "skillPath": "skills/stitch-skill/SKILL.md",
       "computedHash": "acf2921a7e50c06e637f072ba52e36a994cbb44ecbe6e31435bc113b894f5499"
+    },
+    "theme-factory": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/theme-factory/SKILL.md",
+      "computedHash": "e9ec1fe85faa729e9f3d1731cd7e4e485f98c099ccc7c1c0d198f473aa4b654a"
     }
   }
 }

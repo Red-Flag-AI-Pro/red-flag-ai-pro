@@ -25,7 +25,7 @@ const PLANS = [
     key: "sentinel" as const,
     name: "Sentinel",
     price: "£999/mo",
-    features: ["Unlimited scans", "All 21 risk categories", "URL + YouTube VSL + audio scanning", "Site audit (50 pages)", "Weekly monitoring", "Client workspaces", "Team seats", "White-label PDF reports", "Dedicated onboarding"],
+    features: ["Unlimited scans", "All 24 risk categories", "URL + YouTube VSL + audio scanning", "Site audit (50 pages)", "Weekly monitoring", "Client workspaces", "Team seats", "White-label PDF reports", "Dedicated onboarding"],
   },
 ];
 
