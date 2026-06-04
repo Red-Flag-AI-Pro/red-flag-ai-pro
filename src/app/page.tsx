@@ -1148,7 +1148,10 @@ export default function LandingPage() {
               <img alt="Red Flag AI Pro on Product Hunt" width="200" height="44" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1151061&theme=dark&t=1779869402522" />
             </a>
             <a href="https://peerpush.net/p/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img src="https://peerpush.net/p/red-flag-ai-pro/badge.png" alt="Red Flag AI Pro on PeerPush" style={{width: "200px"}} />
+              <img src="https://peerpush.net/p/red-flag-ai-pro/badge.png" alt="Red Flag AI Pro on PeerPush" style={{width: "180px"}} />
+            </a>
+            <a href="https://peerpush.net/p/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
+              <img src="https://peerpush.net/p/red-flag-ai-pro/rating-badge.png" alt="Red Flag AI Pro rating on PeerPush" style={{width: "180px"}} />
             </a>
           </div>
 
