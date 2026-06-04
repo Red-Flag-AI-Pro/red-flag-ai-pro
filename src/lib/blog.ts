@@ -1947,6 +1947,117 @@ Paste your sales page or email sequence and see exactly which claims are at risk
 [Scan your copy free, no signup →](https://www.redflagaipro.com)
     `,
   },
+  {
+    slug: "ai-content-disclosure-eu-ai-act-2026",
+    title: "You Don't Need to Hide AI Content. You Need to Disclose It Properly.",
+    description: "Searching for ways to make AI content undetectable? That's the wrong move — and from August 2026, it's also illegal. Here's what the EU AI Act actually requires and how to stay compliant.",
+    date: "2026-06-04",
+    readTime: "7 min read",
+    category: "EU AI Act",
+    content: `
+## The Question Everyone Is Asking Wrong
+
+If you've been searching for ways to make AI-generated content undetectable, you're not alone. Thousands of marketers and agencies are doing the same thing right now.
+
+But you're asking the wrong question.
+
+The answer to AI content compliance is not to hide it. It's to disclose it properly. And from **2 August 2026**, hiding it is not just bad practice — it's a regulatory offence.
+
+---
+
+## What the EU AI Act Actually Says
+
+EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI-generated content intended for public audiences carries clear disclosure that it was created with AI assistance.
+
+This is not a suggestion. It is a legal obligation.
+
+It applies to:
+- Marketing copy written with AI tools like ChatGPT, Claude or Jasper
+- Social media ads generated or assisted by AI
+- Email sequences drafted using AI writing tools
+- VSL scripts and video copy produced with AI assistance
+- Blog posts and articles created for clients using AI
+
+If you are trying to make this content "undetectable" rather than disclosed, you are moving in exactly the wrong direction.
+
+---
+
+## Why Hiding It Makes Things Worse
+
+There are tools that claim to rewrite AI content so it passes AI detectors. There are services that "humanise" AI text to avoid detection.
+
+Using these tools does not make you compliant. It makes you more exposed.
+
+Here is why:
+
+**It does not remove the obligation.** The EU AI Act does not say "disclose AI content unless it has been rewritten." The obligation is based on whether AI was used in the creation process, not whether the output looks human.
+
+**It creates a paper trail of intent.** If a regulator investigates and finds you used AI writing tools and then used AI detection-avoidance tools, that sequence suggests deliberate concealment. That is significantly worse than non-disclosure.
+
+**It does not protect your clients.** If you are an agency and a client is fined for undisclosed AI content, the fact that you tried to hide it rather than disclose it is not a defence. It is an aggravating factor.
+
+---
+
+## What Proper Disclosure Actually Looks Like
+
+The EU AI Act does not require you to put a giant warning on every piece of content. It requires that AI use is disclosed and that there is documented evidence of human review.
+
+In practice, this means:
+
+**Disclosure language on AI-assisted content:**
+*"This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date]."*
+
+This can be placed in a footer, an about page, a terms of service, or inline depending on the content type and platform.
+
+**Documented human review:**
+Someone at your agency must review AI-generated copy before publication. That review must be recorded — who reviewed it, when, and what was checked.
+
+**An audit trail:**
+If a regulator asks, you need to be able to show that your process includes AI disclosure and human oversight. An email thread is not an audit trail. A timestamped, signed compliance record is.
+
+---
+
+## The Real Risk Is Not Detection — It Is Documentation
+
+The agencies and marketers who will face fines under the EU AI Act are not the ones who disclosed AI use. They are the ones who cannot prove they had a process.
+
+A regulator investigating a complaint does not start by running your content through an AI detector. They ask for your compliance documentation. They ask what your review process was. They ask who approved the copy and when.
+
+If your answer is "we rewrote it until it looked human" — you have no defence.
+
+If your answer is "here is our signed review log, here is the disclosure we added, here is the timestamp" — the conversation ends quickly.
+
+---
+
+## What Agencies Need to Do Before August 2026
+
+**Step 1: Stop trying to hide AI use.** It does not work legally and it creates more risk than it eliminates.
+
+**Step 2: Add disclosure language** to all AI-assisted content you produce for clients. Simple, clear, consistent.
+
+**Step 3: Create a documented review process.** Every piece of AI-generated copy reviewed by a human, recorded with a timestamp, before it publishes.
+
+**Step 4: Update your client contracts.** Your agency agreement should include clauses covering AI tool usage and disclosure obligations. If a client refuses disclosure, that is a client relationship conversation — not a reason to hide it.
+
+**Step 5: Build an audit trail.** When the regulator asks, the answer should be instant.
+
+---
+
+## Sentinel Makes This Automatic
+
+Sentinel — the agency tier of Red Flag AI Pro — creates a signed, timestamped audit trail for every piece of copy reviewed before publication.
+
+Every scan is logged. Every review is recorded. Every certificate is retrievable in seconds.
+
+When the EU AI Act comes into force on 2 August 2026, Sentinel gives your agency exactly the documentation it needs — automatically, on every review.
+
+The question is not whether AI content needs to be disclosed. It does.
+
+The question is whether you have proof that you did it properly.
+
+[See Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
