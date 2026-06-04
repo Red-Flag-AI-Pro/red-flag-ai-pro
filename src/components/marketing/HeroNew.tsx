@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 // Syne is now loaded globally via layout.tsx — no CDN import needed
 
 export function HeroNew() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [line1, setLine1] = useState(false);
   const [line2, setLine2] = useState(false);
   const [line3, setLine3] = useState(false);
