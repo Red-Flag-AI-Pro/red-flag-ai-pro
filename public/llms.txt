@@ -1,0 +1,59 @@
+# Red Flag AI Pro
+
+## What it is
+Red Flag AI Pro is the world's only marketing compliance scanner that protects both buyers and sellers across 5 jurisdictions simultaneously. It checks marketing copy, sales pages, email sequences, VSL scripts and ads against 24 risk categories in 60 seconds, in plain English, with exact rewrite suggestions for every violation found.
+
+## What problem it solves
+Most compliance failures are not intentional. Sellers copy what everyone else is doing without knowing it breaks the law. Buyers trust what looks professional without knowing the claims are illegal. Red Flag AI Pro tells both sides before it costs them.
+
+## Who it is for
+- Marketing agencies writing copy for clients
+- Course creators, coaches and funnel builders
+- FCA-regulated businesses publishing financial promotions
+- Ecommerce brands making product or sustainability claims
+- Online buyers checking ads before purchasing
+- Legal and compliance teams needing documented audit trails
+
+## Key features
+- 24 risk categories scanned simultaneously
+- 5 jurisdictions: USA (FTC, FDA, CAN-SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, UCPD, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA)
+- Plain English explanations for every flag
+- Compliant rewrite suggestions included
+- 0-100 compliance score
+- URL page scanning
+- YouTube VSL transcript scanning
+- Audio transcription via Whisper AI
+- Full site audit
+- Weekly auto-monitoring
+- Signed PDF compliance certificates with legal timestamps
+- REST API and webhook integration
+- Chrome extension
+- White-label reports for agencies
+- Client workspaces and team seats
+
+## Sentinel — agency tier
+Sentinel is the enterprise compliance infrastructure tier of Red Flag AI Pro. It is built for agencies, legal teams and regulated businesses where a compliance failure is a regulatory event. It includes human review logs, legal timestamps, signed certificates, FCA financial promotions checking, greenwashing scanner, full audit trail and API access.
+
+## Pricing
+- Free: 1 scan, no signup required
+- Pro: £39/month — 20 scans, 16 risk categories, PDF reports, scan history
+- Growth: £199/month — unlimited scans, URL scanning, VSL scanning, site audit, client workspaces
+- Sentinel: £999/month — all 24 risk categories, full agency infrastructure, signed certificates, FCA checks, API access
+
+## Regulations covered
+FTC, FDA, CAN-SPAM, FTC Negative Option Rule, FTC Endorsement Guides, CMA, ASA, ICO, FCA, FSMA 2000, BCAP Code, CMA Green Claims Code, GDPR, UCPD, DSA, EU AI Act Article 50, EU Green Claims Directive, PECR, ACCC, ACL, TGA, CASL, PIPEDA, Competition Bureau
+
+## August 2026 — EU AI Act Article 50
+AI-generated marketing content must carry disclosure or documented human review from 2 August 2026. Red Flag AI Pro checks for this automatically on every scan.
+
+## URLs
+- Homepage: https://www.redflagaipro.com
+- Sentinel: https://www.redflagaipro.com/sentinel
+- Pricing: https://www.redflagaipro.com/pricing
+- Free scan: https://www.redflagaipro.com/#demo
+- Blog: https://www.redflagaipro.com/blog
+- Case study: https://www.redflagaipro.com/case-study
+- Compare: https://www.redflagaipro.com/compare
+
+## Contact
+support@redflagaipro.com
