@@ -345,7 +345,20 @@ export default function AboutPage() {
           }}>
             Start your free scan
           </Link>
-          <div style={{ marginTop: "2rem" }}>
+          <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>The Red Flag — Weekly Compliance Briefing</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "1rem" }}>Real violations. Real fines. Free every week.</p>
+            <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
+              display: "inline-block",
+              border: "1px solid rgba(239,68,68,0.4)", color: "#ef4444",
+              ...syne, fontSize: "11px", fontWeight: 700,
+              padding: "8px 20px", borderRadius: "9999px",
+              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" as const
+            }}>
+              Subscribe free
+            </a>
+          </div>
+          <div style={{ marginTop: "1.5rem" }}>
             <Link href="/" style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", textDecoration: "none" }}>
               ← Back to Red Flag AI Pro
             </Link>

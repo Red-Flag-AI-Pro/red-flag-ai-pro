@@ -309,6 +309,44 @@ export default function LandingPage() {
       <DemoScanner />
 
 
+      {/* Newsletter CTA */}
+      <section style={{
+        background: "#0f0505",
+        borderTop: "1px solid rgba(239,68,68,0.15)",
+        borderBottom: "1px solid rgba(239,68,68,0.15)",
+        padding: "5rem 1.5rem",
+        textAlign: "center"
+      }}>
+        <div style={{maxWidth: "560px", margin: "0 auto"}}>
+          <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.25rem"}}>
+            <span className="flag-wave" style={{display: "inline-block"}}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+              </svg>
+            </span>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>The Red Flag Newsletter</p>
+          </div>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem"}}>
+            Weekly compliance updates.<br />Free. In plain English.
+          </h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
+            Real violations. Real fines. What&apos;s changing in advertising law and what it means for your copy. Every week.
+          </p>
+          <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
+            display: "inline-block",
+            background: "#cc0000", color: "white",
+            fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
+            padding: "13px 32px", borderRadius: "9999px",
+            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+            textDecoration: "none", letterSpacing: "0.02em"
+          }}>
+            Subscribe free
+          </a>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No spam. No credit card. Unsubscribe anytime.</p>
+        </div>
+      </section>
+
       {/* Pain section */}
       <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
@@ -1141,6 +1179,21 @@ export default function LandingPage() {
       {/* Footer */}
       <footer style={{background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 1.5rem 3rem", textAlign: "center"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
+
+          {/* Newsletter footer signup */}
+          <div style={{marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)"}}>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>The Red Flag — Weekly Compliance Briefing</p>
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "1rem"}}>Real violations. Real fines. Free every week.</p>
+            <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
+              display: "inline-block",
+              border: "1px solid rgba(239,68,68,0.4)", color: "#ef4444",
+              fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700,
+              padding: "8px 20px", borderRadius: "9999px",
+              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase"
+            }}>
+              Subscribe free
+            </a>
+          </div>
 
           {/* Badges */}
           <div style={{marginBottom: "2.5rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap", opacity: 0.7}}>
