@@ -1,5 +1,6 @@
 ﻿﻿﻿﻿﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroNew } from "@/components/marketing/HeroNew";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
@@ -333,7 +334,7 @@ export default function LandingPage() {
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
             Real violations. Real fines. What&apos;s changing in advertising law and what it means for your copy. Every week.
           </p>
-          <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="269d535f-4e33-4683-86d5-6cacd32b1629"></script>
+          <Script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="269d535f-4e33-4683-86d5-6cacd32b1629" strategy="lazyOnload" />
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No spam. No credit card. Unsubscribe anytime.</p>
         </div>
       </section>
