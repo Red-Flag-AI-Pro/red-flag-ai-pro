@@ -333,16 +333,7 @@ export default function LandingPage() {
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
             Real violations. Real fines. What&apos;s changing in advertising law and what it means for your copy. Every week.
           </p>
-          <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
-            display: "inline-block",
-            background: "#cc0000", color: "white",
-            fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
-            padding: "13px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
-            textDecoration: "none", letterSpacing: "0.02em"
-          }}>
-            Subscribe free
-          </a>
+          <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="269d535f-4e33-4683-86d5-6cacd32b1629"></script>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No spam. No credit card. Unsubscribe anytime.</p>
         </div>
       </section>
