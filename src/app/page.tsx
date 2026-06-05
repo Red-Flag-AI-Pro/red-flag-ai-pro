@@ -334,8 +334,6 @@ export default function LandingPage() {
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
             Real violations. Real fines. What&apos;s changing in advertising law and what it means for your copy. Every week.
           </p>
-          <div data-beehiiv-form="269d535f-4e33-4683-86d5-6cacd32b1629" style={{marginBottom: "1rem"}}></div>
-          <Script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" strategy="lazyOnload" />
           <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
             display: "inline-block",
             background: "#cc0000", color: "white",
