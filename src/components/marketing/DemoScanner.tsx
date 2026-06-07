@@ -147,7 +147,7 @@ export function DemoScanner() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text"
-            }}>See What We Find.</span>
+            }}>Get Your Verdict.</span>
           </h2>
 
           <p style={{...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto 0.75rem"}}>

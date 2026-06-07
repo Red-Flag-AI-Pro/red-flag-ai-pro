@@ -344,7 +344,7 @@ export default function LandingPage() {
           }}>
             Subscribe free
           </a>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No spam. No credit card. Unsubscribe anytime.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>One email a week. Real cases, real fines, no fluff — unsubscribe in one click.</p>
         </div>
       </section>
 
@@ -678,7 +678,7 @@ export default function LandingPage() {
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Who it is for</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>If you buy or sell online, this was built for you.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Both sides. Every jurisdiction. 60 seconds.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Whichever side of the deal you're on, the same five minutes of checking can save you five figures.</p>
 
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px"}}>
             {PERSONAS.map((p) => (

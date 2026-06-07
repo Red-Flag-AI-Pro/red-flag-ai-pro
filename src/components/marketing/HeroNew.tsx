@@ -173,9 +173,9 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>Your ads might be breaking the law.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>21 risk categories. 5 jurisdictions.</span>
             <br />
-            <span style={{color: "rgba(255,255,255,0.8)"}}>So might the ones you&apos;re about to buy from.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
             <span style={{
               background: "linear-gradient(90deg, #fca5a5, #ef4444)",
@@ -184,7 +184,7 @@ export function HeroNew() {
               backgroundClip: "text",
               fontWeight: 600,
               fontSize: "1rem"
-            }}>Find out in 60 seconds. Free.</span>
+            }}>See exactly what regulators would flag — before they do.</span>
           </p>
 
           {/* CTAs */}
@@ -196,7 +196,7 @@ export function HeroNew() {
             gap: "14px", justifyContent: "center", marginBottom: "1.25rem"
           }}>
             <a href="#demo" className="btn-primary" style={{fontSize: "1rem", padding: "14px 32px", fontFamily: "'Syne', sans-serif", fontWeight: 600}}>
-              Try free — no signup needed
+              Scan my copy free
               <span style={{
                 display: "flex", alignItems: "center", justifyContent: "center",
                 width: "32px", height: "32px", borderRadius: "50%",
