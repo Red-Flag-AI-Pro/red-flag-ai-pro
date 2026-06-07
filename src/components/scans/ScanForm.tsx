@@ -154,7 +154,7 @@ export function ScanForm({ plan = "free" }: Props) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Homepage Funnel — April 2025"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
         </div>
       )}
@@ -198,7 +198,7 @@ export function ScanForm({ plan = "free" }: Props) {
               onChange={(e) => setContent(e.target.value)}
               rows={16}
               placeholder="Paste your sales page, email sequence, landing page copy, VSL script or any funnel content here…"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           )}
 
@@ -230,7 +230,7 @@ export function ScanForm({ plan = "free" }: Props) {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://yourlandingpage.com/sales"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs text-blue-700 space-y-1">
@@ -301,7 +301,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslUrl}
                       onChange={(e) => setVslUrl(e.target.value)}
                       placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                   <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
@@ -363,7 +363,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslTitle}
                       onChange={(e) => setVslTitle(e.target.value)}
                       placeholder="e.g. Product Launch VSL — June 2025"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                   <div>
@@ -375,7 +375,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       onChange={(e) => setVslScript(e.target.value)}
                       rows={14}
                       placeholder="Paste your full video sales letter script here. Include the complete voiceover text for the most accurate scan."
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                 </div>

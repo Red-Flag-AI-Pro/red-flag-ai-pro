@@ -91,7 +91,7 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
             placeholder="e.g. Loom Digital"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm mb-3 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 mb-3 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
           {error && <p className="text-xs text-red-600 mb-3">{error}</p>}
           {success && <p className="text-xs text-green-600 mb-3">{success}</p>}
@@ -110,7 +110,7 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
             value={inviteCode}
             onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
             placeholder="e.g. A1B2C3D4"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm font-mono mb-3 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 font-mono mb-3 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
           {error && <p className="text-xs text-red-600 mb-3">{error}</p>}
           {success && <p className="text-xs text-green-600 mb-3">{success}</p>}

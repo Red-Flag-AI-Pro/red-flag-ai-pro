@@ -101,7 +101,7 @@ export function BulkScanner({ plan }: Props) {
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
                 placeholder="e.g. youragencyclient.co.uk"
-                className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 onKeyDown={(e) => e.key === "Enter" && handleScan()}
                 disabled={loading}
               />
@@ -118,7 +118,7 @@ export function BulkScanner({ plan }: Props) {
               onChange={(e) => setPastedUrls(e.target.value)}
               rows={6}
               placeholder={"https://example.com/sales\nhttps://example.com/landing\nhttps://example.com/checkout"}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 mb-3"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 mb-3"
               disabled={loading}
             />
             <Button onClick={handleScan} loading={loading} disabled={!pastedUrls.trim()}>
