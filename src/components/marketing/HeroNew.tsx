@@ -173,7 +173,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>21 risk categories. 5 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>24 risk categories. 5 jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />

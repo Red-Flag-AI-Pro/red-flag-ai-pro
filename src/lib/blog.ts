@@ -1282,7 +1282,7 @@ Standard FTC/ASA format: *"Results are not typical. Individual results will vary
 
 ## Scan Your VSL Script Before You Film
 
-Red Flag AI Pro can scan your VSL script for all 21 compliance risk categories, paste the script or upload the audio file and Whisper transcribes it automatically.
+Red Flag AI Pro can scan your VSL script for all 24 compliance risk categories, paste the script or upload the audio file and Whisper transcribes it automatically.
 
 Catch compliance issues before you spend money on production and traffic.
 
@@ -1820,7 +1820,7 @@ This is the honest comparison.
 
 ### Red Flag AI Pro
 
-**What it does**: Scans any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 21 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
+**What it does**: Scans any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 24 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
 
 **Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
 

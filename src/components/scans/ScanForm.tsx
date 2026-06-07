@@ -347,7 +347,7 @@ export function ScanForm({ plan = "free" }: Props) {
                   </div>
                   <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
                     <p className="font-semibold">How audio transcription works</p>
-                    <p>We send your file to OpenAI Whisper, the most accurate speech-to-text model available. The transcript is then scanned for all 21 compliance risk categories. Works on any VSL, webinar recording, podcast or ad voiceover.</p>
+                    <p>We send your file to OpenAI Whisper, the most accurate speech-to-text model available. The transcript is then scanned for all 24 compliance risk categories. Works on any VSL, webinar recording, podcast or ad voiceover.</p>
                   </div>
                 </div>
               )}

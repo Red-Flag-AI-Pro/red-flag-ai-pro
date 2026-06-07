@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     }
 
     const { flags: allFlags } = analyzeContent(title, content);
-    const flags = allFlags; // Sentinel sees all 21 categories
+    const flags = allFlags; // Sentinel sees all 24 categories
     const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
     const { data: scan, error: scanError } = await supabase
@@ -158,7 +158,7 @@ export async function POST(request: Request) {
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const title = `VSL - youtube.com/watch?v=${videoId}`;
 
-  // Run the analyzer - Sentinel sees all 21 categories
+  // Run the analyzer - Sentinel sees all 24 categories
   const { flags: allFlags } = analyzeContent(title, content);
   const flags = allFlags;
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));

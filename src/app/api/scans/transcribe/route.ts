@@ -110,7 +110,7 @@ export async function POST(request: Request) {
   const cleanTranscript = transcript.trim();
   const scanTitle = `[VSL] ${file.name.replace(/\.[^.]+$/, "")}`;
 
-  // Run compliance scan — Sentinel sees all 21 categories
+  // Run compliance scan — Sentinel sees all 24 categories
   const { flags } = analyzeContent(scanTitle, cleanTranscript);
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 

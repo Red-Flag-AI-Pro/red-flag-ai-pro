@@ -52,7 +52,7 @@ const jsonLd = {
       name: "Sentinel Plan",
       price: "999",
       priceCurrency: "GBP",
-      description: "All 21 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
+      description: "All 24 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
     },
   ],
 };
