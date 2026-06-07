@@ -1,7 +1,7 @@
 import type { Plan } from "@/types";
 
 export const PLAN_LIMITS: Record<Plan, number> = {
-  free: 0,
+  free: 1,
   pro: 20,
   enterprise: Infinity,
   sentinel: Infinity,
