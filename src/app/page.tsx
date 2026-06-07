@@ -31,7 +31,7 @@ const jsonLd = {
       name: "Free Plan",
       price: "0",
       priceCurrency: "GBP",
-      description: "1 free scan per month",
+      description: "Try the demo scanner free, no signup required",
     },
     {
       "@type": "Offer",
@@ -1007,7 +1007,7 @@ export default function LandingPage() {
             }}>
               There is no losing scenario.
             </p>
-            <Link href="/signup" style={{
+            <a href="/#demo" style={{
               display: "inline-flex", alignItems: "center", gap: "12px",
               background: "#cc0000", color: "white",
               fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700,
@@ -1021,9 +1021,9 @@ export default function LandingPage() {
                 width: "32px", height: "32px", borderRadius: "50%",
                 background: "rgba(255,255,255,0.15)", fontSize: "14px"
               }}>→</span>
-            </Link>
+            </a>
             <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>
-              No credit card · No commitment · One free scan
+              No signup · No credit card · Results in 60 seconds
             </p>
           </div>
 

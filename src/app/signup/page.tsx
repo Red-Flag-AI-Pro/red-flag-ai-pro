@@ -165,7 +165,7 @@ export default function SignupPage() {
             Create your account
           </h1>
           <p className="mt-1 text-sm text-gray-400">
-            1 free scan · No credit card required
+            No credit card required · Cancel anytime
           </p>
         </div>
 

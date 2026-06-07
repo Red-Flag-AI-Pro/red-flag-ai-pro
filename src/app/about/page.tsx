@@ -335,7 +335,7 @@ export default function AboutPage() {
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
             24 risk categories. 5 jurisdictions. 60 seconds. No credit card.
           </p>
-          <Link href="/signup" style={{
+          <a href="/#demo" style={{
             display: "inline-block",
             background: "#cc0000", color: "white",
             ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -344,7 +344,7 @@ export default function AboutPage() {
             textDecoration: "none", letterSpacing: "0.02em"
           }}>
             Start your free scan
-          </Link>
+          </a>
           <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>The Red Flag — Weekly Compliance Briefing</p>
             <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "1rem" }}>Real violations. Real fines. Free every week.</p>

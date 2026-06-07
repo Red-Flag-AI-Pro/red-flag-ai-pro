@@ -151,21 +151,22 @@ function BuyerCalculator() {
 
       <div style={{background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)", padding: "1rem 1.25rem"}}>
         <p style={{...syne, fontSize: "13px", color: "rgba(134,239,172,0.8)", lineHeight: 1.6}}>
-          One free scan before you buy could save you <span style={{color: "white", fontWeight: 700}}>{format(purchaseAmount)}</span> right now.
+          A free 60-second scan before you buy could save you <span style={{color: "white", fontWeight: 700}}>{format(purchaseAmount)}</span> right now.
         </p>
-        <p style={{...mono, fontSize: "0.9rem", fontWeight: 700, color: "#4ade80", marginTop: "6px"}}>Free. No credit card. 60 seconds.</p>
+        <p style={{...mono, fontSize: "0.9rem", fontWeight: 700, color: "#4ade80", marginTop: "6px"}}>Free. No signup. No credit card. 60 seconds.</p>
       </div>
 
-      <Link href="/signup" style={{
+      <a href="/#demo" style={{
         display: "block", textAlign: "center",
         background: "#cc0000", color: "white",
         ...syne, fontSize: "0.9rem", fontWeight: 700,
         padding: "14px 24px",
         borderRadius: "9999px",
-        boxShadow: "0 8px 32px rgba(204,0,0,0.35)"
+        boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+        textDecoration: "none"
       }}>
         Scan before you buy — protect {format(purchaseAmount)}
-      </Link>
+      </a>
     </div>
   );
 }
