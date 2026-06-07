@@ -1,43 +1,64 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import React from "react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy — Red Flag AI Pro",
   description: "Privacy Policy for Red Flag AI Pro — how we collect, use and protect your data.",
 };
 
+const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
+
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
-      <div className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="text-4xl font-extrabold text-gray-900">Privacy Policy</h1>
-        <p className="mt-2 text-sm text-gray-500">Last updated: 18 May 2026</p>
 
-        <div className="mt-10 space-y-10 text-gray-700 leading-relaxed">
+      {/* HERO */}
+      <section style={{ padding: "7rem 1.5rem 4rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem" }}>
+            <span className="flag-wave" style={{ display: "inline-block" }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+              </svg>
+            </span>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Legal</p>
+          </div>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem" }}>
+            Privacy Policy
+          </h1>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 18 May 2026</p>
+        </div>
+      </section>
+
+      {/* CONTENT */}
+      <section style={{ padding: "4rem 1.5rem 6rem" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "3rem" }}>
 
           {/* 1 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">1. Who We Are</h2>
-            <p>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at <strong>www.redflagaipro.com</strong>. We are committed to protecting your personal data and complying with the UK GDPR, EU GDPR, and applicable data protection laws.
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. Who We Are</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>. We are committed to protecting your personal data and complying with the UK GDPR, EU GDPR, and applicable data protection laws.
             </p>
-            <p className="mt-2">
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               For data protection queries, contact us at:{" "}
-              <a href="mailto:support@redflagaipro.com" className="text-red-600 hover:underline">support@redflagaipro.com</a>
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>
             </p>
-          </section>
+          </div>
 
           {/* 2 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">2. What Data We Collect</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. What Data We Collect</h2>
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Data</th>
-                    <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Why we collect it</th>
+                  <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.08)" }}>
+                    <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "0.75rem 1rem 0.75rem 0", letterSpacing: "0.1em", textTransform: "uppercase" }}>Data</th>
+                    <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "0.75rem 0", letterSpacing: "0.1em", textTransform: "uppercase" }}>Why we collect it</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,133 +69,163 @@ export default function PrivacyPage() {
                     ["Scan results and history", "To display your dashboard and scan history"],
                     ["Usage data (pages visited, features used)", "To improve our service"],
                     ["IP address", "For security and fraud prevention"],
-                  ].map(([data, reason]) => (
-                    <tr key={data} className="hover:bg-gray-50">
-                      <td className="border border-gray-200 px-4 py-2 font-medium">{data}</td>
-                      <td className="border border-gray-200 px-4 py-2 text-gray-600">{reason}</td>
+                  ].map(([data, reason], i) => (
+                    <tr key={data} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)", background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)" }}>
+                      <td style={{ ...syne, fontSize: "13px", color: "white", padding: "0.75rem 1rem 0.75rem 0", fontWeight: 600 }}>{data}</td>
+                      <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", padding: "0.75rem 0", lineHeight: 1.6 }}>{reason}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </section>
+          </div>
 
           {/* 3 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">3. Your Submitted Copy</h2>
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-              <p>
-                The marketing copy you paste into Red Flag AI Pro is used <strong>solely to generate your scan results</strong>. We do not:
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy</h2>
+            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your scan results</strong>. We do not:
               </p>
-              <ul className="list-disc pl-5 mt-3 space-y-1">
-                <li>Share your submitted copy with third parties</li>
-                <li>Use your copy to train AI models</li>
-                <li>Store your copy beyond what is necessary to display your scan history</li>
+              <ul style={{ paddingLeft: "1.25rem", marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                {[
+                  "Share your submitted copy with third parties",
+                  "Use your copy to train AI models",
+                  "Store your copy beyond what is necessary to display your scan history",
+                ].map((item) => (
+                  <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-3">You can delete your scan history at any time from your dashboard.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard.</p>
             </div>
-          </section>
+          </div>
 
           {/* 4 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">4. Legal Basis for Processing (UK & EU GDPR)</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Contract:</strong> Processing your account data and scans to deliver the service you signed up for</li>
-              <li><strong>Legitimate interests:</strong> Improving our service, preventing fraud, ensuring security</li>
-              <li><strong>Legal obligation:</strong> Retaining billing records as required by law</li>
-              <li><strong>Consent:</strong> Marketing emails — you can unsubscribe at any time</li>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Legal Basis for Processing (UK & EU GDPR)</h2>
+            <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {[
+                ["Contract", "Processing your account data and scans to deliver the service you signed up for"],
+                ["Legitimate interests", "Improving our service, preventing fraud, ensuring security"],
+                ["Legal obligation", "Retaining billing records as required by law"],
+                ["Consent", "Marketing emails — you can unsubscribe at any time"],
+              ].map(([label, text]) => (
+                <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+                  <strong style={{ color: "white" }}>{label}:</strong> {text}
+                </li>
+              ))}
             </ul>
-          </section>
+          </div>
 
           {/* 5 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">5. Third Parties We Use</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Supabase</strong> — database and authentication (data stored in EU region)</li>
-              <li><strong>Stripe</strong> — payment processing (PCI DSS compliant)</li>
-              <li><strong>Vercel</strong> — website hosting</li>
-              <li><strong>OpenAI / Anthropic</strong> — AI processing of scan requests</li>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Third Parties We Use</h2>
+            <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {[
+                ["Supabase", "Database and authentication (data stored in EU region)"],
+                ["Stripe", "Payment processing (PCI DSS compliant)"],
+                ["Vercel", "Website hosting"],
+                ["OpenAI / Anthropic", "AI processing of scan requests"],
+              ].map(([label, text]) => (
+                <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+                  <strong style={{ color: "white" }}>{label}</strong> — {text}
+                </li>
+              ))}
             </ul>
-            <p className="mt-3">All third parties are bound by appropriate data processing agreements.</p>
-          </section>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>All third parties are bound by appropriate data processing agreements.</p>
+          </div>
 
           {/* 6 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">6. How Long We Keep Your Data</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Account data: retained while your account is active and for 30 days after deletion</li>
-              <li>Billing records: 7 years as required by UK law</li>
-              <li>Scan history: retained until you delete it or close your account</li>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. How Long We Keep Your Data</h2>
+            <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              {[
+                "Account data: retained while your account is active and for 30 days after deletion",
+                "Billing records: 7 years as required by UK law",
+                "Scan history: retained until you delete it or close your account",
+              ].map((item) => (
+                <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
+              ))}
             </ul>
-          </section>
+          </div>
 
           {/* 7 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">7. Your Rights</h2>
-            <p>Under UK and EU GDPR, you have the right to:</p>
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li><strong>Access</strong> — request a copy of your personal data</li>
-              <li><strong>Rectification</strong> — correct inaccurate data</li>
-              <li><strong>Erasure</strong> — request deletion of your data ("right to be forgotten")</li>
-              <li><strong>Portability</strong> — receive your data in a portable format</li>
-              <li><strong>Object</strong> — object to processing based on legitimate interests</li>
-              <li><strong>Restrict</strong> — request we limit how we process your data</li>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>7. Your Rights</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "0.75rem" }}>Under UK and EU GDPR, you have the right to:</p>
+            <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              {[
+                ["Access", "Request a copy of your personal data"],
+                ["Rectification", "Correct inaccurate data"],
+                ["Erasure", "Request deletion of your data (right to be forgotten)"],
+                ["Portability", "Receive your data in a portable format"],
+                ["Object", "Object to processing based on legitimate interests"],
+                ["Restrict", "Request we limit how we process your data"],
+              ].map(([label, text]) => (
+                <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+                  <strong style={{ color: "white" }}>{label}</strong> — {text}
+                </li>
+              ))}
             </ul>
-            <p className="mt-3">
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>
               To exercise any of these rights, email{" "}
-              <a href="mailto:support@redflagaipro.com" className="text-red-600 hover:underline">support@redflagaipro.com</a>.
-              We will respond within 30 days.
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>.
+              {" "}We will respond within 30 days.
             </p>
-          </section>
+          </div>
 
           {/* 8 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">8. Cookies</h2>
-            <p>We use essential cookies only — for authentication and session management. We do not use advertising or tracking cookies. No cookie consent banner is required for essential cookies under UK GDPR.</p>
-          </section>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Cookies</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+              We use essential cookies only — for authentication and session management. We do not use advertising or tracking cookies. No cookie consent banner is required for essential cookies under UK GDPR.
+            </p>
+          </div>
 
           {/* 9 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">9. Data Security</h2>
-            <p>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Data Security</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We implement industry-standard security measures including encrypted data storage, HTTPS, and access controls. However, no method of transmission over the internet is 100% secure and we cannot guarantee absolute security.
             </p>
-          </section>
+          </div>
 
           {/* 10 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">10. Changes to This Policy</h2>
-            <p>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to This Policy</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We may update this Privacy Policy periodically. We will notify you of significant changes by email. Continued use of Red Flag AI Pro after changes constitutes acceptance.
             </p>
-          </section>
+          </div>
 
           {/* 11 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">11. Complaints</h2>
-            <p>
-              If you are unhappy with how we handle your data, you have the right to lodge a complaint with the UK Information Commissioner&apos;s Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">ico.org.uk</a>.
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Complaints</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+              If you are unhappy with how we handle your data, you have the right to lodge a complaint with the UK Information Commissioner&apos;s Office (ICO) at{" "}
+              <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>ico.org.uk</a>.
             </p>
-          </section>
+          </div>
 
           {/* 12 */}
-          <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">12. Contact</h2>
-            <p>
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>12. Contact</h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               For any privacy questions:{" "}
-              <a href="mailto:support@redflagaipro.com" className="text-red-600 hover:underline font-semibold">
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", fontWeight: 700, textDecoration: "none" }}>
                 support@redflagaipro.com
               </a>
             </p>
-          </section>
+          </div>
 
         </div>
 
-        <div className="mt-12 border-t border-gray-200 pt-8 flex gap-6 text-sm">
-          <Link href="/terms" className="text-red-600 hover:underline">Terms of Service</Link>
-          <Link href="/" className="text-gray-500 hover:underline">Back to home</Link>
+        {/* Footer nav */}
+        <div style={{ maxWidth: "720px", margin: "4rem auto 0", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "2rem", display: "flex", gap: "2rem" }}>
+          <Link href="/terms" style={{ ...syne, fontSize: "13px", color: "#ef4444", textDecoration: "none" }}>Terms of Service</Link>
+          <Link href="/" style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Back to home</Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

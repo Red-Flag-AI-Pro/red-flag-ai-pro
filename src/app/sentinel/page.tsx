@@ -50,6 +50,10 @@ const BENEFITS = [
     headline: "AI copy. August 2026. Your responsibility.",
     body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
   },
+  {
+    headline: "Turn scan results into something you can actually show.",
+    body: "Every scan can be rendered into a short video summary — the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
+  },
 ];
 
 const WHO = [
@@ -456,6 +460,7 @@ export default function SentinelPage() {
                   ["Chrome extension", "✗", "✓ Included"],
                   ["REST API + webhooks", "✗", "✓ Zapier ready"],
                   ["White-label PDF reports", "✗", "✓ Your branding"],
+                  ["Video scan summaries", "✗", "✓ Shareable MP4"],
                   ["Signed PDF certificates", "✓", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
                   ["Typical monthly cost", "£2,000 – £10,000", "£999"],

@@ -31,6 +31,19 @@ export interface ScanFlag {
   suggestion: string | null;
 }
 
+export type VideoJobStatus = "pending" | "processing" | "complete" | "error";
+
+export interface VideoJob {
+  id: string;
+  scan_id: string;
+  user_id: string;
+  status: VideoJobStatus;
+  video_url: string | null;
+  error: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface AnalysisResult {
   score: number;
   flags: Omit<ScanFlag, "id" | "scan_id">[];

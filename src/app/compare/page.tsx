@@ -30,6 +30,7 @@ const COMPARISON = [
   { feature: "White-label reports", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "Chrome extension", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
+  { feature: "Video scan summaries", rfp: "✓ Growth & Sentinel", redmarker: "✗", consultant: "✗" },
   { feature: "Signed PDF certificates", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
   { feature: "Risk categories covered", rfp: "24 — Sentinel / 16 — Pro", redmarker: "8–12", consultant: "Variable" },
 ];

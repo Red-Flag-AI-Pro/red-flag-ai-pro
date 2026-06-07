@@ -74,6 +74,66 @@ function BadgeButton({ scanId }: { scanId: string }) {
   );
 }
 
+type VideoState = "idle" | "queued" | "processing" | "error";
+
+function VideoButton({ scanId }: { scanId: string }) {
+  const [state, setState] = useState<VideoState>("idle");
+
+  async function start() {
+    setState("queued");
+    try {
+      const res = await fetch(`/api/scans/${scanId}/video/jobs`, { method: "POST" });
+      if (!res.ok) throw new Error("Could not start render");
+      const { jobId } = await res.json();
+      setState("processing");
+      poll(jobId);
+    } catch {
+      setState("error");
+      setTimeout(() => setState("idle"), 3000);
+    }
+  }
+
+  function poll(jobId: string) {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/scans/${scanId}/video/jobs/${jobId}`);
+        if (!res.ok) throw new Error("Lost track of job");
+        const job = await res.json();
+
+        if (job.status === "complete" && job.video_url) {
+          clearInterval(interval);
+          window.location.href = job.video_url;
+          setState("idle");
+        } else if (job.status === "error") {
+          clearInterval(interval);
+          throw new Error(job.error ?? "Render failed");
+        }
+      } catch {
+        clearInterval(interval);
+        setState("error");
+        setTimeout(() => setState("idle"), 3000);
+      }
+    }, 4000);
+  }
+
+  const labels: Record<VideoState, string> = {
+    idle: "🎬 Video summary",
+    queued: "🎬 Queuing render…",
+    processing: "🎬 Rendering… (usually ~1 min)",
+    error: "⚠️ Couldn't render — try again",
+  };
+
+  return (
+    <button
+      onClick={start}
+      disabled={state === "queued" || state === "processing"}
+      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-60"
+    >
+      {labels[state]}
+    </button>
+  );
+}
+
 interface ScanResultCardProps {
   scan: Scan;
   flags: ScanFlag[];
@@ -153,6 +213,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             </Link>
             <ShareButton scanId={scan.id} />
             <BadgeButton scanId={scan.id} />
+            <VideoButton scanId={scan.id} />
           </div>
         </div>
       </div>

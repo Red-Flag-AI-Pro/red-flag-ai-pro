@@ -25,6 +25,7 @@ Most compliance failures are not intentional. Sellers copy what everyone else is
 - Audio transcription via Whisper AI
 - Full site audit
 - Weekly auto-monitoring
+- Video scan summaries — shareable MP4 breakdowns of scan results
 - Signed PDF compliance certificates with legal timestamps
 - REST API and webhook integration
 - Chrome extension
