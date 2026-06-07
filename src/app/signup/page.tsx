@@ -11,8 +11,10 @@ function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan");
+  const prefillEmail = searchParams.get("email") ?? "";
+  const fromDemo = !!prefillEmail;
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(prefillEmail);
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -75,6 +77,11 @@ function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {fromDemo && (
+        <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+          Picking up where you left off — create your account to unlock your full scan results and the compliant rewrites.
+        </div>
+      )}
       {error && (
         <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
           {error}

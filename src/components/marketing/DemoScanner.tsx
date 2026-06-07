@@ -461,7 +461,7 @@ export function DemoScanner() {
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem", maxWidth: "420px", margin: "0.5rem auto 1.75rem"}}>
                   Sign up free to see exactly what&apos;s wrong, which regulation it breaks, and the compliant rewrite — ready to use immediately.
                 </p>
-                <Link href="/signup" style={{
+                <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                   display: "inline-block",
                   background: "#cc0000",
                   color: "white",
@@ -492,7 +492,7 @@ export function DemoScanner() {
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.5rem"}}>
                   Save this result. A free account lets you track compliance over time and download a PDF certificate.
                 </p>
-                <Link href="/signup" style={{
+                <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                   display: "inline-block",
                   background: "#cc0000",
                   color: "white",
