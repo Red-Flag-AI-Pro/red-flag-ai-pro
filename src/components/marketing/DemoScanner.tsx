@@ -236,6 +236,9 @@ export function DemoScanner() {
             onFocus={(e) => { e.target.style.borderColor = "rgba(204,0,0,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(204,0,0,0.1)"; }}
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
+          <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginTop: "-0.85rem", marginBottom: "1.25rem"}}>
+            We&apos;ll only use this to send your results and one follow-up — no spam, unsubscribe anytime.
+          </p>
 
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Paste your copy here</p>
           <textarea
@@ -410,12 +413,30 @@ export function DemoScanner() {
                         background: "rgba(10,10,10,0.95)",
                         border: "1px solid rgba(239,68,68,0.3)",
                         padding: "5px 14px", borderRadius: "9999px"
-                      }}>Sign up to unlock</span>
+                      }}>Show me what&apos;s wrong</span>
                     </div>
                   </div>
                 )}
               </div>
             ))}
+
+            {/* Founder reinforcement — sits right where trust is being decided */}
+            {result.flags.some((f) => !f.unlocked) && (
+              <div style={{
+                background: "#0f0505",
+                borderLeft: "3px solid #ef4444",
+                padding: "1.25rem 1.75rem",
+                marginTop: "2px"
+              }}>
+                <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, fontStyle: "italic"}}>
+                  &ldquo;This is exactly the blind spot I had —{" "}
+                  <span style={{color: "white", fontWeight: 700, fontStyle: "italic"}}>here&apos;s what I built so you don&apos;t make the same mistake.</span>&rdquo;
+                </p>
+                <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.6rem"}}>
+                  — James, Founder
+                </p>
+              </div>
+            )}
 
             {/* CTA after flags */}
             {result.totalFlags > 0 && (
