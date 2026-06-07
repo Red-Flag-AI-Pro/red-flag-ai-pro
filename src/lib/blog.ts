@@ -2058,6 +2058,126 @@ The question is whether you have proof that you did it properly.
 [See Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
     `,
   },
+  {
+    slug: "how-to-disclose-affiliate-links-instagram-tiktok-youtube",
+    title: "How to Disclose Affiliate Links and Sponsorships on Instagram, TikTok and YouTube (Without Killing Your Engagement)",
+    description: "\"#ad\" in a wall of hashtags isn't enough. Here's exactly how the FTC and ASA expect creators to disclose affiliate links and sponsored content on each platform -with wording that actually converts.",
+    date: "2026-06-07",
+    readTime: "7 min read",
+    category: "For Sellers",
+    content: `
+## Why This Keeps Coming Up
+
+If you're a creator, course seller or run paid partnerships, you've probably typed some version of this into Google: "do I really need to say #ad" or "how do I disclose affiliate links without it looking spammy."
+
+The honest answer: yes, you really do need to disclose -and the way most creators do it doesn't actually meet the legal bar. Burying "#ad" at the bottom of a 30-hashtag block, or relying on a platform's built-in "Paid partnership" tag alone, is not enough in the eyes of the FTC or the ASA.
+
+This isn't a grey area anymore. Both regulators have published explicit guidance, and enforcement against creators -not just brands -has picked up sharply since 2024.
+
+Here's what's actually required on each platform, and how to word it so it doesn't tank your engagement.
+
+---
+
+## The Core Rule (Applies Everywhere)
+
+Whether you're in the US (FTC) or UK (ASA/CMA), the underlying principle is the same:
+
+**A disclosure must be clear, prominent, and understood by the audience before they engage with the content -not buried, not abbreviated into obscurity, and not separated from the claim it relates to.**
+
+That means:
+
+- It must appear **before** the "swipe up," the link, or the call to action -not after
+- It must use **plain language** ("Ad," "Advertisement," "Paid partnership," "I get a commission if you buy through this link") -not just a hashtag
+- It must be **visible without extra clicks** -not hidden in a caption that requires "see more," not buried under 30 other hashtags
+- It applies **even if you weren't paid in cash** -free products, discounts, affiliate commissions and "gifted" items all count
+
+---
+
+## Instagram
+
+### What's required
+- Use Instagram's built-in "Paid partnership with [Brand]" label **and** include a written disclosure in the caption itself (the label alone is not always considered sufficient by the FTC)
+- For affiliate links (where you earn commission but there's no formal brand partnership), disclose this explicitly -e.g., "This post contains affiliate links. I may earn a commission if you purchase through them, at no extra cost to you."
+- Place the disclosure **at the start of the caption**, not the end. Audiences scanning quickly often won't see text below the fold.
+
+### What to avoid
+- "#ad" alone, especially buried mid-hashtag-block
+- "#sp" or "#spon" -these are not considered clear to the average consumer
+- Relying solely on Instagram's automatic tag without a written disclosure for affiliate (non-partnership) content
+
+### Wording that works
+> "Ad -[Brand] sent me this to try, and I loved it enough to share. Link below to grab your own (affiliate link -I earn a small commission if you buy through it)."
+
+---
+
+## TikTok
+
+### What's required
+- Use TikTok's "Branded content" toggle for paid partnerships -this is mandatory under TikTok's own terms, not optional
+- For affiliate content (TikTok Shop links, Amazon affiliate links, etc.), state clearly in the **video itself** (verbally or via on-screen text) that the link is an affiliate link -not just in the caption, since many viewers don't read captions on short-form video
+- Keep the disclosure on screen long enough to actually be read -a flash of text for half a second does not count as "clear and conspicuous"
+
+### What to avoid
+- Relying only on the caption when the claim and link are in the video
+- Vague phrases like "linked in bio" with no mention that it's a paid or affiliate link
+- Disclosure that appears only in a pinned comment
+
+### Wording that works
+> On-screen text: "Affiliate link -I earn commission if you shop this." Spoken: "Quick heads up, the link in my bio is an affiliate link, so I get a small cut if you buy through it -doesn't cost you anything extra."
+
+---
+
+## YouTube
+
+### What's required
+- Use YouTube's built-in paid promotion disclosure toggle for sponsored videos (this triggers the on-screen "Includes paid promotion" label)
+- **Verbally disclose** sponsorships and affiliate relationships near the start of the video -not just in the description, which most viewers never open
+- For affiliate links in the description, state clearly which links are affiliate links and that you earn commission from them
+
+### What to avoid
+- Burying the disclosure at the very end of a long video, after most viewers have dropped off
+- Assuming the description box is "enough" -the FTC has specifically called this out as insufficient on its own
+- Generic catch-all disclaimers buried in channel "About" pages that don't relate to the specific video
+
+### Wording that works
+> Spoken, in the first 30-60 seconds: "Before we get into it -this video is sponsored by [Brand], and some of the links below are affiliate links, which means I earn a small commission if you use them. As always, everything I'm about to say is my honest opinion."
+
+---
+
+## "But Won't This Hurt My Engagement?"
+
+This is the real reason most creators under-disclose -and it's a legitimate concern. But the data and enforcement trends both point the same direction:
+
+1. **Audiences increasingly expect it.** Transparent creators are rated as more trustworthy in consumer research, not less. The "ick" factor comes from *hidden* promotion being discovered, not from upfront honesty.
+2. **The penalty for getting caught is far worse than any engagement dip.** The FTC has issued five and six-figure fines to individual creators -not just brands -for inadequate disclosure. The ASA can force takedowns and publicly name creators in rulings that show up in search results next to their name, permanently.
+3. **Brands are now vetting this.** More sponsors are explicitly checking creators' disclosure history before signing deals, because *they* carry liability too if their partner doesn't disclose properly.
+
+Disclosing well -with personality, not as a legal disclaimer dump -is now a competitive advantage, not a tax on your content.
+
+---
+
+## The Quick Self-Check
+
+Before you hit publish, ask:
+
+- Would someone scrolling quickly **see or hear** the disclosure before they see the link or claim?
+- Does it use **plain words** ("ad," "sponsored," "affiliate link, I earn a commission") rather than abbreviations or jargon?
+- Is it placed **at the point of the claim** -not buried at the end, in a pinned comment, or in an About page?
+- Would a regulator reviewing this post in isolation, with no other context, immediately understand it's a paid or commissioned relationship?
+
+If you hesitated on any of those, it's worth rewording before you post -not after a complaint lands.
+
+---
+
+## Scan Before You Post
+
+Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language -alongside 15 other compliance risk categories covering FTC, ASA, GDPR and more.
+
+Paste your caption or video script and get a compliance score with specific rewrite suggestions in 60 seconds.
+
+[Scan your copy free -no account needed →](https://www.redflagaipro.com)
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
