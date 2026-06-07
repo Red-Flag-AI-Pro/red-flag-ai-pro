@@ -28,7 +28,7 @@ export default async function ReferralsPage() {
   const referralLink = `https://redflagaipro.com/signup?ref=${referralCode}`;
 
   const PLAN_DISPLAY: Record<string, string> = {
-    free: "Free",
+    free: "Starter",
     pro: "Pro",
     enterprise: "Growth",
     sentinel: "Sentinel",

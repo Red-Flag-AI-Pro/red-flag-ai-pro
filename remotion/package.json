@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "start": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts ScanResults out/scan-results.mp4"
+    "render": "remotion render src/index.ts ScanResults out/scan-results.mp4",
+    "render:teaser:vertical": "remotion render src/index.ts AdTeaser-Vertical out/ad-teaser-vertical.mp4",
+    "render:teaser:square": "remotion render src/index.ts AdTeaser-Square out/ad-teaser-square.mp4",
+    "render:teaser:horizontal": "remotion render src/index.ts AdTeaser-Horizontal out/ad-teaser-horizontal.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.473",
+    "@remotion/google-fonts": "^4.0.473",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remotion": "4.0.473",

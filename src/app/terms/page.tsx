@@ -82,7 +82,7 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Free Plan", "1 scan per month at no charge. No credit card required."],
+                ["Starter Plan", "1 scan per month at no charge. No credit card required."],
                 ["Pro Plan", "£49/month (subject to change — existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
                 ["Enterprise Plan", "£149/month. Billed monthly via Stripe."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],

@@ -28,7 +28,7 @@ const jsonLd = {
   offers: [
     {
       "@type": "Offer",
-      name: "Free Plan",
+      name: "Free Demo",
       price: "0",
       priceCurrency: "GBP",
       description: "Try the demo scanner free, no signup required",
