@@ -34,9 +34,10 @@ const CATEGORY_LABELS: Record<string, string> = {
 interface Flag {
   category: string;
   severity: string;
-  text_excerpt: string;
-  flag_description: string;
-  suggestion: string;
+  unlocked?: boolean;
+  text_excerpt?: string;
+  flag_description?: string;
+  suggestion?: string;
 }
 
 interface DemoResult {
@@ -348,26 +349,71 @@ export function DemoScanner() {
                   <span style={{...syne, fontSize: "13px", fontWeight: 700, color: "white"}}>
                     {CATEGORY_LABELS[flag.category] ?? flag.category}
                   </span>
-                </div>
-                <div style={{position: "relative"}}>
-                  <p style={{
-                    ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7,
-                    filter: "blur(4px)", userSelect: "none"
-                  }}>
-                    Your copy contains a violation in this category that could trigger regulatory action. Sign up to see the exact line, the regulation it breaks, and the compliant rewrite.
-                  </p>
-                  <div style={{
-                    position: "absolute", inset: 0,
-                    display: "flex", alignItems: "center", justifyContent: "center"
-                  }}>
+                  {flag.unlocked && (
                     <span style={{
-                      ...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444",
-                      background: "rgba(10,10,10,0.95)",
-                      border: "1px solid rgba(239,68,68,0.3)",
-                      padding: "5px 14px", borderRadius: "9999px"
-                    }}>Sign up to unlock</span>
-                  </div>
+                      ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em",
+                      textTransform: "uppercase", color: "#4ade80",
+                      background: "rgba(74,222,128,0.1)",
+                      border: "1px solid rgba(74,222,128,0.25)",
+                      padding: "3px 10px", borderRadius: "9999px"
+                    }}>Full preview</span>
+                  )}
                 </div>
+
+                {flag.unlocked ? (
+                  <div style={{display: "flex", flexDirection: "column", gap: "0.85rem"}}>
+                    {flag.text_excerpt && (
+                      <div style={{
+                        background: "rgba(0,0,0,0.3)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        borderLeft: "3px solid #ef4444",
+                        padding: "0.85rem 1.1rem",
+                      }}>
+                        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "0.4rem"}}>Flagged text</p>
+                        <p style={{...mono, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, fontStyle: "italic"}}>
+                          &ldquo;{flag.text_excerpt}&rdquo;
+                        </p>
+                      </div>
+                    )}
+                    {flag.flag_description && (
+                      <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7}}>
+                        {flag.flag_description}
+                      </p>
+                    )}
+                    {flag.suggestion && (
+                      <div style={{
+                        background: "rgba(74,222,128,0.05)",
+                        border: "1px solid rgba(74,222,128,0.15)",
+                        padding: "0.85rem 1.1rem",
+                      }}>
+                        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#4ade80", marginBottom: "0.4rem"}}>Suggested fix</p>
+                        <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7}}>
+                          {flag.suggestion}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div style={{position: "relative"}}>
+                    <p style={{
+                      ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7,
+                      filter: "blur(4px)", userSelect: "none"
+                    }}>
+                      Your copy contains a violation in this category that could trigger regulatory action. Sign up to see the exact line, the regulation it breaks, and the compliant rewrite.
+                    </p>
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      display: "flex", alignItems: "center", justifyContent: "center"
+                    }}>
+                      <span style={{
+                        ...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444",
+                        background: "rgba(10,10,10,0.95)",
+                        border: "1px solid rgba(239,68,68,0.3)",
+                        padding: "5px 14px", borderRadius: "9999px"
+                      }}>Sign up to unlock</span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 

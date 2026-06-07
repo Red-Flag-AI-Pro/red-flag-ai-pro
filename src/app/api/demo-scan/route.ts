@@ -66,10 +66,27 @@ export async function POST(request: Request) {
   // Recalculate score from allowed flags only
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
-  const preview = flags.slice(0, PREVIEW_COUNT).map((f) => ({
-    category: f.category,
-    severity: f.severity,
-  }));
+  // Sort highest-severity first so the one flag we fully reveal is the
+  // most compelling one — the "look what we just found" moment.
+  const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
+  const sorted = [...flags].sort((a, b) => severityRank[a.severity] - severityRank[b.severity]);
+
+  const preview = sorted.slice(0, PREVIEW_COUNT).map((f, i) => {
+    const base = { category: f.category, severity: f.severity };
+    // Fully reveal the single highest-severity flag — proof the scan is
+    // real, not a black box — the rest stay locked behind signup.
+    if (i === 0) {
+      return {
+        ...base,
+        unlocked: true,
+        text_excerpt: f.text_excerpt,
+        flag_description: f.flag_description,
+        suggestion: f.suggestion,
+      };
+    }
+    return { ...base, unlocked: false };
+  });
+
   const totalFlags = flags.length;
   const hiddenCount = Math.max(0, totalFlags - PREVIEW_COUNT);
 
