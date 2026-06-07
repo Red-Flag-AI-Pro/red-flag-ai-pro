@@ -1,9 +1,9 @@
 import { NextResponse, after } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
-import { renderScanVideo, type ScanVideoFlag } from "@/lib/video/render-scan-video";
+import { startScanVideoRender, type ScanVideoFlag } from "@/lib/video/render-scan-video";
 
 export const runtime = "nodejs";
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 function humanizeCategory(category: string) {
   return category
@@ -12,15 +12,10 @@ function humanizeCategory(category: string) {
     .join(" ");
 }
 
-async function runRenderJob(jobId: string, scanId: string, userId: string) {
+async function kickOffRender(jobId: string, scanId: string) {
   const supabase = await createServiceClient();
 
   try {
-    await supabase
-      .from("video_jobs")
-      .update({ status: "processing", updated_at: new Date().toISOString() })
-      .eq("id", jobId);
-
     const [{ data: scan }, { data: flags }] = await Promise.all([
       supabase.from("scans").select("*").eq("id", scanId).single(),
       supabase
@@ -38,7 +33,7 @@ async function runRenderJob(jobId: string, scanId: string, userId: string) {
       severity: flag.severity,
     }));
 
-    const video = await renderScanVideo({
+    const { sandboxId, cmdId } = await startScanVideoRender({
       companyName: scan.title,
       documentName: scan.title,
       redFlags:
@@ -47,22 +42,12 @@ async function runRenderJob(jobId: string, scanId: string, userId: string) {
           : [{ title: "No red flags detected", severity: "low" }],
     });
 
-    const storagePath = `${userId}/${jobId}.mp4`;
-    const { error: uploadError } = await supabase.storage
-      .from("scan-videos")
-      .upload(storagePath, video, { contentType: "video/mp4", upsert: true });
-
-    if (uploadError) throw uploadError;
-
-    const { data: publicUrl } = supabase.storage
-      .from("scan-videos")
-      .getPublicUrl(storagePath);
-
     await supabase
       .from("video_jobs")
       .update({
-        status: "complete",
-        video_url: publicUrl.publicUrl,
+        status: "processing",
+        sandbox_id: sandboxId,
+        cmd_id: cmdId,
         updated_at: new Date().toISOString(),
       })
       .eq("id", jobId);
@@ -71,7 +56,7 @@ async function runRenderJob(jobId: string, scanId: string, userId: string) {
       .from("video_jobs")
       .update({
         status: "error",
-        error: err instanceof Error ? err.message : "Render failed",
+        error: err instanceof Error ? err.message : "Could not start render",
         updated_at: new Date().toISOString(),
       })
       .eq("id", jobId);
@@ -114,7 +99,7 @@ export async function POST(
     return NextResponse.json({ error: "Could not create job" }, { status: 500 });
   }
 
-  after(() => runRenderJob(job.id, id, user.id));
+  after(() => kickOffRender(job.id, id));
 
   return NextResponse.json({ jobId: job.id, status: job.status });
 }
