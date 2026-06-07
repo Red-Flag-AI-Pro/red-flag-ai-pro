@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { PLAN_LIMITS, SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { sendLoopsEvent } from "@/lib/loops";
 import type { Plan } from "@/types";
 
 export async function POST(request: Request) {
@@ -83,6 +84,17 @@ export async function POST(request: Request) {
     await supabase.from("scan_flags").insert(
       flags.map((f) => ({ ...f, scan_id: scan.id }))
     );
+  }
+
+  // Nudge good scorers to embed their compliance badge — fires a Loops event
+  // so a "show off your badge" email can be triggered from the Loops dashboard
+  // (best-effort, never blocks the response).
+  if (score >= 70 && user.email) {
+    sendLoopsEvent({
+      email: user.email,
+      eventName: "scan_good_score",
+      properties: { scanId: scan.id, score, title },
+    }).catch(() => {});
   }
 
   // Fire webhook if configured

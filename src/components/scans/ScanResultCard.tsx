@@ -184,6 +184,15 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             </div>
           </div>
 
+          {scan.score >= 70 && (
+            <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
+              <span className="text-xl">🏷️</span>
+              <p className="text-sm text-green-800">
+                <span className="font-semibold">Nice score.</span> Show clients or your audience you&apos;re compliance-checked — embed your badge below and let the proof do the talking.
+              </p>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-2">
             {plan !== "free" ? (
               <a

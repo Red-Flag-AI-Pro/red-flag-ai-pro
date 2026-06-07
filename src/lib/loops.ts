@@ -41,6 +41,40 @@ export async function addContactToLoops({
   }
 }
 
+// Fires a named event to Loops so an email automation can be built around it
+// in the Loops dashboard (Loops > Automations > "Event triggered"). We don't
+// send the email directly — Loops owns the template/timing — we just report
+// that the event happened.
+export async function sendLoopsEvent({
+  email,
+  eventName,
+  properties = {},
+}: {
+  email: string;
+  eventName: string;
+  properties?: Record<string, string | number | boolean>;
+}) {
+  if (!LOOPS_API_KEY) return;
+
+  try {
+    const res = await fetch(`${LOOPS_API_URL}/events/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${LOOPS_API_KEY}`,
+      },
+      body: JSON.stringify({ email, eventName, ...properties }),
+    });
+
+    if (!res.ok) {
+      const error = await res.text();
+      console.error("Loops event send failed:", error);
+    }
+  } catch (err) {
+    console.error("Loops event API error:", err);
+  }
+}
+
 export async function updateContactPlan(email: string, plan: string) {
   if (!LOOPS_API_KEY) return;
 
