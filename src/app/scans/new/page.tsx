@@ -52,7 +52,7 @@ export default async function NewScanPage() {
           </h2>
           <p className="mt-2 text-sm text-red-600">
             {plan === "free"
-              ? "You're on the free plan. Upgrade to Pro for 20 scans a month."
+              ? "You're on the Starter plan. Upgrade to Pro for 20 scans a month."
               : `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`}
           </p>
           <Link

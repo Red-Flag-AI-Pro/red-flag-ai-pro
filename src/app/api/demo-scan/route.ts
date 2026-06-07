@@ -37,7 +37,7 @@ export async function POST(request: Request) {
   const supabase = await createServiceClient();
   const { error: claimError } = await supabase
     .from("demo_scan_emails")
-    .insert({ email });
+    .insert({ email, content: content.trim() });
 
   if (claimError) {
     if (claimError.code === "23505") {
