@@ -50,7 +50,10 @@ const PLACEHOLDER = `Paste any ad, sales page, email or VSL script here...
 
 Example: "Make £10,000 in your first 30 days — guaranteed. Limited spots available. Act now before the price goes up tonight at midnight."`;
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function DemoScanner() {
+  const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<DemoResult | null>(null);
@@ -58,6 +61,12 @@ export function DemoScanner() {
 
   async function handleScan() {
     if (!content.trim()) return;
+
+    if (!EMAIL_REGEX.test(email.trim())) {
+      setError("Please enter a valid email address — each address gets one free scan.");
+      return;
+    }
+
     setLoading(true);
     setError(null);
     setResult(null);
@@ -66,7 +75,7 @@ export function DemoScanner() {
       const res = await fetch("/api/demo-scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, email: email.trim() }),
       });
 
       const data = await res.json();
@@ -145,7 +154,7 @@ export function DemoScanner() {
           </p>
 
           <p style={{...syne, fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em"}}>
-            No account. No card. Paste anything.
+            No account. No card. Just your email — one free scan per address.
           </p>
         </div>
 
@@ -203,6 +212,30 @@ export function DemoScanner() {
           padding: "2rem",
           boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)"
         }}>
+          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email — one free scan per address</p>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
+            style={{
+              width: "100%",
+              background: "#1a1a1a",
+              border: "1px solid rgba(255,255,255,0.18)",
+              color: "rgba(255,255,255,0.9)",
+              ...syne,
+              fontSize: "14px",
+              padding: "14px 18px",
+              outline: "none",
+              boxSizing: "border-box",
+              marginBottom: "1.25rem",
+              borderRadius: "6px",
+              transition: "border-color 0.2s, box-shadow 0.2s"
+            }}
+            onFocus={(e) => { e.target.style.borderColor = "rgba(204,0,0,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(204,0,0,0.1)"; }}
+            onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
+          />
+
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Paste your copy here</p>
           <textarea
             value={content}
@@ -233,11 +266,11 @@ export function DemoScanner() {
 
           <button
             onClick={handleScan}
-            disabled={loading || !content.trim()}
+            disabled={loading || !content.trim() || !email.trim()}
             style={{
               marginTop: "1rem",
               width: "100%",
-              background: loading || !content.trim() ? "rgba(204,0,0,0.3)" : "#cc0000",
+              background: loading || !content.trim() || !email.trim() ? "rgba(204,0,0,0.3)" : "#cc0000",
               color: "white",
               ...syne,
               fontSize: "0.9rem",
@@ -245,8 +278,8 @@ export function DemoScanner() {
               padding: "14px 24px",
               border: "none",
               borderRadius: "9999px",
-              cursor: loading || !content.trim() ? "not-allowed" : "pointer",
-              boxShadow: loading || !content.trim() ? "none" : "0 8px 32px rgba(204,0,0,0.35)",
+              cursor: loading || !content.trim() || !email.trim() ? "not-allowed" : "pointer",
+              boxShadow: loading || !content.trim() || !email.trim() ? "none" : "0 8px 32px rgba(204,0,0,0.35)",
               transition: "all 0.2s",
               letterSpacing: "0.02em"
             }}
