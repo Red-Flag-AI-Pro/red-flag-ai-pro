@@ -2169,6 +2169,12 @@ If you hesitated on any of those, it's worth rewording before you post -not afte
 
 ---
 
+## Need the Wording, Fast?
+
+If you'd rather not write the disclosure from scratch, use our free **[Affiliate & Sponsorship Disclosure Generator](https://www.redflagaipro.com/tools/disclosure-generator)** -pick your platform, your relationship to the brand, and your jurisdiction (US/FTC or UK/ASA), and get compliant wording you can paste straight in. No signup required.
+
+---
+
 ## Scan Before You Post
 
 Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language -alongside 15 other compliance risk categories covering FTC, ASA, GDPR and more.
