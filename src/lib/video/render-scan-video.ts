@@ -1,4 +1,5 @@
 import path from "path";
+import { bundle } from "@remotion/bundler";
 import {
   addBundleToSandbox,
   createSandbox,
@@ -19,7 +20,22 @@ export interface ScanVideoProps {
   redFlags: ScanVideoFlag[];
 }
 
-const BUNDLE_DIR = path.join(process.cwd(), "remotion");
+const ENTRY_POINT = path.join(process.cwd(), "remotion", "src", "index.ts");
+
+let bundleLocationPromise: Promise<string> | null = null;
+
+/**
+ * Compiles the Remotion project into a static, servable bundle (HTML + JS +
+ * assets — no source files, no node_modules). This is the format
+ * `addBundleToSandbox` expects. The result is cached per server instance so
+ * repeat renders don't re-bundle from scratch.
+ */
+function getBundleLocation() {
+  if (!bundleLocationPromise) {
+    bundleLocationPromise = bundle({ entryPoint: ENTRY_POINT });
+  }
+  return bundleLocationPromise;
+}
 
 /**
  * Kicks off a video render on a fresh Vercel Sandbox. Returns identifiers
@@ -32,11 +48,14 @@ export async function startScanVideoRender(
 ): Promise<{ sandboxId: string; cmdId: string }> {
   const inputProps = props as unknown as Record<string, unknown>;
 
-  const sandbox = await createSandbox();
+  const [sandbox, bundleLocation] = await Promise.all([
+    createSandbox(),
+    getBundleLocation(),
+  ]);
 
   await addBundleToSandbox({
     sandbox,
-    bundleDir: BUNDLE_DIR,
+    bundleDir: bundleLocation,
   });
 
   const { sandboxId, cmdId } = await renderMediaOnVercel({
