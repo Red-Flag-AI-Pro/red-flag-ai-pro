@@ -334,7 +334,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pain section */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#080808", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
 
           {/* Section label */}
@@ -439,7 +439,7 @@ export default function LandingPage() {
       </section>
 
       {/* Before vs After */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
 
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Real examples</p>
@@ -535,7 +535,7 @@ export default function LandingPage() {
       </section>
 
       {/* Fines & Penalties */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#080808", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>The cost of getting it wrong</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>Real fines. Real losses. Both sides.</h2>
@@ -579,7 +579,7 @@ export default function LandingPage() {
       </section>
 
       {/* AI Liability */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem", position: "relative", overflow: "hidden"}}>
+      <section style={{background: "#050505", padding: "5rem 1.5rem", position: "relative", overflow: "hidden"}}>
         <div style={{position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.15), transparent 70%)", pointerEvents: "none"}} />
         <div style={{maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>New threat — 2026</p>
@@ -612,7 +612,7 @@ export default function LandingPage() {
       </section>
 
       {/* Value stack */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#080808", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "800px", margin: "0 auto", textAlign: "center"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>The maths</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "3rem"}}>For both sides.</h2>
@@ -636,7 +636,7 @@ export default function LandingPage() {
       </section>
 
       {/* How it works */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "1000px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>How it works</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem"}}>Three steps. 60 seconds.</h2>
@@ -699,7 +699,7 @@ export default function LandingPage() {
 
 
       {/* Testimonials placeholder */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What people say</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem"}}>Real results from real scans.</h2>
@@ -828,7 +828,7 @@ export default function LandingPage() {
       </section>
 
       {/* Email lead magnet — premium dark */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
+      <section style={{background: "#050505", padding: "4rem 1.5rem"}}>
         <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>
@@ -852,10 +852,10 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ — slim 3 questions + link to full FAQ */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
+      <section style={{background: "#080808", padding: "4rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Questions</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "5rem"}}>Still on the fence?</h2>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "2.5rem"}}>Still on the fence?</h2>
           <div>
             {FAQS.slice(0, 3).map((faq) => (
               <div key={faq.q} style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", padding: "2.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)", alignItems: "start"}}>
@@ -873,7 +873,7 @@ export default function LandingPage() {
       </section>
 
       {/* Either Way You Win + Final CTA — combined knockout closer */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem", position: "relative", overflow: "hidden"}}>
+      <section style={{background: "#050505", padding: "4rem 1.5rem", position: "relative", overflow: "hidden"}}>
 
         {/* Massive background text */}
         <div style={{position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", overflow: "hidden"}}>
@@ -884,7 +884,7 @@ export default function LandingPage() {
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Either way, you win</p>
 
           {/* Big statement + CTA first */}
-          <div style={{textAlign: "center", marginBottom: "5rem"}}>
+          <div style={{textAlign: "center", marginBottom: "2.5rem"}}>
             <p style={{
               fontFamily: "'Syne', sans-serif",
               fontSize: "clamp(2rem, 5vw, 4rem)",
