@@ -170,9 +170,14 @@ export default function FeaturesPage() {
       <section style={{ background: "#080808", padding: "8rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "1rem" }}>Start free. No credit card.</h2>
         <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem" }}>Free account includes your first scan and full access to the compliance toolkit.</p>
-        <Link href="/signup" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none" }}>
-          Create free account →
-        </Link>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <Link href="/signup" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none" }}>
+            Create free account →
+          </Link>
+          <Link href="/tools/compliance-checklist" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.65)", ...syne, fontSize: "1rem", fontWeight: 600, padding: "14px 32px", borderRadius: "9999px", textDecoration: "none" }}>
+            Free compliance checklist →
+          </Link>
+        </div>
       </section>
     </div>
   );

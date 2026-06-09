@@ -685,9 +685,14 @@ export default function LandingPage() {
               <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "26 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "26 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
             ))}
           </div>
-          <Link href="/features" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
-            Explore all features and categories →
-          </Link>
+          <div style={{display: "flex", gap: "2rem", flexWrap: "wrap"}}>
+            <Link href="/features" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
+              Explore all features and categories →
+            </Link>
+            <Link href="/tools/compliance-checklist" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textDecoration: "none", letterSpacing: "0.04em"}}>
+              Free compliance checklist →
+            </Link>
+          </div>
         </div>
       </section>
 
