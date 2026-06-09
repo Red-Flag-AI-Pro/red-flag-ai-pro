@@ -142,7 +142,7 @@ export async function enhanceWithAI(
     const client = new OpenAI({ apiKey });
 
     const response = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       temperature: 0.2,
       max_tokens: 2000,
       messages: [
