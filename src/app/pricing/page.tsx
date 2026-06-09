@@ -14,7 +14,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const PRO_FEATURES = [
   "20 scans per month",
-  "16 risk categories",
+  "26 risk categories",
   "Paste text and upload .txt",
   "Plain English flags + rewrite suggestions",
   "0–100 compliance score",
@@ -251,8 +251,8 @@ export default function PricingPage() {
             marginTop: "2px"
           }}>
             {[
-              { value: "24", label: "Risk categories on Sentinel" },
-              { value: "5", label: "Jurisdictions — FTC, GDPR, ASA, FCA, ACCC, CASL" },
+              { value: "26", label: "Risk categories on Sentinel" },
+              { value: "9", label: "Jurisdictions — US · UK · EU · AU · CA · BR · IN · SG · UAE" },
               { value: "60s", label: "From paste to compliance score" },
             ].map((s, i) => (
               <div key={s.label} style={{
