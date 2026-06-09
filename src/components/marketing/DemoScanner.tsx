@@ -281,6 +281,17 @@ export function DemoScanner() {
             border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: "8px",
           }}>
+            <p style={{
+              ...syne,
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.3)",
+              marginBottom: "10px",
+            }}>
+              Builders — pick the markets you sell into.&nbsp;&nbsp;Buyers — pick where you are.
+            </p>
             <JurisdictionPicker
               value={jurisdictions}
               onChange={setJurisdictions}

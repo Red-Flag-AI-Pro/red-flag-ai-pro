@@ -419,6 +419,9 @@ export function ScanForm({ plan = "free" }: Props) {
 
       {/* Jurisdiction picker */}
       <div className="rounded-xl border border-gray-800 bg-gray-950 p-4">
+        <p className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white/30">
+          Builders — pick the markets you sell into.&nbsp;&nbsp;Buyers — pick where you are.
+        </p>
         <JurisdictionPicker
           value={jurisdictions}
           onChange={setJurisdictions}
