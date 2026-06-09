@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { href: "/monitor", label: "Monitoring", icon: "📡" },
   { href: "/team", label: "Team", icon: "⬡" },
   { href: "/billing", label: "Billing", icon: "◈" },
+  { href: "/dashboard/tools", label: "Toolkit", icon: "🧰" },
   { href: "/referrals", label: "Referrals", icon: "🔗" },
   { href: "/settings", label: "Settings", icon: "⚙" },
 ];
