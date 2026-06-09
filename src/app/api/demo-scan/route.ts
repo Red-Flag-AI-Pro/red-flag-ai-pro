@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { analyzeContent } from "@/lib/analyzer";
+import { enhanceWithAI } from "@/lib/ai-enhance";
 import { SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
 import { createServiceClient } from "@/lib/supabase/server";
 
@@ -57,7 +58,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const { flags: allFlags } = analyzeContent("Demo Scan", content, selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined);
+  const { flags: rawFlags } = analyzeContent("Demo Scan", content, selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined);
+
+  // AI enhancement: specific rewrites + catch implied violations
+  const allFlags = await enhanceWithAI(content, rawFlags);
 
   // Demo never shows Sentinel-only categories
   const flags = allFlags.filter(

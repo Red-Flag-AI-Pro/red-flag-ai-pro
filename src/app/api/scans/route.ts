@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
+import { enhanceWithAI } from "@/lib/ai-enhance";
 import { PLAN_LIMITS, SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
 import { sendLoopsEvent } from "@/lib/loops";
 import type { Plan } from "@/types";
@@ -58,11 +59,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Content is required." }, { status: 400 });
   }
 
-  const { flags: allFlags } = analyzeContent(
+  const { flags: rawFlags } = analyzeContent(
     title,
     content,
     selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined
   );
+
+  // AI enhancement: specific rewrites + catch implied violations
+  const allFlags = await enhanceWithAI(content, rawFlags);
 
   // Sentinel-only categories are filtered out for all plans except sentinel
   const flags = plan === "sentinel"
