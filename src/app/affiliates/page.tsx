@@ -160,7 +160,7 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="LinkedIn"
             label="Professional / agency audience"
-            post={`I just scanned a well-known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations — income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns — you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 22 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 25% recurring commission. One agency referral pays you every month they stay subscribed.\n\n→ [YOUR AFFILIATE LINK]`}
+            post={`I just scanned a well-known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations — income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns — you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 25% recurring commission. One agency referral pays you every month they stay subscribed.\n\n→ [YOUR AFFILIATE LINK]`}
           />
           <PromoBox
             platform="X / Twitter"
