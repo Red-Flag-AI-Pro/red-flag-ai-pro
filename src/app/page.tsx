@@ -4,7 +4,6 @@ import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroNew } from "@/components/marketing/HeroNew";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
-import { RiskCalculator } from "@/components/marketing/RiskCalculator";
 import { DemoScanner } from "@/components/marketing/DemoScanner";
 import { ScanCounter } from "@/components/marketing/ScanCounter";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
@@ -288,29 +287,15 @@ export default function LandingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": FAQS.map((f) => ({
-            "@type": "Question",
-            "name": f.q,
-            "acceptedAnswer": { "@type": "Answer", "text": f.a }
-          }))
-        }) }}
-      />
       <StickyCTA />
       <ExitIntent />
       <Navbar />
 
       <HeroNew />
-
-      {/* Demo Scanner */}
       <DemoScanner />
 
 
-      {/* Newsletter CTA */}
+      {/* ── Newsletter CTA ── */}
       <section style={{
         background: "#0f0505",
         borderTop: "1px solid rgba(239,68,68,0.15)",
@@ -673,130 +658,36 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Who is this for */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
-        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+      {/* Who is this for — slim teaser */}
+      <section style={{background: "#080808", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Who it is for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>If you buy or sell online, this was built for you.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Whichever side of the deal you're on, the same five minutes of checking can save you five figures.</p>
-
-          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px"}}>
-            {PERSONAS.map((p) => (
-              <div key={p.label} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", transition: "border-color 0.2s"}}
-              >
-                <span className="flag-wave" style={{display: "inline-block", flexShrink: 0, marginBottom: "1.25rem"}}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/><path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/></svg></span>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>{p.label}</p>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{p.desc}</p>
-              </div>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>If you buy or sell online, this was built for you.</h2>
+          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
+            {["Online Shoppers", "Course Buyers", "Anyone Who's Been Ripped Off", "Marketing Agencies", "Course Creators", "Coaches Running VSLs", "SaaS Founders", "Ecommerce Brands", "FCA-Regulated Businesses"].map((label) => (
+              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.08)", padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
             ))}
           </div>
+          <Link href="/features" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
+            See how it works for your use case →
+          </Link>
         </div>
       </section>
 
-      {/* What we scan for */}
-      <section style={{background: "#050505", padding: "8rem 1.5rem"}}>
-        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+      {/* Features + scan categories teaser */}
+      <section style={{background: "#050505", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>26 categories. One scan.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every category checked against all 9 jurisdictions simultaneously.</p>
-
-          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px"}}>
-            {SCAN_CATEGORIES.map((c) => (
-              <div key={c.label} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem 1.5rem", display: "flex", alignItems: "center", gap: "10px"}}
-              >
-                <span className="flag-wave" style={{display: "inline-block", flexShrink: 0}}><svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/><path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/></svg></span>
-                <span style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.75)"}}>{c.label}</span>
-              </div>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>26 categories. 9 jurisdictions. Both sides.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2rem", lineHeight: 1.7}}>Income claims, fake urgency, health claims, GDPR, FCA, greenwashing, influencer disclosure, AI law — scanned simultaneously against every major market.</p>
+          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
+            {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "26 total categories"].map((label) => (
+              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "26 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "26 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
             ))}
           </div>
-
-          {/* AI Law Categories */}
-          <div style={{marginTop: "2px", borderTop: "2px solid #ef4444"}}>
-            <div style={{background: "#0a0505", padding: "12px 20px", display: "flex", alignItems: "center", gap: "10px", borderBottom: "1px solid rgba(255,255,255,0.06)"}}>
-              <span className="flag-wave">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                  <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-                </svg>
-              </span>
-              <span style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>New — AI Law Compliance</span>
-            </div>
-            <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
-              {AI_CATEGORIES.map((c) => (
-                <div key={c.label} style={{background: "#0a0505", border: "1px solid rgba(239,68,68,0.1)", padding: "1.25rem 1.5rem", display: "flex", alignItems: "flex-start", gap: "12px"}}>
-                  <span className="flag-wave" style={{marginTop: "2px"}}>
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "white", marginBottom: "4px"}}>{c.label}</p>
-                    <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "#ef4444", letterSpacing: "0.04em"}}>{c.tag}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Credibility block */}
-          <div style={{marginTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem"}}>
-            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "1.5rem", textAlign: "center"}}>Trained on real compliance sources</p>
-            <div style={{display: "flex", flexWrap: "wrap", gap: "8px 40px", justifyContent: "center"}}>
-              {["FTC Enforcement Actions", "GDPR Guidelines & Rulings", "ASA & CMA Case Library", "ACCC & CASL Decisions"].map((item) => (
-                <span key={item} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.45)", display: "flex", alignItems: "center", gap: "8px"}}>
-                  <span style={{width: "4px", height: "4px", borderRadius: "50%", background: "#ef4444", flexShrink: 0}} />
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features — Asymmetric Bento */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
-        <div style={{maxWidth: "1200px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Everything included</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>Buy or launch without fear.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every tool you need. Both sides protected.</p>
-
-          {/* Buyer features — first 4, with one spanning wide */}
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>For buyers</p>
-          <div style={{display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2px", marginBottom: "2px"}}>
-            {FEATURES.slice(0, 4).map((f, i) => (
-              <div key={f.title} style={{
-                background: i % 2 === 0 ? "#0f0505" : "#0f0f0f",
-                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
-                padding: "2rem",
-                gridColumn: i === 0 ? "span 2" : "span 1"
-              }}>
-                <p style={{fontFamily: "'DM Mono', monospace", fontSize: "2.5rem", fontWeight: 700, color: i % 2 === 0 ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.25)", lineHeight: 1, marginBottom: "1.5rem", letterSpacing: "-0.03em"}}>
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: i === 0 ? "1.2rem" : "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem"}}>{f.title}</p>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7}}>{f.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Seller/Agency features — next 12 */}
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", margin: "3rem 0 1rem"}}>For sellers and agencies</p>
-          <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px"}}>
-            {FEATURES.slice(4).map((f, i) => (
-              <div key={f.title} style={{
-                background: i % 2 === 0 ? "#0f0505" : "#0f0f0f",
-                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
-                padding: "2rem"
-              }}>
-                <p style={{fontFamily: "'DM Mono', monospace", fontSize: "1.75rem", fontWeight: 700, color: i % 2 === 0 ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.25)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.03em"}}>
-                  {String(i + 5).padStart(2, "0")}
-                </p>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>{f.title}</p>
-                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7}}>{f.description}</p>
-              </div>
-            ))}
-          </div>
+          <Link href="/features" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
+            Explore all features and categories →
+          </Link>
         </div>
       </section>
 
@@ -865,10 +756,24 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Risk Calculator */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
-        <div style={{maxWidth: "1100px", margin: "0 auto"}}>
-          <RiskCalculator />
+      {/* Toolkit teaser — replaces full calculator */}
+      <section style={{background: "#080808", padding: "6rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
+        <div style={{maxWidth: "700px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Free with every account</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "1rem"}}>Your compliance toolkit. Included free.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
+            Sign up free and unlock 9 compliance tools — risk calculators, disclaimer generator, testimonial checker, email compliance, refund rights checker and more. No scan credits used. Always free.
+          </p>
+          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center", marginBottom: "2.5rem"}}>
+            {["Risk Calculator", "Disclaimer Generator", "Testimonial Checker", "Email Compliance", "Urgency Validator", "Health Claim Rater", "Red Flag Checklist", "Refund Rights", "Influencer Disclosure"].map((t) => (
+              <span key={t} style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.1)", padding: "5px 12px", borderRadius: "9999px"}}>
+                {t}
+              </span>
+            ))}
+          </div>
+          <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>
+            Create free account — unlock toolkit →
+          </Link>
         </div>
       </section>
 
@@ -941,46 +846,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* FAQ — Editorial luxury style */}
-      <section style={{background: "#080808", padding: "8rem 1.5rem"}}>
+      {/* FAQ — slim 3 questions + link to full FAQ */}
+      <section style={{background: "#080808", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Questions</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "5rem"}}>Still on the fence?</h2>
-
           <div>
-            {FAQS.map((faq, i) => (
-              <div key={faq.q} style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "3rem",
-                padding: "2.5rem 0",
-                borderTop: "1px solid rgba(255,255,255,0.06)",
-                alignItems: "start"
-              }}>
-                {/* Question — large, bold */}
-                <p style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontSize: "1.2rem",
-                  fontWeight: 700,
-                  color: "white",
-                  lineHeight: 1.3,
-                  letterSpacing: "-0.01em"
-                }}>
-                  {faq.q}
-                </p>
-                {/* Answer — smaller, muted, red left border */}
-                <p style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontSize: "1rem",
-                  lineHeight: 1.7,
-                  color: "#fca5a5",
-                  borderLeft: "2px solid #ef4444",
-                  paddingLeft: "1.5rem"
-                }}>
-                  {faq.a}
-                </p>
+            {FAQS.slice(0, 3).map((faq) => (
+              <div key={faq.q} style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", padding: "2.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)", alignItems: "start"}}>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.3, letterSpacing: "-0.01em"}}>{faq.q}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", lineHeight: 1.7, color: "#fca5a5", borderLeft: "2px solid #ef4444", paddingLeft: "1.5rem"}}>{faq.a}</p>
               </div>
             ))}
+            <div style={{paddingTop: "2.5rem", borderTop: "1px solid rgba(255,255,255,0.06)"}}>
+              <Link href="/faq" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.05em"}}>
+                See all questions →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -1054,128 +936,24 @@ export default function LandingPage() {
       </section>
 
 
-      {/* Sentinel Section — premium dark cinematic */}
+      {/* Sentinel teaser — slim */}
       <section style={{
         background: "linear-gradient(180deg, #0a0a0a 0%, #0d0010 50%, #0a0a0a 100%)",
-        padding: "8rem 1.5rem",
-        position: "relative",
-        overflow: "hidden",
+        padding: "6rem 1.5rem",
+        textAlign: "center",
         borderTop: "1px solid rgba(255,255,255,0.05)"
       }}>
-        {/* Top glow */}
-        <div style={{
-          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
-          width: "800px", height: "300px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center top, rgba(139,0,255,0.12) 0%, transparent 70%)"
-        }} />
-
-        {/* Subtle grid */}
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.025,
-          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
-        }} />
-
-        <div style={{maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1}}>
-
-          {/* Header */}
-          <div style={{display: "flex", alignItems: "center", gap: "10px", marginBottom: "3rem"}}>
-            <span style={{width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", animation: "pulseRed 2s ease-in-out infinite"}} />
-            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>Sentinel — enterprise compliance</p>
-          </div>
-
-          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start"}}>
-
-            {/* Left */}
-            <div>
-              <h2 style={{
-                fontFamily: "'Syne', sans-serif",
-                fontSize: "clamp(3rem, 8vw, 6rem)",
-                fontWeight: 800, lineHeight: 0.95,
-                letterSpacing: "-0.04em",
-                background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                marginBottom: "1.5rem"
-              }}>
-                Sentinel
-              </h2>
-
-              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.15rem", fontWeight: 600, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, marginBottom: "1rem"}}>
-                Compliance infrastructure for agencies, legal teams and regulated businesses.
-              </p>
-
-              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2.5rem"}}>
-                Red Flag AI Pro scans copy. Sentinel does everything beyond that — human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a full 3-year audit trail. Built for the teams where a compliance failure is a regulatory event, not just an embarrassment.
-              </p>
-
-              {/* Feature pills */}
-              <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2.5rem"}}>
-                {["Human Review Log", "Legal Timestamps", "FCA Promotions", "Greenwashing Scanner", "Signed Certificates", "3-Year Retention", "API Access"].map((f) => (
-                  <span key={f} style={{
-                    fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600,
-                    color: "rgba(255,255,255,0.5)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    padding: "5px 12px", borderRadius: "9999px"
-                  }}>{f}</span>
-                ))}
-              </div>
-
-              <div style={{display: "flex", gap: "12px", flexWrap: "wrap"}}>
-                <Link href="/sentinel" style={{
-                  display: "inline-flex", alignItems: "center", gap: "8px",
-                  background: "#cc0000", color: "white",
-                  fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700,
-                  padding: "12px 28px", borderRadius: "9999px",
-                  boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
-                  textDecoration: "none"
-                }}>
-                  Learn about Sentinel
-                </Link>
-                <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
-                  display: "inline-flex", alignItems: "center",
-                  fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600,
-                  color: "rgba(255,255,255,0.4)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  padding: "12px 28px", borderRadius: "9999px",
-                  textDecoration: "none"
-                }}>
-                  Get in touch
-                </a>
-              </div>
-            </div>
-
-            {/* Right — feature grid with animated flags */}
-            <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px"}}>
-              {[
-                { title: "Human Review Log", desc: "Every review logged and timestamped" },
-                { title: "Legal Timestamps", desc: "Cryptographic proof of when you checked" },
-                { title: "Signed Certificates", desc: "PDF certificates for every campaign" },
-                { title: "FCA Promotions", desc: "Financial promotions checked at source" },
-                { title: "Greenwashing", desc: "EU Green Claims Directive compliance" },
-                { title: "API Access", desc: "Plug into your existing workflow" },
-              ].map((item, i) => (
-                <div key={item.title} style={{
-                  background: i % 2 === 0 ? "#0f0505" : "#0a0010",
-                  border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(139,0,255,0.08)"}`,
-                  padding: "1.5rem"
-                }}>
-                  <span className="flag-wave" style={{display: "inline-block", marginBottom: "0.75rem"}}>
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-                    </svg>
-                  </span>
-                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 700, color: "white", marginBottom: "4px"}}>{item.title}</p>
-                  <p style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)", lineHeight: 1.6}}>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
+        <div style={{maxWidth: "600px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel — enterprise compliance</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a 3-year audit trail.</p>
+          <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
+            <Link href="/sentinel" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>Learn about Sentinel</Link>
+            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
           </div>
         </div>
       </section>
+
 
       {/* Footer */}
       <footer style={{background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 1.5rem 3rem", textAlign: "center"}}>
