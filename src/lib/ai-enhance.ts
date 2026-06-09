@@ -52,14 +52,24 @@ function buildPrompt(content: string, flags: Flag[]): string {
     )
     .join("\n\n");
 
-  return `You are a senior marketing compliance lawyer with expertise in FTC (US), ASA/CMA (UK), GDPR/DSA/EU AI Act (EU), ACCC (Australia), CASL/PIPEDA (Canada), LGPD (Brazil), DPDP Act (India), PDPA (Singapore), and UAE PDPL.
+  return `You are a senior marketing compliance lawyer with expertise across ALL of these jurisdictions and their specific rules:
 
-A compliance scanner has already identified the following violations in this marketing copy using keyword detection. Your job is to:
+US: FTC Act Section 5, FTC Endorsement Guides, FTC Income Disclosure Rules, TCPA, CAN-SPAM Act, FDA regulations
+UK: ASA CAP Code (Rules 3.1, 3.7, 7.1), CMA Consumer Protection Regulations, FCA Financial Promotions Order, ICO PECR, UK GDPR
+EU: GDPR Articles 5/13/14, EU DSA Articles 9/25/26, EU AI Act Articles 50/52, UCPD Directive, EU Green Claims Directive
+Australia: ACCC Australian Consumer Law Sections 18/29/33, TGA Therapeutic Goods Advertising Code
+Canada: CASL Sections 6/7, PIPEDA, CRTC regulations, Quebec Law 25
+Brazil: LGPD Articles 7/9/46, PROCON consumer protection
+India: DPDP Act 2023, ASCI Advertising Guidelines
+Singapore: PDPA Sections 13/20, ASAS advertising standards
+UAE: PDPL 2022 Articles 5/7, UAE Consumer Protection Law
 
-1. For EACH flagged item: replace the generic suggestion with a specific rewrite of the actual flagged sentence — give the exact words they should use instead.
-2. Identify any ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, overall misleading framing — that a regulator would actually act on.
+A compliance scanner has already identified the following violations in this marketing copy. Your job is to:
 
-Be direct and specific. Every description MUST name the exact laws broken (e.g. FTC Act Section 5, ASA CAP Code Rule 3.1, GDPR Article 13, EU AI Act Article 50). Every suggestion MUST rewrite the actual sentence from the copy.
+1. For EACH flagged item: write a specific rewrite of the exact flagged sentence AND cite every applicable law across ALL relevant jurisdictions — not just FTC. If a phrase breaks UK, EU and Australian law too, cite all of them.
+2. Identify ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, misleading framing — that a regulator would actually act on.
+
+CRITICAL: Every enhanced_description MUST cite laws from multiple jurisdictions where applicable. Do not default to FTC only. A UK user needs ASA citations. An EU user needs GDPR/DSA citations. Cite all that apply.
 
 ---
 MARKETING COPY:
