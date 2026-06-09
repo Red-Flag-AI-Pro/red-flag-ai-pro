@@ -12,7 +12,7 @@ import { StickyCTA } from "@/components/marketing/StickyCTA";
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
   description:
-    "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC and CASL violations and get a plain English fix. Free. No account needed. The world's only 5-jurisdiction compliance scanner protecting both sides.",
+    "Buyers: paste any ad and find out in 60 seconds if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, ACCC, CASL, LGPD, DPDP, PDPA and UAE PDPL violations and get a plain English fix. Free. No account needed. The world's only 9-jurisdiction AI compliance scanner protecting both sides.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -106,7 +106,7 @@ const FEATURES = [
     icon: "🎬",
     title: "YouTube VSL and Audio Scanning",
     description:
-      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 24 risk categories.",
+      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 26 risk categories.",
   },
   {
     icon: "🔍",

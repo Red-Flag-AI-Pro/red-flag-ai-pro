@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "About — The Story Behind Red Flag AI Pro",
-  description: "Red Flag AI Pro was built by James Stokes — a founder who went from prison, homelessness and a terminal diagnosis to building the world's only 5-jurisdiction marketing compliance scanner.",
+  description: "Red Flag AI Pro was built by James Stokes — a founder who went from prison, homelessness and a terminal diagnosis to building the world's only 9-jurisdiction AI marketing compliance scanner.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
 };
 

@@ -1757,7 +1757,7 @@ The disclaimer accompanies a substantiated claim, it does not replace substantia
 
 ## Scan Your Income Claims
 
-Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all five jurisdictions simultaneously.
+Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 9 jurisdictions simultaneously — with AI-powered specific rewrites for every violation found.
 
 [Scan your copy free →](https://www.redflagaipro.com)
     `,

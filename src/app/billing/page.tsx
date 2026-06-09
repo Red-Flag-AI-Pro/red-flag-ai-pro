@@ -19,7 +19,7 @@ const PLANS = [
     key: "enterprise" as const,
     name: "Growth",
     price: "£199/mo",
-    features: ["Unlimited scans", "16 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
+    features: ["Unlimited scans", "26 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
   },
   {
     key: "sentinel" as const,

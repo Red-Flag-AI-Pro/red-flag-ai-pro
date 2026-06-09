@@ -281,7 +281,7 @@ const RULES: Rule[] = [
     flag_description:
       "Possible contradiction between sales copy guarantees and this no-refund clause. Statutory consumer rights in the UK, EU, Australia, and Canada cannot be contracted out of.",
     suggestion:
-      "Audit all guarantee language against your TOS. Statutory rights override contract terms in every Big 5 jurisdiction — UK (14 days), EU (14 days), Australia (ACL guarantees), Canada (provincial rights). A 'no refunds' clause does not override these rights.",
+      "Audit all guarantee language against your TOS. Statutory rights override contract terms across all 9 jurisdictions — UK (14 days), EU (14 days), Australia (ACL guarantees), Canada (provincial rights), Brazil (LGPD/CDC), India (DPDP Act), Singapore (PDPA), UAE (Consumer Protection Law). A 'no refunds' clause does not override these rights.",
     regulations: [
       "FTC (US)",
       "Consumer Rights Act 2015 (UK)",

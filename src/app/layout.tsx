@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Are you a Builder? Are you a Buyer? Scan it before it's too late.",
     description:
-      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL. 24 risk categories. Free — no account needed.",
+      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL, LGPD, DPDP, PDPA, UAE PDPL. 26 risk categories across 9 jurisdictions. AI-powered. Free — no account needed.",
     images: [
       {
         url: "/og-image.png",
@@ -175,14 +175,14 @@ export default function RootLayout({
               "@type": "SoftwareApplication",
               "name": "Red Flag AI Pro",
               "url": "https://www.redflagaipro.com",
-              "description": "The world's only 5-jurisdiction marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, EU AI Act and FCA rules. Used by solopreneurs, agencies and regulated businesses.",
+              "description": "The world's only 9-jurisdiction AI marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, LGPD, DPDP Act, PDPA and UAE PDPL. 26 risk categories. Used by solopreneurs, agencies and regulated businesses.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
               "offers": [
                 {
                   "@type": "Offer",
                   "name": "Pro",
-                  "price": "49",
+                  "price": "39",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 },
