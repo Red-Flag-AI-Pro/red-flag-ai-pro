@@ -59,7 +59,7 @@ A compliance scanner has already identified the following violations in this mar
 1. For EACH flagged item: replace the generic suggestion with a specific rewrite of the actual flagged sentence — give the exact words they should use instead.
 2. Identify any ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, overall misleading framing — that a regulator would actually act on.
 
-Be direct and specific. Do not repeat the generic rule — give the actual fix for this specific sentence.
+Be direct and specific. Every description MUST name the exact laws broken (e.g. FTC Act Section 5, ASA CAP Code Rule 3.1, GDPR Article 13, EU AI Act Article 50). Every suggestion MUST rewrite the actual sentence from the copy.
 
 ---
 MARKETING COPY:
@@ -75,8 +75,8 @@ Respond ONLY with valid JSON matching this exact structure. No markdown, no expl
   "enhanced": [
     {
       "index": 0,
-      "specific_suggestion": "Replace with the exact compliant wording they should use for this specific sentence.",
-      "enhanced_description": "One sentence explaining exactly why this specific phrasing is a problem under which specific law."
+      "specific_suggestion": "The exact rewritten sentence the user should use instead — specific to their actual copy, not generic advice.",
+      "enhanced_description": "This specific phrase breaks [exact law names e.g. FTC Act Section 5, ASA CAP Code Rule 3.7, GDPR Article 13] because [specific reason]. A regulator would treat this as [specific enforcement risk]."
     }
   ],
   "additional_flags": [
@@ -84,8 +84,8 @@ Respond ONLY with valid JSON matching this exact structure. No markdown, no expl
       "category": "one of: income_claim|urgency|scarcity|testimonial|guarantee|health_claim|legal_disclaimer|contract_contradiction|data_privacy|hidden_fees|fake_reviews|comparative_advertising|email_compliance|dark_patterns|ai_disclosure|ai_endorsement|automated_decisions|financial_promotion|greenwashing|subscription_trap|influencer_disclosure|sms_marketing|online_safety",
       "severity": "high|medium|low",
       "text_excerpt": "The exact sentence or phrase from the copy that is problematic",
-      "flag_description": "Plain English explanation of the specific violation and which law it breaks",
-      "suggestion": "The exact compliant rewrite for this specific sentence"
+      "flag_description": "This phrase breaks [exact law names] because [specific reason]. A regulator would treat this as [specific enforcement risk].",
+      "suggestion": "The exact rewritten sentence the user should use instead — specific to their actual copy, not generic advice."
     }
   ]
 }
