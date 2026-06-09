@@ -544,6 +544,32 @@ export default function LandingPage() {
       </section>
 
 
+      {/* Affiliate — full section */}
+      <section style={{background: "#cc0000", padding: "5rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden"}}>
+        <div style={{position: "absolute", top: "-60px", left: "50%", transform: "translateX(-50%)", width: "900px", height: "400px", background: "radial-gradient(ellipse at center, rgba(255,255,255,0.08), transparent 65%)", pointerEvents: "none"}} />
+        <div style={{maxWidth: "780px", margin: "0 auto", position: "relative", zIndex: 1}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "1.25rem"}}>Affiliate Programme</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.25rem"}}>
+            Get paid every month<br />for a link you share once.
+          </h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.8)", maxWidth: "520px", margin: "0 auto 2rem", lineHeight: 1.7}}>
+            25% recurring commission. One Sentinel referral = <strong style={{color: "white"}}>£250 every month</strong>. Free to join. No approval process.
+          </p>
+          <div style={{display: "flex", gap: "2.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem"}}>
+            {[["25%", "Recurring commission"], ["£250/mo", "Per Sentinel referral"], ["90 days", "Cookie window"], ["Free", "To join"]].map(([val, label]) => (
+              <div key={label} style={{textAlign: "center"}}>
+                <p style={{fontFamily: "'DM Mono', monospace", fontSize: "1.75rem", fontWeight: 700, color: "white", lineHeight: 1, marginBottom: "4px"}}>{val}</p>
+                <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.65)", textTransform: "uppercase", letterSpacing: "0.1em"}}>{label}</p>
+              </div>
+            ))}
+          </div>
+          <Link href="/affiliates" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "white", color: "#cc0000", fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 800, padding: "14px 40px", borderRadius: "9999px", textDecoration: "none", boxShadow: "0 8px 32px rgba(0,0,0,0.2)"}}>
+            Join the programme →
+          </Link>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.5)", marginTop: "1rem"}}>Free to join · No monthly fee · Powered by Tolt</p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer style={{background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "4rem 1.5rem 3rem", textAlign: "center"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
