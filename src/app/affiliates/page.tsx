@@ -31,6 +31,8 @@ const EARNINGS = [
   { referrals: 10, plan: "Pro (£39/mo)", monthly: "£98", annual: "£1,170" },
   { referrals: 5, plan: "Growth (£199/mo)", monthly: "£249", annual: "£2,985" },
   { referrals: 10, plan: "Growth (£199/mo)", monthly: "£499", annual: "£5,970" },
+  { referrals: 1, plan: "Sentinel (£999/mo)", monthly: "£250", annual: "£2,997" },
+  { referrals: 3, plan: "Sentinel (£999/mo)", monthly: "£749", annual: "£8,991" },
 ];
 
 export default function AffiliatesPage() {
@@ -115,14 +117,17 @@ export default function AffiliatesPage() {
                 <span key={h} style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>{h}</span>
               ))}
             </div>
-            {EARNINGS.map((row, i) => (
-              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", padding: "1.25rem 1.5rem", borderBottom: i < EARNINGS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", background: i % 2 === 0 ? "#0a0a0a" : "#080808" }}>
-                <span style={{ ...mono, fontSize: "1.25rem", fontWeight: 700, color: "white" }}>{row.referrals}</span>
-                <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", alignSelf: "center" }}>{row.plan}</span>
-                <span style={{ ...mono, fontSize: "1.1rem", fontWeight: 700, color: "#ef4444" }}>{row.monthly}</span>
-                <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.6)", alignSelf: "center" }}>{row.annual}</span>
-              </div>
-            ))}
+            {EARNINGS.map((row, i) => {
+              const isSentinel = row.plan.includes("Sentinel");
+              return (
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", padding: "1.25rem 1.5rem", borderBottom: i < EARNINGS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", background: isSentinel ? "rgba(204,0,0,0.06)" : i % 2 === 0 ? "#0a0a0a" : "#080808" }}>
+                  <span style={{ ...mono, fontSize: "1.25rem", fontWeight: 700, color: isSentinel ? "#fca5a5" : "white" }}>{row.referrals}</span>
+                  <span style={{ ...syne, fontSize: "13px", color: isSentinel ? "#fca5a5" : "rgba(255,255,255,0.5)", alignSelf: "center", fontWeight: isSentinel ? 700 : 400 }}>{row.plan}</span>
+                  <span style={{ ...mono, fontSize: "1.1rem", fontWeight: 700, color: "#ef4444" }}>{row.monthly}</span>
+                  <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: isSentinel ? "white" : "rgba(255,255,255,0.6)", alignSelf: "center" }}>{row.annual}</span>
+                </div>
+              );
+            })}
           </div>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem", textAlign: "center" }}>25% of net revenue. Paid monthly. Referrals must remain active subscribers.</p>
         </div>
