@@ -170,6 +170,12 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
               <p className="text-lg font-bold text-gray-900">{flags.length}</p>
               <p className="text-xs text-gray-500">Total flags</p>
             </div>
+            <div className="flex items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-3 py-2">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0">
+                <path d="M6 1l1.2 3.6H11L8.1 6.8l1.1 3.4L6 8.2l-3.2 2 1.1-3.4L1 4.6h3.8L6 1z" fill="#7c3aed"/>
+              </svg>
+              <span className="text-xs font-semibold text-violet-700">AI&#8209;analysed</span>
+            </div>
             <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-center">
               <p className="text-lg font-bold text-red-700">{highCount}</p>
               <p className="text-xs text-red-500">High</p>
