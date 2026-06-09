@@ -48,7 +48,7 @@ const VALID_SEVERITIES: Severity[] = ["high", "medium", "low"];
 function buildPrompt(content: string, flags: Flag[]): string {
   const flagList = flags
     .map((f, i) =>
-      `[${i}] Category: ${f.category} | Severity: ${f.severity}\nFlagged text: "${f.text_excerpt ?? "N/A"}"\nCurrent generic suggestion: ${f.suggestion ?? "N/A"}`
+      `[FLAG ${i}]\nCategory: ${f.category} | Severity: ${f.severity}\nExact flagged sentence from the copy: "${f.text_excerpt ?? "N/A"}"\nYour task: rewrite THIS exact sentence into a compliant version. Do not rewrite any other sentence.`
     )
     .join("\n\n");
 
