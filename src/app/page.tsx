@@ -437,7 +437,7 @@ export default function LandingPage() {
         <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>
-            The 16-Point Marketing Compliance Checklist
+            The 26-Category Marketing Compliance Checklist
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
             Every compliance check you need before you launch. Every red flag to look for before you buy. Free. No spam.
