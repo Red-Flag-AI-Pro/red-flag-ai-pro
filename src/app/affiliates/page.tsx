@@ -56,7 +56,7 @@ export default function AffiliatesPage() {
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1rem" }}>
             <a
-              href="https://redflagaipro.tolt.io"
+              href="https://red-flag-ai-pro.tolt.io"
               target="_blank"
               rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none" }}
@@ -160,7 +160,7 @@ export default function AffiliatesPage() {
             Join the programme via Tolt, get your unique link, and start earning from your first referral.
           </p>
           <a
-            href="https://redflagaipro.tolt.io"
+            href="https://red-flag-ai-pro.tolt.io"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none" }}
