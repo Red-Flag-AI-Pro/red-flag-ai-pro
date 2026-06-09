@@ -65,15 +65,12 @@ export function HeroNew() {
       </div>
 
       {/* ── HERO ── */}
-      <section style={{
+      <section className="hero-section" style={{
         background: "#050505",
-        minHeight: "100dvh",
         display: "flex",
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        paddingTop: "8rem",
-        paddingBottom: "6rem",
         paddingLeft: "1.5rem",
         paddingRight: "1.5rem"
       }}>
@@ -164,7 +161,7 @@ export function HeroNew() {
 
           {/* Everything below fades in after "Scan it." */}
           {/* Subheadline */}
-          <p style={{
+          <p className="hero-subheadline" style={{
             opacity: rest ? 1 : 0,
             transform: rest ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)",
@@ -210,7 +207,7 @@ export function HeroNew() {
           </div>
 
           {/* Fine print */}
-          <p style={{
+          <p className="hero-fineprint" style={{
             opacity: rest ? 1 : 0,
             transition: "opacity 0.8s 0.2s",
             fontSize: "13px", color: "rgba(255,255,255,0.55)",
@@ -220,11 +217,11 @@ export function HeroNew() {
             No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee
           </p>
 
-          {/* Jurisdiction flags */}
-          <div style={{
+          {/* Jurisdiction flags — hidden on mobile */}
+          <div className="hero-flags-row" style={{
             opacity: rest ? 1 : 0,
             transition: "opacity 0.8s 0.3s",
-            display: "flex", flexWrap: "wrap",
+            flexWrap: "wrap",
             gap: "48px", justifyContent: "center", marginBottom: "3rem"
           }}>
             {[
@@ -255,11 +252,11 @@ export function HeroNew() {
             ))}
           </div>
 
-          {/* Stats strip — simple, clean */}
-          <div style={{
+          {/* Stats strip — hidden on mobile */}
+          <div className="hero-stats-row" style={{
             opacity: rest ? 1 : 0,
             transition: "opacity 0.8s 0.4s",
-            display: "flex", flexWrap: "wrap",
+            flexWrap: "wrap",
             gap: "8px 32px", justifyContent: "center", alignItems: "center"
           }}>
             {[

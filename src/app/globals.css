@@ -176,6 +176,55 @@
 .flag-wave:nth-child(3n) { animation-delay: 0.6s; }
 .flag-wave:nth-child(4n) { animation-delay: 0.9s; }
 
+/* ── Mobile hero optimisation ─────────────────────────────────────────────
+   On phones the hero fills the whole viewport before the scanner is visible.
+   We hide the flags grid and stats strip on mobile so users reach the scanner
+   with minimal scrolling. The flags are already visible in the jurisdiction
+   picker inside the scanner itself.
+──────────────────────────────────────────────────────────────────────────── */
+.hero-section {
+  min-height: 100dvh;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+}
+
+.hero-flags-row {
+  display: flex;
+}
+
+.hero-stats-row {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: unset !important;
+    padding-top: 3rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .hero-flags-row {
+    display: none !important;
+  }
+
+  .hero-stats-row {
+    display: none !important;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-subheadline {
+    font-size: 1rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .hero-fineprint {
+    margin-bottom: 2rem !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up, .animate-fade-in, .animate-float,
   .animate-pulse-red, .reveal, .btn-primary, .btn-secondary,
