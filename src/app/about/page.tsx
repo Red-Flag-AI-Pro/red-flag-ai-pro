@@ -333,7 +333,7 @@ export default function AboutPage() {
             See what we find.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            26 risk categories. 8 jurisdictions. 60 seconds. No credit card.
+            26 risk categories. 9 jurisdictions. 60 seconds. No credit card.
           </p>
           <a href="/#demo" style={{
             display: "inline-block",

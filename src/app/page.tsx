@@ -24,7 +24,7 @@ const jsonLd = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "The world's only compliance scanner that protects buyers and sellers across 8 jurisdictions. 26 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
+    "The world's only compliance scanner that protects buyers and sellers across 9 jurisdictions. 26 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
   offers: [
     {
       "@type": "Offer",
@@ -198,7 +198,7 @@ const PERSONAS = [
   { icon: "🎓", label: "Course Creators", desc: "Income claims, testimonials and guarantees checked across FTC, ASA, ACCC and CASL before you spend on ads." },
   { icon: "🎯", label: "Coaches Running VSLs", desc: "YouTube transcript fetching and audio transcription. Scan every word of your VSL before it goes live." },
   { icon: "💻", label: "SaaS Founders", desc: "Free trial terms, subscription language, data collection and pricing claims — all checked before ads run." },
-  { icon: "🛒", label: "Ecommerce Brands", desc: "Product claims, sustainability assertions and pricing language checked across 8 jurisdictions simultaneously." },
+  { icon: "🛒", label: "Ecommerce Brands", desc: "Product claims, sustainability assertions and pricing language checked across 9 jurisdictions simultaneously." },
   { icon: "🏦", label: "FCA-Regulated Businesses", desc: "Financial promotions checked against FCA rules before publication. Signed PDF certificates as audit evidence." },
 ];
 
@@ -658,7 +658,7 @@ export default function LandingPage() {
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px"}}>
             {[
               { step: "01", title: "Paste your copy", desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish." },
-              { step: "02", title: "26 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing, SMS marketing, online safety — across all 8 jurisdictions simultaneously." },
+              { step: "02", title: "26 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing, SMS marketing, online safety — across all 9 jurisdictions simultaneously." },
               { step: "03", title: "Truth or fix. Instantly.", desc: "Every flag explained in plain English with a compliant rewrite. Know before you spend. Launch with confidence." },
             ].map((s) => (
               <div key={s.step} style={{background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem"}}>
@@ -698,7 +698,7 @@ export default function LandingPage() {
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem"}}>26 categories. One scan.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every category checked against all 8 jurisdictions simultaneously.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem"}}>Every category checked against all 9 jurisdictions simultaneously.</p>
 
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px"}}>
             {SCAN_CATEGORIES.map((c) => (

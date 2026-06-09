@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC, CASL, PDPA and UAE PDPL. 26 risk categories. 8 jurisdictions. Free scan — no account needed.",
+    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC, CASL, PDPA and UAE PDPL. 26 risk categories. 9 jurisdictions. Free scan — no account needed.",
   keywords: [
     // Core product
     "marketing compliance scanner",

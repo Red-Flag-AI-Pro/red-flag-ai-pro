@@ -154,7 +154,7 @@ export default function SentinelPage() {
           </p>
 
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, maxWidth: "520px", margin: "0 auto 3.5rem" }}>
-            All 26 risk categories, legally mapped across 8 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is a regulatory event.
+            All 26 risk categories, legally mapped across 9 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
