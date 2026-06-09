@@ -16,6 +16,7 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const plan = body.plan as "pro" | "enterprise" | "sentinel" | "audit";
+  const toltReferral = body.tolt_referral as string | undefined;
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
           quantity: 1,
         },
       ],
-      metadata: { user_id: user.id, plan: "audit" },
+      metadata: { user_id: user.id, plan: "audit", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
       success_url: `${appUrl}/audit?success=1`,
       cancel_url: `${appUrl}/audit?canceled=1`,
     });
@@ -61,7 +62,7 @@ export async function POST(request: Request) {
         quantity: 1,
       },
     ],
-    metadata: { user_id: user.id, plan },
+    metadata: { user_id: user.id, plan, ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
     success_url: `${appUrl}/billing?success=1`,
     cancel_url: `${appUrl}/billing?canceled=1`,
   });

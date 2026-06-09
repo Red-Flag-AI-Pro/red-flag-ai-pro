@@ -161,7 +161,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
-      <head />
+      <head>
+        <script async src="https://files.tlt-cdn.com/tlt.js" data-tolt="pk_uHSrWu9BsJAGNpueQV69rTrd" />
+      </head>
       <body className={inter.className}>
         {children}
         <Analytics />
