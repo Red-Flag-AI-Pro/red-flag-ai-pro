@@ -48,7 +48,7 @@ const VALID_SEVERITIES: Severity[] = ["high", "medium", "low"];
 function buildPrompt(content: string, flags: Flag[]): string {
   const flagList = flags
     .map((f, i) =>
-      `[FLAG ${i}]\nCategory: ${f.category} | Severity: ${f.severity}\nExact flagged sentence from the copy: "${f.text_excerpt ?? "N/A"}"\nYour task: rewrite THIS exact sentence into a compliant version. Do not rewrite any other sentence.`
+      `[FLAG ${i}]\nCategory: ${f.category} | Severity: ${f.severity}\nFlagged sentence: "${f.text_excerpt ?? "N/A"}"\nRewrite only this sentence. Your response for index ${i} must contain a specific_suggestion that is a compliant rewrite of exactly: "${f.text_excerpt ?? "N/A"}"`
     )
     .join("\n\n");
 
@@ -159,12 +159,23 @@ export async function enhanceWithAI(
     if (!isValidResponse(parsed)) return flags;
 
     // Apply specific suggestions back onto the keyword flags
+    // Only apply if the suggestion is meaningfully different from the flagged text
     const enhanced = flags.map((flag, i) => {
       const improvement = parsed.enhanced.find((e) => e.index === i);
       if (!improvement) return flag;
+
+      const suggestion = improvement.specific_suggestion?.trim();
+      const original = flag.text_excerpt?.trim() ?? "";
+
+      // Reject the AI suggestion if it suspiciously matches a different flag's text
+      const matchesAnotherFlag = flags.some(
+        (other, j) => j !== i && other.text_excerpt && suggestion?.includes(other.text_excerpt.slice(0, 30))
+      );
+      if (matchesAnotherFlag) return flag;
+
       return {
         ...flag,
-        suggestion: improvement.specific_suggestion || flag.suggestion,
+        suggestion: suggestion || flag.suggestion,
         flag_description: improvement.enhanced_description || flag.flag_description,
       };
     });
