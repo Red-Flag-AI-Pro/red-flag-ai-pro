@@ -12,6 +12,7 @@ export async function POST(request: Request) {
   const content: string = body.content ?? "";
   const rawEmail: string = body.email ?? "";
   const email = rawEmail.trim().toLowerCase();
+  const selectedJurisdictions = body.jurisdictions ?? [];
 
   if (!email || !EMAIL_REGEX.test(email)) {
     return NextResponse.json(
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { flags: allFlags } = analyzeContent("Demo Scan", content);
+  const { flags: allFlags } = analyzeContent("Demo Scan", content, selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined);
 
   // Demo never shows Sentinel-only categories
   const flags = allFlags.filter(

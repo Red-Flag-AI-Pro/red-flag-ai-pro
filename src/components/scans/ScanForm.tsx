@@ -4,6 +4,8 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { JurisdictionPicker, JURISDICTIONS } from "@/components/ui/JurisdictionPicker";
+import type { JurisdictionCode } from "@/lib/analyzer";
 import type { Plan } from "@/types";
 
 interface Props {
@@ -32,6 +34,9 @@ export function ScanForm({ plan = "free" }: Props) {
   const isSentinel = plan === "sentinel";
   const isGrowthOrAbove = plan === "enterprise" || plan === "sentinel";
   const canScanUrl = isGrowthOrAbove;
+  const [jurisdictions, setJurisdictions] = useState<JurisdictionCode[]>(
+    JURISDICTIONS.map(j => j.code)
+  );
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -94,6 +99,7 @@ export function ScanForm({ plan = "free" }: Props) {
           body: JSON.stringify({
             title: title.trim() || "Untitled Scan",
             content: content.trim(),
+            jurisdictions: jurisdictions.length === JURISDICTIONS.length ? [] : jurisdictions,
           }),
         });
       }
@@ -409,6 +415,15 @@ export function ScanForm({ plan = "free" }: Props) {
             </div>
           )}
         </div>
+      </div>
+
+      {/* Jurisdiction picker */}
+      <div className="rounded-xl border border-gray-800 bg-gray-950 p-4">
+        <JurisdictionPicker
+          value={jurisdictions}
+          onChange={setJurisdictions}
+          compact
+        />
       </div>
 
       {error && (

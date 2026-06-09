@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
+import { JurisdictionPicker, JURISDICTIONS } from "@/components/ui/JurisdictionPicker";
+import type { JurisdictionCode } from "@/lib/analyzer";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" };
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" };
@@ -59,6 +61,9 @@ export function DemoScanner() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<DemoResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [jurisdictions, setJurisdictions] = useState<JurisdictionCode[]>(
+    JURISDICTIONS.map(j => j.code)
+  );
 
   async function handleScan() {
     if (!content.trim()) return;
@@ -76,7 +81,11 @@ export function DemoScanner() {
       const res = await fetch("/api/demo-scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content, email: email.trim() }),
+        body: JSON.stringify({
+          content,
+          email: email.trim(),
+          jurisdictions: jurisdictions.length === JURISDICTIONS.length ? [] : jurisdictions,
+        }),
       });
 
       const data = await res.json();
@@ -264,13 +273,27 @@ export function DemoScanner() {
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
 
+          {/* Jurisdiction picker */}
+          <div style={{
+            marginTop: "1.25rem",
+            padding: "1.25rem",
+            background: "rgba(255,255,255,0.02)",
+            border: "1px solid rgba(255,255,255,0.07)",
+            borderRadius: "8px",
+          }}>
+            <JurisdictionPicker
+              value={jurisdictions}
+              onChange={setJurisdictions}
+            />
+          </div>
+
           {error && (
             <p style={{...syne, fontSize: "13px", color: "#ef4444", marginTop: "0.75rem"}}>{error}</p>
           )}
 
           <button
             onClick={handleScan}
-            disabled={loading || !content.trim() || !email.trim()}
+            disabled={loading || !content.trim() || !email.trim() || jurisdictions.length === 0}
             style={{
               marginTop: "1rem",
               width: "100%",
@@ -300,7 +323,12 @@ export function DemoScanner() {
                 }} />
                 Scanning...
               </span>
-            ) : "Scan Now — Free"}
+            ) : jurisdictions.length === 0
+              ? "Select at least one jurisdiction"
+              : jurisdictions.length === JURISDICTIONS.length
+              ? "Scan Now — All 9 Jurisdictions"
+              : `Scan Now — ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
+            }
           </button>
         </div>
 

@@ -1,6 +1,8 @@
 import type { AnalysisResult, Severity } from "@/types";
 import { SEVERITY_DEDUCTIONS } from "./constants";
 
+export type JurisdictionCode = "us" | "gb" | "eu" | "au" | "ca" | "br" | "in" | "sg" | "ae";
+
 interface Rule {
   category: string;
   severity: Severity;
@@ -8,6 +10,7 @@ interface Rule {
   flag_description: string;
   suggestion: string;
   regulations: string[];
+  jurisdictions: JurisdictionCode[];
 }
 
 const RULES: Rule[] = [
@@ -50,6 +53,7 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "UCPD (EU)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── FAKE URGENCY ─────────────────────────────────────────────────────────────
@@ -87,6 +91,7 @@ const RULES: Rule[] = [
       "DSA (EU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── FAKE SCARCITY ────────────────────────────────────────────────────────────
@@ -122,6 +127,7 @@ const RULES: Rule[] = [
       "DSA (EU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
@@ -155,6 +161,7 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── GUARANTEES ───────────────────────────────────────────────────────────────
@@ -185,6 +192,7 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "Consumer Rights Directive (EU)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── HEALTH CLAIMS ────────────────────────────────────────────────────────────
@@ -223,6 +231,7 @@ const RULES: Rule[] = [
       "Health Canada + Competition Bureau (CA)",
       "EMA + UCPD (EU)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── LEGAL DISCLAIMER ─────────────────────────────────────────────────────────
@@ -252,6 +261,7 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── CONTRACT CONTRADICTION ───────────────────────────────────────────────────
@@ -279,6 +289,7 @@ const RULES: Rule[] = [
       "Consumer Protection Act (CA)",
       "Consumer Rights Directive (EU)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── GDPR / ICO / DATA PRIVACY ────────────────────────────────────────────────
@@ -322,6 +333,7 @@ const RULES: Rule[] = [
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae"],
   },
 
   // ─── DRIP PRICING / HIDDEN FEES ───────────────────────────────────────────────
@@ -359,6 +371,7 @@ const RULES: Rule[] = [
       "LGPD (Brazil)",
       "PDPA (Singapore)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "sg"],
   },
 
   // ─── FAKE REVIEWS ─────────────────────────────────────────────────────────────
@@ -394,6 +407,7 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "PDPA (Singapore)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "sg"],
   },
 
   // ─── COMPARATIVE ADVERTISING ──────────────────────────────────────────────────
@@ -427,6 +441,7 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── CASL / EMAIL MARKETING ───────────────────────────────────────────────────
@@ -466,6 +481,7 @@ const RULES: Rule[] = [
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "in", "sg", "ae"],
   },
 
   // ─── EU AI ACT / AI CONTENT DISCLOSURE ───────────────────────────────────────
@@ -498,6 +514,7 @@ const RULES: Rule[] = [
       "FTC AI Endorsement Guidelines (US)",
       "ACCC AI Guidelines (AU)",
     ],
+    jurisdictions: ["eu", "gb", "us", "au"],
   },
 
   // ─── FTC AI ENDORSEMENTS ──────────────────────────────────────────────────────
@@ -529,6 +546,7 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "ACCC (AU)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au"],
   },
 
   // ─── AUTOMATED DECISION MAKING ────────────────────────────────────────────────
@@ -561,6 +579,7 @@ const RULES: Rule[] = [
       "Privacy Act (AU)",
       "PIPEDA (CA)",
     ],
+    jurisdictions: ["eu", "gb", "us", "au", "ca"],
   },
 
   // ─── DARK PATTERNS / MANIPULATIVE DESIGN ─────────────────────────────────────
@@ -591,6 +610,7 @@ const RULES: Rule[] = [
       "CMA (UK)",
       "FTC (US)",
     ],
+    jurisdictions: ["eu", "au", "gb", "us"],
   },
 
   // ─── FCA FINANCIAL PROMOTIONS ─────────────────────────────────────────────────
@@ -633,6 +653,7 @@ const RULES: Rule[] = [
       "OSC + CSA (CA)",
       "ESMA (EU)",
     ],
+    jurisdictions: ["gb", "us", "au", "ca", "eu"],
   },
 
   // ─── GREENWASHING / EU GREEN CLAIMS DIRECTIVE ─────────────────────────────────
@@ -674,6 +695,7 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["eu", "gb", "us", "au", "ca"],
   },
 
   // ─── SUBSCRIPTION TRAPS / NEGATIVE OPTION BILLING ────────────────────────────
@@ -718,6 +740,7 @@ const RULES: Rule[] = [
       "LGPD (Brazil)",
       "DPDP Act 2023 (India)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in"],
   },
 
   // ─── INFLUENCER / PAID PROMOTION NON-DISCLOSURE ───────────────────────────────
@@ -756,6 +779,7 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "Competition Bureau (CA)",
     ],
+    jurisdictions: ["us", "gb", "eu", "au", "ca"],
   },
 
   // ─── SMS / TEXT MARKETING ─────────────────────────────────────────────────────
@@ -797,6 +821,7 @@ const RULES: Rule[] = [
       "DPDP Act 2023 (India)",
       "UAE PDPL 2022 (UAE)",
     ],
+    jurisdictions: ["us", "gb", "ca", "eu", "sg", "in", "ae"],
   },
 
   // ─── ONLINE SAFETY / HARMFUL CONTENT ─────────────────────────────────────────
@@ -836,6 +861,7 @@ const RULES: Rule[] = [
       "GDPR (EU)",
       "Section 230 (US — limited protections for UGC platforms)",
     ],
+    jurisdictions: ["gb", "eu", "us"],
   },
 ];
 
@@ -848,24 +874,48 @@ function extractExcerpt(content: string, index: number): string {
 
 export function analyzeContent(
   title: string,
-  content: string
+  content: string,
+  selectedJurisdictions?: JurisdictionCode[]
 ): AnalysisResult {
   const lower = content.toLowerCase();
   const seenCategories = new Set<string>();
   const flags: AnalysisResult["flags"] = [];
 
-  for (const rule of RULES) {
+  // Filter rules to selected jurisdictions (if provided)
+  const activeRules = selectedJurisdictions && selectedJurisdictions.length > 0
+    ? RULES.filter(rule => rule.jurisdictions.some(j => selectedJurisdictions.includes(j)))
+    : RULES;
+
+  for (const rule of activeRules) {
     if (seenCategories.has(rule.category)) continue;
 
     for (const keyword of rule.keywords) {
       const idx = lower.indexOf(keyword);
       if (idx !== -1) {
         seenCategories.add(rule.category);
+        // Filter regulations to only those matching selected jurisdictions
+        const relevantRegs = selectedJurisdictions && selectedJurisdictions.length > 0
+          ? rule.regulations.filter(reg => {
+              const lower = reg.toLowerCase();
+              return selectedJurisdictions.some(j => {
+                if (j === "us") return lower.includes("(us") || lower.includes("ftc") || lower.includes("fda") || lower.includes("sec") || lower.includes("tcpa");
+                if (j === "gb") return lower.includes("(uk") || lower.includes("asa") || lower.includes("cma") || lower.includes("ico") || lower.includes("fca") || lower.includes("ofcom");
+                if (j === "eu") return lower.includes("(eu") || lower.includes("gdpr") || lower.includes("ucpd") || lower.includes("dsa") || lower.includes("ema") || lower.includes("esma");
+                if (j === "au") return lower.includes("(au") || lower.includes("accc") || lower.includes("tga") || lower.includes("asic");
+                if (j === "ca") return lower.includes("(ca") || lower.includes("casl") || lower.includes("pipeda") || lower.includes("competition bureau") || lower.includes("quebec");
+                if (j === "br") return lower.includes("lgpd") || lower.includes("brazil");
+                if (j === "in") return lower.includes("dpdp") || lower.includes("india");
+                if (j === "sg") return lower.includes("pdpa") || lower.includes("singapore");
+                if (j === "ae") return lower.includes("pdpl") || lower.includes("uae");
+                return false;
+              });
+            })
+          : rule.regulations;
         flags.push({
           category: rule.category,
           severity: rule.severity,
           text_excerpt: extractExcerpt(content, idx),
-          flag_description: `${rule.flag_description} [Regulations: ${rule.regulations.join(" · ")}]`,
+          flag_description: `${rule.flag_description} [Regulations: ${(relevantRegs.length > 0 ? relevantRegs : rule.regulations).join(" · ")}]`,
           suggestion: rule.suggestion,
         });
         break;

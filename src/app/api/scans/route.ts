@@ -52,12 +52,17 @@ export async function POST(request: Request) {
   const body = await request.json();
   const title: string = body.title ?? "Untitled Scan";
   const content: string = body.content ?? "";
+  const selectedJurisdictions = body.jurisdictions ?? [];
 
   if (!content.trim()) {
     return NextResponse.json({ error: "Content is required." }, { status: 400 });
   }
 
-  const { flags: allFlags } = analyzeContent(title, content);
+  const { flags: allFlags } = analyzeContent(
+    title,
+    content,
+    selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined
+  );
 
   // Sentinel-only categories are filtered out for all plans except sentinel
   const flags = plan === "sentinel"
