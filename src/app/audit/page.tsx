@@ -149,7 +149,7 @@ export default function AuditPage() {
           </p>
 
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <a href="mailto:support@redflagaipro.com?subject=Done-For-You Audit" style={{
+            <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#cc0000", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -158,7 +158,7 @@ export default function AuditPage() {
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get my audit — £97
-            </a>
+            </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
               border: "1px solid rgba(255,255,255,0.12)",
@@ -414,7 +414,7 @@ export default function AuditPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <a href="mailto:support@redflagaipro.com?subject=Done-For-You Audit" style={{
+            <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#cc0000", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -423,7 +423,7 @@ export default function AuditPage() {
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get my audit — £97
-            </a>
+            </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
               border: "1px solid rgba(255,255,255,0.12)",

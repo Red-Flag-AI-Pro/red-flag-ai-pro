@@ -15,6 +15,12 @@ export const SENTINEL_ONLY_CATEGORIES = [
   "influencer_disclosure",
 ] as const;
 
+export const AUDIT_PRICE = {
+  amount: 97,
+  label: "Done-For-You Audit",
+  priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
+};
+
 export const PLAN_PRICES = {
   pro: {
     monthly: 39,

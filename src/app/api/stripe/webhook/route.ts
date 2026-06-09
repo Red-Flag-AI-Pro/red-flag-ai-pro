@@ -37,15 +37,29 @@ export async function POST(request: Request) {
       const userId = session.metadata?.user_id;
       const plan = session.metadata?.plan;
 
-      if (userId && plan) {
-        await supabase
-          .from("profiles")
-          .update({
-            plan,
-            stripe_customer_id: session.customer as string,
-          })
-          .eq("user_id", userId);
+      if (!userId || !plan) break;
+
+      // One-time audit purchase — record in audit_orders
+      if (plan === "audit") {
+        await supabase.from("audit_orders").insert({
+          user_id: userId,
+          email: session.customer_email ?? session.customer_details?.email ?? "",
+          stripe_session_id: session.id,
+          stripe_payment_intent: session.payment_intent as string ?? null,
+          amount_gbp: 97,
+          status: "paid",
+        });
+        break;
       }
+
+      // Subscription plan — update profile
+      await supabase
+        .from("profiles")
+        .update({
+          plan,
+          stripe_customer_id: session.customer as string,
+        })
+        .eq("user_id", userId);
       break;
     }
 
