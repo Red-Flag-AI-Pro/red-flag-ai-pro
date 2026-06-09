@@ -13,7 +13,7 @@ const PLANS = [
     key: "pro" as const,
     name: "Pro",
     price: "£39/mo",
-    features: ["20 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
+    features: ["10 scans per month", "26 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,

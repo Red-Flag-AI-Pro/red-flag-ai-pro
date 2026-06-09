@@ -13,7 +13,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const PRO_FEATURES = [
-  "20 scans per month",
+  "10 scans per month",
   "26 risk categories",
   "Paste text and upload .txt",
   "Plain English flags + rewrite suggestions",
