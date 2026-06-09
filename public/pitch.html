@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Flag AI Pro — Investor Brief</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #cc0000;
+      --red-light: #ef4444;
+      --bg: #050505;
+      --bg-2: #0a0a0a;
+      --bg-3: #0f0505;
+      --border: rgba(255,255,255,0.06);
+      --border-red: rgba(239,68,68,0.2);
+      --text: rgba(255,255,255,0.85);
+      --muted: rgba(255,255,255,0.4);
+      --dim: rgba(255,255,255,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    /* ── LABEL ── */
+    .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red-light);
+      margin-bottom: 1.25rem;
+    }
+    .label-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--red-light);
+      box-shadow: 0 0 8px rgba(239,68,68,0.6);
+    }
+
+    /* ── TYPE ── */
+    h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: white; }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: white; margin-bottom: 1rem; }
+    h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+    p + p { margin-top: 1rem; }
+
+    .mono { font-family: 'DM Mono', monospace; }
+    .red { color: var(--red-light); }
+    .white { color: white; }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 7rem 0 5rem;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    #hero .glow {
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(204,0,0,0.18) 0%, transparent 65%);
+    }
+    #hero .wrap { position: relative; z-index: 1; }
+
+    .flag-icon { display: inline-block; }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow span {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--muted); margin-top: 1.25rem;
+      max-width: 580px; line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      margin-top: 3rem; padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 2rem; font-weight: 700; color: white;
+      letter-spacing: -0.04em; line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--dim);
+      margin-top: 4px;
+    }
+
+    /* ── FOUNDER STORY ── */
+    #story { background: var(--bg-3); }
+    .story-block {
+      border-left: 2px solid var(--red-light);
+      padding-left: 1.75rem;
+      margin-top: 2rem;
+    }
+    .story-block p {
+      font-size: 16px; line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+    }
+    .story-block p strong { color: white; font-weight: 700; }
+    .founder-sig {
+      margin-top: 1.5rem;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--dim);
+    }
+
+    /* ── PROBLEM ── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px; margin-top: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .stat-cell {
+      padding: 2rem 1.5rem;
+      background: var(--bg-2);
+    }
+    .stat-cell .val {
+      font-family: 'DM Mono', monospace;
+      font-size: 2.2rem; font-weight: 700; color: var(--red-light);
+      letter-spacing: -0.04em; line-height: 1;
+    }
+    .stat-cell .desc {
+      font-size: 12px; color: var(--dim); margin-top: 6px;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+
+    /* ── PRODUCT ── */
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px; margin-top: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .feature-cell {
+      padding: 1.75rem;
+      background: var(--bg-2);
+    }
+    .feature-cell .icon {
+      font-size: 1.4rem; margin-bottom: 0.75rem; display: block;
+    }
+    .feature-cell h3 { font-size: 13px; color: white; margin-bottom: 0.4rem; }
+    .feature-cell p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* ── JURISDICTIONS ── */
+    .flag-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem;
+    }
+    .flag-chip {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+    .flag-chip img { width: 22px; height: 16px; object-fit: cover; border-radius: 2px; }
+    .flag-chip span { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .flag-chip .law { font-size: 10px; color: var(--dim); font-family: 'DM Mono', monospace; }
+
+    /* ── COMPETITION ── */
+    .comp-table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 13px; }
+    .comp-table th {
+      padding: 10px 16px; text-align: left;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--dim); border-bottom: 1px solid var(--border);
+    }
+    .comp-table td {
+      padding: 14px 16px; border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .comp-table tr.us-row td { color: white; background: rgba(239,68,68,0.05); }
+    .comp-table tr.us-row td:first-child { color: var(--red-light); font-weight: 700; }
+    .tick { color: #4ade80; font-weight: 700; }
+    .cross { color: rgba(255,255,255,0.2); }
+
+    /* ── ROADMAP ── */
+    .timeline { margin-top: 2.5rem; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item { display: flex; gap: 1.5rem; margin-bottom: 2rem; position: relative; }
+    .tl-dot {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      border: 1px solid var(--border-red);
+      background: var(--bg); z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tl-dot.active { background: var(--red); border-color: var(--red); box-shadow: 0 0 12px rgba(204,0,0,0.4); }
+    .tl-dot-inner { width: 8px; height: 8px; border-radius: 50%; background: var(--red-light); }
+    .tl-dot.active .tl-dot-inner { background: white; }
+    .tl-content {}
+    .tl-year {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--red-light); margin-bottom: 4px;
+    }
+    .tl-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .tl-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── THE ASK ── */
+    .ask-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px; margin-top: 2.5rem;
+      border: 1px solid var(--border-red);
+    }
+    .ask-cell {
+      padding: 2rem 1.5rem;
+      background: rgba(239,68,68,0.04);
+    }
+    .ask-cell .ask-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.6rem; font-weight: 700; color: white;
+      letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px;
+    }
+    .ask-cell .ask-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red-light); margin-bottom: 8px;
+    }
+    .ask-cell p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CLOSE ── */
+    #close {
+      text-align: center; padding: 6rem 0;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-3) 100%);
+      position: relative; overflow: hidden;
+    }
+    #close .glow-bottom {
+      position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 65%);
+    }
+    #close .wrap { position: relative; z-index: 1; }
+    #close h2 { font-size: clamp(1.6rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+    #close p { max-width: 520px; margin: 0 auto; font-size: 15px; }
+    .contact-block {
+      margin-top: 2.5rem;
+      display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .contact-block a {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px; color: var(--red-light); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+    .contact-name {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    footer p { font-size: 11px; color: var(--dim); }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 0 1.25rem; }
+      .section { padding: 3.5rem 0; }
+      #hero { padding: 5rem 0 3.5rem; }
+      .hero-stats { gap: 1.5rem; }
+      .comp-table { font-size: 11px; }
+      .comp-table th, .comp-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+        <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
+      </svg>
+      <span>Investor Brief — Red Flag AI Pro</span>
+    </div>
+
+    <h1>The compliance layer<br/>the internet forgot<br/><span class="red">to build.</span></h1>
+
+    <p class="hero-sub">
+      A live, working SaaS platform that scans any marketing copy for legal red flags across
+      9 jurisdictions and 26 risk categories — in 60 seconds. Built by one person.
+      No funding. No team. No legal budget. Just a problem that needed solving.
+    </p>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val mono">9</div>
+        <div class="hero-stat-label">Jurisdictions</div>
+      </div>
+      <div>
+        <div class="hero-stat-val mono">26</div>
+        <div class="hero-stat-label">Risk Categories</div>
+      </div>
+      <div>
+        <div class="hero-stat-val mono">60s</div>
+        <div class="hero-stat-label">Paste to Score</div>
+      </div>
+      <div>
+        <div class="hero-stat-val mono">$6bn+</div>
+        <div class="hero-stat-label">In fines issued to ordinary businesses</div>
+      </div>
+      <div>
+        <div class="hero-stat-val mono">0</div>
+        <div class="hero-stat-label">Competitors at this scope</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOUNDER STORY -->
+<section id="story" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>The Founder</div>
+    <h2>Built from both sides<br/>of the same problem.</h2>
+
+    <div class="story-block">
+      <p>
+        I have been ripped off by marketing I now know was <strong>illegal</strong>. Income claims that broke FTC rules.
+        Guarantees that contradicted the terms I signed. Urgency that was manufactured.
+        Nobody told me. Nobody protected me.
+      </p>
+      <p>
+        I have also built funnels — alone, no legal budget, no compliance training —
+        and published copy I genuinely believed was fine. <strong>It wasn't.</strong>
+        I just didn't know where the lines were being drawn.
+      </p>
+      <p>
+        I looked for a tool that could tell me. One tool. One scan. Plain English.
+        <strong>It didn't exist.</strong> The tools that came close covered one country.
+        Maybe two. Cost thousands. Required lawyers to interpret.
+        Were built for enterprises, not for the people actually writing the copy.
+      </p>
+      <p>
+        So I built it myself. No computer science degree. No co-founder. No VC backing.
+        Just a problem I understood from both ends, and enough stubbornness to ship something real.
+      </p>
+      <p>
+        <strong>Red Flag AI Pro is what should have existed five years ago.</strong>
+        I'm making sure it exists now.
+      </p>
+      <div class="founder-sig">— James Stokes, Founder &amp; CEO · Bristol, UK</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- THE PROBLEM -->
+<section id="problem" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>The Problem</div>
+    <h2>Nobody tells you<br/>until it's too late.</h2>
+    <p>
+      Governments across the US, UK, EU, Australia, Canada, Brazil, India, Singapore and the UAE
+      have issued billions in fines — not to scammers, but to ordinary businesses who simply
+      didn't know the rules. The rules are complex, jurisdiction-specific, and changing faster
+      than any marketing team can track.
+    </p>
+    <p>
+      Meanwhile, AI tools are writing millions of pieces of marketing copy every day.
+      The AI doesn't know the law. The human using it usually doesn't either.
+      The liability sits entirely with the business — and most of them have no idea.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="val">$6bn+</div>
+        <div class="desc">In fines issued to ordinary businesses, not scammers</div>
+      </div>
+      <div class="stat-cell">
+        <div class="val">Aug 2025</div>
+        <div class="desc">EU AI Act enforcement begins — AI-generated copy now regulated</div>
+      </div>
+      <div class="stat-cell">
+        <div class="val">2-sided</div>
+        <div class="desc">Buyers checking ads before purchasing. Sellers checking copy before publishing.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="val">£0</div>
+        <div class="desc">What most solopreneurs and small businesses spend on compliance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- THE PRODUCT -->
+<section id="product" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>The Product</div>
+    <h2>Paste. Score. Fix.<br/>60 seconds.</h2>
+    <p>
+      Red Flag AI Pro is a compliance scanning engine that reads marketing copy —
+      sales pages, email sequences, ad scripts, funnel copy, VSLs — and returns a
+      0–100 risk score, plain-English explanations of every flag, and exact rewrite
+      suggestions. No lawyer required. No waiting. No jargon.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-cell">
+        <span class="icon">🎯</span>
+        <h3>0–100 Compliance Score</h3>
+        <p>Instant risk rating across all active jurisdictions. Severity-weighted so the worst issues surface first.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🚩</span>
+        <h3>26 Risk Categories</h3>
+        <p>Income claims, health claims, greenwashing, dark patterns, GDPR, FCA financial promotions, AI disclosure, SMS marketing, and more.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🌍</span>
+        <h3>Jurisdiction Picker</h3>
+        <p>The only scanner that lets you choose which countries' laws to scan against. Sellers pick markets they sell into. Buyers pick where they are.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">✍️</span>
+        <h3>Rewrite Suggestions</h3>
+        <p>Every flag comes with a plain-English fix. Not just "this is wrong" — here is exactly how to say it compliantly.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">📄</span>
+        <h3>PDF Reports</h3>
+        <p>Branded compliance reports agencies can share with clients. Audit trail built in.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🔗</span>
+        <h3>Done-For-You Audit</h3>
+        <p>£97 one-time. Founder personally scans your full site and funnel, records a video walkthrough, delivers a PDF report in 48 hours.</p>
+      </div>
+    </div>
+
+    <!-- Jurisdictions -->
+    <div style="margin-top: 3rem;">
+      <div class="label"><span class="label-dot"></span>9 Jurisdictions Live</div>
+      <div class="flag-row">
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/us.png" alt="USA" />
+          <span>USA</span>
+          <span class="law">FTC · FDA · TCPA</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/gb.png" alt="UK" />
+          <span>UK</span>
+          <span class="law">CMA · ASA · FCA</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/eu.png" alt="EU" />
+          <span>EU</span>
+          <span class="law">GDPR · DSA · AI Act</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/au.png" alt="Australia" />
+          <span>Australia</span>
+          <span class="law">ACCC · TGA</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/ca.png" alt="Canada" />
+          <span>Canada</span>
+          <span class="law">CASL · PIPEDA</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/br.png" alt="Brazil" />
+          <span>Brazil</span>
+          <span class="law">LGPD</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/in.png" alt="India" />
+          <span>India</span>
+          <span class="law">DPDP 2023</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/sg.png" alt="Singapore" />
+          <span>Singapore</span>
+          <span class="law">PDPA</span>
+        </div>
+        <div class="flag-chip">
+          <img src="https://flagcdn.com/w40/ae.png" alt="UAE" />
+          <span>UAE</span>
+          <span class="law">PDPL 2022</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMPETITION -->
+<section id="competition" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>Competition</div>
+    <h2>Nothing else<br/>comes close.</h2>
+    <p>
+      Existing compliance tools are built for enterprises with legal teams and five-figure budgets.
+      Nothing in the market serves the millions of solopreneurs, course creators, agencies and
+      everyday buyers who need answers in 60 seconds, not 60 days.
+    </p>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Jurisdictions</th>
+          <th>Real-time scan</th>
+          <th>Plain English</th>
+          <th>Both-sided market</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="us-row">
+          <td>Red Flag AI Pro</td>
+          <td><span class="tick">9 ✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td>From £39/mo</td>
+        </tr>
+        <tr>
+          <td>Compliance.ai</td>
+          <td>1–2</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>$1,000+/mo</td>
+        </tr>
+        <tr>
+          <td>Lexis+ AI</td>
+          <td>1</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>Enterprise only</td>
+        </tr>
+        <tr>
+          <td>CopyAI / Jasper</td>
+          <td><span class="cross">0</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>No compliance layer</td>
+        </tr>
+        <tr>
+          <td>A human lawyer</td>
+          <td>1–2 (specialist)</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>£300–500/hr</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- BUILDABILITY / MOAT -->
+<section id="moat" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>The Moat &amp; What Comes Next</div>
+    <h2>This is infrastructure.<br/>Not a feature.</h2>
+    <p>
+      The rule engine is built to expand. Every new jurisdiction is a new row. Every new
+      regulation is a new tag. The architecture already supports unlimited growth without
+      rebuilding anything.
+    </p>
+    <p>
+      But the real moat is not the rules — it's the data. Every scan teaches us what real
+      compliance violations look like at scale, across real copy, in real markets. That dataset
+      is impossible to replicate from a standing start.
+    </p>
+
+    <div class="feature-grid" style="margin-top: 2.5rem;">
+      <div class="feature-cell">
+        <span class="icon">🔌</span>
+        <h3>API Licensing</h3>
+        <p>White-label the compliance engine into ad platforms, copywriting tools, CRMs and agency dashboards. Recurring B2B revenue at scale.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🏷️</span>
+        <h3>Compliance Badge</h3>
+        <p>Verified compliance badge embeddable on any site. Becomes a trust signal for consumers and a distribution engine for Red Flag AI Pro.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">📡</span>
+        <h3>URL Monitoring</h3>
+        <p>Continuous scanning of live URLs — catch violations the moment they appear, not months later when enforcement arrives.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🤖</span>
+        <h3>AI Content Layer</h3>
+        <p>As AI-generated copy becomes the norm, Red Flag AI Pro becomes the mandatory compliance check before any AI content goes live.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🌐</span>
+        <h3>New Jurisdictions</h3>
+        <p>China, Japan, South Korea, Saudi Arabia, Mexico — each new jurisdiction opens a new market and deepens the competitive moat.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="icon">🏢</span>
+        <h3>Enterprise &amp; Regulatory</h3>
+        <p>Compliance officers, regulated industries (fintech, health, pharma), and government procurement. The Sentinel tier is the first step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 5-YEAR ROADMAP -->
+<section id="roadmap" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>Vision</div>
+    <h2>Where we are going.</h2>
+    <p>The goal is not to be the best compliance scanner. The goal is to become
+    the compliance layer that sits underneath every piece of marketing copy published on the internet.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active"><div class="tl-dot-inner"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">Now — 2026</div>
+          <div class="tl-title">Live product. First customers. Proof it works.</div>
+          <div class="tl-desc">9 jurisdictions, 26 risk categories, jurisdiction picker, audit offer, SaaS plans live. Solo-built, zero funding, real product in market.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">2026 — 2027</div>
+          <div class="tl-title">Scale distribution. First 1,000 paying users.</div>
+          <div class="tl-desc">Paid acquisition, agency partnerships, API launch, PR coverage, 15+ jurisdictions. MRR to £50k+.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">2027 — 2028</div>
+          <div class="tl-title">Platform. API. Embedded compliance.</div>
+          <div class="tl-desc">White-label API licensed to ad platforms and copywriting tools. Compliance badge on 100,000+ sites. Series A conversation.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">2028 — 2029</div>
+          <div class="tl-title">Regulatory partnerships and global expansion.</div>
+          <div class="tl-desc">Direct partnerships with ASA, FTC, ICO. Government procurement. 25+ jurisdictions. Enterprise contracts in fintech, health, pharma.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">2029 — 2031</div>
+          <div class="tl-title">The compliance layer the internet didn't know it needed.</div>
+          <div class="tl-desc">Every major ad platform, email tool, and CMS has a Red Flag AI Pro integration. The compliance badge is as recognisable as an SSL certificate. Category defined. Category owned.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- THE ASK -->
+<section id="ask" class="section">
+  <div class="wrap">
+    <div class="label"><span class="label-dot"></span>The Ask</div>
+    <h2>What we need.<br/>What it unlocks.</h2>
+    <p>
+      Red Flag AI Pro is live, working, and already demonstrating that people use it.
+      We are raising <strong class="white">£150,000–£250,000</strong> in pre-seed capital
+      to go from proof-of-concept to first meaningful revenue. This is a SEIS-eligible raise —
+      investors receive 50% income tax relief on investment.
+    </p>
+
+    <div class="ask-grid">
+      <div class="ask-cell">
+        <div class="ask-val">£80k</div>
+        <div class="ask-label">Paid Acquisition</div>
+        <p>Scale from £5/day to £100+/day in targeted ads. Google, Meta, LinkedIn. First 500 paying customers.</p>
+      </div>
+      <div class="ask-cell">
+        <div class="ask-val">£60k</div>
+        <div class="ask-label">Product &amp; Dev</div>
+        <p>Part-time developer to build Sentinel features, API, URL monitoring, and VSL scanning at speed.</p>
+      </div>
+      <div class="ask-cell">
+        <div class="ask-val">£30k</div>
+        <div class="ask-label">Legal Validation</div>
+        <p>Compliance lawyer to review and certify the rule engine. Turns a great product into a defensible one.</p>
+      </div>
+      <div class="ask-cell">
+        <div class="ask-val">£30k</div>
+        <div class="ask-label">PR &amp; Partnerships</div>
+        <p>One TechCrunch story. Five agency partnerships. The distribution flywheel that makes paid acquisition sustainable.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 2rem; font-size: 13px; color: var(--dim);">
+      * This raise is structured to qualify for SEIS (Seed Enterprise Investment Scheme).
+      UK investors receive 50% income tax relief, plus CGT exemption on gains.
+      Full details available on request.
+    </p>
+  </div>
+</section>
+
+
+<!-- CLOSE -->
+<section id="close">
+  <div class="glow-bottom"></div>
+  <div class="wrap">
+    <div class="label" style="justify-content: center;"><span class="label-dot"></span>Get In Touch</div>
+    <h2>The compliance gap is real.<br/><span class="red">The timing is now.</span></h2>
+    <p>
+      EU AI Act enforcement starts August 2025. The FTC is the most active it has been in a decade.
+      GDPR fines are accelerating. Every government in every jurisdiction we cover is moving in
+      the same direction at the same time. This window will not stay open indefinitely.
+    </p>
+
+    <div class="contact-block">
+      <div class="contact-name">James Stokes — Founder &amp; CEO</div>
+      <a href="https://www.redflagaipro.com">redflagaipro.com</a>
+      <a href="https://www.linkedin.com/in/james-stokes-redflagaipro">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <p>Red Flag AI Pro &copy; 2026 &nbsp;·&nbsp; Confidential — for investor use only &nbsp;·&nbsp; SEIS eligible &nbsp;·&nbsp; Bristol, United Kingdom</p>
+</footer>
+
+</body>
+</html>
