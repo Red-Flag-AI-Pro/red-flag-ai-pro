@@ -111,6 +111,201 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section style={{ background: "#080808", padding: "5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>How it works</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem" }}>Three steps. 60 seconds.</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            {[
+              { step: "01", title: "Paste your copy", desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish." },
+              { step: "02", title: "26 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing, SMS marketing, online safety — across all 9 jurisdictions simultaneously." },
+              { step: "03", title: "Truth or fix. Instantly.", desc: "Every flag explained in plain English with a compliant rewrite. Know before you spend. Launch with confidence." },
+            ].map((s) => (
+              <div key={s.step} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
+                <p style={{ ...syne, fontSize: "3.5rem", fontWeight: 800, color: "#ef4444", lineHeight: 1, marginBottom: "1.5rem", letterSpacing: "-0.03em" }}>{s.step}</p>
+                <p style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{s.title}</p>
+                <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The problem */}
+      <section style={{ background: "#050505", padding: "5rem 1.5rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>The problem</p>
+          <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "white", marginBottom: "1.5rem" }}>
+            The ad that just convinced you to buy could be breaking the law.
+            <span style={{ color: "#ef4444", fontStyle: "italic", display: "block" }}>So could the one you just wrote.</span>
+          </h2>
+          <p style={{ ...syne, fontSize: "1.1rem", lineHeight: 1.7, color: "rgba(255,255,255,0.5)", maxWidth: "640px", marginBottom: "4rem" }}>
+            Most people who get ripped off online are not stupid. Most sellers who break the rules are not scammers. Nobody tells you where the line is. Until you cross it.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {[
+              { claim: "That limited time offer", detail: "Countdown timers that reset are specifically illegal in the UK and EU." },
+              { claim: "That six figure income claim", detail: "It can trigger a government fine even if it is true." },
+              { claim: "That money back guarantee", detail: "If it contradicts the terms and conditions, it is a contract violation." },
+              { claim: "That email list", detail: "Collecting emails without the right consent wording breaks Canadian and EU law." },
+              { claim: "That number one claim", detail: "Without proof, it breaks advertising rules in every country we cover." },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
+                <p style={{ ...syne, fontSize: "1.3rem", fontWeight: 700, color: "white", lineHeight: 1.2, letterSpacing: "-0.02em" }}>{item.claim}</p>
+                <p style={{ ...syne, fontSize: "1.15rem", lineHeight: 1.6, color: "#fca5a5", borderLeft: "3px solid #ef4444", paddingLeft: "1.25rem", fontWeight: 500 }}>{item.detail}</p>
+              </div>
+            ))}
+            <div style={{ padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 600, color: "#ef4444" }}>Nobody needs intent. Regulators do not care if you did not know.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Before vs After */}
+      <section style={{ background: "#080808", padding: "5rem 1.5rem" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Real examples</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem" }}>Before you buy it. Before you build it.</h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem" }}>Real flags. Both sides. See exactly what we find.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: "2px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              <div style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", flex: 1 }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>For Sellers — Flagged Copy</p>
+                <p style={{ ...syne, fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem" }}>
+                  &ldquo;Join thousands of members who are making £5,000–£10,000 per month using our proven system. Results guaranteed or your money back — no questions asked.&rdquo;
+                </p>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem" }}>
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.75rem" }}>Flags triggered</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "0.75rem" }}>
+                    {["Income claim without disclaimer", "Unsubstantiated earnings", "Guarantee contradiction"].map((f) => (
+                      <span key={f} style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.25)", padding: "4px 12px", fontSize: "11px", fontWeight: 600, color: "#fca5a5", ...syne }}>{f}</span>
+                    ))}
+                  </div>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(239,68,68,0.6)", fontWeight: 600 }}>FTC · ASA · ACCC</p>
+                </div>
+              </div>
+              <div style={{ background: "#0a1a0a", border: "1px solid rgba(34,197,94,0.12)", padding: "2rem", flex: 1 }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#4ade80", marginBottom: "1.5rem" }}>Compliant Rewrite</p>
+                <p style={{ ...syne, fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem" }}>
+                  &ldquo;Our members report a wide range of results. Some earn £5,000+ per month — individual results vary based on effort, experience, and market conditions. See our income disclaimer for full details.&rdquo;
+                </p>
+                <div style={{ borderTop: "1px solid rgba(34,197,94,0.1)", paddingTop: "1.25rem" }}>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(74,222,128,0.7)", fontWeight: 600 }}>Now compliant with FTC · CMA · ASA · ACCC · CASL</p>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              <div style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", flex: 1 }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>For Buyers — Looks Legitimate</p>
+                <p style={{ ...syne, fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: "1.5rem" }}>
+                  &ldquo;Over 2,400 students have completed this programme. Our top performers report life-changing results. Enrol today and get our 30-day satisfaction guarantee — full refund if you do not see results within the first month.&rdquo;
+                </p>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem" }}>
+                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#fbbf24" }}>Passed your gut check. Failed ours.</p>
+                </div>
+              </div>
+              <div style={{ background: "#110808", border: "1px solid rgba(239,68,68,0.12)", padding: "2rem", flex: 1 }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>What We Found</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  {[
+                    { flag: "Unverified social proof", detail: "2,400 students — no independent verification", reg: "FTC violation" },
+                    { flag: "Vague results claim", detail: '"Life-changing results" — no data or disclaimer', reg: "ASA violation" },
+                    { flag: "Conditional guarantee", detail: "Refund tied to results — contradicts UK statutory consumer rights", reg: "CMA violation" },
+                    { flag: "Missing income disclaimer", detail: "Implied financial outcomes without mandatory disclosure", reg: "ACCC violation" },
+                  ].map((item) => (
+                    <div key={item.flag} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                      <span style={{ color: "#ef4444", fontWeight: 700, fontSize: "14px", flexShrink: 0, marginTop: "2px" }}>✕</span>
+                      <div>
+                        <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "2px" }}>{item.flag}</p>
+                        <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "2px" }}>{item.detail}</p>
+                        <p style={{ ...syne, fontSize: "11px", color: "#ef4444", fontWeight: 600 }}>{item.reg}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fines & Penalties */}
+      <section style={{ background: "#050505", padding: "5rem 1.5rem" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The cost of getting it wrong</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem" }}>Real fines. Real losses. Both sides.</h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem" }}>All from the same illegal marketing copy.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>What buyers lose</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px", marginBottom: "4rem" }}>
+            {[
+              { label: "Ecommerce", sub: "Misleading product claims", amount: "£200–£800", detail: "average loss per purchase" },
+              { label: "Course buyers", sub: "Fake income claims", amount: "£500–£5k", detail: "average loss per course" },
+              { label: "Health products", sub: "Unsubstantiated claims", amount: "£100–£2k", detail: "average loss per product" },
+              { label: "Subscriptions", sub: "Hidden recurring charges", amount: "£300–£1.2k", detail: "average annual loss" },
+            ].map((item) => (
+              <div key={item.label} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
+                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{item.label}</p>
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{item.sub}</p>
+                <p style={{ ...mono, fontSize: "2.25rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px" }}>{item.amount}</p>
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>What sellers face</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "2rem" }}>
+            {[
+              { country: "USA (FTC)", body: "False advertising, income claims", fine: "$50k+", detail: "per violation" },
+              { country: "UK (CMA/ASA)", body: "Misleading commercial practices", fine: "£300k+", detail: "unlimited in court" },
+              { country: "EU (GDPR)", body: "Data privacy violations", fine: "€20M", detail: "or 4% global turnover" },
+              { country: "Australia (ACCC)", body: "Misleading conduct", fine: "A$50M", detail: "per violation" },
+              { country: "Canada (CASL)", body: "Spam and consent violations", fine: "C$10M", detail: "per violation" },
+            ].map((f) => (
+              <div key={f.country} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
+                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{f.country}</p>
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{f.body}</p>
+                <p style={{ ...mono, fontSize: "2rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px" }}>{f.fine}</p>
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{f.detail}</p>
+              </div>
+            ))}
+            <div style={{ background: "#1a0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <p style={{ ...mono, fontSize: "3rem", fontWeight: 800, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>$6B+</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>in marketing compliance fines globally in the last 3 years</p>
+            </div>
+          </div>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center" }}>Fine amounts based on published maximum penalties. Individual penalties vary. Not legal advice.</p>
+        </div>
+      </section>
+
+      {/* AI Liability */}
+      <section style={{ background: "#080808", padding: "5rem 1.5rem", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.15), transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>New threat — 2026</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem", lineHeight: 1.2 }}>
+            AI generated it. That does not make it legal.
+            <span style={{ display: "block", color: "#ef4444", fontStyle: "italic" }}>Or safe to buy.</span>
+          </h2>
+          <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", marginBottom: "4rem", maxWidth: "600px", lineHeight: 1.7 }}>
+            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span style={{ color: "white", fontWeight: 600 }}>uninsured liability</span>.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            {[
+              { title: "Berkley Insurance", body: "Introduced an absolute AI exclusion on D&O, E&O and Fiduciary Liability policies — covering all AI use, not just generative." },
+              { title: "EU AI Act — Aug 2026", body: "Article 50(4) requires AI-assisted marketing content to carry disclosure or documented human review. Non-compliance triggers regulatory action." },
+              { title: "RSA (UK)", body: "RSA's UK Head of PI confirmed they are \"assuming but not yet pricing\" AI exposures — meaning exclusions are coming at next renewal." },
+            ].map((item) => (
+              <div key={item.title} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
+                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#ef4444", marginBottom: "1.25rem" }} />
+                <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
+                <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 26 categories */}
       <section style={{ background: "#080808", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>

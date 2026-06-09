@@ -305,6 +305,30 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* The maths */}
+      <section style={{ background: "#080808", padding: "5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The maths</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "3rem" }}>For both sides.</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0", marginBottom: "3rem", textAlign: "left" }}>
+            {[
+              { label: "Compliance lawyer", value: "£400 per hour" },
+              { label: "Full funnel audit", value: "£2,400 minimum" },
+              { label: "Average buyer loss", value: "£500–£2,000" },
+              { label: "Red Flag AI Pro", value: "Free. 60 seconds.", highlight: true },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", padding: "1.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <p style={{ ...syne, fontSize: "1.1rem", color: item.highlight ? "white" : "rgba(255,255,255,0.7)", fontWeight: item.highlight ? 700 : 500 }}>{item.label}</p>
+                <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: item.highlight ? "#ef4444" : "rgba(255,255,255,0.7)", textAlign: "right" }}>{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+            If it catches one thing, it has paid for itself a thousand times over.
+          </p>
+        </div>
+      </section>
+
     </div>
   );
 }
