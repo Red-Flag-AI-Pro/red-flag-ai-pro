@@ -195,7 +195,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         {/* Risk categories */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Risk categories</h2>
-          <p className="text-gray-400 text-sm">All 24 categories are scanned on Sentinel. Other plans scan 16.</p>
+          <p className="text-gray-400 text-sm">All 26 categories are scanned on Sentinel. Other plans scan 16.</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               "income_claim", "urgency", "scarcity", "testimonial", "guarantee",
@@ -203,6 +203,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
               "hidden_fees", "fake_reviews", "comparative_advertising", "email_compliance",
               "dark_patterns", "ai_disclosure", "ai_endorsement", "automated_decisions",
               "financial_promotion", "greenwashing", "subscription_trap", "influencer_disclosure",
+              "sms_marketing", "online_safety",
             ].map((cat) => (
               <div key={cat} className="rounded-lg bg-gray-900 border border-gray-800 px-3 py-2 text-xs font-mono text-gray-400">
                 {cat}

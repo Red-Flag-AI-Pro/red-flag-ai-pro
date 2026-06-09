@@ -41,7 +41,7 @@ const GROWTH_FEATURES = [
 
 const SENTINEL_FEATURES = [
   "Everything in Growth",
-  "All 24 risk categories",
+  "All 26 risk categories",
   "FCA financial promotions",
   "Greenwashing scanner",
   "Video scan summaries",
@@ -271,6 +271,36 @@ export default function PricingPage() {
             All plans include a 14-day money-back guarantee. Cancel anytime. No contracts.{" "}
             <Link href="/docs" style={{ color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>API docs →</Link>
           </p>
+
+          {/* Audit upsell */}
+          <div style={{
+            marginTop: "3rem",
+            background: "linear-gradient(135deg, #0f0a00 0%, #0a0a0a 100%)",
+            border: "1px solid rgba(251,191,36,0.15)",
+            borderRadius: "12px",
+            padding: "2rem",
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden"
+          }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(251,191,36,0.4), transparent)" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(251,191,36,0.7)", marginBottom: "0.75rem" }}>Rather have someone do it for you?</p>
+            <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>Done-For-You Compliance Audit — £97</p>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.25rem", maxWidth: "480px", margin: "0 auto 1.25rem" }}>
+              I personally scan your full site and funnel, record a video walkthrough of every flag, and deliver a PDF report with a reviewed badge. One-time. 48 hours.
+            </p>
+            <Link href="/audit" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: "rgba(251,191,36,0.1)",
+              border: "1px solid rgba(251,191,36,0.3)",
+              color: "rgba(251,191,36,0.9)",
+              ...syne, fontSize: "0.85rem", fontWeight: 700,
+              padding: "10px 24px", borderRadius: "9999px",
+              textDecoration: "none", letterSpacing: "0.02em"
+            }}>
+              Find out more →
+            </Link>
+          </div>
 
         </div>
       </section>

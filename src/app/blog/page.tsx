@@ -108,7 +108,7 @@ export default function BlogPage() {
             Stop reading about compliance.<br />Start scanning.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            Red Flag AI Pro checks your copy against 24 risk categories across 5 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your copy against 26 risk categories across 8 jurisdictions in 60 seconds.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

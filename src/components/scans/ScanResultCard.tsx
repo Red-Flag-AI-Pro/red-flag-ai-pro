@@ -193,6 +193,19 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             </div>
           )}
 
+          {scan.score < 80 && (
+            <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+              <span className="text-xl">🚩</span>
+              <div>
+                <p className="text-sm text-amber-900 font-semibold mb-0.5">Want someone to fix this for you?</p>
+                <p className="text-sm text-amber-800">
+                  I&apos;ll personally scan your full site and funnel, record a video walkthrough of every flag, and deliver a PDF report with a reviewed badge — in 48 hours.{" "}
+                  <a href="/audit" className="font-semibold underline hover:no-underline">Find out more →</a>
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-2">
             {plan !== "free" ? (
               <a

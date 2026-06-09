@@ -187,6 +187,78 @@ export async function generateScanPdf(
     });
   });
 
+  // ── Badge ────────────────────────────────────────────────────────────────────
+  const badgeX = margin;
+  const badgeY = H - 560;
+  const badgeW = W - margin * 2;
+  const badgeH = 64;
+  const badgeColor = scoreColor(scan.score);
+
+  // Badge background
+  page1.drawRectangle({
+    x: badgeX,
+    y: badgeY,
+    width: badgeW,
+    height: badgeH,
+    color: rgb(0.97, 0.97, 0.99),
+    borderColor: rgb(0.88, 0.88, 0.9),
+    borderWidth: 1,
+  });
+
+  // Left accent bar
+  page1.drawRectangle({
+    x: badgeX,
+    y: badgeY,
+    width: 4,
+    height: badgeH,
+    color: badgeColor,
+  });
+
+  // Dot
+  page1.drawEllipse({
+    x: badgeX + 22,
+    y: badgeY + badgeH / 2,
+    xScale: 5,
+    yScale: 5,
+    color: badgeColor,
+  });
+
+  // "COMPLIANCE VERIFIED" label
+  page1.drawText("COMPLIANCE VERIFIED", {
+    x: badgeX + 36,
+    y: badgeY + badgeH - 18,
+    size: 8,
+    font: boldFont,
+    color: rgb(0.4, 0.4, 0.45),
+  });
+
+  // Score
+  page1.drawText(`${scan.score}/100`, {
+    x: badgeX + 36,
+    y: badgeY + badgeH - 36,
+    size: 16,
+    font: boldFont,
+    color: badgeColor,
+  });
+
+  // Risk label
+  page1.drawText(label, {
+    x: badgeX + 36,
+    y: badgeY + 10,
+    size: 8,
+    font: boldFont,
+    color: badgeColor,
+  });
+
+  // Date
+  page1.drawText(`Reviewed ${dateStr} · Red Flag AI Pro`, {
+    x: badgeX + badgeW - 220,
+    y: badgeY + 10,
+    size: 8,
+    font: regularFont,
+    color: rgb(0.6, 0.6, 0.65),
+  });
+
   drawFooter(page1, regularFont, 1, W, margin);
 
   // ── Page 2+: Flags ────────────────────────────────────────────────────────────

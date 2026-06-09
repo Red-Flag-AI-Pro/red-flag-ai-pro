@@ -116,7 +116,7 @@ export function HeroNew() {
                   <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
                 </svg>
               </span>
-              Marketing Compliance · 5 Jurisdictions · 24 Risk Categories
+              Marketing Compliance · 8 Jurisdictions · 26 Risk Categories
             </span>
           </div>
 
@@ -173,7 +173,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>24 risk categories. 5 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>26 risk categories. 8 jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
@@ -233,6 +233,9 @@ export function HeroNew() {
               { code: "eu", country: "EU", regs: "GDPR · DSA" },
               { code: "au", country: "AUS", regs: "ACCC · TGA" },
               { code: "ca", country: "CAN", regs: "CASL · PIPEDA" },
+              { code: "in", country: "IND", regs: "DPDP 2023" },
+              { code: "sg", country: "SGP", regs: "PDPA" },
+              { code: "ae", country: "UAE", regs: "PDPL 2022" },
             ].map((j) => (
               <div key={j.country} style={{
                 display: "flex", flexDirection: "column",
@@ -259,8 +262,8 @@ export function HeroNew() {
             gap: "8px 32px", justifyContent: "center", alignItems: "center"
           }}>
             {[
-              "24 risk categories",
-              "5 jurisdictions",
+              "26 risk categories",
+              "8 jurisdictions",
               "URL + VSL + site audit",
               "60 second results",
             ].map((s, i) => (
