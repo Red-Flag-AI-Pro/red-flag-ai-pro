@@ -43,17 +43,20 @@ export function HeroNew() {
   return (
     <div ref={sectionRef}>
       {/* ── Urgency bar ── */}
-      <div style={{background: "#b91c1c", borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
+      <div className="urgency-bar" style={{background: "#b91c1c", borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
         <p className="py-2.5 px-4 text-center text-xs font-medium text-white/90 tracking-wide">
-          EU AI Act Article 50 enforcement begins August 2026 — AI-generated marketing copy must be disclosed.{" "}
+          <span className="urgency-text-full">
+            EU AI Act Article 50 enforcement begins August 2026 — AI-generated marketing copy must be disclosed.{" "}
+          </span>
+          <span className="urgency-text-short">EU AI Act enforcement begins Aug 2026.{" "}</span>
           <Link href="/blog/eu-ai-act-article-50-marketing-agencies" className="font-bold underline underline-offset-2 hover:no-underline">
             Learn more
           </Link>
         </p>
       </div>
 
-      {/* ── Ticker ── */}
-      <div style={{background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "14px 0"}}>
+      {/* ── Ticker — decorative, hidden on mobile to save fold space ── */}
+      <div className="hero-ticker-wrap" style={{background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "14px 0"}}>
         <div className="ticker-track">
           {["FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code",
             "FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code"].map((item, i) => (
@@ -98,7 +101,7 @@ export function HeroNew() {
         <div style={{maxWidth: "1100px", margin: "0 auto", width: "100%", textAlign: "center", position: "relative", zIndex: 1}}>
 
           {/* Eyebrow */}
-          <div className="animate-fade-in delay-1" style={{marginBottom: "2rem"}}>
+          <div className="hero-eyebrow animate-fade-in delay-1" style={{marginBottom: "2rem"}}>
             <span style={{
               display: "inline-flex", alignItems: "center", gap: "10px",
               background: "rgba(185,28,28,0.1)", border: "1px solid rgba(185,28,28,0.25)",
@@ -113,12 +116,13 @@ export function HeroNew() {
                   <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
                 </svg>
               </span>
-              Marketing Compliance · 9 Jurisdictions · 26 Risk Categories
+              <span className="hero-eyebrow-text-full">Marketing Compliance · 9 Jurisdictions · 26 Risk Categories</span>
+              <span className="hero-eyebrow-text-short">9 Jurisdictions · 26 Risk Categories</span>
             </span>
           </div>
 
           {/* Headline — sequential stacked reveal */}
-          <h1 style={{
+          <h1 className="hero-headline" style={{
             fontSize: "clamp(3rem, 9vw, 7.5rem)",
             fontWeight: 700,
             lineHeight: 1.05,
@@ -184,13 +188,13 @@ export function HeroNew() {
             }}>See exactly what regulators would flag — before they do.</span>
           </p>
 
-          {/* CTAs */}
+          {/* CTA — single primary action; everything else demoted below the fold */}
           <div style={{
             opacity: rest ? 1 : 0,
             transform: rest ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s",
             display: "flex", flexWrap: "wrap",
-            gap: "14px", justifyContent: "center", marginBottom: "1.25rem"
+            gap: "14px", justifyContent: "center", marginBottom: "1rem"
           }}>
             <a href="#demo" className="btn-primary" style={{fontSize: "1rem", padding: "14px 32px", fontFamily: "'Syne', sans-serif", fontWeight: 600}}>
               Scan my copy free
@@ -200,34 +204,23 @@ export function HeroNew() {
                 background: "rgba(255,255,255,0.15)", fontSize: "14px"
               }}>↓</span>
             </a>
-            <Link href="/signup" className="btn-secondary" style={{fontSize: "1rem", padding: "14px 32px", fontFamily: "'Syne', sans-serif", fontWeight: 500}}>
-              Create free account
-              <span>→</span>
-            </Link>
           </div>
 
-          {/* Done-for-you audit callout */}
+          {/* Secondary action — demoted to a plain text link */}
           <div style={{
             opacity: rest ? 1 : 0,
             transform: rest ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s",
             display: "flex", justifyContent: "center", marginBottom: "1.5rem"
           }}>
-            <Link href="/audit" style={{
-              display: "inline-flex", alignItems: "center", gap: "10px",
-              background: "rgba(251,191,36,0.08)",
-              border: "1px solid rgba(251,191,36,0.3)",
-              borderRadius: "9999px",
-              padding: "10px 22px",
-              fontSize: "13px", fontWeight: 700,
-              color: "#fbbf24",
+            <Link href="/signup" style={{
+              fontSize: "13px", fontWeight: 600,
+              color: "rgba(255,255,255,0.45)",
               fontFamily: "'Syne', sans-serif",
               textDecoration: "none",
               letterSpacing: "0.02em"
             }}>
-              <span style={{width: "6px", height: "6px", borderRadius: "50%", background: "#fbbf24", animation: "pulseRed 2s ease-in-out infinite"}} />
-              Rather have a human do it? Done-For-You Audit — £97
-              <span>→</span>
+              Already know what you need? Create a free account →
             </Link>
           </div>
 
@@ -332,6 +325,19 @@ export function HeroNew() {
             </span>
           ))}
         </div>
+      </div>
+
+      {/* ── Done-for-you audit — demoted secondary CTA ── */}
+      <div style={{background: "#080808", padding: "12px 16px", textAlign: "center"}}>
+        <Link href="/audit" style={{
+          fontSize: "12px", fontWeight: 600,
+          color: "rgba(251,191,36,0.7)",
+          fontFamily: "'Syne', sans-serif",
+          textDecoration: "none",
+          letterSpacing: "0.02em"
+        }}>
+          Rather have a human do it? Done-For-You Audit — £97 →
+        </Link>
       </div>
 
     </div>

@@ -61,9 +61,11 @@ export function DemoScanner() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<DemoResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [jurisdictions, setJurisdictions] = useState<JurisdictionCode[]>(
-    JURISDICTIONS.map(j => j.code)
-  );
+  const [alreadyUsed, setAlreadyUsed] = useState(false);
+  // Default to UK + EU — most traffic is UK-based, and these two jurisdictions
+  // cover the regulations (CMA/ASA/FCA, GDPR/DSA/AI Act) most relevant to them.
+  const [jurisdictions, setJurisdictions] = useState<JurisdictionCode[]>(["gb", "eu"]);
+  const [jurisdictionPickerOpen, setJurisdictionPickerOpen] = useState(false);
 
   async function handleScan() {
     if (!content.trim()) return;
@@ -75,6 +77,7 @@ export function DemoScanner() {
 
     setLoading(true);
     setError(null);
+    setAlreadyUsed(false);
     setResult(null);
 
     try {
@@ -91,6 +94,10 @@ export function DemoScanner() {
       const data = await res.json();
 
       if (!res.ok) {
+        if (res.status === 409) {
+          setAlreadyUsed(true);
+          return;
+        }
         setError(data.error ?? "Something went wrong. Please try again.");
         return;
       }
@@ -273,7 +280,7 @@ export function DemoScanner() {
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
 
-          {/* Jurisdiction picker */}
+          {/* Jurisdiction picker — defaults to UK + EU, collapsible for everyone else */}
           <div style={{
             marginTop: "1.25rem",
             padding: "1.25rem",
@@ -281,25 +288,111 @@ export function DemoScanner() {
             border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: "8px",
           }}>
-            <p style={{
-              ...syne,
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-              marginBottom: "10px",
-            }}>
-              Builders — pick the markets you sell into.&nbsp;&nbsp;Buyers — pick where you are.
-            </p>
-            <JurisdictionPicker
-              value={jurisdictions}
-              onChange={setJurisdictions}
-            />
+            {jurisdictionPickerOpen ? (
+              <>
+                <p style={{
+                  ...syne,
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.3)",
+                  marginBottom: "10px",
+                }}>
+                  Builders — pick the markets you sell into.&nbsp;&nbsp;Buyers — pick where you are.
+                </p>
+                <JurisdictionPicker
+                  value={jurisdictions}
+                  onChange={setJurisdictions}
+                />
+                <button
+                  type="button"
+                  onClick={() => setJurisdictionPickerOpen(false)}
+                  style={{
+                    ...syne,
+                    marginTop: "10px",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.3)",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                  }}
+                >
+                  Done
+                </button>
+              </>
+            ) : (
+              <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px"}}>
+                <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)"}}>
+                  Scanning for{" "}
+                  <span style={{color: "white", fontWeight: 700}}>
+                    {jurisdictions.length === JURISDICTIONS.length
+                      ? "all 9 jurisdictions"
+                      : jurisdictions.map(c => JURISDICTIONS.find(j => j.code === c)?.name).join(" + ")}
+                  </span>
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setJurisdictionPickerOpen(true)}
+                  style={{
+                    ...syne,
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#ef4444",
+                    background: "rgba(239,68,68,0.08)",
+                    border: "1px solid rgba(239,68,68,0.25)",
+                    borderRadius: "6px",
+                    padding: "6px 12px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Change markets
+                </button>
+              </div>
+            )}
           </div>
 
           {error && (
             <p style={{...syne, fontSize: "13px", color: "#ef4444", marginTop: "0.75rem"}}>{error}</p>
+          )}
+
+          {alreadyUsed && (
+            <div style={{
+              marginTop: "1.25rem",
+              background: "rgba(239,68,68,0.06)",
+              border: "1px solid rgba(239,68,68,0.25)",
+              borderRadius: "8px",
+              padding: "1.5rem",
+              textAlign: "center"
+            }}>
+              <p style={{...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.4rem"}}>
+                You&apos;ve already used your free scan
+              </p>
+              <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem"}}>
+                {email.trim()} has already claimed its one free scan. Create a free account to scan this copy — and keep scanning more.
+              </p>
+              <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
+                display: "inline-block",
+                background: "#cc0000",
+                color: "white",
+                ...syne,
+                fontSize: "0.9rem",
+                fontWeight: 700,
+                padding: "12px 28px",
+                borderRadius: "9999px",
+                boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+                textDecoration: "none",
+                letterSpacing: "0.02em"
+              }}>
+                Create Free Account
+              </Link>
+            </div>
           )}
 
           <button

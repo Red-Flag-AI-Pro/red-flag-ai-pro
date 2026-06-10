@@ -196,10 +196,25 @@
   display: flex;
 }
 
+/* Urgency bar — full text on desktop, short on mobile to save vertical space */
+.urgency-text-short {
+  display: none;
+}
+
+/* Ticker is purely decorative — hide on mobile to save fold space */
+.hero-ticker-wrap {
+  display: block;
+}
+
+/* Hero eyebrow — full text on desktop, short on mobile */
+.hero-eyebrow-text-short {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: unset !important;
-    padding-top: 3rem !important;
+    padding-top: 1.5rem !important;
     padding-bottom: 2.5rem !important;
   }
 
@@ -211,8 +226,42 @@
     display: none !important;
   }
 
+  .urgency-bar p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  .urgency-text-full {
+    display: none;
+  }
+
+  .urgency-text-short {
+    display: inline;
+  }
+
+  .hero-ticker-wrap {
+    display: none;
+  }
+
   .hero-eyebrow {
     margin-bottom: 1.25rem !important;
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+  }
+
+  .hero-eyebrow-text-full {
+    display: none;
+  }
+
+  .hero-eyebrow-text-short {
+    display: inline;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.25rem, 12vw, 3rem) !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .hero-subheadline {
@@ -221,7 +270,11 @@
   }
 
   .hero-fineprint {
-    margin-bottom: 2rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero-audit-callout {
+    margin-bottom: 1rem !important;
   }
 }
 

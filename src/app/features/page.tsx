@@ -70,6 +70,28 @@ export default function FeaturesPage() {
     <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
 
+      {/* Features + scan categories teaser */}
+      <section style={{background: "#050505", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
+        <div style={{maxWidth: "900px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>26 categories. 9 jurisdictions. Both sides.</h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2rem", lineHeight: 1.7}}>Income claims, fake urgency, health claims, GDPR, FCA, greenwashing, influencer disclosure, AI law — scanned simultaneously against every major market.</p>
+          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
+            {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "26 total categories"].map((label) => (
+              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "26 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "26 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
+            ))}
+          </div>
+          <div style={{display: "flex", gap: "2rem", flexWrap: "wrap"}}>
+            <a href="/#demo" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
+              Scan your copy free →
+            </a>
+            <Link href="/tools/compliance-checklist" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textDecoration: "none", letterSpacing: "0.04em"}}>
+              Free compliance checklist →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Hero */}
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
         <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Everything included</p>

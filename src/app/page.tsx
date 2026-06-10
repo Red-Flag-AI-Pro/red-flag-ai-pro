@@ -56,160 +56,6 @@ const jsonLd = {
   ],
 };
 
-const FEATURES = [
-  // --- BUYER SIDE ---
-  {
-    icon: "🛡️",
-    title: "Verify Before You Buy",
-    description:
-      "Paste any ad, sales page or VSL you are considering buying from. Know if the claims are legal before you hand over your money. Free — no signup needed.",
-  },
-  {
-    icon: "🚨",
-    title: "Spot Fake Urgency and Fake Scarcity",
-    description:
-      "That countdown timer and limited spots claim — find out if it is real or manufactured pressure. Fake urgency is specifically illegal under EU DSA and CMA rules.",
-  },
-  {
-    icon: "📋",
-    title: "Catch Contract Contradictions",
-    description:
-      "Spots the gap between what the sales page promises and what the Terms of Service actually delivers — before you screenshot it too late and lose your money.",
-  },
-  {
-    icon: "📊",
-    title: "0–100 Compliance Score",
-    description:
-      "One number tells you exactly how safe an offer is — or how safe your copy is to publish. Green means go. Red means stop. Every flag in plain English with a fix.",
-  },
-  // --- SELLER / FOUNDER / AGENCY SIDE ---
-  {
-    icon: "🚩",
-    title: "Know Your Risk Before You Spend on Ads",
-    description:
-      "Stop paying to amplify illegal copy. Red Flag AI Pro surfaces income claims, health claims, fake urgency and FTC red flags before your campaign goes live.",
-  },
-  {
-    icon: "💡",
-    title: "Compliant Rewrites Included",
-    description:
-      "Every flag comes with a concrete, compliant rewrite. No lawyer, no guesswork, no waiting. Fix it in the same session you found it.",
-  },
-  {
-    icon: "🌐",
-    title: "Scan Any Live URL",
-    description:
-      "Paste a URL and we fetch the live page and scan what is actually published — not what you think is there. Works on sales pages, landing pages, product pages.",
-  },
-  {
-    icon: "🎬",
-    title: "YouTube VSL and Audio Scanning",
-    description:
-      "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 26 risk categories.",
-  },
-  {
-    icon: "🔍",
-    title: "Full Site Audit",
-    description:
-      "Enter a domain and we find the sitemap, scan every page, and rank them by risk. Audit a new client's entire website in under two minutes on day one.",
-  },
-  {
-    icon: "📡",
-    title: "Weekly Auto-Monitoring",
-    description:
-      "Add URLs to monitoring and we rescan them every Monday. Email digest lands in your inbox if anything changes. Know about new compliance issues before anyone complains.",
-  },
-  {
-    icon: "🏢",
-    title: "Client Workspaces and Auto-Reports",
-    description:
-      "Organise scans by client. Each workspace shows scan history, score trends and compliance records. Weekly reports sent automatically to your client contacts.",
-  },
-  {
-    icon: "📥",
-    title: "White-Label PDF Reports",
-    description:
-      "Download compliance reports under your agency name. Set it once in Settings — every PDF shows your branding. Clients see your name on the certificate, not ours.",
-  },
-  {
-    icon: "⚡",
-    title: "Zapier, Webhooks and REST API",
-    description:
-      "Every scan fires a webhook to any URL. Connect Zapier, Make, Slack or your own system in minutes. REST API with full docs at /docs lets you embed scanning in your own tools.",
-  },
-  {
-    icon: "🧩",
-    title: "Chrome Extension",
-    description:
-      "Scan any page without leaving your browser. Click the icon, see the score and top flags in seconds. No copy-paste, no tab-switching. Sentinel users only.",
-  },
-  {
-    icon: "🔗",
-    title: "Embeddable Compliance Badge and Sharing",
-    description:
-      "A live SVG badge agencies embed on client sites as verifiable proof of review. Share any scan with a public link — clients see the full report without an account.",
-  },
-  {
-    icon: "🕓",
-    title: "Compliance Changelog",
-    description:
-      "Compare any two scans side by side. Score delta, new flags, resolved flags, what still needs fixing — with the suggested rewrite for every issue.",
-  },
-];
-
-const SCAN_CATEGORIES = [
-  { icon: "💰", label: "Income Claims" },
-  { icon: "❤️", label: "Health Claims" },
-  { icon: "⏱️", label: "Fake Urgency" },
-  { icon: "🎭", label: "Dark Patterns" },
-  { icon: "🕵️", label: "Hidden Fees" },
-  { icon: "⭐", label: "Fake Reviews" },
-  { icon: "🔒", label: "Data Privacy" },
-  { icon: "📧", label: "Email Compliance" },
-  { icon: "⚖️", label: "Comparative Advertising" },
-  { icon: "📋", label: "Contract Contradictions" },
-  { icon: "🛡️", label: "Missing Disclaimers" },
-  { icon: "🤝", label: "Unverified Testimonials" },
-  { icon: "🤖", label: "AI Content Disclosure" },
-  { icon: "📢", label: "AI Endorsement Violations" },
-  { icon: "⚙️", label: "Automated Decisions" },
-  { icon: "🏦", label: "FCA Financial Promotions" },
-  { icon: "🌿", label: "Greenwashing" },
-  { icon: "🔄", label: "Subscription Traps" },
-  { icon: "📣", label: "Influencer Disclosure" },
-  { icon: "💳", label: "Misleading Guarantees" },
-  { icon: "🌍", label: "GDPR & Data Law" },
-];
-
-const AI_CATEGORIES = [
-  { icon: "🤖", label: "AI Content Disclosure", tag: "EU AI Act Art. 50" },
-  { icon: "📢", label: "AI Endorsement Violations", tag: "FTC AI Guidelines" },
-  { icon: "⚙️", label: "Automated Decision Making", tag: "GDPR Article 22" },
-];
-
-const PERSONAS = [
-  // Buyers
-  { icon: "🛡️", label: "Online Shoppers", desc: "Checking if an offer is legitimate before buying. Paste any ad — know in 60 seconds if the claims are legal." },
-  { icon: "📚", label: "Course Buyers", desc: "Verifying income claims and guarantees before investing in a programme. Free, no account needed." },
-  { icon: "💸", label: "Anyone Who's Been Ripped Off Before", desc: "Paste any sales page you are unsure about. We flag exactly what is illegal and why." },
-  // Sellers and founders
-  { icon: "🏢", label: "Marketing Agencies", desc: "Client workspaces, team seats, white-label PDFs, auto-monitoring and Zapier — compliance as a service." },
-  { icon: "🎓", label: "Course Creators", desc: "Income claims, testimonials and guarantees checked across FTC, ASA, ACCC and CASL before you spend on ads." },
-  { icon: "🎯", label: "Coaches Running VSLs", desc: "YouTube transcript fetching and audio transcription. Scan every word of your VSL before it goes live." },
-  { icon: "💻", label: "SaaS Founders", desc: "Free trial terms, subscription language, data collection and pricing claims — all checked before ads run." },
-  { icon: "🛒", label: "Ecommerce Brands", desc: "Product claims, sustainability assertions and pricing language checked across 9 jurisdictions simultaneously." },
-  { icon: "🏦", label: "FCA-Regulated Businesses", desc: "Financial promotions checked against FCA rules before publication. Signed PDF certificates as audit evidence." },
-];
-
-const TICKER_ITEMS = [
-  "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
-  "EU AI Act", "FCA", "FSMA 2000", "EU Green Claims", "PECR", "MHRA", "TGA", "ESMA", "ASIC",
-  "FTC Negative Option Rule", "CMA Green Claims Code", "FTC Green Guides", "BCAP Code", "OSC",
-  "FTC", "GDPR", "ASA", "CMA", "ACCC", "CASL", "ICO", "UCPD", "DSA", "PIPEDA", "ACL", "FDA", "CAN-SPAM",
-  "EU AI Act", "FCA", "FSMA 2000", "EU Green Claims", "PECR", "MHRA", "TGA", "ESMA", "ASIC",
-  "FTC Negative Option Rule", "CMA Green Claims Code", "FTC Green Guides", "BCAP Code", "OSC",
-];
-
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -224,44 +70,6 @@ export default function LandingPage() {
       <HeroNew />
       <DemoScanner />
 
-
-      {/* ── Newsletter CTA ── */}
-      <section style={{
-        background: "#0f0505",
-        borderTop: "1px solid rgba(239,68,68,0.15)",
-        borderBottom: "1px solid rgba(239,68,68,0.15)",
-        padding: "5rem 1.5rem",
-        textAlign: "center"
-      }}>
-        <div style={{maxWidth: "560px", margin: "0 auto"}}>
-          <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.25rem"}}>
-            <span className="flag-wave" style={{display: "inline-block"}}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-              </svg>
-            </span>
-            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>The Red Flag Newsletter</p>
-          </div>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem"}}>
-            Weekly compliance updates.<br />Free. In plain English.
-          </h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
-            Real violations. Real fines. What&apos;s changing in advertising law and what it means for your copy. Every week.
-          </p>
-          <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
-            display: "inline-block",
-            background: "#cc0000", color: "white",
-            fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
-            padding: "13px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
-            textDecoration: "none", letterSpacing: "0.02em"
-          }}>
-            Subscribe free
-          </a>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>One email a week. Real cases, real fines, no fluff — unsubscribe in one click.</p>
-        </div>
-      </section>
 
       {/* Who is this for — slim teaser */}
       <section style={{background: "#080808", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
@@ -278,30 +86,6 @@ export default function LandingPage() {
           </Link>
         </div>
       </section>
-
-      {/* Features + scan categories teaser */}
-      <section style={{background: "#050505", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
-        <div style={{maxWidth: "900px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>26 categories. 9 jurisdictions. Both sides.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2rem", lineHeight: 1.7}}>Income claims, fake urgency, health claims, GDPR, FCA, greenwashing, influencer disclosure, AI law — scanned simultaneously against every major market.</p>
-          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
-            {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "26 total categories"].map((label) => (
-              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "26 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "26 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
-            ))}
-          </div>
-          <div style={{display: "flex", gap: "2rem", flexWrap: "wrap"}}>
-            <Link href="/features" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "#ef4444", textDecoration: "none", letterSpacing: "0.04em"}}>
-              Explore all features and categories →
-            </Link>
-            <Link href="/tools/compliance-checklist" style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textDecoration: "none", letterSpacing: "0.04em"}}>
-              Free compliance checklist →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-
 
       {/* Testimonials placeholder */}
       <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
@@ -366,27 +150,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Toolkit teaser — replaces full calculator */}
-      <section style={{background: "#080808", padding: "6rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
-        <div style={{maxWidth: "700px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Free with every account</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "1rem"}}>Your compliance toolkit. Included free.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
-            Sign up free and unlock 9 compliance tools — risk calculators, disclaimer generator, testimonial checker, email compliance, refund rights checker and more. No scan credits used. Always free.
-          </p>
-          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center", marginBottom: "2.5rem"}}>
-            {["Risk Calculator", "Disclaimer Generator", "Testimonial Checker", "Email Compliance", "Urgency Validator", "Health Claim Rater", "Red Flag Checklist", "Refund Rights", "Influencer Disclosure"].map((t) => (
-              <span key={t} style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.1)", padding: "5px 12px", borderRadius: "9999px"}}>
-                {t}
-              </span>
-            ))}
-          </div>
-          <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>
-            Create free account — unlock toolkit →
-          </Link>
-        </div>
-      </section>
-
       {/* Founder story teaser — full width cinematic */}
       <section style={{
         background: "linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%)",
@@ -429,30 +192,6 @@ export default function LandingPage() {
           }}>
             Read the story
           </Link>
-        </div>
-      </section>
-
-      {/* Email lead magnet — premium dark */}
-      <section style={{background: "#050505", padding: "4rem 1.5rem"}}>
-        <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>
-            The 26-Category Marketing Compliance Checklist
-          </h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
-            Every compliance check you need before you launch. Every red flag to look for before you buy. Free. No spam.
-          </p>
-          <Link href="/blog/marketing-compliance-checklist-2026" style={{
-            display: "inline-flex", alignItems: "center", gap: "10px",
-            background: "#cc0000", color: "white",
-            fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
-            padding: "14px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
-            textDecoration: "none"
-          }}>
-            Get the free checklist
-          </Link>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>No account needed. Instant access.</p>
         </div>
       </section>
 
@@ -523,26 +262,6 @@ export default function LandingPage() {
 
         </div>
       </section>
-
-
-      {/* Sentinel teaser — slim */}
-      <section style={{
-        background: "linear-gradient(180deg, #0a0a0a 0%, #0d0010 50%, #0a0a0a 100%)",
-        padding: "6rem 1.5rem",
-        textAlign: "center",
-        borderTop: "1px solid rgba(255,255,255,0.05)"
-      }}>
-        <div style={{maxWidth: "600px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel — enterprise compliance</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a 3-year audit trail.</p>
-          <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
-            <Link href="/sentinel" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>Learn about Sentinel</Link>
-            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
-          </div>
-        </div>
-      </section>
-
 
       {/* Affiliate — full section */}
       <section style={{background: "#cc0000", padding: "5rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden"}}>

@@ -48,6 +48,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
               <Link href="/compare" className="nav-link px-3 py-1.5 text-sm">Compare</Link>
               <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Blog</Link>
+              <Link href="/tools" className="nav-link px-3 py-1.5 text-sm">Free Tools</Link>
               <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
               <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
               <Link href="/audit" className="nav-link px-3 py-1.5 text-sm font-semibold !text-amber-400 hover:!text-amber-300">Audit</Link>
@@ -109,6 +110,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-semibold text-green-400 hover:bg-gray-800 transition-colors flex items-center gap-2">Affiliates <span style={{fontSize:"9px", background:"#16a34a", color:"white", borderRadius:"9999px", padding:"1px 5px", fontWeight:700}}>EARN</span></Link>
                 <Link href="/docs" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">API docs</Link>
                 <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Blog</Link>
+                <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Free Tools</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">About</Link>
                 <div className="pt-2 border-t border-gray-800">
                   <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Log in</Link>
