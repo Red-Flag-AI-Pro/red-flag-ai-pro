@@ -133,14 +133,12 @@ export default function AuditPage() {
             fontWeight: 800,
             lineHeight: 1.1,
             letterSpacing: "-0.035em",
-            color: "white",
-            marginBottom: "1.5rem"
+            marginBottom: "1.5rem",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
             I&apos;ll personally run your site and funnel through{" "}
-            <span style={{
-              background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-            }}>Red Flag AI Pro</span>{" "}
+            <span>Red Flag AI Pro</span>{" "}
             and hand you back exactly what to fix.
           </h1>
 
@@ -206,12 +204,9 @@ export default function AuditPage() {
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>
             The problem
           </p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             You don&apos;t have time to learn a compliance tool.{" "}
-            <span style={{
-              background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-            }}>You just need to know what&apos;s wrong.</span>
+            <span>You just need to know what&apos;s wrong.</span>
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.9 }}>
             You are running ads, building funnels, writing copy. Compliance is the thing you know matters and never quite get round to checking properly. Meanwhile the fines, the takedowns, and the new AI-exclusion clauses turning up on insurance renewals are real and moving faster than most people realise. So instead of handing you a tool and a login, I will do it with you. Personally.
@@ -224,12 +219,9 @@ export default function AuditPage() {
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What you get</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Everything packaged.<br />
-              <span style={{
-              background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-            }}>Nothing left for you to interpret.</span>
+              <span>Nothing left for you to interpret.</span>
             </h2>
           </div>
 
@@ -297,7 +289,7 @@ export default function AuditPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How it works</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Three steps. 48 hours.
             </h2>
           </div>
@@ -319,7 +311,7 @@ export default function AuditPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Pricing</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               What this would cost anywhere else.
             </h2>
           </div>
@@ -383,7 +375,7 @@ export default function AuditPage() {
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Questions</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em" }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Still on the fence?
             </h2>
           </div>
@@ -402,12 +394,9 @@ export default function AuditPage() {
       {/* ── CTA CLOSE ── */}
       <section style={{ padding: "7rem 1.5rem", background: "#080808" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             You&apos;ll either find out you&apos;re already safe.{" "}
-            <span style={{
-              background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-            }}>or find out before it costs you.</span>
+            <span>or find out before it costs you.</span>
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2.25rem" }}>
             Either way, you will have a clear picture of exactly where you stand — on video, in writing, with a badge to show for it.

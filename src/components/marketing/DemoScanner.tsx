@@ -154,16 +154,14 @@ export function DemoScanner() {
             fontWeight: 800,
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
-            color: "white",
-            marginBottom: "1rem"
+            marginBottom: "1rem",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             Paste Your Copy.<br />
-            <span style={{
-              background: "linear-gradient(90deg, #ef4444 0%, #cc0000 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}>Get Your Verdict.</span>
+            <span>Get Your Verdict.</span>
           </h2>
 
           <p style={{...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto 0.75rem"}}>

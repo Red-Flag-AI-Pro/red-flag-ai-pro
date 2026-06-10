@@ -75,7 +75,7 @@ export default function LandingPage() {
       <section style={{background: "#080808", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Who it is for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>If you buy or sell online, this was built for you.</h2>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>If you buy or sell online, this was built for you.</h2>
           <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
             {["Online Shoppers", "Course Buyers", "Anyone Who's Been Ripped Off", "Marketing Agencies", "Course Creators", "Coaches Running VSLs", "SaaS Founders", "Ecommerce Brands", "FCA-Regulated Businesses"].map((label) => (
               <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.08)", padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
@@ -91,7 +91,7 @@ export default function LandingPage() {
       <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "1100px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What people say</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem"}}>Real results from real scans.</h2>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>Real results from real scans.</h2>
 
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px"}}>
             {[

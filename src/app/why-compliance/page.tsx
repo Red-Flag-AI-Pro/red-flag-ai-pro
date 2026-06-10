@@ -38,9 +38,9 @@ export default function WhyCompliancePage() {
       {/* Hero */}
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
         <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The cost of getting it wrong</p>
-        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem" }}>
+        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
           Real fines. Real losses.<br />
-          <span style={{ color: "#ef4444", fontStyle: "italic" }}>Both sides.</span>
+          <span style={{ fontStyle: "italic" }}>Both sides.</span>
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
           $6 billion in marketing compliance fines globally in the last three years. Same illegal copy — sellers face regulators, buyers lose money.
@@ -55,7 +55,7 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#080808", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>What buyers lose</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "4rem" }}>Every year. From the same ads.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Every year. From the same ads.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px" }}>
             {BUYER_LOSSES.map((item) => (
               <div key={item.label} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
@@ -73,7 +73,7 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#050505", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>What sellers face</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "4rem" }}>Maximum regulatory penalties per jurisdiction.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Maximum regulatory penalties per jurisdiction.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "2px" }}>
             {FINES.map((f) => (
               <div key={f.country} style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
@@ -97,9 +97,9 @@ export default function WhyCompliancePage() {
         <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.12), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>New threat — 2026</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "0.75rem", lineHeight: 1.2 }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", lineHeight: 1.2, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             AI generated it.<br />That does not make it legal.
-            <span style={{ display: "block", color: "#ef4444", fontStyle: "italic" }}>Or safe to buy.</span>
+            <span style={{ display: "block", fontStyle: "italic" }}>Or safe to buy.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", marginBottom: "4rem", maxWidth: "600px", lineHeight: 1.7 }}>
             From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span style={{ color: "white", fontWeight: 600 }}>uninsured liability</span>.
@@ -124,7 +124,7 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#050505", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The maths</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "3rem" }}>For both sides.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>For both sides.</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 0, marginBottom: "3rem", textAlign: "left" }}>
             {[
               { label: "Compliance lawyer", value: "£400 per hour" },

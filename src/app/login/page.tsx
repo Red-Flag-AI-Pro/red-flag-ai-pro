@@ -139,7 +139,10 @@ export default function LoginPage() {
               className="object-contain"
             />
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-white">
+          <h1
+            className="mt-4 text-2xl font-bold"
+            style={{ background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+          >
             Welcome back
           </h1>
           <p className="mt-1 text-sm text-gray-500">

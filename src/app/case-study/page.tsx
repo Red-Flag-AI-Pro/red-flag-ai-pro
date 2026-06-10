@@ -104,9 +104,9 @@ export default function CaseStudyPage() {
             </span>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Case Study</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Six violations.<br />None of them obvious.<br />
-            <span style={{ color: "#ef4444" }}>All happening right now.</span>
+            All happening right now.
           </h1>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: "600px" }}>
             This is a composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here is what a compliance scanner found that nobody else did.
@@ -247,7 +247,7 @@ export default function CaseStudyPage() {
               position: "absolute", top: 0, left: "3rem", right: "3rem",
               height: "2px", background: "linear-gradient(90deg, #cc0000, transparent)"
             }} />
-            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, color: "white", marginBottom: "1.5rem", letterSpacing: "-0.02em" }}>
+            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, marginBottom: "1.5rem", letterSpacing: "-0.02em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               The point of this case study
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>

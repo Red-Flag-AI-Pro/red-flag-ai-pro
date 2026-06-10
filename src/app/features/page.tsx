@@ -74,7 +74,7 @@ export default function FeaturesPage() {
       <section style={{background: "#050505", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "1rem"}}>26 categories. 9 jurisdictions. Both sides.</h2>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>26 categories. 9 jurisdictions. Both sides.</h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2rem", lineHeight: 1.7}}>Income claims, fake urgency, health claims, GDPR, FCA, greenwashing, influencer disclosure, AI law — scanned simultaneously against every major market.</p>
           <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
             {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "26 total categories"].map((label) => (
@@ -95,9 +95,9 @@ export default function FeaturesPage() {
       {/* Hero */}
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
         <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Everything included</p>
-        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem" }}>
+        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
           26 categories. 9 jurisdictions.<br />
-          <span style={{ color: "#ef4444", fontStyle: "italic" }}>One scan.</span>
+          <span style={{ fontStyle: "italic" }}>One scan.</span>
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
           Every feature built for both sides of the deal — whether you are checking copy before you publish, or an offer before you buy.
@@ -137,7 +137,7 @@ export default function FeaturesPage() {
       <section style={{ background: "#080808", padding: "5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>How it works</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "4rem" }}>Three steps. 60 seconds.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Three steps. 60 seconds.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
             {[
               { step: "01", title: "Paste your copy", desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish." },
@@ -158,9 +158,9 @@ export default function FeaturesPage() {
       <section style={{ background: "#050505", padding: "5rem 1.5rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>The problem</p>
-          <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "white", marginBottom: "1.5rem" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             The ad that just convinced you to buy could be breaking the law.
-            <span style={{ color: "#ef4444", fontStyle: "italic", display: "block" }}>So could the one you just wrote.</span>
+            <span style={{ fontStyle: "italic", display: "block" }}>So could the one you just wrote.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.1rem", lineHeight: 1.7, color: "rgba(255,255,255,0.5)", maxWidth: "640px", marginBottom: "4rem" }}>
             Most people who get ripped off online are not stupid. Most sellers who break the rules are not scammers. Nobody tells you where the line is. Until you cross it.
@@ -189,7 +189,7 @@ export default function FeaturesPage() {
       <section style={{ background: "#080808", padding: "5rem 1.5rem" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Real examples</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem" }}>Before you buy it. Before you build it.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Before you buy it. Before you build it.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem" }}>Real flags. Both sides. See exactly what we find.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: "2px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
@@ -257,7 +257,7 @@ export default function FeaturesPage() {
       <section style={{ background: "#050505", padding: "5rem 1.5rem" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The cost of getting it wrong</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem" }}>Real fines. Real losses. Both sides.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Real fines. Real losses. Both sides.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem" }}>All from the same illegal marketing copy.</p>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>What buyers lose</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px", marginBottom: "4rem" }}>
@@ -305,9 +305,9 @@ export default function FeaturesPage() {
         <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.15), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>New threat — 2026</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", color: "white", marginBottom: "0.75rem", lineHeight: 1.2 }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", lineHeight: 1.2, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             AI generated it. That does not make it legal.
-            <span style={{ display: "block", color: "#ef4444", fontStyle: "italic" }}>Or safe to buy.</span>
+            <span style={{ display: "block", fontStyle: "italic" }}>Or safe to buy.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", marginBottom: "4rem", maxWidth: "600px", lineHeight: 1.7 }}>
             From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI-generated copy that breaches advertising law is now an <span style={{ color: "white", fontWeight: 600 }}>uninsured liability</span>.
