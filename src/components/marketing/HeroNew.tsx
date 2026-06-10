@@ -206,6 +206,31 @@ export function HeroNew() {
             </Link>
           </div>
 
+          {/* Done-for-you audit callout */}
+          <div style={{
+            opacity: rest ? 1 : 0,
+            transform: rest ? "translateY(0)" : "translateY(16px)",
+            transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s",
+            display: "flex", justifyContent: "center", marginBottom: "1.5rem"
+          }}>
+            <Link href="/audit" style={{
+              display: "inline-flex", alignItems: "center", gap: "10px",
+              background: "rgba(251,191,36,0.08)",
+              border: "1px solid rgba(251,191,36,0.3)",
+              borderRadius: "9999px",
+              padding: "10px 22px",
+              fontSize: "13px", fontWeight: 700,
+              color: "#fbbf24",
+              fontFamily: "'Syne', sans-serif",
+              textDecoration: "none",
+              letterSpacing: "0.02em"
+            }}>
+              <span style={{width: "6px", height: "6px", borderRadius: "50%", background: "#fbbf24", animation: "pulseRed 2s ease-in-out infinite"}} />
+              Rather have a human do it? Done-For-You Audit — £97
+              <span>→</span>
+            </Link>
+          </div>
+
           {/* Fine print */}
           <p className="hero-fineprint" style={{
             opacity: rest ? 1 : 0,
