@@ -46,7 +46,7 @@ function SignupForm() {
 
     const appUrl = window.location.origin;
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -68,6 +68,14 @@ function SignupForm() {
         value: 49.0,
         currency: "GBP",
       });
+    }
+
+    // If email confirmation is required, signUp() doesn't return a session —
+    // pushing to /dashboard would just bounce off the auth middleware.
+    if (!data.session) {
+      setLoading(false);
+      setSuccess(true);
+      return;
     }
 
     router.push("/dashboard");
