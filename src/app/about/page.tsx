@@ -56,22 +56,18 @@ export default function AboutPage() {
           {/* Headline */}
           <h1 style={{
             ...syne,
-            fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
+            fontSize: "clamp(2rem, 5.5vw, 4rem)",
             fontWeight: 800, lineHeight: 1.0,
             letterSpacing: "-0.04em",
-            color: "white",
-            marginBottom: "2rem"
+            marginBottom: "2rem",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             This wasn&apos;t built<br />
             in a boardroom.<br />
-            <span style={{
-              background: "linear-gradient(90deg, #ef4444 0%, #cc0000 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}>
-              It was built from the bottom.
-            </span>
+            It was built from the bottom.
           </h1>
 
           {/* Quote */}
