@@ -3,7 +3,7 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { createClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 
-const ADMIN_EMAIL = "support@redflagaipro.com";
+const ADMIN_EMAIL = "redflagaipro@gmail.com";
 
 function scoreColor(score: number) {
   if (score >= 70) return "text-green-400";
