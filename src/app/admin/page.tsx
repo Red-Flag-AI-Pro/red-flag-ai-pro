@@ -169,7 +169,7 @@ export default async function AdminPage() {
 
         {/* Footer */}
         <p className="text-center text-xs text-gray-600">
-          This page is only visible to support@redflagaipro.com
+          This page is only visible to redflagaipro@gmail.com
         </p>
       </div>
     </div>
