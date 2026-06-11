@@ -38,7 +38,7 @@ export default async function AdminPage() {
     service.from("scans").select("id", { count: "exact", head: true }),
     service
       .from("profiles")
-      .select("full_name, email, plan, created_at")
+      .select("user_id, full_name, plan, created_at")
       .order("created_at", { ascending: false })
       .limit(10),
     service
@@ -55,6 +55,15 @@ export default async function AdminPage() {
       .select("id", { count: "exact", head: true })
       .gte("created_at", new Date(new Date().setHours(0, 0, 0, 0)).toISOString()),
   ]);
+
+  // profiles has no email column — look emails up via the auth admin API
+  const emailByUserId = new Map<string, string>();
+  if (recentUsers && recentUsers.length > 0) {
+    const { data: usersPage } = await service.auth.admin.listUsers({ perPage: 1000 });
+    for (const u of usersPage?.users ?? []) {
+      if (u.email) emailByUserId.set(u.id, u.email);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-950 px-4 py-10">
@@ -109,7 +118,7 @@ export default async function AdminPage() {
                       <p className="text-sm font-medium text-white">
                         {u.full_name || "Unknown"}
                       </p>
-                      <p className="text-xs text-gray-400">{u.email}</p>
+                      <p className="text-xs text-gray-400">{emailByUserId.get(u.user_id) ?? "—"}</p>
                     </div>
                     <div className="text-right">
                       <span className={[
