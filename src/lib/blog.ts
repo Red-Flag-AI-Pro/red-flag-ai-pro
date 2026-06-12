@@ -10,6 +10,95 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "uk-data-use-access-act-2026-complaints-process",
+    title: "One Week to Go: The UK's New Data Complaints Law Starts 19 June 2026",
+    description: "The Data (Use and Access) Act 2025 takes effect on 19 June 2026 and requires every organisation handling personal data to have a formal complaints process. Most small businesses don't have one. Here's what's actually required.",
+    date: "2026-06-12",
+    readTime: "5 min read",
+    category: "GDPR",
+    content: `
+## One Week. New Legal Requirement. Most Businesses Aren't Ready.
+
+On **19 June 2026**, the UK's **Data (Use and Access) Act 2025** comes into force. The Information Commissioner's Office (ICO) has already published guidance for businesses -titled, pointedly, "One month to go: what businesses need to know."
+
+That month is now down to a week.
+
+The headline requirement is simple to state and easy to miss: **every organisation that handles personal data must have a formal complaints process for data protection issues.** Not a best-practice suggestion. A legal requirement.
+
+If you run an email list, a checkout page, a membership site or a course platform -this applies to you.
+
+---
+
+## What "Formal Complaints Process" Actually Means
+
+Under the new requirements, when someone raises a data protection complaint -about how their data was collected, used, stored or shared -your business needs to:
+
+- Provide a **clear channel** for people to make a complaint (not just "email us and hope")
+- **Acknowledge and respond within 30 days**
+- **Investigate** the complaint properly
+- **Inform the complainant of the outcome**
+
+This is a step beyond general UK GDPR good practice. It's a specific, checkable process that the ICO can ask to see evidence of.
+
+---
+
+## Why This Catches Small Businesses Out
+
+If you're a course creator, coach, agency or small SaaS, your current "data complaints process" is probably: someone emails \`support@\`, and you reply if you have time.
+
+That's no longer enough, because:
+
+- There's **no defined timeline** -a complaint can sit unanswered for weeks
+- There's **no documented investigation step** -so even if you do respond, there's nothing to show you looked into it
+- There's **no outcome notification** -the person never hears whether anything changed
+
+None of this requires expensive infrastructure. It requires a written process, a clear page telling people how to complain, and a habit of actually following the 30-day clock.
+
+---
+
+## What To Do Before 19 June 2026
+
+### 1. Add a Clear Complaints Channel
+A simple, dedicated page or email address (e.g. \`privacy@yourdomain.com\`) that's easy to find -ideally linked from your privacy policy and footer.
+
+### 2. Write Down the Process
+Even a short internal document: who receives complaints, who investigates, and the 30-day response commitment. This is what you'd show the ICO if asked.
+
+### 3. Set a Response Deadline -and Track It
+A complaint that arrives and gets forgotten is the exact failure mode this law targets. A simple tracker (a spreadsheet is fine) showing date received, date responded, and outcome is enough for most small businesses.
+
+### 4. Check Your Privacy Policy Reflects This
+Your privacy policy should tell people *how* to complain -to you, and that they can also complain to the ICO if unsatisfied with your response.
+
+---
+
+## How This Maps to a Compliance Scan
+
+Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy reference data handling, consent and complaints in a way that's consistent with current UK requirements -alongside \`email_compliance\` for your list-building and marketing emails.
+
+| Requirement | Scanner category |
+|-------------|------------------|
+| Privacy policy references complaints process | \`data_privacy\` |
+| Marketing email consent and opt-out | \`email_compliance\` |
+| Claims vs. actual policy (e.g. "your data is safe with us") | \`claims_policy_mismatch\` |
+| Cookie consent banners and tracking disclosures | \`cookie_consent\` |
+
+---
+
+## The Bottom Line
+
+This isn't a distant deadline -it's **one week away**. The fix is mostly about process and documentation, not technology. But "we'll get to it" stops being an option on 19 June 2026.
+
+Scan your site's privacy policy, checkout flow and marketing copy now, while there's still time to fix anything that's missing.
+
+[Scan your copy free →](https://www.redflagaipro.com/signup)
+
+---
+
+*Source: [ICO -One month to go: what businesses need to know to meet new data law](https://ico.org.uk/)*
+    `,
+  },
+  {
     slug: "uk-online-course-creator-legal-checklist-2026",
     title: "The UK Online Course Creator's Legal Checklist for 2026",
     description: "Copyright, refunds, hidden fees, influencer disclosure, GDPR and resale rights -here's everything UK course creators need to get right before their next launch, and how regulators are actually enforcing it.",
