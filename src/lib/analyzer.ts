@@ -863,6 +863,131 @@ const RULES: Rule[] = [
     ],
     jurisdictions: ["gb", "eu", "us"],
   },
+
+  // ─── FAKE / REFERENCE PRICING ────────────────────────────────────────────────
+  {
+    category: "fake_discounts",
+    severity: "medium",
+    keywords: [
+      "was £",
+      "was $",
+      "was €",
+      "now only",
+      "originally priced",
+      "originally £",
+      "originally $",
+      "rrp",
+      "compare at",
+      "reduced from",
+      "discounted from",
+      "% off",
+      "slashed price",
+      "before price increases",
+    ],
+    flag_description:
+      "Contains a 'was/now' or reference-price discount claim. Under the EU/UK Omnibus Directive (Digital Markets, Consumer and Competition Act 2024 in the UK; Directive 2019/2161 in the EU) and FTC Guides Against Deceptive Pricing (US), a 'was' price must be the lowest price genuinely charged for a meaningful period (typically the preceding 30 days) — inflating, fabricating, or briefly raising a price just to discount it is an unfair commercial practice.",
+    suggestion:
+      "Only advertise a discount against a price you actually charged for a meaningful period immediately beforehand (typically 30 days). Keep records of historical pricing to substantiate the claim if challenged by the CMA, a Trading Standards body, or the FTC.",
+    regulations: [
+      "Digital Markets, Competition and Consumers Act 2024 (UK)",
+      "CMA Pricing Practices Guidance (UK)",
+      "Directive 2019/2161 'Omnibus Directive' (EU)",
+      "FTC Guides Against Deceptive Pricing (US)",
+      "Australian Consumer Law — Section 29 (AU)",
+    ],
+    jurisdictions: ["gb", "eu", "us", "au"],
+  },
+
+  // ─── COOKIE CONSENT / TRACKING ────────────────────────────────────────────────
+  {
+    category: "cookie_consent",
+    severity: "medium",
+    keywords: [
+      "we use cookies",
+      "this site uses cookies",
+      "by continuing to browse",
+      "by using this site you agree",
+      "by using this website you agree",
+      "accept all cookies",
+      "cookies to improve your experience",
+      "third-party cookies",
+      "tracking pixels",
+      "we and our partners use cookies",
+    ],
+    flag_description:
+      "References cookies or tracking technology in a way that suggests consent is implied by browsing rather than actively given. Under PECR (UK) and the ePrivacy Directive (EU), non-essential cookies — analytics, advertising, tracking pixels — require freely-given, specific, informed consent BEFORE they are set. A notice saying 'by continuing to browse you agree to cookies' does not meet this standard and is treated by the ICO as non-compliant.",
+    suggestion:
+      "Replace passive cookie notices with a consent banner that blocks non-essential cookies until the visitor actively opts in, with a 'reject all' option that's just as easy to use as 'accept all'. Do not set analytics or advertising cookies before consent is given, and don't pre-tick consent boxes.",
+    regulations: [
+      "Privacy and Electronic Communications Regulations / PECR (UK)",
+      "ICO Cookie Guidance (UK)",
+      "ePrivacy Directive 2002/58/EC (EU)",
+      "GDPR Article 7 (EU)",
+    ],
+    jurisdictions: ["gb", "eu"],
+  },
+
+  // ─── CRYPTO / DIGITAL ASSET PROMOTION ────────────────────────────────────────
+  {
+    category: "crypto_promotion",
+    severity: "high",
+    keywords: [
+      "cryptocurrency",
+      "crypto investment",
+      "bitcoin investment",
+      "token presale",
+      "ico launch",
+      "airdrop",
+      "guaranteed returns",
+      "100x gains",
+      "to the moon",
+      "defi yield",
+      "stake your crypto",
+      "nft investment",
+    ],
+    flag_description:
+      "Promotes a cryptocurrency, token, NFT, or digital asset as an investment. Since October 2023, the UK FCA requires all cryptoasset promotions reaching a UK audience to carry a clear risk warning, give first-time investors a 24-hour cooling-off period, and be issued by or via an FCA-authorised firm — breaching this is a criminal offence. The EU's MiCA regulation imposes equivalent marketing standards, and the US SEC treats many token offers as unregistered securities.",
+    suggestion:
+      "Add a prominent risk warning (e.g. \"Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment and you're unlikely to be protected if something goes wrong.\"), remove unsubstantiated return promises like 'guaranteed returns' or '100x', and confirm the promotion is being issued via an FCA-registered firm for UK audiences or reviewed against MiCA (EU) / SEC guidance (US) before publishing.",
+    regulations: [
+      "FCA Financial Promotion Order — Cryptoasset Promotions (UK)",
+      "FCA COBS 4.12A (UK)",
+      "Markets in Crypto-Assets Regulation / MiCA (EU)",
+      "SEC Securities Act of 1933 (US)",
+      "ASA CAP Code (UK)",
+    ],
+    jurisdictions: ["gb", "eu", "us"],
+  },
+
+  // ─── COUNTRY OF ORIGIN / 'MADE IN' CLAIMS ────────────────────────────────────
+  {
+    category: "country_of_origin",
+    severity: "medium",
+    keywords: [
+      "made in the usa",
+      "made in usa",
+      "made in america",
+      "american made",
+      "made in britain",
+      "made in the uk",
+      "british made",
+      "made in australia",
+      "locally made",
+      "locally sourced",
+      "proudly made in",
+    ],
+    flag_description:
+      "Makes a country-of-origin or 'made in' claim. The FTC's Made in USA Labeling Rule requires that products marketed as 'Made in USA' be 'all or virtually all' made in the United States, with penalties up to $50,000 per violation for false claims. The UK and EU have equivalent rules under consumer protection and origin-marking law, and Australia's Country of Origin Food Labelling requirements apply to food products specifically.",
+    suggestion:
+      "Only use an unqualified 'Made in [Country]' claim if the product genuinely meets the 'all or virtually all' domestic content standard (FTC) or local origin-marking rules. If components, materials, or manufacturing are sourced internationally, use a qualified claim instead (e.g. 'Assembled in the USA from imported parts' or 'Designed in the UK, manufactured overseas').",
+    regulations: [
+      "FTC Made in USA Labeling Rule (US)",
+      "Consumer Protection from Unfair Trading Regulations 2008 (UK)",
+      "Unfair Commercial Practices Directive / UCPD (EU)",
+      "Country of Origin Food Labelling (AU)",
+    ],
+    jurisdictions: ["us", "gb", "eu", "au"],
+  },
 ];
 
 // ─── CLAIMS vs. POLICY MISMATCH ──────────────────────────────────────────────

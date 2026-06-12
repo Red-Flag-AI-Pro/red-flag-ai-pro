@@ -116,8 +116,8 @@ export function HeroNew() {
                   <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
                 </svg>
               </span>
-              <span className="hero-eyebrow-text-full">Marketing Compliance · 9 Jurisdictions · 26 Risk Categories</span>
-              <span className="hero-eyebrow-text-short">9 Jurisdictions · 26 Risk Categories</span>
+              <span className="hero-eyebrow-text-full">Marketing Compliance · 9 Jurisdictions · 28 Risk Categories</span>
+              <span className="hero-eyebrow-text-short">9 Jurisdictions · 28 Risk Categories</span>
             </span>
           </div>
 
@@ -174,7 +174,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>26 risk categories. 9 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>28 risk categories. 9 jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
@@ -278,7 +278,7 @@ export function HeroNew() {
             gap: "8px 32px", justifyContent: "center", alignItems: "center"
           }}>
             {[
-              "26 risk categories",
+              "28 risk categories",
               "9 jurisdictions",
               "URL + VSL + site audit",
               "60 second results",

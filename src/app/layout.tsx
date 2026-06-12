@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC, CASL, PDPA and UAE PDPL. 26 risk categories. 9 jurisdictions. Free scan — no account needed.",
+    "Are you a Builder? Are you a Buyer? Scan it before it's too late. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio files for compliance risks across FTC, GDPR, ASA, FCA, ACCC, CASL, PDPA and UAE PDPL. 28 risk categories. 9 jurisdictions. Free scan — no account needed.",
   keywords: [
     // Core product
     "marketing compliance scanner",
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro — Are you a Builder? Are you a Buyer? Scan it before it's too late.",
     description:
-      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL, LGPD, DPDP, PDPA, UAE PDPL. 26 risk categories across 9 jurisdictions. AI-powered. Free — no account needed.",
+      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL, LGPD, DPDP, PDPA, UAE PDPL. 28 risk categories across 9 jurisdictions. AI-powered. Free — no account needed.",
     images: [
       {
         url: "/og-image.png",
@@ -180,7 +180,7 @@ export default function RootLayout({
               "@type": "SoftwareApplication",
               "name": "Red Flag AI Pro",
               "url": "https://www.redflagaipro.com",
-              "description": "The world's only 9-jurisdiction AI marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, LGPD, DPDP Act, PDPA and UAE PDPL. 26 risk categories. Used by solopreneurs, agencies and regulated businesses.",
+              "description": "The world's only 9-jurisdiction AI marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, LGPD, DPDP Act, PDPA and UAE PDPL. 28 risk categories. Used by solopreneurs, agencies and regulated businesses.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
               "offers": [

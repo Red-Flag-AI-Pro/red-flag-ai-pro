@@ -40,7 +40,8 @@ const VALID_CATEGORIES = [
   "hidden_fees", "fake_reviews", "comparative_advertising", "email_compliance",
   "dark_patterns", "ai_disclosure", "ai_endorsement", "automated_decisions",
   "financial_promotion", "greenwashing", "subscription_trap", "influencer_disclosure",
-  "sms_marketing", "online_safety",
+  "sms_marketing", "online_safety", "claims_policy_mismatch", "fake_discounts",
+  "cookie_consent", "crypto_promotion", "country_of_origin",
 ] as const;
 
 const VALID_SEVERITIES: Severity[] = ["high", "medium", "low"];
@@ -91,7 +92,7 @@ Respond ONLY with valid JSON matching this exact structure. No markdown, no expl
   ],
   "additional_flags": [
     {
-      "category": "one of: income_claim|urgency|scarcity|testimonial|guarantee|health_claim|legal_disclaimer|contract_contradiction|data_privacy|hidden_fees|fake_reviews|comparative_advertising|email_compliance|dark_patterns|ai_disclosure|ai_endorsement|automated_decisions|financial_promotion|greenwashing|subscription_trap|influencer_disclosure|sms_marketing|online_safety",
+      "category": "one of: income_claim|urgency|scarcity|testimonial|guarantee|health_claim|legal_disclaimer|contract_contradiction|data_privacy|hidden_fees|fake_reviews|comparative_advertising|email_compliance|dark_patterns|ai_disclosure|ai_endorsement|automated_decisions|financial_promotion|greenwashing|subscription_trap|influencer_disclosure|sms_marketing|online_safety|claims_policy_mismatch|fake_discounts|cookie_consent|crypto_promotion|country_of_origin",
       "severity": "high|medium|low",
       "text_excerpt": "The exact sentence or phrase from the copy that is problematic",
       "flag_description": "This phrase breaks [exact law names] because [specific reason]. A regulator would treat this as [specific enforcement risk].",

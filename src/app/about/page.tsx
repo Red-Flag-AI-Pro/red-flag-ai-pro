@@ -132,7 +132,7 @@ export default function AboutPage() {
               A scanner that checks marketing copy against real advertising law. FTC, GDPR, ASA, ACCC, CASL and EU AI Act. In 60 seconds. In plain English. With exact rewrite suggestions. No lawyers. No jargon. Just clarity.
             </p>
             <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontWeight: 700 }}>26 risk categories</span> and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions, SMS marketing, online safety and more. Eight jurisdictions simultaneously — UK, US, EU, Canada, Australia, Brazil, India, Singapore and UAE. No other tool on the planet does this.
+              <span style={{ color: "#ef4444", fontWeight: 700 }}>28 risk categories</span> and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions, SMS marketing, online safety and more. Eight jurisdictions simultaneously — UK, US, EU, Canada, Australia, Brazil, India, Singapore and UAE. No other tool on the planet does this.
             </p>
             <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: "1.25rem" }}>
               And Sentinel is now live. Compliance infrastructure built for agencies, legal teams and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. The audit trail your PI insurer needs.
@@ -329,7 +329,7 @@ export default function AboutPage() {
             See what we find.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            26 risk categories. 9 jurisdictions. 60 seconds. No credit card.
+            28 risk categories. 9 jurisdictions. 60 seconds. No credit card.
           </p>
           <a href="/#demo" style={{
             display: "inline-block",

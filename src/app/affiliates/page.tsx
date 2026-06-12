@@ -175,12 +175,12 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="Facebook Group / Forum"
             label="Helpful, not salesy"
-            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non-compliant — fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 26 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it — 25% recurring commission.`}
+            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non-compliant — fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 28 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it — 25% recurring commission.`}
           />
           <PromoBox
             platform="Newsletter / Email"
             label="For newsletter writers"
-            post={`Quick one this week — a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy — sales page, ad, email — and it scans it against 26 compliance categories across 9 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First scan is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link — I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
+            post={`Quick one this week — a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy — sales page, ad, email — and it scans it against 28 compliance categories across 9 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First scan is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link — I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
           />
         </div>
       </section>

@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
   title: "Free Compliance Tools — Red Flag AI Pro",
   description:
-    "Free marketing compliance tools: a 26-category compliance checklist, an affiliate disclosure generator, and more — included free with every account.",
+    "Free marketing compliance tools: a 28-category compliance checklist, an affiliate disclosure generator, and more — included free with every account.",
   alternates: { canonical: "https://www.redflagaipro.com/tools" },
 };
 
@@ -46,7 +46,7 @@ export default function ToolsPage() {
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center"}}>Or try these now — no account needed</p>
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
             <Link href="/tools/compliance-checklist" style={{display: "block", background: "#0f0505", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
-              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>26-Category Compliance Checklist</h2>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>28-Category Compliance Checklist</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Every compliance check to run before you launch a campaign — free, no signup.</p>
             </Link>
             <Link href="/tools/disclosure-generator" style={{display: "block", background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>

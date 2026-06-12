@@ -32,6 +32,12 @@ const CATEGORY_LABELS: Record<string, string> = {
   greenwashing: "Greenwashing",
   subscription_trap: "Subscription Trap",
   influencer_disclosure: "Influencer Disclosure",
+  sms_marketing: "SMS Marketing Consent",
+  online_safety: "Online Safety / UGC",
+  fake_discounts: "Fake / Reference Discount",
+  cookie_consent: "Cookie Consent",
+  crypto_promotion: "Crypto Promotion",
+  country_of_origin: "Country of Origin Claim",
 };
 
 interface Flag {

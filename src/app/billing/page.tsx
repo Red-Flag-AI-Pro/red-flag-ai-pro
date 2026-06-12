@@ -13,19 +13,19 @@ const PLANS = [
     key: "pro" as const,
     name: "Pro",
     price: "£39/mo",
-    features: ["10 scans per month", "26 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
+    features: ["10 scans per month", "28 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Growth",
     price: "£199/mo",
-    features: ["Unlimited scans", "26 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
+    features: ["Unlimited scans", "28 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
   },
   {
     key: "sentinel" as const,
     name: "Sentinel",
     price: "£999/mo",
-    features: ["Unlimited scans", "All 26 risk categories", "URL + YouTube VSL + audio scanning", "Site audit (50 pages)", "Weekly monitoring", "Client workspaces", "Team seats", "White-label PDF reports", "Dedicated onboarding"],
+    features: ["Unlimited scans", "All 28 risk categories", "URL + YouTube VSL + audio scanning", "Site audit (50 pages)", "Weekly monitoring", "Client workspaces", "Team seats", "White-label PDF reports", "Dedicated onboarding"],
   },
 ];
 

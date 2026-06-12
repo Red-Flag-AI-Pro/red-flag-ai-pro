@@ -21,11 +21,11 @@ const FAQS = [
   { category: "For sellers", q: "What if my copy is already compliant?", a: "Then you get a green score and launch with total confidence. Either way you win." },
   { category: "For sellers", q: "Which jurisdictions do you cover?", a: "USA (FTC, FDA, CAN-SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA) and UAE (PDPL 2022)." },
   { category: "For sellers", q: "Can I scan a live URL instead of pasting copy?", a: "Yes. On Pro and above, paste any URL and we fetch and scan the live page. Works on sales pages, landing pages, product pages and full websites." },
-  { category: "For sellers", q: "Can I scan YouTube VSLs?", a: "Yes. Paste a YouTube URL and we automatically fetch the transcript. You can also upload audio files for Whisper transcription. Both are then scanned against all 26 categories." },
+  { category: "For sellers", q: "Can I scan YouTube VSLs?", a: "Yes. Paste a YouTube URL and we automatically fetch the transcript. You can also upload audio files for Whisper transcription. Both are then scanned against all 28 categories." },
   { category: "For agencies", q: "Can I use this for client work?", a: "Absolutely. Growth and Sentinel plans include client workspaces, white-label PDF reports, team seats, and weekly monitoring. Manage compliance for every client from one dashboard." },
   { category: "For agencies", q: "Does it integrate with Zapier or my existing tools?", a: "Yes. Every scan fires a webhook to any URL. There is also a REST API with full documentation at /docs. Connect to Zapier, Make, Slack, or any custom system." },
   { category: "Pricing", q: "Why is there a free scan?", a: "Because once you see what it finds — whether in your own copy or in an ad you were about to buy from — you will never skip it again." },
-  { category: "Pricing", q: "What is included in the free plan?", a: "One scan per month, access to all 26 risk categories and 9 jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard." },
+  { category: "Pricing", q: "What is included in the free plan?", a: "One scan per month, access to all 28 risk categories and 9 jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard." },
   { category: "Pricing", q: "Is there a money-back guarantee?", a: "Yes. All paid plans come with a 14-day money-back guarantee. No questions asked." },
 ];
 
