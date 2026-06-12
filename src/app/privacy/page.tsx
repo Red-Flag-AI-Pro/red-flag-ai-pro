@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 18 May 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 12 June 2026</p>
         </div>
       </section>
 
@@ -109,6 +109,7 @@ export default function PrivacyPage() {
                 ["Legitimate interests", "Improving our service, preventing fraud, ensuring security"],
                 ["Legal obligation", "Retaining billing records as required by law"],
                 ["Consent", "Marketing emails — you can unsubscribe at any time"],
+                ["Consent", "Sharing conversion data with Google Ads for advertising measurement and Customer Match — you can opt out via Google's Ads Settings"],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
                   <strong style={{ color: "white" }}>{label}:</strong> {text}
@@ -126,6 +127,7 @@ export default function PrivacyPage() {
                 ["Stripe", "Payment processing (PCI DSS compliant)"],
                 ["Vercel", "Website hosting"],
                 ["OpenAI / Anthropic", "AI processing of scan requests"],
+                ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
                   <strong style={{ color: "white" }}>{label}</strong> — {text}
@@ -178,7 +180,11 @@ export default function PrivacyPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Cookies</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              We use essential cookies only — for authentication and session management. We do not use advertising or tracking cookies. No cookie consent banner is required for essential cookies under UK GDPR.
+              We use essential cookies for authentication and session management. No cookie consent banner is required for essential cookies under UK GDPR.
+            </p>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+              We also use Google Ads conversion tracking to measure the performance of our advertising and to share conversion data with Google for Customer Match (showing ads to existing and similar potential customers). You can opt out of personalised advertising at any time via{" "}
+              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>Google&apos;s Ads Settings</a>.
             </p>
           </div>
 
