@@ -54,6 +54,7 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   health_claim: "Health Claim",
   legal_disclaimer: "Missing Disclaimer",
   contract_contradiction: "Claim vs. Contract",
+  claims_policy_mismatch: "Claims vs. Policy Mismatch",
   data_privacy: "Data Privacy Violation",
   hidden_fees: "Hidden Fees / Drip Pricing",
   fake_reviews: "Fake Review Claim",

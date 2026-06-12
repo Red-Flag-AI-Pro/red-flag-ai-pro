@@ -865,6 +865,108 @@ const RULES: Rule[] = [
   },
 ];
 
+// ─── CLAIMS vs. POLICY MISMATCH ──────────────────────────────────────────────
+// Cross-reference check: looks for a marketing "guarantee" claim AND a
+// contradicting refund/cancellation restriction within the same content.
+// Unlike the keyword rules above, this only fires when BOTH sides of the
+// contradiction are present — it's the "you promised X but your own policy
+// says Y" gotcha that's far more compelling (and more defensible) than
+// flagging either phrase in isolation.
+const CLAIM_PHRASES = [
+  "money-back guarantee",
+  "money back guarantee",
+  "30-day guarantee",
+  "14-day guarantee",
+  "60-day guarantee",
+  "90-day guarantee",
+  "satisfaction guaranteed",
+  "100% guarantee",
+  "100% money back",
+  "full refund",
+  "risk-free",
+  "risk free",
+  "cancel anytime",
+  "cancel at any time",
+  "no questions asked",
+  "guaranteed results",
+];
+
+const POLICY_RESTRICTION_PHRASES = [
+  "no refund",
+  "non-refundable",
+  "all sales final",
+  "no cancellation",
+  "cannot cancel",
+  "no returns",
+  "strictly no refunds",
+  "not eligible for a refund",
+  "no exceptions",
+];
+
+const CLAIMS_POLICY_REGULATIONS = [
+  "FTC (US) — Guides Concerning the Use of Endorsements and Testimonials",
+  "Consumer Rights Act 2015 (UK)",
+  "ASA CAP Code (UK)",
+  "Australian Consumer Law (AU)",
+  "Consumer Protection Act (CA)",
+  "Consumer Rights Directive (EU)",
+];
+
+function detectClaimsPolicyMismatch(
+  content: string,
+  lower: string,
+  selectedJurisdictions?: JurisdictionCode[]
+): AnalysisResult["flags"][number] | null {
+  const jurisdictions: JurisdictionCode[] = ["us", "gb", "eu", "au", "ca"];
+  if (selectedJurisdictions && selectedJurisdictions.length > 0) {
+    if (!jurisdictions.some((j) => selectedJurisdictions.includes(j))) return null;
+  }
+
+  let claimIdx = -1;
+  let claimPhrase = "";
+  for (const phrase of CLAIM_PHRASES) {
+    const idx = lower.indexOf(phrase);
+    if (idx !== -1) {
+      claimIdx = idx;
+      claimPhrase = phrase;
+      break;
+    }
+  }
+  if (claimIdx === -1) return null;
+
+  let restrictionIdx = -1;
+  let restrictionPhrase = "";
+  for (const phrase of POLICY_RESTRICTION_PHRASES) {
+    const idx = lower.indexOf(phrase);
+    if (idx !== -1) {
+      restrictionIdx = idx;
+      restrictionPhrase = phrase;
+      break;
+    }
+  }
+  if (restrictionIdx === -1) return null;
+
+  const claimExcerpt = extractExcerpt(content, claimIdx);
+  const restrictionExcerpt = extractExcerpt(content, restrictionIdx);
+
+  return {
+    category: "claims_policy_mismatch",
+    severity: "high",
+    text_excerpt: `"${claimPhrase}" … "${restrictionPhrase}"`,
+    flag_description:
+      `Direct contradiction found: this copy promises "${claimPhrase}" (${claimExcerpt}) ` +
+      `but elsewhere states "${restrictionPhrase}" (${restrictionExcerpt}). ` +
+      `Advertising a guarantee or cancellation right that your own policy then denies is a ` +
+      `textbook unfair commercial practice — and statutory consumer rights (UK, EU, Australia, ` +
+      `Canada) can't be overridden by a "no refunds" clause regardless. ` +
+      `[Regulations: ${CLAIMS_POLICY_REGULATIONS.join(" · ")}]`,
+    suggestion:
+      `Make your refund/cancellation policy match the guarantee you advertise. Either honour the ` +
+      `"${claimPhrase}" promise in your T&Cs, or remove/soften the marketing claim so it doesn't ` +
+      `overstate what customers will actually get.`,
+  };
+}
+
 function extractExcerpt(content: string, index: number): string {
   const start = Math.max(0, index - 60);
   const end = Math.min(content.length, index + 60);
@@ -921,6 +1023,11 @@ export function analyzeContent(
         break;
       }
     }
+  }
+
+  const mismatch = detectClaimsPolicyMismatch(content, lower, selectedJurisdictions);
+  if (mismatch) {
+    flags.push(mismatch);
   }
 
   const deduction = flags.reduce(

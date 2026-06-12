@@ -18,6 +18,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   health_claim: "Health Claim",
   legal_disclaimer: "Legal Disclaimer",
   contract_contradiction: "Contract Contradiction",
+  claims_policy_mismatch: "Claims vs. Policy Mismatch",
   data_privacy: "Data Privacy",
   hidden_fees: "Hidden Fees",
   fake_reviews: "Fake Reviews",
