@@ -10,6 +10,116 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "uk-online-course-creator-legal-checklist-2026",
+    title: "The UK Online Course Creator's Legal Checklist for 2026",
+    description: "Copyright, refunds, hidden fees, influencer disclosure, GDPR and resale rights -here's everything UK course creators need to get right before their next launch, and how regulators are actually enforcing it.",
+    date: "2026-06-12",
+    readTime: "7 min read",
+    category: "ASA / UK",
+    content: `
+## Selling Courses in the UK? Six Areas Regulators Are Actively Watching
+
+If you sell online courses, memberships or digital products to UK customers, your launch funnel sits at the intersection of copyright law, consumer protection law, advertising law and data protection law -all at once.
+
+Most course creators never think about any of this until something goes wrong. But the CMA, the ASA and the ICO are not theoretical threats. The CMA has already opened investigations into **eight UK companies** over misleading pricing and hidden fees in online sales funnels. The ASA regularly takes action against creators and influencers for undisclosed sponsorships.
+
+Here's what actually matters, in plain English.
+
+---
+
+## 1. Who Owns Your Course Content?
+
+Copyright in your videos, slides, workbooks and written materials belongs to you automatically the moment you create them -no registration required.
+
+The risk runs the other way: **using other people's material without permission.**
+
+- Stock images, music, video clips and quoted excerpts all need a licence unless a specific exception applies (e.g. genuinely insubstantial use for non-commercial teaching).
+- "I found it on Google" is not a licence.
+- If you're collaborating with co-creators, guest experts or ghostwriters, get a written agreement on who owns what -before launch, not after a dispute.
+
+---
+
+## 2. Your Terms of Sale (and the Refund Question Everyone Gets Wrong)
+
+Online courses sold to UK consumers fall under the **Consumer Rights Act 2015** and distance selling rules. That means your terms need to clearly state:
+
+- The price (the *whole* price -see hidden fees below)
+- What exactly the customer is buying (access period, format, updates included)
+- Your refund and cancellation policy
+
+**The 14-day cooling-off period** normally applies to digital purchases -but it can be waived once the customer starts downloading or accessing the content, **as long as you tell them clearly before they buy**. Bury that waiver in a footnote and you haven't actually waived anything.
+
+---
+
+## 3. Hidden Fees and Pre-Selected Extras
+
+This is the one currently getting UK businesses investigated.
+
+The CMA has opened formal probes into companies over **drip pricing** -advertising one price and adding mandatory fees, taxes or pre-ticked add-ons at checkout. For course creators, common versions include:
+
+- "£97" that becomes £97 + a mandatory "platform fee"
+- Pre-selected upsells or "VIP access" boxes that are ticked by default
+- Countdown timers or "limited spots" claims that reset every time someone visits the page
+
+If the price a customer sees in your ad isn't the price they pay at checkout -minus genuinely optional extras they actively chose -that's the exact pattern regulators are currently fining people for.
+
+---
+
+## 4. Marketing Claims: Income, Outcomes and Influencers
+
+The ASA CAP Code governs how you can market a course, and it covers two things creators get wrong constantly:
+
+**Outcome and income claims.** "Replace your 9-5," "make £10k/month," or implied results from testimonials all need substantiation. A small-print disclaimer doesn't rescue a headline claim that isn't true for typical customers.
+
+**Sponsored content and affiliate promotion.** If an influencer or affiliate is promoting your course in exchange for payment, commission or free access, that relationship must be disclosed clearly -"Ad" or "#ad", not buried in a hashtag list. The ASA has taken action against creators specifically for this.
+
+---
+
+## 5. Resale Rights, If You Sell Them
+
+If your course comes with master resell rights, or you're reselling someone else's product with resell rights:
+
+- It's legal in the UK **if you respect the original licence terms** -minimum resale price, distribution limits, etc.
+- You still owe customers accurate descriptions, working refund policies, and clear terms -resell rights don't exempt you from consumer law.
+- Income from sales is taxable and must go through HMRC self-assessment. Selling to EU customers brings VAT registration into play based on the customer's location.
+
+---
+
+## 6. Data Protection (UK GDPR)
+
+The moment someone enters an email to download a lead magnet or buy your course, UK GDPR applies. At minimum:
+
+- A privacy policy that's easy to find, not just legally present
+- Clear consent for marketing emails (separate from the purchase itself)
+- A lawful basis for everything you collect -names, emails, payment data, course progress
+
+---
+
+## How This Maps to a Compliance Scan
+
+Every one of these six areas corresponds to a category Red Flag AI Pro checks automatically when you scan a sales page, email or ad:
+
+| Risk area | Scanner category |
+|-----------|------------------|
+| Income / outcome claims | \`income_claim\`, \`guarantee\` |
+| Hidden fees, pre-ticked extras | \`hidden_fees\`, \`dark_patterns\`, \`fake_discounts\` |
+| Influencer / affiliate disclosure | \`influencer_disclosure\` |
+| Refund / cooling-off terms vs. claims | \`claims_policy_mismatch\`, \`contract_contradiction\` |
+| Email consent & data handling | \`data_privacy\`, \`email_compliance\` |
+| Reviews and testimonials | \`fake_reviews\`, \`testimonial\` |
+
+---
+
+## The Bottom Line
+
+None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator -or a customer complaint -does it for you.
+
+Red Flag AI Pro scans your marketing copy against all 28 of these categories across 9 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
+
+[Scan your course sales page free →](https://www.redflagaipro.com/signup)
+    `,
+  },
+  {
     slug: "eu-ai-act-article-50-marketing-agencies",
     title: "EU AI Act Article 50 -What Marketing Agencies Need to Know Before August 2026",
     description: "The EU AI Act Article 50 comes into force on 2 August 2026. If your agency uses AI to write marketing copy, ads or sales pages, here's exactly what you need to do before the deadline.",
