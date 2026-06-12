@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Syne, DM_Mono } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -161,11 +162,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
-      <head>
-        <script async src="https://files.tlt-cdn.com/tlt.js" data-tolt="pk_uHSrWu9BsJAGNpueQV69rTrd" />
-      </head>
       <body className={inter.className}>
         {children}
+        <Script
+          src="https://files.tlt-cdn.com/tlt.js"
+          data-tolt="pk_uHSrWu9BsJAGNpueQV69rTrd"
+          strategy="lazyOnload"
+        />
         <Analytics />
         <SpeedInsights />
         <CookieBanner />
