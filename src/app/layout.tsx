@@ -187,21 +187,21 @@ export default function RootLayout({
                 {
                   "@type": "Offer",
                   "name": "Pro",
-                  "price": "39",
+                  "price": "29",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 },
                 {
                   "@type": "Offer",
                   "name": "Growth",
-                  "price": "199",
+                  "price": "99",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 },
                 {
                   "@type": "Offer",
                   "name": "Sentinel",
-                  "price": "999",
+                  "price": "499",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 }
@@ -220,12 +220,13 @@ export default function RootLayout({
             })
           }}
         />
-        <script
-          defer
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18172154544"
+          strategy="afterInteractive"
         />
-        <script
-          defer
+        <Script
+          id="gtag-config"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
