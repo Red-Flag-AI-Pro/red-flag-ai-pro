@@ -5,7 +5,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Pricing — Red Flag AI Pro",
-  description: "Pro from £39/month. Growth £199/month. Sentinel £999/month for agencies — URL scanning, VSL scanning, site audit, team seats, API access and white-label reports.",
+  description: "Pro from £29/month. Growth £99/month. Sentinel £499/month for agencies — URL scanning, VSL scanning, site audit, team seats, API access and white-label reports.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -145,7 +145,7 @@ export default function PricingPage() {
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Solopreneurs, funnel builders and buyers checking copy before they spend.</p>
               <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                £39<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                £29<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
               </p>
               <Link href="/signup?plan=pro" style={{
                 display: "block", textAlign: "center",
@@ -176,7 +176,7 @@ export default function PricingPage() {
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Growth</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Agencies managing client copy and high-volume creators who scan daily.</p>
               <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                £199<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                £99<span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
               </p>
               <Link href="/signup?plan=enterprise" style={{
                 display: "block", textAlign: "center",
@@ -219,7 +219,7 @@ export default function PricingPage() {
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
                 <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>Agencies and regulated businesses where compliance is not optional.</p>
                 <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#111", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                  £999<span style={{ fontSize: "1rem", color: "#666" }}>/mo</span>
+                  £499<span style={{ fontSize: "1rem", color: "#666" }}>/mo</span>
                 </p>
                 <Link href="/sentinel" style={{
                   display: "block", textAlign: "center",

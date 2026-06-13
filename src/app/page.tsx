@@ -42,14 +42,14 @@ const jsonLd = {
     {
       "@type": "Offer",
       name: "Growth Plan",
-      price: "199",
+      price: "99",
       priceCurrency: "GBP",
       description: "Unlimited scans, URL scanning, VSL script scanning, site audit, client workspaces",
     },
     {
       "@type": "Offer",
       name: "Sentinel Plan",
-      price: "999",
+      price: "499",
       priceCurrency: "GBP",
       description: "All 28 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
     },
@@ -272,10 +272,10 @@ export default function LandingPage() {
             Get paid every month<br />for a link you share once.
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", color: "rgba(255,255,255,0.8)", maxWidth: "520px", margin: "0 auto 2rem", lineHeight: 1.7}}>
-            25% recurring commission. One Sentinel referral = <strong style={{color: "white"}}>£250 every month</strong>. Free to join. No approval process.
+            15% recurring commission. One Sentinel referral = <strong style={{color: "white"}}>£75 every month</strong>. Free to join. No approval process.
           </p>
           <div style={{display: "flex", gap: "2.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem"}}>
-            {[["25%", "Recurring commission"], ["£250/mo", "Per Sentinel referral"], ["90 days", "Cookie window"], ["Free", "To join"]].map(([val, label]) => (
+            {[["15%", "Recurring commission"], ["£75/mo", "Per Sentinel referral"], ["90 days", "Cookie window"], ["Free", "To join"]].map(([val, label]) => (
               <div key={label} style={{textAlign: "center"}}>
                 <p style={{fontFamily: "'DM Mono', monospace", fontSize: "1.75rem", fontWeight: 700, color: "white", lineHeight: 1, marginBottom: "4px"}}>{val}</p>
                 <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.65)", textTransform: "uppercase", letterSpacing: "0.1em"}}>{label}</p>

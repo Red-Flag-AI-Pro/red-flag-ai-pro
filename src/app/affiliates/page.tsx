@@ -5,7 +5,7 @@ import { PromoBox } from "@/components/affiliates/PromoBox";
 
 export const metadata: Metadata = {
   title: "Affiliate Programme — Red Flag AI Pro",
-  description: "Earn 25% recurring commission promoting Red Flag AI Pro. Share your link, earn every month your referrals stay subscribed. Free to join.",
+  description: "Earn 15% recurring commission promoting Red Flag AI Pro. Share your link, earn every month your referrals stay subscribed. Free to join.",
   alternates: { canonical: "https://www.redflagaipro.com/affiliates" },
 };
 
@@ -15,7 +15,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations — anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 25% of every payment your referrals make, for as long as they stay subscribed. One referral on Pro pays you ~£10/month, every month." },
+  { num: "03", title: "Earn every month", body: "You get 15% of every payment your referrals make, for as long as they stay subscribed. One referral on Pro pays you ~£4/month, every month." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -28,12 +28,12 @@ const WHO_IT_IS_FOR = [
 ];
 
 const EARNINGS = [
-  { referrals: 5, plan: "Pro (£39/mo)", monthly: "£49", annual: "£585" },
-  { referrals: 10, plan: "Pro (£39/mo)", monthly: "£98", annual: "£1,170" },
-  { referrals: 5, plan: "Growth (£199/mo)", monthly: "£249", annual: "£2,985" },
-  { referrals: 10, plan: "Growth (£199/mo)", monthly: "£499", annual: "£5,970" },
-  { referrals: 1, plan: "Sentinel (£999/mo)", monthly: "£250", annual: "£2,997" },
-  { referrals: 3, plan: "Sentinel (£999/mo)", monthly: "£749", annual: "£8,991" },
+  { referrals: 5, plan: "Pro (£29/mo)", monthly: "£22", annual: "£261" },
+  { referrals: 10, plan: "Pro (£29/mo)", monthly: "£44", annual: "£522" },
+  { referrals: 5, plan: "Growth (£99/mo)", monthly: "£74", annual: "£891" },
+  { referrals: 10, plan: "Growth (£99/mo)", monthly: "£149", annual: "£1,782" },
+  { referrals: 1, plan: "Sentinel (£499/mo)", monthly: "£75", annual: "£898" },
+  { referrals: 3, plan: "Sentinel (£499/mo)", monthly: "£225", annual: "£2,695" },
 ];
 
 export default function AffiliatesPage() {
@@ -53,7 +53,7 @@ export default function AffiliatesPage() {
             </span>
           </h1>
           <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "520px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-            25% recurring commission. Free to join. No approval process. Share your unique link — earn every month your referrals stay subscribed.
+            15% recurring commission. Free to join. No approval process. Share your unique link — earn every month your referrals stay subscribed.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1rem" }}>
             <a
@@ -76,9 +76,9 @@ export default function AffiliatesPage() {
       <section style={{ background: "#080808", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "4rem 1.5rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", textAlign: "center" }}>
           {[
-            { value: "25%", label: "Recurring commission", sub: "on every payment" },
+            { value: "15%", label: "Recurring commission", sub: "on every payment" },
             { value: "90", label: "Day cookie window", sub: "from first click" },
-            { value: "£10+", label: "Per Pro referral/mo", sub: "every month they stay" },
+            { value: "£4+", label: "Per Pro referral/mo", sub: "every month they stay" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
             <div key={stat.label} style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
@@ -130,7 +130,7 @@ export default function AffiliatesPage() {
               );
             })}
           </div>
-          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem", textAlign: "center" }}>25% of net revenue. Paid monthly. Referrals must remain active subscribers.</p>
+          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem", textAlign: "center" }}>15% of net revenue. Paid monthly. Referrals must remain active subscribers.</p>
         </div>
       </section>
 
@@ -160,12 +160,12 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="LinkedIn"
             label="Professional / agency audience"
-            post={`I just scanned a well-known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations — income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns — you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 25% recurring commission. One agency referral pays you every month they stay subscribed.\n\n→ [YOUR AFFILIATE LINK]`}
+            post={`I just scanned a well-known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations — income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns — you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 15% recurring commission. One agency referral pays you every month they stay subscribed.\n\n→ [YOUR AFFILIATE LINK]`}
           />
           <PromoBox
             platform="X / Twitter"
             label="Short hook for engagement"
-            post={`I scanned a £10M/yr brand's marketing copy through a compliance tool.\n\n0 out of 100.\n\nIncome claims that break FTC rules. Fake countdown timers. GDPR violations.\n\nAll live. All potentially actionable.\n\nThis tool catches it in 60 seconds: [YOUR AFFILIATE LINK]\n\n(They also pay 25% recurring if you share it)`}
+            post={`I scanned a £10M/yr brand's marketing copy through a compliance tool.\n\n0 out of 100.\n\nIncome claims that break FTC rules. Fake countdown timers. GDPR violations.\n\nAll live. All potentially actionable.\n\nThis tool catches it in 60 seconds: [YOUR AFFILIATE LINK]\n\n(They also pay 15% recurring if you share it)`}
           />
           <PromoBox
             platform="Instagram / TikTok caption"
@@ -175,7 +175,7 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="Facebook Group / Forum"
             label="Helpful, not salesy"
-            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non-compliant — fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 28 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it — 25% recurring commission.`}
+            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non-compliant — fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 28 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it — 15% recurring commission.`}
           />
           <PromoBox
             platform="Newsletter / Email"

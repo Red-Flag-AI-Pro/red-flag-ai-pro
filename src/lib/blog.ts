@@ -2023,7 +2023,7 @@ This is the honest comparison.
 
 **Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
 
-**What it costs**: Pro £39/month. Growth £199/month. Sentinel £999/month.
+**What it costs**: Pro £29/month. Growth £99/month. Sentinel £499/month.
 
 **What makes it different**:
 - Real-time, results in 60 seconds, not 48-72 hours

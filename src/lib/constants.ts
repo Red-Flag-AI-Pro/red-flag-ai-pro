@@ -41,17 +41,17 @@ export const AUDIT_PRICE = {
 
 export const PLAN_PRICES = {
   pro: {
-    monthly: 39,
+    monthly: 29,
     label: "Pro",
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
   enterprise: {
-    monthly: 199,
+    monthly: 99,
     label: "Growth",
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_ID!,
   },
   sentinel: {
-    monthly: 999,
+    monthly: 499,
     label: "Sentinel",
     priceId: process.env.STRIPE_PRICE_SENTINEL_ID!,
   },

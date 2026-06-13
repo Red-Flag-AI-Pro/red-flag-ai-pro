@@ -211,8 +211,8 @@ export default async function DashboardPage() {
             </p>
             <p className="text-xs text-gray-500 mt-0.5">
               {plan === "free"
-                ? "10 scans/month, 16 risk categories, PDF reports. £39/mo."
-                : "Team seats, all 28 risk categories including FCA, greenwashing, SMS marketing and UAE PDPL. £999/mo."}
+                ? "10 scans/month, 16 risk categories, PDF reports. £29/mo."
+                : "Team seats, all 28 risk categories including FCA, greenwashing, SMS marketing and UAE PDPL. £499/mo."}
             </p>
           </div>
           <Link
@@ -301,8 +301,8 @@ export default async function DashboardPage() {
       {/* Affiliate nudge */}
       <div className="rounded-lg border border-red-200 bg-red-50 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-bold text-red-700 mb-0.5">Earn 25% recurring commission</p>
-          <p className="text-xs text-red-600">Share your affiliate link — one Sentinel referral earns you £250/month, every month.</p>
+          <p className="text-sm font-bold text-red-700 mb-0.5">Earn 15% recurring commission</p>
+          <p className="text-xs text-red-600">Share your affiliate link — one Sentinel referral earns you £75/month, every month.</p>
         </div>
         <Link href="/affiliates" className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-red-400 px-4 py-2 text-xs font-bold text-red-700 hover:bg-red-100 transition-colors whitespace-nowrap">
           Join the programme →
