@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
-import { PLAN_LIMITS, SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { sendLoopsEvent } from "@/lib/loops";
 import type { Plan } from "@/types";
 
@@ -68,10 +68,11 @@ export async function POST(request: Request) {
   // AI enhancement: specific rewrites + catch implied violations
   const allFlags = await enhanceWithAI(content, rawFlags);
 
-  // Sentinel-only categories are filtered out for all plans except sentinel
-  const flags = plan === "sentinel"
+  // Categories shown are gated by plan tier: free/pro see 16, growth sees 20, sentinel sees all 28
+  const excludedCategories = getExcludedCategories(plan);
+  const flags = excludedCategories.length === 0
     ? allFlags
-    : allFlags.filter((f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category));
+    : allFlags.filter((f) => !excludedCategories.includes(f.category));
 
   // Recalculate score from the allowed flags only
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));

@@ -37,7 +37,7 @@ const jsonLd = {
       name: "Pro Plan",
       price: "29",
       priceCurrency: "GBP",
-      description: "10 scans per month, 28 risk categories, PDF reports, scan history",
+      description: "10 scans per month, 16 risk categories, PDF reports, scan history",
     },
     {
       "@type": "Offer",

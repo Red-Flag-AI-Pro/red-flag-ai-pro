@@ -25,7 +25,7 @@ const FAQS = [
   { category: "For agencies", q: "Can I use this for client work?", a: "Absolutely. Growth and Sentinel plans include client workspaces, white-label PDF reports, team seats, and weekly monitoring. Manage compliance for every client from one dashboard." },
   { category: "For agencies", q: "Does it integrate with Zapier or my existing tools?", a: "Yes. Every scan fires a webhook to any URL. There is also a REST API with full documentation at /docs. Connect to Zapier, Make, Slack, or any custom system." },
   { category: "Pricing", q: "Why is there a free scan?", a: "Because once you see what it finds — whether in your own copy or in an ad you were about to buy from — you will never skip it again." },
-  { category: "Pricing", q: "What is included in the free plan?", a: "One scan per month, access to all 28 risk categories and 9 jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard." },
+  { category: "Pricing", q: "What is included in the free plan?", a: "One scan per month, access to 16 of our 28 risk categories across 9 jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard." },
   { category: "Pricing", q: "Is there a money-back guarantee?", a: "Yes. All paid plans come with a 14-day money-back guarantee. No questions asked." },
 ];
 

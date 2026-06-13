@@ -7,13 +7,31 @@ export const PLAN_LIMITS: Record<Plan, number> = {
   sentinel: Infinity,
 };
 
-// These 4 categories are exclusive to Sentinel. All other plans see the original 17.
+// Category tiers: Pro/Free see 16, Growth adds 4 more (20), Sentinel sees all 28.
+export const GROWTH_PLUS_CATEGORIES = [
+  "comparative_advertising",
+  "contract_contradiction",
+  "automated_decisions",
+  "online_safety",
+] as const;
+
 export const SENTINEL_ONLY_CATEGORIES = [
+  "claims_policy_mismatch",
+  "ai_endorsement",
   "financial_promotion",
   "greenwashing",
   "subscription_trap",
   "influencer_disclosure",
+  "crypto_promotion",
+  "country_of_origin",
 ] as const;
+
+// Returns the categories excluded from results for a given plan.
+export function getExcludedCategories(plan: Plan): readonly string[] {
+  if (plan === "sentinel") return [];
+  if (plan === "enterprise") return SENTINEL_ONLY_CATEGORIES;
+  return [...GROWTH_PLUS_CATEGORIES, ...SENTINEL_ONLY_CATEGORIES];
+}
 
 export const AUDIT_PRICE = {
   amount: 97,

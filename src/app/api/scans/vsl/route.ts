@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
-import { PLAN_LIMITS, SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { YoutubeTranscript } from "youtube-transcript";
 import type { Plan } from "@/types";
 
@@ -60,7 +60,10 @@ export async function POST(request: Request) {
     }
 
     const { flags: allFlags } = analyzeContent(title, content);
-    const flags = allFlags; // Sentinel sees all 24 categories
+    const excludedCategories = getExcludedCategories(plan);
+    const flags = excludedCategories.length === 0
+      ? allFlags
+      : allFlags.filter((f) => !excludedCategories.includes(f.category));
     const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
     const { data: scan, error: scanError } = await supabase
@@ -158,9 +161,12 @@ export async function POST(request: Request) {
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const title = `VSL - youtube.com/watch?v=${videoId}`;
 
-  // Run the analyzer - Sentinel sees all 24 categories
+  // Run the analyzer - YouTube mode is Sentinel-only, so sees all 28 categories
   const { flags: allFlags } = analyzeContent(title, content);
-  const flags = allFlags;
+  const excludedCategories = getExcludedCategories(plan);
+  const flags = excludedCategories.length === 0
+    ? allFlags
+    : allFlags.filter((f) => !excludedCategories.includes(f.category));
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
   // Save scan

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
-import { SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { parse } from "node-html-parser";
 import { Resend } from "resend";
 import type { Plan } from "@/types";
@@ -65,9 +65,10 @@ export async function GET(request: Request) {
       const title = titleEl?.innerText?.trim() || monitored.url;
 
       const { flags: allFlags } = analyzeContent(title, content);
-      const flags = plan === "sentinel"
+      const excludedCategories = getExcludedCategories(plan);
+      const flags = excludedCategories.length === 0
         ? allFlags
-        : allFlags.filter((f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category));
+        : allFlags.filter((f) => !excludedCategories.includes(f.category));
       const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
       // Save the scan

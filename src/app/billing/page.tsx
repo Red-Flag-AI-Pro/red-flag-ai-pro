@@ -13,13 +13,13 @@ const PLANS = [
     key: "pro" as const,
     name: "Pro",
     price: "£39/mo",
-    features: ["10 scans per month", "28 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
+    features: ["10 scans per month", "16 risk categories", "Compliance flags", "Rewrite suggestions", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Growth",
     price: "£199/mo",
-    features: ["Unlimited scans", "28 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
+    features: ["Unlimited scans", "20 risk categories", "URL scanning", "VSL script scanning", "Site audit", "Client workspaces", "PDF reports", "Priority support"],
   },
   {
     key: "sentinel" as const,

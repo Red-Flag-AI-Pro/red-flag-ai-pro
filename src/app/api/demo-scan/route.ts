@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
-import { SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { createServiceClient } from "@/lib/supabase/server";
 
 const PREVIEW_COUNT = 3;
@@ -63,10 +63,9 @@ export async function POST(request: Request) {
   // AI enhancement: specific rewrites + catch implied violations
   const allFlags = await enhanceWithAI(content, rawFlags);
 
-  // Demo never shows Sentinel-only categories
-  const flags = allFlags.filter(
-    (f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category)
-  );
+  // Demo shows the free-tier category set (16 of 28)
+  const excludedCategories = getExcludedCategories("free");
+  const flags = allFlags.filter((f) => !excludedCategories.includes(f.category));
 
   // Recalculate score from allowed flags only
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));

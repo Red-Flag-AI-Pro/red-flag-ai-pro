@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { addContactToLoops } from "@/lib/loops";
 import { analyzeContent } from "@/lib/analyzer";
-import { SENTINEL_ONLY_CATEGORIES, SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 
 // If this person already ran the free demo scan with this email, convert
 // that scan into their first real (fully unlocked) scan — so their
@@ -21,9 +21,8 @@ async function convertDemoScanToFirstScan(userId: string, email: string) {
     if (!content || !content.trim()) return;
 
     const { flags: allFlags } = analyzeContent("Your demo scan", content);
-    const flags = allFlags.filter(
-      (f) => !(SENTINEL_ONLY_CATEGORIES as readonly string[]).includes(f.category)
-    );
+    const excludedCategories = getExcludedCategories("free");
+    const flags = allFlags.filter((f) => !excludedCategories.includes(f.category));
     const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
     const { data: scan } = await service

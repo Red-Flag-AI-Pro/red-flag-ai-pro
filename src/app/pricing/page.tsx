@@ -14,7 +14,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const PRO_FEATURES = [
   "10 scans per month",
-  "28 risk categories",
+  "16 risk categories",
   "Paste text and upload .txt",
   "Plain English flags + rewrite suggestions",
   "0–100 compliance score",
@@ -26,6 +26,7 @@ const PRO_FEATURES = [
 
 const GROWTH_FEATURES = [
   "Everything in Pro",
+  "20 risk categories",
   "Unlimited scans",
   "VSL script scanning",
   "Video scan summaries",
