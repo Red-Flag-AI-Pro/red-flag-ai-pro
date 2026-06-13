@@ -4,7 +4,11 @@ import { enhanceWithAI } from "@/lib/ai-enhance";
 import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { createServiceClient } from "@/lib/supabase/server";
 
-const PREVIEW_COUNT = 3;
+const PREVIEW_COUNT = 1;
+
+// How many locked (blurred) flag cards to show beyond the unlocked one —
+// gives a clear sense of "there's more here" without an overwhelming list.
+const MAX_LOCKED_PREVIEW = 5;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -75,10 +79,12 @@ export async function POST(request: Request) {
   const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
   const sorted = [...flags].sort((a, b) => severityRank[a.severity] - severityRank[b.severity]);
 
-  const preview = sorted.slice(0, PREVIEW_COUNT).map((f, i) => {
+  const shownCount = Math.min(sorted.length, PREVIEW_COUNT + MAX_LOCKED_PREVIEW);
+
+  const preview = sorted.slice(0, shownCount).map((f, i) => {
     const base = { category: f.category, severity: f.severity };
     // Fully reveal the single highest-severity flag — proof the scan is
-    // real, not a black box — the rest stay locked behind signup.
+    // real, not a black box — the rest stay locked behind a Pro upgrade.
     if (i === 0) {
       return {
         ...base,
@@ -92,7 +98,7 @@ export async function POST(request: Request) {
   });
 
   const totalFlags = flags.length;
-  const hiddenCount = Math.max(0, totalFlags - PREVIEW_COUNT);
+  const hiddenCount = Math.max(0, totalFlags - shownCount);
 
   return NextResponse.json({ score, totalFlags, hiddenCount, flags: preview });
 }
