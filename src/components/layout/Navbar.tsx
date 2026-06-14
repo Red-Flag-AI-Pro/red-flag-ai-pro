@@ -22,7 +22,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl" style={{background: "#050505"}}>
+    <header className="sticky top-0 z-40 border-b border-white/5" style={{background: "#050505"}}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
           <Image
