@@ -61,13 +61,16 @@ function SignupForm() {
       return;
     }
 
-    // Fire Google Ads signup conversion
+    // Fire Google Ads signup conversion (enhanced conversions via user_data)
     if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "conversion", {
+      const gtag = (window as any).gtag;
+      gtag("set", "user_data", { email });
+      gtag("event", "conversion", {
         send_to: "AW-18172154544/1F0dCKvqqa8cELCllNlD",
         value: 49.0,
         currency: "GBP",
       });
+      window.localStorage.setItem("rfa_signup_conversion_fired", "1");
     }
 
     // If email confirmation is required, signUp() doesn't return a session —

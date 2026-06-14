@@ -90,7 +90,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <GoogleConversion />
+      <GoogleConversion email={user.email} />
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
