@@ -68,7 +68,7 @@ export async function POST(request: Request) {
   // AI enhancement: specific rewrites + catch implied violations
   const allFlags = await enhanceWithAI(content, rawFlags);
 
-  // Categories shown are gated by plan tier: free/pro see 16, growth sees 20, sentinel sees all 28
+  // Categories shown are gated by plan tier: free/pro see 16, growth sees 20, sentinel sees all 29
   const excludedCategories = getExcludedCategories(plan);
   const flags = excludedCategories.length === 0
     ? allFlags

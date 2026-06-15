@@ -65,7 +65,7 @@ Closing this gap doesn't require a Chief AI Officer or a new department. It requ
 2. **Get a timestamped record** that the check happened: what was flagged, what was changed, when
 3. **Keep that record**, so if a regulator, a client, or your own insurer ever asks "who checked this and when," you have an answer
 
-This is precisely what Red Flag AI Pro's scan does for every piece of copy: a compliance score from 0 to 100, every flag explained in plain English across 28 risk categories and 9 jurisdictions, and on the Sentinel plan, a signed, timestamped certificate that becomes your governance record.
+This is precisely what Red Flag AI Pro's scan does for every piece of copy: a compliance score from 0 to 100, every flag explained in plain English across 29 risk categories and 9 jurisdictions, and on the Sentinel plan, a signed, timestamped certificate that becomes your governance record.
 
 | Governance question | How Red Flag AI Pro answers it |
 |----------------------|--------------------------------|
@@ -279,7 +279,7 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 
 None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator -or a customer complaint -does it for you.
 
-Red Flag AI Pro scans your marketing copy against all 28 of these categories across 9 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
+Red Flag AI Pro scans your marketing copy against all 29 of these categories across 9 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
 
 [Scan your course sales page free →](https://www.redflagaipro.com/signup)
     `,

@@ -7,7 +7,7 @@ export const PLAN_LIMITS: Record<Plan, number> = {
   sentinel: Infinity,
 };
 
-// Category tiers: Pro/Free see 16, Growth adds 4 more (20), Sentinel sees all 28.
+// Category tiers: Pro/Free see 16, Growth adds 4 more (20), Sentinel sees all 29.
 export const GROWTH_PLUS_CATEGORIES = [
   "comparative_advertising",
   "contract_contradiction",
@@ -24,6 +24,7 @@ export const SENTINEL_ONLY_CATEGORIES = [
   "influencer_disclosure",
   "crypto_promotion",
   "country_of_origin",
+  "accessibility",
 ] as const;
 
 // Returns the categories excluded from results for a given plan.
@@ -92,4 +93,5 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   cookie_consent: "Cookie Consent",
   crypto_promotion: "Crypto Promotion",
   country_of_origin: "Country of Origin Claim",
+  accessibility: "Web Accessibility Risk",
 };

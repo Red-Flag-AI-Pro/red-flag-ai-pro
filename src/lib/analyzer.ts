@@ -941,6 +941,44 @@ const RULES: Rule[] = [
     jurisdictions: ["gb", "eu", "us"],
   },
 
+  // ─── WEB ACCESSIBILITY ────────────────────────────────────────────────────────
+  {
+    category: "accessibility",
+    severity: "high",
+    keywords: [
+      "watch the video below",
+      "watch this video",
+      "video lesson",
+      "video lessons",
+      "video module",
+      "video modules",
+      "video tutorial",
+      "video walkthrough",
+      "video training",
+      "video testimonial",
+      "webinar replay",
+      "online course",
+      "e-learning",
+      "audio lesson",
+      "podcast episode",
+      "downloadable pdf",
+      "click here to download",
+      "interactive quiz",
+    ],
+    flag_description:
+      "Contains video, audio, or interactive course content. Sites with this kind of content are among the most common targets for web accessibility demand letters and lawsuits — under the ADA (US), any video without captions/transcripts, audio without a transcript, or interactive content not operable by keyboard or screen reader can trigger legal action, even without a formal accessibility law violation being proven in court.",
+    suggestion:
+      "Add closed captions and a full transcript for every video, transcripts for audio/podcast content, descriptive alt text for images, and ensure all interactive elements (quizzes, forms, downloads) are keyboard-operable and screen-reader accessible. Publish a visible accessibility statement describing your WCAG 2.1 AA conformance level and a contact method for accessibility issues. The EU's European Accessibility Act (in force since June 2025) makes equivalent requirements mandatory for many digital products and services sold to EU consumers.",
+    regulations: [
+      "ADA Title III + DOJ Web Accessibility Guidance (US)",
+      "Section 508 (US — federal contractors)",
+      "European Accessibility Act 2025 (EU)",
+      "Equality Act 2010 + Public Sector Bodies Accessibility Regs (UK)",
+      "Accessibility for Ontarians with Disabilities Act / AODA (CA)",
+    ],
+    jurisdictions: ["us", "eu", "gb", "ca"],
+  },
+
   // ─── COUNTRY OF ORIGIN / 'MADE IN' CLAIMS ────────────────────────────────────
   {
     category: "country_of_origin",

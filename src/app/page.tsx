@@ -23,7 +23,7 @@ const jsonLd = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "The world's only compliance scanner that protects buyers and sellers across 9 jurisdictions. 28 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
+    "The world's only compliance scanner that protects buyers and sellers across 9 jurisdictions. 29 risk categories including EU AI Act Article 50, FTC AI Guidelines and GDPR Article 22. Scan marketing copy for violations in 60 seconds.",
   offers: [
     {
       "@type": "Offer",
@@ -51,7 +51,7 @@ const jsonLd = {
       name: "Sentinel Plan",
       price: "499",
       priceCurrency: "GBP",
-      description: "All 28 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
+      description: "All 29 categories, YouTube VSL scanning, audio transcription, team seats, white-label PDF reports, URL monitoring",
     },
   ],
 };

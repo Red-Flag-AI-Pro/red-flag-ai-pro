@@ -212,7 +212,7 @@ export default async function DashboardPage() {
             <p className="text-xs text-gray-500 mt-0.5">
               {plan === "free"
                 ? "10 scans/month, 16 risk categories, PDF reports. £29/mo."
-                : "Team seats, all 28 risk categories including FCA, greenwashing, SMS marketing and UAE PDPL. £499/mo."}
+                : "Team seats, all 29 risk categories including FCA, greenwashing, SMS marketing and UAE PDPL. £499/mo."}
             </p>
           </div>
           <Link

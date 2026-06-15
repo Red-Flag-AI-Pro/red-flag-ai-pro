@@ -67,7 +67,7 @@ export async function POST(request: Request) {
   // AI enhancement: specific rewrites + catch implied violations
   const allFlags = await enhanceWithAI(content, rawFlags);
 
-  // Demo shows the free-tier category set (16 of 28)
+  // Demo shows the free-tier category set (16 of 29)
   const excludedCategories = getExcludedCategories("free");
   const flags = allFlags.filter((f) => !excludedCategories.includes(f.category));
 

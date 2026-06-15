@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Features — Red Flag AI Pro",
-  description: "28 risk categories, 9 jurisdictions, AI-powered rewrites, URL scanning, VSL transcription, site audit, weekly monitoring and more. Everything included in Red Flag AI Pro.",
+  description: "29 risk categories, 9 jurisdictions, AI-powered rewrites, URL scanning, VSL transcription, site audit, weekly monitoring and more. Everything included in Red Flag AI Pro.",
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -19,7 +19,7 @@ const FEATURES = [
   { icon: "🚩", title: "Know Your Risk Before You Spend on Ads", description: "Stop paying to amplify illegal copy. Red Flag AI Pro surfaces income claims, health claims, fake urgency and FTC red flags before your campaign goes live.", tag: "Sellers" },
   { icon: "💡", title: "Compliant Rewrites Included", description: "Every flag comes with a concrete, compliant rewrite. No lawyer, no guesswork, no waiting. Fix it in the same session you found it.", tag: "Sellers" },
   { icon: "🌐", title: "Scan Any Live URL", description: "Paste a URL and we fetch the live page and scan what is actually published — not what you think is there. Works on sales pages, landing pages, product pages.", tag: "Sellers" },
-  { icon: "🎬", title: "YouTube VSL and Audio Scanning", description: "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 28 risk categories.", tag: "Sellers" },
+  { icon: "🎬", title: "YouTube VSL and Audio Scanning", description: "Paste a YouTube URL and we fetch the transcript automatically. Or upload an audio file and Whisper transcribes it first. Every word scanned against all 29 risk categories.", tag: "Sellers" },
   { icon: "🔍", title: "Full Site Audit", description: "Enter a domain and we find the sitemap, scan every page, and rank them by risk. Audit a new client's entire website in under two minutes on day one.", tag: "Agencies" },
   { icon: "📡", title: "Weekly Auto-Monitoring", description: "Add URLs to monitoring and we rescan them every Monday. Email digest lands in your inbox if anything changes. Know about new compliance issues before anyone complains.", tag: "Agencies" },
   { icon: "🏢", title: "Client Workspaces and Auto-Reports", description: "Organise scans by client. Each workspace shows scan history, score trends and compliance records. Weekly reports sent automatically to your client contacts.", tag: "Agencies" },
@@ -74,11 +74,11 @@ export default function FeaturesPage() {
       <section style={{background: "#050505", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>What we scan for</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>28 categories. 9 jurisdictions. Both sides.</h2>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>29 categories. 9 jurisdictions. Both sides.</h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "2rem", lineHeight: 1.7}}>Income claims, fake urgency, health claims, GDPR, FCA, greenwashing, influencer disclosure, AI law — scanned simultaneously against every major market.</p>
           <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2rem"}}>
-            {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "28 total categories"].map((label) => (
-              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "28 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "28 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
+            {["Income Claims", "Fake Urgency", "Health Claims", "Testimonial Law", "GDPR", "FCA Compliance", "Greenwashing", "Influencer Disclosure", "EU AI Act", "VSL Scanning", "URL Scanning", "29 total categories"].map((label) => (
+              <span key={label} style={{fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: label === "29 total categories" ? "#ef4444" : "rgba(255,255,255,0.5)", border: `1px solid ${label === "29 total categories" ? "rgba(239,68,68,0.3)" : "rgba(255,255,255,0.08)"}`, padding: "6px 14px", borderRadius: "9999px"}}>{label}</span>
             ))}
           </div>
           <div style={{display: "flex", gap: "2rem", flexWrap: "wrap"}}>
@@ -96,7 +96,7 @@ export default function FeaturesPage() {
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
         <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Everything included</p>
         <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-          28 categories. 9 jurisdictions.<br />
+          29 categories. 9 jurisdictions.<br />
           <span style={{ fontStyle: "italic" }}>One scan.</span>
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
@@ -141,7 +141,7 @@ export default function FeaturesPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
             {[
               { step: "01", title: "Paste your copy", desc: "Sales page, VSL script, email sequence, ad copy — anything you are about to buy from or publish." },
-              { step: "02", title: "28 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing, SMS marketing, online safety — across all 9 jurisdictions simultaneously." },
+              { step: "02", title: "29 categories scanned", desc: "Income claims, fake urgency, dark patterns, GDPR, FCA, greenwashing, SMS marketing, online safety — across all 9 jurisdictions simultaneously." },
               { step: "03", title: "Truth or fix. Instantly.", desc: "Every flag explained in plain English with a compliant rewrite. Know before you spend. Launch with confidence." },
             ].map((s) => (
               <div key={s.step} style={{ background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
@@ -328,11 +328,11 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* 28 categories */}
+      {/* 29 categories */}
       <section style={{ background: "#080808", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>What we scan for</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>28 categories. One scan.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, color: "white", letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>29 categories. One scan.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", marginBottom: "4rem" }}>Every category checked against all 9 jurisdictions simultaneously.</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "2px" }}>

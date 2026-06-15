@@ -42,7 +42,7 @@ const GROWTH_FEATURES = [
 
 const SENTINEL_FEATURES = [
   "Everything in Growth",
-  "All 28 risk categories",
+  "All 29 risk categories",
   "FCA financial promotions",
   "Greenwashing scanner",
   "Video scan summaries",
@@ -252,7 +252,7 @@ export default function PricingPage() {
             marginTop: "2px"
           }}>
             {[
-              { value: "28", label: "Risk categories on Sentinel" },
+              { value: "29", label: "Risk categories on Sentinel" },
               { value: "9", label: "Jurisdictions — US · UK · EU · AU · CA · BR · IN · SG · UAE" },
               { value: "60s", label: "From paste to compliance score" },
             ].map((s, i) => (
