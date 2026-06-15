@@ -118,9 +118,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.redflagaipro.com",
     siteName: "Red Flag AI Pro",
-    title: "Red Flag AI Pro — Are you a Builder? Are you a Buyer? Scan it before it's too late.",
+    title: "I Scanned My Own Site. 0/100. 10 Violations. — Red Flag AI Pro",
     description:
-      "Scan marketing copy, live URLs, YouTube VSLs and audio for compliance risks. FTC, GDPR, ASA, FCA, ACCC, CASL, LGPD, DPDP, PDPA, UAE PDPL. 28 risk categories across 9 jurisdictions. AI-powered. Free — no account needed.",
+      "Even a compliance scanner can fail its own scan. Red Flag AI Pro checks marketing copy, live URLs, YouTube VSLs and audio for compliance risks across 28 categories and 9 jurisdictions (FTC, GDPR, ASA, FCA, EU AI Act). For builders protecting their business and buyers spotting scams. Free — no account needed.",
     images: [
       {
         url: "/og-image.png",
@@ -132,7 +132,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Red Flag AI Pro — Spot Illegal Ads. Scan Your Copy. Free in 60 Seconds.",
+    title: "I Scanned My Own Site. 0/100. 10 Violations. — Red Flag AI Pro",
     description:
       "Buyers: paste any ad and find out if it is breaking the law. Sellers: scan your copy for FTC, GDPR, ASA, EU AI Act, ACCC and CASL violations. Free. No account needed. Both sides. 60 seconds.",
     images: ["/og-image.png"],
