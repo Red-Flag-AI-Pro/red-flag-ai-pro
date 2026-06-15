@@ -280,13 +280,16 @@ export async function generateScanPdf(
     let y = H - 110;
 
     for (const flag of flags) {
+      const descriptionLines = flag.flag_description
+        ? wrapText(flag.flag_description, 85)
+        : [];
       const excerptLines = flag.text_excerpt
         ? wrapText(`"${flag.text_excerpt}"`, 85)
         : [];
       const suggestionLines = flag.suggestion
         ? wrapText(flag.suggestion, 85)
         : [];
-      const blockH = 30 + excerptLines.length * 13 + suggestionLines.length * 13 + 40;
+      const blockH = 20 + descriptionLines.length * 13 + excerptLines.length * 13 + suggestionLines.length * 13 + 40;
 
       if (y - blockH < margin + 30) {
         drawFooter(pg, regularFont, pageNum, W, margin);
@@ -337,14 +340,17 @@ export async function generateScanPdf(
       });
 
       let lineY = y - 20;
-      pg.drawText(flag.flag_description, {
-        x: margin + 14,
-        y: lineY,
-        size: 9,
-        font: regularFont,
-        color: rgb(0.3, 0.3, 0.35),
-      });
-      lineY -= 16;
+      for (const line of descriptionLines) {
+        pg.drawText(line, {
+          x: margin + 14,
+          y: lineY,
+          size: 9,
+          font: regularFont,
+          color: rgb(0.3, 0.3, 0.35),
+        });
+        lineY -= 13;
+      }
+      lineY -= 3;
 
       for (const line of excerptLines) {
         pg.drawText(line, {
