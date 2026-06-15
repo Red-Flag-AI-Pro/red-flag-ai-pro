@@ -896,11 +896,12 @@ const RULES: Rule[] = [
       "we and our partners use cookies",
     ],
     flag_description:
-      "References cookies or tracking technology in a way that suggests consent is implied by browsing rather than actively given. Under PECR (UK) and the ePrivacy Directive (EU), non-essential cookies — analytics, advertising, tracking pixels — require freely-given, specific, informed consent BEFORE they are set. A notice saying 'by continuing to browse you agree to cookies' does not meet this standard and is treated by the ICO as non-compliant.",
+      "References cookies or tracking technology in a way that suggests consent is implied by browsing rather than actively given. Under PECR (UK) and the ePrivacy Directive (EU), advertising, retargeting, and other tracking cookies still require freely-given, specific, informed consent BEFORE they are set. A notice saying 'by continuing to browse you agree to cookies' does not meet this standard. Since the Data (Use and Access) Act 2025 amendments (in force from Feb 2026), PECR fines are now aligned with UK GDPR — up to £17.5m or 4% of global turnover — so cookie banners are no longer a low-risk area.",
     suggestion:
-      "Replace passive cookie notices with a consent banner that blocks non-essential cookies until the visitor actively opts in, with a 'reject all' option that's just as easy to use as 'accept all'. Do not set analytics or advertising cookies before consent is given, and don't pre-tick consent boxes.",
+      "Replace passive cookie notices with a consent banner that blocks advertising and tracking cookies until the visitor actively opts in, with a 'reject all' option that's just as easy to use as 'accept all', and don't pre-tick consent boxes. Note: since the DUAA 2025 reforms, statistical analytics cookies used solely for aggregated site-improvement purposes may now be exempt from consent under new PECR exceptions — but only if the provider doesn't reuse the data for any other purpose, and you still disclose them and offer an opt-out. Advertising, retargeting, and audience-profiling cookies are NOT covered by this exemption and still need consent.",
     regulations: [
       "Privacy and Electronic Communications Regulations / PECR (UK)",
+      "Data (Use and Access) Act 2025 (UK)",
       "ICO Cookie Guidance (UK)",
       "ePrivacy Directive 2002/58/EC (EU)",
       "GDPR Article 7 (EU)",
