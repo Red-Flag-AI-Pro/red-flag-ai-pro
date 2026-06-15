@@ -14,10 +14,10 @@ export function HeroNew() {
 
   // Stacked headline reveal — each line phases in sequentially
   useEffect(() => {
-    const t1 = setTimeout(() => setLine1(true), 300);
-    const t2 = setTimeout(() => setLine2(true), 800);
-    const t3 = setTimeout(() => setLine3(true), 1400);
-    const t4 = setTimeout(() => setRest(true), 2000);
+    const t1 = setTimeout(() => setLine1(true), 0);
+    const t2 = setTimeout(() => setLine2(true), 120);
+    const t3 = setTimeout(() => setLine3(true), 240);
+    const t4 = setTimeout(() => setRest(true), 360);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, []);
 
