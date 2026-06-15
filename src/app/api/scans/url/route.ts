@@ -88,10 +88,11 @@ export async function POST(request: Request) {
     });
 
     if (!res.ok) {
-      return NextResponse.json(
-        { error: `Could not fetch that URL. The page returned status ${res.status}.` },
-        { status: 400 }
-      );
+      const message =
+        res.status === 403
+          ? "This site's bot protection is blocking the scan (403 Forbidden). Try copying the page text and pasting it into the scanner instead."
+          : `Could not fetch that URL. The page returned status ${res.status}.`;
+      return NextResponse.json({ error: message }, { status: 400 });
     }
 
     html = await res.text();
