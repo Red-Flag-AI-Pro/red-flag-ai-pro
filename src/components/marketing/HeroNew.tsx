@@ -1,25 +1,12 @@
 ﻿﻿"use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 // Syne is now loaded globally via layout.tsx — no CDN import needed
 
 export function HeroNew() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [line1, setLine1] = useState(false);
-  const [line2, setLine2] = useState(false);
-  const [line3, setLine3] = useState(false);
-  const [rest, setRest] = useState(false);
-
-  // Stacked headline reveal — each line phases in sequentially
-  useEffect(() => {
-    const t1 = setTimeout(() => setLine1(true), 0);
-    const t2 = setTimeout(() => setLine2(true), 120);
-    const t3 = setTimeout(() => setLine3(true), 240);
-    const t4 = setTimeout(() => setRest(true), 360);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
-  }, []);
 
   // Scroll reveal observer
   useEffect(() => {
@@ -130,34 +117,25 @@ export function HeroNew() {
             marginBottom: "2.5rem",
             fontFamily: "'Syne', system-ui, sans-serif"
           }}>
-            <span style={{
+            <span className="hero-line-1" style={{
               display: "block",
-              color: "white",
-              opacity: line1 ? 1 : 0,
-              transform: line1 ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)"
+              color: "white"
             }}>
               Building it.
             </span>
-            <span style={{
+            <span className="hero-line-2" style={{
               display: "block",
-              color: "rgba(255,255,255,0.85)",
-              opacity: line2 ? 1 : 0,
-              transform: line2 ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)"
+              color: "rgba(255,255,255,0.85)"
             }}>
               Buying it.
             </span>
-            <span style={{
+            <span className="hero-line-3" style={{
               display: "block",
               background: "linear-gradient(135deg, #fca5a5 0%, #ef4444 45%, #b91c1c 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
-              fontStyle: "italic",
-              opacity: line3 ? 1 : 0,
-              transform: line3 ? "translateY(0) scale(1)" : "translateY(24px) scale(0.97)",
-              transition: "opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)"
+              fontStyle: "italic"
             }}>
               Scan it!
             </span>
@@ -165,10 +143,7 @@ export function HeroNew() {
 
           {/* Everything below fades in after "Scan it." */}
           {/* Subheadline */}
-          <p className="hero-subheadline" style={{
-            opacity: rest ? 1 : 0,
-            transform: rest ? "translateY(0)" : "translateY(16px)",
-            transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)",
+          <p className="hero-subheadline hero-rest" style={{
             maxWidth: "560px", margin: "0 auto 2.5rem",
             fontSize: "1.25rem", lineHeight: 1.6, fontWeight: 500,
             fontFamily: "'Syne', system-ui, sans-serif",
@@ -189,10 +164,7 @@ export function HeroNew() {
           </p>
 
           {/* CTA — single primary action; everything else demoted below the fold */}
-          <div style={{
-            opacity: rest ? 1 : 0,
-            transform: rest ? "translateY(0)" : "translateY(16px)",
-            transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s",
+          <div className="hero-rest-1" style={{
             display: "flex", flexWrap: "wrap",
             gap: "14px", justifyContent: "center", marginBottom: "1rem"
           }}>
@@ -207,10 +179,7 @@ export function HeroNew() {
           </div>
 
           {/* Secondary action — demoted to a plain text link */}
-          <div style={{
-            opacity: rest ? 1 : 0,
-            transform: rest ? "translateY(0)" : "translateY(16px)",
-            transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s",
+          <div className="hero-rest-2" style={{
             display: "flex", justifyContent: "center", marginBottom: "1.5rem"
           }}>
             <Link href="/signup" style={{
@@ -225,9 +194,7 @@ export function HeroNew() {
           </div>
 
           {/* Fine print */}
-          <p className="hero-fineprint" style={{
-            opacity: rest ? 1 : 0,
-            transition: "opacity 0.8s 0.2s",
+          <p className="hero-fineprint hero-rest-3" style={{
             fontSize: "13px", color: "rgba(255,255,255,0.55)",
             letterSpacing: "0.02em", marginBottom: "4rem",
             fontFamily: "'Syne', sans-serif"
@@ -236,9 +203,7 @@ export function HeroNew() {
           </p>
 
           {/* Jurisdiction flags — hidden on mobile */}
-          <div className="hero-flags-row" style={{
-            opacity: rest ? 1 : 0,
-            transition: "opacity 0.8s 0.3s",
+          <div className="hero-flags-row hero-rest-4" style={{
             flexWrap: "wrap",
             gap: "48px", justifyContent: "center", marginBottom: "3rem"
           }}>
@@ -271,9 +236,7 @@ export function HeroNew() {
           </div>
 
           {/* Stats strip — hidden on mobile */}
-          <div className="hero-stats-row" style={{
-            opacity: rest ? 1 : 0,
-            transition: "opacity 0.8s 0.4s",
+          <div className="hero-stats-row hero-rest-5" style={{
             flexWrap: "wrap",
             gap: "8px 32px", justifyContent: "center", alignItems: "center"
           }}>

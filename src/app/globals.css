@@ -18,6 +18,25 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+@keyframes heroLineUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroLineUpScale {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Hero reveal — CSS-driven so content is paint-eligible immediately (helps LCP) */
+.hero-line-1 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-line-2 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.12s both; }
+.hero-line-3 { animation: heroLineUpScale 1s cubic-bezier(0.16,1,0.3,1) 0.24s both; }
+.hero-rest   { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+.hero-rest-1 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.46s both; }
+.hero-rest-2 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.51s both; }
+.hero-rest-3 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.56s both; }
+.hero-rest-4 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.66s both; }
+.hero-rest-5 { animation: heroLineUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.76s both; }
 @keyframes float {
   0%, 100% { transform: translateY(0px) scale(1); }
   50%       { transform: translateY(-12px) scale(1.02); }
@@ -183,9 +202,9 @@
    picker inside the scanner itself.
 ──────────────────────────────────────────────────────────────────────────── */
 .hero-section {
-  min-height: 100dvh;
-  padding-top: 8rem;
-  padding-bottom: 6rem;
+  min-height: calc(100dvh - 5.5rem);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .hero-flags-row {
@@ -281,7 +300,9 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up, .animate-fade-in, .animate-float,
   .animate-pulse-red, .reveal, .btn-primary, .btn-secondary,
-  .card-bezel, .nav-link::after {
+  .card-bezel, .nav-link::after,
+  .hero-line-1, .hero-line-2, .hero-line-3, .hero-rest,
+  .hero-rest-1, .hero-rest-2, .hero-rest-3 {
     animation: none !important; transition: none !important;
     opacity: 1 !important; transform: none !important;
   }
