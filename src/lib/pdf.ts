@@ -227,40 +227,52 @@ export async function generateScanPdf(
     size: 8, font: regular, color: C.whiteMid,
   });
 
-  // "Compliance Audit Badge" visual replica — right side of verification block
-  const badgeX = W - M - 130;
-  const badgeY = vBlockY + 20;
-  const badgeW = 110;
-  const badgeH2 = 100;
-  cover.drawRectangle({ x: badgeX, y: badgeY, width: badgeW, height: badgeH2, color: C.bg });
-  cover.drawRectangle({ x: badgeX, y: badgeY, width: badgeW, height: badgeH2, borderColor: C.red, borderWidth: 2 });
-  cover.drawRectangle({ x: badgeX, y: badgeY + badgeH2 - 22, width: badgeW, height: 22, color: C.red });
-  cover.drawText("RED FLAG AI PRO", {
-    x: badgeX + 6, y: badgeY + badgeH2 - 16,
-    size: 7, font: bold, color: C.white,
-  });
-  // Score in badge
-  const bScoreStr = String(scan.score);
-  const bScoreW   = bScoreStr.length * 22 * 0.53;
-  cover.drawText(bScoreStr, {
-    x: badgeX + badgeW / 2 - bScoreW / 2, y: badgeY + badgeH2 - 56,
-    size: 22, font: bold, color: scoreColor(scan.score),
-  });
-  cover.drawText("/ 100", {
-    x: badgeX + badgeW / 2 - 14, y: badgeY + badgeH2 - 70,
-    size: 8, font: regular, color: C.whiteMid,
-  });
-  cover.drawText(rLabel, {
-    x: badgeX + badgeW / 2 - (rLabel.length * 5.2) / 2, y: badgeY + 30,
-    size: 8, font: bold, color: scoreColor(scan.score),
-  });
-  cover.drawText("COMPLIANCE", {
-    x: badgeX + 14, y: badgeY + 16,
-    size: 7, font: regular, color: C.whiteMid,
-  });
-  cover.drawText("AUDITED", {
-    x: badgeX + 22, y: badgeY + 6,
+  // Shield badge — right side of verification block (mirrors audit page badge)
+  // SVG viewBox "0 0 36 42", scale 2.2 → 79 × 92px
+  const shieldScale = 2.2;
+  const shieldW     = 36 * shieldScale; // ~79
+  const shieldH     = 42 * shieldScale; // ~92
+  const shieldX     = W - M - shieldW - 10;
+  // pdf-lib drawSvgPath: x,y is where SVG origin (0,0) maps in PDF space.
+  // PDF y goes up; SVG y goes down → paths are flipped automatically.
+  // Bottom of shield sits at vBlockY + 16, so origin Y = vBlockY + 16 + shieldH
+  const shieldOriginY = vBlockY + 16 + shieldH;
+
+  // Shield fill
+  cover.drawSvgPath(
+    "M18 2L4 8v12c0 9 6.5 17 14 20C25.5 37 32 29 32 20V8L18 2Z",
+    { x: shieldX, y: shieldOriginY, scale: shieldScale, color: rgb(0.04, 0.14, 0.06), borderColor: rgb(0.09, 0.64, 0.29), borderWidth: 1.5 }
+  );
+  // Outer glow ring
+  cover.drawSvgPath(
+    "M18 2L4 8v12c0 9 6.5 17 14 20C25.5 37 32 29 32 20V8L18 2Z",
+    { x: shieldX, y: shieldOriginY, scale: shieldScale, borderColor: rgb(0.09, 0.64, 0.29), borderWidth: 3, opacity: 0.3 }
+  );
+  // Flag pole
+  cover.drawSvgPath(
+    "M15 13L15 29",
+    { x: shieldX, y: shieldOriginY, scale: shieldScale, borderColor: C.red, borderWidth: 1.5 }
+  );
+  // Flag pennant
+  cover.drawSvgPath(
+    "M15 13h8l-2.5 4 2.5 4H15z",
+    { x: shieldX, y: shieldOriginY, scale: shieldScale, color: C.red }
+  );
+  // Checkmark
+  cover.drawSvgPath(
+    "M11 22l4 4 8-8",
+    { x: shieldX, y: shieldOriginY, scale: shieldScale, borderColor: rgb(0.09, 0.64, 0.29), borderWidth: 1.8 }
+  );
+
+  // Labels below shield
+  const shieldBottomY = vBlockY + 16;
+  cover.drawText("COMPLIANCE VERIFIED", {
+    x: shieldX + shieldW / 2 - 48, y: shieldBottomY - 12,
     size: 7, font: bold, color: C.whiteMid,
+  });
+  cover.drawText("Red Flag AI Pro", {
+    x: shieldX + shieldW / 2 - 34, y: shieldBottomY - 22,
+    size: 7, font: regular, color: C.whiteLow,
   });
 
   if (agencyName) {
@@ -396,7 +408,7 @@ export async function generateScanPdf(
       }
 
       if (suggLines.length > 0) {
-        lineY -= 2;
+        lineY -= 10;
         pg.drawText("SUGGESTED FIX:", { x: M + 16, y: lineY, size: 8, font: bold, color: C.green });
         lineY -= 14;
         for (const line of suggLines) {
