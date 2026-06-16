@@ -4,20 +4,21 @@ import { FLAG_CATEGORY_LABELS } from "./constants";
 
 // Brand colours
 const C = {
-  red:        rgb(0.80, 0.00, 0.00),
-  redLight:   rgb(0.94, 0.27, 0.27),
-  redDim:     rgb(0.40, 0.05, 0.05),
-  bg:         rgb(0.05, 0.03, 0.03),
-  bgCard:     rgb(0.10, 0.06, 0.06),
-  bgCardAlt:  rgb(0.08, 0.08, 0.08),
-  border:     rgb(0.20, 0.12, 0.12),
-  white:      rgb(1.00, 1.00, 1.00),
-  whiteHi:    rgb(0.95, 0.90, 0.90),
-  whiteMid:   rgb(0.65, 0.60, 0.60),
-  whiteLow:   rgb(0.38, 0.34, 0.34),
-  sevHigh:    rgb(0.87, 0.20, 0.20),
-  sevMed:     rgb(0.95, 0.60, 0.10),
-  sevLow:     rgb(0.20, 0.70, 0.30),
+  red:       rgb(0.80, 0.00, 0.00),
+  redDark:   rgb(0.50, 0.00, 0.00),
+  redDim:    rgb(0.35, 0.06, 0.06),
+  bg:        rgb(0.04, 0.02, 0.02),
+  bgCard:    rgb(0.10, 0.06, 0.06),
+  bgCard2:   rgb(0.08, 0.05, 0.05),
+  border:    rgb(0.18, 0.10, 0.10),
+  white:     rgb(1.00, 1.00, 1.00),
+  whiteHi:   rgb(0.93, 0.88, 0.88),
+  whiteMid:  rgb(0.62, 0.55, 0.55),
+  whiteLow:  rgb(0.36, 0.30, 0.30),
+  sevHigh:   rgb(0.87, 0.18, 0.18),
+  sevMed:    rgb(0.95, 0.60, 0.10),
+  sevLow:    rgb(0.18, 0.72, 0.32),
+  green:     rgb(0.18, 0.72, 0.32),
 };
 
 function scoreColor(score: number) {
@@ -59,392 +60,386 @@ export async function generateScanPdf(
   flags: ScanFlag[],
   agencyName?: string | null
 ): Promise<Uint8Array> {
-  const doc = await PDFDocument.create();
+  const doc     = await PDFDocument.create();
   const bold    = await doc.embedFont(StandardFonts.HelveticaBold);
   const regular = await doc.embedFont(StandardFonts.Helvetica);
 
   const W = 595;
   const H = 842;
-  const M = 44; // margin
+  const M = 44;
 
   const brandName = agencyName ?? "Red Flag AI Pro";
-
-  // ─── Page 1: Cover / Summary ────────────────────────────────────────────────
-  const p1 = doc.addPage([W, H]);
-
-  // Full dark background
-  p1.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-
-  // Top accent bar
-  p1.drawRectangle({ x: 0, y: H - 6, width: W, height: 6, color: C.red });
-
-  // Header area
-  p1.drawRectangle({ x: 0, y: H - 80, width: W, height: 74, color: C.bgCard });
-
-  // Brand name
-  p1.drawText(agencyName ? agencyName.toUpperCase() : "RED FLAG AI PRO", {
-    x: M, y: H - 40,
-    size: agencyName ? 14 : 16,
-    font: bold,
-    color: C.red,
-  });
-
-  // Sub-label
-  const subLabel = agencyName
-    ? "Compliance Risk Report — Powered by Red Flag AI Pro"
-    : "Marketing Compliance Risk Report";
-  p1.drawText(subLabel, {
-    x: M, y: H - 60,
-    size: 9,
-    font: regular,
-    color: C.whiteMid,
-  });
-
-  // redflagaipro.com top-right
-  p1.drawText("redflagaipro.com", {
-    x: W - M - 90, y: H - 48,
-    size: 9,
-    font: regular,
-    color: C.whiteLow,
-  });
-
-  // Scan title
-  const titleLines = wrapText(scan.title, 70);
-  let titleY = H - 116;
-  for (const line of titleLines) {
-    p1.drawText(line, {
-      x: M, y: titleY,
-      size: 18,
-      font: bold,
-      color: C.white,
-    });
-    titleY -= 24;
-  }
-
-  const dateStr = new Date(scan.created_at).toLocaleDateString("en-GB", {
+  const dateStr   = new Date(scan.created_at).toLocaleDateString("en-GB", {
     year: "numeric", month: "long", day: "numeric",
   });
-  p1.drawText(`Scanned on ${dateStr}`, {
-    x: M, y: titleY - 4,
-    size: 10,
-    font: regular,
-    color: C.whiteMid,
-  });
-
-  // ── Score circle ──
-  const cx = W / 2;
-  const cy = H - 310;
-  const r  = 72;
-
-  // Outer ring fill
-  p1.drawEllipse({ x: cx, y: cy, xScale: r, yScale: r, color: C.bgCard });
-  // Coloured border
-  p1.drawEllipse({
-    x: cx, y: cy, xScale: r, yScale: r,
-    borderColor: scoreColor(scan.score), borderWidth: 7,
-  });
-
-  // Score number
-  const scoreStr  = String(scan.score);
-  const scoreSize = 44;
-  const scoreW    = scoreStr.length * scoreSize * 0.53;
-  p1.drawText(scoreStr, {
-    x: cx - scoreW / 2, y: cy - 16,
-    size: scoreSize,
-    font: bold,
-    color: scoreColor(scan.score),
-  });
-  p1.drawText("/ 100", {
-    x: cx - 18, y: cy - 36,
-    size: 11, font: regular, color: C.whiteMid,
-  });
-
-  // Risk label below circle
-  const rLabel = riskLabel(scan.score);
-  const rLabelW = rLabel.length * 7.8;
-  p1.drawRectangle({
-    x: cx - rLabelW / 2 - 10, y: cy - 112,
-    width: rLabelW + 20, height: 22,
-    color: scoreColor(scan.score),
-  });
-  p1.drawText(rLabel, {
-    x: cx - rLabelW / 2, y: cy - 106,
-    size: 11, font: bold, color: C.white,
-  });
-
-  // ── Stats row ──
   const highCount = flags.filter((f) => f.severity === "high").length;
   const medCount  = flags.filter((f) => f.severity === "medium").length;
   const lowCount  = flags.filter((f) => f.severity === "low").length;
 
-  const stats = [
-    { label: "TOTAL FLAGS",    value: String(flags.length),  color: C.white },
-    { label: "HIGH",           value: String(highCount),     color: C.sevHigh },
-    { label: "MEDIUM",         value: String(medCount),      color: C.sevMed },
-    { label: "LOW",            value: String(lowCount),      color: C.sevLow },
-  ];
+  // ════════════════════════════════════════════════════════════════
+  // PAGE 1 — COVER
+  // ════════════════════════════════════════════════════════════════
+  const cover = doc.addPage([W, H]);
+  cover.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
 
-  const boxW  = (W - M * 2) / 4;
-  const boxY  = H - 480;
-  const boxH2 = 68;
+  // Top stripe
+  cover.drawRectangle({ x: 0, y: H - 8, width: W, height: 8, color: C.red });
 
-  stats.forEach((stat, i) => {
-    const bx = M + i * boxW;
-    p1.drawRectangle({
-      x: bx + 3, y: boxY,
-      width: boxW - 6, height: boxH2,
-      color: C.bgCard,
-    });
-    // Top accent line
-    p1.drawRectangle({
-      x: bx + 3, y: boxY + boxH2 - 3,
-      width: boxW - 6, height: 3,
-      color: stat.color,
-    });
-    p1.drawText(stat.value, {
-      x: bx + 14, y: boxY + 34,
-      size: 24, font: bold, color: stat.color,
-    });
-    p1.drawText(stat.label, {
-      x: bx + 14, y: boxY + 14,
-      size: 8, font: regular, color: C.whiteMid,
-    });
+  // Masthead band
+  const mastheadH = 88;
+  cover.drawRectangle({ x: 0, y: H - 8 - mastheadH, width: W, height: mastheadH, color: C.bgCard });
+
+  // Red flag icon (pole + pennant)
+  const fx = M, fy = H - 8 - mastheadH + 20;
+  cover.drawRectangle({ x: fx,     y: fy,      width: 3,  height: 48, color: C.red });
+  cover.drawRectangle({ x: fx + 3, y: fy + 32, width: 24, height: 14, color: C.red });
+  cover.drawRectangle({ x: fx + 3, y: fy + 26, width: 24, height: 6,  color: C.redDark });
+
+  // Brand name
+  cover.drawText(agencyName ? agencyName.toUpperCase() : "RED FLAG AI PRO", {
+    x: M + 38, y: H - 8 - mastheadH + 56,
+    size: agencyName ? 15 : 20,
+    font: bold, color: C.red,
+  });
+  cover.drawText("Marketing Compliance Risk Report", {
+    x: M + 38, y: H - 8 - mastheadH + 30,
+    size: 10, font: regular, color: C.whiteMid,
+  });
+  cover.drawText("redflagaipro.com", {
+    x: W - M - 90, y: H - 8 - mastheadH + 44,
+    size: 9, font: regular, color: C.whiteLow,
   });
 
-  // ── Verified stamp ──
-  const stampY = H - 580;
-  const stampH = 80;
+  // Scan title — below masthead with breathing room
+  const titleY0   = H - 8 - mastheadH - 60;
+  const titleLines = wrapText(scan.title, 62);
+  let titleY = titleY0;
+  for (const line of titleLines) {
+    cover.drawText(line, {
+      x: M, y: titleY,
+      size: 20, font: bold, color: C.white,
+    });
+    titleY -= 28;
+  }
+  cover.drawText(`Scanned on ${dateStr}`, {
+    x: M, y: titleY - 6,
+    size: 10, font: regular, color: C.whiteMid,
+  });
 
-  p1.drawRectangle({
-    x: M, y: stampY,
-    width: W - M * 2, height: stampH,
+  // ── Score circle — large, centred, with tons of space
+  const cx = W / 2;
+  const cy = H / 2 + 10;
+  const r  = 108;
+
+  // Outer decorative ring
+  cover.drawEllipse({ x: cx, y: cy, xScale: r + 20, yScale: r + 20, color: C.bgCard });
+  // Circle fill
+  cover.drawEllipse({ x: cx, y: cy, xScale: r, yScale: r, color: C.bgCard2 });
+  // Coloured border
+  cover.drawEllipse({
+    x: cx, y: cy, xScale: r, yScale: r,
+    borderColor: scoreColor(scan.score), borderWidth: 11,
+  });
+
+  // Score number
+  const scoreStr  = String(scan.score);
+  const scoreSize = 72;
+  const scoreW    = scoreStr.length * scoreSize * 0.53;
+  cover.drawText(scoreStr, {
+    x: cx - scoreW / 2, y: cy - 24,
+    size: scoreSize, font: bold, color: scoreColor(scan.score),
+  });
+  cover.drawText("/ 100", {
+    x: cx - 24, y: cy - 50,
+    size: 15, font: regular, color: C.whiteMid,
+  });
+
+  // Risk label pill — directly below circle with gap
+  const rLabel = riskLabel(scan.score);
+  const rLW    = rLabel.length * 8.8;
+  const pillX  = cx - rLW / 2 - 16;
+  const pillY  = cy - r - 50;
+  cover.drawRectangle({
+    x: pillX, y: pillY,
+    width: rLW + 32, height: 30,
+    color: scoreColor(scan.score),
+  });
+  cover.drawText(rLabel, {
+    x: pillX + 16, y: pillY + 9,
+    size: 12, font: bold, color: C.white,
+  });
+
+  // ── Verification block — bottom third of cover, well-separated from circle
+  const vBlockH = 140;
+  const vBlockY = 44;
+
+  cover.drawRectangle({
+    x: M, y: vBlockY,
+    width: W - M * 2, height: vBlockH,
     color: C.bgCard,
   });
   // Left red bar
-  p1.drawRectangle({ x: M, y: stampY, width: 5, height: stampH, color: C.red });
+  cover.drawRectangle({ x: M, y: vBlockY, width: 6, height: vBlockH, color: C.red });
+  // Top border line
+  cover.drawRectangle({ x: M, y: vBlockY + vBlockH, width: W - M * 2, height: 1, color: C.border });
 
-  // Red flag SVG approximation — just a small rectangle flag icon
-  p1.drawRectangle({ x: M + 18, y: stampY + 55, width: 2, height: 20, color: C.red });
-  p1.drawRectangle({ x: M + 20, y: stampY + 62, width: 12, height: 9, color: C.red });
+  // Verified label + brand
+  cover.drawText("VERIFIED BY", {
+    x: M + 22, y: vBlockY + vBlockH - 24,
+    size: 8, font: regular, color: C.whiteMid,
+  });
+  cover.drawText("RED FLAG AI PRO", {
+    x: M + 22, y: vBlockY + vBlockH - 42,
+    size: 14, font: bold, color: C.red,
+  });
 
-  p1.drawText("VERIFIED BY RED FLAG AI PRO", {
-    x: M + 40, y: stampY + 56,
-    size: 9, font: bold, color: C.red,
+  // Horizontal divider inside block
+  cover.drawRectangle({
+    x: M + 22, y: vBlockY + vBlockH - 56,
+    width: W - M * 2 - 44, height: 1, color: C.border,
   });
-  p1.drawText(`Score: ${scan.score}/100  ·  ${rLabel}  ·  ${flags.length} flag${flags.length === 1 ? "" : "s"} detected`, {
-    x: M + 40, y: stampY + 40,
-    size: 11, font: bold, color: C.white,
-  });
-  p1.drawText(`Scanned ${dateStr}  ·  redflagaipro.com`, {
-    x: M + 40, y: stampY + 22,
+
+  // Score summary line
+  cover.drawText(
+    `Score: ${scan.score}/100  ·  ${rLabel}  ·  ${flags.length} compliance issue${flags.length === 1 ? "" : "s"} found`,
+    { x: M + 22, y: vBlockY + 88, size: 11, font: bold, color: C.white }
+  );
+
+  // Coloured flag count dots
+  const countItems = [
+    { label: "HIGH RISK",   value: highCount, color: C.sevHigh },
+    { label: "MEDIUM RISK", value: medCount,  color: C.sevMed },
+    { label: "LOW RISK",    value: lowCount,  color: C.sevLow },
+  ];
+  let dotX = M + 22;
+  for (const item of countItems) {
+    cover.drawEllipse({ x: dotX + 5, y: vBlockY + 70, xScale: 5, yScale: 5, color: item.color });
+    cover.drawText(`${item.value} ${item.label}`, {
+      x: dotX + 14, y: vBlockY + 65,
+      size: 9, font: bold, color: item.color,
+    });
+    dotX += 120;
+  }
+
+  // Scan details
+  cover.drawText(`Scanned: ${dateStr}  ·  redflagaipro.com`, {
+    x: M + 22, y: vBlockY + 44,
     size: 8, font: regular, color: C.whiteMid,
   });
 
+  // "Compliance Audit Badge" visual replica — right side of verification block
+  const badgeX = W - M - 130;
+  const badgeY = vBlockY + 20;
+  const badgeW = 110;
+  const badgeH2 = 100;
+  cover.drawRectangle({ x: badgeX, y: badgeY, width: badgeW, height: badgeH2, color: C.bg });
+  cover.drawRectangle({ x: badgeX, y: badgeY, width: badgeW, height: badgeH2, borderColor: C.red, borderWidth: 2 });
+  cover.drawRectangle({ x: badgeX, y: badgeY + badgeH2 - 22, width: badgeW, height: 22, color: C.red });
+  cover.drawText("RED FLAG AI PRO", {
+    x: badgeX + 6, y: badgeY + badgeH2 - 16,
+    size: 7, font: bold, color: C.white,
+  });
+  // Score in badge
+  const bScoreStr = String(scan.score);
+  const bScoreW   = bScoreStr.length * 22 * 0.53;
+  cover.drawText(bScoreStr, {
+    x: badgeX + badgeW / 2 - bScoreW / 2, y: badgeY + badgeH2 - 56,
+    size: 22, font: bold, color: scoreColor(scan.score),
+  });
+  cover.drawText("/ 100", {
+    x: badgeX + badgeW / 2 - 14, y: badgeY + badgeH2 - 70,
+    size: 8, font: regular, color: C.whiteMid,
+  });
+  cover.drawText(rLabel, {
+    x: badgeX + badgeW / 2 - (rLabel.length * 5.2) / 2, y: badgeY + 30,
+    size: 8, font: bold, color: scoreColor(scan.score),
+  });
+  cover.drawText("COMPLIANCE", {
+    x: badgeX + 14, y: badgeY + 16,
+    size: 7, font: regular, color: C.whiteMid,
+  });
+  cover.drawText("AUDITED", {
+    x: badgeX + 22, y: badgeY + 6,
+    size: 7, font: bold, color: C.whiteMid,
+  });
+
   if (agencyName) {
-    p1.drawText(`Report prepared by ${agencyName}`, {
-      x: M + 40, y: stampY + 10,
+    cover.drawText(`Prepared by ${agencyName}`, {
+      x: M + 22, y: vBlockY + 30,
       size: 8, font: regular, color: C.whiteLow,
     });
   }
 
-  // ── What this means ──
-  const meaningY = stampY - 30;
-  p1.drawText("WHAT THIS MEANS", {
-    x: M, y: meaningY,
-    size: 8, font: bold, color: C.red,
+  // Cover page page number
+  cover.drawText("Page 1", {
+    x: W - M - 28, y: 20,
+    size: 7, font: regular, color: C.whiteLow,
   });
 
-  const meaning =
-    scan.score >= 70
-      ? "This copy passed with a low-risk score. Minor issues were identified. Review and address each flag before publishing to maintain compliance."
-      : scan.score >= 40
-      ? "Medium risk detected. Several compliance issues need addressing before this copy can be safely published or used in paid advertising."
-      : "High risk — significant compliance violations found. Do not publish until all high-severity flags have been resolved to avoid regulatory action.";
+  // ════════════════════════════════════════════════════════════════
+  // PAGE 2 — WHAT WE FOUND
+  // ════════════════════════════════════════════════════════════════
+  let pg      = doc.addPage([W, H]);
+  let pageNum = 2;
+  pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
+  drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C);
 
-  const meaningLines = wrapText(meaning, 90);
-  let mY = meaningY - 16;
-  for (const line of meaningLines) {
-    p1.drawText(line, {
-      x: M, y: mY,
-      size: 9, font: regular, color: C.whiteHi,
+  let y = H - 96;
+
+  // Section heading
+  pg.drawText("WHAT WE FOUND", {
+    x: M, y,
+    size: 18, font: bold, color: C.white,
+  });
+  y -= 6;
+  pg.drawRectangle({ x: M, y, width: 200, height: 2, color: C.red });
+  y -= 22;
+
+  // Stats boxes
+  const stats = [
+    { label: "TOTAL FLAGS", value: String(flags.length), color: C.white },
+    { label: "HIGH RISK",   value: String(highCount),    color: C.sevHigh },
+    { label: "MEDIUM RISK", value: String(medCount),     color: C.sevMed },
+    { label: "LOW RISK",    value: String(lowCount),     color: C.sevLow },
+  ];
+  const boxW = (W - M * 2) / 4;
+  const boxH = 72;
+
+  stats.forEach((stat, i) => {
+    const bx = M + i * boxW;
+    pg.drawRectangle({ x: bx + 3, y: y - boxH, width: boxW - 6, height: boxH, color: C.bgCard });
+    pg.drawRectangle({ x: bx + 3, y: y - 3,    width: boxW - 6, height: 3,    color: stat.color });
+    pg.drawText(stat.value, {
+      x: bx + 14, y: y - boxH + 34,
+      size: 28, font: bold, color: stat.color,
     });
-    mY -= 14;
-  }
+    pg.drawText(stat.label, {
+      x: bx + 14, y: y - boxH + 14,
+      size: 8, font: regular, color: C.whiteMid,
+    });
+  });
+  y -= boxH + 26;
 
-  drawFooter(p1, regular, 1, W, M, C);
-
-  // ── Page 2+: Flag Details ───────────────────────────────────────────────────
   if (flags.length === 0) {
-    const pg = doc.addPage([W, H]);
-    pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-    drawPageHeader(pg, bold, W, H, M, brandName, C);
-    pg.drawText("No compliance flags detected.", {
-      x: M, y: H - 130,
+    pg.drawText("No compliance issues detected in this copy.", {
+      x: M, y,
       size: 13, font: regular, color: C.sevLow,
     });
-    drawFooter(pg, regular, 2, W, M, C);
   } else {
-    let pg = doc.addPage([W, H]);
-    let pageNum = 2;
-    pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-    drawPageHeader(pg, bold, W, H, M, brandName, C);
-    let y = H - 120;
-
-    // Section heading
-    pg.drawText(`FLAG DETAILS — ${flags.length} ISSUE${flags.length === 1 ? "" : "S"} FOUND`, {
+    pg.drawText(`ISSUE DETAILS  —  ${flags.length} FLAG${flags.length === 1 ? "" : "S"} FOUND`, {
       x: M, y,
-      size: 8, font: bold, color: C.red,
+      size: 9, font: bold, color: C.red,
     });
-    y -= 20;
+    y -= 18;
 
     for (const flag of flags) {
-      const catLabel       = FLAG_CATEGORY_LABELS[flag.category] ?? flag.category;
-      const descLines      = flag.flag_description ? wrapText(flag.flag_description, 82) : [];
-      const excerptLines   = flag.text_excerpt ? wrapText(`"${flag.text_excerpt}"`, 82) : [];
-      const suggLines      = flag.suggestion ? wrapText(flag.suggestion, 82) : [];
+      const catLabel     = FLAG_CATEGORY_LABELS[flag.category] ?? flag.category;
+      const descLines    = flag.flag_description ? wrapText(flag.flag_description, 82) : [];
+      const excerptLines = flag.text_excerpt ? wrapText(`"${flag.text_excerpt}"`, 82) : [];
+      const suggLines    = flag.suggestion ? wrapText(flag.suggestion, 82) : [];
 
-      // Block height: title row + desc + excerpt + suggestion label + suggestion + padding
       const blockH =
-        26 +
+        28 +
         descLines.length * 13 +
-        (excerptLines.length > 0 ? excerptLines.length * 12 + 10 : 0) +
-        (suggLines.length > 0 ? suggLines.length * 12 + 18 : 0) +
-        16;
+        (excerptLines.length > 0 ? excerptLines.length * 12 + 14 : 0) +
+        (suggLines.length > 0 ? suggLines.length * 12 + 22 : 0) +
+        14;
 
-      if (y - blockH < M + 40) {
-        drawFooter(pg, regular, pageNum, W, M, C);
+      if (y - blockH < 60) {
+        drawPageFooter(pg, regular, pageNum, W, M, C);
         pg = doc.addPage([W, H]);
         pageNum++;
         pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-        drawPageHeader(pg, bold, W, H, M, brandName, C);
-        y = H - 120;
-        pg.drawText(`FLAG DETAILS — CONTINUED`, {
-          x: M, y,
-          size: 8, font: bold, color: C.red,
+        drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C);
+        y = H - 96;
+        pg.drawText("ISSUE DETAILS — CONTINUED", {
+          x: M, y, size: 9, font: bold, color: C.red,
         });
-        y -= 20;
+        y -= 18;
       }
 
       const cardY = y - blockH;
       const sc    = sevColor(flag.severity);
 
-      // Card background
-      pg.drawRectangle({
-        x: M, y: cardY,
-        width: W - M * 2, height: blockH,
-        color: C.bgCard,
-      });
+      pg.drawRectangle({ x: M, y: cardY, width: W - M * 2, height: blockH, color: C.bgCard });
+      pg.drawRectangle({ x: M, y: cardY, width: 5, height: blockH, color: sc });
 
-      // Left severity bar
-      pg.drawRectangle({
-        x: M, y: cardY,
-        width: 4, height: blockH,
-        color: sc,
-      });
-
-      // Category title
       pg.drawText(catLabel, {
-        x: M + 14, y: y - 18,
+        x: M + 16, y: y - 20,
         size: 11, font: bold, color: C.white,
       });
 
-      // Severity badge (right-aligned)
       const sevStr = flag.severity.toUpperCase();
-      const sevW   = sevStr.length * 6.2;
-      pg.drawRectangle({
-        x: W - M - sevW - 16, y: y - 26,
-        width: sevW + 16, height: 16,
-        color: sc,
-      });
+      const sevW   = sevStr.length * 6.4;
+      pg.drawRectangle({ x: W - M - sevW - 18, y: y - 28, width: sevW + 18, height: 18, color: sc });
       pg.drawText(sevStr, {
-        x: W - M - sevW - 8, y: y - 21,
+        x: W - M - sevW - 9, y: y - 23,
         size: 8, font: bold, color: C.white,
       });
 
-      let lineY = y - 34;
+      let lineY = y - 36;
 
-      // Description
       for (const line of descLines) {
-        pg.drawText(line, {
-          x: M + 14, y: lineY,
-          size: 9, font: regular, color: C.whiteHi,
-        });
+        pg.drawText(line, { x: M + 16, y: lineY, size: 9, font: regular, color: C.whiteHi });
         lineY -= 13;
       }
 
-      // Excerpt
       if (excerptLines.length > 0) {
-        lineY -= 6;
-        pg.drawRectangle({
-          x: M + 14, y: lineY - excerptLines.length * 12 + 2,
-          width: W - M * 2 - 28, height: excerptLines.length * 12 + 6,
-          color: C.redDim,
-        });
+        lineY -= 4;
+        const exH = excerptLines.length * 12 + 10;
+        pg.drawRectangle({ x: M + 16, y: lineY - exH + 6, width: W - M * 2 - 32, height: exH, color: C.redDim });
         for (const line of excerptLines) {
-          pg.drawText(line, {
-            x: M + 20, y: lineY,
-            size: 8, font: regular, color: rgb(0.95, 0.80, 0.80),
-          });
+          pg.drawText(line, { x: M + 22, y: lineY, size: 8, font: regular, color: rgb(0.95, 0.80, 0.80) });
           lineY -= 12;
         }
-        lineY -= 4;
+        lineY -= 8;
       }
 
-      // Suggestion
       if (suggLines.length > 0) {
-        lineY -= 4;
-        pg.drawText("SUGGESTED FIX:", {
-          x: M + 14, y: lineY,
-          size: 8, font: bold, color: C.sevLow,
-        });
+        lineY -= 2;
+        pg.drawText("SUGGESTED FIX:", { x: M + 16, y: lineY, size: 8, font: bold, color: C.green });
         lineY -= 14;
         for (const line of suggLines) {
-          pg.drawText(line, {
-            x: M + 14, y: lineY,
-            size: 8, font: regular, color: rgb(0.70, 0.90, 0.75),
-          });
+          pg.drawText(line, { x: M + 16, y: lineY, size: 8, font: regular, color: rgb(0.70, 0.90, 0.75) });
           lineY -= 12;
         }
       }
 
       y -= blockH + 8;
     }
-
-    drawFooter(pg, regular, pageNum, W, M, C);
   }
+
+  drawPageFooter(pg, regular, pageNum, W, M, C);
 
   return doc.save();
 }
 
 function drawPageHeader(
   page: ReturnType<PDFDocument["addPage"]>,
-  font: Awaited<ReturnType<PDFDocument["embedFont"]>>,
+  bold: Awaited<ReturnType<PDFDocument["embedFont"]>>,
+  regular: Awaited<ReturnType<PDFDocument["embedFont"]>>,
   W: number,
   H: number,
   M: number,
   brandName: string,
+  scanTitle: string,
   C: Record<string, ReturnType<typeof rgb>>
 ) {
-  // Top accent bar
-  page.drawRectangle({ x: 0, y: H - 4, width: W, height: 4, color: C.red });
-  // Header band
-  page.drawRectangle({ x: 0, y: H - 60, width: W, height: 56, color: C.bgCard });
+  page.drawRectangle({ x: 0, y: H - 5, width: W, height: 5, color: C.red });
+  page.drawRectangle({ x: 0, y: H - 64, width: W, height: 59, color: C.bgCard });
   page.drawText(brandName.toUpperCase(), {
-    x: M, y: H - 32,
-    size: 12, font, color: C.red,
+    x: M, y: H - 30, size: 11, font: bold, color: C.red,
   });
-  page.drawText("Compliance Risk Report", {
-    x: M, y: H - 50,
-    size: 9, font,
-    color: C.whiteMid,
+  const truncTitle = scanTitle.length > 60 ? scanTitle.slice(0, 57) + "..." : scanTitle;
+  page.drawText(truncTitle, {
+    x: M, y: H - 50, size: 8, font: regular, color: C.whiteMid,
   });
   page.drawText("redflagaipro.com", {
-    x: W - M - 90, y: H - 40,
-    size: 9, font, color: C.whiteLow,
+    x: W - M - 90, y: H - 38, size: 8, font: regular, color: C.whiteLow,
   });
 }
 
-function drawFooter(
+function drawPageFooter(
   page: ReturnType<PDFDocument["addPage"]>,
   font: Awaited<ReturnType<PDFDocument["embedFont"]>>,
   pageNum: number,
@@ -452,14 +447,12 @@ function drawFooter(
   M: number,
   C: Record<string, ReturnType<typeof rgb>>
 ) {
-  page.drawRectangle({ x: 0, y: 0, width: W, height: 30, color: C.bgCard });
-  page.drawRectangle({ x: 0, y: 30, width: W, height: 1, color: C.border });
+  page.drawRectangle({ x: 0, y: 0, width: W, height: 34, color: C.bgCard });
+  page.drawRectangle({ x: 0, y: 34, width: W, height: 1, color: C.border });
   page.drawText("Generated by Red Flag AI Pro · redflagaipro.com · Confidential", {
-    x: M, y: 10,
-    size: 7, font, color: C.whiteLow,
+    x: M, y: 12, size: 7, font, color: C.whiteLow,
   });
   page.drawText(`Page ${pageNum}`, {
-    x: W - M - 28, y: 10,
-    size: 7, font, color: C.whiteLow,
+    x: W - M - 30, y: 12, size: 7, font, color: C.whiteLow,
   });
 }
