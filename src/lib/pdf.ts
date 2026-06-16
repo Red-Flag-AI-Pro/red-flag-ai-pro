@@ -1,8 +1,8 @@
 import { PDFDocument, rgb } from "pdf-lib";
-import fs from "fs";
-import path from "path";
 import type { Scan, ScanFlag } from "@/types";
 import { FLAG_CATEGORY_LABELS } from "./constants";
+import syneRegularB64 from "./fonts/syne-regular";
+import syneBoldB64 from "./fonts/syne-bold";
 
 // Brand colours
 const C = {
@@ -64,9 +64,8 @@ export async function generateScanPdf(
 ): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
 
-  const fontsDir   = path.join(process.cwd(), "public/fonts");
-  const boldBytes  = fs.readFileSync(path.join(fontsDir, "Syne-Bold.ttf"));
-  const regBytes   = fs.readFileSync(path.join(fontsDir, "Syne-Regular.ttf"));
+  const boldBytes  = Buffer.from(syneBoldB64, "base64");
+  const regBytes   = Buffer.from(syneRegularB64, "base64");
   const bold       = await doc.embedFont(boldBytes);
   const regular    = await doc.embedFont(regBytes);
 
