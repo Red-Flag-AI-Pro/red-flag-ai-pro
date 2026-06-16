@@ -1,6 +1,7 @@
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import type { Scan, ScanFlag } from "@/types";
 import { FLAG_CATEGORY_LABELS } from "./constants";
+import logoPngB64 from "./fonts/logo-png";
 
 // Brand colours
 const C = {
@@ -64,6 +65,7 @@ export async function generateScanPdf(
 
   const bold    = await doc.embedFont(StandardFonts.HelveticaBold);
   const regular = await doc.embedFont(StandardFonts.Helvetica);
+  const logoImg = await doc.embedPng(Buffer.from(logoPngB64, "base64"));
 
   const W = 595;
   const H = 842;
@@ -86,28 +88,28 @@ export async function generateScanPdf(
   // Top stripe
   cover.drawRectangle({ x: 0, y: H - 8, width: W, height: 8, color: C.red });
 
-  // Masthead band
-  const mastheadH = 88;
+  // Masthead band — taller to give logo room
+  const mastheadH = 100;
   cover.drawRectangle({ x: 0, y: H - 8 - mastheadH, width: W, height: mastheadH, color: C.bgCard });
 
-  // Red flag icon (pole + pennant)
-  const fx = M, fy = H - 8 - mastheadH + 20;
-  cover.drawRectangle({ x: fx,     y: fy,      width: 3,  height: 48, color: C.red });
-  cover.drawRectangle({ x: fx + 3, y: fy + 32, width: 24, height: 14, color: C.red });
-  cover.drawRectangle({ x: fx + 3, y: fy + 26, width: 24, height: 6,  color: C.redDark });
+  // Real logo — 72×72 display size, left-aligned
+  const logoSize = 72;
+  const logoX    = M;
+  const logoY    = H - 8 - mastheadH + (mastheadH - logoSize) / 2;
+  cover.drawImage(logoImg, { x: logoX, y: logoY, width: logoSize, height: logoSize });
 
-  // Brand name
-  cover.drawText(agencyName ? agencyName.toUpperCase() : "RED FLAG AI PRO", {
-    x: M + 38, y: H - 8 - mastheadH + 56,
-    size: agencyName ? 15 : 20,
-    font: bold, color: C.red,
+  // Brand name — large red, right of logo
+  const brandX = M + logoSize + 16;
+  cover.drawText("RED FLAG AI PRO", {
+    x: brandX, y: H - 8 - mastheadH + 64,
+    size: 22, font: bold, color: C.red,
   });
-  cover.drawText("Marketing Compliance Risk Report", {
-    x: M + 38, y: H - 8 - mastheadH + 30,
-    size: 10, font: regular, color: C.whiteMid,
+  cover.drawText(agencyName ? `Report prepared by ${agencyName}` : "Marketing Compliance Risk Report", {
+    x: brandX, y: H - 8 - mastheadH + 38,
+    size: 9, font: regular, color: C.whiteMid,
   });
   cover.drawText("redflagaipro.com", {
-    x: W - M - 90, y: H - 8 - mastheadH + 44,
+    x: W - M - 90, y: H - 8 - mastheadH + 52,
     size: 9, font: regular, color: C.whiteLow,
   });
 
@@ -295,7 +297,7 @@ export async function generateScanPdf(
   let pg      = doc.addPage([W, H]);
   let pageNum = 2;
   pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-  drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C);
+  drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C, logoImg);
 
   let y = H - 96;
 
@@ -363,7 +365,7 @@ export async function generateScanPdf(
         pg = doc.addPage([W, H]);
         pageNum++;
         pg.drawRectangle({ x: 0, y: 0, width: W, height: H, color: C.bg });
-        drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C);
+        drawPageHeader(pg, bold, regular, W, H, M, brandName, scan.title, C, logoImg);
         y = H - 96;
         pg.drawText("ISSUE DETAILS — CONTINUED", {
           x: M, y, size: 9, font: bold, color: C.red,
@@ -436,16 +438,20 @@ function drawPageHeader(
   M: number,
   brandName: string,
   scanTitle: string,
-  C: Record<string, ReturnType<typeof rgb>>
+  C: Record<string, ReturnType<typeof rgb>>,
+  logoImg: Awaited<ReturnType<PDFDocument["embedPng"]>>
 ) {
   page.drawRectangle({ x: 0, y: H - 5, width: W, height: 5, color: C.red });
-  page.drawRectangle({ x: 0, y: H - 64, width: W, height: 59, color: C.bgCard });
-  page.drawText(brandName.toUpperCase(), {
-    x: M, y: H - 30, size: 11, font: bold, color: C.red,
+  page.drawRectangle({ x: 0, y: H - 68, width: W, height: 63, color: C.bgCard });
+  // Logo
+  page.drawImage(logoImg, { x: M, y: H - 60, width: 38, height: 38 });
+  // Brand name in red
+  page.drawText("RED FLAG AI PRO", {
+    x: M + 46, y: H - 28, size: 11, font: bold, color: C.red,
   });
-  const truncTitle = scanTitle.length > 60 ? scanTitle.slice(0, 57) + "..." : scanTitle;
+  const truncTitle = scanTitle.length > 55 ? scanTitle.slice(0, 52) + "..." : scanTitle;
   page.drawText(truncTitle, {
-    x: M, y: H - 50, size: 8, font: regular, color: C.whiteMid,
+    x: M + 46, y: H - 46, size: 8, font: regular, color: C.whiteMid,
   });
   page.drawText("redflagaipro.com", {
     x: W - M - 90, y: H - 38, size: 8, font: regular, color: C.whiteLow,
