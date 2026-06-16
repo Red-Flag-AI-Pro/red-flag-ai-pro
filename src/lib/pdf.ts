@@ -189,19 +189,19 @@ export async function generateScanPdf(
   // Top border line
   cover.drawRectangle({ x: M, y: vBlockY + vBlockH, width: W - M * 2, height: 1, color: C.border });
 
-  // Verified label + brand
+  // Verified label + brand — pushed to top of block with generous spacing
   cover.drawText("VERIFIED BY", {
-    x: M + 22, y: vBlockY + vBlockH - 24,
+    x: M + 22, y: vBlockY + vBlockH - 18,
     size: 8, font: regular, color: C.whiteMid,
   });
   cover.drawText("RED FLAG AI PRO", {
-    x: M + 22, y: vBlockY + vBlockH - 42,
+    x: M + 22, y: vBlockY + vBlockH - 36,
     size: 14, font: bold, color: C.red,
   });
 
-  // Horizontal divider inside block
+  // Horizontal divider — wider gap below brand name
   cover.drawRectangle({
-    x: M + 22, y: vBlockY + vBlockH - 56,
+    x: M + 22, y: vBlockY + vBlockH - 62,
     width: W - M * 2 - 44, height: 1, color: C.border,
   });
 
