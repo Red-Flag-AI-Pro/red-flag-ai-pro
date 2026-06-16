@@ -64,7 +64,7 @@ export async function generateScanPdf(
 ): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
 
-  const fontsDir   = path.join(process.cwd(), "src/lib/fonts");
+  const fontsDir   = path.join(process.cwd(), "public/fonts");
   const boldBytes  = fs.readFileSync(path.join(fontsDir, "Syne-Bold.ttf"));
   const regBytes   = fs.readFileSync(path.join(fontsDir, "Syne-Regular.ttf"));
   const bold       = await doc.embedFont(boldBytes);
