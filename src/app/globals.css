@@ -297,6 +297,61 @@
   }
 }
 
+/* ── Global overflow guard ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ── Mobile layout fixes ── */
+@media (max-width: 640px) {
+  /* "Either Way You Win" grid rows — stack vertically on mobile */
+  .either-way-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.35rem !important;
+  }
+  .either-way-row-left {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  /* DemoScanner — reduce extreme top/bottom padding on mobile */
+  .demo-scanner-section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  /* Section padding — tighten all major sections on mobile */
+  .mobile-section-pad {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* Footer badges — constrain wide badge */
+  .footer-badge-wide {
+    width: 200px !important;
+  }
+
+  /* Affiliate stats — tighten gap on mobile */
+  .affiliate-stats-row {
+    gap: 1.5rem !important;
+  }
+
+  /* Background overflow text — prevent page-level bleed */
+  .bg-text-nowrap {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* "No lose" CTA button — full width on mobile for easy tap */
+  .no-lose-cta {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up, .animate-fade-in, .animate-float,
   .animate-pulse-red, .reveal, .btn-primary, .btn-secondary,

@@ -125,7 +125,7 @@ export function DemoScanner() {
     : "#ef4444";
 
   return (
-    <section id="demo" style={{
+    <section id="demo" className="demo-scanner-section" style={{
       background: "linear-gradient(180deg, #0a0a0a 0%, #0f0505 50%, #0a0a0a 100%)",
       padding: "7rem 1.5rem",
       position: "relative",

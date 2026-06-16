@@ -217,7 +217,7 @@ export default function LandingPage() {
             }}>
               There is no losing scenario.
             </p>
-            <a href="/#demo" style={{
+            <a href="/#demo" className="no-lose-cta" style={{
               display: "inline-flex", alignItems: "center", gap: "12px",
               background: "#cc0000", color: "white",
               fontFamily: "'Syne', sans-serif", fontSize: "1rem", fontWeight: 700,
@@ -245,13 +245,13 @@ export default function LandingPage() {
               { who: "Buyer", outcome: "Scan flags something", result: "You just saved yourself from losing money to an illegal ad." },
               { who: "Seller", outcome: "Scan finds something", result: "You just avoided a fine, a chargeback, or a takedown that could cost thousands." },
             ].map((item, i) => (
-              <div key={i} style={{
+              <div key={i} className="either-way-row" style={{
                 display: "grid", gridTemplateColumns: "160px 1fr",
                 gap: "2rem", padding: "2rem 0",
                 borderTop: "1px solid rgba(255,255,255,0.05)",
                 alignItems: "start"
               }}>
-                <div>
+                <div className="either-way-row-left">
                   <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "4px"}}>{item.who}</p>
                   <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.4)"}}>{item.outcome}</p>
                 </div>
@@ -317,7 +317,7 @@ export default function LandingPage() {
               <img src="https://peerpush.net/p/red-flag-ai-pro/badge.png" alt="Red Flag AI Pro on PeerPush" style={{width: "180px"}} />
             </a>
             <a href="https://peerpush.net/p/red-flag-ai-pro" target="_blank" rel="noopener noreferrer">
-              <img src="https://peerpush.net/p/red-flag-ai-pro/rating-badge.png" alt="Red Flag AI Pro rating on PeerPush" style={{width: "280px"}} />
+              <img src="https://peerpush.net/p/red-flag-ai-pro/rating-badge.png" alt="Red Flag AI Pro rating on PeerPush" className="footer-badge-wide" style={{width: "280px"}} />
             </a>
           </div>
 
