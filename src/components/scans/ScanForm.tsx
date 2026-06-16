@@ -97,7 +97,7 @@ export function ScanForm({ plan = "free" }: Props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            title: title.trim() || "Untitled Scan",
+            title: title.trim() || content.trim().split(/[\n.!?]/)[0].replace(/\s+/g, " ").trim().slice(0, 60) || "Untitled Scan",
             content: content.trim(),
             jurisdictions: jurisdictions.length === JURISDICTIONS.length ? [] : jurisdictions,
           }),
