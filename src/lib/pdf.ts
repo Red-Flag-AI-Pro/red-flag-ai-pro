@@ -1,4 +1,6 @@
-import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument, rgb } from "pdf-lib";
+import fs from "fs";
+import path from "path";
 import type { Scan, ScanFlag } from "@/types";
 import { FLAG_CATEGORY_LABELS } from "./constants";
 
@@ -60,9 +62,13 @@ export async function generateScanPdf(
   flags: ScanFlag[],
   agencyName?: string | null
 ): Promise<Uint8Array> {
-  const doc     = await PDFDocument.create();
-  const bold    = await doc.embedFont(StandardFonts.HelveticaBold);
-  const regular = await doc.embedFont(StandardFonts.Helvetica);
+  const doc = await PDFDocument.create();
+
+  const fontsDir   = path.join(process.cwd(), "src/lib/fonts");
+  const boldBytes  = fs.readFileSync(path.join(fontsDir, "Syne-Bold.ttf"));
+  const regBytes   = fs.readFileSync(path.join(fontsDir, "Syne-Regular.ttf"));
+  const bold       = await doc.embedFont(boldBytes);
+  const regular    = await doc.embedFont(regBytes);
 
   const W = 595;
   const H = 842;
