@@ -96,7 +96,7 @@ export function DisclosureGenerator() {
 
   const selectStyle: React.CSSProperties = {
     width: "100%",
-    background: "#1a1a1a",
+    background: "#0F2138",
     border: "1px solid rgba(255,255,255,0.18)",
     color: "rgba(255,255,255,0.9)",
     ...syne,
@@ -122,7 +122,7 @@ export function DisclosureGenerator() {
     <div>
       {/* Controls */}
       <div style={{
-        background: "#0f0f0f",
+        background: "#0F2138",
         border: "1px solid rgba(255,255,255,0.15)",
         padding: "2rem",
         boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)"
@@ -132,7 +132,7 @@ export function DisclosureGenerator() {
             <label style={labelStyle}>What's the relationship?</label>
             <select value={relationship} onChange={(e) => setRelationship(e.target.value as Relationship)} style={selectStyle}>
               {RELATIONSHIPS.map((r) => (
-                <option key={r.value} value={r.value} style={{ background: "#1a1a1a" }}>{r.label}</option>
+                <option key={r.value} value={r.value} style={{ background: "#0F2138" }}>{r.label}</option>
               ))}
             </select>
             <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>
@@ -144,7 +144,7 @@ export function DisclosureGenerator() {
             <label style={labelStyle}>Which rules apply to you?</label>
             <select value={jurisdiction} onChange={(e) => setJurisdiction(e.target.value as Jurisdiction)} style={selectStyle}>
               {JURISDICTIONS.map((j) => (
-                <option key={j.value} value={j.value} style={{ background: "#1a1a1a" }}>{j.label}</option>
+                <option key={j.value} value={j.value} style={{ background: "#0F2138" }}>{j.label}</option>
               ))}
             </select>
             <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>
@@ -156,7 +156,7 @@ export function DisclosureGenerator() {
             <label style={labelStyle}>Where will you post this?</label>
             <select value={platform} onChange={(e) => setPlatform(e.target.value as Platform)} style={selectStyle}>
               {PLATFORMS.map((p) => (
-                <option key={p.value} value={p.value} style={{ background: "#1a1a1a" }}>{p.label}</option>
+                <option key={p.value} value={p.value} style={{ background: "#0F2138" }}>{p.label}</option>
               ))}
             </select>
           </div>
@@ -179,7 +179,7 @@ export function DisclosureGenerator() {
       {/* Output */}
       <div style={{ marginTop: "1.5rem" }}>
         <div style={{
-          background: "#0f0505",
+          background: "#102943",
           border: "1px solid rgba(239,68,68,0.2)",
           borderLeft: "3px solid #ef4444",
           padding: "1.5rem 1.75rem",
@@ -191,7 +191,7 @@ export function DisclosureGenerator() {
           <button
             onClick={handleCopy}
             style={{
-              background: copied ? "rgba(74,222,128,0.12)" : "#cc0000",
+              background: copied ? "rgba(74,222,128,0.12)" : "#E5484D",
               color: copied ? "#4ade80" : "white",
               border: copied ? "1px solid rgba(74,222,128,0.3)" : "none",
               ...syne,
@@ -209,7 +209,7 @@ export function DisclosureGenerator() {
         </div>
 
         <div style={{
-          background: "#0a0a0a",
+          background: "#0D1B2E",
           border: "1px solid rgba(255,255,255,0.06)",
           padding: "1.5rem 1.75rem",
           marginTop: "2px",
@@ -225,7 +225,7 @@ export function DisclosureGenerator() {
 
       {/* CTA */}
       <div style={{
-        background: "#0f0505",
+        background: "#102943",
         border: "1px solid rgba(239,68,68,0.25)",
         padding: "2.25rem 2rem",
         textAlign: "center",
@@ -239,14 +239,14 @@ export function DisclosureGenerator() {
         </p>
         <Link href="/#demo" style={{
           display: "inline-block",
-          background: "#cc0000",
+          background: "#E5484D",
           color: "white",
           ...syne,
           fontSize: "0.9rem",
           fontWeight: 700,
           padding: "14px 32px",
           borderRadius: "9999px",
-          boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+          boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
           textDecoration: "none",
           letterSpacing: "0.02em",
         }}>

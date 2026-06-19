@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function GovernanceAuditPage() {
   return (
-    <div style={{ background: '#050505', minHeight: '100vh' }} className="py-12 px-4">
+    <div style={{ background: '#0A1628', minHeight: '100vh' }} className="py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-6">
@@ -35,7 +35,7 @@ export default function GovernanceAuditPage() {
             fontSize: 'clamp(1.75rem, 5vw, 2.75rem)',
             fontWeight: 800,
             letterSpacing: '-0.03em',
-            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)',
+            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -61,7 +61,7 @@ export default function GovernanceAuditPage() {
         {/* Features Preview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div style={{
-            background: '#0a0a0a',
+            background: '#0D1B2E',
             border: '1px solid rgba(255,255,255,0.06)',
             borderRadius: '0.5rem',
             padding: '1.5rem',
@@ -85,7 +85,7 @@ export default function GovernanceAuditPage() {
           </div>
 
           <div style={{
-            background: '#0a0a0a',
+            background: '#0D1B2E',
             border: '1px solid rgba(255,255,255,0.06)',
             borderRadius: '0.5rem',
             padding: '1.5rem',
@@ -109,7 +109,7 @@ export default function GovernanceAuditPage() {
           </div>
 
           <div style={{
-            background: '#0a0a0a',
+            background: '#0D1B2E',
             border: '1px solid rgba(255,255,255,0.06)',
             borderRadius: '0.5rem',
             padding: '1.5rem',

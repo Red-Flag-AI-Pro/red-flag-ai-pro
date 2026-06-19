@@ -55,13 +55,13 @@ const SENTINEL_FEATURES = [
 
 export default function PricingPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* PAIN SECTION — THE PROBLEM */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "linear-gradient(180deg, #050505 0%, #0f0505 100%)",
+        background: "linear-gradient(180deg, #0A1628 0%, #102943 100%)",
         borderBottom: "1px solid rgba(239,68,68,0.15)",
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
@@ -148,11 +148,11 @@ export default function PricingPage() {
         <div style={{
           position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
           width: "700px", height: "500px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.15) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Governance Infrastructure</p>
-          <h1 style={{ ...syne, fontSize: "clamp(2.2rem, 6vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2.2rem, 6vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Know where you stand.<br />Then fix it fast.
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
@@ -168,7 +168,7 @@ export default function PricingPage() {
 
             {/* FREE */}
             <div style={{
-              background: "#0f0505",
+              background: "#102943",
               border: "1px solid rgba(255,255,255,0.1)",
               padding: "2.5rem",
               position: "relative"
@@ -202,7 +202,7 @@ export default function PricingPage() {
 
             {/* PRO */}
             <div style={{
-              background: "#0a0a0a",
+              background: "#0D1B2E",
               border: "2px solid rgba(239,68,68,0.5)",
               padding: "2.5rem",
               position: "relative",
@@ -258,18 +258,18 @@ export default function PricingPage() {
               }} />
               <div style={{ position: "relative", zIndex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#cc0000", animation: "pulseRed 2s ease-in-out infinite" }} />
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", animation: "pulseRed 2s ease-in-out infinite" }} />
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Enterprise</p>
                 </div>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
                 <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance-ready proof, forever.</p>
-                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#111", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
                   £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
                 </p>
                 <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
                 <Link href="#contact-sales" style={{
                   display: "block", textAlign: "center",
-                  background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%)",
+                  background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
                   color: "#e0e0f0",
                   ...syne, fontSize: "0.875rem", fontWeight: 700,
                   padding: "12px 24px", borderRadius: "9999px",
@@ -281,7 +281,7 @@ export default function PricingPage() {
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "1rem" }}>What you get</p>
                   {SENTINEL_FEATURES.map((f) => (
                     <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                      <span style={{ color: "#cc0000", flexShrink: 0, marginTop: "2px" }}>✓</span>
+                      <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
                       <span style={{ ...syne, fontSize: "12px", color: "rgba(0,0,0,0.65)" }}>{f}</span>
                     </div>
                   ))}
@@ -294,7 +294,7 @@ export default function PricingPage() {
           {/* Comparison table */}
           <div style={{
             marginTop: "3rem",
-            background: "#0a0a0a",
+            background: "#0D1B2E",
             border: "1px solid rgba(255,255,255,0.05)",
             borderRadius: "12px",
             overflow: "hidden"
@@ -326,7 +326,7 @@ export default function PricingPage() {
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.free === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.free}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.pro === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.pro}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#cc0000" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
+                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -343,7 +343,7 @@ export default function PricingPage() {
       {/* WHY SENTINEL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "linear-gradient(180deg, #0a0a0a 0%, #050505 100%)",
+        background: "linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%)",
         borderTop: "1px solid rgba(239,68,68,0.15)"
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>

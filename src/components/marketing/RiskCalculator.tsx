@@ -172,7 +172,7 @@ function SellerCalculator() {
 
   return (
     <div style={{
-      background: "#080303",
+      background: "#0C1929",
       border: `1px solid ${riskPct > 50 ? "rgba(239,68,68,0.35)" : "rgba(255,255,255,0.07)"}`,
       padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem",
       transition: "border-color 0.6s",
@@ -203,7 +203,7 @@ function SellerCalculator() {
           </div>
           <input type="range" min={500} max={50000} step={500} value={adSpend}
             onChange={(e) => setAdSpend(Number(e.target.value))}
-            style={{ width: "100%", accentColor: "#cc0000", cursor: "pointer" }} />
+            style={{ width: "100%", accentColor: "#E5484D", cursor: "pointer" }} />
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3px" }}>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>£500</span>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>£50k</span>
@@ -214,7 +214,7 @@ function SellerCalculator() {
         <div>
           <label style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px"}}>Industry</label>
           <select value={industryIdx} onChange={(e) => setIndustryIdx(Number(e.target.value))} style={selectStyle}>
-            {INDUSTRIES.map((ind, i) => <option key={i} value={i} style={{ background: "#111" }}>{ind.label}</option>)}
+            {INDUSTRIES.map((ind, i) => <option key={i} value={i} style={{ background: "#0F2138" }}>{ind.label}</option>)}
           </select>
         </div>
 
@@ -228,7 +228,7 @@ function SellerCalculator() {
             padding: "11px 14px", borderRadius: "6px", cursor: "pointer", transition: "all 0.3s",
           }}>
           <span style={{...syne, fontSize: "12px", color: incomeClaims ? "#fca5a5" : "rgba(255,255,255,0.45)"}}>My copy includes income claims</span>
-          <div style={{ width: "34px", height: "18px", borderRadius: "9999px", background: incomeClaims ? "#cc0000" : "rgba(255,255,255,0.1)", position: "relative", transition: "background 0.3s", flexShrink: 0 }}>
+          <div style={{ width: "34px", height: "18px", borderRadius: "9999px", background: incomeClaims ? "#E5484D" : "rgba(255,255,255,0.1)", position: "relative", transition: "background 0.3s", flexShrink: 0 }}>
             <div style={{ position: "absolute", top: "2px", left: incomeClaims ? "16px" : "2px", width: "14px", height: "14px", borderRadius: "50%", background: "white", transition: "left 0.3s" }} />
           </div>
         </div>
@@ -259,9 +259,9 @@ function SellerCalculator() {
       <ShareButton text={`My marketing compliance exposure is ${fmt(total)} — just calculated it. What's yours?`} />
 
       <Link href="/signup" style={{
-        display: "block", textAlign: "center", background: "#cc0000", color: "white",
+        display: "block", textAlign: "center", background: "#E5484D", color: "white",
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
-        borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none",
+        borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
         Scan my copy free — protect {fmt(total)}
       </Link>
@@ -288,7 +288,7 @@ function BuyerCalculator() {
 
   return (
     <div style={{
-      background: "#050508",
+      background: "#0A1628",
       border: `1px solid ${riskPct > 50 ? "rgba(239,68,68,0.35)" : "rgba(255,255,255,0.07)"}`,
       padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem",
       transition: "border-color 0.6s",
@@ -318,7 +318,7 @@ function BuyerCalculator() {
           </div>
           <input type="range" min={50} max={10000} step={50} value={amount}
             onChange={(e) => setAmount(Number(e.target.value))}
-            style={{ width: "100%", accentColor: "#cc0000", cursor: "pointer" }} />
+            style={{ width: "100%", accentColor: "#E5484D", cursor: "pointer" }} />
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3px" }}>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>£50</span>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>£10k</span>
@@ -332,7 +332,7 @@ function BuyerCalculator() {
           </div>
           <input type="range" min={1} max={50} step={1} value={perYear}
             onChange={(e) => setPerYear(Number(e.target.value))}
-            style={{ width: "100%", accentColor: "#cc0000", cursor: "pointer" }} />
+            style={{ width: "100%", accentColor: "#E5484D", cursor: "pointer" }} />
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3px" }}>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>1</span>
             <span style={{...syne, fontSize: "9px", color: "rgba(255,255,255,0.2)"}}>50</span>
@@ -342,7 +342,7 @@ function BuyerCalculator() {
         <div>
           <label style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px"}}>What do you mainly buy?</label>
           <select value={typeIdx} onChange={(e) => setTypeIdx(Number(e.target.value))} style={selectStyle}>
-            {PRODUCT_TYPES.map((pt, i) => <option key={i} value={i} style={{ background: "#111" }}>{pt.label}</option>)}
+            {PRODUCT_TYPES.map((pt, i) => <option key={i} value={i} style={{ background: "#0F2138" }}>{pt.label}</option>)}
           </select>
         </div>
       </div>
@@ -373,9 +373,9 @@ function BuyerCalculator() {
       <ShareButton text={`£${atRisk.toLocaleString()} of my online spending is at risk from misleading ads. Just calculated it.`} />
 
       <a href="/#demo" style={{
-        display: "block", textAlign: "center", background: "#cc0000", color: "white",
+        display: "block", textAlign: "center", background: "#E5484D", color: "white",
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
-        borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none",
+        borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
         Scan before you buy — protect {fmt(amount)}
       </a>

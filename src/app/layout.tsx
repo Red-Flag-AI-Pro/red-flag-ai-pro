@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne, DM_Mono } from "next/font/google";
+import { Inter, Syne, DM_Mono, Newsreader } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,6 +17,16 @@ const syne = Syne({
   display: "swap",
   weight: ["400", "700"],
   variable: "--font-syne",
+});
+
+// Newsreader — editorial serif used for display headlines. Signals the
+// institutional, financial-grade credibility CFOs and compliance buyers expect.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
 });
 
 const dmMono = DM_Mono({
@@ -161,7 +171,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${syne.variable} ${dmMono.variable} ${newsreader.variable}`}>
       <body className={inter.className}>
         {children}
         <Script
@@ -180,28 +190,27 @@ export default function RootLayout({
               "@type": "SoftwareApplication",
               "name": "Red Flag AI Pro",
               "url": "https://www.redflagaipro.com",
-              "description": "The world's only 9-jurisdiction AI marketing compliance scanner. Checks ad copy against FTC, GDPR, ASA, ACCC, CASL, LGPD, DPDP Act, PDPA and UAE PDPL. 29 risk categories. Used by solopreneurs, agencies and regulated businesses.",
+              "description": "AI governance assessment and assurance for CFOs, compliance and risk teams. Score your governance maturity across 6 dimensions, generate audit-ready evidence, and prove governance to regulators (EU AI Act, DORA, SEC, Munir). Free assessment.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
               "offers": [
                 {
                   "@type": "Offer",
-                  "name": "Pro",
-                  "price": "29",
-                  "priceCurrency": "GBP",
-                  "billingPeriod": "P1M"
+                  "name": "Assessment",
+                  "price": "0",
+                  "priceCurrency": "GBP"
                 },
                 {
                   "@type": "Offer",
-                  "name": "Growth",
-                  "price": "99",
+                  "name": "Pro",
+                  "price": "350",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 },
                 {
                   "@type": "Offer",
                   "name": "Sentinel",
-                  "price": "499",
+                  "price": "5000",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 }

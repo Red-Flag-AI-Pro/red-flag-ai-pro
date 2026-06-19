@@ -15,7 +15,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 export default function AboutPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* HERO */}
@@ -37,7 +37,7 @@ export default function AboutPage() {
             height: "600px",
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse at center, rgba(204,0,0,0.18) 0%, transparent 65%)",
+              "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)",
           }}
         />
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
               letterSpacing: "-0.04em",
               marginBottom: "1.5rem",
               background:
-                "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+                "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -103,7 +103,7 @@ export default function AboutPage() {
       </section>
 
       {/* THE PROBLEM SECTION */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0a0a0a" }}>
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p
@@ -226,7 +226,7 @@ export default function AboutPage() {
       </section>
 
       {/* WHAT RED FLAG DOES */}
-      <section style={{ padding: "6rem 1.5rem", background: "#050505" }}>
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p
@@ -328,7 +328,7 @@ export default function AboutPage() {
       <section
         style={{
           padding: "6rem 1.5rem",
-          background: "#0a0a0a",
+          background: "#0D1B2E",
           borderTop: "1px solid rgba(255,255,255,0.05)",
           borderBottom: "1px solid rgba(255,255,255,0.05)",
         }}
@@ -406,7 +406,7 @@ export default function AboutPage() {
       <section
         style={{
           padding: "6rem 1.5rem",
-          background: "#050505",
+          background: "#0A1628",
           textAlign: "center",
         }}
       >

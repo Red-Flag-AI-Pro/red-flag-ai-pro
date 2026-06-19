@@ -24,12 +24,12 @@ const CATEGORY_STYLES: Record<string, React.CSSProperties> = {
 
 export default function BlogPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* ── Newsletter CTA ── */}
       <section style={{
-        background: "#0f0505",
+        background: "#102943",
         borderTop: "1px solid rgba(239,68,68,0.15)",
         borderBottom: "1px solid rgba(239,68,68,0.15)",
         padding: "5rem 1.5rem",
@@ -45,7 +45,7 @@ export default function BlogPage() {
             </span>
             <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>The Red Flag Newsletter</p>
           </div>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>
             Weekly compliance updates.<br />Free. In plain English.
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2rem"}}>
@@ -53,10 +53,10 @@ export default function BlogPage() {
           </p>
           <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
             display: "inline-block",
-            background: "#cc0000", color: "white",
+            background: "#E5484D", color: "white",
             fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
             padding: "13px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+            boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none", letterSpacing: "0.02em"
           }}>
             Subscribe free
@@ -66,10 +66,10 @@ export default function BlogPage() {
       </section>
 
       {/* Email lead magnet — premium dark */}
-      <section style={{background: "#050505", padding: "4rem 1.5rem"}}>
+      <section style={{background: "#0A1628", padding: "4rem 1.5rem"}}>
         <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>
             The 29-Category Marketing Compliance Checklist
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
@@ -77,10 +77,10 @@ export default function BlogPage() {
           </p>
           <Link href="/blog/marketing-compliance-checklist-2026" style={{
             display: "inline-flex", alignItems: "center", gap: "10px",
-            background: "#cc0000", color: "white",
+            background: "#E5484D", color: "white",
             fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700,
             padding: "14px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+            boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
             textDecoration: "none"
           }}>
             Get the free checklist
@@ -99,7 +99,7 @@ export default function BlogPage() {
         <div style={{
           position: "absolute", top: "-80px", left: "50%", transform: "translateX(-50%)",
           width: "600px", height: "400px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.12) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
@@ -111,7 +111,7 @@ export default function BlogPage() {
             </span>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Compliance Guides</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Know the rules.<br />Before they cost you.
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
@@ -129,7 +129,7 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               style={{
                 display: "block",
-                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                 border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.06)" : "rgba(239,68,68,0.1)"}`,
                 padding: "2rem",
                 textDecoration: "none",
@@ -166,7 +166,7 @@ export default function BlogPage() {
       {/* CTA */}
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Stop reading about compliance.<br />Start scanning.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
@@ -174,10 +174,10 @@ export default function BlogPage() {
           </p>
           <Link href="/signup" style={{
             display: "inline-block",
-            background: "#cc0000", color: "white",
+            background: "#E5484D", color: "white",
             ...syne, fontSize: "0.875rem", fontWeight: 700,
             padding: "13px 32px", borderRadius: "9999px",
-            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+            boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
             Scan Your Copy Free

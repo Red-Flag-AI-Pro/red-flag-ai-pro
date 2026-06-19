@@ -37,7 +37,7 @@ const COMPARISON = [
 
 export default function ComparePage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* HERO */}
@@ -50,7 +50,7 @@ export default function ComparePage() {
         <div style={{
           position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
           width: "700px", height: "400px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.12) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
@@ -62,7 +62,7 @@ export default function ComparePage() {
             </span>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Comparison</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Red Flag AI Pro<br />vs the alternatives
           </h1>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
@@ -78,7 +78,7 @@ export default function ComparePage() {
             <thead>
               <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.08)" }}>
                 <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "35%" }}>Feature</th>
-                <th style={{ padding: "1rem", textAlign: "center", background: "rgba(204,0,0,0.05)", borderLeft: "1px solid rgba(239,68,68,0.15)", borderRight: "1px solid rgba(239,68,68,0.15)" }}>
+                <th style={{ padding: "1rem", textAlign: "center", background: "rgba(229,72,77,0.05)", borderLeft: "1px solid rgba(239,68,68,0.15)", borderRight: "1px solid rgba(239,68,68,0.15)" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444" }}>Red Flag AI Pro</p>
                   <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free–£5000+/mo</p>
                 </th>
@@ -98,7 +98,7 @@ export default function ComparePage() {
                   <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", padding: "0.875rem 1rem 0.875rem 0" }}>{row.feature}</td>
                   <td style={{
                     padding: "0.875rem 1rem", textAlign: "center",
-                    background: "rgba(204,0,0,0.03)",
+                    background: "rgba(229,72,77,0.03)",
                     borderLeft: "1px solid rgba(239,68,68,0.08)",
                     borderRight: "1px solid rgba(239,68,68,0.08)"
                   }}>
@@ -120,7 +120,7 @@ export default function ComparePage() {
       </section>
 
       {/* WHY CHEAPER */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "3rem", textAlign: "center" }}>Why cheaper</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
@@ -130,7 +130,7 @@ export default function ComparePage() {
               { title: "Built from experience", body: "This was built by someone who needed it and couldn't afford the alternative. The pricing reflects that. It always will." },
             ].map((item, i) => (
               <div key={item.title} style={{
-                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                 border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.06)" : "rgba(239,68,68,0.12)"}`,
                 padding: "2rem"
               }}>
@@ -145,7 +145,7 @@ export default function ComparePage() {
       {/* CTA */}
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Try it free. No account needed.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem" }}>
@@ -154,10 +154,10 @@ export default function ComparePage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#demo" style={{
               display: "inline-block",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.875rem", fontWeight: 700,
               padding: "13px 28px", borderRadius: "9999px",
-              boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+              boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
               textDecoration: "none"
             }}>
               Run a free scan

@@ -24,7 +24,7 @@ export default function GovernanceAuditGatedPage() {
   // If email submitted, show the quiz
   if (submitted) {
     return (
-      <div style={{ background: '#050505', minHeight: '100vh' }}>
+      <div style={{ background: '#0A1628', minHeight: '100vh' }}>
         <Navbar />
         <div style={{ padding: '4rem 1.5rem' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -39,13 +39,13 @@ export default function GovernanceAuditGatedPage() {
 
   // Email gate (landing page)
   return (
-    <div style={{ background: '#050505', minHeight: '100vh' }}>
+    <div style={{ background: '#0A1628', minHeight: '100vh' }}>
       <Navbar />
 
       {/* HERO — HIGH URGENCY, FEAR, LOSS AVERSION */}
       <section style={{
         padding: '10rem 1.5rem 6rem',
-        background: 'linear-gradient(180deg, #050505 0%, #0a0a0a 100%)',
+        background: 'linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%)',
         borderBottom: '2px solid rgba(239,68,68,0.3)',
         position: 'relative',
         overflow: 'hidden'
@@ -54,7 +54,7 @@ export default function GovernanceAuditGatedPage() {
         <div style={{
           position: 'absolute', top: '-150px', left: '50%', transform: 'translateX(-50%)',
           width: '1000px', height: '700px', pointerEvents: 'none',
-          background: 'radial-gradient(ellipse at center, rgba(204,0,0,0.25) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at center, rgba(229,72,77,0.10) 0%, transparent 60%)',
           animation: 'pulse 3s ease-in-out infinite'
         }} />
 
@@ -79,7 +79,7 @@ export default function GovernanceAuditGatedPage() {
             lineHeight: 1.0,
             letterSpacing: '-0.04em',
             marginBottom: '1.5rem',
-            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 30%, #ff4444 70%, #cc0000 100%)',
+            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 30%, #ff4444 70%, #E5484D 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
@@ -113,7 +113,7 @@ export default function GovernanceAuditGatedPage() {
               { icon: '💰', text: 'FTC Penalties:\n$53,088 per violation (April 2026+)' },
             ].map((item) => (
               <div key={item.text} style={{
-                background: 'rgba(204,0,0,0.1)',
+                background: 'rgba(229,72,77,0.1)',
                 border: '2px solid rgba(239,68,68,0.4)',
                 borderRadius: '12px',
                 padding: '2rem',
@@ -142,7 +142,7 @@ export default function GovernanceAuditGatedPage() {
       {/* EMAIL GATE — FRICTION + URGENCY */}
       <section style={{
         padding: '6rem 1.5rem',
-        background: '#050505',
+        background: '#0A1628',
         borderBottom: '1px solid rgba(255,255,255,0.05)'
       }}>
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
@@ -231,7 +231,7 @@ export default function GovernanceAuditGatedPage() {
       {/* WHY NOW — SCARCITY + DEADLINE PRESSURE */}
       <section style={{
         padding: '6rem 1.5rem',
-        background: 'linear-gradient(180deg, #0a0a0a 0%, #050505 100%)'
+        background: 'linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%)'
       }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{
@@ -295,7 +295,7 @@ export default function GovernanceAuditGatedPage() {
       {/* TRUST SECTION */}
       <section style={{
         padding: '4rem 1.5rem',
-        background: '#0a0a0a',
+        background: '#0D1B2E',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         textAlign: 'center'
       }}>

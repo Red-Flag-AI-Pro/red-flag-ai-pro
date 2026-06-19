@@ -5,7 +5,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 export function PromoBox({ platform, label, post }: { platform: string; label: string; post: string }) {
   return (
-    <div style={{ marginBottom: "2px", background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
+    <div style={{ marginBottom: "2px", background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "0.75rem", marginBottom: "1rem", flexWrap: "wrap" as const }}>
         <p style={{ ...syne, fontSize: "0.9rem", fontWeight: 700, color: "white", margin: 0 }}>{platform}</p>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", margin: 0 }}>{label}</p>
@@ -17,7 +17,7 @@ export function PromoBox({ platform, label, post }: { platform: string; label: s
         rows={post.split("\n").length + 1}
         style={{
           width: "100%",
-          background: "#050505",
+          background: "#0A1628",
           border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: "6px",
           padding: "1rem",

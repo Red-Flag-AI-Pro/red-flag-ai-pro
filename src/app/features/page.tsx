@@ -14,12 +14,12 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 export default function FeaturesPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* HERO */}
       <section style={{
-        background: "#050505",
+        background: "#0A1628",
         padding: "6rem 1.5rem",
         borderTop: "1px solid rgba(255,255,255,0.05)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -27,7 +27,7 @@ export default function FeaturesPage() {
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Governance Engine</p>
-          <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Every tool you need to prove governance.
           </h1>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
@@ -37,7 +37,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* FEATURES BY TIER */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0a0a0a" }}>
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ marginBottom: "4rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Core Capabilities</p>
@@ -154,7 +154,7 @@ export default function FeaturesPage() {
 
           {/* SENTINEL TIER FEATURES */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#cc0000", marginBottom: "1.5rem", textAlign: "center" }}>SENTINEL Tier (£5000+/mo)</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>SENTINEL Tier (£5000+/mo)</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>
               Managed Governance + Forensic Proof
             </h2>
@@ -211,7 +211,7 @@ export default function FeaturesPage() {
                   key={item.title}
                   style={{
                     background: "rgba(255, 0, 0, 0.08)",
-                    border: "1px solid rgba(204,0,0,0.3)",
+                    border: "1px solid rgba(229,72,77,0.3)",
                     borderRadius: "12px",
                     padding: "2rem",
                   }}
@@ -227,7 +227,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "6rem 1.5rem", background: "#050505", textAlign: "center" }}>
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", textAlign: "center" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", color: "white" }}>
             Ready to know where you stand?

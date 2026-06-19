@@ -113,7 +113,7 @@ export async function GET(request: Request) {
               subject: `Weekly compliance report — ${monitored.url}`,
               html: `
                 <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;padding:32px 16px;">
-                  <div style="background:#0f0f1a;border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+                  <div style="background:#0E1C30;border-radius:12px;padding:20px 24px;margin-bottom:24px;">
                     <div style="font-size:18px;font-weight:800;color:#fff;">Red Flag AI Pro</div>
                     <div style="font-size:12px;color:#6b7280;">Weekly compliance report for ${client.name}</div>
                   </div>

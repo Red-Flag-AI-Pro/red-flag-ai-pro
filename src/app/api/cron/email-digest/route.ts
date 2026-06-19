@@ -56,7 +56,7 @@ function buildEmail(userName: string, urls: { url: string; label: string | null;
 <body style="margin:0;padding:0;background:#f9fafb;font-family:system-ui,-apple-system,sans-serif;">
   <div style="max-width:600px;margin:0 auto;padding:32px 16px;">
 
-    <div style="background:#0f0f1a;border-radius:12px;padding:24px 28px;margin-bottom:24px;">
+    <div style="background:#0E1C30;border-radius:12px;padding:24px 28px;margin-bottom:24px;">
       <div style="font-size:20px;font-weight:800;color:#ffffff;">Red Flag AI Pro</div>
       <div style="font-size:13px;color:#6b7280;margin-top:2px;">Weekly compliance digest</div>
     </div>

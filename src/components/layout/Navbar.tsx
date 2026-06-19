@@ -22,7 +22,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5" style={{background: "#050505"}}>
+    <header className="sticky top-0 z-40 border-b border-white/10" style={{background: "rgba(10,22,40,0.85)", backdropFilter: "saturate(140%) blur(12px)", WebkitBackdropFilter: "saturate(140%) blur(12px)"}}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
           <Image
@@ -45,18 +45,15 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             </>
           ) : (
             <>
-              <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
-              <Link href="/compare" className="nav-link px-3 py-1.5 text-sm">Compare</Link>
-              <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Blog</Link>
-              <Link href="/tools" className="nav-link px-3 py-1.5 text-sm">Free Tools</Link>
-              <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
+              <Link href="/governance-audit" className="nav-link px-3 py-1.5 text-sm">Assessment</Link>
+              <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
-              <Link href="/audit" className="nav-link px-3 py-1.5 text-sm font-semibold !text-amber-400 hover:!text-amber-300">Audit</Link>
-              <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm font-semibold !text-red-400 hover:!text-red-300">Sentinel</Link>
-              <Link href="/affiliates" className="nav-link px-3 py-1.5 text-sm font-semibold !text-green-400 hover:!text-green-300 flex items-center gap-1">Affiliates <span style={{fontSize:"9px", background:"#16a34a", color:"white", borderRadius:"9999px", padding:"1px 5px", fontWeight:700, letterSpacing:"0.05em"}}>EARN</span></Link>
-              <Link href="/docs" className="nav-link px-3 py-1.5 text-sm">API</Link>
+              <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
+              <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
+              <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Insights</Link>
+              <Link href="/affiliates" className="nav-link px-3 py-1.5 text-sm flex items-center gap-1.5">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>EARN</span></Link>
               <Link href="/login" className="nav-link px-3 py-1.5 text-sm">Log in</Link>
-              <Link href="/signup" className="btn-primary !py-2 !px-4 !text-xs">Start free</Link>
+              <Link href="/governance-audit" className="btn-primary !py-2 !px-4 !text-xs">Free assessment</Link>
             </>
           )}
         </nav>
@@ -93,27 +90,24 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
 
       {/* Mobile dropdown menu */}
       {menuOpen && (
-        <div className="sm:hidden border-t border-gray-800 bg-gray-950">
+        <div className="sm:hidden border-t border-white/10" style={{background: "#0A1628"}}>
           <nav className="flex flex-col px-4 py-3 space-y-1">
             {isAuthenticated ? (
               <>
-                <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Dashboard</Link>
-                <button onClick={() => { setMenuOpen(false); handleSignOut(); }} className="text-left rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Sign out</button>
+                <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Dashboard</Link>
+                <button onClick={() => { setMenuOpen(false); handleSignOut(); }} className="text-left rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sign out</button>
               </>
             ) : (
               <>
-                <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Pricing</Link>
-                <Link href="/audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-semibold text-amber-400 hover:bg-gray-800 transition-colors">Audit — done for you</Link>
-                <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-semibold text-red-400 hover:bg-gray-800 transition-colors">Sentinel — for agencies</Link>
-                <Link href="/case-study" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Case Study</Link>
-                <Link href="/compare" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Compare</Link>
-                <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-semibold text-green-400 hover:bg-gray-800 transition-colors flex items-center gap-2">Affiliates <span style={{fontSize:"9px", background:"#16a34a", color:"white", borderRadius:"9999px", padding:"1px 5px", fontWeight:700}}>EARN</span></Link>
-                <Link href="/docs" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">API docs</Link>
-                <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Blog</Link>
-                <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Free Tools</Link>
-                <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">About</Link>
-                <div className="pt-2 border-t border-gray-800">
-                  <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Log in</Link>
+                <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Free assessment</Link>
+                <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel — managed governance</Link>
+                <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
+                <Link href="/case-study" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
+                <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
+                <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
+                <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>EARN</span></Link>
+                <div className="pt-2 border-t border-white/10">
+                  <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Log in</Link>
                 </div>
               </>
             )}

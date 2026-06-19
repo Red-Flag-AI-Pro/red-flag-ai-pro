@@ -126,7 +126,7 @@ export function DemoScanner() {
 
   return (
     <section id="demo" className="demo-scanner-section" style={{
-      background: "linear-gradient(180deg, #0a0a0a 0%, #0f0505 50%, #0a0a0a 100%)",
+      background: "linear-gradient(180deg, #0D1B2E 0%, #102943 50%, #0D1B2E 100%)",
       padding: "7rem 1.5rem",
       position: "relative",
       overflow: "hidden",
@@ -136,7 +136,7 @@ export function DemoScanner() {
       <div style={{
         position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
         width: "700px", height: "350px", pointerEvents: "none",
-        background: "radial-gradient(ellipse at center top, rgba(204,0,0,0.15) 0%, transparent 70%)"
+        background: "radial-gradient(ellipse at center top, rgba(229,72,77,0.08) 0%, transparent 70%)"
       }} />
 
       <div style={{maxWidth: "760px", margin: "0 auto", position: "relative", zIndex: 1}}>
@@ -162,7 +162,7 @@ export function DemoScanner() {
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
             marginBottom: "1rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text"
@@ -182,7 +182,7 @@ export function DemoScanner() {
 
         {/* Why we built this */}
         <div style={{
-          background: "#0f0505",
+          background: "#102943",
           border: "1px solid rgba(239,68,68,0.15)",
           padding: "1.75rem 2rem",
           marginBottom: "1.5rem",
@@ -191,7 +191,7 @@ export function DemoScanner() {
           <div style={{
             position: "absolute", top: "-1px", left: "2rem",
             width: "3rem", height: "2px",
-            background: "linear-gradient(90deg, #cc0000, transparent)"
+            background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
 
           <p style={{...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem"}}>
@@ -269,7 +269,7 @@ export function DemoScanner() {
           </summary>
           <div style={{marginTop: "1rem", display: "flex", flexDirection: "column", gap: "1rem"}}>
             <div style={{
-              background: "#0f0505",
+              background: "#102943",
               border: "1px solid rgba(239,68,68,0.15)",
               borderRadius: "6px",
               padding: "1rem 1.25rem"
@@ -283,7 +283,7 @@ export function DemoScanner() {
               </p>
             </div>
             <div style={{
-              background: "#0f0505",
+              background: "#102943",
               border: "1px solid rgba(251,191,36,0.15)",
               borderRadius: "6px",
               padding: "1rem 1.25rem"
@@ -301,7 +301,7 @@ export function DemoScanner() {
 
         {/* Scanner box */}
         <div style={{
-          background: "#0f0f0f",
+          background: "#0F2138",
           border: "1px solid rgba(255,255,255,0.15)",
           padding: "2rem",
           boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)",
@@ -315,7 +315,7 @@ export function DemoScanner() {
             placeholder="you@example.com"
             style={{
               width: "100%",
-              background: "#1a1a1a",
+              background: "#0F2138",
               border: "1px solid rgba(255,255,255,0.18)",
               color: "rgba(255,255,255,0.9)",
               ...syne,
@@ -327,7 +327,7 @@ export function DemoScanner() {
               borderRadius: "6px",
               transition: "border-color 0.2s, box-shadow 0.2s"
             }}
-            onFocus={(e) => { e.target.style.borderColor = "rgba(204,0,0,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(204,0,0,0.1)"; }}
+            onFocus={(e) => { e.target.style.borderColor = "rgba(229,72,77,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(229,72,77,0.1)"; }}
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
           <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginTop: "-0.85rem", marginBottom: "1.25rem"}}>
@@ -342,7 +342,7 @@ export function DemoScanner() {
             rows={10}
             style={{
               width: "100%",
-              background: "#1a1a1a",
+              background: "#0F2138",
               border: "1px solid rgba(255,255,255,0.18)",
               color: "rgba(255,255,255,0.9)",
               ...syne,
@@ -356,7 +356,7 @@ export function DemoScanner() {
               minHeight: "280px",
               WebkitAppearance: "none"
             }}
-            onFocus={(e) => { e.target.style.borderColor = "rgba(204,0,0,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(204,0,0,0.1)"; }}
+            onFocus={(e) => { e.target.style.borderColor = "rgba(229,72,77,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(229,72,77,0.1)"; }}
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
 
@@ -459,14 +459,14 @@ export function DemoScanner() {
               </p>
               <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                 display: "inline-block",
-                background: "#cc0000",
+                background: "#E5484D",
                 color: "white",
                 ...syne,
                 fontSize: "0.9rem",
                 fontWeight: 700,
                 padding: "12px 28px",
                 borderRadius: "9999px",
-                boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+                boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
                 textDecoration: "none",
                 letterSpacing: "0.02em"
               }}>
@@ -481,7 +481,7 @@ export function DemoScanner() {
             style={{
               marginTop: "1rem",
               width: "100%",
-              background: loading || !content.trim() || !email.trim() ? "rgba(204,0,0,0.3)" : "#cc0000",
+              background: loading || !content.trim() || !email.trim() ? "rgba(229,72,77,0.3)" : "#E5484D",
               color: "white",
               ...syne,
               fontSize: "0.9rem",
@@ -490,7 +490,7 @@ export function DemoScanner() {
               border: "none",
               borderRadius: "9999px",
               cursor: loading || !content.trim() || !email.trim() ? "not-allowed" : "pointer",
-              boxShadow: loading || !content.trim() || !email.trim() ? "none" : "0 8px 32px rgba(204,0,0,0.35)",
+              boxShadow: loading || !content.trim() || !email.trim() ? "none" : "0 8px 32px rgba(229,72,77,0.18)",
               transition: "all 0.2s",
               letterSpacing: "0.02em"
             }}
@@ -522,7 +522,7 @@ export function DemoScanner() {
 
             {/* Score row */}
             <div style={{
-              background: "#0f0505",
+              background: "#102943",
               border: "1px solid rgba(239,68,68,0.15)",
               padding: "1.75rem 2rem",
               display: "flex",
@@ -544,7 +544,7 @@ export function DemoScanner() {
             {/* Flag cards */}
             {result.flags.map((flag, i) => (
               <div key={i} style={{
-                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                 border: `1px solid ${flag.severity === "high" ? "rgba(239,68,68,0.2)" : flag.severity === "medium" ? "rgba(251,191,36,0.15)" : "rgba(255,255,255,0.06)"}`,
                 padding: "1.5rem 2rem",
                 position: "relative",
@@ -635,7 +635,7 @@ export function DemoScanner() {
             {/* Founder reinforcement — sits right where trust is being decided */}
             {result.flags.some((f) => !f.unlocked) && (
               <div style={{
-                background: "#0f0505",
+                background: "#102943",
                 borderLeft: "3px solid #ef4444",
                 padding: "1.25rem 1.75rem",
                 marginTop: "2px"
@@ -653,7 +653,7 @@ export function DemoScanner() {
             {/* CTA after flags */}
             {result.totalFlags > 0 && (
               <div style={{
-                background: "#0f0505",
+                background: "#102943",
                 border: "1px solid rgba(239,68,68,0.25)",
                 padding: "2.5rem 2rem",
                 textAlign: "center",
@@ -675,14 +675,14 @@ export function DemoScanner() {
                 </p>
                 <Link href={`/signup?plan=pro${email.trim() ? `&email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                   display: "inline-block",
-                  background: "#cc0000",
+                  background: "#E5484D",
                   color: "white",
                   ...syne,
                   fontSize: "0.9rem",
                   fontWeight: 700,
                   padding: "14px 32px",
                   borderRadius: "9999px",
-                  boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+                  boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
@@ -706,14 +706,14 @@ export function DemoScanner() {
                 </p>
                 <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                   display: "inline-block",
-                  background: "#cc0000",
+                  background: "#E5484D",
                   color: "white",
                   ...syne,
                   fontSize: "0.9rem",
                   fontWeight: 700,
                   padding: "14px 32px",
                   borderRadius: "9999px",
-                  boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+                  boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
                   textDecoration: "none"
                 }}>
                   Save My Results — Free

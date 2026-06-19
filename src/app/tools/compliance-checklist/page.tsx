@@ -139,7 +139,7 @@ export default function ComplianceChecklistPage() {
   else if (pct > 0) { statusLabel = "High risk"; statusColour = "#ef4444"; }
 
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* Hero */}
@@ -190,7 +190,7 @@ export default function ComplianceChecklistPage() {
                         display: "flex",
                         alignItems: "flex-start",
                         gap: "1rem",
-                        background: isDone ? "rgba(34,197,94,0.04)" : "#0a0a0a",
+                        background: isDone ? "rgba(34,197,94,0.04)" : "#0D1B2E",
                         border: `1px solid ${isDone ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.06)"}`,
                         padding: "1.25rem 1.5rem",
                         cursor: "pointer",
@@ -237,7 +237,7 @@ export default function ComplianceChecklistPage() {
       </section>
 
       {/* CTA block */}
-      <section style={{ background: "#080808", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
+      <section style={{ background: "#0C1929", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Go deeper</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.02em", marginBottom: "1rem", lineHeight: 1.1 }}>
@@ -247,7 +247,7 @@ export default function ComplianceChecklistPage() {
             The checklist tells you what to look for. The scanner reads your actual copy — every sentence — and flags what you missed. 60 seconds. Free.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/#demo" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", ...syne, fontSize: "0.95rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none" }}>
+            <Link href="/#demo" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.95rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
               Scan my copy free →
             </Link>
             <Link href="/signup" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)", ...syne, fontSize: "0.95rem", fontWeight: 600, padding: "13px 32px", borderRadius: "9999px", textDecoration: "none" }}>

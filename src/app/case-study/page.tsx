@@ -80,7 +80,7 @@ const SCORE_AFTER = 91;
 
 export default function CaseStudyPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* HERO */}
@@ -92,7 +92,7 @@ export default function CaseStudyPage() {
         <div style={{
           position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
           width: "700px", height: "400px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.15) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2rem" }}>
@@ -104,7 +104,7 @@ export default function CaseStudyPage() {
             </span>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Case Study</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Six violations.<br />None of them obvious.<br />
             All happening right now.
           </h1>
@@ -116,12 +116,12 @@ export default function CaseStudyPage() {
 
       {/* SCORE STRIP */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ background: "#0f0505", border: "1px solid rgba(239,68,68,0.15)", padding: "2.5rem", textAlign: "center" }}>
+        <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Score before</p>
           <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.04em", lineHeight: 1 }}>{SCORE_BEFORE}</p>
           <p style={{ ...syne, fontSize: "11px", color: "#ef4444", marginTop: "0.5rem", fontWeight: 600 }}>High risk — do not publish</p>
         </div>
-        <div style={{ background: "#0a0a0a", borderLeft: "1px solid rgba(255,255,255,0.05)", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "2.5rem", textAlign: "center" }}>
+        <div style={{ background: "#0D1B2E", borderLeft: "1px solid rgba(255,255,255,0.05)", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Violations found</p>
           <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>6</p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>5 high · 1 medium</p>
@@ -135,7 +135,7 @@ export default function CaseStudyPage() {
 
       {/* WARNING */}
       <div style={{
-        background: "#0f0a00",
+        background: "#102943",
         border: "none",
         borderBottom: "1px solid rgba(251,191,36,0.15)",
         padding: "1.25rem 1.5rem"
@@ -153,7 +153,7 @@ export default function CaseStudyPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2px" }}>
           {FLAGS.map((flag, i) => (
             <div key={flag.category} style={{
-              background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+              background: i % 2 === 0 ? "#0D1B2E" : "#102943",
               border: `1px solid ${flag.severity === "HIGH" ? "rgba(239,68,68,0.15)" : "rgba(251,191,36,0.12)"}`,
               overflow: "hidden"
             }}>
@@ -188,7 +188,7 @@ export default function CaseStudyPage() {
 
                 {/* Excerpt */}
                 <blockquote style={{
-                  background: "#0f0a00",
+                  background: "#102943",
                   borderLeft: "3px solid #fbbf24",
                   padding: "1.25rem 1.5rem",
                   margin: 0
@@ -235,19 +235,19 @@ export default function CaseStudyPage() {
       </section>
 
       {/* THE POINT */}
-      <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{
-            background: "#0f0505",
+            background: "#102943",
             border: "1px solid rgba(239,68,68,0.2)",
             padding: "3rem",
             position: "relative"
           }}>
             <div style={{
               position: "absolute", top: 0, left: "3rem", right: "3rem",
-              height: "2px", background: "linear-gradient(90deg, #cc0000, transparent)"
+              height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
             }} />
-            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, marginBottom: "1.5rem", letterSpacing: "-0.02em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, marginBottom: "1.5rem", letterSpacing: "-0.02em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               The point of this case study
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>
@@ -272,10 +272,10 @@ export default function CaseStudyPage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
               display: "inline-block",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.875rem", fontWeight: 700,
               padding: "13px 28px", borderRadius: "9999px",
-              boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+              boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
               textDecoration: "none"
             }}>
               See Sentinel for agencies

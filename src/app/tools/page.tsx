@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 
 export default function ToolsPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* Toolkit teaser — locked reward, unlocked on signup */}
-      <section style={{background: "#080808", padding: "10rem 1.5rem 6rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)"}}>
+      <section style={{background: "#0C1929", padding: "10rem 1.5rem 6rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Unlocked free the moment you sign up</p>
           <h1 style={{
             fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700,
             letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>Your compliance toolkit. A free gift for signing up.</h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
@@ -34,22 +34,22 @@ export default function ToolsPage() {
               </span>
             ))}
           </div>
-          <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>
+          <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>
             Create free account — unlock toolkit →
           </Link>
         </div>
       </section>
 
       {/* Free, ungated tools */}
-      <section style={{background: "#050505", padding: "5rem 1.5rem"}}>
+      <section style={{background: "#0A1628", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center"}}>Or try these now — no account needed</p>
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
-            <Link href="/tools/compliance-checklist" style={{display: "block", background: "#0f0505", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
+            <Link href="/tools/compliance-checklist" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>29-Category Compliance Checklist</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Every compliance check to run before you launch a campaign — free, no signup.</p>
             </Link>
-            <Link href="/tools/disclosure-generator" style={{display: "block", background: "#0f0f0f", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
+            <Link href="/tools/disclosure-generator" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Affiliate Disclosure Generator</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Generate an FTC/ASA-compliant affiliate or sponsorship disclaimer in seconds.</p>
             </Link>

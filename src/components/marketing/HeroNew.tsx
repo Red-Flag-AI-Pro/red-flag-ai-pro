@@ -43,7 +43,7 @@ export function HeroNew() {
       </div>
 
       {/* ── Ticker — decorative, hidden on mobile to save fold space ── */}
-      <div className="hero-ticker-wrap" style={{background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "14px 0"}}>
+      <div className="hero-ticker-wrap" style={{background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "14px 0"}}>
         <div className="ticker-track">
           {["FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code",
             "FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code"].map((item, i) => (
@@ -56,7 +56,7 @@ export function HeroNew() {
 
       {/* ── HERO ── */}
       <section className="hero-section" style={{
-        background: "#050505",
+        background: "#0A1628",
         display: "flex",
         alignItems: "center",
         position: "relative",
@@ -265,7 +265,7 @@ export function HeroNew() {
 
       {/* ── Trust bar ── */}
       <div style={{
-        background: "#0a0a0a", borderBottom: "1px solid rgba(255,255,255,0.08)",
+        background: "#0D1B2E", borderBottom: "1px solid rgba(255,255,255,0.08)",
         borderTop: "1px solid rgba(255,255,255,0.06)",
         padding: "16px 16px"
       }}>
@@ -291,7 +291,7 @@ export function HeroNew() {
       </div>
 
       {/* ── Done-for-you audit — demoted secondary CTA ── */}
-      <div style={{background: "#080808", padding: "12px 16px", textAlign: "center"}}>
+      <div style={{background: "#0C1929", padding: "12px 16px", textAlign: "center"}}>
         <Link href="/audit" style={{
           fontSize: "12px", fontWeight: 600,
           color: "rgba(251,191,36,0.7)",

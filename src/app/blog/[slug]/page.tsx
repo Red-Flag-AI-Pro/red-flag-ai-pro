@@ -125,10 +125,10 @@ function renderContent(content: string) {
           <div key={key++} style={{ margin: "2rem 0", textAlign: "center" }}>
             <Link href={match[2]} style={{
               display: "inline-block",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               fontFamily: "'Syne', system-ui, sans-serif", fontSize: "0.875rem", fontWeight: 700,
               padding: "13px 28px", borderRadius: "9999px",
-              boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+              boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
               textDecoration: "none"
             }}>
               {match[1]}
@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params }: Props) {
   const otherPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       <article style={{ maxWidth: "760px", margin: "0 auto", padding: "5rem 1.5rem" }}>
@@ -208,7 +208,7 @@ export default async function BlogPostPage({ params }: Props) {
             fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 800,
             letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
             {post.title}
@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* CTA */}
         <div style={{
           marginTop: "5rem",
-          background: "#0f0505",
+          background: "#102943",
           border: "1px solid rgba(239,68,68,0.2)",
           padding: "3rem",
           textAlign: "center",
@@ -236,9 +236,9 @@ export default async function BlogPostPage({ params }: Props) {
         }}>
           <div style={{
             position: "absolute", top: 0, left: "3rem", right: "3rem",
-            height: "2px", background: "linear-gradient(90deg, #cc0000, transparent)"
+            height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
-          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Scan Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
@@ -246,10 +246,10 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
           <Link href="/signup" style={{
             display: "inline-block",
-            background: "#cc0000", color: "white",
+            background: "#E5484D", color: "white",
             fontFamily: "'Syne', system-ui, sans-serif", fontSize: "0.875rem", fontWeight: 700,
             padding: "13px 28px", borderRadius: "9999px",
-            boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+            boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
             Start Free — No Credit Card
@@ -266,7 +266,7 @@ export default async function BlogPostPage({ params }: Props) {
               {otherPosts.map((related, i) => (
                 <Link key={related.slug} href={`/blog/${related.slug}`} style={{
                   display: "block",
-                  background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                  background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                   border: "1px solid rgba(255,255,255,0.05)",
                   padding: "1.25rem 1.5rem",
                   textDecoration: "none"

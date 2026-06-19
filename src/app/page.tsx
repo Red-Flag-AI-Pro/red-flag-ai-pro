@@ -25,7 +25,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 export default function LandingPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -37,7 +37,7 @@ export default function LandingPage() {
       {/* HERO */}
       <section style={{
         padding: "8rem 1.5rem 6rem",
-        background: "linear-gradient(180deg, #050505 0%, #0a0a0a 100%)",
+        background: "linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
         position: "relative",
         overflow: "hidden"
@@ -45,11 +45,11 @@ export default function LandingPage() {
         <div style={{
           position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
           width: "800px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.2) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>AI Governance</p>
-          <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Know your governance maturity before regulators ask.
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1rem, 3vw, 1.2rem)", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "700px", margin: "0 auto 2rem" }}>
@@ -81,7 +81,7 @@ export default function LandingPage() {
       {/* PROBLEM SECTION */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "#0a0a0a",
+        background: "#0D1B2E",
         borderBottom: "1px solid rgba(239,68,68,0.1)"
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
@@ -133,7 +133,7 @@ export default function LandingPage() {
       {/* WHAT YOU GET */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "#050505"
+        background: "#0A1628"
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -177,7 +177,7 @@ export default function LandingPage() {
               },
             ].map((item) => (
               <div key={item.title} style={{
-                background: "#0f0f0f",
+                background: "#0F2138",
                 border: "1px solid rgba(239,68,68,0.15)",
                 borderRadius: "12px",
                 padding: "2rem"
@@ -194,7 +194,7 @@ export default function LandingPage() {
       {/* WHO IT'S FOR */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "#0a0a0a",
+        background: "#0D1B2E",
         borderTop: "1px solid rgba(255,255,255,0.05)",
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
@@ -241,10 +241,10 @@ export default function LandingPage() {
       </section>
 
       {/* TESTIMONIALS — GOVERNANCE FOCUSED */}
-      <section style={{ background: "#050505", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ background: "#0A1628", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>How teams use it</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", color: "white", textAlign: "center", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>From assessment to compliance.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", color: "white", textAlign: "center", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>From assessment to compliance.</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
             {[
@@ -301,7 +301,7 @@ export default function LandingPage() {
       {/* FINAL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
-        background: "linear-gradient(180deg, #050505 0%, #0a0a0a 100%)",
+        background: "linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%)",
         textAlign: "center"
       }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>

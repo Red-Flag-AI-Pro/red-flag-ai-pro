@@ -98,12 +98,12 @@ const RISKS = [
 
 export default function SentinelPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* Sentinel teaser — slim */}
       <section style={{
-        background: "linear-gradient(180deg, #0a0a0a 0%, #0d0010 50%, #0a0a0a 100%)",
+        background: "linear-gradient(180deg, #0D1B2E 0%, #0C1A2C 50%, #0D1B2E 100%)",
         padding: "6rem 1.5rem",
         textAlign: "center",
         borderTop: "1px solid rgba(255,255,255,0.05)"
@@ -113,7 +113,7 @@ export default function SentinelPage() {
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a 3-year audit trail.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
-            <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#cc0000", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(204,0,0,0.35)", textDecoration: "none"}}>Get started free</Link>
+            <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function SentinelPage() {
         <div style={{
           position: "absolute", top: "-150px", left: "50%", transform: "translateX(-50%)",
           width: "1000px", height: "700px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.2) 0%, transparent 60%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 60%)"
         }} />
         {/* Grid */}
         <div style={{
@@ -158,7 +158,7 @@ export default function SentinelPage() {
             fontWeight: 800,
             lineHeight: 1.0,
             letterSpacing: "-0.04em",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -178,10 +178,10 @@ export default function SentinelPage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
               padding: "14px 32px", borderRadius: "9999px",
-              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get compliant today
@@ -202,7 +202,7 @@ export default function SentinelPage() {
 
       {/* ── LIVE THREAT BAR ── */}
       <div style={{
-        background: "#0f0505",
+        background: "#102943",
         borderBottom: "1px solid rgba(239,68,68,0.15)",
         padding: "1rem 1.5rem",
         display: "flex", alignItems: "center", justifyContent: "center", gap: "12px"
@@ -217,7 +217,7 @@ export default function SentinelPage() {
       <section style={{
         padding: "7rem 1.5rem",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
-        background: "linear-gradient(180deg, #080808 0%, #0f0505 100%)"
+        background: "linear-gradient(180deg, #0C1929 0%, #102943 100%)"
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
@@ -231,7 +231,7 @@ export default function SentinelPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
             {LAWS.map((item, i) => (
               <div key={item.law} style={{
-                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                 border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 padding: "2rem"
               }}>
@@ -271,7 +271,7 @@ export default function SentinelPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
             {BENEFITS.map((b, i) => (
               <div key={b.headline} style={{
-                background: i % 2 === 0 ? "#0f0505" : "#0a0a0a",
+                background: i % 2 === 0 ? "#102943" : "#0D1B2E",
                 border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(255,255,255,0.05)"}`,
                 padding: "2rem"
               }}>
@@ -290,7 +290,7 @@ export default function SentinelPage() {
       </section>
 
       {/* ── WHO IT'S FOR ── */}
-      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Who it&apos;s for</p>
@@ -302,7 +302,7 @@ export default function SentinelPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "2px" }}>
             {WHO.map((item, i) => (
               <div key={item.label} style={{
-                background: i % 2 === 0 ? "#0a0a0a" : "#0f0505",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
                 border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.1)"}`,
                 padding: "2.5rem"
               }}>
@@ -332,7 +332,7 @@ export default function SentinelPage() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
-            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "2rem" }}>Without Sentinel</p>
               {[
                 "Copy reviewed over email threads",
@@ -349,14 +349,14 @@ export default function SentinelPage() {
               ))}
             </div>
             <div style={{
-              background: "#0f0505",
+              background: "#102943",
               border: "1px solid rgba(239,68,68,0.2)",
               padding: "2.5rem",
               position: "relative"
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
-                background: "linear-gradient(90deg, #cc0000, transparent)"
+                background: "linear-gradient(90deg, #E5484D, transparent)"
               }} />
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>With Sentinel</p>
               {[
@@ -378,7 +378,7 @@ export default function SentinelPage() {
       </section>
 
       {/* ── RISK VS COST ── Bloomberg numbers */}
-      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The numbers</p>
@@ -389,7 +389,7 @@ export default function SentinelPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
             {/* Risk column */}
-            <div style={{ background: "#0f0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2.5rem" }}>
+            <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", padding: "2.5rem" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>The risk without Sentinel</p>
               {RISKS.map((r) => (
                 <div key={r.label} style={{
@@ -408,7 +408,7 @@ export default function SentinelPage() {
             </div>
 
             {/* Sentinel cost */}
-            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.08)", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "2rem" }}>Sentinel</p>
                 <div style={{ textAlign: "center", padding: "2rem 0" }}>
@@ -430,10 +430,10 @@ export default function SentinelPage() {
               </div>
               <Link href="/signup" style={{
                 display: "block", textAlign: "center",
-                background: "#cc0000", color: "white",
+                background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.875rem", fontWeight: 700,
                 padding: "13px 24px", borderRadius: "9999px",
-                boxShadow: "0 8px 24px rgba(204,0,0,0.3)",
+                boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
                 Get started
@@ -486,7 +486,7 @@ export default function SentinelPage() {
                   <tr key={feature} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
                     <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", padding: "0.875rem 1rem 0.875rem 0" }}>{feature}</td>
                     <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textAlign: "center", padding: "0.875rem 1rem", background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)" }}>{them}</td>
-                    <td style={{ ...syne, fontSize: "13px", color: us.startsWith("✓") ? "#4ade80" : "#ef4444", textAlign: "center", padding: "0.875rem 1rem", fontWeight: 600, background: i % 2 === 0 ? "rgba(204,0,0,0.03)" : "rgba(204,0,0,0.05)" }}>{us}</td>
+                    <td style={{ ...syne, fontSize: "13px", color: us.startsWith("✓") ? "#4ade80" : "#ef4444", textAlign: "center", padding: "0.875rem 1rem", fontWeight: 600, background: i % 2 === 0 ? "rgba(229,72,77,0.03)" : "rgba(229,72,77,0.05)" }}>{us}</td>
                   </tr>
                 ))}
               </tbody>
@@ -503,12 +503,12 @@ export default function SentinelPage() {
         padding: "10rem 1.5rem",
         textAlign: "center",
         position: "relative", overflow: "hidden",
-        background: "linear-gradient(180deg, #0a0a0a 0%, #0f0505 100%)"
+        background: "linear-gradient(180deg, #0D1B2E 0%, #102943 100%)"
       }}>
         <div style={{
           position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
           width: "700px", height: "400px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center bottom, rgba(204,0,0,0.2) 0%, transparent 65%)"
+          background: "radial-gradient(ellipse at center bottom, rgba(229,72,77,0.09) 0%, transparent 65%)"
         }} />
 
         <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -526,10 +526,10 @@ export default function SentinelPage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
               padding: "14px 32px", borderRadius: "9999px",
-              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get in touch

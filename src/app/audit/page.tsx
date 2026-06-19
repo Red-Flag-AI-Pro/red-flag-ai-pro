@@ -94,7 +94,7 @@ const FAQS = [
 
 export default function AuditPage() {
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }}>
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
       {/* ── HERO ── */}
@@ -107,7 +107,7 @@ export default function AuditPage() {
         <div style={{
           position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
           width: "900px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.18) 0%, transparent 60%)"
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 60%)"
         }} />
         {/* Grid */}
         <div style={{
@@ -134,7 +134,7 @@ export default function AuditPage() {
             lineHeight: 1.1,
             letterSpacing: "-0.035em",
             marginBottom: "1.5rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
             I&apos;ll personally run your site and funnel through{" "}
@@ -149,10 +149,10 @@ export default function AuditPage() {
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
             <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
               padding: "13px 28px", borderRadius: "9999px",
-              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get my audit — £97
@@ -177,15 +177,15 @@ export default function AuditPage() {
 
       {/* ── TICKER ── */}
       <div style={{
-        background: "#0a0a0a",
+        background: "#0D1B2E",
         borderBottom: "1px solid rgba(239,68,68,0.12)",
         padding: "0.9rem 0",
         overflow: "hidden",
         position: "relative"
       }}>
         {/* fade edges */}
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to right, #0a0a0a, transparent)", zIndex: 2, pointerEvents: "none" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to left, #0a0a0a, transparent)", zIndex: 2, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to right, #0D1B2E, transparent)", zIndex: 2, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to left, #0D1B2E, transparent)", zIndex: 2, pointerEvents: "none" }} />
         <div className="ticker-track" style={{ gap: "0" }}>
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
             <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "1.5rem", padding: "0 1.5rem" }}>
@@ -199,12 +199,12 @@ export default function AuditPage() {
       </div>
 
       {/* ── THE PROBLEM ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>
             The problem
           </p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             You don&apos;t have time to learn a compliance tool.{" "}
             <span>You just need to know what&apos;s wrong.</span>
           </h2>
@@ -219,7 +219,7 @@ export default function AuditPage() {
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What you get</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Everything packaged.<br />
               <span>Nothing left for you to interpret.</span>
             </h2>
@@ -228,7 +228,7 @@ export default function AuditPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {INCLUDES.map((item, i) => (
               <div key={item.headline} style={{
-                background: i % 2 === 0 ? "#0f0505" : "#0a0a0a",
+                background: i % 2 === 0 ? "#102943" : "#0D1B2E",
                 border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(255,255,255,0.05)"}`,
                 padding: "2rem"
               }}>
@@ -238,7 +238,7 @@ export default function AuditPage() {
                 {item.num === "04" && (
                   <div style={{
                     marginTop: "1.25rem",
-                    background: "linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 100%)",
+                    background: "linear-gradient(135deg, #0D1B2E 0%, #0d0d0d 100%)",
                     border: "1px solid rgba(22,163,74,0.25)",
                     borderRadius: "10px",
                     padding: "16px 16px",
@@ -255,9 +255,9 @@ export default function AuditPage() {
                         <path d="M18 2L4 8v12c0 9 6.5 17 14 20C25.5 37 32 29 32 20V8L18 2Z" fill="rgba(22,163,74,0.15)" stroke="#16a34a" strokeWidth="1.5"/>
                         <path d="M18 2L4 8v12c0 9 6.5 17 14 20C25.5 37 32 29 32 20V8L18 2Z" fill="none" stroke="rgba(22,163,74,0.3)" strokeWidth="3"/>
                         {/* flag pole */}
-                        <line x1="15" y1="13" x2="15" y2="29" stroke="#cc0000" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="15" y1="13" x2="15" y2="29" stroke="#E5484D" strokeWidth="1.5" strokeLinecap="round"/>
                         {/* flag */}
-                        <path d="M15 13h8l-2.5 4 2.5 4H15" fill="#cc0000"/>
+                        <path d="M15 13h8l-2.5 4 2.5 4H15" fill="#E5484D"/>
                         {/* checkmark */}
                         <path d="M11 22l4 4 8-8" stroke="#16a34a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
                       </svg>
@@ -274,7 +274,7 @@ export default function AuditPage() {
 
                     <div style={{ textAlign: "right", flexShrink: 0 }}>
                       <p style={{ ...syne, fontSize: "8px", color: "rgba(255,255,255,0.25)", marginBottom: "3px" }}>Reviewed 8 Jun 2026</p>
-                      <p style={{ ...syne, fontSize: "8px", fontWeight: 700, color: "rgba(204,0,0,0.6)", letterSpacing: "0.05em" }}>RED FLAG AI PRO</p>
+                      <p style={{ ...syne, fontSize: "8px", fontWeight: 700, color: "rgba(229,72,77,0.6)", letterSpacing: "0.05em" }}>RED FLAG AI PRO</p>
                     </div>
                   </div>
                 )}
@@ -285,18 +285,18 @@ export default function AuditPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How it works</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Three steps. 48 hours.
             </h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
             {STEPS.map((s) => (
-              <div key={s.num} style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.05)", padding: "2rem" }}>
+              <div key={s.num} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "2rem" }}>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 800, color: "#ef4444", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>{s.num}</p>
                 <h3 style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.6rem", lineHeight: 1.4 }}>{s.title}</h3>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{s.body}</p>
@@ -311,29 +311,29 @@ export default function AuditPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Pricing</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               What this would cost anywhere else.
             </h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "3rem" }}>
-            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Compliance lawyer</p>
               <p style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem" }}>£400</p>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>per hour</p>
             </div>
-            <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Full funnel audit</p>
               <p style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem" }}>£2,400</p>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>minimum</p>
             </div>
             <div style={{
-              background: "linear-gradient(135deg, #1a0505 0%, #0f0505 100%)",
+              background: "linear-gradient(135deg, #1a0505 0%, #102943 100%)",
               border: "1px solid rgba(239,68,68,0.3)",
               padding: "1.75rem", textAlign: "center",
               position: "relative", overflow: "hidden"
             }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #cc0000, transparent)" }} />
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #E5484D, transparent)" }} />
               <span style={{
                 ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em",
                 textTransform: "uppercase", color: "#ef4444",
@@ -346,10 +346,10 @@ export default function AuditPage() {
               <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one-time · 48 hours</p>
               <a href="mailto:support@redflagaipro.com?subject=Done-For-You Audit" style={{
                 display: "inline-flex", alignItems: "center",
-                background: "#cc0000", color: "white",
+                background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.8rem", fontWeight: 700,
                 padding: "10px 22px", borderRadius: "9999px",
-                boxShadow: "0 4px 20px rgba(204,0,0,0.3)",
+                boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
                 textDecoration: "none", letterSpacing: "0.02em"
               }}>
                 Get started
@@ -364,7 +364,7 @@ export default function AuditPage() {
       </section>
 
       {/* ── DISCLAIMER NOTE ── */}
-      <div style={{ padding: "2rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#080808" }}>
+      <div style={{ padding: "2rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.9, textAlign: "center", maxWidth: "660px", margin: "0 auto" }}>
           This audit is generated using Red Flag AI Pro&apos;s compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns — it is not a substitute for legal advice. For regulated industries (financial promotions, health claims, and similar) always confirm with a qualified professional.
         </p>
@@ -375,14 +375,14 @@ export default function AuditPage() {
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Questions</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Still on the fence?
             </h2>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
             {FAQS.map((f) => (
-              <div key={f.q} style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.05)", padding: "1.5rem 1.75rem" }}>
+              <div key={f.q} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "1.5rem 1.75rem" }}>
                 <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{f.q}</h3>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{f.a}</p>
               </div>
@@ -392,9 +392,9 @@ export default function AuditPage() {
       </section>
 
       {/* ── CTA CLOSE ── */}
-      <section style={{ padding: "7rem 1.5rem", background: "#080808" }}>
+      <section style={{ padding: "7rem 1.5rem", background: "#0C1929" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             You&apos;ll either find out you&apos;re already safe.{" "}
             <span>or find out before it costs you.</span>
           </h2>
@@ -405,10 +405,10 @@ export default function AuditPage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
             <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "#cc0000", color: "white",
+              background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
               padding: "13px 28px", borderRadius: "9999px",
-              boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
+              boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
               Get my audit — £97
