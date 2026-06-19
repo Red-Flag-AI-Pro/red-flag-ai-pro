@@ -1,0 +1,356 @@
+'use client';
+
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import {
+  GOVERNANCE_DIMENSIONS,
+  PEER_BENCHMARK,
+  type GovernanceQuizResponse,
+  type Dimension,
+  type RiskLevel,
+} from '@/lib/governance-audit';
+
+interface GovernanceAuditResultsProps {
+  response: GovernanceQuizResponse;
+  onDownloadReport?: () => void;
+  onScheduleCall?: () => void;
+  onExploreFeatures?: () => void;
+}
+
+const RISK_COLORS: Record<RiskLevel, { bg: string; text: string; badge: string }> =
+  {
+    critical: {
+      bg: 'bg-red-950',
+      text: 'text-red-400',
+      badge: 'bg-red-600',
+    },
+    moderate: {
+      bg: 'bg-amber-950',
+      text: 'text-amber-400',
+      badge: 'bg-amber-600',
+    },
+    managed: {
+      bg: 'bg-emerald-950',
+      text: 'text-emerald-400',
+      badge: 'bg-emerald-600',
+    },
+    mature: {
+      bg: 'bg-green-950',
+      text: 'text-green-400',
+      badge: 'bg-green-600',
+    },
+  };
+
+const RISK_LABELS: Record<RiskLevel, string> = {
+  critical: 'Critical Risk',
+  moderate: 'Moderate Risk',
+  managed: 'Managed Risk',
+  mature: 'Mature Governance',
+};
+
+export function GovernanceAuditResults({
+  response,
+  onDownloadReport,
+  onScheduleCall,
+  onExploreFeatures,
+}: GovernanceAuditResultsProps) {
+  const colors = RISK_COLORS[response.riskLevel];
+  const benchmark = PEER_BENCHMARK.overall;
+  const percentileHigher = 100 - ((response.overallScore - benchmark.average) / (benchmark.quartile.q4 - benchmark.average) * 100);
+
+  return (
+    <div className="w-full max-w-4xl mx-auto space-y-8 py-8">
+      {/* ============================================================
+          BIG SCORE DISPLAY
+          ============================================================ */}
+
+      <div className={`rounded-lg border border-gray-800 p-8 space-y-6 ${colors.bg}`}>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-medium text-gray-400 mb-1">
+              AI Governance Maturity Score
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className={`text-6xl font-bold ${colors.text}`}>
+                {response.overallScore}
+              </span>
+              <span className="text-3xl text-gray-500">/100</span>
+            </div>
+          </div>
+
+          {/* Gauge */}
+          <div className="flex flex-col items-center">
+            <div className="text-6xl text-gray-600 mb-2">◷</div>
+            <p className={`text-sm font-semibold ${colors.text}`}>
+              {RISK_LABELS[response.riskLevel]}
+            </p>
+          </div>
+        </div>
+
+        {/* Peer Benchmarking */}
+        <div className="pt-4 border-t border-gray-700 space-y-2">
+          <p className="text-xs text-gray-400">How you compare:</p>
+          <p className={`text-sm font-medium ${colors.text}`}>
+            {percentileHigher > 50
+              ? `You're in the top ${Math.round(percentileHigher)}% of organizations`
+              : `${Math.round(percentileHigher)}% of organizations have higher governance maturity`}
+          </p>
+          <p className="text-xs text-gray-500">
+            Industry average: {benchmark.average}/100 | Top performers: {benchmark.quartile.q4}/100
+          </p>
+        </div>
+      </div>
+
+      {/* ============================================================
+          DIMENSION BREAKDOWN
+          ============================================================ */}
+
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-white">
+          Governance Dimensions
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {(
+            Object.entries(response.dimensionScores) as [Dimension, number][]
+          ).map(([dimension, score]) => {
+            const dimInfo = GOVERNANCE_DIMENSIONS[dimension];
+            const riskLevel =
+              score <= 10 ? 'mature' : score <= 20 ? 'managed' : score <= 25 ? 'moderate' : 'critical';
+            const dimColors = RISK_COLORS[riskLevel];
+
+            return (
+              <div
+                key={dimension}
+                className={`border border-gray-800 rounded-lg p-4 space-y-2 ${dimColors.bg}`}
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      {dimInfo.title}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {dimInfo.subtitle}
+                    </p>
+                  </div>
+                  <span className={`text-2xl font-bold ${dimColors.text}`}>
+                    {score}
+                  </span>
+                </div>
+
+                {/* Mini Progress Bar */}
+                <div className="w-full bg-gray-900 rounded-full h-1">
+                  <div
+                    className={`h-full rounded-full ${dimColors.badge}`}
+                    style={{ width: `${(score / 30) * 100}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ============================================================
+          RED FLAGS (TOP 3-5)
+          ============================================================ */}
+
+      {response.redFlags.length > 0 && (
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-white">
+            Top Governance Gaps
+          </h3>
+
+          <div className="space-y-3">
+            {response.redFlags.map((flag, idx) => {
+              const severity =
+                flag.severity === 'high'
+                  ? 'high'
+                  : flag.severity === 'medium'
+                    ? 'medium'
+                    : 'low';
+              const dimInfo = GOVERNANCE_DIMENSIONS[flag.dimension];
+
+              return (
+                <div
+                  key={idx}
+                  className="border border-gray-800 rounded-lg p-4 space-y-3 bg-gray-950"
+                >
+                  {/* Header */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge
+                          variant={
+                            severity === 'high'
+                              ? 'high'
+                              : severity === 'medium'
+                                ? 'medium'
+                                : 'low'
+                          }
+                          className="text-xs"
+                        >
+                          {severity.toUpperCase()}
+                        </Badge>
+                        <span className="text-xs font-medium text-gray-400">
+                          {dimInfo.title}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-semibold text-white">
+                        {flag.title}
+                      </h4>
+                    </div>
+                    <span className="text-2xl">#{idx + 1}</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {flag.description}
+                  </p>
+
+                  {/* Recommendation */}
+                  <div className="bg-gray-900 border border-gray-800 rounded p-3 space-y-1">
+                    <p className="text-xs font-semibold text-gray-400">
+                      RECOMMENDATION:
+                    </p>
+                    <p className="text-sm text-gray-300">
+                      {flag.recommendation}
+                    </p>
+                  </div>
+
+                  {/* Regulatory Context */}
+                  <div className="flex flex-wrap gap-2">
+                    {flag.regulatoryContext.map((context, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-gray-900 border border-gray-800 rounded px-2 py-1 text-gray-400"
+                      >
+                        {context}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* ============================================================
+          CALL-TO-ACTION SECTION
+          ============================================================ */}
+
+      <div className="space-y-4 border-t border-gray-800 pt-8">
+        <h3 className="text-lg font-semibold text-white">
+          Next Steps
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* CTA 1: Download Report */}
+          <Button
+            onClick={onDownloadReport}
+            variant="primary"
+            className="h-auto py-4 flex flex-col items-center gap-2"
+          >
+            <span className="text-2xl">📄</span>
+            <div className="text-center">
+              <p className="font-semibold text-sm">Download Full Report</p>
+              <p className="text-xs text-gray-300 mt-1">
+                Governance assessment + roadmap
+              </p>
+            </div>
+          </Button>
+
+          {/* CTA 2: Schedule Call */}
+          <Button
+            onClick={onScheduleCall}
+            variant="secondary"
+            className="h-auto py-4 flex flex-col items-center gap-2"
+          >
+            <span className="text-2xl">📞</span>
+            <div className="text-center">
+              <p className="font-semibold text-sm">Schedule Assessment</p>
+              <p className="text-xs text-gray-300 mt-1">
+                20-min governance consultation
+              </p>
+            </div>
+          </Button>
+
+          {/* CTA 3: Explore Sentinel */}
+          <Button
+            onClick={onExploreFeatures}
+            variant="secondary"
+            className="h-auto py-4 flex flex-col items-center gap-2"
+          >
+            <span className="text-2xl">🔒</span>
+            <div className="text-center">
+              <p className="font-semibold text-sm">Explore Sentinel</p>
+              <p className="text-xs text-gray-300 mt-1">
+                Governance monitoring & enforcement
+              </p>
+            </div>
+          </Button>
+        </div>
+      </div>
+
+      {/* ============================================================
+          EVIDENCE FRAMEWORK PREVIEW
+          ============================================================ */}
+
+      <div className="bg-gray-950 border border-gray-800 rounded-lg p-6 space-y-4">
+        <div>
+          <h4 className="text-sm font-semibold text-white mb-1">
+            What You're Getting
+          </h4>
+          <p className="text-xs text-gray-400">
+            Auto-generated audit-ready artifacts (included in your report)
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <div className="flex items-start gap-2">
+            <span className="text-lg">✓</span>
+            <div>
+              <p className="font-medium text-white">Governance Assessment Report</p>
+              <p className="text-gray-400">Scoring + framework mapping</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg">✓</span>
+            <div>
+              <p className="font-medium text-white">Risk Register Template</p>
+              <p className="text-gray-400">Prioritized remediation roadmap</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg">✓</span>
+            <div>
+              <p className="font-medium text-white">Evidence Framework Checklist</p>
+              <p className="text-gray-400">What regulators need from you</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg">✓</span>
+            <div>
+              <p className="font-medium text-white">Board Slide Deck</p>
+              <p className="text-gray-400">Executive summary (4 slides)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================
+          FOOTER
+          ============================================================ */}
+
+      <div className="text-center pt-4 border-t border-gray-800">
+        <p className="text-xs text-gray-500">
+          Questions? Email{' '}
+          <a href="mailto:support@redflagaipro.com" className="text-gray-400 hover:text-white">
+            support@redflagaipro.com
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
