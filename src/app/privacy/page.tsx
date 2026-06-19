@@ -82,21 +82,26 @@ export default function PrivacyPage() {
 
           {/* 3 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy — Data Handling & Confidentiality</h2>
             <div style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your scan results</strong>. We do not:
+                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your scan results</strong>. This is your data. It remains your data. We do not:
               </p>
               <ul style={{ paddingLeft: "1.25rem", marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 {[
-                  "Share your submitted copy with third parties",
-                  "Use your copy to train AI models",
-                  "Store your copy beyond what is necessary to display your scan history",
+                  "Store your submitted copy beyond processing (removed after scan delivery unless you retain history)",
+                  "Allow any human to view, access, or read your submitted copy",
+                  "Use your copy to train AI models or improve our service",
+                  "Share your copy with third parties for any reason",
+                  "Retain your copy for longer than necessary to display your scan history",
                 ].map((item) => (
                   <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
                 ))}
               </ul>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard. Deletion is permanent.</p>
+              <p style={{ ...syne, fontSize: "12px", color: "#4ade80", lineHeight: 1.7, marginTop: "1rem", background: "rgba(74,222,128,0.08)", padding: "0.75rem", borderRadius: "6px", border: "1px solid rgba(74,222,128,0.15)" }}>
+                <strong>Munir v SSHD Compliance:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This satisfies the data handling requirements established in the Munir ruling and is equivalent to closed-enterprise AI tools.
+              </p>
             </div>
           </div>
 
