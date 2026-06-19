@@ -21,7 +21,7 @@ export default function ToolsPage() {
           <h1 style={{
             fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700,
             letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
+            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>Your compliance toolkit. A free gift for signing up.</h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>

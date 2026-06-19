@@ -208,7 +208,7 @@ export default async function BlogPostPage({ params }: Props) {
             fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 800,
             letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
+            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
             {post.title}
@@ -238,7 +238,7 @@ export default async function BlogPostPage({ params }: Props) {
             position: "absolute", top: 0, left: "3rem", right: "3rem",
             height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
-          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Scan Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>

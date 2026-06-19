@@ -73,7 +73,7 @@ export default function AboutPage() {
               letterSpacing: "-0.04em",
               marginBottom: "1.5rem",
               background:
-                "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
+                "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",

@@ -79,7 +79,7 @@ export default function GovernanceAuditGatedPage() {
             lineHeight: 1.0,
             letterSpacing: '-0.04em',
             marginBottom: '1.5rem',
-            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 30%, #ff4444 70%, #E5484D 100%)',
+            background: 'linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'

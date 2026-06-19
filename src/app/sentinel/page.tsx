@@ -158,7 +158,7 @@ export default function SentinelPage() {
             fontWeight: 800,
             lineHeight: 1.0,
             letterSpacing: "-0.04em",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)",
+            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
