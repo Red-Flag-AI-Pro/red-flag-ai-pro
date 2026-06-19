@@ -48,33 +48,27 @@ export default function LandingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>AI Governance</p>
-          <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Know your governance maturity before regulators ask.
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>AI Governance Assurance</p>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+          </div>
+          <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
+            Prove your AI governance<br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
           </h1>
-          <p style={{ ...syne, fontSize: "clamp(1rem, 3vw, 1.2rem)", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "700px", margin: "0 auto 2rem" }}>
-            5-minute free assessment scores your AI governance across 6 critical dimensions. See your gaps. Get your 90-day roadmap. Then decide how to close them.
+          <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
+            A 5-minute assessment scores your governance maturity across 6 dimensions, benchmarks you against peers, and generates the audit-ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
           </p>
-          <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <Link href="/governance-audit" style={{
-              ...syne, fontSize: "1rem", fontWeight: 700,
-              background: "#ef4444", color: "white",
-              padding: "14px 36px", borderRadius: "9999px",
-              textDecoration: "none", display: "inline-block",
-              transition: "all 0.2s"
-            }}>
-              Start assessment (free)
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+            <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              Start free assessment
             </Link>
-            <Link href="/pricing" style={{
-              ...syne, fontSize: "1rem", fontWeight: 700,
-              border: "1px solid rgba(239,68,68,0.5)", color: "#ef4444",
-              padding: "14px 36px", borderRadius: "9999px",
-              textDecoration: "none", display: "inline-block"
-            }}>
-              See pricing →
+            <Link href="/pricing" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              View pricing
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>No credit card. No account required. Results delivered instantly.</p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
         </div>
       </section>
 
@@ -86,29 +80,28 @@ export default function LandingPage() {
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The Reality</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "white", marginBottom: "2rem" }}>
-              You can't prove governance happened.<br />
-              <span style={{ background: "linear-gradient(160deg, #ffffff 0%, #ef4444 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Regulators now demand proof.</span>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1.25rem" }}>The Regulatory Reality</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(1.9rem, 5vw, 3rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.12, color: "#F4F1EA", marginBottom: "1.25rem" }}>
+              Every organisation has a policy.<br />
+              <span style={{ fontStyle: "italic", color: "#E5484D" }}>Almost none can prove it happened.</span>
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)" }}>
             {[
-              { icon: "⚖️", title: "Munir v SSHD", desc: "Governance you cannot demonstrate = liability. UK law, enforced now." },
-              { icon: "📅", title: "EU AI Act (Aug 2)", desc: "Mandatory AI disclosure + governance evidence. 45 days to be ready." },
-              { icon: "🏦", title: "SEC 2026 Exams", desc: "Financial regulators testing: Can you prove governance? Can you monitor?" },
-              { icon: "💰", title: "FTC Enforcement", desc: "$53K per violation. April 2026 onwards: consent orders, not warnings." },
+              { tag: "UK · ENFORCED NOW", title: "Munir v SSHD", desc: "Governance you cannot demonstrate is treated as liability. Already case law." },
+              { tag: "EU · 2 AUGUST 2026", title: "EU AI Act, Article 50", desc: "Mandatory AI disclosure and governance evidence for systems touching the EU." },
+              { tag: "EU · IN FORCE", title: "DORA", desc: "Operational-resilience reporting under active audit. 93.5% failed the 2024 dry run." },
+              { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance — and monitor it — not just describe it." },
             ].map((item) => (
               <div key={item.title} style={{
-                background: "rgba(15, 5, 5, 0.8)",
-                border: "1px solid rgba(239,68,68,0.2)",
-                borderRadius: "12px",
-                padding: "1.75rem",
+                background: "var(--navy-raised)",
+                padding: "1.85rem",
               }}>
-                <p style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{item.icon}</p>
-                <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{item.title}</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{item.desc}</p>
+                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.1rem" }} />
+                <p className="font-mono-fig" style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.12em", color: "rgba(229,72,77,0.85)", marginBottom: "0.6rem" }}>{item.tag}</p>
+                <p className="font-display" style={{ fontSize: "1.15rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.5rem" }}>{item.title}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>

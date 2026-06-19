@@ -30,19 +30,17 @@ export default function GovernanceAuditPage() {
             </p>
           </div>
 
-          <h1 style={{
-            fontFamily: "'Syne', system-ui, sans-serif",
-            fontSize: 'clamp(1.75rem, 5vw, 2.75rem)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            background: 'linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #E5484D 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            maxWidth: '800px',
+          <h1 className="font-display" style={{
+            fontSize: 'clamp(2rem, 5vw, 3.1rem)',
+            fontWeight: 500,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.1,
+            color: '#F4F1EA',
+            maxWidth: '820px',
             margin: '0 auto',
           }}>
-            Red Flag scores your maturity across 6 critical dimensions + generates audit-ready evidence in 5 minutes.
+            Score your governance maturity across 6 dimensions — and generate{' '}
+            <span style={{ fontStyle: 'italic', color: '#E5484D' }}>audit-ready evidence</span> in 5 minutes.
           </h1>
 
           <p style={{
