@@ -1,367 +1,458 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import React from "react";
 
 export const metadata: Metadata = {
-  title: "About — The Story Behind Red Flag AI Pro",
-  description: "Red Flag AI Pro was built by James Stokes — a founder who went from prison, homelessness and a terminal diagnosis to building the world's only 9-jurisdiction AI marketing compliance scanner.",
+  title: "About — Red Flag AI Pro",
+  description:
+    "Red Flag was built to solve a real problem: you can't prove governance happened. Built by James Stokes. For CFOs, compliance teams, and regulated businesses.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
-import React from "react";
-
 export default function AboutPage() {
   return (
     <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
 
-      {/* HERO — cinematic full-bleed */}
-      <section style={{
-        position: "relative",
-        overflow: "hidden",
-        padding: "9rem 1.5rem 7rem",
-        borderBottom: "1px solid rgba(255,255,255,0.05)"
-      }}>
-        {/* Large red glow */}
-        <div style={{
-          position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
-          width: "900px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.18) 0%, transparent 65%)"
-        }} />
-        {/* Grain */}
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.03,
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          backgroundSize: "200px 200px"
-        }} />
+      {/* HERO */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          padding: "8rem 1.5rem 6rem",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "-100px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "900px",
+            height: "600px",
+            pointerEvents: "none",
+            background:
+              "radial-gradient(ellipse at center, rgba(204,0,0,0.18) 0%, transparent 65%)",
+          }}
+        />
 
-        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            position: "relative",
+            zIndex: 1,
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              ...syne,
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#ef4444",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Why we exist
+          </p>
 
-          {/* Eyebrow */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2.5rem" }}>
-            <span className="flag-wave" style={{ display: "inline-block" }}>
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-              </svg>
-            </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>
-              The story behind the tool
-            </p>
-          </div>
-
-          {/* Headline */}
-          <h1 style={{
-            ...syne,
-            fontSize: "clamp(2rem, 5.5vw, 4rem)",
-            fontWeight: 800, lineHeight: 1.0,
-            letterSpacing: "-0.04em",
-            marginBottom: "2rem",
-            background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text"
-          }}>
-            This wasn&apos;t built<br />
-            in a boardroom.<br />
-            It was built from the bottom.
+          <h1
+            style={{
+              ...syne,
+              fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+              marginBottom: "1.5rem",
+              background:
+                "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            The real problem isn&apos;t<br />
+            governance policy.<br />
+            It&apos;s proving it happened.
           </h1>
 
-          {/* Quote */}
-          <p style={{
-            ...syne, fontSize: "1.1rem", fontStyle: "italic",
-            color: "rgba(255,255,255,0.4)",
-            letterSpacing: "0.02em"
-          }}>
-            &ldquo;Within adversity hides unstoppable strength&rdquo;
-          </p>
-
-        </div>
-      </section>
-
-      {/* STAT BAR */}
-      <div style={{
-        borderBottom: "1px solid rgba(255,255,255,0.05)",
-        background: "#0a0a0a"
-      }}>
-        <div style={{
-          maxWidth: "800px", margin: "0 auto",
-          display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-          padding: "0"
-        }}>
-          {[
-            { value: "5", label: "Jurisdictions" },
-            { value: "24", label: "Risk categories" },
-            { value: "60s", label: "To a result" },
-            { value: "£0", label: "First scan" },
-          ].map((s, i) => (
-            <div key={s.label} style={{
-              padding: "1.75rem 1.5rem",
-              borderRight: i < 3 ? "1px solid rgba(255,255,255,0.05)" : "none",
-              textAlign: "center"
-            }}>
-              <p style={{ ...mono, fontSize: "2rem", fontWeight: 700, color: "white", letterSpacing: "-0.03em", lineHeight: 1 }}>{s.value}</p>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "4px", letterSpacing: "0.08em", textTransform: "uppercase" }}>{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* WHAT I BUILT */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>What I built</p>
-
-          <div style={{
-            background: "#0f0505",
-            border: "1px solid rgba(239,68,68,0.2)",
-            padding: "2.5rem",
-            marginBottom: "3rem",
-            position: "relative"
-          }}>
-            <div style={{
-              position: "absolute", top: 0, left: "2.5rem", right: "2.5rem",
-              height: "1px",
-              background: "linear-gradient(90deg, #cc0000, transparent)"
-            }} />
-            <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: "1.25rem" }}>
-              A scanner that checks marketing copy against real advertising law. FTC, GDPR, ASA, ACCC, CASL and EU AI Act. In 60 seconds. In plain English. With exact rewrite suggestions. No lawyers. No jargon. Just clarity.
-            </p>
-            <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontWeight: 700 }}>29 risk categories</span> and growing. Earnings claims, fake scarcity, countdown timers, health claims, GDPR consent violations, AI content disclosure, FTC endorsement rules, greenwashing, financial promotions, SMS marketing, online safety and more. Eight jurisdictions simultaneously — UK, US, EU, Canada, Australia, Brazil, India, Singapore and UAE. No other tool on the planet does this.
-            </p>
-            <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: "1.25rem" }}>
-              And Sentinel is now live. Compliance infrastructure built for agencies, legal teams and regulated businesses. Human review logs with legal timestamps. Signed compliance certificates. The audit trail your PI insurer needs.
-            </p>
-            <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9 }}>
-              I built it alone. With help from Claude. From a laptop. Against all odds.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* THE STORY — cinematic pull quotes */}
-      <section style={{ padding: "0 1.5rem 6rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "3rem", paddingTop: "6rem" }}>Why I built it</p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            I&apos;ve lived on both sides of misleading marketing. As a buyer who got ripped off repeatedly. And as a seller who didn&apos;t always know where the line was.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            For most of my adult life I was privately fighting battles nobody around me could see. I&apos;ve been to the lowest places a person can reach and somehow come back from them. I&apos;ve lost people I loved. I&apos;ve been given timelines that should have ended this story before it began.
-          </p>
-
-          {/* Full bleed pull quote */}
-          <div style={{
-            margin: "4rem -1.5rem",
-            padding: "4rem 3rem",
-            background: "#0a0505",
-            borderTop: "1px solid rgba(239,68,68,0.15)",
-            borderBottom: "1px solid rgba(239,68,68,0.15)",
-            position: "relative",
-            overflow: "hidden"
-          }}>
-            <div style={{
-              position: "absolute", left: 0, top: 0, bottom: 0, width: "3px",
-              background: "linear-gradient(180deg, #cc0000 0%, transparent 100%)"
-            }} />
-            <p style={{
+          <p
+            style={{
               ...syne,
-              fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
-              fontWeight: 700,
-              color: "white",
-              lineHeight: 1.5,
-              letterSpacing: "-0.02em"
-            }}>
-              And then I lost my daughter to cancer when she was just 9 years old.
-            </p>
-          </div>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            That broke something in me I couldn&apos;t put back together for a long time. And yet somewhere underneath everything I always knew there was something bigger. A calling. Something I was meant to do. I just couldn&apos;t get there.
+              fontSize: "1.05rem",
+              color: "rgba(255,255,255,0.5)",
+              letterSpacing: "0.01em",
+              lineHeight: 1.7,
+              maxWidth: "700px",
+              margin: "0 auto",
+            }}
+          >
+            Every organization has policies. But when a regulator asks, "Can you
+            prove governance happened?"—most organizations can&apos;t. Red Flag
+            was built to close that gap.
           </p>
-
-          {/* Another pull quote */}
-          <div style={{
-            margin: "4rem 0",
-            padding: "2.5rem",
-            background: "#0f0505",
-            border: "1px solid rgba(239,68,68,0.2)",
-            position: "relative"
-          }}>
-            <p style={{ ...mono, fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The diagnosis</p>
-            <p style={{
-              ...syne, fontSize: "1.4rem", fontWeight: 700, color: "white", lineHeight: 1.4, letterSpacing: "-0.02em"
-            }}>
-              Then I was diagnosed with two years to live.
-            </p>
-          </div>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            I was numb at first. It didn&apos;t sink in. And then I thought, at least I&apos;ll be with my daughter soon.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            But something shifted. I&apos;d always loved Eastern mysticism, Buddhism, Stoicism. I&apos;d studied it for years without being able to live it. I found a place in Indonesia — military grade, no hot water, three cold baths a day, a call to prayer five times a day including 4am. It was the hardest thing I&apos;ve ever done. And it saved my life.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            Something happened in Indonesia that I still can&apos;t fully explain. Too many coincidences to call coincidences. A spiritual awakening that felt completely natural, as if I was being guided toward something. For the first time in my life, I felt it.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            I came back to the UK quietly rebuilding. I fell in love with AI. Started learning, building things off the top of my head. And then I went to buy one last course and got burned. The terms and conditions bore no resemblance to what the advert had promised. I&apos;d been ripped off again. At a time when I couldn&apos;t afford it.
-          </p>
-
-          {/* Birth of RFAP */}
-          <div style={{
-            margin: "4rem -1.5rem",
-            padding: "4rem 3rem",
-            background: "linear-gradient(135deg, #0f0505 0%, #0a0a0a 100%)",
-            borderTop: "1px solid rgba(239,68,68,0.15)",
-            borderBottom: "1px solid rgba(239,68,68,0.15)",
-          }}>
-            <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "1rem" }}>
-              I was furious. I started talking to AI about it.
-            </p>
-            <p style={{
-              ...syne, fontSize: "clamp(1.25rem, 3vw, 1.75rem)", fontWeight: 800, color: "white",
-              lineHeight: 1.3, letterSpacing: "-0.02em"
-            }}>
-              And Red Flag AI Pro was born.
-            </p>
-          </div>
-
         </div>
       </section>
 
-      {/* WHAT I WANT FOR YOU */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      {/* THE PROBLEM SECTION */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0a0a0a" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p
+              style={{
+                ...syne,
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#ef4444",
+                marginBottom: "1rem",
+              }}
+            >
+              The Gap
+            </p>
+            <h2
+              style={{
+                ...syne,
+                fontSize: "clamp(1.8rem, 5vw, 2.5rem)",
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.1,
+                color: "white",
+              }}
+            >
+              Policy vs. Practice vs. Proof
+            </h2>
+          </div>
 
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>What I want for you</p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: "2rem",
+            }}
+          >
+            {[
+              {
+                title: "Every org has policy",
+                desc: "Written AI governance frameworks exist. Board approved. Documented. But...",
+              },
+              {
+                title: "Practice diverges silently",
+                desc: "Teams don't follow it. Tools aren't approved. Data flows weren't checked. No one's monitoring.",
+              },
+              {
+                title: "Proof doesn't exist",
+                desc: "When regulators ask, 'prove governance happened?' most organizations can't. That's liability under Munir.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  background: "rgba(15, 5, 5, 0.6)",
+                  border: "1px solid rgba(239,68,68,0.2)",
+                  borderRadius: "12px",
+                  padding: "2rem",
+                }}
+              >
+                <p
+                  style={{
+                    ...syne,
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: "white",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    ...syne,
+                    fontSize: "13px",
+                    color: "rgba(255,255,255,0.6)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
 
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            When you use Red Flag AI Pro, I want you to feel something most people never feel when they&apos;re buying or selling online:{" "}
-            <span style={{ color: "white", fontWeight: 700 }}>genuine freedom and safety.</span>{" "}
-            The confidence that what you&apos;re putting out into the world is clean, honest and legal. The confidence that what you&apos;re buying is what it says it is.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9, marginBottom: "2rem" }}>
-            I want to empower people. Buyers and sellers alike.
-          </p>
-
-          <p style={{ ...syne, fontSize: "17px", color: "rgba(255,255,255,0.65)", lineHeight: 1.9 }}>
-            This is the beginning. There is so much more to come — tools, platforms, and projects all built around one simple idea:{" "}
-            <span style={{ color: "white", fontWeight: 700 }}>using AI for good.</span>
-          </p>
-
-          {/* Signature */}
-          <div style={{
-            marginTop: "4rem",
-            paddingTop: "3rem",
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            display: "flex", alignItems: "flex-start", gap: "2rem"
-          }}>
-            <div style={{
-              width: "48px", height: "48px", borderRadius: "50%",
-              background: "linear-gradient(135deg, #cc0000, #0f0505)",
+          <div
+            style={{
+              marginTop: "3rem",
+              background: "rgba(239,68,68,0.1)",
               border: "1px solid rgba(239,68,68,0.3)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0
-            }}>
-              <span style={{ ...syne, fontSize: "18px", fontWeight: 800, color: "white" }}>J</span>
-            </div>
-            <div>
-              <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white" }}>James Stokes</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>Founder, Red Flag AI Pro</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Bristol, UK</p>
-            </div>
+              borderRadius: "12px",
+              padding: "2.5rem",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                ...syne,
+                fontSize: "12px",
+                fontWeight: 700,
+                color: "#ef4444",
+                marginBottom: "0.75rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Munir v SSHD (2024)
+            </p>
+            <p
+              style={{
+                ...syne,
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: "white",
+              }}
+            >
+              &ldquo;Governance you cannot demonstrate is liability.&rdquo;
+            </p>
           </div>
-
         </div>
       </section>
 
-      {/* CLOSING QUOTE */}
-      <section style={{
-        padding: "6rem 1.5rem",
-        textAlign: "center",
-        borderBottom: "1px solid rgba(255,255,255,0.05)",
-        position: "relative", overflow: "hidden"
-      }}>
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(204,0,0,0.06) 0%, transparent 60%)"
-        }} />
-        <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{
-            ...syne, fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
-            fontStyle: "italic", fontWeight: 600,
-            color: "rgba(255,255,255,0.5)",
-            lineHeight: 1.6
-          }}>
-            &ldquo;What&apos;s normal for the spider is chaos for the fly.&rdquo;
+      {/* WHAT RED FLAG DOES */}
+      <section style={{ padding: "6rem 1.5rem", background: "#050505" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p
+              style={{
+                ...syne,
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#ef4444",
+                marginBottom: "1rem",
+              }}
+            >
+              What We Build
+            </p>
+            <h2
+              style={{
+                ...syne,
+                fontSize: "clamp(1.8rem, 5vw, 2.5rem)",
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.1,
+                color: "white",
+              }}
+            >
+              Governance you can prove
+            </h2>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "2rem",
+            }}
+          >
+            {[
+              {
+                icon: "🔍",
+                title: "See Reality",
+                desc: "Assessment shows where governance actually is (not where you hope it is). 6-dimension audit reveals every gap.",
+              },
+              {
+                icon: "🛤️",
+                title: "Know What to Fix",
+                desc: "Strategic roadmap prioritizes gaps by impact. Quick wins in 90 days. Medium-term in 6 months. Transformation in 12.",
+              },
+              {
+                icon: "🏗️",
+                title: "Build Systems",
+                desc: "Manual governance doesn't scale. We build monitoring, enforcement, and audit trails so proof is automatic.",
+              },
+              {
+                icon: "📋",
+                title: "Prove It Happened",
+                desc: "Forensic logs. Evidence packages. Regulatory mapping. When auditors ask 'prove it', you have the answer.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  background: "rgba(15, 5, 5, 0.6)",
+                  border: "1px solid rgba(239,68,68,0.2)",
+                  borderRadius: "12px",
+                  padding: "2rem",
+                }}
+              >
+                <p style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
+                  {item.icon}
+                </p>
+                <p
+                  style={{
+                    ...syne,
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: "white",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    ...syne,
+                    fontSize: "13px",
+                    color: "rgba(255,255,255,0.6)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER SECTION */}
+      <section
+        style={{
+          padding: "6rem 1.5rem",
+          background: "#0a0a0a",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <p
+            style={{
+              ...syne,
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#ef4444",
+              marginBottom: "1.5rem",
+              textAlign: "center",
+            }}
+          >
+            Built by James Stokes
           </p>
+
+          <div
+            style={{
+              background: "rgba(15, 5, 5, 0.5)",
+              border: "1px solid rgba(239,68,68,0.2)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+            }}
+          >
+            <p
+              style={{
+                ...syne,
+                fontSize: "1rem",
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.8,
+                marginBottom: "1.5rem",
+              }}
+            >
+              I&apos;ve built products before. But this one came from a different place.
+            </p>
+
+            <p
+              style={{
+                ...syne,
+                fontSize: "1rem",
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.8,
+                marginBottom: "1.5rem",
+              }}
+            >
+              I watched teams write governance policies that nobody read. I saw
+              compliance officers struggling to answer one simple question:
+              &ldquo;Can you prove governance is actually happening?&rdquo; The
+              answer was always no. Not because they didn&apos;t care. Because
+              there was no tool to make it visible.
+            </p>
+
+            <p
+              style={{
+                ...syne,
+                fontSize: "1rem",
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.8,
+              }}
+            >
+              Red Flag solves that. It makes governance visible. It shows you
+              exactly what&apos;s broken, prioritizes fixes, and then proves to
+              regulators that governance actually happened. That&apos;s the only
+              thing that matters now.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "7rem 1.5rem", background: "#0a0a0a" }}>
-        <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
-            <span className="flag-wave" style={{ display: "inline-block" }}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-              </svg>
-            </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Try it free</p>
-          </div>
-          <h2 style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem" }}>
-            See what we find.
+      <section
+        style={{
+          padding: "6rem 1.5rem",
+          background: "#050505",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <h2
+            style={{
+              ...syne,
+              fontSize: "clamp(1.8rem, 5vw, 2.5rem)",
+              fontWeight: 800,
+              letterSpacing: "-0.03em",
+              marginBottom: "1.5rem",
+              color: "white",
+            }}
+          >
+            Ready to know where you actually stand?
           </h2>
-          <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            29 risk categories. 9 jurisdictions. 60 seconds. No credit card.
+          <p
+            style={{
+              ...syne,
+              fontSize: "1rem",
+              color: "rgba(255,255,255,0.5)",
+              marginBottom: "2rem",
+              lineHeight: 1.7,
+            }}
+          >
+            Start with a free assessment. 5 minutes. See your governance
+            maturity, gaps, and roadmap.
           </p>
-          <a href="/#demo" style={{
-            display: "inline-block",
-            background: "#cc0000", color: "white",
-            ...syne, fontSize: "0.9rem", fontWeight: 700,
-            padding: "14px 36px", borderRadius: "9999px",
-            boxShadow: "0 8px 32px rgba(204,0,0,0.35)",
-            textDecoration: "none", letterSpacing: "0.02em"
-          }}>
-            Start your free scan
-          </a>
-          <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>The Red Flag — Weekly Compliance Briefing</p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "1rem" }}>Real violations. Real fines. Free every week.</p>
-            <a href="https://the-red-flag.beehiiv.com/subscribe" target="_blank" rel="noopener noreferrer" style={{
+          <Link
+            href="/governance-audit"
+            style={{
+              ...syne,
+              fontSize: "1rem",
+              fontWeight: 700,
+              background: "#ef4444",
+              color: "white",
+              padding: "14px 40px",
+              borderRadius: "9999px",
+              textDecoration: "none",
               display: "inline-block",
-              border: "1px solid rgba(239,68,68,0.4)", color: "#ef4444",
-              ...syne, fontSize: "11px", fontWeight: 700,
-              padding: "8px 20px", borderRadius: "9999px",
-              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" as const
-            }}>
-              Subscribe free
-            </a>
-          </div>
-          <div style={{ marginTop: "1.5rem" }}>
-            <Link href="/" style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", textDecoration: "none" }}>
-              ← Back to Red Flag AI Pro
-            </Link>
-          </div>
+            }}
+          >
+            Start assessment
+          </Link>
         </div>
       </section>
-
     </div>
   );
 }
