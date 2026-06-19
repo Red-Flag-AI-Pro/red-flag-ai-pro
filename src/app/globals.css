@@ -401,3 +401,90 @@ html, body {
     opacity: 1 !important; transform: none !important;
   }
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   INTERACTION & MOTION LAYER  (ui-ux-pro-max best practices)
+   Restrained, meaningful micro-interactions: 150–250ms, transform/opacity
+   only, ease-out in. Built to feel premium and confident, never flashy.
+────────────────────────────────────────────────────────────────────────── */
+
+/* Accessibility — visible focus ring on every interactive element.
+   Keyboard users get a clear 2px accent ring; mouse users don't see it. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Never leave users with no focus indicator */
+a:focus-visible { outline-offset: 3px; }
+
+/* Primary CTA arrow nudge — a small, meaningful "go" cue on hover/focus */
+.btn-primary .arrow,
+.btn-secondary .arrow {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-primary:hover .arrow,
+.btn-primary:focus-visible .arrow,
+.btn-secondary:hover .arrow,
+.btn-secondary:focus-visible .arrow { transform: translateX(4px); }
+
+/* Inline accent link — underline grows from the left on hover */
+.link-accent {
+  position: relative;
+  color: var(--ivory);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s;
+  padding-bottom: 1px;
+}
+.link-accent:hover { background-size: 100% 1.5px; color: #fff; }
+
+/* Generic lift — for clickable cards / tiles. Calm shadow, no jump. */
+.lift {
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.38);
+}
+
+/* Data-grid cell — reveal a thin accent rule on top to draw the eye,
+   used on regulatory / evidence tiles. Subtle, meaningful, on-brand. */
+.cell-accent { position: relative; transition: background-color 0.22s ease; }
+.cell-accent::before {
+  content: '';
+  position: absolute; top: -1px; left: 0; right: 0; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.cell-accent:hover::before { transform: scaleX(1); }
+.cell-accent:hover { background-color: rgba(255,255,255,0.02); }
+
+/* Press feedback on tappable cards/buttons (scale 0.99, restores on release) */
+.btn-primary:active, .btn-secondary:active, .lift:active { transform: scale(0.99); }
+
+/* Quiet entrance for sections that opt in — single, calm fade-up */
+@keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.rise-in { animation: riseIn 0.55s cubic-bezier(0.16,1,0.3,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary .arrow, .btn-secondary .arrow,
+  .link-accent, .lift, .cell-accent, .cell-accent::before, .rise-in {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .link-accent { background-size: 100% 1.5px; } /* keep underline visible, just static */
+}

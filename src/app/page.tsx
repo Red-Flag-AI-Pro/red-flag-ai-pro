@@ -62,10 +62,10 @@ export default function LandingPage() {
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Start free assessment
+              Start free assessment <span className="arrow">→</span>
             </Link>
             <Link href="/pricing" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              View pricing
+              View pricing <span className="arrow">→</span>
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
