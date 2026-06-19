@@ -11,39 +11,21 @@ import {
 } from '@/lib/governance-audit';
 
 interface GovernanceAuditFormProps {
-  onSubmit?: (data: { email: string; answers: Answer[] }) => void;
+  // Called when the quiz is complete. Email is collected AFTER results preview
+  // (no up-front gate) — this materially lifts completion + capture rate.
+  onComplete?: (answers: Answer[]) => void;
   isLoading?: boolean;
 }
 
-type FormStage = 'email-gate' | 'quiz' | 'submitted';
+type FormStage = 'quiz' | 'submitted';
 
 export function GovernanceAuditForm({
-  onSubmit,
+  onComplete,
   isLoading = false,
 }: GovernanceAuditFormProps) {
-  const [stage, setStage] = useState<FormStage>('email-gate');
-  const [email, setEmail] = useState('');
+  const [stage, setStage] = useState<FormStage>('quiz');
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [error, setError] = useState('');
-
-  // ============================================================
-  // EMAIL GATE STAGE
-  // ============================================================
-
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      setError('Please enter a valid email address');
-      return;
-    }
-
-    // In production: check if email already completed quiz (403 response = already taken)
-    // For MVP: proceed directly to quiz
-    setStage('quiz');
-  };
 
   // ============================================================
   // QUIZ STAGE
@@ -85,7 +67,7 @@ export function GovernanceAuditForm({
 
   const submitQuiz = async (finalAnswers: Answer[]) => {
     setStage('submitted');
-    onSubmit?.({ email, answers: finalAnswers });
+    onComplete?.(finalAnswers);
   };
 
   const handleBack = () => {
@@ -97,65 +79,6 @@ export function GovernanceAuditForm({
   const dimensionInfo =
     GOVERNANCE_DIMENSIONS[currentQuestion.dimension as Dimension];
   const userAnswer = answers.find(a => a.questionId === currentQuestion.id);
-
-  // ============================================================
-  // EMAIL GATE UI
-  // ============================================================
-
-  if (stage === 'email-gate') {
-    return (
-      <div className="w-full max-w-md mx-auto space-y-6 py-8">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-white">
-            What's Your AI Governance Maturity?
-          </h2>
-          <p className="text-sm text-gray-400">
-            Get your governance score + full evidence framework in 5 minutes.
-          </p>
-        </div>
-
-        <div className="space-y-3 bg-gray-950 border border-gray-800 rounded-lg p-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Work Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={e => {
-                setEmail(e.target.value);
-                setError('');
-              }}
-              placeholder="you@company.com"
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-600"
-              disabled={isLoading}
-            />
-          </div>
-
-          {error && <p className="text-xs text-red-500">{error}</p>}
-
-          <Button
-            onClick={handleEmailSubmit}
-            disabled={isLoading || !email}
-            className="w-full"
-          >
-            {isLoading ? 'Starting...' : 'Start Quiz'}
-          </Button>
-
-          <p className="text-xs text-gray-500 text-center">
-            One quiz per email address. Results delivered immediately.
-          </p>
-        </div>
-
-        <div className="space-y-2 text-xs text-gray-500">
-          <p>✓ 25-30 questions across 6 governance dimensions</p>
-          <p>✓ 0-100 maturity score in real time</p>
-          <p>✓ Auto-generated governance evidence framework</p>
-          <p>✓ Red flags mapped to regulatory requirements</p>
-        </div>
-      </div>
-    );
-  }
 
   // ============================================================
   // QUIZ UI

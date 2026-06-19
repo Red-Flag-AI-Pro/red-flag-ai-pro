@@ -30,7 +30,7 @@ export default function GovernanceAuditGatedPage() {
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <p style={{ ...syne, fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Assessment</p>
             <p style={{ ...syne, fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginBottom: '2rem' }}>Email: {email}</p>
-            <GovernanceAuditFlow />
+            <GovernanceAuditFlow initialEmail={email} />
           </div>
         </div>
       </div>
