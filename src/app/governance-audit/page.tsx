@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { GovernanceAuditFlow } from '@/components/governance-audit/GovernanceAuditFlow';
+import { TrustBar } from '@/components/marketing/TrustBar';
 
 export const metadata: Metadata = {
   title: 'AI Governance Maturity Assessment',
@@ -54,6 +55,10 @@ export default function GovernanceAuditPage() {
           }}>
             Rest assured. Validated. Ready.
           </p>
+        </div>
+
+        <div style={{ borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <TrustBar />
         </div>
 
         {/* Features Preview */}

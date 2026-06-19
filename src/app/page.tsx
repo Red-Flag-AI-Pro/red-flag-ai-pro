@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
+import { TrustBar } from "@/components/marketing/TrustBar";
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — AI Governance Maturity Assessment & Compliance Proof",
@@ -71,6 +72,8 @@ export default function LandingPage() {
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
         </div>
       </section>
+
+      <TrustBar />
 
       {/* PROBLEM SECTION */}
       <section style={{
