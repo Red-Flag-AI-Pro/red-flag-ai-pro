@@ -227,12 +227,83 @@ export function DemoScanner() {
           </div>
         </div>
 
+        {/* Trust banner */}
+        <div style={{
+          background: "rgba(34,197,94,0.05)",
+          border: "1px solid rgba(34,197,94,0.2)",
+          borderRadius: "8px",
+          padding: "1.25rem 1.5rem",
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "flex-start",
+          gap: "12px"
+        }}>
+          <span style={{fontSize: "1.2rem", marginTop: "2px"}}>🔒</span>
+          <div>
+            <p style={{...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.25rem"}}>
+              Private & Secure
+            </p>
+            <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.5}}>
+              Your copy is scanned in your browser only. We never store, sell, or see your data.
+            </p>
+          </div>
+        </div>
+
+        {/* Examples section */}
+        <details style={{marginBottom: "1.5rem"}}>
+          <summary style={{
+            ...syne,
+            fontSize: "13px",
+            fontWeight: 700,
+            color: "#ef4444",
+            cursor: "pointer",
+            padding: "0.75rem 1rem",
+            background: "rgba(239,68,68,0.08)",
+            border: "1px solid rgba(239,68,68,0.2)",
+            borderRadius: "8px",
+            userSelect: "none"
+          }}>
+            👉 See examples of violations we catch →
+          </summary>
+          <div style={{marginTop: "1rem", display: "flex", flexDirection: "column", gap: "1rem"}}>
+            <div style={{
+              background: "#0f0505",
+              border: "1px solid rgba(239,68,68,0.15)",
+              borderRadius: "6px",
+              padding: "1rem 1.25rem"
+            }}>
+              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>High Severity — Income Claim</p>
+              <p style={{...mono, fontSize: "12px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontStyle: "italic"}}>
+                "Make £10,000 in your first 30 days — guaranteed."
+              </p>
+              <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
+                ❌ Breaks FTC/ASA rules. No earnings guarantee can be absolute.
+              </p>
+            </div>
+            <div style={{
+              background: "#0f0505",
+              border: "1px solid rgba(251,191,36,0.15)",
+              borderRadius: "6px",
+              padding: "1rem 1.25rem"
+            }}>
+              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#fbbf24", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>Medium Severity — Fake Scarcity</p>
+              <p style={{...mono, fontSize: "12px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontStyle: "italic"}}>
+                "Only 3 spots left. Price goes up tomorrow at midnight."
+              </p>
+              <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
+                ⚠️ Scarcity claims must be time-bound and genuine.
+              </p>
+            </div>
+          </div>
+        </details>
+
         {/* Scanner box */}
         <div style={{
           background: "#0f0f0f",
           border: "1px solid rgba(255,255,255,0.15)",
           padding: "2rem",
-          boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)"
+          boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)",
+          borderRadius: "8px"
         }}>
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email — one free scan per address</p>
           <input
@@ -266,20 +337,22 @@ export function DemoScanner() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder={PLACEHOLDER}
-            rows={8}
+            rows={10}
             style={{
               width: "100%",
               background: "#1a1a1a",
               border: "1px solid rgba(255,255,255,0.18)",
               color: "rgba(255,255,255,0.9)",
               ...syne,
-              fontSize: "14px",
+              fontSize: "clamp(13px, 4vw, 14px)",
               lineHeight: 1.8,
-              padding: "1.25rem 1.5rem",
-              resize: "none",
+              padding: "1.5rem",
+              resize: "vertical",
               outline: "none",
               boxSizing: "border-box",
-              transition: "border-color 0.2s, box-shadow 0.2s"
+              transition: "border-color 0.2s, box-shadow 0.2s",
+              minHeight: "280px",
+              WebkitAppearance: "none"
             }}
             onFocus={(e) => { e.target.style.borderColor = "rgba(204,0,0,0.6)"; e.target.style.boxShadow = "0 0 0 3px rgba(204,0,0,0.1)"; }}
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
