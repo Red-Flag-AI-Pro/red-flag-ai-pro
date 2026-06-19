@@ -69,7 +69,7 @@ export default function GovernanceAuditPage() {
             borderRadius: '0.5rem',
             padding: '1.5rem',
           }} className="space-y-2">
-            <div style={{ fontSize: '1.5rem' }}>📊</div>
+            <div style={{ width: '28px', height: '2px', background: '#E5484D', marginBottom: '0.25rem' }} />
             <h3 style={{
               fontFamily: "'Syne', system-ui, sans-serif",
               fontSize: '0.95rem',
@@ -93,7 +93,7 @@ export default function GovernanceAuditPage() {
             borderRadius: '0.5rem',
             padding: '1.5rem',
           }} className="space-y-2">
-            <div style={{ fontSize: '1.5rem' }}>⚡</div>
+            <div style={{ width: '28px', height: '2px', background: '#E5484D', marginBottom: '0.25rem' }} />
             <h3 style={{
               fontFamily: "'Syne', system-ui, sans-serif",
               fontSize: '0.95rem',
@@ -117,7 +117,7 @@ export default function GovernanceAuditPage() {
             borderRadius: '0.5rem',
             padding: '1.5rem',
           }} className="space-y-2">
-            <div style={{ fontSize: '1.5rem' }}>📋</div>
+            <div style={{ width: '28px', height: '2px', background: '#E5484D', marginBottom: '0.25rem' }} />
             <h3 style={{
               fontFamily: "'Syne', system-ui, sans-serif",
               fontSize: '0.95rem',

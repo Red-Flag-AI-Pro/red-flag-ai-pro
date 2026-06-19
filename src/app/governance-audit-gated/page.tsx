@@ -182,7 +182,7 @@ export default function GovernanceAuditGatedPage() {
                 padding: '14px 16px',
                 borderRadius: '8px',
                 border: '2px solid rgba(239,68,68,0.4)',
-                background: 'rgba(15,5,5,0.6)',
+                background: 'rgba(16,41,67,0.6)',
                 color: 'white',
                 ...syne,
                 fontSize: '14px',
@@ -278,7 +278,7 @@ export default function GovernanceAuditGatedPage() {
               },
             ].map((item) => (
               <div key={item.deadline} style={{
-                background: 'rgba(15, 5, 5, 0.8)',
+                background: 'rgba(16,41,67,0.8)',
                 border: '1px solid rgba(239,68,68,0.3)',
                 borderRadius: '12px',
                 padding: '2rem'

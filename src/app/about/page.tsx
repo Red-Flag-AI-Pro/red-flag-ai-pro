@@ -157,7 +157,7 @@ export default function AboutPage() {
               <div
                 key={item.title}
                 style={{
-                  background: "rgba(15, 5, 5, 0.6)",
+                  background: "rgba(16,41,67,0.6)",
                   border: "1px solid rgba(239,68,68,0.2)",
                   borderRadius: "12px",
                   padding: "2rem",
@@ -288,15 +288,13 @@ export default function AboutPage() {
               <div
                 key={item.title}
                 style={{
-                  background: "rgba(15, 5, 5, 0.6)",
+                  background: "rgba(16,41,67,0.6)",
                   border: "1px solid rgba(239,68,68,0.2)",
                   borderRadius: "12px",
                   padding: "2rem",
                 }}
               >
-                <p style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
-                  {item.icon}
-                </p>
+                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
                 <p
                   style={{
                     ...syne,
@@ -351,7 +349,7 @@ export default function AboutPage() {
 
           <div
             style={{
-              background: "rgba(15, 5, 5, 0.5)",
+              background: "rgba(16,41,67,0.5)",
               border: "1px solid rgba(239,68,68,0.2)",
               borderRadius: "12px",
               padding: "2.5rem",

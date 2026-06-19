@@ -108,12 +108,12 @@ export default function PricingPage() {
               },
             ].map((item) => (
               <div key={item.title} style={{
-                background: "rgba(15, 5, 5, 0.6)",
+                background: "rgba(16,41,67,0.6)",
                 border: "1px solid rgba(239,68,68,0.2)",
                 borderRadius: "12px",
                 padding: "1.5rem",
               }}>
-                <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{item.icon}</p>
+                <div style={{ width: "28px", height: "2px", background: "#E5484D", marginBottom: "1rem" }} />
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
@@ -426,7 +426,7 @@ export default function PricingPage() {
               },
             ].map((item) => (
               <div key={item.title} style={{
-                background: "rgba(15, 5, 5, 0.5)",
+                background: "rgba(16,41,67,0.5)",
                 border: "1px solid rgba(239,68,68,0.2)",
                 borderRadius: "12px",
                 padding: "2rem",

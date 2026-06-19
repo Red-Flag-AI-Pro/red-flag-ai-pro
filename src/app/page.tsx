@@ -222,7 +222,7 @@ export default function LandingPage() {
               },
             ].map((item) => (
               <div key={item.role} style={{
-                background: "rgba(15, 5, 5, 0.6)",
+                background: "rgba(16,41,67,0.6)",
                 border: "1px solid rgba(239,68,68,0.2)",
                 borderRadius: "12px",
                 padding: "2rem"
@@ -258,7 +258,7 @@ export default function LandingPage() {
               },
             ].map((t, i) => (
               <div key={t.role} style={{
-                background: i % 2 === 0 ? "rgba(15, 5, 5, 0.8)" : "rgba(15, 15, 15, 0.6)",
+                background: i % 2 === 0 ? "rgba(16,41,67,0.8)" : "rgba(15, 15, 15, 0.6)",
                 border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
                 padding: "2.5rem",
                 display: "flex",
