@@ -180,7 +180,7 @@ export function DemoScanner() {
           </p>
         </div>
 
-        {/* Founder quote */}
+        {/* Why we built this */}
         <div style={{
           background: "#0f0505",
           border: "1px solid rgba(239,68,68,0.15)",
@@ -193,38 +193,40 @@ export function DemoScanner() {
             width: "3rem", height: "2px",
             background: "linear-gradient(90deg, #cc0000, transparent)"
           }} />
+
+          <p style={{...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem"}}>
+            Why We Built This
+          </p>
+
           <p style={{
             ...syne,
             fontSize: "14px",
             color: "rgba(255,255,255,0.6)",
             lineHeight: 1.8,
-            fontStyle: "italic",
             marginBottom: "1.25rem"
           }}>
-            &ldquo;I spent years writing funnels and running ads{" "}
-            <span style={{color: "#ef4444", fontStyle: "italic"}}>without knowing half of what I was doing was illegal.</span>{" "}
-            Not because I was trying to break the law — because nobody told me where the line was.{" "}
-            <span style={{color: "white", fontWeight: 700, fontStyle: "italic"}}>Check your copy before you spend a penny on ads or build another funnel.</span>{" "}
-            Don&apos;t lose your money finding out the hard way. Sixty seconds. Free.&rdquo;
+            I've watched <span style={{color: "#ef4444", fontWeight: 700}}>creators get destroyed by false income claims they didn't know were illegal.</span> I've seen <span style={{color: "#ef4444", fontWeight: 700}}>agencies lose clients to compliance fines</span> that could have been prevented in 60 seconds. And I've watched <span style={{color: "#ef4444", fontWeight: 700}}>buyers lose thousands to ads that broke every rule in the book.</span>
           </p>
-          <p style={{...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1.5rem"}}>
-            — James, Founder
+
+          <p style={{
+            ...syne,
+            fontSize: "14px",
+            color: "rgba(255,255,255,0.6)",
+            lineHeight: 1.8,
+            marginBottom: "1.25rem"
+          }}>
+            <span style={{color: "white", fontWeight: 700}}>Red Flag covers everyone.</span> If you're a buyer, you get protection before you hand over money. If you're a creator or agency, you get certainty before you publish. If you're a compliance team, you get audit-ready proof that you did your due diligence.
           </p>
-          <div style={{borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.25rem"}}>
-            <p style={{
-              ...syne,
-              fontSize: "14px",
-              color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.9,
-              fontStyle: "italic"
-            }}>
-              &ldquo;And if you are a buyer —{" "}
-              <span style={{color: "#ef4444", fontStyle: "italic"}}>you have been mis-sold to more times than you know.</span>{" "}
-              Income claims that break the law. Scarcity that was never real. Guarantees written to be impossible to claim.{" "}
-              <span style={{color: "white", fontWeight: 700, fontStyle: "italic"}}>Paste the ad before you hand over your money.</span>{" "}
-              It takes sixty seconds to know if someone is lying to you.&rdquo;
-            </p>
-          </div>
+
+          <p style={{
+            ...syne,
+            fontSize: "14px",
+            color: "rgba(255,255,255,0.75)",
+            lineHeight: 1.8,
+            fontWeight: 700
+          }}>
+            We're the only place that covers <span style={{color: "#ef4444"}}>all</span> of you. 100%.
+          </p>
         </div>
 
         {/* Trust banner */}
