@@ -19,12 +19,12 @@ const HOW_IT_WORKS = [
 ];
 
 const WHO_IT_IS_FOR = [
-  { label: "Marketing educators", desc: "Teaching ads, funnels, or copywriting? Compliance is the natural next chapter — and your audience already trusts your recommendations." },
-  { label: "Compliance consultants", desc: "Refer clients to Red Flag AI Pro for day-to-day checks. Upsell your own audit time for what the tool can't do." },
-  { label: "Agency owners", desc: "If you already use Red Flag AI Pro on client campaigns, you might as well get paid when they sign up directly." },
-  { label: "Course creators", desc: "If your course teaches marketing, e-commerce, or business, compliance is a natural module — and Red Flag AI Pro is the tool." },
-  { label: "Bloggers & newsletter writers", desc: "Write about marketing, legal risk, or online business? A single well-placed mention can pay you passively for years." },
-  { label: "Anyone with an audience", desc: "If people trust your recommendations on marketing and business, this converts. The product sells itself once they see what it finds." },
+  { label: "Governance consultants", desc: "Your clients need proven governance. Red Flag provides the assessment, roadmap, and monitoring. You earn 15% on every client who signs up." },
+  { label: "Compliance officers", desc: "Recommend Red Flag to your network of CFOs, board members, and regulated enterprises. 15% recurring from each who subscribes." },
+  { label: "Executive coaches", desc: "Your C-suite clients need AI governance proof. Red Flag gives them the score, gaps, and strategic roadmap. Earn passive income from referrals." },
+  { label: "Risk & legal advisors", desc: "Your clients are asking about Munir compliance, SEC readiness, EU AI Act. Point them to Red Flag. Get 15% recurring on each." },
+  { label: "Newsletter writers (B2B)", desc: "Write about CFO challenges, AI regulation, compliance, or financial risk? Your audience will convert. One mention pays you monthly." },
+  { label: "Anyone with a CFO/compliance audience", desc: "If you influence CFOs, compliance teams, or regulated enterprises on governance topics, Red Flag is a high-converting recommendation. 15% recurring." },
 ];
 
 const EARNINGS = [
@@ -182,6 +182,40 @@ export default function AffiliatesPage() {
             label="For newsletter writers"
             post={`Quick one this week — a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy — sales page, ad, email — and it scans it against 29 compliance categories across 9 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First scan is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link — I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
           />
+        </div>
+      </section>
+
+      {/* Jurisdictions */}
+      <section style={{ background: "#0a0a0a", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Governance Frameworks Covered</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", background: "linear-gradient(160deg, #ffffff 0%, #e2e8f0 40%, #cc0000 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Red Flag covers 9 jurisdictions</h2>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
+            {[
+              { flag: "🇺🇸", country: "USA", regs: "SEC · FTC · GDPR" },
+              { flag: "🇬🇧", country: "UK", regs: "FCA · CMA · ASA · DSA" },
+              { flag: "🇪🇺", country: "EU", regs: "EU AI Act · GDPR · DSA" },
+              { flag: "🇦🇺", country: "Australia", regs: "ACCC · TGA · ASIC" },
+              { flag: "🇨🇦", country: "Canada", regs: "CASL · PIPEDA · OSC" },
+              { flag: "🇧🇷", country: "Brazil", regs: "LGPD" },
+              { flag: "🇮🇳", country: "India", regs: "DPDP Act 2023" },
+              { flag: "🇸🇬", country: "Singapore", regs: "PDPA" },
+              { flag: "🇦🇪", country: "UAE", regs: "PDPL 2022" },
+            ].map((j) => (
+              <div key={j.country} style={{
+                background: "#0f0505",
+                border: "1px solid rgba(239,68,68,0.2)",
+                borderRadius: "12px",
+                padding: "2rem",
+                textAlign: "center"
+              }}>
+                <p style={{ fontSize: "3rem", marginBottom: "0.75rem" }}>{j.flag}</p>
+                <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{j.country}</p>
+                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.5)" }}>{j.regs}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
