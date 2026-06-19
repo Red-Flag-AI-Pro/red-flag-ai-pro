@@ -340,6 +340,60 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* BUILD VS BUY */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>Build vs. Buy</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
+              Building this in-house costs<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>far more than it looks.</span>
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", overflow: "hidden" }}>
+            <div style={{ background: "#0D1B2E", padding: "2.25rem" }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "1rem" }}>Build it yourself</p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "rgba(244,241,234,0.85)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>£350k–500k<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.4)" }}> /yr</span></p>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", marginBottom: "1.5rem" }}>fully-loaded, conservative estimate</p>
+              {[
+                "Engineers to build assessment, evidence & audit-log pipelines",
+                "Ongoing rework as the EU AI Act, DORA & SEC rules evolve",
+                "6+ months before your first board-ready report",
+                "Your compliance team's time — the scarcest resource you have",
+              ].map((t) => (
+                <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
+                  <span style={{ color: "rgba(244,241,234,0.3)", flexShrink: 0 }}>—</span>
+                  <span style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.5 }}>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "#102943", padding: "2.25rem", borderLeft: "2px solid #E5484D" }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Red Flag</p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £350<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
+              {[
+                "Audit-ready evidence out of the box — nothing to build",
+                "Maintained against regulatory change, automatically",
+                "Your first board-ready report in 5 minutes",
+                "No engineering, no maintenance, no internal headcount",
+              ].map((t) => (
+                <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0, marginTop: "2px" }}>
+                    <path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.5 }}>{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.45)", textAlign: "center", marginTop: "2rem" }}>
+            Same outcome. A fraction of the cost. Available before your next board meeting.
+          </p>
+        </div>
+      </section>
+
       {/* WHY SENTINEL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
