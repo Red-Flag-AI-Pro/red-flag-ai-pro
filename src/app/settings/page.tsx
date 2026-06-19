@@ -102,23 +102,23 @@ export default function SettingsPage() {
 
   const referralLink = typeof window !== "undefined" ? `${window.location.origin}/signup?ref=${referralCode}` : "";
 
-  if (loading) return <div className="text-sm text-gray-400 p-6">Loading…</div>;
+  if (loading) return <div className="text-sm text-[rgba(244,241,234,0.4)] p-6">Loading…</div>;
 
   return (
     <div className="space-y-6 max-w-2xl">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-        <p className="text-sm text-gray-500">Account, branding, API and referrals</p>
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">Settings</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">Account, branding, API and referrals</p>
       </div>
 
       {/* Account */}
       <Card>
-        <h2 className="text-sm font-semibold text-gray-900 mb-4">Account</h2>
+        <h2 className="text-sm font-semibold text-[#F4F1EA] mb-4">Account</h2>
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">Your name</label>
+            <label className="block text-xs font-medium text-[rgba(244,241,234,0.8)] mb-1">Your name</label>
             <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Jane Smith"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
           </div>
         </div>
       </Card>
@@ -126,53 +126,53 @@ export default function SettingsPage() {
       {/* White-label */}
       <Card>
         <div className="flex items-center justify-between mb-1">
-          <h2 className="text-sm font-semibold text-gray-900">White-label branding</h2>
-          {!isSentinel && <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-500">Sentinel only</span>}
+          <h2 className="text-sm font-semibold text-[#F4F1EA]">White-label branding</h2>
+          {!isSentinel && <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel only</span>}
         </div>
-        <p className="text-xs text-gray-500 mb-3">Your agency name appears on PDF reports instead of Red Flag AI Pro.</p>
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">Your agency name appears on PDF reports instead of Red Flag AI Pro.</p>
         <input type="text" value={agencyName} onChange={(e) => setAgencyName(e.target.value)}
           placeholder="e.g. Loom Digital Compliance" disabled={!isSentinel}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-gray-50 disabled:text-gray-400" />
-        {!isSentinel && <p className="mt-1.5 text-xs text-gray-400"><Link href="/sentinel" className="text-red-600 hover:underline font-medium">Upgrade to Sentinel</Link> to white-label reports.</p>}
+          className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
+        {!isSentinel && <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]"><Link href="/sentinel" className="text-[#E5484D] hover:underline font-medium">Upgrade to Sentinel</Link> to white-label reports.</p>}
       </Card>
 
       {/* Webhook */}
       <Card>
         <div className="flex items-center justify-between mb-1">
-          <h2 className="text-sm font-semibold text-gray-900">Webhook</h2>
-          {!isSentinel && <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-500">Sentinel only</span>}
+          <h2 className="text-sm font-semibold text-[#F4F1EA]">Webhook</h2>
+          {!isSentinel && <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel only</span>}
         </div>
-        <p className="text-xs text-gray-500 mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make or your own system.</p>
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make or your own system.</p>
         <input type="text" value={webhookUrl} onChange={(e) => setWebhookUrl(e.target.value)}
           placeholder="https://hooks.zapier.com/hooks/catch/…" disabled={!isSentinel}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-gray-50 disabled:text-gray-400" />
-        {isSentinel && <p className="mt-1.5 text-xs text-gray-400">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>}
+          className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
+        {isSentinel && <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>}
       </Card>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
-      {success && <p className="text-sm text-green-600">Saved.</p>}
+      {error && <p className="text-sm text-[#E5484D]">{error}</p>}
+      {success && <p className="text-sm text-green-400">Saved.</p>}
       <Button onClick={handleSave} loading={saving}>Save changes</Button>
 
       {/* API Keys */}
       <Card>
         <div className="flex items-center justify-between mb-1">
-          <h2 className="text-sm font-semibold text-gray-900">API Keys</h2>
-          {!isSentinel && <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-500">Sentinel only</span>}
+          <h2 className="text-sm font-semibold text-[#F4F1EA]">API Keys</h2>
+          {!isSentinel && <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel only</span>}
         </div>
-        <p className="text-xs text-gray-500 mb-4">
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">
           Use your API key to scan content programmatically.{" "}
-          <Link href="/docs" className="text-red-600 hover:underline">View API docs →</Link>
+          <Link href="/docs" className="text-[#E5484D] hover:underline">View API docs →</Link>
         </p>
 
         {isSentinel && (
           <>
             {newKeyValue && (
-              <div className="mb-4 rounded-lg border border-green-200 bg-green-50 p-3">
-                <p className="text-xs font-semibold text-green-700 mb-1">Copy your key now — you won&apos;t see it again</p>
+              <div className="mb-4 rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] p-3">
+                <p className="text-xs font-semibold text-green-300 mb-1">Copy your key now — you won&apos;t see it again</p>
                 <div className="flex gap-2">
-                  <code className="flex-1 rounded border border-green-200 bg-white px-3 py-2 text-xs font-mono text-gray-800 break-all">{newKeyValue}</code>
+                  <code className="flex-1 rounded border border-[rgba(34,197,94,0.3)] bg-[#102943] px-3 py-2 text-xs font-mono text-[#F4F1EA] break-all">{newKeyValue}</code>
                   <button onClick={() => { navigator.clipboard.writeText(newKeyValue); setCopiedKey(true); setTimeout(() => setCopiedKey(false), 2000); }}
-                    className="shrink-0 rounded-lg border border-green-300 px-3 py-2 text-xs font-medium text-green-700 hover:bg-green-100">
+                    className="shrink-0 rounded-lg border border-green-300 px-3 py-2 text-xs font-medium text-green-300 hover:bg-green-100">
                     {copiedKey ? "Copied!" : "Copy"}
                   </button>
                 </div>
@@ -182,20 +182,20 @@ export default function SettingsPage() {
             <div className="flex gap-2 mb-4">
               <input type="text" value={newKeyName} onChange={(e) => setNewKeyName(e.target.value)}
                 placeholder="Key name (optional)"
-                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+                className="flex-1 rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
               <Button size="sm" onClick={handleCreateKey} loading={creatingKey} disabled={apiKeys.length >= 5}>
                 Create key
               </Button>
             </div>
 
             {apiKeys.length > 0 ? (
-              <ul className="divide-y divide-gray-100">
+              <ul className="divide-y divide-white/10">
                 {apiKeys.map((k) => (
                   <li key={k.id} className="flex items-center justify-between py-3 gap-4">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{k.name}</p>
-                      <p className="text-xs text-gray-400 font-mono">{k.key_prefix}</p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-sm font-medium text-[#F4F1EA]">{k.name}</p>
+                      <p className="text-xs text-[rgba(244,241,234,0.4)] font-mono">{k.key_prefix}</p>
+                      <p className="text-xs text-[rgba(244,241,234,0.4)]">
                         {k.last_used_at ? `Last used ${new Date(k.last_used_at).toLocaleDateString("en-GB")}` : "Never used"}
                       </p>
                     </div>
@@ -204,26 +204,26 @@ export default function SettingsPage() {
                 ))}
               </ul>
             ) : (
-              <p className="text-xs text-gray-400">No API keys yet.</p>
+              <p className="text-xs text-[rgba(244,241,234,0.4)]">No API keys yet.</p>
             )}
           </>
         )}
 
         {!isSentinel && (
-          <Link href="/sentinel" className="text-xs text-red-600 hover:underline font-medium">Upgrade to Sentinel for API access →</Link>
+          <Link href="/sentinel" className="text-xs text-[#E5484D] hover:underline font-medium">Upgrade to Sentinel for API access →</Link>
         )}
       </Card>
 
       {/* Referral */}
       {referralCode && (
         <Card>
-          <h2 className="text-sm font-semibold text-gray-900 mb-1">Refer a friend</h2>
-          <p className="text-xs text-gray-500 mb-3">Share your referral link. We track everyone who signs up through it.</p>
+          <h2 className="text-sm font-semibold text-[#F4F1EA] mb-1">Refer a friend</h2>
+          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">Share your referral link. We track everyone who signs up through it.</p>
           <div className="flex gap-2">
             <input type="text" readOnly value={referralLink}
-              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-xs font-mono bg-gray-50 text-gray-600" />
+              className="flex-1 rounded-lg border border-white/15 px-3 py-2 text-xs font-mono bg-[#0A1628] text-[rgba(244,241,234,0.6)]" />
             <button onClick={() => { navigator.clipboard.writeText(referralLink); setCopiedReferral(true); setTimeout(() => setCopiedReferral(false), 2000); }}
-              className="shrink-0 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+              className="shrink-0 rounded-lg border border-white/15 px-3 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5">
               {copiedReferral ? "Copied!" : "Copy"}
             </button>
           </div>

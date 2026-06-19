@@ -35,7 +35,7 @@ export default async function SharePage({
   const lowCount = fl.filter((f) => f.severity === "low").length;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0A1628]">
       <Navbar />
 
       <div className="mx-auto max-w-3xl px-4 py-8 space-y-6">
@@ -54,33 +54,33 @@ export default async function SharePage({
         </div>
 
         {/* Result card */}
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
             <ScoreGauge score={scan.score} size={140} />
             <div className="flex-1 space-y-4">
               <div>
-                <h1 className="text-xl font-bold text-gray-900">{scan.title}</h1>
-                <p className="text-sm text-gray-500">
+                <h1 className="text-xl font-bold text-[#F4F1EA]">{scan.title}</h1>
+                <p className="text-sm text-[rgba(244,241,234,0.5)]">
                   Scanned {new Date(scan.created_at).toLocaleDateString("en-GB", {
                     day: "numeric", month: "long", year: "numeric",
                   })}
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-center">
-                  <p className="text-lg font-bold text-gray-900">{fl.length}</p>
-                  <p className="text-xs text-gray-500">Total flags</p>
+                <div className="rounded-lg border border-white/10 bg-[#0A1628] px-4 py-2 text-center">
+                  <p className="text-lg font-bold text-[#F4F1EA]">{fl.length}</p>
+                  <p className="text-xs text-[rgba(244,241,234,0.5)]">Total flags</p>
                 </div>
-                <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-center">
-                  <p className="text-lg font-bold text-red-700">{highCount}</p>
+                <div className="rounded-lg border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] px-4 py-2 text-center">
+                  <p className="text-lg font-bold text-[#ff9b9e]">{highCount}</p>
                   <p className="text-xs text-red-500">High</p>
                 </div>
-                <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-center">
-                  <p className="text-lg font-bold text-amber-700">{medCount}</p>
+                <div className="rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-2 text-center">
+                  <p className="text-lg font-bold text-amber-300">{medCount}</p>
                   <p className="text-xs text-amber-500">Medium</p>
                 </div>
-                <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-center">
-                  <p className="text-lg font-bold text-green-700">{lowCount}</p>
+                <div className="rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-2 text-center">
+                  <p className="text-lg font-bold text-green-300">{lowCount}</p>
                   <p className="text-xs text-green-500">Low</p>
                 </div>
               </div>
@@ -90,14 +90,14 @@ export default async function SharePage({
 
         {/* Flags */}
         <div>
-          <h2 className="mb-3 text-lg font-bold text-gray-900">Compliance Flags</h2>
+          <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">Compliance Flags</h2>
           <FlagList flags={fl} />
         </div>
 
         {/* CTA */}
-        <div className="rounded-xl border border-gray-200 bg-white p-6 text-center">
-          <p className="text-sm font-semibold text-gray-900 mb-1">Want to scan your own copy?</p>
-          <p className="text-xs text-gray-500 mb-4">Free scan — no signup needed. Results in 60 seconds.</p>
+        <div className="rounded-xl border border-white/10 bg-[#102943] p-6 text-center">
+          <p className="text-sm font-semibold text-[#F4F1EA] mb-1">Want to scan your own copy?</p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">Free scan — no signup needed. Results in 60 seconds.</p>
           <Link
             href="/#demo"
             className="inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"

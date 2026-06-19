@@ -23,19 +23,19 @@ function DisclaimerGenerator() {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <p className="text-xs font-semibold text-gray-500 mb-2">What type of claim are you making?</p>
+        <p className="text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-2">What type of claim are you making?</p>
         <div className="flex flex-wrap gap-2">
           {DISCLAIMER_TYPES.map((d, i) => (
-            <button key={d.id} onClick={() => setSelected(i)} className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${selected === i ? "bg-red-50 border-red-300 text-red-700" : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"}`}>
+            <button key={d.id} onClick={() => setSelected(i)} className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${selected === i ? "bg-[rgba(229,72,77,0.1)] border-red-300 text-[#ff9b9e]" : "bg-[#102943] border-white/10 text-[rgba(244,241,234,0.6)] hover:border-white/15"}`}>
               {d.label}
             </button>
           ))}
         </div>
       </div>
-      <div className="bg-gray-50 border border-gray-200 rounded p-4">
-        <p className="text-sm text-gray-700 leading-relaxed">{DISCLAIMER_TYPES[selected].disclaimer}</p>
+      <div className="bg-[#0A1628] border border-white/10 rounded p-4">
+        <p className="text-sm text-[rgba(244,241,234,0.8)] leading-relaxed">{DISCLAIMER_TYPES[selected].disclaimer}</p>
       </div>
-      <button onClick={copy} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full border transition-all ${copied ? "bg-green-50 border-green-300 text-green-700" : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"}`}>
+      <button onClick={copy} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full border transition-all ${copied ? "bg-[rgba(34,197,94,0.1)] border-green-300 text-green-300" : "bg-[#102943] border-white/10 text-[rgba(244,241,234,0.6)] hover:bg-white/5"}`}>
         {copied ? "✓ Copied to clipboard" : "Copy disclaimer"}
       </button>
     </div>
@@ -59,15 +59,15 @@ function TestimonialChecker() {
   };
   return (
     <div className="flex flex-col gap-3">
-      <textarea value={text} onChange={(e) => { setText(e.target.value); setResult(null); }} placeholder="Paste the testimonial here..." rows={5} className="text-sm text-gray-800 bg-white border border-gray-200 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-gray-400" />
-      <button onClick={check} disabled={text.length < 10} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${text.length >= 10 ? "bg-red-600 text-white hover:bg-red-700" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}>
+      <textarea value={text} onChange={(e) => { setText(e.target.value); setResult(null); }} placeholder="Paste the testimonial here..." rows={5} className="text-sm text-[#F4F1EA] bg-[#102943] border border-white/10 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-[rgba(244,241,234,0.4)]" />
+      <button onClick={check} disabled={text.length < 10} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${text.length >= 10 ? "bg-red-600 text-white hover:bg-red-700" : "bg-white/5 text-[rgba(244,241,234,0.4)] cursor-not-allowed"}`}>
         Check testimonial
       </button>
       {result && (
-        <div className={`rounded p-4 ${result.safe ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}>
+        <div className={`rounded p-4 ${result.safe ? "bg-[rgba(34,197,94,0.1)] border border-[rgba(34,197,94,0.3)]" : "bg-[rgba(229,72,77,0.1)] border border-[rgba(229,72,77,0.3)]"}`}>
           {result.safe
-            ? <p className="text-sm font-semibold text-green-700">✓ No obvious issues found — looks good</p>
-            : <ul className="flex flex-col gap-2">{result.issues.map((issue, i) => <li key={i} className="text-sm text-red-700 flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
+            ? <p className="text-sm font-semibold text-green-300">✓ No obvious issues found — looks good</p>
+            : <ul className="flex flex-col gap-2">{result.issues.map((issue, i) => <li key={i} className="text-sm text-[#ff9b9e] flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
           }
         </div>
       )}
@@ -94,16 +94,16 @@ function EmailComplianceChecker() {
   };
   return (
     <div className="flex flex-col gap-3">
-      <input value={subject} onChange={(e) => { setSubject(e.target.value); setResult(null); }} placeholder="Email subject line..." className="text-sm text-gray-800 bg-white border border-gray-200 rounded px-3 py-2.5 outline-none focus:border-red-300 placeholder-gray-400" />
-      <textarea value={body} onChange={(e) => { setBody(e.target.value); setResult(null); }} placeholder="Email body (paste key sections)..." rows={5} className="text-sm text-gray-800 bg-white border border-gray-200 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-gray-400" />
-      <button onClick={check} disabled={!subject && !body} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${(subject || body) ? "bg-red-600 text-white hover:bg-red-700" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}>
+      <input value={subject} onChange={(e) => { setSubject(e.target.value); setResult(null); }} placeholder="Email subject line..." className="text-sm text-[#F4F1EA] bg-[#102943] border border-white/10 rounded px-3 py-2.5 outline-none focus:border-red-300 placeholder-[rgba(244,241,234,0.4)]" />
+      <textarea value={body} onChange={(e) => { setBody(e.target.value); setResult(null); }} placeholder="Email body (paste key sections)..." rows={5} className="text-sm text-[#F4F1EA] bg-[#102943] border border-white/10 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-[rgba(244,241,234,0.4)]" />
+      <button onClick={check} disabled={!subject && !body} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${(subject || body) ? "bg-red-600 text-white hover:bg-red-700" : "bg-white/5 text-[rgba(244,241,234,0.4)] cursor-not-allowed"}`}>
         Check email compliance
       </button>
       {result && (
-        <div className={`rounded p-4 ${result.length === 0 ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}>
+        <div className={`rounded p-4 ${result.length === 0 ? "bg-[rgba(34,197,94,0.1)] border border-[rgba(34,197,94,0.3)]" : "bg-[rgba(229,72,77,0.1)] border border-[rgba(229,72,77,0.3)]"}`}>
           {result.length === 0
-            ? <p className="text-sm font-semibold text-green-700">✓ No issues found — looks compliant</p>
-            : <ul className="flex flex-col gap-2">{result.map((issue, i) => <li key={i} className="text-sm text-red-700 flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
+            ? <p className="text-sm font-semibold text-green-300">✓ No issues found — looks compliant</p>
+            : <ul className="flex flex-col gap-2">{result.map((issue, i) => <li key={i} className="text-sm text-[#ff9b9e] flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
           }
         </div>
       )}
@@ -124,17 +124,17 @@ function UrgencyValidator() {
   const toggle = (id: string) => setChecks((c) => ({ ...c, [id]: !c[id] }));
   const score = Object.values(checks).filter(Boolean).length;
   const verdict = score === 5 ? "✓ Your urgency claim appears legally defensible" : score >= 3 ? "⚠ Partial — resolve the unchecked items before publishing" : "✕ High risk — this urgency claim could trigger regulatory action";
-  const color = score === 5 ? "text-green-700" : score >= 3 ? "text-amber-700" : "text-red-700";
-  const bg = score === 5 ? "bg-green-50 border-green-200" : score >= 3 ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200";
+  const color = score === 5 ? "text-green-300" : score >= 3 ? "text-amber-300" : "text-[#ff9b9e]";
+  const bg = score === 5 ? "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]" : score >= 3 ? "bg-[rgba(245,158,11,0.1)] border-[rgba(245,158,11,0.3)]" : "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]";
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-xs text-gray-500 mb-1">Check every statement that applies to your urgency claim:</p>
+      <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">Check every statement that applies to your urgency claim:</p>
       {URGENCY_CHECKS.map((c) => (
-        <div key={c.id} onClick={() => toggle(c.id)} className={`flex items-center gap-3 cursor-pointer border rounded px-3 py-2.5 transition-all ${checks[c.id] ? "bg-green-50 border-green-200" : "bg-white border-gray-200 hover:border-gray-300"}`}>
-          <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-all ${checks[c.id] ? "bg-green-500 border-green-500" : "border-gray-300"}`}>
+        <div key={c.id} onClick={() => toggle(c.id)} className={`flex items-center gap-3 cursor-pointer border rounded px-3 py-2.5 transition-all ${checks[c.id] ? "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]" : "bg-[#102943] border-white/10 hover:border-white/15"}`}>
+          <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-all ${checks[c.id] ? "bg-green-500 border-green-500" : "border-white/15"}`}>
             {checks[c.id] && <span className="text-white text-xs font-bold leading-none">✓</span>}
           </div>
-          <p className={`text-sm ${checks[c.id] ? "text-green-800" : "text-gray-600"}`}>{c.label}</p>
+          <p className={`text-sm ${checks[c.id] ? "text-green-300" : "text-[rgba(244,241,234,0.6)]"}`}>{c.label}</p>
         </div>
       ))}
       <div className={`rounded p-4 border mt-2 ${bg}`}>
@@ -158,13 +158,13 @@ function HealthClaimRater() {
   const level = high.length > 0 ? "HIGH" : med.length > 1 ? "MODERATE" : claim.length > 10 ? "LOW" : null;
   return (
     <div className="flex flex-col gap-3">
-      <textarea value={claim} onChange={(e) => setClaim(e.target.value)} placeholder="Paste your health or wellness claim here..." rows={4} className="text-sm text-gray-800 bg-white border border-gray-200 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-gray-400" />
+      <textarea value={claim} onChange={(e) => setClaim(e.target.value)} placeholder="Paste your health or wellness claim here..." rows={4} className="text-sm text-[#F4F1EA] bg-[#102943] border border-white/10 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-[rgba(244,241,234,0.4)]" />
       {level && (
-        <div className={`rounded p-4 border ${level === "HIGH" ? "bg-red-50 border-red-200" : level === "MODERATE" ? "bg-amber-50 border-amber-200" : "bg-green-50 border-green-200"}`}>
-          <p className={`text-xl font-bold font-mono mb-2 ${level === "HIGH" ? "text-red-700" : level === "MODERATE" ? "text-amber-700" : "text-green-700"}`}>{level} RISK</p>
-          {high.length > 0 && <p className="text-sm text-red-700 mb-1">High-risk words: <strong>{high.join(", ")}</strong> — may constitute drug claims under FDA/MHRA rules without clinical evidence</p>}
-          {med.length > 0 && <p className="text-sm text-amber-700">Moderate-risk words: <strong>{med.join(", ")}</strong> — ensure you have substantiation for these</p>}
-          {level === "LOW" && <p className="text-sm text-green-700">No high-risk terms detected — still add appropriate disclaimers if making any health claim</p>}
+        <div className={`rounded p-4 border ${level === "HIGH" ? "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]" : level === "MODERATE" ? "bg-[rgba(245,158,11,0.1)] border-[rgba(245,158,11,0.3)]" : "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]"}`}>
+          <p className={`text-xl font-bold font-mono mb-2 ${level === "HIGH" ? "text-[#ff9b9e]" : level === "MODERATE" ? "text-amber-300" : "text-green-300"}`}>{level} RISK</p>
+          {high.length > 0 && <p className="text-sm text-[#ff9b9e] mb-1">High-risk words: <strong>{high.join(", ")}</strong> — may constitute drug claims under FDA/MHRA rules without clinical evidence</p>}
+          {med.length > 0 && <p className="text-sm text-amber-300">Moderate-risk words: <strong>{med.join(", ")}</strong> — ensure you have substantiation for these</p>}
+          {level === "LOW" && <p className="text-sm text-green-300">No high-risk terms detected — still add appropriate disclaimers if making any health claim</p>}
         </div>
       )}
     </div>
@@ -190,18 +190,18 @@ function RedFlagChecklist() {
   const score = RED_FLAG_QUESTIONS.reduce((s, q, i) => s + (answers[i] ? q.weight : 0), 0);
   const maxScore = RED_FLAG_QUESTIONS.reduce((s, q) => s + q.weight, 0);
   const pct = Math.round((score / maxScore) * 100);
-  const color = pct < 20 ? "text-green-700" : pct < 50 ? "text-amber-700" : "text-red-700";
-  const bg = pct < 20 ? "bg-green-50 border-green-200" : pct < 50 ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200";
+  const color = pct < 20 ? "text-green-300" : pct < 50 ? "text-amber-300" : "text-[#ff9b9e]";
+  const bg = pct < 20 ? "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]" : pct < 50 ? "bg-[rgba(245,158,11,0.1)] border-[rgba(245,158,11,0.3)]" : "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]";
   const verdict = pct < 20 ? "Looks relatively clean — proceed with caution" : pct < 50 ? "Several yellow flags — research further before buying" : "Multiple red flags — high risk of misleading marketing";
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-xs text-gray-500 mb-1">Check every item that applies to the offer you&apos;re evaluating:</p>
+      <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">Check every item that applies to the offer you&apos;re evaluating:</p>
       {RED_FLAG_QUESTIONS.map((item, i) => (
-        <div key={i} onClick={() => toggle(i)} className={`flex items-center gap-3 cursor-pointer border rounded px-3 py-2.5 transition-all ${answers[i] ? "bg-red-50 border-red-200" : "bg-white border-gray-200 hover:border-gray-300"}`}>
-          <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-all ${answers[i] ? "bg-red-500 border-red-500" : "border-gray-300"}`}>
+        <div key={i} onClick={() => toggle(i)} className={`flex items-center gap-3 cursor-pointer border rounded px-3 py-2.5 transition-all ${answers[i] ? "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]" : "bg-[#102943] border-white/10 hover:border-white/15"}`}>
+          <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-all ${answers[i] ? "bg-red-500 border-red-500" : "border-white/15"}`}>
             {answers[i] && <span className="text-white text-xs font-bold leading-none">✓</span>}
           </div>
-          <p className={`text-sm flex-1 ${answers[i] ? "text-red-800" : "text-gray-600"}`}>{item.q}</p>
+          <p className={`text-sm flex-1 ${answers[i] ? "text-red-800" : "text-[rgba(244,241,234,0.6)]"}`}>{item.q}</p>
           {item.weight > 1 && <span className="text-xs font-bold tracking-wider text-red-400 shrink-0">HIGH</span>}
         </div>
       ))}
@@ -257,26 +257,26 @@ function RefundRightsChecker() {
   return (
     <div className="flex flex-col gap-3">
       <div>
-        <label className="text-xs font-semibold text-gray-500 block mb-1.5">Your country</label>
-        <select value={country} onChange={(e) => { setCountry(e.target.value); setProductType(""); }} className="w-full bg-white border border-gray-200 text-gray-800 text-sm rounded px-3 py-2.5 outline-none focus:border-red-300 cursor-pointer">
+        <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)] block mb-1.5">Your country</label>
+        <select value={country} onChange={(e) => { setCountry(e.target.value); setProductType(""); }} className="w-full bg-[#102943] border border-white/10 text-[#F4F1EA] text-sm rounded px-3 py-2.5 outline-none focus:border-red-300 cursor-pointer">
           <option value="">Select country...</option>
           {countries.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
       </div>
       {country && (
         <div>
-          <label className="text-xs font-semibold text-gray-500 block mb-1.5">What did you buy?</label>
-          <select value={productType} onChange={(e) => setProductType(e.target.value)} className="w-full bg-white border border-gray-200 text-gray-800 text-sm rounded px-3 py-2.5 outline-none focus:border-red-300 cursor-pointer">
+          <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)] block mb-1.5">What did you buy?</label>
+          <select value={productType} onChange={(e) => setProductType(e.target.value)} className="w-full bg-[#102943] border border-white/10 text-[#F4F1EA] text-sm rounded px-3 py-2.5 outline-none focus:border-red-300 cursor-pointer">
             <option value="">Select type...</option>
             {types.map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
       )}
       {result && (
-        <div className="bg-green-50 border border-green-200 rounded p-4">
-          <p className="text-xs font-bold tracking-wider uppercase text-green-700 mb-2">Your rights in {country}</p>
-          <p className="text-sm text-gray-700 leading-relaxed">{result}</p>
-          <p className="text-xs text-gray-400 mt-3">Not legal advice. For specific disputes, contact your national consumer protection authority.</p>
+        <div className="bg-[rgba(34,197,94,0.1)] border border-[rgba(34,197,94,0.3)] rounded p-4">
+          <p className="text-xs font-bold tracking-wider uppercase text-green-300 mb-2">Your rights in {country}</p>
+          <p className="text-sm text-[rgba(244,241,234,0.8)] leading-relaxed">{result}</p>
+          <p className="text-xs text-[rgba(244,241,234,0.4)] mt-3">Not legal advice. For specific disputes, contact your national consumer protection authority.</p>
         </div>
       )}
     </div>
@@ -298,15 +298,15 @@ function InfluencerDisclosureChecker() {
   };
   return (
     <div className="flex flex-col gap-3">
-      <textarea value={text} onChange={(e) => { setText(e.target.value); setResult(null); }} placeholder="Paste the post caption or ad copy here..." rows={5} className="text-sm text-gray-800 bg-white border border-gray-200 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-gray-400" />
-      <button onClick={check} disabled={text.length < 10} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${text.length >= 10 ? "bg-red-600 text-white hover:bg-red-700" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}>
+      <textarea value={text} onChange={(e) => { setText(e.target.value); setResult(null); }} placeholder="Paste the post caption or ad copy here..." rows={5} className="text-sm text-[#F4F1EA] bg-[#102943] border border-white/10 rounded p-3 resize-y outline-none focus:border-red-300 leading-relaxed placeholder-[rgba(244,241,234,0.4)]" />
+      <button onClick={check} disabled={text.length < 10} className={`text-xs font-bold tracking-widest uppercase py-2.5 rounded-full transition-all ${text.length >= 10 ? "bg-red-600 text-white hover:bg-red-700" : "bg-white/5 text-[rgba(244,241,234,0.4)] cursor-not-allowed"}`}>
         Check disclosure
       </button>
       {result && (
-        <div className={`rounded p-4 border ${result.ok ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
+        <div className={`rounded p-4 border ${result.ok ? "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]" : "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]"}`}>
           {result.ok
-            ? <p className="text-sm font-semibold text-green-700">✓ Disclosure looks compliant</p>
-            : <ul className="flex flex-col gap-2">{result.issues.map((issue, idx) => <li key={idx} className="text-sm text-red-700 flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
+            ? <p className="text-sm font-semibold text-green-300">✓ Disclosure looks compliant</p>
+            : <ul className="flex flex-col gap-2">{result.issues.map((issue, idx) => <li key={idx} className="text-sm text-[#ff9b9e] flex gap-2"><span className="text-red-500 shrink-0">✕</span>{issue}</li>)}</ul>
           }
         </div>
       )}
@@ -328,7 +328,7 @@ const TOOLS = [
 ];
 
 const tagStyle = (tag: string) => {
-  if (tag === "Sellers") return "bg-red-50 text-red-700 border-red-200";
+  if (tag === "Sellers") return "bg-[rgba(229,72,77,0.1)] text-[#ff9b9e] border-[rgba(229,72,77,0.3)]";
   if (tag === "Buyers") return "bg-blue-50 text-blue-700 border-blue-200";
   return "bg-purple-50 text-purple-700 border-purple-200";
 };
@@ -340,30 +340,30 @@ export default function DashboardToolsPage() {
   return (
     <div>
       <div className="mb-6">
-        <p className="text-xs font-bold tracking-widest uppercase text-red-600 mb-1">Compliance Toolkit</p>
-        <h1 className="text-xl font-bold text-gray-900 mb-1">Your free compliance tools</h1>
-        <p className="text-sm text-gray-500">9 tools included with your account. No scan credits used.</p>
+        <p className="text-xs font-bold tracking-widest uppercase text-[#E5484D] mb-1">Compliance Toolkit</p>
+        <h1 className="text-xl font-bold text-[#F4F1EA] mb-1">Your free compliance tools</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">9 tools included with your account. No scan credits used.</p>
       </div>
 
       <div className="grid gap-3" style={{ gridTemplateColumns: "220px 1fr" }}>
         {/* Tool nav */}
         <div className="flex flex-col gap-1">
           {TOOLS.map((t) => (
-            <button key={t.id} onClick={() => setActive(t.id)} className={`text-left px-3 py-2.5 rounded-lg border transition-all flex flex-col gap-0.5 ${active === t.id ? "bg-red-50 border-red-200" : "bg-white border-gray-100 hover:border-gray-200 hover:bg-gray-50"}`}>
-              <span className={`text-sm font-semibold ${active === t.id ? "text-red-800" : "text-gray-700"}`}>{t.label}</span>
-              <span className={`text-xs font-semibold ${active === t.id ? "text-red-500" : "text-gray-400"}`}>{t.tag}</span>
+            <button key={t.id} onClick={() => setActive(t.id)} className={`text-left px-3 py-2.5 rounded-lg border transition-all flex flex-col gap-0.5 ${active === t.id ? "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]" : "bg-[#102943] border-white/5 hover:border-white/10 hover:bg-white/5"}`}>
+              <span className={`text-sm font-semibold ${active === t.id ? "text-red-800" : "text-[rgba(244,241,234,0.8)]"}`}>{t.label}</span>
+              <span className={`text-xs font-semibold ${active === t.id ? "text-red-500" : "text-[rgba(244,241,234,0.4)]"}`}>{t.tag}</span>
             </button>
           ))}
         </div>
 
         {/* Tool panel */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <div className="bg-[#102943] border border-white/10 rounded-xl p-6">
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-1">
-              <h2 className="text-base font-bold text-gray-900">{tool.label}</h2>
+              <h2 className="text-base font-bold text-[#F4F1EA]">{tool.label}</h2>
               <span className={`text-xs font-bold tracking-wider uppercase border rounded-full px-2.5 py-0.5 ${tagStyle(tool.tag)}`}>{tool.tag}</span>
             </div>
-            <p className="text-sm text-gray-500">{tool.desc}</p>
+            <p className="text-sm text-[rgba(244,241,234,0.5)]">{tool.desc}</p>
           </div>
 
           {active === "risk-calculator" && <RiskCalculator />}

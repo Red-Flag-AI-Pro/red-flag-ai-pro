@@ -45,14 +45,14 @@ export default async function TeamPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Team Seats</h1>
-          <p className="text-sm text-gray-500">Manage your team members</p>
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">Team Seats</h1>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Manage your team members</p>
         </div>
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4">🔒</p>
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Sentinel plan required</h2>
-            <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
+            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Sentinel plan required</h2>
+            <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               Team seats allow multiple users to scan under one Sentinel account.
               Share scan history, collaborate on compliance and manage your whole agency from one place.
             </p>
@@ -71,8 +71,8 @@ export default async function TeamPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Team Seats</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">Team Seats</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">
           {org ? `${members.length} member${members.length !== 1 ? "s" : ""} in your organisation` : "Set up your team"}
         </p>
       </div>

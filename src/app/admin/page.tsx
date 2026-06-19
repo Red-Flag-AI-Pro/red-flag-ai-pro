@@ -73,9 +73,9 @@ export default async function AdminPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-extrabold text-white">🚩 Admin Dashboard</h1>
-            <p className="mt-1 text-sm text-gray-400">Red Flag AI Pro — internal overview</p>
+            <p className="mt-1 text-sm text-[rgba(244,241,234,0.4)]">Red Flag AI Pro — internal overview</p>
           </div>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-[rgba(244,241,234,0.5)]">
             {new Date().toLocaleDateString("en-GB", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
           </p>
         </div>
@@ -83,20 +83,20 @@ export default async function AdminPage() {
         {/* Stats grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
-            <p className="text-sm text-gray-400">Total users</p>
+            <p className="text-sm text-[rgba(244,241,234,0.4)]">Total users</p>
             <p className="mt-2 text-4xl font-extrabold text-white">{totalUsers ?? 0}</p>
           </div>
           <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
-            <p className="text-sm text-gray-400">Paying users</p>
+            <p className="text-sm text-[rgba(244,241,234,0.4)]">Paying users</p>
             <p className="mt-2 text-4xl font-extrabold text-green-400">{proUsers ?? 0}</p>
-            <p className="mt-1 text-xs text-gray-500">Pro + Enterprise</p>
+            <p className="mt-1 text-xs text-[rgba(244,241,234,0.5)]">Pro + Enterprise</p>
           </div>
           <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
-            <p className="text-sm text-gray-400">Total scans</p>
+            <p className="text-sm text-[rgba(244,241,234,0.4)]">Total scans</p>
             <p className="mt-2 text-4xl font-extrabold text-white">{totalScans ?? 0}</p>
           </div>
           <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
-            <p className="text-sm text-gray-400">Scans today</p>
+            <p className="text-sm text-[rgba(244,241,234,0.4)]">Scans today</p>
             <p className="mt-2 text-4xl font-extrabold text-red-400">{scansToday ?? 0}</p>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default async function AdminPage() {
               <h2 className="text-sm font-semibold text-white">Recent signups</h2>
             </div>
             {!recentUsers || recentUsers.length === 0 ? (
-              <div className="px-6 py-10 text-center text-gray-500">No signups yet</div>
+              <div className="px-6 py-10 text-center text-[rgba(244,241,234,0.5)]">No signups yet</div>
             ) : (
               <ul className="divide-y divide-gray-800">
                 {recentUsers.map((u: any, i: number) => (
@@ -118,18 +118,18 @@ export default async function AdminPage() {
                       <p className="text-sm font-medium text-white">
                         {u.full_name || "Unknown"}
                       </p>
-                      <p className="text-xs text-gray-400">{emailByUserId.get(u.user_id) ?? "—"}</p>
+                      <p className="text-xs text-[rgba(244,241,234,0.4)]">{emailByUserId.get(u.user_id) ?? "—"}</p>
                     </div>
                     <div className="text-right">
                       <span className={[
                         "inline-block rounded-full px-2 py-0.5 text-xs font-semibold",
                         u.plan === "pro" || u.plan === "enterprise"
                           ? "bg-green-900 text-green-300"
-                          : "bg-gray-800 text-gray-400"
+                          : "bg-gray-800 text-[rgba(244,241,234,0.4)]"
                       ].join(" ")}>
                         {u.plan ?? "free"}
                       </span>
-                      <p className="mt-1 text-xs text-gray-500">
+                      <p className="mt-1 text-xs text-[rgba(244,241,234,0.5)]">
                         {new Date(u.created_at).toLocaleDateString("en-GB", {
                           day: "numeric", month: "short", year: "numeric"
                         })}
@@ -147,7 +147,7 @@ export default async function AdminPage() {
               <h2 className="text-sm font-semibold text-white">Recent scans</h2>
             </div>
             {!recentScans || recentScans.length === 0 ? (
-              <div className="px-6 py-10 text-center text-gray-500">No scans yet</div>
+              <div className="px-6 py-10 text-center text-[rgba(244,241,234,0.5)]">No scans yet</div>
             ) : (
               <ul className="divide-y divide-gray-800">
                 {recentScans.map((s: any, i: number) => (
@@ -156,7 +156,7 @@ export default async function AdminPage() {
                       <p className="text-sm font-medium text-white truncate max-w-[180px]">
                         {s.title || "Untitled scan"}
                       </p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-[rgba(244,241,234,0.4)]">
                         {new Date(s.created_at).toLocaleDateString("en-GB", {
                           day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
                         })}
@@ -166,7 +166,7 @@ export default async function AdminPage() {
                       <p className={["text-lg font-bold", scoreColor(s.score)].join(" ")}>
                         {s.score}
                       </p>
-                      <p className="text-xs text-gray-500">{scoreLabel(s.score)}</p>
+                      <p className="text-xs text-[rgba(244,241,234,0.5)]">{scoreLabel(s.score)}</p>
                     </div>
                   </li>
                 ))}
@@ -177,7 +177,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-xs text-gray-600">
+        <p className="text-center text-xs text-[rgba(244,241,234,0.6)]">
           This page is only visible to redflagaipro@gmail.com
         </p>
       </div>

@@ -19,7 +19,7 @@ function ShareButton({ scanId }: { scanId: string }) {
   return (
     <button
       onClick={copy}
-      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+      className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
     >
       {copied ? "✓ Link copied" : "🔗 Share"}
     </button>
@@ -42,32 +42,32 @@ function BadgeButton({ scanId }: { scanId: string }) {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+        className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
       >
         🏷️ Embed badge
       </button>
       {open && (
-        <div className="w-full mt-1 rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3">
+        <div className="w-full mt-1 rounded-xl border border-white/10 bg-[#0A1628] p-4 space-y-3">
           <div>
-            <p className="text-xs font-semibold text-gray-700 mb-2">Preview</p>
+            <p className="text-xs font-semibold text-[rgba(244,241,234,0.8)] mb-2">Preview</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={badgeUrl} alt="Compliance badge" style={{ height: 60 }} />
           </div>
           <div>
-            <p className="text-xs font-semibold text-gray-700 mb-1">Embed code — paste into your website or client portal</p>
+            <p className="text-xs font-semibold text-[rgba(244,241,234,0.8)] mb-1">Embed code — paste into your website or client portal</p>
             <div className="flex gap-2">
-              <code className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs text-gray-600 break-all font-mono">
+              <code className="flex-1 rounded-lg border border-white/10 bg-[#102943] px-3 py-2 text-xs text-[rgba(244,241,234,0.6)] break-all font-mono">
                 {embedCode}
               </code>
               <button
                 onClick={copy}
-                className="shrink-0 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                className="shrink-0 rounded-lg border border-white/15 px-3 py-2 text-xs font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
               >
                 {copied ? "Copied!" : "Copy"}
               </button>
             </div>
           </div>
-          <p className="text-xs text-gray-400">The badge updates automatically when you rescan. Share with clients as proof of compliance review.</p>
+          <p className="text-xs text-[rgba(244,241,234,0.4)]">The badge updates automatically when you rescan. Share with clients as proof of compliance review.</p>
         </div>
       )}
     </>
@@ -127,7 +127,7 @@ function VideoButton({ scanId }: { scanId: string }) {
     <button
       onClick={start}
       disabled={state === "queued" || state === "processing"}
-      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-60"
+      className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors disabled:opacity-60"
     >
       {labels[state]}
     </button>
@@ -146,14 +146,14 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
   const lowCount = flags.filter((f) => f.severity === "low").length;
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6">
+    <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
         <ScoreGauge score={scan.score} size={140} />
 
         <div className="flex-1 space-y-4">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{scan.title}</h2>
-            <p className="text-sm text-gray-500">
+            <h2 className="text-xl font-bold text-[#F4F1EA]">{scan.title}</h2>
+            <p className="text-sm text-[rgba(244,241,234,0.5)]">
               Scanned{" "}
               {new Date(scan.created_at).toLocaleDateString("en-US", {
                 month: "long",
@@ -166,9 +166,9 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-center">
-              <p className="text-lg font-bold text-gray-900">{flags.length}</p>
-              <p className="text-xs text-gray-500">Total flags</p>
+            <div className="rounded-lg border border-white/10 bg-[#0A1628] px-4 py-2 text-center">
+              <p className="text-lg font-bold text-[#F4F1EA]">{flags.length}</p>
+              <p className="text-xs text-[rgba(244,241,234,0.5)]">Total flags</p>
             </div>
             <div className="flex items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-3 py-2">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0">
@@ -176,35 +176,35 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
               </svg>
               <span className="text-xs font-semibold text-violet-700">AI&#8209;analysed</span>
             </div>
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-center">
-              <p className="text-lg font-bold text-red-700">{highCount}</p>
+            <div className="rounded-lg border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] px-4 py-2 text-center">
+              <p className="text-lg font-bold text-[#ff9b9e]">{highCount}</p>
               <p className="text-xs text-red-500">High</p>
             </div>
-            <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-center">
-              <p className="text-lg font-bold text-amber-700">{medCount}</p>
+            <div className="rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-2 text-center">
+              <p className="text-lg font-bold text-amber-300">{medCount}</p>
               <p className="text-xs text-amber-500">Medium</p>
             </div>
-            <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-center">
-              <p className="text-lg font-bold text-green-700">{lowCount}</p>
+            <div className="rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-2 text-center">
+              <p className="text-lg font-bold text-green-300">{lowCount}</p>
               <p className="text-xs text-green-500">Low</p>
             </div>
           </div>
 
           {scan.score >= 70 && (
-            <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
+            <div className="flex items-center gap-3 rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-3">
               <span className="text-xl">🏷️</span>
-              <p className="text-sm text-green-800">
+              <p className="text-sm text-green-300">
                 <span className="font-semibold">Nice score.</span> Show clients or your audience you&apos;re compliance-checked — embed your badge below and let the proof do the talking.
               </p>
             </div>
           )}
 
           {scan.score < 80 && (
-            <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+            <div className="flex items-start gap-3 rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-3">
               <span className="text-xl">🚩</span>
               <div>
                 <p className="text-sm text-amber-900 font-semibold mb-0.5">Want someone to fix this for you?</p>
-                <p className="text-sm text-amber-800">
+                <p className="text-sm text-amber-300">
                   I&apos;ll personally scan your full site and funnel, record a video walkthrough of every flag, and deliver a PDF report with a reviewed badge — in 48 hours.{" "}
                   <a href="/audit" className="font-semibold underline hover:no-underline">Find out more →</a>
                 </p>
@@ -221,13 +221,13 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
                 Download PDF Report
               </a>
             ) : (
-              <div className="flex items-center gap-3 rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-2">
-                <span className="text-sm text-gray-500">
+              <div className="flex items-center gap-3 rounded-lg border border-dashed border-white/15 bg-[#0A1628] px-4 py-2">
+                <span className="text-sm text-[rgba(244,241,234,0.5)]">
                   PDF reports require Pro
                 </span>
                 <Link
                   href="/billing"
-                  className="text-sm font-medium text-red-600 hover:underline"
+                  className="text-sm font-medium text-[#E5484D] hover:underline"
                 >
                   Upgrade →
                 </Link>
@@ -235,7 +235,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             )}
             <Link
               href="/scans/new"
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
             >
               New scan
             </Link>

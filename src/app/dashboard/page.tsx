@@ -17,9 +17,9 @@ const PLAN_DISPLAY: Record<Plan, string> = {
 };
 
 function scoreColor(score: number) {
-  if (score >= 70) return "text-green-600";
-  if (score >= 40) return "text-amber-600";
-  return "text-red-600";
+  if (score >= 70) return "text-green-400";
+  if (score >= 40) return "text-amber-400";
+  return "text-[#E5484D]";
 }
 
 export default async function DashboardPage() {
@@ -93,10 +93,10 @@ export default async function DashboardPage() {
       <GoogleConversion email={user.email} />
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">
             Welcome back{profile?.full_name ? `, ${profile.full_name.split(" ")[0]}` : ""}
           </h1>
-          <p className="text-sm text-gray-500">Here&apos;s your compliance overview</p>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Here&apos;s your compliance overview</p>
         </div>
         <div className="flex items-center gap-3">
           <PlanBadge plan={plan} />
@@ -112,27 +112,27 @@ export default async function DashboardPage() {
       {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-3">
         <Card>
-          <p className="text-sm text-gray-500">Scans this month</p>
-          <p className="mt-1 text-3xl font-bold text-gray-900">
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Scans this month</p>
+          <p className="mt-1 text-3xl font-bold text-[#F4F1EA]">
             {scansThisMonth}
           </p>
           {scansRemaining !== null && (
-            <p className="mt-1 text-xs text-gray-400">
+            <p className="mt-1 text-xs text-[rgba(244,241,234,0.4)]">
               {scansRemaining} of {limit} remaining this month
             </p>
           )}
           {hasTeam && (
-            <p className="mt-1 text-xs text-gray-400">across your whole team</p>
+            <p className="mt-1 text-xs text-[rgba(244,241,234,0.4)]">across your whole team</p>
           )}
         </Card>
         <Card>
           <div className="flex items-start justify-between gap-2">
             <div>
-              <p className="text-sm text-gray-500">Avg. compliance score</p>
-              <p className={["mt-1 text-3xl font-bold", avgScore !== null ? scoreColor(avgScore) : "text-gray-300"].join(" ")}>
+              <p className="text-sm text-[rgba(244,241,234,0.5)]">Avg. compliance score</p>
+              <p className={["mt-1 text-3xl font-bold", avgScore !== null ? scoreColor(avgScore) : "text-[rgba(244,241,234,0.35)]"].join(" ")}>
                 {avgScore ?? "—"}
               </p>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-xs text-[rgba(244,241,234,0.4)]">
                 {hasTeam ? "across your team" : "last 10 scans"}
               </p>
             </div>
@@ -142,14 +142,14 @@ export default async function DashboardPage() {
           </div>
         </Card>
         <Card>
-          <p className="text-sm text-gray-500">Current plan</p>
-          <p className="mt-1 text-3xl font-bold text-gray-900">
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Current plan</p>
+          <p className="mt-1 text-3xl font-bold text-[#F4F1EA]">
             {PLAN_DISPLAY[plan]}
           </p>
           {plan === "free" && (
             <Link
               href="/billing"
-              className="mt-1 block text-xs font-medium text-red-600 hover:underline"
+              className="mt-1 block text-xs font-medium text-[#E5484D] hover:underline"
             >
               Upgrade to Pro →
             </Link>
@@ -157,7 +157,7 @@ export default async function DashboardPage() {
           {plan === "pro" && (
             <Link
               href="/sentinel"
-              className="mt-1 block text-xs font-medium text-red-600 hover:underline"
+              className="mt-1 block text-xs font-medium text-[#E5484D] hover:underline"
             >
               Explore Sentinel →
             </Link>
@@ -165,7 +165,7 @@ export default async function DashboardPage() {
           {plan === "enterprise" && (
             <Link
               href="/sentinel"
-              className="mt-1 block text-xs font-medium text-red-600 hover:underline"
+              className="mt-1 block text-xs font-medium text-[#E5484D] hover:underline"
             >
               Upgrade to Sentinel →
             </Link>
@@ -175,9 +175,9 @@ export default async function DashboardPage() {
 
       {/* First-time welcome */}
       {scansThisMonth === 0 && !recentScans?.length && (
-        <div className="rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-white p-6">
-          <h2 className="text-base font-bold text-gray-900 mb-1">Welcome — run your first scan</h2>
-          <p className="text-sm text-gray-500 mb-4">Paste any marketing copy, sales page or ad and get a compliance score in 60 seconds.</p>
+        <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-gradient-to-br from-[rgba(229,72,77,0.12)] to-[#102943] p-6">
+          <h2 className="text-base font-bold text-[#F4F1EA] mb-1">Welcome — run your first scan</h2>
+          <p className="text-sm text-[rgba(244,241,234,0.5)] mb-4">Paste any marketing copy, sales page or ad and get a compliance score in 60 seconds.</p>
           <div className="grid gap-3 sm:grid-cols-3 mb-4">
             {[
               { step: "1", title: "Paste your copy", desc: "Sales page, email, VSL script or ad" },
@@ -187,8 +187,8 @@ export default async function DashboardPage() {
               <div key={s.step} className="flex gap-3">
                 <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold">{s.step}</span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">{s.title}</p>
-                  <p className="text-xs text-gray-500">{s.desc}</p>
+                  <p className="text-sm font-semibold text-[#F4F1EA]">{s.title}</p>
+                  <p className="text-xs text-[rgba(244,241,234,0.5)]">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -204,12 +204,12 @@ export default async function DashboardPage() {
 
       {/* Sentinel upsell for non-Sentinel plans */}
       {plan !== "sentinel" && (
-        <div className="rounded-xl border border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-4 flex items-center justify-between gap-4">
+        <div className="rounded-xl border border-white/10 bg-gradient-to-r from-[#0A1628] to-[#0C1929] px-5 py-4 flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-gray-900">
+            <p className="text-sm font-semibold text-[#F4F1EA]">
               {plan === "free" ? "Scan smarter with Pro" : "Need team access? Try Sentinel"}
             </p>
-            <p className="text-xs text-gray-500 mt-0.5">
+            <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
               {plan === "free"
                 ? "20 scans/month, monthly monitoring, vendor tracking, dashboard. £350/mo."
                 : "Managed implementation, audit logging, drift detection, board reporting, dedicated advisor. £5000+/mo."}
@@ -226,11 +226,11 @@ export default async function DashboardPage() {
 
       {/* Recent scans */}
       <Card padding="none">
-        <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
-          <h2 className="text-sm font-semibold text-gray-900">Recent scans</h2>
+        <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
+          <h2 className="text-sm font-semibold text-[#F4F1EA]">Recent scans</h2>
           <Link
             href="/history"
-            className="text-xs font-medium text-red-600 hover:underline"
+            className="text-xs font-medium text-[#E5484D] hover:underline"
           >
             View all
           </Link>
@@ -238,27 +238,27 @@ export default async function DashboardPage() {
 
         {!recentScans || recentScans.length === 0 ? (
           <div className="px-5 py-10 text-center">
-            <p className="text-gray-400">No scans yet.</p>
+            <p className="text-[rgba(244,241,234,0.4)]">No scans yet.</p>
             <Link
               href="/scans/new"
-              className="mt-3 inline-block text-sm font-medium text-red-600 hover:underline"
+              className="mt-3 inline-block text-sm font-medium text-[#E5484D] hover:underline"
             >
               Run your first scan →
             </Link>
           </div>
         ) : (
-          <ul className="divide-y divide-gray-100">
+          <ul className="divide-y divide-white/10">
             {(recentScans as Scan[]).map((scan) => (
               <li key={scan.id}>
                 <Link
                   href={`/scans/${scan.id}`}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-white/5 transition-colors"
                 >
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-[#F4F1EA]">
                       {scan.title}
                     </p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-[rgba(244,241,234,0.4)]">
                       {new Date(scan.created_at).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -299,12 +299,12 @@ export default async function DashboardPage() {
       </Card>
 
       {/* Affiliate nudge */}
-      <div className="rounded-lg border border-red-200 bg-red-50 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="rounded-lg border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-bold text-red-700 mb-0.5">Earn 15% recurring commission</p>
-          <p className="text-xs text-red-600">Share your affiliate link — one Sentinel referral earns you £750/month, every month.</p>
+          <p className="text-sm font-bold text-[#ff9b9e] mb-0.5">Earn 15% recurring commission</p>
+          <p className="text-xs text-[#E5484D]">Share your affiliate link — one Sentinel referral earns you £750/month, every month.</p>
         </div>
-        <Link href="/affiliates" className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-red-400 px-4 py-2 text-xs font-bold text-red-700 hover:bg-red-100 transition-colors whitespace-nowrap">
+        <Link href="/affiliates" className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-red-400 px-4 py-2 text-xs font-bold text-[#ff9b9e] hover:bg-red-100 transition-colors whitespace-nowrap">
           Join the programme →
         </Link>
       </div>

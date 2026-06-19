@@ -23,14 +23,14 @@ export default async function ClientsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Clients</h1>
-          <p className="text-sm text-gray-500">Manage your client accounts</p>
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">Clients</h1>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Manage your client accounts</p>
         </div>
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4">🏢</p>
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Growth plan required</h2>
-            <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
+            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
+            <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               Client workspaces let you organise scans by client, track compliance per account, and build a paper trail for each relationship.
             </p>
             <Link
@@ -66,8 +66,8 @@ export default async function ClientsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Clients</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">Clients</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">
           {clients?.length ?? 0} client{(clients?.length ?? 0) !== 1 ? "s" : ""} - organise scans and monitor compliance per account
         </p>
       </div>

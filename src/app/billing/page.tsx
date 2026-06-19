@@ -30,14 +30,14 @@ function BillingNotice() {
 
   if (success) {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+      <div className="rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-3 text-sm text-green-300">
         ✅ Your subscription has been activated. Welcome to the next plan!
       </div>
     );
   }
   if (canceled) {
     return (
-      <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+      <div className="rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-3 text-sm text-amber-300">
         Checkout was canceled. No charge was made.
       </div>
     );
@@ -90,8 +90,8 @@ export default function BillingPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Billing</h1>
-        <p className="text-sm text-gray-500">Manage your plan and subscription</p>
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">Billing</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">Manage your plan and subscription</p>
       </div>
 
       <Suspense>
@@ -102,9 +102,9 @@ export default function BillingPage() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-500">Current plan</p>
+            <p className="text-sm text-[rgba(244,241,234,0.5)]">Current plan</p>
             <div className="mt-1 flex items-center gap-2">
-              <span className="text-xl font-bold capitalize text-gray-900">
+              <span className="text-xl font-bold capitalize text-[#F4F1EA]">
                 {plan}
               </span>
               <PlanBadge plan={plan} />
@@ -125,7 +125,7 @@ export default function BillingPage() {
       {/* Upgrade options */}
       {plan === "free" && (
         <div>
-          <h2 className="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+          <h2 className="mb-4 text-sm font-semibold text-[rgba(244,241,234,0.8)] uppercase tracking-wide">
             Upgrade your plan
           </h2>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -133,8 +133,8 @@ export default function BillingPage() {
               <Card key={p.key}>
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="font-semibold text-gray-900">{p.name}</h3>
-                    <p className="mt-0.5 text-xl font-bold text-gray-900">
+                    <h3 className="font-semibold text-[#F4F1EA]">{p.name}</h3>
+                    <p className="mt-0.5 text-xl font-bold text-[#F4F1EA]">
                       {p.price}
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export default function BillingPage() {
                   {p.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-center gap-2 text-sm text-gray-600"
+                      className="flex items-center gap-2 text-sm text-[rgba(244,241,234,0.6)]"
                     >
                       <span className="text-green-500">✓</span>
                       {f}
@@ -165,31 +165,31 @@ export default function BillingPage() {
 
       {/* Usage */}
       <Card>
-        <h2 className="mb-4 text-sm font-semibold text-gray-900">
+        <h2 className="mb-4 text-sm font-semibold text-[#F4F1EA]">
           Plan details
         </h2>
         <dl className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <dt className="text-gray-500">Scans per month</dt>
-            <dd className="font-medium text-gray-900">
+            <dt className="text-[rgba(244,241,234,0.5)]">Scans per month</dt>
+            <dd className="font-medium text-[#F4F1EA]">
               {plan === "free" ? "1" : plan === "pro" ? "20" : "Unlimited"}
             </dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-gray-500">Risk categories</dt>
-            <dd className="font-medium text-gray-900">
+            <dt className="text-[rgba(244,241,234,0.5)]">Risk categories</dt>
+            <dd className="font-medium text-[#F4F1EA]">
               {plan === "sentinel" ? "21" : "16"}
             </dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-gray-500">PDF reports</dt>
-            <dd className="font-medium text-gray-900">
+            <dt className="text-[rgba(244,241,234,0.5)]">PDF reports</dt>
+            <dd className="font-medium text-[#F4F1EA]">
               {plan === "pro" || plan === "free" ? "No" : "Yes"}
             </dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-gray-500">Scan history</dt>
-            <dd className="font-medium text-gray-900">Yes</dd>
+            <dt className="text-[rgba(244,241,234,0.5)]">Scan history</dt>
+            <dd className="font-medium text-[#F4F1EA]">Yes</dd>
           </div>
         </dl>
       </Card>

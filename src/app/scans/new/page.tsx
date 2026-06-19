@@ -38,19 +38,19 @@ export default async function NewScanPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">New Compliance Scan</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">New Compliance Scan</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">
           Paste or upload your funnel content to analyze for compliance risk.
         </p>
       </div>
 
       {overLimit ? (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-8 text-center">
+        <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] p-8 text-center">
           <p className="text-4xl">🚫</p>
           <h2 className="mt-3 text-lg font-bold text-red-800">
             Monthly scan limit reached
           </h2>
-          <p className="mt-2 text-sm text-red-600">
+          <p className="mt-2 text-sm text-[#E5484D]">
             {plan === "free"
               ? "You're on the Starter plan. Upgrade to Pro for 10 scans a month."
               : `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`}
@@ -65,7 +65,7 @@ export default async function NewScanPage() {
       ) : (
         <>
           {limit !== Infinity && (
-            <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            <div className="rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-3 text-sm text-amber-300">
               You&apos;ve used <strong>{scansUsed}</strong> of <strong>{limit}</strong>{" "}
               scans this month.{" "}
               <Link href="/billing" className="font-semibold underline">
@@ -74,7 +74,7 @@ export default async function NewScanPage() {
               for {plan === "free" ? "10 scans per month" : "unlimited scans"}.
             </div>
           )}
-          <div className="rounded-xl border border-gray-200 bg-white p-6">
+          <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
             <ScanForm plan={plan} />
           </div>
         </>

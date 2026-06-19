@@ -29,14 +29,14 @@ export default async function BulkPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Site Audit</h1>
-          <p className="text-sm text-gray-500">Scan every page of a website at once</p>
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">Site Audit</h1>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Scan every page of a website at once</p>
         </div>
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4">🔍</p>
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Growth plan required</h2>
-            <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
+            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
+            <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               Site Audit scans your client&apos;s entire website in one go. Enter a domain, we find the sitemap and scan up to 50 pages for compliance issues.
             </p>
             <Link
@@ -54,8 +54,8 @@ export default async function BulkPage() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Site Audit</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">Site Audit</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">
           {plan === "sentinel"
             ? "Scan up to 50 pages per audit — Sentinel plan"
             : "Scan up to 10 pages per audit — upgrade to Sentinel for 50"}

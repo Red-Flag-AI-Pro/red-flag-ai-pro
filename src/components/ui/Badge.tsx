@@ -7,11 +7,11 @@ interface BadgeProps {
 }
 
 const variantClasses = {
-  high: "bg-red-100 text-red-700 border border-red-200",
-  medium: "bg-amber-100 text-amber-700 border border-amber-200",
-  low: "bg-green-100 text-green-700 border border-green-200",
-  neutral: "bg-gray-100 text-gray-600 border border-gray-200",
-  info: "bg-blue-100 text-blue-700 border border-blue-200",
+  high: "bg-[rgba(229,72,77,0.15)] text-[#ff9b9e] border border-[rgba(229,72,77,0.35)]",
+  medium: "bg-[rgba(245,158,11,0.15)] text-amber-300 border border-[rgba(245,158,11,0.35)]",
+  low: "bg-[rgba(34,197,94,0.15)] text-green-300 border border-[rgba(34,197,94,0.35)]",
+  neutral: "bg-white/5 text-[rgba(244,241,234,0.6)] border border-white/10",
+  info: "bg-[rgba(59,130,246,0.15)] text-blue-300 border border-[rgba(59,130,246,0.35)]",
 };
 
 export function Badge({

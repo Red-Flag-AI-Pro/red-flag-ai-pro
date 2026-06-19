@@ -23,14 +23,14 @@ export default async function MonitorPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">URL Monitoring</h1>
-          <p className="text-sm text-gray-500">Automatic weekly compliance checks on live pages</p>
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">URL Monitoring</h1>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Automatic weekly compliance checks on live pages</p>
         </div>
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4">📡</p>
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Growth plan required</h2>
-            <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
+            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
+            <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               URL monitoring automatically rescans your live pages every week and flags anything that changes. Growth gets 5 monitored URLs. Sentinel gets unlimited.
             </p>
             <Link
@@ -54,8 +54,8 @@ export default async function MonitorPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">URL Monitoring</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#F4F1EA]">URL Monitoring</h1>
+        <p className="text-sm text-[rgba(244,241,234,0.5)]">
           {plan === "sentinel"
             ? "Unlimited monitored URLs - rescanned automatically every Monday"
             : `${monitoredUrls?.length ?? 0} of 5 URLs monitored - rescanned every Monday`}

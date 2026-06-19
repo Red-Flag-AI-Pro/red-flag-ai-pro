@@ -152,7 +152,7 @@ export function ScanForm({ plan = "free" }: Props) {
 
       {(tab === "paste" || tab === "upload") && (
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-[rgba(244,241,234,0.8)]">
             Scan title
           </label>
           <input
@@ -160,14 +160,14 @@ export function ScanForm({ plan = "free" }: Props) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Homepage Funnel — April 2025"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="mt-1 w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
         </div>
       )}
 
       {/* Tabs */}
       <div>
-        <div className="flex flex-wrap gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
+        <div className="flex flex-wrap gap-1 rounded-lg border border-white/10 bg-[#0A1628] p-1 w-fit">
           {TABS.map((t) => (
             <button
               key={t.id}
@@ -176,18 +176,18 @@ export function ScanForm({ plan = "free" }: Props) {
               className={[
                 "flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
                 tab === t.id
-                  ? "bg-white shadow text-gray-900"
-                  : "text-gray-500 hover:text-gray-700",
+                  ? "bg-[#102943] shadow text-[#F4F1EA]"
+                  : "text-[rgba(244,241,234,0.5)] hover:text-[rgba(244,241,234,0.8)]",
               ].join(" ")}
             >
               {t.label}
               {t.id === "url" && !canScanUrl && (
-                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
+                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">
                   Growth+
                 </span>
               )}
           {t.id === "vsl" && !isGrowthOrAbove && (
-                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-gray-500">
+                <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">
                   Growth+
                 </span>
               )}
@@ -204,16 +204,16 @@ export function ScanForm({ plan = "free" }: Props) {
               onChange={(e) => setContent(e.target.value)}
               rows={16}
               placeholder="Paste your sales page, email sequence, landing page copy, VSL script or any funnel content here…"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           )}
 
           {/* URL tab - locked for free/pro */}
           {tab === "url" && !canScanUrl && (
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-8 text-center">
               <p className="text-3xl mb-3">🌐</p>
-              <h3 className="text-base font-semibold text-gray-900">URL scanning starts on Growth</h3>
-              <p className="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
+              <h3 className="text-base font-semibold text-[#F4F1EA]">URL scanning starts on Growth</h3>
+              <p className="mt-2 text-sm text-[rgba(244,241,234,0.5)] max-w-sm mx-auto">
                 Paste a URL and we fetch the live page and scan what is actually published. Available on Growth and Sentinel plans.
               </p>
               <Link
@@ -228,7 +228,7 @@ export function ScanForm({ plan = "free" }: Props) {
           {/* URL tab */}
           {tab === "url" && canScanUrl && (<div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-[rgba(244,241,234,0.8)] mb-1">
                   Page URL
                 </label>
                 <input
@@ -236,7 +236,7 @@ export function ScanForm({ plan = "free" }: Props) {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://yourlandingpage.com/sales"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs text-blue-700 space-y-1">
@@ -248,10 +248,10 @@ export function ScanForm({ plan = "free" }: Props) {
 
           {/* VSL tab */}
           {tab === "vsl" && !isGrowthOrAbove && (
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-8 text-center">
               <p className="text-3xl">🎬</p>
-              <h3 className="mt-3 text-base font-semibold text-gray-900">VSL scanning starts on Growth</h3>
-              <p className="mt-2 text-sm text-gray-500 max-w-sm mx-auto">
+              <h3 className="mt-3 text-base font-semibold text-[#F4F1EA]">VSL scanning starts on Growth</h3>
+              <p className="mt-2 text-sm text-[rgba(244,241,234,0.5)] max-w-sm mx-auto">
                 Growth lets you paste and scan VSL scripts. Sentinel adds YouTube transcript fetching and audio transcription via Whisper.
               </p>
               <Link
@@ -266,7 +266,7 @@ export function ScanForm({ plan = "free" }: Props) {
           {tab === "vsl" && isGrowthOrAbove && (
             <div className="space-y-4">
               {/* VSL mode toggle */}
-              <div className="flex gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1 w-fit">
+              <div className="flex gap-1 rounded-lg border border-white/10 bg-[#0A1628] p-1 w-fit">
                 {(isSentinel
                   ? [["youtube", "YouTube URL"], ["audio", "Upload audio"], ["script", "Paste script"]] as [string, string][]
                   : [["script", "Paste script"]] as [string, string][]
@@ -277,7 +277,7 @@ export function ScanForm({ plan = "free" }: Props) {
                     onClick={() => setVslMode(mode as VslMode)}
                     className={[
                       "rounded-md px-4 py-1.5 text-sm font-medium transition-colors",
-                      vslMode === mode ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700",
+                      vslMode === mode ? "bg-[#102943] shadow text-[#F4F1EA]" : "text-[rgba(244,241,234,0.5)] hover:text-[rgba(244,241,234,0.8)]",
                     ].join(" ")}
                   >
                     {label}
@@ -286,11 +286,11 @@ export function ScanForm({ plan = "free" }: Props) {
               </div>
 
               {!isSentinel && isGrowthOrAbove && (
-                <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 flex items-center justify-between gap-3">
-                  <p className="text-xs text-gray-500">
-                    <span className="font-semibold text-gray-700">Sentinel</span> adds YouTube transcript fetching and audio transcription via Whisper.
+                <div className="rounded-lg border border-white/10 bg-[#0A1628] px-4 py-2.5 flex items-center justify-between gap-3">
+                  <p className="text-xs text-[rgba(244,241,234,0.5)]">
+                    <span className="font-semibold text-[rgba(244,241,234,0.8)]">Sentinel</span> adds YouTube transcript fetching and audio transcription via Whisper.
                   </p>
-                  <Link href="/sentinel" className="shrink-0 text-xs font-semibold text-red-600 hover:underline">
+                  <Link href="/sentinel" className="shrink-0 text-xs font-semibold text-[#E5484D] hover:underline">
                     Upgrade →
                   </Link>
                 </div>
@@ -299,7 +299,7 @@ export function ScanForm({ plan = "free" }: Props) {
               {vslMode === "youtube" && (
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-[rgba(244,241,234,0.8)] mb-1">
                       YouTube video URL or ID
                     </label>
                     <input
@@ -307,10 +307,10 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslUrl}
                       onChange={(e) => setVslUrl(e.target.value)}
                       placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
-                  <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
+                  <div className="rounded-lg border border-amber-100 bg-[rgba(245,158,11,0.1)] px-4 py-3 text-xs text-amber-300 space-y-1">
                     <p className="font-semibold">How VSL scanning works</p>
                     <p>We fetch the video&apos;s captions from YouTube and scan the full transcript for compliance risks. The video must have captions enabled. If it doesn&apos;t, use Paste script instead.</p>
                   </div>
@@ -320,7 +320,7 @@ export function ScanForm({ plan = "free" }: Props) {
               {vslMode === "audio" && (
                 <div className="space-y-3">
                   <div
-                    className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-10 text-center hover:border-red-400 hover:bg-red-50 transition-colors cursor-pointer"
+                    className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-white/15 bg-[#0A1628] p-10 text-center hover:border-red-400 hover:bg-[rgba(229,72,77,0.1)] transition-colors cursor-pointer"
                     onClick={() => audioRef.current?.click()}
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={(e) => {
@@ -330,15 +330,15 @@ export function ScanForm({ plan = "free" }: Props) {
                     }}
                   >
                     <p className="text-2xl">🎙️</p>
-                    <p className="mt-2 text-sm font-medium text-gray-700">
+                    <p className="mt-2 text-sm font-medium text-[rgba(244,241,234,0.8)]">
                       {audioFile ? audioFile.name : "Drop audio or video file here, or click to browse"}
                     </p>
                     {audioFile ? (
-                      <p className="mt-1 text-xs text-green-600 font-medium">
+                      <p className="mt-1 text-xs text-green-400 font-medium">
                         ✓ {(audioFile.size / 1024 / 1024).toFixed(1)} MB — ready to transcribe
                       </p>
                     ) : (
-                      <p className="text-xs text-gray-400 mt-1">MP3, MP4, M4A, WAV, WebM — max 25 MB</p>
+                      <p className="text-xs text-[rgba(244,241,234,0.4)] mt-1">MP3, MP4, M4A, WAV, WebM — max 25 MB</p>
                     )}
                     <input
                       ref={audioRef}
@@ -351,7 +351,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       }}
                     />
                   </div>
-                  <div className="rounded-lg border border-amber-100 bg-amber-50 px-4 py-3 text-xs text-amber-700 space-y-1">
+                  <div className="rounded-lg border border-amber-100 bg-[rgba(245,158,11,0.1)] px-4 py-3 text-xs text-amber-300 space-y-1">
                     <p className="font-semibold">How audio transcription works</p>
                     <p>We send your file to OpenAI Whisper, the most accurate speech-to-text model available. The transcript is then scanned for all 24 compliance risk categories. Works on any VSL, webinar recording, podcast or ad voiceover.</p>
                   </div>
@@ -361,7 +361,7 @@ export function ScanForm({ plan = "free" }: Props) {
               {vslMode === "script" && (
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-[rgba(244,241,234,0.8)] mb-1">
                       VSL title (optional)
                     </label>
                     <input
@@ -369,11 +369,11 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslTitle}
                       onChange={(e) => setVslTitle(e.target.value)}
                       placeholder="e.g. Product Launch VSL — June 2025"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-[rgba(244,241,234,0.8)] mb-1">
                       VSL script
                     </label>
                     <textarea
@@ -381,7 +381,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       onChange={(e) => setVslScript(e.target.value)}
                       rows={14}
                       placeholder="Paste your full video sales letter script here. Include the complete voiceover text for the most accurate scan."
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                 </div>
@@ -392,16 +392,16 @@ export function ScanForm({ plan = "free" }: Props) {
           {/* Upload tab */}
           {tab === "upload" && (
             <div
-              className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-10 text-center hover:border-red-400 hover:bg-red-50 transition-colors cursor-pointer"
+              className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-white/15 bg-[#0A1628] p-10 text-center hover:border-red-400 hover:bg-[rgba(229,72,77,0.1)] transition-colors cursor-pointer"
               onClick={() => fileRef.current?.click()}
             >
               <p className="text-2xl">📄</p>
-              <p className="mt-2 text-sm font-medium text-gray-700">
+              <p className="mt-2 text-sm font-medium text-[rgba(244,241,234,0.8)]">
                 Drop a .txt file or click to browse
               </p>
-              <p className="text-xs text-gray-400">Plain text files only</p>
+              <p className="text-xs text-[rgba(244,241,234,0.4)]">Plain text files only</p>
               {content && (
-                <p className="mt-2 text-xs text-green-600 font-medium">
+                <p className="mt-2 text-xs text-green-400 font-medium">
                   ✓ {content.length.toLocaleString()} characters loaded
                 </p>
               )}
@@ -430,7 +430,7 @@ export function ScanForm({ plan = "free" }: Props) {
       </div>
 
       {error && (
-        <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg bg-[rgba(229,72,77,0.1)] border border-[rgba(229,72,77,0.3)] px-4 py-3 text-sm text-[#ff9b9e]">
           {error}
         </div>
       )}

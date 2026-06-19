@@ -69,20 +69,20 @@ export function ClientManager({ initialClients, plan }: Props) {
       {!showForm ? (
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-2 rounded-xl border-2 border-dashed border-gray-200 px-5 py-3 text-sm text-gray-500 hover:border-red-300 hover:text-red-600 transition-colors w-full"
+          className="flex items-center gap-2 rounded-xl border-2 border-dashed border-white/10 px-5 py-3 text-sm text-[rgba(244,241,234,0.5)] hover:border-red-300 hover:text-[#E5484D] transition-colors w-full"
         >
           <span className="text-lg">+</span> Add a client
         </button>
       ) : (
         <Card>
-          <h2 className="text-sm font-semibold text-gray-900 mb-3">New client</h2>
+          <h2 className="text-sm font-semibold text-[#F4F1EA] mb-3">New client</h2>
           <div className="space-y-2">
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Client name *"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               autoFocus
             />
             <input
@@ -90,31 +90,31 @@ export function ClientManager({ initialClients, plan }: Props) {
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
               placeholder="Website (optional)"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
             <input
               type="email"
               value={contactEmail}
               onChange={(e) => setContactEmail(e.target.value)}
               placeholder="Client contact email (for auto-reports)"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Notes (optional)"
               rows={2}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none"
+              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none"
             />
           </div>
-          {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+          {error && <p className="mt-2 text-xs text-[#E5484D]">{error}</p>}
           <div className="mt-3 flex gap-2">
             <Button size="sm" loading={loading} onClick={handleCreate} disabled={!name.trim()}>
               Create client
             </Button>
             <button
               onClick={() => { setShowForm(false); setError(null); }}
-              className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+              className="px-3 py-1.5 text-sm text-[rgba(244,241,234,0.5)] hover:text-[rgba(244,241,234,0.8)] transition-colors"
             >
               Cancel
             </button>
@@ -125,7 +125,7 @@ export function ClientManager({ initialClients, plan }: Props) {
       {/* Client list */}
       {clients.length === 0 ? (
         <Card>
-          <div className="py-8 text-center text-sm text-gray-400">
+          <div className="py-8 text-center text-sm text-[rgba(244,241,234,0.4)]">
             <p className="text-3xl mb-3">🏢</p>
             No clients yet. Add your first client above.
           </div>
@@ -135,12 +135,12 @@ export function ClientManager({ initialClients, plan }: Props) {
           {clients.map((c) => (
             <div
               key={c.id}
-              className="group relative rounded-xl border border-gray-200 bg-white p-5 hover:border-red-200 hover:shadow-sm transition-all"
+              className="group relative rounded-xl border border-white/10 bg-[#102943] p-5 hover:border-[rgba(229,72,77,0.3)] hover:shadow-sm transition-all"
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                   <Link href={`/clients/${c.id}`} className="block">
-                    <h3 className="font-semibold text-gray-900 hover:text-red-600 transition-colors truncate">
+                    <h3 className="font-semibold text-[#F4F1EA] hover:text-[#E5484D] transition-colors truncate">
                       {c.name}
                     </h3>
                   </Link>
@@ -149,18 +149,18 @@ export function ClientManager({ initialClients, plan }: Props) {
                       href={c.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-gray-400 hover:text-red-600 truncate block mt-0.5"
+                      className="text-xs text-[rgba(244,241,234,0.4)] hover:text-[#E5484D] truncate block mt-0.5"
                     >
                       {c.website}
                     </a>
                   )}
                   {c.notes && (
-                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">{c.notes}</p>
+                    <p className="text-xs text-[rgba(244,241,234,0.4)] mt-1 line-clamp-2">{c.notes}</p>
                   )}
                 </div>
                 <button
                   onClick={() => handleDelete(c.id)}
-                  className="opacity-0 group-hover:opacity-100 text-gray-300 hover:text-red-500 transition-all text-sm flex-shrink-0"
+                  className="opacity-0 group-hover:opacity-100 text-[rgba(244,241,234,0.35)] hover:text-red-500 transition-all text-sm flex-shrink-0"
                   title="Remove client"
                 >
                   ✕
@@ -168,12 +168,12 @@ export function ClientManager({ initialClients, plan }: Props) {
               </div>
 
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-[rgba(244,241,234,0.4)]">
                   {c.scanCount} scan{c.scanCount !== 1 ? "s" : ""}
                 </span>
                 <Link
                   href={`/clients/${c.id}`}
-                  className="text-xs font-medium text-red-600 hover:underline"
+                  className="text-xs font-medium text-[#E5484D] hover:underline"
                 >
                   View →
                 </Link>
