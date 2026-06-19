@@ -412,7 +412,7 @@ export default function SentinelPage() {
               <div>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "2rem" }}>Sentinel</p>
                 <div style={{ textAlign: "center", padding: "2rem 0" }}>
-                  <p style={{ ...mono, fontSize: "4rem", fontWeight: 700, color: "white", lineHeight: 1, letterSpacing: "-0.04em" }}>£499</p>
+                  <p style={{ ...mono, fontSize: "4rem", fontWeight: 700, color: "white", lineHeight: 1, letterSpacing: "-0.04em" }}>£5000+</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginTop: "8px" }}>per month</p>
                 </div>
                 {[
@@ -481,7 +481,7 @@ export default function SentinelPage() {
                   ["Video scan summaries", "✗", "✓ Shareable MP4"],
                   ["Signed PDF certificates", "✓", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
-                  ["Typical monthly cost", "£2,000 – £10,000", "£499"],
+                  ["Typical monthly cost", "£2,000 – £10,000", "£5000+"],
                 ].map(([feature, them, us], i) => (
                   <tr key={feature} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
                     <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", padding: "0.875rem 1rem 0.875rem 0" }}>{feature}</td>

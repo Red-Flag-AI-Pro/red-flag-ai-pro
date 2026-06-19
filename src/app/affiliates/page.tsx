@@ -15,7 +15,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations — anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 15% of every payment your referrals make, for as long as they stay subscribed. One referral on Pro pays you ~£4/month, every month." },
+  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Sentinel referral (£5000+/mo) pays ~£750/month. One Pro referral (£350/mo) pays ~£52.50/month. As long as they stay subscribed, you earn." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -28,12 +28,11 @@ const WHO_IT_IS_FOR = [
 ];
 
 const EARNINGS = [
-  { referrals: 5, plan: "Pro (£29/mo)", monthly: "£22", annual: "£261" },
-  { referrals: 10, plan: "Pro (£29/mo)", monthly: "£44", annual: "£522" },
-  { referrals: 5, plan: "Growth (£99/mo)", monthly: "£74", annual: "£891" },
-  { referrals: 10, plan: "Growth (£99/mo)", monthly: "£149", annual: "£1,782" },
-  { referrals: 1, plan: "Sentinel (£499/mo)", monthly: "£75", annual: "£898" },
-  { referrals: 3, plan: "Sentinel (£499/mo)", monthly: "£225", annual: "£2,695" },
+  { referrals: 5, plan: "Pro (£350/mo)", monthly: "£263", annual: "£3,150" },
+  { referrals: 10, plan: "Pro (£350/mo)", monthly: "£525", annual: "£6,300" },
+  { referrals: 1, plan: "Sentinel (£5000/mo)", monthly: "£750", annual: "£9,000" },
+  { referrals: 2, plan: "Sentinel (£5000/mo)", monthly: "£1,500", annual: "£18,000" },
+  { referrals: 3, plan: "Sentinel (£5000/mo)", monthly: "£2,250", annual: "£27,000" },
 ];
 
 export default function AffiliatesPage() {
@@ -76,9 +75,9 @@ export default function AffiliatesPage() {
       <section style={{ background: "#080808", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "4rem 1.5rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", textAlign: "center" }}>
           {[
-            { value: "15%", label: "Recurring commission", sub: "on every payment" },
-            { value: "90", label: "Day cookie window", sub: "from first click" },
-            { value: "£4+", label: "Per Pro referral/mo", sub: "every month they stay" },
+            { value: "15%", label: "Recurring commission", sub: "on every payment they make" },
+            { value: "£750+", label: "Monthly per Sentinel referral", sub: "15% of £5000+/mo" },
+            { value: "£52.50+", label: "Monthly per Pro referral", sub: "15% of £350/mo" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
             <div key={stat.label} style={{ background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>

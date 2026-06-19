@@ -686,9 +686,9 @@ export function DemoScanner() {
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
-                  Unlock With Pro — £29/mo
+                  Unlock With Pro — £350/mo
                 </Link>
-                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 10 scans a month, every flag fully unlocked.</p>
+                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 20 scans a month, every flag fully unlocked.</p>
               </div>
             )}
 
