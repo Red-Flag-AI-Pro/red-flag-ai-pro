@@ -33,6 +33,22 @@ CREATE TABLE IF NOT EXISTS governance_audit_emails (
   --   ...
   -- ]
 
+  -- Roadmap (array of remediation action objects)
+  roadmap JSONB NOT NULL DEFAULT '[]',
+  -- [
+  --   {
+  --     "phase": "quick_wins",
+  --     "title": "...",
+  --     "description": "...",
+  --     "dimension": "strategy_ownership",
+  --     "effort": "low",
+  --     "impact": "high",
+  --     "owner": "...",
+  --     "timeline": "..."
+  --   },
+  --   ...
+  -- ]
+
   -- Answers (for record-keeping)
   answers JSONB NOT NULL DEFAULT '[]',
   -- [
