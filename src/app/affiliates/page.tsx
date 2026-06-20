@@ -192,15 +192,15 @@ export default function AffiliatesPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
             {[
-              { flag: "🇺🇸", country: "USA", regs: "SEC · FTC · GDPR" },
-              { flag: "🇬🇧", country: "UK", regs: "FCA · CMA · ASA · DSA" },
-              { flag: "🇪🇺", country: "EU", regs: "EU AI Act · GDPR · DSA" },
-              { flag: "🇦🇺", country: "Australia", regs: "ACCC · TGA · ASIC" },
-              { flag: "🇨🇦", country: "Canada", regs: "CASL · PIPEDA · OSC" },
-              { flag: "🇧🇷", country: "Brazil", regs: "LGPD" },
-              { flag: "🇮🇳", country: "India", regs: "DPDP Act 2023" },
-              { flag: "🇸🇬", country: "Singapore", regs: "PDPA" },
-              { flag: "🇦🇪", country: "UAE", regs: "PDPL 2022" },
+              { code: "us", country: "USA", regs: "SEC · FTC · GDPR" },
+              { code: "gb", country: "UK", regs: "FCA · CMA · ASA · DSA" },
+              { code: "eu", country: "EU", regs: "EU AI Act · GDPR · DSA" },
+              { code: "au", country: "Australia", regs: "ACCC · TGA · ASIC" },
+              { code: "ca", country: "Canada", regs: "CASL · PIPEDA · OSC" },
+              { code: "br", country: "Brazil", regs: "LGPD" },
+              { code: "in", country: "India", regs: "DPDP Act 2023" },
+              { code: "sg", country: "Singapore", regs: "PDPA" },
+              { code: "ae", country: "UAE", regs: "PDPL 2022" },
             ].map((j) => (
               <div key={j.country} style={{
                 background: "#102943",
@@ -209,7 +209,15 @@ export default function AffiliatesPage() {
                 padding: "2rem",
                 textAlign: "center"
               }}>
-                <p style={{ fontSize: "3rem", marginBottom: "0.75rem" }}>{j.flag}</p>
+                <img
+                  src={`https://flagcdn.com/w160/${j.code}.png`}
+                  srcSet={`https://flagcdn.com/w160/${j.code}.png 1x, https://flagcdn.com/w320/${j.code}.png 2x`}
+                  alt={`${j.country} flag`}
+                  width={56}
+                  height={37}
+                  loading="lazy"
+                  style={{ width: "56px", height: "37px", objectFit: "cover", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 2px 10px rgba(0,0,0,0.4)", margin: "0 auto 0.9rem" }}
+                />
                 <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{j.country}</p>
                 <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.5)" }}>{j.regs}</p>
               </div>

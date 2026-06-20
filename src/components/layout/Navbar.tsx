@@ -31,6 +31,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             width={48}
             height={48}
             className="object-contain"
+            style={{ mixBlendMode: "lighten" }}
             priority
           />
         </Link>

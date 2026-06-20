@@ -70,6 +70,7 @@ export function Sidebar() {
             width={32}
             height={32}
             className="object-contain"
+            style={{ mixBlendMode: "lighten" }}
           />
           <span className="text-sm font-bold text-[#F4F1EA]">
             Red Flag AI <span className="text-[#E5484D]">Pro</span>
@@ -133,6 +134,7 @@ export function Sidebar() {
               width={28}
               height={28}
               className="object-contain"
+              style={{ mixBlendMode: "lighten" }}
             />
             <span className="text-sm font-bold text-[#F4F1EA]">
               Red Flag AI <span className="text-[#E5484D]">Pro</span>
