@@ -56,7 +56,12 @@ export function GovernanceAuditResults({
 }: GovernanceAuditResultsProps) {
   const colors = RISK_COLORS[response.riskLevel];
   const benchmark = PEER_BENCHMARK.overall;
-  const percentileHigher = 100 - ((response.overallScore - benchmark.average) / (benchmark.quartile.q4 - benchmark.average) * 100);
+  const compareLine =
+    response.overallScore >= benchmark.quartile.q4
+      ? `Top tier — above the top-quartile benchmark of ${benchmark.quartile.q4}/100.`
+      : response.overallScore >= benchmark.average
+        ? `Above the industry average of ${benchmark.average}/100.`
+        : `Below the industry average of ${benchmark.average}/100 — ${benchmark.average - response.overallScore} points to close.`;
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 py-8">
@@ -91,9 +96,7 @@ export function GovernanceAuditResults({
         <div className="pt-4 border-t border-gray-700 space-y-2">
           <p className="text-xs text-gray-400">How you compare:</p>
           <p className={`text-sm font-medium ${colors.text}`}>
-            {percentileHigher > 50
-              ? `You're in the top ${Math.round(percentileHigher)}% of organizations`
-              : `${Math.round(percentileHigher)}% of organizations have higher governance maturity`}
+            {compareLine}
           </p>
           <p className="text-xs text-gray-500">
             Industry average: {benchmark.average}/100 | Top performers: {benchmark.quartile.q4}/100
@@ -116,7 +119,7 @@ export function GovernanceAuditResults({
           ).map(([dimension, score]) => {
             const dimInfo = GOVERNANCE_DIMENSIONS[dimension];
             const riskLevel =
-              score <= 10 ? 'mature' : score <= 20 ? 'managed' : score <= 25 ? 'moderate' : 'critical';
+              score >= 75 ? 'mature' : score >= 55 ? 'managed' : score >= 35 ? 'moderate' : 'critical';
             const dimColors = RISK_COLORS[riskLevel];
 
             return (
@@ -142,7 +145,7 @@ export function GovernanceAuditResults({
                 <div className="w-full bg-gray-900 rounded-full h-1">
                   <div
                     className={`h-full rounded-full ${dimColors.badge}`}
-                    style={{ width: `${(score / 30) * 100}%` }}
+                    style={{ width: `${Math.min(100, score)}%` }}
                   />
                 </div>
               </div>

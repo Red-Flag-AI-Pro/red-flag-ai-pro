@@ -767,7 +767,15 @@ export const REGULATORY_QUESTIONS = [
 // ============================================================
 
 export function calculateScores(answers: Answer[]): GovernanceQuizResponse['dimensionScores'] {
-  const scores: Record<Dimension, number> = {
+  const risk: Record<Dimension, number> = {
+    strategy_ownership: 0,
+    tool_data_governance: 0,
+    policy_documentation: 0,
+    monitoring_accountability: 0,
+    vendor_risk: 0,
+    regulatory_readiness: 0,
+  };
+  const counts: Record<Dimension, number> = {
     strategy_ownership: 0,
     tool_data_governance: 0,
     policy_documentation: 0,
@@ -776,16 +784,26 @@ export function calculateScores(answers: Answer[]): GovernanceQuizResponse['dime
     regulatory_readiness: 0,
   };
 
-  // Sum risk points per dimension (out of 15 per dimension max, normalized to 0-30)
+  // Accumulate risk points and number of questions answered per dimension.
   answers.forEach(answer => {
-    scores[answer.dimension] += answer.riskPoints;
+    risk[answer.dimension] += answer.riskPoints;
+    counts[answer.dimension] += 1;
   });
 
-  // Normalize: if dimension has 5 questions × 3 max points = 15 points max
-  // Convert to 0-30 scale: (points / 15) * 30
-  Object.keys(scores).forEach(dim => {
-    const dimension = dim as Dimension;
-    scores[dimension] = Math.min(30, Math.round((scores[dimension] / 15) * 30));
+  // Convert to a 0-100 MATURITY score per dimension (higher = better).
+  // Max risk per question is 3, so max risk for a dimension = questions × 3.
+  const scores: Record<Dimension, number> = {
+    strategy_ownership: 0,
+    tool_data_governance: 0,
+    policy_documentation: 0,
+    monitoring_accountability: 0,
+    vendor_risk: 0,
+    regulatory_readiness: 0,
+  };
+  (Object.keys(scores) as Dimension[]).forEach(dim => {
+    const maxRisk = (counts[dim] || 0) * 3 || 1;
+    const riskFraction = Math.min(1, Math.max(0, risk[dim] / maxRisk));
+    scores[dim] = Math.round((1 - riskFraction) * 100);
   });
 
   return scores;
@@ -794,14 +812,15 @@ export function calculateScores(answers: Answer[]): GovernanceQuizResponse['dime
 export function calculateOverallScore(dimensionScores: Record<Dimension, number>): number {
   const dimensions = Object.values(dimensionScores);
   const average = dimensions.reduce((a, b) => a + b, 0) / dimensions.length;
-  return Math.round(average); // 0-30 average = 0-100 score
+  return Math.round(average); // average of the six 0-100 dimension maturity scores
 }
 
+// Maturity bands (higher = better)
 export function getRiskLevel(score: number): RiskLevel {
-  if (score <= 30) return 'critical';
-  if (score <= 60) return 'moderate';
-  if (score <= 80) return 'managed';
-  return 'mature';
+  if (score >= 80) return 'mature';
+  if (score >= 60) return 'managed';
+  if (score >= 40) return 'moderate';
+  return 'critical';
 }
 
 export function generateRedFlags(
@@ -811,7 +830,7 @@ export function generateRedFlags(
   const flags: RedFlag[] = [];
 
   // Strategy & Ownership red flags
-  if (dimensionScores.strategy_ownership > 20) {
+  if (dimensionScores.strategy_ownership < 33) {
     flags.push({
       severity: 'high',
       dimension: 'strategy_ownership',
@@ -823,7 +842,7 @@ export function generateRedFlags(
   }
 
   // Tool & Data Governance red flags
-  if (dimensionScores.tool_data_governance > 20) {
+  if (dimensionScores.tool_data_governance < 33) {
     flags.push({
       severity: 'high',
       dimension: 'tool_data_governance',
@@ -835,7 +854,7 @@ export function generateRedFlags(
   }
 
   // Policy & Documentation red flags
-  if (dimensionScores.policy_documentation > 15) {
+  if (dimensionScores.policy_documentation < 50) {
     flags.push({
       severity: 'high',
       dimension: 'policy_documentation',
@@ -847,7 +866,7 @@ export function generateRedFlags(
   }
 
   // Monitoring & Accountability red flags
-  if (dimensionScores.monitoring_accountability > 20) {
+  if (dimensionScores.monitoring_accountability < 33) {
     flags.push({
       severity: 'high',
       dimension: 'monitoring_accountability',
@@ -859,7 +878,7 @@ export function generateRedFlags(
   }
 
   // Vendor Risk red flags
-  if (dimensionScores.vendor_risk > 15) {
+  if (dimensionScores.vendor_risk < 50) {
     flags.push({
       severity: 'medium',
       dimension: 'vendor_risk',
@@ -871,7 +890,7 @@ export function generateRedFlags(
   }
 
   // Regulatory Readiness red flags
-  if (dimensionScores.regulatory_readiness > 20) {
+  if (dimensionScores.regulatory_readiness < 33) {
     flags.push({
       severity: 'high',
       dimension: 'regulatory_readiness',
@@ -882,14 +901,14 @@ export function generateRedFlags(
     });
   }
 
-  // Sort by severity + dimension score (higher = worse)
+  // Sort by severity, then weakest dimension first (lower maturity = worse)
   return flags
     .sort((a, b) => {
       const severityOrder = { high: 0, medium: 1, low: 2 };
       if (severityOrder[a.severity] !== severityOrder[b.severity]) {
         return severityOrder[a.severity] - severityOrder[b.severity];
       }
-      return dimensionScores[b.dimension] - dimensionScores[a.dimension];
+      return dimensionScores[a.dimension] - dimensionScores[b.dimension];
     })
     .slice(0, 5); // Top 5 red flags
 }
@@ -901,7 +920,7 @@ export function generateRoadmap(
   const actions: RoadmapAction[] = [];
 
   // 90-DAY QUICK WINS (Low effort, high impact)
-  if (dimensionScores.policy_documentation > 15) {
+  if (dimensionScores.policy_documentation < 50) {
     actions.push({
       phase: 'quick_wins',
       title: 'Draft AI Governance Policy',
@@ -914,7 +933,7 @@ export function generateRoadmap(
     });
   }
 
-  if (dimensionScores.strategy_ownership > 20) {
+  if (dimensionScores.strategy_ownership < 33) {
     actions.push({
       phase: 'quick_wins',
       title: 'Establish AI Governance Committee',
@@ -927,7 +946,7 @@ export function generateRoadmap(
     });
   }
 
-  if (dimensionScores.tool_data_governance > 20) {
+  if (dimensionScores.tool_data_governance < 33) {
     actions.push({
       phase: 'quick_wins',
       title: 'Conduct AI Tool Audit',
@@ -941,7 +960,7 @@ export function generateRoadmap(
   }
 
   // 6-MONTH MEDIUM-TERM (Medium effort, high impact)
-  if (dimensionScores.vendor_risk > 15) {
+  if (dimensionScores.vendor_risk < 50) {
     actions.push({
       phase: 'medium_term',
       title: 'Implement Vendor AI Assessment Process',
@@ -954,7 +973,7 @@ export function generateRoadmap(
     });
   }
 
-  if (dimensionScores.monitoring_accountability > 20) {
+  if (dimensionScores.monitoring_accountability < 33) {
     actions.push({
       phase: 'medium_term',
       title: 'Set Up AI Monitoring & Audit Trails',
@@ -968,7 +987,7 @@ export function generateRoadmap(
   }
 
   // 12-MONTH STRATEGIC (High effort, transformational)
-  if (dimensionScores.regulatory_readiness > 20) {
+  if (dimensionScores.regulatory_readiness < 33) {
     actions.push({
       phase: 'strategic',
       title: 'Build Regulatory Evidence Package',
@@ -981,7 +1000,7 @@ export function generateRoadmap(
     });
   }
 
-  if (dimensionScores.strategy_ownership > 15) {
+  if (dimensionScores.strategy_ownership < 50) {
     actions.push({
       phase: 'strategic',
       title: 'Build AI Financial Impact Model',

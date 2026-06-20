@@ -415,7 +415,7 @@ export async function generateGovernanceAuditPDF(
       font: bold,
       color: C.white,
     });
-    pg.drawText("/30", {
+    pg.drawText("/100", {
       x: W - M - 16,
       y: y - boxH + 18,
       size: 9,
