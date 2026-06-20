@@ -40,8 +40,7 @@ export default function GovernanceAuditPage() {
             maxWidth: '820px',
             margin: '0 auto',
           }}>
-            Score your governance maturity across 6 dimensions — and generate{' '}
-            <span style={{ fontStyle: 'italic', color: '#E5484D' }}>audit-ready evidence</span> in 5 minutes.
+            Your <span style={{ fontStyle: 'italic', color: '#E5484D' }}>Governance Maturity Index</span> — scored across 6 dimensions, with audit-ready evidence, in 5 minutes.
           </h1>
 
           <p style={{

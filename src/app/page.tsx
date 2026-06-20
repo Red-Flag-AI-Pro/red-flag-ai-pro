@@ -60,7 +60,7 @@ export default function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            A 5-minute assessment scores your governance maturity across 6 dimensions, benchmarks you against peers, and generates the audit-ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
+            A 5-minute assessment produces your Governance Maturity Index across 6 dimensions, benchmarks you against peers, and generates the audit-ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>

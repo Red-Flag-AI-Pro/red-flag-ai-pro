@@ -130,10 +130,10 @@ export function ProveItWidget() {
               {verdict?.note}
             </p>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: '0.95rem', padding: '13px 28px' }}>
-              See your full governance score <span className="arrow">→</span>
+              Get your Governance Maturity Index <span className="arrow">→</span>
             </Link>
             <p style={{ ...syne, fontSize: '11px', color: 'rgba(244,241,234,0.4)', marginTop: '1rem' }}>
-              That was 3 questions. The full assessment is 30 — across 6 dimensions, in 5 minutes.
+              That was 3 questions. The full Index is 30 — across 6 dimensions, in 5 minutes.
             </p>
           </div>
         </div>

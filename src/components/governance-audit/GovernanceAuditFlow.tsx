@@ -11,7 +11,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 
 // What entering an email unlocks — framed as the deliverable, not a "signup".
 const UNLOCK_ITEMS = [
-  'Your governance maturity score across all 6 dimensions',
+  'Your Governance Maturity Index — your score across all 6 dimensions',
   'Your 3–5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
   'A prioritised 90-day → 12-month remediation roadmap',
   'Peer benchmarking against your industry',
@@ -156,7 +156,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
           </div>
 
           <h2 className="font-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.1rem)', fontWeight: 500, color: '#F4F1EA', lineHeight: 1.15, marginBottom: '0.85rem' }}>
-            Your governance report is ready.
+            Your Governance Maturity Index is ready.
           </h2>
           <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
             Enter your work email to reveal your results and receive your board-ready PDF.
