@@ -63,17 +63,14 @@ export function Sidebar() {
     <>
       {/* ── Mobile top bar ── */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex h-14 items-center justify-between border-b border-white/10 bg-[#102943] px-4">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center">
           <Image
-            src="/redflag-logo-transparent.png"
+            src="/redflag-logo-full.png"
             alt="Red Flag AI Pro"
-            width={32}
-            height={32}
+            width={44}
+            height={35}
             className="object-contain"
           />
-          <span className="text-sm font-bold text-[#F4F1EA]">
-            Red Flag AI <span className="text-[#E5484D]">Pro</span>
-          </span>
         </Link>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -126,17 +123,14 @@ export function Sidebar() {
       {/* ── Desktop sidebar ── */}
       <aside className="hidden md:flex h-full w-56 flex-col border-r border-white/10 bg-[#102943]">
         <div className="flex h-14 items-center border-b border-white/10 px-4">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center">
             <Image
-              src="/redflag-logo-transparent.png"
+              src="/redflag-logo-full.png"
               alt="Red Flag AI Pro"
-              width={28}
-              height={28}
+              width={48}
+              height={38}
               className="object-contain"
             />
-            <span className="text-sm font-bold text-[#F4F1EA]">
-              Red Flag AI <span className="text-[#E5484D]">Pro</span>
-            </span>
           </Link>
         </div>
 

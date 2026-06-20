@@ -24,18 +24,15 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10" style={{background: "rgba(10,22,40,0.85)", backdropFilter: "saturate(140%) blur(12px)", WebkitBackdropFilter: "saturate(140%) blur(12px)"}}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
           <Image
-            src="/redflag-logo-transparent.png"
+            src="/redflag-logo-full.png"
             alt="Red Flag AI Pro"
-            width={40}
-            height={40}
+            width={62}
+            height={49}
             className="object-contain"
             priority
           />
-          <span className="text-[15px] font-bold tracking-tight text-[#F4F1EA]">
-            Red Flag AI <span className="text-[#E5484D]">Pro</span>
-          </span>
         </Link>
 
         {/* Desktop nav */}
