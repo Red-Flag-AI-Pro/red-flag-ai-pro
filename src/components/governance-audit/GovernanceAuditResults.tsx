@@ -68,7 +68,7 @@ export function GovernanceAuditResults({
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-gray-400 mb-1">
-              AI Governance Maturity Score
+              Governance Maturity Index
             </p>
             <div className="flex items-baseline gap-3">
               <span className={`text-6xl font-bold ${colors.text}`}>
@@ -78,9 +78,9 @@ export function GovernanceAuditResults({
             </div>
           </div>
 
-          {/* Gauge */}
-          <div className="flex flex-col items-center">
-            <div className="text-6xl text-gray-600 mb-2">◷</div>
+          {/* Risk level */}
+          <div className="flex flex-col items-end">
+            <div className="w-8 h-0.5 bg-[#E5484D] mb-3" />
             <p className={`text-sm font-semibold ${colors.text}`}>
               {RISK_LABELS[response.riskLevel]}
             </p>
@@ -252,7 +252,6 @@ export function GovernanceAuditResults({
             variant="primary"
             className="h-auto py-4 flex flex-col items-center gap-2"
           >
-            <span className="text-2xl">📄</span>
             <div className="text-center">
               <p className="font-semibold text-sm">Download Full Report</p>
               <p className="text-xs text-gray-300 mt-1">
@@ -267,7 +266,6 @@ export function GovernanceAuditResults({
             variant="secondary"
             className="h-auto py-4 flex flex-col items-center gap-2"
           >
-            <span className="text-2xl">📞</span>
             <div className="text-center">
               <p className="font-semibold text-sm">Schedule Assessment</p>
               <p className="text-xs text-gray-300 mt-1">
@@ -282,7 +280,6 @@ export function GovernanceAuditResults({
             variant="secondary"
             className="h-auto py-4 flex flex-col items-center gap-2"
           >
-            <span className="text-2xl">🔒</span>
             <div className="text-center">
               <p className="font-semibold text-sm">Explore Sentinel</p>
               <p className="text-xs text-gray-300 mt-1">
@@ -309,28 +306,28 @@ export function GovernanceAuditResults({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <div className="flex items-start gap-2">
-            <span className="text-lg">✓</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden className="flex-shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <div>
               <p className="font-medium text-white">Governance Assessment Report</p>
               <p className="text-gray-400">Scoring + framework mapping</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-lg">✓</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden className="flex-shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <div>
               <p className="font-medium text-white">Risk Register Template</p>
               <p className="text-gray-400">Prioritized remediation roadmap</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-lg">✓</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden className="flex-shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <div>
               <p className="font-medium text-white">Evidence Framework Checklist</p>
               <p className="text-gray-400">What regulators need from you</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-lg">✓</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden className="flex-shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <div>
               <p className="font-medium text-white">Board Slide Deck</p>
               <p className="text-gray-400">Executive summary (4 slides)</p>

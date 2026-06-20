@@ -138,7 +138,7 @@ export async function generateGovernanceAuditPDF(
     font: bold,
     color: C.white,
   });
-  cover.drawText("Assessment Report", {
+  cover.drawText("Index — Report", {
     x: M,
     y: titleY0 - 28,
     size: 20,
@@ -269,7 +269,7 @@ export async function generateGovernanceAuditPDF(
   });
 
   cover.drawText(
-    `Score: ${response.overallScore}/100  •  ${response.riskLevel.toUpperCase()}  •  ${response.redFlags.length} governance gap${response.redFlags.length === 1 ? "" : "s"}`,
+    `Maturity Index: ${response.overallScore}/100  •  ${response.riskLevel.toUpperCase()}  •  ${response.redFlags.length} governance gap${response.redFlags.length === 1 ? "" : "s"}`,
     {
       x: M + 22,
       y: vBlockY + 88,
@@ -793,7 +793,7 @@ export async function generateGovernanceAuditPDF(
     height: 60,
     color: C.bgCard,
   });
-  pg.drawText('Governance Score', {
+  pg.drawText('Maturity Index', {
     x: scoreCol1 + 12,
     y: by - 15,
     size: 9,
