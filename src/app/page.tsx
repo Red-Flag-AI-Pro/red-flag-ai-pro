@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
@@ -323,6 +324,7 @@ export default function LandingPage() {
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}>or <Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>see pricing for Pro + Sentinel</Link></p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
