@@ -240,7 +240,7 @@ export function DemoScanner() {
           alignItems: "flex-start",
           gap: "12px"
         }}>
-          <span style={{fontSize: "1.2rem", marginTop: "2px"}}>🔒</span>
+          <span style={{marginTop: "2px"}}><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#C9A66B" strokeWidth="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#C9A66B" strokeWidth="2"/></svg></span>
           <div>
             <p style={{...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.25rem"}}>
               Private & Secure
@@ -265,7 +265,7 @@ export function DemoScanner() {
             borderRadius: "8px",
             userSelect: "none"
           }}>
-            👉 See examples of violations we catch →
+            See examples of violations we catch →
           </summary>
           <div style={{marginTop: "1rem", display: "flex", flexDirection: "column", gap: "1rem"}}>
             <div style={{
@@ -279,7 +279,7 @@ export function DemoScanner() {
                 "Make £10,000 in your first 30 days — guaranteed."
               </p>
               <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
-                ❌ Breaks FTC/ASA rules. No earnings guarantee can be absolute.
+                Breaks FTC/ASA rules. No earnings guarantee can be absolute.
               </p>
             </div>
             <div style={{
@@ -293,7 +293,7 @@ export function DemoScanner() {
                 "Only 3 spots left. Price goes up tomorrow at midnight."
               </p>
               <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
-                ⚠️ Scarcity claims must be time-bound and genuine.
+                Scarcity claims must be time-bound and genuine.
               </p>
             </div>
           </div>

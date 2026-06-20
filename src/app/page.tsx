@@ -145,8 +145,8 @@ export default function LandingPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
             {[
               {
-                icon: "📊",
-                title: "Governance Maturity Score",
+                icon: "",
+                title: "Governance Maturity Index",
                 desc: "0-100 across 6 dimensions: Strategy, Tools, Policy, Monitoring, Vendors, Regulatory Readiness"
               },
               {
@@ -181,7 +181,7 @@ export default function LandingPage() {
                 borderRadius: "12px",
                 padding: "2rem"
               }}>
-                <p style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{item.icon}</p>
+                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
                 <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
