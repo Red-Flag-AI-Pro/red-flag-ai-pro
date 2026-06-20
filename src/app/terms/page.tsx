@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -191,6 +192,7 @@ export default function TermsPage() {
           <Link href="/" style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Back to home</Link>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

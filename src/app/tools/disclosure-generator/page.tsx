@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { DisclosureGenerator } from "@/components/tools/DisclosureGenerator";
 import React from "react";
 
@@ -53,6 +54,7 @@ export default function DisclosureGeneratorPage() {
           <DisclosureGenerator />
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

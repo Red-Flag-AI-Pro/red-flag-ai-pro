@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Free Compliance Tools — Red Flag AI Pro",
@@ -60,6 +61,7 @@ export default function ToolsPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

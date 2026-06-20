@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Governance Features — Red Flag AI Pro",
@@ -245,6 +246,7 @@ export default function FeaturesPage() {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

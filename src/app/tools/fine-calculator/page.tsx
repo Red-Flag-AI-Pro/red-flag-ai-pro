@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { FineCalculator } from "@/components/tools/FineCalculator";
 import React from "react";
 
@@ -45,6 +46,7 @@ export default function FineCalculatorPage() {
           <FineCalculator />
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

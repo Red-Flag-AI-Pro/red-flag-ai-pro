@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { PromoBox } from "@/components/affiliates/PromoBox";
 
 export const metadata: Metadata = {
@@ -249,6 +250,7 @@ export default function AffiliatesPage() {
           </p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

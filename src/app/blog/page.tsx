@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { BLOG_POSTS } from "@/lib/blog";
 import React from "react";
 
@@ -185,6 +186,7 @@ export default function BlogPage() {
         </div>
       </section>
 
+      <Footer />
     </div>
   );
 }

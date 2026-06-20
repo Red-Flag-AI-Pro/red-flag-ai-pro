@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
@@ -259,6 +260,7 @@ export default function ComplianceChecklistPage() {
           </p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

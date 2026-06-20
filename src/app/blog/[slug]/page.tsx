@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { getBlogPost, BLOG_POSTS } from "@/lib/blog";
 import React from "react";
 
@@ -280,6 +281,7 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
       </article>
+      <Footer />
     </div>
   );
 }
