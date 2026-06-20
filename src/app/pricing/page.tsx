@@ -222,7 +222,7 @@ export default function PricingPage() {
                 £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
               </p>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
-              <Link href="#contact-sales" style={{
+              <Link href="https://calendly.com/red-flag-ai/governance-assessment" target="_blank" rel="noopener noreferrer" style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
                 color: "white",
@@ -230,8 +230,11 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Schedule demo
+                Book a demo
               </Link>
+              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", textAlign: "center", marginTop: "0.75rem" }}>
+                or email <a href="mailto:support@redflagaipro.com?subject=Red%20Flag%20Pro%20enquiry" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>
+              </p>
               <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
                 {PRO_FEATURES.map((f) => (
@@ -267,7 +270,7 @@ export default function PricingPage() {
                   £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
                 </p>
                 <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
-                <Link href="#contact-sales" style={{
+                <Link href="https://calendly.com/red-flag-ai/governance-assessment" target="_blank" rel="noopener noreferrer" style={{
                   display: "block", textAlign: "center",
                   background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
                   color: "#e0e0f0",
@@ -277,6 +280,9 @@ export default function PricingPage() {
                 }}>
                   Talk to sales
                 </Link>
+                <p style={{ ...syne, fontSize: "11px", color: "#777", textAlign: "center", marginTop: "0.75rem" }}>
+                  or email <a href="mailto:support@redflagaipro.com?subject=Sentinel%20enquiry" style={{ color: "#0E1C30", fontWeight: 700, textDecoration: "none" }}>support@redflagaipro.com</a>
+                </p>
                 <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)", marginTop: "2rem", paddingTop: "2rem" }}>
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "1rem" }}>What you get</p>
                   {SENTINEL_FEATURES.map((f) => (
