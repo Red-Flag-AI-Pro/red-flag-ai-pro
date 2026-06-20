@@ -209,7 +209,7 @@ export default function SignupPage() {
         <div className="text-center">
           <Link href="/" className="inline-flex items-center justify-center">
             <Image
-              src="/redflag-logo.png"
+              src="/redflag-logo-transparent.png"
               alt="Red Flag AI Pro"
               width={160}
               height={160}

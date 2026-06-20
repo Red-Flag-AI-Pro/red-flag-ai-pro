@@ -122,8 +122,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/redflag-logo.png",
-    apple: "/redflag-logo.png",
+    icon: "/redflag-logo-transparent.png",
+    apple: "/redflag-logo-transparent.png",
   },
 };
 
@@ -181,7 +181,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 "name": "Red Flag AI Pro",
                 "url": "https://www.redflagaipro.com",
-                "logo": "https://www.redflagaipro.com/redflag-logo.png",
+                "logo": "https://www.redflagaipro.com/redflag-logo-transparent.png",
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "email": "support@redflagaipro.com",

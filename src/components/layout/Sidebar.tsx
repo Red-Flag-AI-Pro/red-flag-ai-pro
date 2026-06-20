@@ -65,12 +65,11 @@ export function Sidebar() {
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex h-14 items-center justify-between border-b border-white/10 bg-[#102943] px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/redflag-logo.png"
+            src="/redflag-logo-transparent.png"
             alt="Red Flag AI Pro"
             width={32}
             height={32}
             className="object-contain"
-            style={{ mixBlendMode: "lighten" }}
           />
           <span className="text-sm font-bold text-[#F4F1EA]">
             Red Flag AI <span className="text-[#E5484D]">Pro</span>
@@ -129,12 +128,11 @@ export function Sidebar() {
         <div className="flex h-14 items-center border-b border-white/10 px-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/redflag-logo.png"
+              src="/redflag-logo-transparent.png"
               alt="Red Flag AI Pro"
               width={28}
               height={28}
               className="object-contain"
-              style={{ mixBlendMode: "lighten" }}
             />
             <span className="text-sm font-bold text-[#F4F1EA]">
               Red Flag AI <span className="text-[#E5484D]">Pro</span>
