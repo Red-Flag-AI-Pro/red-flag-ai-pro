@@ -223,7 +223,7 @@ export default function PricingPage() {
                 £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
               </p>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
-              <a href="mailto:support@redflagaipro.com?subject=Red%20Flag%20Pro%20enquiry" style={{
+              <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
                 color: "white",
@@ -231,10 +231,10 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Talk to us
+                Book a demo
               </a>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                support@redflagaipro.com
+                or email support@redflagaipro.com
               </p>
               <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
@@ -271,7 +271,7 @@ export default function PricingPage() {
                   £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
                 </p>
                 <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
-                <a href="mailto:support@redflagaipro.com?subject=Sentinel%20enquiry" style={{
+                <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                   display: "block", textAlign: "center",
                   background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
                   color: "#e0e0f0",
@@ -282,7 +282,7 @@ export default function PricingPage() {
                   Talk to sales
                 </a>
                 <p style={{ ...syne, fontSize: "11px", color: "#555", textAlign: "center", marginTop: "0.75rem", fontWeight: 700 }}>
-                  support@redflagaipro.com
+                  or email support@redflagaipro.com
                 </p>
                 <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)", marginTop: "2rem", paddingTop: "2rem" }}>
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "1rem" }}>What you get</p>

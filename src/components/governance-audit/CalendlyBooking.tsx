@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-// Paste a VALID Calendly URL here to re-enable inline booking site-wide.
-// The previous hardcoded link (calendly.com/red-flag-ai/governance-assessment)
-// returned Calendly "Page not found", so booking is on an email fallback until
-// a real scheduling link is set. Empty string = email fallback.
-const CALENDLY_URL = '';
+const CALENDLY_URL = 'https://calendly.com/redflagaipro/30min';
 const CONTACT_EMAIL = 'support@redflagaipro.com';
 
 interface CalendlyBookingProps {
