@@ -28,7 +28,7 @@ export default async function ClientsPage() {
         </div>
         <Card>
           <div className="text-center py-8">
-            <p className="text-4xl mb-4">🏢</p>
+            <p className="text-4xl mb-4"></p>
             <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
             <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               Client workspaces let you organise scans by client, track compliance per account, and build a paper trail for each relationship.

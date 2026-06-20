@@ -144,7 +144,7 @@ export function MonitorManager({ initialUrls, plan }: Props) {
       {urls.length === 0 ? (
         <Card>
           <div className="py-8 text-center text-sm text-[rgba(244,241,234,0.4)]">
-            <p className="text-3xl mb-3">📡</p>
+            <p className="text-3xl mb-3"></p>
             No URLs being monitored yet. Add one above and we will check it every Monday.
           </div>
         </Card>

@@ -77,32 +77,32 @@ export default function PricingPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", marginTop: "2rem" }}>
             {[
               {
-                icon: "⚖️",
+                icon: "",
                 title: "Munir v SSHD",
                 desc: "UK ruling: governance you cannot demonstrate = liability. You need forensic proof.",
               },
               {
-                icon: "📅",
+                icon: "",
                 title: "EU AI Act (Aug 2, 2026)",
                 desc: "Mandatory disclosure of AI-generated content + governance evidence. 45 days away.",
               },
               {
-                icon: "🏦",
+                icon: "",
                 title: "SEC 2026 Exams",
                 desc: "Financial regulators now testing: Can you prove governance? Can you prove monitoring?",
               },
               {
-                icon: "💰",
+                icon: "",
                 title: "FTC Enforcement ($53K per violation)",
                 desc: "Unsubstantiated AI claims in marketing. April 2026 onwards: consent orders, not warnings.",
               },
               {
-                icon: "🔍",
+                icon: "",
                 title: "Policy vs. Practice Gap",
                 desc: "Your team has written policies. But desk behavior ≠ policy. No one's checking.",
               },
               {
-                icon: "🎯",
+                icon: "",
                 title: "Ownership Gap",
                 desc: "Who decides about AI? Who owns the output when it drifts? No single answer = no control.",
               },

@@ -31,7 +31,7 @@ export function ExitIntent() {
           ✕
         </button>
 
-        <p className="text-4xl">🚩</p>
+        <p className="text-4xl"></p>
         <h2 className="mt-4 text-2xl font-extrabold text-white">
           Wait — Is Your Copy Actually Legal?
         </h2>

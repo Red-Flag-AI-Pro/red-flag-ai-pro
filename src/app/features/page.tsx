@@ -48,32 +48,32 @@ export default function FeaturesPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
               {[
                 {
-                  icon: "📊",
+                  icon: "",
                   title: "6-Dimension Assessment",
                   desc: "Strategy & Decision Rights, Tool & Data Governance, Policy & Documentation, Monitoring & Outcome Accountability, Vendor Risk, Regulatory Readiness.",
                 },
                 {
-                  icon: "🎯",
+                  icon: "",
                   title: "Instant Maturity Scoring",
                   desc: "0-100 governance score. Dimension breakdown (0-30 each). Risk level classification (Critical/Moderate/Managed/Mature).",
                 },
                 {
-                  icon: "🚩",
+                  icon: "",
                   title: "Critical Gap Identification",
                   desc: "Top 3-5 gaps ranked by severity. Each flagged with regulatory context (Munir, SEC, EU AI Act, FTC, GDPR).",
                 },
                 {
-                  icon: "📈",
+                  icon: "",
                   title: "Strategic Roadmap",
                   desc: "90-day quick wins, 6-month medium-term, 12-month strategic plan. Owner + timeline for each action.",
                 },
                 {
-                  icon: "📄",
+                  icon: "",
                   title: "Board-Ready PDF",
                   desc: "6-page report: cover, dimension breakdown, red flags, strategic roadmap, executive summary, regulatory mapping.",
                 },
                 {
-                  icon: "👥",
+                  icon: "",
                   title: "Peer Benchmarking",
                   desc: "Compare your score to industry average. See top quartile. Know where you stand relative to peers.",
                 },
@@ -105,32 +105,32 @@ export default function FeaturesPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
               {[
                 {
-                  icon: "🔄",
+                  icon: "",
                   title: "Monthly Governance Reassessment",
                   desc: "Quarterly governance score updates. Track improvement over time. Measure progress against roadmap.",
                 },
                 {
-                  icon: "🏢",
+                  icon: "",
                   title: "Vendor AI Risk Tracking",
                   desc: "Track all third-party AI tools. Risk assessment scores. Data flow mapping. Contract checklist per vendor.",
                 },
                 {
-                  icon: "📊",
+                  icon: "",
                   title: "Monthly Compliance Dashboard",
                   desc: "Dimension trends. Gap closure progress. Vendor risk overview. Policy compliance metrics.",
                 },
                 {
-                  icon: "🔍",
+                  icon: "",
                   title: "Policy-to-Practice Gap Detection",
                   desc: "Identify where policy differs from actual desk behavior. Governance drift alerts. Non-compliance flags.",
                 },
                 {
-                  icon: "📋",
+                  icon: "",
                   title: "Evidence Package Generation",
                   desc: "Auto-generated audit-ready artifacts. Governance logs. Compliance checklist. Regulatory framework mapping.",
                 },
                 {
-                  icon: "🎓",
+                  icon: "",
                   title: "Quarterly Improvement Roadmaps",
                   desc: "Updated strategic plan every 90 days. Adjust based on progress. New quick wins. Reorder by impact.",
                 },
@@ -162,47 +162,47 @@ export default function FeaturesPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
               {[
                 {
-                  icon: "🛠️",
+                  icon: "",
                   title: "Managed Implementation",
                   desc: "We build governance for you. Framework selection. Process design. Team training. Deployment support.",
                 },
                 {
-                  icon: "🔐",
+                  icon: "",
                   title: "Automated Audit Logging",
                   desc: "Forensic audit trails for every AI decision. Output tracking. Model versioning. Approval chains. Immutable records.",
                 },
                 {
-                  icon: "📉",
+                  icon: "",
                   title: "Real-Time Output Drift Detection",
                   desc: "Monitor for model degradation. Alert on anomalies. Catch policy violations before they're live. Performance tracking.",
                 },
                 {
-                  icon: "💰",
+                  icon: "",
                   title: "Financial Impact Modeling",
                   desc: "Compliance cost calculator. Penalty risk modeling. ROI of governance investment. Board-ready financial impact.",
                 },
                 {
-                  icon: "🛡️",
+                  icon: "",
                   title: "Automated Governance Enforcement",
                   desc: "Guardrails enforcement. Policy automation. Unapproved tool blocking. Data flow controls. Automated remediation.",
                 },
                 {
-                  icon: "📊",
+                  icon: "",
                   title: "Quarterly Board Reporting",
                   desc: "Executive decks. Governance scorecard. Risk trends. Compliance status. Regulatory readiness. Financial impact.",
                 },
                 {
-                  icon: "✅",
+                  icon: "",
                   title: "Regulatory Certification",
                   desc: "Governance certification mapped to EU AI Act, SEC, GDPR, Munir. Audit-ready evidence package. Compliance badge.",
                 },
                 {
-                  icon: "🔗",
+                  icon: "",
                   title: "API Integrations",
                   desc: "Vendor mgmt systems. Security tools. Finance systems. Custom integrations. Webhook automation.",
                 },
                 {
-                  icon: "👨‍💼",
+                  icon: "",
                   title: "Dedicated Governance Advisor",
                   desc: "Quarterly strategy calls. Roadmap updates. Best practice guidance. Regulatory news briefings. Continuous improvement.",
                 },

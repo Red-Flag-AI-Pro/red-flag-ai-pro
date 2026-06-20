@@ -79,7 +79,7 @@ export default async function ReferralsPage() {
         </div>
         {total === 0 ? (
           <div className="px-5 py-10 text-center text-sm text-[rgba(244,241,234,0.4)]">
-            <p className="text-3xl mb-3">🔗</p>
+            <p className="text-3xl mb-3"></p>
             No referrals yet. Share your link to start tracking signups.
           </div>
         ) : (

@@ -31,7 +31,7 @@ function BillingNotice() {
   if (success) {
     return (
       <div className="rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-3 text-sm text-green-300">
-        ✅ Your subscription has been activated. Welcome to the next plan!
+        Your subscription has been activated. Welcome to the next plan.
       </div>
     );
   }

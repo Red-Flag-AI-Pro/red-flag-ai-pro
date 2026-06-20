@@ -34,7 +34,7 @@ export default async function BulkPage() {
         </div>
         <Card>
           <div className="text-center py-8">
-            <p className="text-4xl mb-4">🔍</p>
+            <p className="text-4xl mb-4"></p>
             <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
             <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
               Site Audit scans your client&apos;s entire website in one go. Enter a domain, we find the sitemap and scan up to 50 pages for compliance issues.

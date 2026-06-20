@@ -66,7 +66,7 @@ export default async function HistoryPage() {
       <Card padding="none">
         {!scans || scans.length === 0 ? (
           <div className="px-5 py-16 text-center">
-            <p className="text-3xl">📋</p>
+            <p className="text-3xl"></p>
             <p className="mt-3 font-medium text-[rgba(244,241,234,0.8)]">No scans yet</p>
             <p className="text-sm text-[rgba(244,241,234,0.4)]">
               Run your first scan to see it here.

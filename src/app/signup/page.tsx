@@ -87,7 +87,7 @@ function SignupForm() {
   if (success) {
     return (
       <div className="text-center">
-        <p className="text-4xl">📬</p>
+        <p className="text-4xl"></p>
         <h2 className="mt-4 text-xl font-bold text-gray-900">Check your email</h2>
         <p className="mt-2 text-sm text-gray-600">
           We sent a confirmation link to <strong>{email}</strong>. Click it to

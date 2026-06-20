@@ -21,7 +21,7 @@ function ShareButton({ scanId }: { scanId: string }) {
       onClick={copy}
       className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
     >
-      {copied ? "✓ Link copied" : "🔗 Share"}
+      {copied ? "✓ Link copied" : " Share"}
     </button>
   );
 }
@@ -44,7 +44,7 @@ function BadgeButton({ scanId }: { scanId: string }) {
         onClick={() => setOpen(!open)}
         className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
       >
-        🏷️ Embed badge
+         Embed badge
       </button>
       {open && (
         <div className="w-full mt-1 rounded-xl border border-white/10 bg-[#0A1628] p-4 space-y-3">
@@ -117,10 +117,10 @@ function VideoButton({ scanId }: { scanId: string }) {
   }
 
   const labels: Record<VideoState, string> = {
-    idle: "🎬 Video summary",
-    queued: "🎬 Queuing render…",
-    processing: "🎬 Rendering… (usually ~1 min)",
-    error: "⚠️ Couldn't render — try again",
+    idle: " Video summary",
+    queued: " Queuing render…",
+    processing: " Rendering… (usually ~1 min)",
+    error: " Couldn't render — try again",
   };
 
   return (
@@ -192,7 +192,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
 
           {scan.score >= 70 && (
             <div className="flex items-center gap-3 rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] px-4 py-3">
-              <span className="text-xl">🏷️</span>
+              <span className="text-xl"></span>
               <p className="text-sm text-green-300">
                 <span className="font-semibold">Nice score.</span> Show clients or your audience you&apos;re compliance-checked — embed your badge below and let the proof do the talking.
               </p>
@@ -201,7 +201,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
 
           {scan.score < 80 && (
             <div className="flex items-start gap-3 rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-3">
-              <span className="text-xl">🚩</span>
+              <span className="text-xl"></span>
               <div>
                 <p className="text-sm text-amber-900 font-semibold mb-0.5">Want someone to fix this for you?</p>
                 <p className="text-sm text-amber-300">

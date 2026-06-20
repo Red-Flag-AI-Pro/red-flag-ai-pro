@@ -72,7 +72,7 @@ export default async function AdminPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold text-white">🚩 Admin Dashboard</h1>
+            <h1 className="text-3xl font-extrabold text-white"> Admin Dashboard</h1>
             <p className="mt-1 text-sm text-[rgba(244,241,234,0.4)]">Red Flag AI Pro — internal overview</p>
           </div>
           <p className="text-xs text-[rgba(244,241,234,0.5)]">

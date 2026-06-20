@@ -150,27 +150,27 @@ export default function LandingPage() {
                 desc: "0-100 across 6 dimensions: Strategy, Tools, Policy, Monitoring, Vendors, Regulatory Readiness"
               },
               {
-                icon: "🚩",
+                icon: "",
                 title: "Top 3-5 Critical Gaps",
                 desc: "Specific governance failures ranked by severity. Each with regulatory context (Munir, SEC, EU AI Act, etc.)"
               },
               {
-                icon: "📈",
+                icon: "",
                 title: "90-Day Roadmap",
                 desc: "Quick wins (2-3 weeks), medium-term (6 months), strategic (12 months). Who owns each, timeline."
               },
               {
-                icon: "👥",
+                icon: "",
                 title: "Peer Benchmarking",
                 desc: "See how you compare. Industry average: 35/100. Top quartile: 78+. Where are you?"
               },
               {
-                icon: "📄",
+                icon: "",
                 title: "6-Page PDF Report",
                 desc: "Board-ready executive summary, dimension breakdown, red flags with recommendations, full roadmap"
               },
               {
-                icon: "🔐",
+                icon: "",
                 title: "Regulatory Evidence Map",
                 desc: "Your gaps mapped to EU AI Act, SEC requirements, GDPR, Munir v SSHD, FTC. Ready for audits."
               },

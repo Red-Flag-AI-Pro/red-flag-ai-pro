@@ -46,7 +46,7 @@ export default async function NewScanPage() {
 
       {overLimit ? (
         <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] p-8 text-center">
-          <p className="text-4xl">🚫</p>
+          <p className="text-4xl"></p>
           <h2 className="mt-3 text-lg font-bold text-red-800">
             Monthly scan limit reached
           </h2>

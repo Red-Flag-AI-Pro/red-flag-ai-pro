@@ -126,7 +126,7 @@ export function ClientManager({ initialClients, plan }: Props) {
       {clients.length === 0 ? (
         <Card>
           <div className="py-8 text-center text-sm text-[rgba(244,241,234,0.4)]">
-            <p className="text-3xl mb-3">🏢</p>
+            <p className="text-3xl mb-3"></p>
             No clients yet. Add your first client above.
           </div>
         </Card>

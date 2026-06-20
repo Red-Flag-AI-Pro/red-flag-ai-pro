@@ -11,7 +11,7 @@ export function FlagList({ flags, score }: FlagListProps) {
   if (flags.length === 0) {
     return (
       <div className="rounded-xl border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] p-6 text-center">
-        <p className="text-2xl">✅</p>
+        <p className="text-2xl"></p>
         <p className="mt-2 font-semibold text-green-300">No flags detected</p>
         <p className="text-sm text-green-400">
           This content passed all compliance checks.
@@ -33,7 +33,7 @@ export function FlagList({ flags, score }: FlagListProps) {
       {showActionPlan && (
         <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-[rgba(229,72,77,0.1)] p-5 mb-2">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-lg">🎯</span>
+            <span className="text-lg"></span>
             <p className="text-sm font-bold text-red-800">Priority action plan — fix these first</p>
           </div>
           <div className="space-y-3">
@@ -49,7 +49,7 @@ export function FlagList({ flags, score }: FlagListProps) {
           </div>
           {score < 40 && (
             <p className="mt-3 text-xs font-semibold text-[#ff9b9e] border-t border-[rgba(229,72,77,0.3)] pt-3">
-              ⚠️ Score below 40 — do not publish or spend on ads until high severity flags are resolved.
+               Score below 40 — do not publish or spend on ads until high severity flags are resolved.
             </p>
           )}
         </div>

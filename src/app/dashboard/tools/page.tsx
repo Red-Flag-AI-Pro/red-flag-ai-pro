@@ -123,7 +123,7 @@ function UrgencyValidator() {
   const [checks, setChecks] = useState<Record<string, boolean>>({});
   const toggle = (id: string) => setChecks((c) => ({ ...c, [id]: !c[id] }));
   const score = Object.values(checks).filter(Boolean).length;
-  const verdict = score === 5 ? "✓ Your urgency claim appears legally defensible" : score >= 3 ? "⚠ Partial — resolve the unchecked items before publishing" : "✕ High risk — this urgency claim could trigger regulatory action";
+  const verdict = score === 5 ? "✓ Your urgency claim appears legally defensible" : score >= 3 ? " Partial — resolve the unchecked items before publishing" : "✕ High risk — this urgency claim could trigger regulatory action";
   const color = score === 5 ? "text-green-300" : score >= 3 ? "text-amber-300" : "text-[#ff9b9e]";
   const bg = score === 5 ? "bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.3)]" : score >= 3 ? "bg-[rgba(245,158,11,0.1)] border-[rgba(245,158,11,0.3)]" : "bg-[rgba(229,72,77,0.1)] border-[rgba(229,72,77,0.3)]";
   return (

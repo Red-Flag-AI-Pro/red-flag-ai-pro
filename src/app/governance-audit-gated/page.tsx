@@ -68,7 +68,7 @@ export default function GovernanceAuditGatedPage() {
             padding: '8px 16px',
             marginBottom: '2rem'
           }}>
-            <p style={{ ...syne, fontSize: '11px', fontWeight: 700, color: '#ef4444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>⚠️ Regulatory enforcement active NOW</p>
+            <p style={{ ...syne, fontSize: '11px', fontWeight: 700, color: '#ef4444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Regulatory enforcement active now</p>
           </div>
 
           {/* Main headline — FEAR */}
@@ -108,9 +108,9 @@ export default function GovernanceAuditGatedPage() {
             marginBottom: '3rem'
           }}>
             {[
-              { icon: '⚖️', text: 'Munir v SSHD:\nGovernance you can\'t prove = liability' },
-              { icon: '📅', text: 'EU AI Act:\nEnforcement starts August 2, 2026' },
-              { icon: '💰', text: 'FTC Penalties:\n$53,088 per violation (April 2026+)' },
+              { text: 'Munir v SSHD:\nGovernance you can\'t prove = liability' },
+              { text: 'EU AI Act:\nEnforcement starts August 2, 2026' },
+              { text: 'FTC Penalties:\n$53,088 per violation (April 2026+)' },
             ].map((item) => (
               <div key={item.text} style={{
                 background: 'rgba(229,72,77,0.1)',
@@ -118,7 +118,7 @@ export default function GovernanceAuditGatedPage() {
                 borderRadius: '12px',
                 padding: '2rem',
               }}>
-                <p style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{item.icon}</p>
+                <div style={{ width: '28px', height: '2px', background: '#E5484D', marginBottom: '1rem' }} />
                 <p style={{ ...syne, fontSize: '13px', fontWeight: 700, color: '#ff6b6b', lineHeight: 1.6 }}>{item.text}</p>
               </div>
             ))}

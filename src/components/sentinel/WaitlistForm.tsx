@@ -32,7 +32,7 @@ export function WaitlistForm() {
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-red-500/30 bg-gray-900 p-8 text-center">
-        <div className="text-4xl mb-4">✅</div>
+        <div className="text-4xl mb-4"></div>
         <h3 className="text-xl font-bold text-white mb-2">You&apos;re on the list</h3>
         <p className="text-gray-400 text-sm">
           We&apos;ll be in touch before Sentinel launches in Q3 2026. You&apos;ll get early access and founding pricing.

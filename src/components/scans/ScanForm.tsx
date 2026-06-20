@@ -142,8 +142,8 @@ export function ScanForm({ plan = "free" }: Props) {
 
   const TABS: { id: Tab; label: string }[] = [
     { id: "paste", label: "Paste text" },
-    { id: "url", label: "🌐 Scan URL" },
-    { id: "vsl", label: "🎬 VSL" },
+    { id: "url", label: " Scan URL" },
+    { id: "vsl", label: " VSL" },
     { id: "upload", label: "Upload .txt" },
   ];
 
@@ -211,7 +211,7 @@ export function ScanForm({ plan = "free" }: Props) {
           {/* URL tab - locked for free/pro */}
           {tab === "url" && !canScanUrl && (
             <div className="rounded-xl border border-white/10 bg-[#0A1628] p-8 text-center">
-              <p className="text-3xl mb-3">🌐</p>
+              <p className="text-3xl mb-3"></p>
               <h3 className="text-base font-semibold text-[#F4F1EA]">URL scanning starts on Growth</h3>
               <p className="mt-2 text-sm text-[rgba(244,241,234,0.5)] max-w-sm mx-auto">
                 Paste a URL and we fetch the live page and scan what is actually published. Available on Growth and Sentinel plans.
@@ -249,7 +249,7 @@ export function ScanForm({ plan = "free" }: Props) {
           {/* VSL tab */}
           {tab === "vsl" && !isGrowthOrAbove && (
             <div className="rounded-xl border border-white/10 bg-[#0A1628] p-8 text-center">
-              <p className="text-3xl">🎬</p>
+              <p className="text-3xl"></p>
               <h3 className="mt-3 text-base font-semibold text-[#F4F1EA]">VSL scanning starts on Growth</h3>
               <p className="mt-2 text-sm text-[rgba(244,241,234,0.5)] max-w-sm mx-auto">
                 Growth lets you paste and scan VSL scripts. Sentinel adds YouTube transcript fetching and audio transcription via Whisper.
@@ -329,7 +329,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       if (f) setAudioFile(f);
                     }}
                   >
-                    <p className="text-2xl">🎙️</p>
+                    <p className="text-2xl"></p>
                     <p className="mt-2 text-sm font-medium text-[rgba(244,241,234,0.8)]">
                       {audioFile ? audioFile.name : "Drop audio or video file here, or click to browse"}
                     </p>
@@ -395,7 +395,7 @@ export function ScanForm({ plan = "free" }: Props) {
               className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-white/15 bg-[#0A1628] p-10 text-center hover:border-red-400 hover:bg-[rgba(229,72,77,0.1)] transition-colors cursor-pointer"
               onClick={() => fileRef.current?.click()}
             >
-              <p className="text-2xl">📄</p>
+              <p className="text-2xl"></p>
               <p className="mt-2 text-sm font-medium text-[rgba(244,241,234,0.8)]">
                 Drop a .txt file or click to browse
               </p>

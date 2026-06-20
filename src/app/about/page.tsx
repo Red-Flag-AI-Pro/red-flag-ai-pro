@@ -265,22 +265,22 @@ export default function AboutPage() {
           >
             {[
               {
-                icon: "🔍",
+                icon: "",
                 title: "See Reality",
                 desc: "Assessment shows where governance actually is (not where you hope it is). 6-dimension audit reveals every gap.",
               },
               {
-                icon: "🛤️",
+                icon: "",
                 title: "Know What to Fix",
                 desc: "Strategic roadmap prioritizes gaps by impact. Quick wins in 90 days. Medium-term in 6 months. Transformation in 12.",
               },
               {
-                icon: "🏗️",
+                icon: "",
                 title: "Build Systems",
                 desc: "Manual governance doesn't scale. We build monitoring, enforcement, and audit trails so proof is automatic.",
               },
               {
-                icon: "📋",
+                icon: "",
                 title: "Prove It Happened",
                 desc: "Forensic logs. Evidence packages. Regulatory mapping. When auditors ask 'prove it', you have the answer.",
               },
