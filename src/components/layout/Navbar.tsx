@@ -48,6 +48,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               <Link href="/governance-audit" className="nav-link px-3 py-1.5 text-sm">Assessment</Link>
               <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
+              <Link href="/tools" className="nav-link px-3 py-1.5 text-sm">Tools</Link>
               <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
               <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
               <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Insights</Link>
@@ -102,6 +103,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Free assessment</Link>
                 <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel — managed governance</Link>
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
+                <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
                 <Link href="/case-study" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
                 <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
