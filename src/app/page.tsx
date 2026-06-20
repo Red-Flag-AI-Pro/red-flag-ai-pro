@@ -6,6 +6,7 @@ import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ProveItWidget } from "@/components/marketing/ProveItWidget";
+import { JurisdictionStrip } from "@/components/marketing/JurisdictionStrip";
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro — AI Governance Maturity Assessment & Compliance Proof",
@@ -189,6 +190,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <JurisdictionStrip />
 
       {/* WHO IT'S FOR */}
       <section style={{
