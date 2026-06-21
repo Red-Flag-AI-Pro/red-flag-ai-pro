@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import React from "react";
+import { ResultsGate } from "./ResultsGate";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
@@ -90,6 +91,7 @@ export function AccessibilityChecker() {
       {error && <p style={{ ...syne, fontSize: "13px", color: "#ef4444", marginTop: "1rem" }}>{error}</p>}
 
       {result && (
+        <ResultsGate tool="accessibility-checker" title="Enter your email to see your accessibility score — free, no spam.">
         <div style={{ marginTop: "3rem" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.5rem" }}>Accessibility Score</p>
@@ -127,6 +129,7 @@ export function AccessibilityChecker() {
             </Link>
           </div>
         </div>
+        </ResultsGate>
       )}
     </div>
   );

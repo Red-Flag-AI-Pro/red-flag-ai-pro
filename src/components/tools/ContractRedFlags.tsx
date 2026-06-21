@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import React from "react";
 import { scanContract, type ContractFlag } from "@/lib/contract-red-flags";
+import { ResultsGate } from "./ResultsGate";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
@@ -81,6 +82,7 @@ export function ContractRedFlags() {
       </div>
 
       {flags !== null && (
+        <ResultsGate tool="contract-red-flags" title="Enter your email to see the flagged clauses — free, no spam.">
         <div style={{ marginTop: "3rem" }}>
           {flags.length === 0 ? (
             <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "10px", padding: "2rem", textAlign: "center" }}>
@@ -131,6 +133,7 @@ export function ContractRedFlags() {
             </Link>
           </div>
         </div>
+        </ResultsGate>
       )}
     </div>
   );

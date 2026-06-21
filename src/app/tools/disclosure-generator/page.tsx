@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DisclosureGenerator } from "@/components/tools/DisclosureGenerator";
-import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -52,9 +51,7 @@ export default function DisclosureGeneratorPage() {
       {/* TOOL */}
       <section style={{ padding: "4rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <ToolEmailGate tool="disclosure-generator" title="Unlock the Disclosure Generator">
-            <DisclosureGenerator />
-          </ToolEmailGate>
+          <DisclosureGenerator />
         </div>
       </section>
       <Footer />

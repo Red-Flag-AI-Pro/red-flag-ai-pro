@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContractRedFlags } from "@/components/tools/ContractRedFlags";
-import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -32,9 +31,7 @@ export default function ContractRedFlagsPage() {
 
       <section style={{ padding: "4rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          <ToolEmailGate tool="contract-red-flags" title="Unlock the Contract Red Flags Checker">
-            <ContractRedFlags />
-          </ToolEmailGate>
+          <ContractRedFlags />
         </div>
       </section>
       <Footer />

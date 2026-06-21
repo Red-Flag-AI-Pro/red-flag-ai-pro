@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import React from "react";
+import { ResultsGate } from "./ResultsGate";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
@@ -177,6 +178,7 @@ export function DisclosureGenerator() {
       </div>
 
       {/* Output */}
+      <ResultsGate tool="disclosure-generator" title="Enter your email to see your disclosure wording — free, no spam.">
       <div style={{ marginTop: "1.5rem" }}>
         <div style={{
           background: "#102943",
@@ -222,6 +224,7 @@ export function DisclosureGenerator() {
           </p>
         </div>
       </div>
+      </ResultsGate>
 
       {/* CTA */}
       <div style={{

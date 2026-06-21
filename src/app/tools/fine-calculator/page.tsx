@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FineCalculator } from "@/components/tools/FineCalculator";
-import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -44,9 +43,7 @@ export default function FineCalculatorPage() {
       {/* TOOL */}
       <section style={{ padding: "3rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-          <ToolEmailGate tool="fine-calculator" title="Unlock the Fine Calculator">
-            <FineCalculator />
-          </ToolEmailGate>
+          <FineCalculator />
         </div>
       </section>
       <Footer />

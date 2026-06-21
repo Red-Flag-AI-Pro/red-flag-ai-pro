@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { ResultsGate } from "./ResultsGate";
 
 /**
  * AI Compliance Fine Calculator — public, ungated lead-gen tool.
@@ -196,6 +197,7 @@ export function FineCalculator() {
       </div>
 
       {/* ── Result ── */}
+      <ResultsGate tool="fine-calculator" title="Enter your email to see your maximum regulatory exposure — free, no spam.">
       <div style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "2rem 2rem 1.75rem" }}>
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: "200px" }}>
@@ -248,9 +250,10 @@ export function FineCalculator() {
           <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "13px 26px" }}>
             See exactly where you&apos;re exposed <span className="arrow">→</span>
           </Link>
-          <span className="font-mono-fig" style={{ fontSize: "11px", color: "rgba(244,241,234,0.4)" }}>free · 10 seconds · no signup to see your score</span>
+          <span className="font-mono-fig" style={{ fontSize: "11px", color: "rgba(244,241,234,0.4)" }}>free · 10 seconds</span>
         </div>
       </div>
+      </ResultsGate>
 
       {/* Honest footnote */}
       <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.38)", lineHeight: 1.6, marginTop: "1rem", textAlign: "center" }}>

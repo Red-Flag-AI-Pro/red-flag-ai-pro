@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
@@ -158,7 +157,6 @@ export default function ComplianceChecklistPage() {
         </p>
       </section>
 
-      <ToolEmailGate tool="compliance-checklist" title="Unlock the Compliance Checklist">
       {/* Sticky score bar */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(5,5,5,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "1rem 1.5rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
@@ -238,7 +236,6 @@ export default function ComplianceChecklistPage() {
           ))}
         </div>
       </section>
-      </ToolEmailGate>
 
       {/* CTA block */}
       <section style={{ background: "#0C1929", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
