@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generateScanPdf } from "@/lib/pdf";
+import { logAuditEvent } from "@/lib/audit-log";
 import type { Plan } from "@/types";
 
 export async function GET(
@@ -51,6 +52,7 @@ export async function GET(
     .eq("scan_id", id);
 
   const pdfBytes = await generateScanPdf(scan, flags ?? [], agencyName);
+  await logAuditEvent(user.id, "report_downloaded", { scan_id: id, score: scan.score });
 
   return new Response(Buffer.from(pdfBytes), {
     headers: {

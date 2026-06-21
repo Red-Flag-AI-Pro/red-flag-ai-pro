@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { logAuditEvent } from "@/lib/audit-log";
 
 async function requirePaidUser() {
   const supabase = await createClient();
@@ -56,6 +57,7 @@ export async function POST(request: Request) {
     .single();
 
   if (error) return NextResponse.json({ error: "Failed to add vendor." }, { status: 500 });
+  await logAuditEvent(result.user.id, "vendor_added", { vendor_id: data.id, name: data.name });
   return NextResponse.json({ vendor: data });
 }
 
@@ -81,6 +83,11 @@ export async function PATCH(request: Request) {
     .single();
 
   if (error) return NextResponse.json({ error: "Failed to update vendor." }, { status: 500 });
+  await logAuditEvent(
+    result.user.id,
+    updates.contract_reviewed ? "vendor_reviewed" : "vendor_updated",
+    { vendor_id: data.id, name: data.name }
+  );
   return NextResponse.json({ vendor: data });
 }
 
@@ -99,5 +106,6 @@ export async function DELETE(request: Request) {
     .eq("user_id", result.user.id);
 
   if (error) return NextResponse.json({ error: "Failed to delete vendor." }, { status: 500 });
+  await logAuditEvent(result.user.id, "vendor_removed", { vendor_id: id });
   return NextResponse.json({ ok: true });
 }
