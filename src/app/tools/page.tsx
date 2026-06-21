@@ -66,6 +66,10 @@ export default function ToolsPage() {
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Accessibility Score Checker</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Enter a URL and get an instant score on the accessibility issues most commonly cited in ADA demand letters.</p>
             </Link>
+            <Link href="/tools/shadow-ai-survey" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Shadow AI Risk Survey</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>7 quick questions to score how much AI usage is happening at your company that IT doesn't know about.</p>
+            </Link>
           </div>
         </div>
       </section>
