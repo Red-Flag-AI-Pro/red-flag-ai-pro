@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DisclosureGenerator } from "@/components/tools/DisclosureGenerator";
+import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -37,13 +38,13 @@ export default function DisclosureGeneratorPage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Free Tool — No Signup</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Free Tool</p>
           </div>
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>
             Affiliate &amp; sponsorship<br />disclosure generator
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get FTC- and ASA-compliant wording you can paste straight in — free, no account needed.
+            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get FTC- and ASA-compliant wording you can paste straight in — free.
           </p>
         </div>
       </section>
@@ -51,7 +52,9 @@ export default function DisclosureGeneratorPage() {
       {/* TOOL */}
       <section style={{ padding: "4rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <DisclosureGenerator />
+          <ToolEmailGate tool="disclosure-generator" title="Unlock the Disclosure Generator">
+            <DisclosureGenerator />
+          </ToolEmailGate>
         </div>
       </section>
       <Footer />

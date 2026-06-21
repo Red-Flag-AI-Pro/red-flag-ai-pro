@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
@@ -153,10 +154,11 @@ export default function ComplianceChecklistPage() {
           {total} checkpoints across 9 jurisdictions and 29 risk categories. Tick each one off — or find out what needs fixing before you publish.
         </p>
         <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", maxWidth: "500px", margin: "0 auto" }}>
-          Free to use. No account required. For a full AI-powered scan of your actual copy, use the scanner below.
+          Free to use. For a full AI-powered scan of your actual copy, use the scanner below.
         </p>
       </section>
 
+      <ToolEmailGate tool="compliance-checklist" title="Unlock the Compliance Checklist">
       {/* Sticky score bar */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(5,5,5,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "1rem 1.5rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
@@ -236,6 +238,7 @@ export default function ComplianceChecklistPage() {
           ))}
         </div>
       </section>
+      </ToolEmailGate>
 
       {/* CTA block */}
       <section style={{ background: "#0C1929", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>

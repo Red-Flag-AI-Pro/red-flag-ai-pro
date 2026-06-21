@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FineCalculator } from "@/components/tools/FineCalculator";
+import { ToolEmailGate } from "@/components/tools/ToolEmailGate";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function FineCalculatorPage() {
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
             <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Free tool — no signup</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Free tool</p>
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.015em", lineHeight: 1.12, marginBottom: "1rem" }}>
             What could AI non-compliance <span style={{ fontStyle: "italic", color: "#E5484D" }}>actually cost you?</span>
@@ -43,7 +44,9 @@ export default function FineCalculatorPage() {
       {/* TOOL */}
       <section style={{ padding: "3rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-          <FineCalculator />
+          <ToolEmailGate tool="fine-calculator" title="Unlock the Fine Calculator">
+            <FineCalculator />
+          </ToolEmailGate>
         </div>
       </section>
       <Footer />
