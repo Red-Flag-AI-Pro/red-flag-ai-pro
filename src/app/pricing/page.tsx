@@ -31,7 +31,7 @@ const PRO_FEATURES = [
   "Vendor AI risk tracking & assessments",
   "Monthly compliance dashboard",
   "Policy-to-practice gap detection",
-  "Unlimited reports (PDF + Excel)",
+  "Unlimited PDF reports",
   "Governance evidence package (audit-ready)",
   "Quarterly improvement roadmaps",
   "Email support",
