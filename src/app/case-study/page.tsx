@@ -268,7 +268,7 @@ export default function CaseStudyPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            Sentinel plan includes unlimited scanning, signed PDF certificates, client workspaces and weekly monitoring of live campaigns.
+            Sentinel plan includes unlimited scanning, a tamper-resistant audit trail, client workspaces and weekly monitoring of live campaigns.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
