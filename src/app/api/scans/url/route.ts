@@ -24,10 +24,10 @@ export async function POST(request: Request) {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  // URL scanning is Growth+ only
+  // URL scanning requires the highest tier
   if (plan === "free" || plan === "pro") {
     return NextResponse.json(
-      { error: "URL scanning is available on Growth and Sentinel plans. Upgrade to scan live pages." },
+      { error: "URL scanning is available on Sentinel. Upgrade to scan live pages." },
       { status: 403 }
     );
   }
