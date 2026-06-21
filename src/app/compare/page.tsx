@@ -30,10 +30,9 @@ const COMPARISON = [
   { feature: "Team seats", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "N/A" },
   { feature: "White-label reports", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
-  { feature: "Chrome extension", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
-  { feature: "Video scan summaries", rfp: "✓ Growth & Sentinel", redmarker: "✗", consultant: "✗" },
-  { feature: "Signed PDF certificates", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
-  { feature: "Risk categories covered", rfp: "24 — Sentinel / 16 — Pro", redmarker: "8–12", consultant: "Variable" },
+  { feature: "Video scan summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
+  { feature: "Tamper-resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
+  { feature: "Risk categories covered", rfp: "28 — Sentinel / 20 — Pro", redmarker: "8–12", consultant: "Variable" },
 ];
 
 export default function ComparePage() {

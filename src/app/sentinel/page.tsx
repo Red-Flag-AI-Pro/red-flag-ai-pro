@@ -7,7 +7,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Sentinel — Compliance Infrastructure for Agencies and Regulated Businesses",
   description:
-    "Stop managing compliance in email threads. Sentinel gives agencies a signed, timestamped audit trail for every piece of copy reviewed. Built for the teams where a compliance failure is a regulatory event.",
+    "Stop managing compliance in email threads. Sentinel gives agencies a tamper-resistant, timestamped audit trail for every piece of copy reviewed. Built for the teams where a compliance failure is a regulatory event.",
   alternates: { canonical: "https://www.redflagaipro.com/sentinel" },
 };
 
@@ -17,11 +17,11 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 const BENEFITS = [
   {
     headline: "A complaint lands. You have proof.",
-    body: "Without a record, your agency has no defence. Sentinel logs every review with a legal timestamp and issues a signed certificate. When the regulator or client asks what you checked and when, the answer is instant.",
+    body: "Without a record, your agency has no defence. Sentinel logs every review with a timestamp in a tamper-resistant audit trail and generates a PDF report. When the regulator or client asks what you checked and when, the answer is instant.",
   },
   {
     headline: "Your PI insurer will ask. Now you can answer.",
-    body: "Professional indemnity insurers increasingly require documented compliance processes. A signed audit trail showing you reviewed copy before it published is exactly the kind of evidence they expect.",
+    body: "Professional indemnity insurers increasingly require documented compliance processes. A timestamped audit trail showing you reviewed copy before it published is exactly the kind of evidence they expect.",
   },
   {
     headline: "Compliance that keeps pace with delivery.",
@@ -61,22 +61,22 @@ const WHO = [
   {
     label: "Digital agencies",
     title: "You write copy for clients. Their compliance failure is your liability.",
-    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a signed record proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and auto-monitoring.",
+    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a timestamped, tamper-resistant audit log proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and ongoing monitoring.",
   },
   {
     label: "Legal and compliance teams",
     title: "Your review process lives in inboxes. That is not a system.",
-    description: "Sentinel replaces informal email review with a logged, timestamped, signed process. API access and webhooks let you integrate scanning into your existing workflow. Every certificate is retrievable in seconds.",
+    description: "Sentinel replaces informal email review with a logged, timestamped audit trail. API access and webhooks let you integrate scanning into your existing workflow. Every report is retrievable in seconds.",
   },
   {
     label: "FCA-regulated businesses",
     title: "Financial promotions carry the heaviest penalties in UK advertising law.",
-    description: "Sentinel checks copy against FCA financial promotion rules before publication and issues a signed certificate confirming it was checked. The Chrome extension means your team can scan any page without leaving the browser.",
+    description: "Sentinel checks copy against FCA financial promotion rules before publication and logs a timestamped audit record confirming it was checked.",
   },
   {
     label: "Enterprise marketing teams",
     title: "Multi-jurisdiction campaigns. One failure can shut a campaign in five countries.",
-    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Site audit scans your entire domain in one run. Weekly monitoring flags changes before they become complaints.",
+    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Bulk scan flags risk across every page in one run. Weekly monitoring flags changes before they become complaints.",
   },
 ];
 
@@ -112,7 +112,7 @@ export default function SentinelPage() {
         <div style={{maxWidth: "600px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel — enterprise compliance</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, signed PDF certificates, FCA financial promotions, greenwashing checks and a 3-year audit trail.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks and a tamper-resistant audit trail.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
             <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
@@ -173,7 +173,7 @@ export default function SentinelPage() {
           </p>
 
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, maxWidth: "520px", margin: "0 auto 3.5rem" }}>
-            All 29 risk categories, legally mapped across 9 jurisdictions. Human review logs. Legal timestamps. Signed certificates. Built for the teams where a compliance failure is a regulatory event.
+            All 29 risk categories, legally mapped across 9 jurisdictions. Human review logs. Legal timestamps. Tamper-resistant audit trail. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
@@ -419,7 +419,7 @@ export default function SentinelPage() {
                 {[
                   "Unlimited scans across your whole team",
                   "Every campaign reviewed before it goes live",
-                  "Signed PDF certificate on every review",
+                  "Timestamped audit log + PDF report on every review",
                   "Weekly monitoring of live pages",
                   "The paper trail your PI insurer needs",
                 ].map((b) => (
@@ -476,11 +476,10 @@ export default function SentinelPage() {
                   ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
                   ["Full site audit", "✗", "✓ Up to 50 pages"],
                   ["Weekly auto-monitoring", "✗", "✓ Unlimited URLs"],
-                  ["Chrome extension", "✗", "✓ Included"],
                   ["REST API + webhooks", "✗", "✓ Zapier ready"],
                   ["White-label PDF reports", "✗", "✓ Your branding"],
                   ["Video scan summaries", "✗", "✓ Shareable MP4"],
-                  ["Signed PDF certificates", "✓", "✓"],
+                  ["Tamper-resistant audit trail", "✗", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
                   ["Typical monthly cost", "£2,000 – £10,000", "£5000+"],
                 ].map(([feature, them, us], i) => (

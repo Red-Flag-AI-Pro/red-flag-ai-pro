@@ -29,15 +29,15 @@ export default async function MonitorPage() {
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4"></p>
-            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
+            <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Sentinel plan required</h2>
             <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
-              URL monitoring automatically rescans your live pages every week and flags anything that changes. Growth gets 5 monitored URLs. Sentinel gets unlimited.
+              URL monitoring automatically rescans your live pages every week and flags anything that changes. Sentinel gets unlimited monitored URLs.
             </p>
             <Link
               href="/billing"
               className="inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
             >
-              Upgrade to Growth →
+              Upgrade to Sentinel →
             </Link>
           </div>
         </Card>
