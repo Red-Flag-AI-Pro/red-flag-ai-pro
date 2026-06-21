@@ -75,7 +75,7 @@ export default function GovernanceAuditPage() {
               fontWeight: 700,
               color: 'white',
             }}>
-              25-30 Questions
+              23 Questions
             </h3>
             <p style={{
               fontSize: '0.875rem',
