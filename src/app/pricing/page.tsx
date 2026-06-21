@@ -40,18 +40,18 @@ const PRO_FEATURES = [
 
 const SENTINEL_FEATURES = [
   "Everything in Pro",
-  "Managed governance implementation",
+  "Managed governance implementation (we work it with you)",
   "Automated audit logging & forensic proof",
-  "Real-time output drift detection",
+  "Ongoing governance & vendor monitoring reviews",
   "Financial impact modeling (compliance cost calculator)",
-  "Automated governance enforcement & guardrails",
-  "Board + investor reporting (quarterly decks)",
-  "Regulatory readiness certification",
+  "Governance enforcement support & guardrail design",
+  "Board-ready reporting, built with your team",
+  "Regulatory readiness review",
   "Multi-team governance workflows",
-  "API integrations (vendor mgmt, security, finance systems)",
+  "API access to your scan & assessment data",
   "Dedicated governance advisor (quarterly calls)",
   "White-label reports for client facing",
-  "24/7 priority support",
+  "Priority support",
 ];
 
 export default function PricingPage() {
@@ -325,9 +325,9 @@ export default function PricingPage() {
                     { need: "Monitor governance ongoing", free: "✗", pro: "✓", sentinel: "✓" },
                     { need: "Automated compliance proof", free: "✗", pro: "✓", sentinel: "✓" },
                     { need: "Financial impact modeling", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Board reporting + decks", free: "✗", pro: "✗", sentinel: "✓" },
+                    { need: "Board-ready reporting", free: "✗", pro: "✗", sentinel: "✓" },
                     { need: "Managed implementation", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Regulatory certification", free: "✗", pro: "✗", sentinel: "✓" },
+                    { need: "Regulatory readiness review", free: "✗", pro: "✗", sentinel: "✓" },
                   ].map((row) => (
                     <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
@@ -342,7 +342,7 @@ export default function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            Pro tier: 14-day money-back guarantee. Sentinel: custom contract. All include 24/7 support.
+            Pro tier: 14-day money-back guarantee. Sentinel: custom contract. All plans include priority email support.
           </p>
         </div>
       </section>

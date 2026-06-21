@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Governance Features — Red Flag AI Pro",
   description:
-    "6-dimension governance assessment, strategic roadmap generation, forensic monitoring, vendor risk tracking, regulatory evidence automation, board reporting, and automated governance enforcement.",
+    "6-dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, regulatory evidence packages, board-ready reporting, and managed governance enforcement support.",
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -170,12 +170,12 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Automated Audit Logging",
-                  desc: "Forensic audit trails for every AI decision. Output tracking. Model versioning. Approval chains. Immutable records.",
+                  desc: "Immutable, tamper-resistant audit trail of every governance action — report downloads, vendor reviews, policy changes — stored server-side, never editable by a user.",
                 },
                 {
                   icon: "",
-                  title: "Real-Time Output Drift Detection",
-                  desc: "Monitor for model degradation. Alert on anomalies. Catch policy violations before they're live. Performance tracking.",
+                  title: "Ongoing Governance Monitoring",
+                  desc: "Monthly vendor and governance review reminders. Track drift between policy and practice. Flag gaps before they're tested by a regulator.",
                 },
                 {
                   icon: "",
@@ -184,23 +184,23 @@ export default function FeaturesPage() {
                 },
                 {
                   icon: "",
-                  title: "Automated Governance Enforcement",
-                  desc: "Guardrails enforcement. Policy automation. Unapproved tool blocking. Data flow controls. Automated remediation.",
+                  title: "Governance Enforcement Support",
+                  desc: "We help you design and roll out real guardrails — policy enforcement, tool approval processes, data flow controls — with your team.",
                 },
                 {
                   icon: "",
-                  title: "Quarterly Board Reporting",
-                  desc: "Executive decks. Governance scorecard. Risk trends. Compliance status. Regulatory readiness. Financial impact.",
+                  title: "Board-Ready Reporting",
+                  desc: "Governance scorecard. Risk trends. Compliance status. Built into a report you can take straight into your next board meeting.",
                 },
                 {
                   icon: "",
-                  title: "Regulatory Certification",
-                  desc: "Governance certification mapped to EU AI Act, SEC, GDPR, Munir. Audit-ready evidence package. Compliance badge.",
+                  title: "Regulatory Readiness Review",
+                  desc: "Your governance mapped to EU AI Act, SEC, GDPR, Munir. Audit-ready evidence package showing exactly where you stand against each framework.",
                 },
                 {
                   icon: "",
-                  title: "API Integrations",
-                  desc: "Vendor mgmt systems. Security tools. Finance systems. Custom integrations. Webhook automation.",
+                  title: "API Access",
+                  desc: "Programmatic access to your scan and assessment data — build it into your own vendor management, security or finance workflows.",
                 },
                 {
                   icon: "",

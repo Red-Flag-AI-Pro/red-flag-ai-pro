@@ -19,7 +19,7 @@ const PLANS = [
     key: "enterprise" as const,
     name: "Sentinel",
     price: "£5000+/mo",
-    features: ["Unlimited scans", "Managed implementation", "Automated audit logging", "Output drift detection", "Financial impact modeling", "Governance enforcement", "Board reporting", "Certification", "APIs", "Dedicated advisor"],
+    features: ["Unlimited scans", "Managed implementation", "Automated audit logging", "Ongoing governance monitoring", "Financial impact modeling", "Governance enforcement support", "Board-ready reporting", "Regulatory readiness review", "API access", "Dedicated advisor"],
   },
 ];
 
