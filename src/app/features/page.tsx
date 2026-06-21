@@ -14,6 +14,12 @@ export const metadata: Metadata = {
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
+const RECENT_REGULATORY_UPDATES = [
+  { date: "May 2026", text: "FTC settled with Cox Media Group and two other firms for ~$1M over deceptive claims about an AI-powered marketing service — first major \"AI washing\" settlement of the year." },
+  { date: "May 2026", text: "EU AI Act timeline revised: high-risk system deadlines pushed to Dec 2027 (Annex III) and Aug 2028 (Annex I) — but prohibited-practice and GPAI rules are already enforceable now, with fines up to €35M / 7% of turnover." },
+  { date: "Jan 2026", text: "SEC named AI governance a cross-cutting 2026 exam priority — examiners will test whether firms' AI disclosures and controls match what their systems actually do, and scrutinise \"AI washing\" claims directly." },
+];
+
 export default function FeaturesPage() {
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
@@ -38,6 +44,23 @@ export default function FeaturesPage() {
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
           </p>
+        </div>
+      </section>
+
+      {/* RECENT REGULATORY UPDATES */}
+      <section style={{ padding: "4rem 1.5rem", background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>
+            What we&apos;re tracking
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+            {RECENT_REGULATORY_UPDATES.map((u) => (
+              <div key={u.text} style={{ display: "flex", gap: "1.25rem", background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem 1.5rem" }}>
+                <span style={{ ...mono, fontSize: "11px", fontWeight: 700, color: "#C9A66B", flexShrink: 0, paddingTop: "2px" }}>{u.date}</span>
+                <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>{u.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
