@@ -62,6 +62,10 @@ export default function ToolsPage() {
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Contract Red Flags Checker</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Paste any contract or terms of service and flag risky clauses — auto-renewal traps, uncapped liability, IP grabs.</p>
             </Link>
+            <Link href="/tools/accessibility-checker" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Accessibility Score Checker</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Enter a URL and get an instant score on the accessibility issues most commonly cited in ADA demand letters.</p>
+            </Link>
           </div>
         </div>
       </section>

@@ -21,6 +21,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Compliance Checklist", href: "/tools/compliance-checklist" },
       { label: "Disclosure Generator", href: "/tools/disclosure-generator" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
+      { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
       { label: "All tools", href: "/tools" },
     ],
   },
