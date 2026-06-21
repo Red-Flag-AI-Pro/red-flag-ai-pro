@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -343,6 +344,9 @@ export default function PricingPage() {
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
             Pro tier: 14-day money-back guarantee. Sentinel: custom contract. All plans include priority email support.
+          </p>
+          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
+            Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
           </p>
         </div>
       </section>

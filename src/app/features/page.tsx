@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Governance Features — Red Flag AI Pro",
@@ -31,8 +32,11 @@ export default function FeaturesPage() {
           <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Every tool you need to prove governance.
           </h1>
-          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", lineHeight: 1.7 }}>
             From assessment to implementation to forensic proof. Governance infrastructure built for CFOs, compliance teams, and regulated enterprises.
+          </p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+            Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
           </p>
         </div>
       </section>
