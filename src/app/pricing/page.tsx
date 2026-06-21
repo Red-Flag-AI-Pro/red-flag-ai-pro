@@ -347,6 +347,47 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* HOW WE COMPARE */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>How we compare</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
+              The same outcome,<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>a fraction of the cost.</span>
+            </h2>
+          </div>
+
+          <div style={{ overflowX: "auto", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", background: "#0D1B2E" }}>
+              <thead>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <th style={{ ...syne, padding: "1.25rem 1.5rem", textAlign: "left", fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Platform</th>
+                  <th style={{ ...syne, padding: "1.25rem 1.5rem", textAlign: "right", fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Typical annual cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { name: "Legacy enterprise GRC (ServiceNow, AuditBoard, MetricStream)", cost: "£200,000 – £790,000+", highlight: false },
+                  { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 – £160,000", highlight: false },
+                  { name: "Credo AI", cost: "£24,000 – £120,000", highlight: false },
+                  { name: "Red Flag AI Pro — Sentinel", cost: "£60,000", highlight: true },
+                  { name: "Red Flag AI Pro — Pro", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro — Assessment", cost: "Free", highlight: true },
+                ].map((row) => (
+                  <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>
+                    <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", color: row.highlight ? "#F4F1EA" : "rgba(255,255,255,0.55)", fontWeight: row.highlight ? 700 : 400 }}>{row.name}</td>
+                    <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "right", color: row.highlight ? "#ff9b9e" : "rgba(255,255,255,0.5)", fontWeight: row.highlight ? 700 : 400 }}>{row.cost}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1.5rem" }}>
+            Competitor figures from published 2026 market research (Credo AI, OneTrust, legacy GRC vendor pricing reports). Most platforms quote custom enterprise pricing — figures shown are typical ranges, not list prices.
+          </p>
+        </div>
+      </section>
+
       {/* BUILD VS BUY */}
       <section style={{ padding: "6rem 1.5rem", background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
