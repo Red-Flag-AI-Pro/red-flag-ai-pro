@@ -16,7 +16,7 @@ const FRAMEWORKS = [
 const ASSURANCES = [
   "Audit-ready evidence on every assessment",
   "Your data is never stored or sold",
-  "Built by compliance specialists, not a generic tool",
+  "Mapped to real regulatory frameworks, not generic checklists",
 ];
 
 /**
