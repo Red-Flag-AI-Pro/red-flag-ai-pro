@@ -23,6 +23,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
       { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
       { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
+      { label: "URL Exposure Checker", href: "/tools/url-exposure-checker" },
+      { label: "AI Visibility Checker", href: "/tools/ai-visibility-checker" },
       { label: "All tools", href: "/tools" },
     ],
   },
