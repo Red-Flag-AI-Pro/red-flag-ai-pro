@@ -9,7 +9,19 @@ import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const START_ITEMS = [
+  'Your Governance Maturity Index — scored across all 6 dimensions',
+  'Your 3–5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
+  'A prioritised 90-day → 12-month remediation roadmap',
+  'A board-ready PDF you can take straight to your next meeting',
+];
+
 export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } = {}) {
+  const [capturedEmail, setCapturedEmail] = useState(initialEmail ?? '');
+  const [startEmailInput, setStartEmailInput] = useState('');
+  const [startError, setStartError] = useState('');
   const [answers, setAnswers] = useState<Answer[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<GovernanceQuizResponse | null>(null);
@@ -17,7 +29,6 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
   const [isDownloading, setIsDownloading] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
 
-  // Score (server-side) and reveal the full report
   const submitToApi = async (finalAnswers: Answer[], emailToUse: string) => {
     setIsLoading(true);
     setError('');
@@ -49,42 +60,43 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     }
   };
 
-  // Quiz finished — score and show results immediately, no email wall.
-  // The detailed gap analysis / PDF report stays gated inside GovernanceAuditResults.
+  const handleStartSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!EMAIL_REGEX.test(startEmailInput.trim())) {
+      setStartError('Please enter a valid work email address.');
+      return;
+    }
+    setStartError('');
+    setCapturedEmail(startEmailInput.trim());
+  };
+
   const handleQuizComplete = (finalAnswers: Answer[]) => {
     setAnswers(finalAnswers);
     setError('');
-    submitToApi(finalAnswers, initialEmail ?? '');
+    submitToApi(finalAnswers, capturedEmail);
   };
 
   const handleDownloadReport = async () => {
     if (!results) return;
-    // ResultsGate captures the email into localStorage once unlocked — pick it up
-    // here so the PDF/send-email still reach the person who unlocked the results.
-    const unlockedEmail =
-      (typeof window !== 'undefined' && window.localStorage.getItem('rfap_tool_lead_governance-audit')) || results.email;
-    const reportData = { ...results, email: unlockedEmail };
     try {
       setIsDownloading(true);
-      const pdfBytes = await generateGovernanceAuditPDF(reportData);
+      const pdfBytes = await generateGovernanceAuditPDF(results);
       const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `governance-assessment-${unlockedEmail || 'report'}-${new Date().toISOString().split('T')[0]}.pdf`;
+      link.download = `governance-assessment-${results.email}-${new Date().toISOString().split('T')[0]}.pdf`;
       link.click();
       window.URL.revokeObjectURL(url);
 
-      if (unlockedEmail) {
-        try {
-          await fetch('/api/governance-audit/send-email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ response: reportData }),
-          });
-        } catch (emailError) {
-          console.error('Failed to send email:', emailError);
-        }
+      try {
+        await fetch('/api/governance-audit/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ response: results }),
+        });
+      } catch (emailError) {
+        console.error('Failed to send email:', emailError);
       }
     } catch (err) {
       console.error('Failed to download report:', err);
@@ -98,7 +110,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     window.location.href = '/pricing';
   };
 
-  // ── Results — score shown immediately; detailed gaps + PDF gated below ─────
+  // ── Full results (email was already captured before the quiz started) ─────
   if (results) {
     return (
       <>
@@ -126,13 +138,84 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     );
   }
 
-  // ── Quiz (no upfront email) ────────────────────────────────────────────────
+  // ── Quiz (only once an email has been captured) ────────────────────────────
+  if (capturedEmail) {
+    return (
+      <>
+        <GovernanceAuditForm onComplete={handleQuizComplete} />
+        {error && (
+          <p style={{ ...syne, fontSize: '13px', color: '#ff6b6b', textAlign: 'center', marginTop: '1rem' }}>{error}</p>
+        )}
+      </>
+    );
+  }
+
+  // ── Email gate (shown BEFORE the quiz starts) ───────────────────────────────
   return (
-    <>
-      <GovernanceAuditForm onComplete={handleQuizComplete} />
-      {error && (
-        <p style={{ ...syne, fontSize: '13px', color: '#ff6b6b', textAlign: 'center', marginTop: '1rem' }}>{error}</p>
-      )}
-    </>
+    <div className="max-w-lg mx-auto">
+      <div
+        style={{
+          background: 'var(--navy-raised, #102943)',
+          border: '1px solid rgba(229,72,77,0.25)',
+          borderRadius: '12px',
+          padding: '2.5rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
+          <span style={{ width: '28px', height: '2px', background: '#E5484D' }} />
+          <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.6)' }}>
+            Start your assessment
+          </p>
+        </div>
+
+        <h2 className="font-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.1rem)', fontWeight: 500, color: '#F4F1EA', lineHeight: 1.15, marginBottom: '0.85rem' }}>
+          Enter your work email to begin.
+        </h2>
+        <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
+          Takes 5 minutes. You&apos;ll get:
+        </p>
+
+        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem' }}>
+          {START_ITEMS.map((item) => (
+            <li key={item} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '0.7rem' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0, marginTop: '2px' }}>
+                <path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span style={{ ...syne, fontSize: '0.9rem', color: 'rgba(244,241,234,0.75)', lineHeight: 1.5 }}>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <form onSubmit={handleStartSubmit}>
+          <label htmlFor="start-email" style={{ ...syne, display: 'block', fontSize: '12px', fontWeight: 600, color: 'rgba(244,241,234,0.6)', marginBottom: '8px' }}>
+            Work email
+          </label>
+          <input
+            id="start-email"
+            type="email"
+            value={startEmailInput}
+            onChange={(e) => { setStartEmailInput(e.target.value); setStartError(''); }}
+            placeholder="you@company.com"
+            style={{
+              width: '100%', boxSizing: 'border-box',
+              background: '#0A1628', border: '1px solid rgba(255,255,255,0.18)',
+              borderRadius: '6px', color: '#F4F1EA', ...syne, fontSize: '14px',
+              padding: '12px 14px', marginBottom: '1rem', outline: 'none',
+            }}
+          />
+          <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.95rem', padding: '14px' }}>
+            Start assessment <span className="arrow">→</span>
+          </button>
+        </form>
+
+        {startError && (
+          <p style={{ ...syne, fontSize: '12px', color: '#ff6b6b', marginTop: '0.85rem' }}>{startError}</p>
+        )}
+
+        <p style={{ ...syne, fontSize: '11px', color: 'rgba(244,241,234,0.4)', marginTop: '1rem', lineHeight: 1.5 }}>
+          Your data is never stored for marketing or sold. One assessment per email.
+        </p>
+      </div>
+    </div>
   );
 }
