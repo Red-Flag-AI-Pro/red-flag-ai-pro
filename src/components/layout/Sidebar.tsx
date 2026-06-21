@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: "/history", label: "Scan History", icon: "☰" },
   { href: "/bulk", label: "Site Audit", icon: "▦" },
   { href: "/clients", label: "Clients", icon: "▢" },
+  { href: "/vendors", label: "Vendor Tracker", icon: "◎" },
   { href: "/monitor", label: "Monitoring", icon: "◉" },
   { href: "/team", label: "Team", icon: "⬡" },
   { href: "/billing", label: "Billing", icon: "◈" },
