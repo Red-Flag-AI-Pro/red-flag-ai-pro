@@ -58,6 +58,10 @@ export default function ToolsPage() {
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>AI Compliance Fine Calculator</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 9 jurisdictions — in 10 seconds.</p>
             </Link>
+            <Link href="/tools/contract-red-flags" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Contract Red Flags Checker</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Paste any contract or terms of service and flag risky clauses — auto-renewal traps, uncapped liability, IP grabs.</p>
+            </Link>
           </div>
         </div>
       </section>
