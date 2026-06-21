@@ -2,6 +2,7 @@
 
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { ResultsGate } from '@/components/tools/ResultsGate';
 import {
   GOVERNANCE_DIMENSIONS,
   PEER_BENCHMARK,
@@ -155,9 +156,10 @@ export function GovernanceAuditResults({
       </div>
 
       {/* ============================================================
-          RED FLAGS (TOP 3-5)
+          GATED: detailed gap analysis, PDF report, CTAs
           ============================================================ */}
-
+      <ResultsGate tool="governance-audit" title="Enter your email to see your detailed gap analysis and download your board-ready PDF report.">
+      <>
       {response.redFlags.length > 0 && (
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-white">
@@ -338,6 +340,8 @@ export function GovernanceAuditResults({
           </div>
         </div>
       </div>
+      </>
+      </ResultsGate>
 
       {/* ============================================================
           FOOTER

@@ -22,27 +22,31 @@ export async function POST(request: Request) {
     };
 
     const { email, answers } = body;
+    const trimmedEmail = (email ?? '').trim();
 
-    // Validate inputs
-    if (!email || !answers || answers.length === 0) {
+    // Validate inputs — email is optional (free score preview); answers are required.
+    if (!answers || answers.length === 0) {
       return Response.json(
-        { error: 'Missing email or answers' },
+        { error: 'Missing answers' },
         { status: 400 }
       );
     }
 
-    // Check if email already submitted (prevent duplicate submissions)
-    const { data: existing } = await supabase
-      .from('governance_audit_emails')
-      .select('id')
-      .eq('email', email.toLowerCase())
-      .single();
+    // Only enforce one-assessment-per-email and persist a lead once an email is actually provided
+    // (i.e. once the visitor unlocks the detailed gap analysis / PDF report).
+    if (trimmedEmail) {
+      const { data: existing } = await supabase
+        .from('governance_audit_emails')
+        .select('id')
+        .eq('email', trimmedEmail.toLowerCase())
+        .single();
 
-    if (existing) {
-      return Response.json(
-        { error: 'Already submitted' },
-        { status: 409 }
-      );
+      if (existing) {
+        return Response.json(
+          { error: 'Already submitted' },
+          { status: 409 }
+        );
+      }
     }
 
     // ============================================================
@@ -56,28 +60,30 @@ export async function POST(request: Request) {
     const roadmap = generateRoadmap(dimensionScores, redFlags);
 
     // ============================================================
-    // STORE IN SUPABASE
+    // STORE IN SUPABASE (lead capture — only once an email is provided)
     // ============================================================
 
-    const { error: insertError } = await supabase
-      .from('governance_audit_emails')
-      .insert({
-        email: email.toLowerCase(),
-        score: overallScore,
-        risk_level: riskLevel,
-        dimension_scores: dimensionScores,
-        red_flags: redFlags,
-        roadmap: roadmap,
-        answers: answers,
-        created_at: new Date().toISOString(),
-      });
+    if (trimmedEmail) {
+      const { error: insertError } = await supabase
+        .from('governance_audit_emails')
+        .insert({
+          email: trimmedEmail.toLowerCase(),
+          score: overallScore,
+          risk_level: riskLevel,
+          dimension_scores: dimensionScores,
+          red_flags: redFlags,
+          roadmap: roadmap,
+          answers: answers,
+          created_at: new Date().toISOString(),
+        });
 
-    if (insertError) {
-      console.error('Supabase insert error:', insertError);
-      return Response.json(
-        { error: 'Failed to save results' },
-        { status: 500 }
-      );
+      if (insertError) {
+        console.error('Supabase insert error:', insertError);
+        return Response.json(
+          { error: 'Failed to save results' },
+          { status: 500 }
+        );
+      }
     }
 
     // ============================================================
@@ -85,7 +91,7 @@ export async function POST(request: Request) {
     // ============================================================
 
     const response: GovernanceQuizResponse = {
-      email,
+      email: trimmedEmail,
       answers,
       dimensionScores,
       overallScore,

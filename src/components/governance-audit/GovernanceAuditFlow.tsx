@@ -9,20 +9,8 @@ import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
-// What entering an email unlocks — framed as the deliverable, not a "signup".
-const UNLOCK_ITEMS = [
-  'Your Governance Maturity Index — your score across all 6 dimensions',
-  'Your 3–5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
-  'A prioritised 90-day → 12-month remediation roadmap',
-  'Peer benchmarking against your industry',
-  'A board-ready PDF you can take straight to your next meeting',
-];
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } = {}) {
   const [answers, setAnswers] = useState<Answer[] | null>(null);
-  const [email, setEmail] = useState(initialEmail ?? '');
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<GovernanceQuizResponse | null>(null);
   const [error, setError] = useState('');
@@ -61,48 +49,42 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     }
   };
 
-  // Quiz finished — if email was already captured upstream, score immediately;
-  // otherwise show the unlock gate (email AFTER effort).
+  // Quiz finished — score and show results immediately, no email wall.
+  // The detailed gap analysis / PDF report stays gated inside GovernanceAuditResults.
   const handleQuizComplete = (finalAnswers: Answer[]) => {
     setAnswers(finalAnswers);
     setError('');
-    if (initialEmail && EMAIL_REGEX.test(initialEmail.trim())) {
-      submitToApi(finalAnswers, initialEmail);
-    }
-  };
-
-  // Email submitted at the gate
-  const handleUnlock = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!EMAIL_REGEX.test(email.trim())) {
-      setError('Please enter a valid work email address.');
-      return;
-    }
-    if (!answers) return;
-    await submitToApi(answers, email);
+    submitToApi(finalAnswers, initialEmail ?? '');
   };
 
   const handleDownloadReport = async () => {
     if (!results) return;
+    // ResultsGate captures the email into localStorage once unlocked — pick it up
+    // here so the PDF/send-email still reach the person who unlocked the results.
+    const unlockedEmail =
+      (typeof window !== 'undefined' && window.localStorage.getItem('rfap_tool_lead_governance-audit')) || results.email;
+    const reportData = { ...results, email: unlockedEmail };
     try {
       setIsDownloading(true);
-      const pdfBytes = await generateGovernanceAuditPDF(results);
+      const pdfBytes = await generateGovernanceAuditPDF(reportData);
       const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `governance-assessment-${results.email}-${new Date().toISOString().split('T')[0]}.pdf`;
+      link.download = `governance-assessment-${unlockedEmail || 'report'}-${new Date().toISOString().split('T')[0]}.pdf`;
       link.click();
       window.URL.revokeObjectURL(url);
 
-      try {
-        await fetch('/api/governance-audit/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ response: results }),
-        });
-      } catch (emailError) {
-        console.error('Failed to send email:', emailError);
+      if (unlockedEmail) {
+        try {
+          await fetch('/api/governance-audit/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ response: reportData }),
+          });
+        } catch (emailError) {
+          console.error('Failed to send email:', emailError);
+        }
       }
     } catch (err) {
       console.error('Failed to download report:', err);
@@ -116,7 +98,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     window.location.href = '/pricing';
   };
 
-  // ── Full results ──────────────────────────────────────────────────────────
+  // ── Results — score shown immediately; detailed gaps + PDF gated below ─────
   if (results) {
     return (
       <>
@@ -136,78 +118,21 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     );
   }
 
-  // ── Unlock gate (shown AFTER the quiz is complete) ─────────────────────────
-  if (answers) {
+  if (isLoading) {
     return (
-      <div className="max-w-lg mx-auto">
-        <div
-          style={{
-            background: 'var(--navy-raised, #102943)',
-            border: '1px solid rgba(229,72,77,0.25)',
-            borderRadius: '12px',
-            padding: '2.5rem',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
-            <span style={{ width: '28px', height: '2px', background: '#E5484D' }} />
-            <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.6)' }}>
-              Assessment complete
-            </p>
-          </div>
-
-          <h2 className="font-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.1rem)', fontWeight: 500, color: '#F4F1EA', lineHeight: 1.15, marginBottom: '0.85rem' }}>
-            Your Governance Maturity Index is ready.
-          </h2>
-          <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-            Enter your work email to reveal your results and receive your board-ready PDF.
-          </p>
-
-          <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem' }}>
-            {UNLOCK_ITEMS.map((item) => (
-              <li key={item} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '0.7rem' }}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0, marginTop: '2px' }}>
-                  <path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span style={{ ...syne, fontSize: '0.9rem', color: 'rgba(244,241,234,0.75)', lineHeight: 1.5 }}>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <form onSubmit={handleUnlock}>
-            <label htmlFor="unlock-email" style={{ ...syne, display: 'block', fontSize: '12px', fontWeight: 600, color: 'rgba(244,241,234,0.6)', marginBottom: '8px' }}>
-              Work email
-            </label>
-            <input
-              id="unlock-email"
-              type="email"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); setError(''); }}
-              placeholder="you@company.com"
-              disabled={isLoading}
-              style={{
-                width: '100%', boxSizing: 'border-box',
-                background: '#0A1628', border: '1px solid rgba(255,255,255,0.18)',
-                borderRadius: '6px', color: '#F4F1EA', ...syne, fontSize: '14px',
-                padding: '12px 14px', marginBottom: '1rem', outline: 'none',
-              }}
-            />
-            <button type="submit" className="btn-primary" disabled={isLoading} style={{ width: '100%', justifyContent: 'center', fontSize: '0.95rem', padding: '14px' }}>
-              {isLoading ? 'Generating your report…' : <>Reveal my results <span className="arrow">→</span></>}
-            </button>
-          </form>
-
-          {error && (
-            <p style={{ ...syne, fontSize: '12px', color: '#ff6b6b', marginTop: '0.85rem' }}>{error}</p>
-          )}
-
-          <p style={{ ...syne, fontSize: '11px', color: 'rgba(244,241,234,0.4)', marginTop: '1rem', lineHeight: 1.5 }}>
-            Your data is never stored for marketing or sold. One assessment per email.
-          </p>
-        </div>
+      <div style={{ textAlign: 'center', padding: '4rem 1.5rem' }}>
+        <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)' }}>Scoring your assessment…</p>
       </div>
     );
   }
 
   // ── Quiz (no upfront email) ────────────────────────────────────────────────
-  return <GovernanceAuditForm onComplete={handleQuizComplete} />;
+  return (
+    <>
+      <GovernanceAuditForm onComplete={handleQuizComplete} />
+      {error && (
+        <p style={{ ...syne, fontSize: '13px', color: '#ff6b6b', textAlign: 'center', marginTop: '1rem' }}>{error}</p>
+      )}
+    </>
+  );
 }
