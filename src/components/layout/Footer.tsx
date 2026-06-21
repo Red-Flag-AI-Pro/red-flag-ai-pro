@@ -22,7 +22,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Disclosure Generator", href: "/tools/disclosure-generator" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
       { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
-      { label: "Shadow AI Survey", href: "/tools/shadow-ai-survey" },
+      { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
       { label: "All tools", href: "/tools" },
     ],
   },
