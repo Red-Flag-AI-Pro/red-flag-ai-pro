@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Done-For-You Compliance Audit — Red Flag AI Pro",
+  title: "Done For You Compliance Audit: Red Flag AI Pro",
   description:
     "I'll personally run your site through Red Flag AI Pro, record a video walkthrough of every flag, and send you a complete report with a reviewed badge. One-time. No subscription.",
   alternates: { canonical: "https://www.redflagaipro.com/audit" },
@@ -19,7 +19,7 @@ const TICKER_ITEMS = [
   "Video Walkthrough",
   "PDF Report",
   "Reviewed Badge",
-  "48-Hour Delivery",
+  "48 Hour Delivery",
   "29 Risk Categories",
   "9 Jurisdictions",
   "Plain English",
@@ -33,22 +33,22 @@ const INCLUDES = [
   {
     num: "01",
     headline: "Full site scan",
-    body: "Every page on your funnel — sales pages, VSLs, email sequences — run through all 29 risk categories, across all 9 jurisdictions.",
+    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 29 risk categories, across all 9 jurisdictions.",
   },
   {
     num: "02",
     headline: "Personal video walkthrough",
-    body: "A recorded screen-share where I go through each flag, explain exactly what it means, why it is risky, and what to change — in plain English, no legal jargon.",
+    body: "A recorded screen share where I go through each flag, explain exactly what it means, why it is risky, and what to change. In plain English, no legal jargon.",
   },
   {
     num: "03",
     headline: "Written PDF report",
-    body: "Every flag, every category triggered (FTC, ASA, CMA, GDPR, and the rest), and the compliant rewrite for each — yours to keep, share, or hand to a lawyer.",
+    body: "Every flag, every category triggered (FTC, ASA, CMA, GDPR, and the rest), and the compliant rewrite for each. Yours to keep, share, or hand to a lawyer.",
   },
   {
     num: "04",
     headline: "Reviewed badge",
-    body: "An embeddable badge for your site showing it has been through a full Red Flag AI Pro review — the same trust signal agencies use with their clients.",
+    body: "An embeddable badge for your site showing it has been through a full Red Flag AI Pro review. The same trust signal agencies use with their clients.",
   },
 ];
 
@@ -61,31 +61,31 @@ const STEPS = [
   {
     num: "02",
     title: "I run the scan and review every flag personally",
-    body: "Using the same engine behind Red Flag AI Pro, plus my own pass through the results so nothing gets missed and nothing gets over-explained.",
+    body: "Using the same engine behind Red Flag AI Pro, plus my own pass through the results so nothing gets missed and nothing gets over explained.",
   },
   {
     num: "03",
     title: "You get the full package within 48 hours",
-    body: "Video, PDF, badge — ready to act on immediately. No dashboard, no login, no learning curve.",
+    body: "Video, PDF, badge: ready to act on immediately. No dashboard, no login, no learning curve.",
   },
 ];
 
 const FAQS = [
   {
     q: "Do I need to know anything about compliance to use this?",
-    a: "No. That is the entire point — I do the reading, you get the plain-English version with exactly what to fix.",
+    a: "No. That is the entire point. I do the reading, you get the plain English version with exactly what to fix.",
   },
   {
     q: "Is this the same as the Pro subscription?",
-    a: "No. Pro is the self-serve tool — you run your own scans whenever you want. This is a one-time, fully done-for-you service: I run it, explain it, and package it for you.",
+    a: "No. Pro is the self serve tool, you run your own scans whenever you want. This is a one time, fully done for you service: I run it, explain it, and package it for you.",
   },
   {
     q: "What if my site comes back clean?",
-    a: "Then you get the full report and badge showing it — proof you can use with clients, partners, or just for your own peace of mind.",
+    a: "Then you get the full report and badge showing it. Proof you can use with clients, partners, or just for your own peace of mind.",
   },
   {
     q: "Is this legal advice?",
-    a: "No. This audit is generated using Red Flag AI Pro's compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns — for regulated industries always confirm with a qualified professional.",
+    a: "No. This audit is generated using Red Flag AI Pro's compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns. For regulated industries always confirm with a qualified professional.",
   },
   {
     q: "How do I pay?",
@@ -144,7 +144,7 @@ export default function AuditPage() {
           </h1>
 
           <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem" }}>
-            No dashboard. No learning curve. No guessing what the flags mean. I scan your full funnel myself, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge — in 48 hours.
+            No dashboard. No learning curve. No guessing what the flags mean. I scan your full funnel myself, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, in 48 hours.
           </p>
 
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
@@ -156,7 +156,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit — £97
+              Get my audit: £97
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
@@ -171,7 +171,7 @@ export default function AuditPage() {
           </div>
 
           <p className="animate-fade-up delay-4" style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.02em" }}>
-            One-time payment · No subscription · Delivered within 48 hours
+            One time payment · No subscription · Delivered within 48 hours
           </p>
         </div>
       </section>
@@ -210,7 +210,7 @@ export default function AuditPage() {
             <span>You just need to know what&apos;s wrong.</span>
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.9 }}>
-            You are running ads, building funnels, writing copy. Compliance is the thing you know matters and never quite get round to checking properly. Meanwhile the fines, the takedowns, and the new AI-exclusion clauses turning up on insurance renewals are real and moving faster than most people realise. So instead of handing you a tool and a login, I will do it with you. Personally.
+            You are running ads, building funnels, writing copy. Compliance is the thing you know matters and never quite get round to checking properly. Meanwhile the fines, the takedowns, and the new AI exclusion clauses turning up on insurance renewals are real and moving faster than most people realise. So instead of handing you a tool and a login, I will do it with you. Personally.
           </p>
         </div>
       </section>
@@ -344,8 +344,8 @@ export default function AuditPage() {
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
               <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£97</p>
-              <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one-time · 48 hours</p>
-              <a href="mailto:support@redflagaipro.com?subject=Done-For-You Audit" style={{
+              <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · 48 hours</p>
+              <a href="mailto:support@redflagaipro.com?subject=Done For You Audit" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.8rem", fontWeight: 700,
@@ -367,7 +367,7 @@ export default function AuditPage() {
       {/* ── DISCLAIMER NOTE ── */}
       <div style={{ padding: "2rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.9, textAlign: "center", maxWidth: "660px", margin: "0 auto" }}>
-          This audit is generated using Red Flag AI Pro&apos;s compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns — it is not a substitute for legal advice. For regulated industries (financial promotions, health claims, and similar) always confirm with a qualified professional.
+          This audit is generated using Red Flag AI Pro&apos;s compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns. It is not a substitute for legal advice. For regulated industries (financial promotions, health claims, and similar) always confirm with a qualified professional.
         </p>
       </div>
 
@@ -400,7 +400,7 @@ export default function AuditPage() {
             <span>or find out before it costs you.</span>
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2.25rem" }}>
-            Either way, you will have a clear picture of exactly where you stand — on video, in writing, with a badge to show for it.
+            Either way, you will have a clear picture of exactly where you stand: on video, in writing, with a badge to show for it.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
@@ -412,7 +412,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit — £97
+              Get my audit: £97
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
