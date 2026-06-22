@@ -268,7 +268,7 @@ export default function CaseStudyPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            Sentinel plan includes unlimited scanning, a tamper resistant audit trail, client workspaces and weekly monitoring of live campaigns.
+            Sentinel plan includes unlimited scanning, a tamper resistant audit trail, client workspaces and weekly monitoring of live campaigns. If you're a CFO or compliance lead rather than an agency, the same audit trail thinking applies to AI governance.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
@@ -281,7 +281,7 @@ export default function CaseStudyPage() {
             }}>
               See Sentinel for agencies
             </Link>
-            <a href="/#demo" style={{
+            <a href="/#scanner" style={{
               display: "inline-block",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "rgba(255,255,255,0.5)",
@@ -291,6 +291,16 @@ export default function CaseStudyPage() {
             }}>
               Try a free scan
             </a>
+            <Link href="/governance-audit" style={{
+              display: "inline-block",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.5)",
+              ...syne, fontSize: "0.875rem", fontWeight: 600,
+              padding: "13px 28px", borderRadius: "9999px",
+              textDecoration: "none"
+            }}>
+              Free governance assessment
+            </Link>
           </div>
         </div>
       </section>

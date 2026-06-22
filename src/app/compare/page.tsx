@@ -32,7 +32,7 @@ const COMPARISON = [
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "Video scan summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
   { feature: "Tamper resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
-  { feature: "Risk categories covered", rfp: "28 (Sentinel) / 20 (Pro)", redmarker: "8 to 12", consultant: "Variable" },
+  { feature: "Risk categories covered", rfp: "29 (Sentinel) / 20 (Growth) / 16 (Pro)", redmarker: "8 to 12", consultant: "Variable" },
 ];
 
 export default function ComparePage() {
@@ -148,11 +148,14 @@ export default function ComparePage() {
           <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Try it free. No account needed.
           </h2>
-          <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "2.5rem" }}>
+          <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>
             Paste any marketing copy and see what we find. 60 seconds.
           </p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem" }}>
+            Comparing us against AI governance platforms like OneTrust or Credo AI instead? See the <Link href="/pricing" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>governance pricing comparison</Link>.
+          </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/#demo" style={{
+            <a href="/#scanner" style={{
               display: "inline-block",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.875rem", fontWeight: 700,

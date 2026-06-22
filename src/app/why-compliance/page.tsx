@@ -4,8 +4,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Why Compliance Matters: Red Flag AI Pro",
-  description: "Real fines. Real losses. $6 billion in marketing compliance penalties in three years. See what non compliant marketing costs sellers and buyers, and what AI liability means from 2026.",
+  title: "Why Compliance and Governance Matter: Red Flag AI Pro",
+  description: "Real fines. Real losses. $6 billion in marketing compliance penalties in three years, plus what unproven AI governance costs when a regulator or board asks. See what it costs sellers, buyers, and CFOs to get this wrong.",
   alternates: { canonical: "https://www.redflagaipro.com/why-compliance" },
 };
 
@@ -47,7 +47,7 @@ export default function WhyCompliancePage() {
           $6 billion in marketing compliance fines globally in the last three years. Same illegal copy: sellers face regulators, buyers lose money.
         </p>
         <p style={{ ...mono, fontSize: "3rem", fontWeight: 800, color: "#ef4444", marginBottom: "3rem" }}>$6B+</p>
-        <Link href="/#demo" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
+        <Link href="/#scanner" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
           Scan your copy free
         </Link>
       </section>
@@ -117,6 +117,23 @@ export default function WhyCompliancePage() {
                 <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{item.body}</p>
               </div>
             ))}
+          </div>
+          <div style={{
+            marginTop: "1px",
+            background: "rgba(229,72,77,0.06)",
+            border: "1px solid rgba(229,72,77,0.25)",
+            padding: "2.5rem",
+            textAlign: "center",
+          }}>
+            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem", lineHeight: 1.6 }}>
+              The same question sits behind every fine on this page: can you prove what you checked, and when?
+            </p>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem", lineHeight: 1.7 }}>
+              That is the broader AI governance question CFOs and boards are now being asked directly. Take the free 5 minute Governance Maturity Index to see where your organisation stands.
+            </p>
+            <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "1px solid rgba(255,255,255,0.25)", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", textDecoration: "none" }}>
+              Take the free governance assessment
+            </Link>
           </div>
         </div>
       </section>
