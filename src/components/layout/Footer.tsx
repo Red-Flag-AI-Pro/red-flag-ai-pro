@@ -33,7 +33,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "About", href: "/about" },
       { label: "Insights", href: "/blog" },
-      { label: "Partners — earn 15%", href: "/affiliates" },
+      { label: "Partners: earn 15%", href: "/affiliates" },
       { label: "Why compliance", href: "/why-compliance" },
     ],
   },
@@ -59,7 +59,7 @@ export function Footer() {
               <Image src="/redflag-logo-full.png" alt="Red Flag AI Pro" width={120} height={95} className="object-contain" style={{ height: "auto" }} />
             </Link>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.5)", lineHeight: 1.6, maxWidth: "260px" }}>
-              Prove your AI governance before regulators ask. Audit-ready evidence for CFOs, compliance and risk teams.
+              Prove your AI governance before regulators ask. Audit ready evidence for CFOs, compliance and risk teams.
             </p>
           </div>
 
