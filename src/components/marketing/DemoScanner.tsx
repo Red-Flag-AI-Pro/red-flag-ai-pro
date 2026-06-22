@@ -58,7 +58,7 @@ interface DemoResult {
 
 const PLACEHOLDER = `Paste any ad, sales page, email or VSL script here...
 
-Example: "Make £10,000 in your first 30 days — guaranteed. Limited spots available. Act now before the price goes up tonight at midnight."`;
+Example: "Make £10,000 in your first 30 days, guaranteed. Limited spots available. Act now before the price goes up tonight at midnight."`;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -78,7 +78,7 @@ export function DemoScanner() {
     if (!content.trim()) return;
 
     if (!EMAIL_REGEX.test(email.trim())) {
-      setError("Please enter a valid email address — each address gets one free scan.");
+      setError("Please enter a valid email address. Each address gets one free scan.");
       return;
     }
 
@@ -151,7 +151,7 @@ export function DemoScanner() {
               </svg>
             </span>
             <p style={{...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>
-              Try It Free — No Account Needed
+              Try It Free: No Account Needed
             </p>
           </div>
 
@@ -176,7 +176,7 @@ export function DemoScanner() {
           </p>
 
           <p style={{...syne, fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em"}}>
-            No account. No card. Just your email — one free scan per address.
+            No account. No card. Just your email, one free scan per address.
           </p>
         </div>
 
@@ -215,7 +215,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             marginBottom: "1.25rem"
           }}>
-            <span style={{color: "white", fontWeight: 700}}>Red Flag covers everyone.</span> If you're a buyer, you get protection before you hand over money. If you're a creator or agency, you get certainty before you publish. If you're a compliance team, you get audit-ready proof that you did your due diligence.
+            <span style={{color: "white", fontWeight: 700}}>Red Flag covers everyone.</span> If you're a buyer, you get protection before you hand over money. If you're a creator or agency, you get certainty before you publish. If you're a compliance team, you get audit ready proof that you did your due diligence.
           </p>
 
           <p style={{
@@ -274,9 +274,9 @@ export function DemoScanner() {
               borderRadius: "6px",
               padding: "1rem 1.25rem"
             }}>
-              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>High Severity — Income Claim</p>
+              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>High Severity: Income Claim</p>
               <p style={{...mono, fontSize: "12px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontStyle: "italic"}}>
-                "Make £10,000 in your first 30 days — guaranteed."
+                "Make £10,000 in your first 30 days, guaranteed."
               </p>
               <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
                 Breaks FTC/ASA rules. No earnings guarantee can be absolute.
@@ -288,12 +288,12 @@ export function DemoScanner() {
               borderRadius: "6px",
               padding: "1rem 1.25rem"
             }}>
-              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#fbbf24", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>Medium Severity — Fake Scarcity</p>
+              <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#fbbf24", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.5rem"}}>Medium Severity: Fake Scarcity</p>
               <p style={{...mono, fontSize: "12px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontStyle: "italic"}}>
                 "Only 3 spots left. Price goes up tomorrow at midnight."
               </p>
               <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem"}}>
-                Scarcity claims must be time-bound and genuine.
+                Scarcity claims must be time bound and genuine.
               </p>
             </div>
           </div>
@@ -307,7 +307,7 @@ export function DemoScanner() {
           boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)",
           borderRadius: "8px"
         }}>
-          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email — one free scan per address</p>
+          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email: one free scan per address</p>
           <input
             type="email"
             value={email}
@@ -331,7 +331,7 @@ export function DemoScanner() {
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
           <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginTop: "-0.85rem", marginBottom: "1.25rem"}}>
-            We&apos;ll only use this to send your results and one follow-up — no spam, unsubscribe anytime.
+            We&apos;ll only use this to send your results and one follow up. No spam, unsubscribe anytime.
           </p>
 
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Paste your copy here</p>
@@ -379,7 +379,7 @@ export function DemoScanner() {
                   color: "rgba(255,255,255,0.3)",
                   marginBottom: "10px",
                 }}>
-                  Builders — pick the markets you sell into.&nbsp;&nbsp;Buyers — pick where you are.
+                  Builders: pick the markets you sell into.&nbsp;&nbsp;Buyers: pick where you are.
                 </p>
                 <JurisdictionPicker
                   value={jurisdictions}
@@ -455,7 +455,7 @@ export function DemoScanner() {
                 You&apos;ve already used your free scan
               </p>
               <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem"}}>
-                {email.trim()} has already claimed its one free scan. Create a free account to scan this copy — and keep scanning more.
+                {email.trim()} has already claimed its one free scan. Create a free account to scan this copy and keep scanning more.
               </p>
               <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                 display: "inline-block",
@@ -510,8 +510,8 @@ export function DemoScanner() {
             ) : jurisdictions.length === 0
               ? "Select at least one jurisdiction"
               : jurisdictions.length === JURISDICTIONS.length
-              ? "Scan Now — All 9 Jurisdictions"
-              : `Scan Now — ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
+              ? "Scan Now: All 9 Jurisdictions"
+              : `Scan Now: ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
             }
           </button>
         </div>
@@ -625,7 +625,7 @@ export function DemoScanner() {
                         background: "rgba(10,10,10,0.95)",
                         border: "1px solid rgba(239,68,68,0.3)",
                         padding: "5px 14px", borderRadius: "9999px"
-                      }}>Locked — Pro only</span>
+                      }}>Locked: Pro only</span>
                     </div>
                   </div>
                 )}
@@ -641,11 +641,11 @@ export function DemoScanner() {
                 marginTop: "2px"
               }}>
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, fontStyle: "italic"}}>
-                  &ldquo;This is exactly the blind spot I had —{" "}
+                  &ldquo;This is exactly the blind spot I had.{" "}
                   <span style={{color: "white", fontWeight: 700, fontStyle: "italic"}}>here&apos;s what I built so you don&apos;t make the same mistake.</span>&rdquo;
                 </p>
                 <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.6rem"}}>
-                  — James, Founder
+                  James, Founder
                 </p>
               </div>
             )}
@@ -686,7 +686,7 @@ export function DemoScanner() {
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
-                  Unlock With Pro — £350/mo
+                  Unlock With Pro: £350/mo
                 </Link>
                 <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 20 scans a month, every flag fully unlocked.</p>
               </div>
@@ -716,7 +716,7 @@ export function DemoScanner() {
                   boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
                   textDecoration: "none"
                 }}>
-                  Save My Results — Free
+                  Save My Results: Free
                 </Link>
               </div>
             )}
