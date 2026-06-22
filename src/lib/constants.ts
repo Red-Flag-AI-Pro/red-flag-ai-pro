@@ -8,7 +8,7 @@ export const REGULATORY_MAPPING_LAST_REVIEWED = "21 June 2026";
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 1,
   pro: 10,
-  enterprise: Infinity,
+  enterprise: 30,
   sentinel: Infinity,
 };
 
@@ -47,17 +47,17 @@ export const AUDIT_PRICE = {
 
 export const PLAN_PRICES = {
   pro: {
-    monthly: 29,
+    monthly: 350,
     label: "Pro",
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
   enterprise: {
-    monthly: 99,
+    monthly: 1200,
     label: "Growth",
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_ID!,
   },
   sentinel: {
-    monthly: 499,
+    monthly: 5000,
     label: "Sentinel",
     priceId: process.env.STRIPE_PRICE_SENTINEL_ID!,
   },
