@@ -214,8 +214,10 @@ export default function PricingPage() {
                 padding: "4px 12px"
               }}>Recommended</div>
 
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening.</p>
+              <div style={{ minHeight: "7.5rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening.</p>
+              </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
                   £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
@@ -253,8 +255,10 @@ export default function PricingPage() {
               padding: "2.5rem",
               position: "relative"
             }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Growth</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams who've outgrown a single seat.</p>
+              <div style={{ minHeight: "7.5rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams who've outgrown a single seat.</p>
+              </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
                   £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
@@ -299,12 +303,14 @@ export default function PricingPage() {
                 opacity: 0.15
               }} />
               <div style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", animation: "pulseRed 2s ease-in-out infinite" }} />
-                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Enterprise</p>
+                <div style={{ minHeight: "7.5rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem", marginTop: "1rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", animation: "pulseRed 2s ease-in-out infinite" }} />
+                    <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Enterprise</p>
+                  </div>
+                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
+                  <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
                 </div>
-                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
-                <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
                 <div style={{ minHeight: "4.6rem" }}>
                   <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
                     £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
