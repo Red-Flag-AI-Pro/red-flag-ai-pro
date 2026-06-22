@@ -95,19 +95,19 @@ You don't need to resolve the org chart. You need a record that someone looked.
     content: `
 ## One Week. New Legal Requirement. Most Businesses Aren't Ready.
 
-On **19 June 2026**, the UK's **Data (Use and Access) Act 2025** comes into force. The Information Commissioner's Office (ICO) has already published guidance for businesses -titled, pointedly, "One month to go: what businesses need to know."
+On **19 June 2026**, the UK's **Data (Use and Access) Act 2025** comes into force. The Information Commissioner's Office (ICO) has already published guidance for businesses, titled, pointedly, "One month to go: what businesses need to know."
 
 That month is now down to a week.
 
-The headline requirement is simple to state and easy to miss: **every organisation that handles personal data must have a formal complaints process for data protection issues.** Not a best-practice suggestion. A legal requirement.
+The headline requirement is simple to state and easy to miss: **every organisation that handles personal data must have a formal complaints process for data protection issues.** Not a best practice suggestion. A legal requirement.
 
-If you run an email list, a checkout page, a membership site or a course platform -this applies to you.
+If you run an email list, a checkout page, a membership site or a course platform, this applies to you.
 
 ---
 
 ## What "Formal Complaints Process" Actually Means
 
-Under the new requirements, when someone raises a data protection complaint -about how their data was collected, used, stored or shared -your business needs to:
+Under the new requirements, when someone raises a data protection complaint, about how their data was collected, used, stored or shared, your business needs to:
 
 - Provide a **clear channel** for people to make a complaint (not just "email us and hope")
 - **Acknowledge and respond within 30 days**
@@ -124,38 +124,38 @@ If you're a course creator, coach, agency or small SaaS, your current "data comp
 
 That's no longer enough, because:
 
-- There's **no defined timeline** -a complaint can sit unanswered for weeks
-- There's **no documented investigation step** -so even if you do respond, there's nothing to show you looked into it
-- There's **no outcome notification** -the person never hears whether anything changed
+- There's **no defined timeline**, a complaint can sit unanswered for weeks
+- There's **no documented investigation step**, so even if you do respond, there's nothing to show you looked into it
+- There's **no outcome notification**, the person never hears whether anything changed
 
-None of this requires expensive infrastructure. It requires a written process, a clear page telling people how to complain, and a habit of actually following the 30-day clock.
+None of this requires expensive infrastructure. It requires a written process, a clear page telling people how to complain, and a habit of actually following the 30 day clock.
 
 ---
 
 ## What To Do Before 19 June 2026
 
 ### 1. Add a Clear Complaints Channel
-A simple, dedicated page or email address (e.g. \`privacy@yourdomain.com\`) that's easy to find -ideally linked from your privacy policy and footer.
+A simple, dedicated page or email address (e.g. \`privacy@yourdomain.com\`) that's easy to find, ideally linked from your privacy policy and footer.
 
 ### 2. Write Down the Process
-Even a short internal document: who receives complaints, who investigates, and the 30-day response commitment. This is what you'd show the ICO if asked.
+Even a short internal document: who receives complaints, who investigates, and the 30 day response commitment. This is what you'd show the ICO if asked.
 
-### 3. Set a Response Deadline -and Track It
+### 3. Set a Response Deadline, and Track It
 A complaint that arrives and gets forgotten is the exact failure mode this law targets. A simple tracker (a spreadsheet is fine) showing date received, date responded, and outcome is enough for most small businesses.
 
 ### 4. Check Your Privacy Policy Reflects This
-Your privacy policy should tell people *how* to complain -to you, and that they can also complain to the ICO if unsatisfied with your response.
+Your privacy policy should tell people *how* to complain, to you, and that they can also complain to the ICO if unsatisfied with your response.
 
 ---
 
 ## How This Maps to a Compliance Scan
 
-Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy reference data handling, consent and complaints in a way that's consistent with current UK requirements -alongside \`email_compliance\` for your list-building and marketing emails.
+Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy reference data handling, consent and complaints in a way that's consistent with current UK requirements, alongside \`email_compliance\` for your list building and marketing emails.
 
 | Requirement | Scanner category |
 |-------------|------------------|
 | Privacy policy references complaints process | \`data_privacy\` |
-| Marketing email consent and opt-out | \`email_compliance\` |
+| Marketing email consent and opt out | \`email_compliance\` |
 | Claims vs. actual policy (e.g. "your data is safe with us") | \`claims_policy_mismatch\` |
 | Cookie consent banners and tracking disclosures | \`cookie_consent\` |
 
@@ -163,7 +163,7 @@ Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy r
 
 ## The Bottom Line
 
-This isn't a distant deadline -it's **one week away**. The fix is mostly about process and documentation, not technology. But "we'll get to it" stops being an option on 19 June 2026.
+This isn't a distant deadline, it's **one week away**. The fix is mostly about process and documentation, not technology. But "we'll get to it" stops being an option on 19 June 2026.
 
 Scan your site's privacy policy, checkout flow and marketing copy now, while there's still time to fix anything that's missing.
 
@@ -171,20 +171,20 @@ Scan your site's privacy policy, checkout flow and marketing copy now, while the
 
 ---
 
-*Source: [ICO -One month to go: what businesses need to know to meet new data law](https://ico.org.uk/)*
+*Source: [ICO, One month to go: what businesses need to know to meet new data law](https://ico.org.uk/)*
     `,
   },
   {
     slug: "uk-online-course-creator-legal-checklist-2026",
     title: "The UK Online Course Creator's Legal Checklist for 2026",
-    description: "Copyright, refunds, hidden fees, influencer disclosure, GDPR and resale rights -here's everything UK course creators need to get right before their next launch, and how regulators are actually enforcing it.",
+    description: "Copyright, refunds, hidden fees, influencer disclosure, GDPR and resale rights, here's everything UK course creators need to get right before their next launch, and how regulators are actually enforcing it.",
     date: "2026-06-12",
     readTime: "7 min read",
     category: "ASA / UK",
     content: `
 ## Selling Courses in the UK? Six Areas Regulators Are Actively Watching
 
-If you sell online courses, memberships or digital products to UK customers, your launch funnel sits at the intersection of copyright law, consumer protection law, advertising law and data protection law -all at once.
+If you sell online courses, memberships or digital products to UK customers, your launch funnel sits at the intersection of copyright law, consumer protection law, advertising law and data protection law, all at once.
 
 Most course creators never think about any of this until something goes wrong. But the CMA, the ASA and the ICO are not theoretical threats. The CMA has already opened investigations into **eight UK companies** over misleading pricing and hidden fees in online sales funnels. The ASA regularly takes action against creators and influencers for undisclosed sponsorships.
 
@@ -194,13 +194,13 @@ Here's what actually matters, in plain English.
 
 ## 1. Who Owns Your Course Content?
 
-Copyright in your videos, slides, workbooks and written materials belongs to you automatically the moment you create them -no registration required.
+Copyright in your videos, slides, workbooks and written materials belongs to you automatically the moment you create them, no registration required.
 
 The risk runs the other way: **using other people's material without permission.**
 
-- Stock images, music, video clips and quoted excerpts all need a licence unless a specific exception applies (e.g. genuinely insubstantial use for non-commercial teaching).
+- Stock images, music, video clips and quoted excerpts all need a licence unless a specific exception applies (e.g. genuinely insubstantial use for non commercial teaching).
 - "I found it on Google" is not a licence.
-- If you're collaborating with co-creators, guest experts or ghostwriters, get a written agreement on who owns what -before launch, not after a dispute.
+- If you're collaborating with co creators, guest experts or ghostwriters, get a written agreement on who owns what, before launch, not after a dispute.
 
 ---
 
@@ -208,25 +208,25 @@ The risk runs the other way: **using other people's material without permission.
 
 Online courses sold to UK consumers fall under the **Consumer Rights Act 2015** and distance selling rules. That means your terms need to clearly state:
 
-- The price (the *whole* price -see hidden fees below)
+- The price (the *whole* price, see hidden fees below)
 - What exactly the customer is buying (access period, format, updates included)
 - Your refund and cancellation policy
 
-**The 14-day cooling-off period** normally applies to digital purchases -but it can be waived once the customer starts downloading or accessing the content, **as long as you tell them clearly before they buy**. Bury that waiver in a footnote and you haven't actually waived anything.
+**The 14 day cooling off period** normally applies to digital purchases, but it can be waived once the customer starts downloading or accessing the content, **as long as you tell them clearly before they buy**. Bury that waiver in a footnote and you haven't actually waived anything.
 
 ---
 
-## 3. Hidden Fees and Pre-Selected Extras
+## 3. Hidden Fees and Pre Selected Extras
 
 This is the one currently getting UK businesses investigated.
 
-The CMA has opened formal probes into companies over **drip pricing** -advertising one price and adding mandatory fees, taxes or pre-ticked add-ons at checkout. For course creators, common versions include:
+The CMA has opened formal probes into companies over **drip pricing**, advertising one price and adding mandatory fees, taxes or pre ticked add ons at checkout. For course creators, common versions include:
 
 - "£97" that becomes £97 + a mandatory "platform fee"
-- Pre-selected upsells or "VIP access" boxes that are ticked by default
+- Pre selected upsells or "VIP access" boxes that are ticked by default
 - Countdown timers or "limited spots" claims that reset every time someone visits the page
 
-If the price a customer sees in your ad isn't the price they pay at checkout -minus genuinely optional extras they actively chose -that's the exact pattern regulators are currently fining people for.
+If the price a customer sees in your ad isn't the price they pay at checkout, minus genuinely optional extras they actively chose, that's the exact pattern regulators are currently fining people for.
 
 ---
 
@@ -234,7 +234,7 @@ If the price a customer sees in your ad isn't the price they pay at checkout -mi
 
 The ASA CAP Code governs how you can market a course, and it covers two things creators get wrong constantly:
 
-**Outcome and income claims.** "Replace your 9-5," "make £10k/month," or implied results from testimonials all need substantiation. A small-print disclaimer doesn't rescue a headline claim that isn't true for typical customers.
+**Outcome and income claims.** "Replace your 9 5," "make £10k/month," or implied results from testimonials all need substantiation. A small print disclaimer doesn't rescue a headline claim that isn't true for typical customers.
 
 **Sponsored content and affiliate promotion.** If an influencer or affiliate is promoting your course in exchange for payment, commission or free access, that relationship must be disclosed clearly -"Ad" or "#ad", not buried in a hashtag list. The ASA has taken action against creators specifically for this.
 
@@ -244,9 +244,9 @@ The ASA CAP Code governs how you can market a course, and it covers two things c
 
 If your course comes with master resell rights, or you're reselling someone else's product with resell rights:
 
-- It's legal in the UK **if you respect the original licence terms** -minimum resale price, distribution limits, etc.
-- You still owe customers accurate descriptions, working refund policies, and clear terms -resell rights don't exempt you from consumer law.
-- Income from sales is taxable and must go through HMRC self-assessment. Selling to EU customers brings VAT registration into play based on the customer's location.
+- It's legal in the UK **if you respect the original licence terms**, minimum resale price, distribution limits, etc.
+- You still owe customers accurate descriptions, working refund policies, and clear terms, resell rights don't exempt you from consumer law.
+- Income from sales is taxable and must go through HMRC self assessment. Selling to EU customers brings VAT registration into play based on the customer's location.
 
 ---
 
@@ -256,7 +256,7 @@ The moment someone enters an email to download a lead magnet or buy your course,
 
 - A privacy policy that's easy to find, not just legally present
 - Clear consent for marketing emails (separate from the purchase itself)
-- A lawful basis for everything you collect -names, emails, payment data, course progress
+- A lawful basis for everything you collect, names, emails, payment data, course progress
 
 ---
 
@@ -267,9 +267,9 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 | Risk area | Scanner category |
 |-----------|------------------|
 | Income / outcome claims | \`income_claim\`, \`guarantee\` |
-| Hidden fees, pre-ticked extras | \`hidden_fees\`, \`dark_patterns\`, \`fake_discounts\` |
+| Hidden fees, pre ticked extras | \`hidden_fees\`, \`dark_patterns\`, \`fake_discounts\` |
 | Influencer / affiliate disclosure | \`influencer_disclosure\` |
-| Refund / cooling-off terms vs. claims | \`claims_policy_mismatch\`, \`contract_contradiction\` |
+| Refund / cooling off terms vs. claims | \`claims_policy_mismatch\`, \`contract_contradiction\` |
 | Email consent & data handling | \`data_privacy\`, \`email_compliance\` |
 | Reviews and testimonials | \`fake_reviews\`, \`testimonial\` |
 
@@ -277,7 +277,7 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 
 ## The Bottom Line
 
-None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator -or a customer complaint -does it for you.
+None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator, or a customer complaint, does it for you.
 
 Red Flag AI Pro scans your marketing copy against all 29 of these categories across 9 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
 
@@ -286,7 +286,7 @@ Red Flag AI Pro scans your marketing copy against all 29 of these categories acr
   },
   {
     slug: "eu-ai-act-article-50-marketing-agencies",
-    title: "EU AI Act Article 50 -What Marketing Agencies Need to Know Before August 2026",
+    title: "EU AI Act Article 50: What Marketing Agencies Need to Know Before August 2026",
     description: "The EU AI Act Article 50 comes into force on 2 August 2026. If your agency uses AI to write marketing copy, ads or sales pages, here's exactly what you need to do before the deadline.",
     date: "2026-05-19",
     readTime: "6 min read",
@@ -294,7 +294,7 @@ Red Flag AI Pro scans your marketing copy against all 29 of these categories acr
     content: `
 ## The Clock Is Ticking
 
-On **2 August 2026**, just weeks away, EU AI Act Article 50(4) comes into force. It requires that AI-generated content intended for the public is clearly disclosed to consumers.
+On **2 August 2026**, just weeks away, EU AI Act Article 50(4) comes into force. It requires that AI generated content intended for the public is clearly disclosed to consumers.
 
 If your marketing agency uses ChatGPT, Claude, Jasper, Copy.ai or any other AI writing tool to produce content for clients, this law applies to you.
 
@@ -304,7 +304,7 @@ Most agencies have no idea.
 
 ## What Does Article 50 Actually Say?
 
-EU AI Act Article 50(4) states that operators of AI systems that generate or manipulate content must ensure that outputs are marked as artificially generated or manipulated in a machine-readable format and are detectable as artificially generated.
+EU AI Act Article 50(4) states that operators of AI systems that generate or manipulate content must ensure that outputs are marked as artificially generated or manipulated in a machine readable format and are detectable as artificially generated.
 
 In plain English: **if AI wrote it, you have to say so.**
 
@@ -321,7 +321,7 @@ This applies to:
 
 Fines under the EU AI Act can reach **€15 million or 3% of global annual turnover**, whichever is higher.
 
-For a marketing agency with £2 million annual revenue, that's a potential fine of up to **£600,000** for non-compliance.
+For a marketing agency with £2 million annual revenue, that's a potential fine of up to **£600,000** for non compliance.
 
 Enforcement begins from the date the provision comes into force. There is no grace period beyond 2 August 2026.
 
@@ -333,7 +333,7 @@ Enforcement begins from the date the provision comes into force. There is no gra
 Document every AI tool your agency uses to produce client content. This includes writing assistants, paraphrasers, image generators and AI video tools.
 
 ### 2. Implement Disclosure Language
-Add a clear disclosure to all AI-generated or AI-assisted content. This can be as simple as:
+Add a clear disclosure to all AI generated or AI assisted content. This can be as simple as:
 
 *"This content was created with the assistance of AI writing tools and reviewed by [Name], [Title], on [Date]."*
 
@@ -341,10 +341,10 @@ Add a clear disclosure to all AI-generated or AI-assisted content. This can be a
 Article 50(4) includes an exemption for content that has undergone **documented human editorial review**. Keep records of who reviewed each piece of content, when, and what changes were made.
 
 ### 4. Update Your Client Contracts
-Your agency agreements should now include clauses addressing AI tool usage, disclosure obligations and liability for non-compliance.
+Your agency agreements should now include clauses addressing AI tool usage, disclosure obligations and liability for non compliance.
 
 ### 5. Scan Your Existing Copy
-Before August 2026, audit your existing client campaigns for AI-generated content that isn't currently disclosed.
+Before August 2026, audit your existing client campaigns for AI generated content that isn't currently disclosed.
 
 ---
 
@@ -352,7 +352,7 @@ Before August 2026, audit your existing client campaigns for AI-generated conten
 
 Major Professional Indemnity insurers are now adding AI exclusions to their policies. RSA's UK Head of PI has confirmed they are "assuming but not yet pricing for Gen AI exposures."
 
-This means a claim arising from undisclosed AI-generated content that breaches Article 50 may not be covered by your PI policy.
+This means a claim arising from undisclosed AI generated content that breaches Article 50 may not be covered by your PI policy.
 
 **Your compliance risk is uninsured.**
 
@@ -376,12 +376,12 @@ The EU AI Act is not optional. It is not a guideline. It is law. Enforcement beg
 
 If you are a marketing agency using AI to write copy for clients, the time to act is now.
 
-[Check your AI-generated copy for free at Red Flag AI Pro →](https://www.redflagaipro.com/signup)
+[Check your AI generated copy for free at Red Flag AI Pro →](https://www.redflagaipro.com/signup)
     `,
   },
   {
     slug: "ftc-earnings-claim-rules",
-    title: "FTC Earnings Claim Rules -Are Your Income Claims Illegal?",
+    title: "FTC Earnings Claim Rules: Are Your Income Claims Illegal?",
     description: "The FTC is actively pursuing marketers making unsubstantiated earnings claims. Course creators, coaches and affiliate marketers are in the crosshairs. Here's what's legal and what isn't.",
     date: "2026-05-19",
     readTime: "5 min read",
@@ -391,13 +391,13 @@ If you are a marketing agency using AI to write copy for clients, the time to ac
 
 The Federal Trade Commission has made income claim enforcement one of its top priorities. In the last three years alone, the FTC has issued hundreds of millions of dollars in fines to course creators, coaches, MLM companies and affiliate marketers for making unsubstantiated earnings claims.
 
-If your marketing copy includes phrases like "earn £10,000 per month," "six-figure income," "quit your job," "financial freedom" or "passive income" -you may already be in violation.
+If your marketing copy includes phrases like "earn £10,000 per month," "six figure income," "quit your job," "financial freedom" or "passive income", you may already be in violation.
 
 ---
 
 ## What Is an Earnings Claim?
 
-Under FTC rules, an earnings claim is any statement -direct or implied -that suggests a consumer can achieve a specific level of income or financial result from using your product or service.
+Under FTC rules, an earnings claim is any statement, direct or implied, that suggests a consumer can achieve a specific level of income or financial result from using your product or service.
 
 This includes:
 - **Direct claims**: "Our members earn an average of £5,000 per month"
@@ -415,14 +415,14 @@ All of these require substantiation under FTC rules.
 Every earnings claim must be backed by reliable, competent evidence. "Reliable" means research conducted by qualified professionals using accepted methods.
 
 ### Disclosure of Typical Results
-If you show a testimonial with above-average results, you must disclose what typical customers actually achieve. The FTC's standard language is:
+If you show a testimonial with above average results, you must disclose what typical customers actually achieve. The FTC's standard language is:
 
 *"Results are not typical. Individual results will vary based on effort, experience, and market conditions."*
 
-But the FTC has made clear that a small-print disclaimer does not save a false headline claim. If your headline says "Earn £10,000 per month" and typical results are £200 per month, no disclaimer makes that headline legal.
+But the FTC has made clear that a small print disclaimer does not save a false headline claim. If your headline says "Earn £10,000 per month" and typical results are £200 per month, no disclaimer makes that headline legal.
 
 ### Income Disclosure Statements
-For business opportunity products -courses, coaching programmes, MLM products -the FTC recommends a full Income Disclosure Statement showing the distribution of actual results across all customers.
+For business opportunity products, courses, coaching programmes, MLM products, the FTC recommends a full Income Disclosure Statement showing the distribution of actual results across all customers.
 
 ---
 
@@ -436,7 +436,7 @@ For business opportunity products -courses, coaching programmes, MLM products -t
 **Illegal**: Photos of a Ferrari with the caption "This is what's possible"
 **Why**: Implied earnings claims carry the same legal weight as direct claims.
 
-### 3. The Cherry-Picked Testimonial
+### 3. The Cherry Picked Testimonial
 **Illegal**: Featuring one customer who made £100,000 without disclosing that most customers made nothing.
 **Why**: Atypical results require disclosure of typical results.
 
@@ -462,7 +462,7 @@ The FTC's enforcement has accelerated significantly since 2023 and shows no sign
 
 1. **Use qualified language**: "Some members report earning..." rather than "Members earn..."
 2. **Include an earnings disclaimer**: Prominently placed, not hidden in footers
-3. **Show actual average results**: Not just the best-case outcomes
+3. **Show actual average results**: Not just the best case outcomes
 4. **Remove lifestyle implications**: Unless you can substantiate the lifestyle shown
 5. **Audit your testimonials**: Ensure all results shown are typical or properly disclosed as exceptional
 
@@ -470,16 +470,16 @@ The FTC's enforcement has accelerated significantly since 2023 and shows no sign
 
 ## Scan Your Copy Before the FTC Does
 
-Red Flag AI Pro scans your marketing copy for FTC earnings claim violations -alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations simultaneously.
+Red Flag AI Pro scans your marketing copy for FTC earnings claim violations, alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations simultaneously.
 
 Catch the violations before regulators do.
 
-[Scan your copy free -no credit card required →](https://www.redflagaipro.com/signup)
+[Scan your copy free, no credit card required →](https://www.redflagaipro.com/signup)
     `,
   },
   {
     slug: "asa-cap-code-violations-uk-marketers",
-    title: "ASA CAP Code Violations -The 7 Most Common Mistakes UK Marketers Make",
+    title: "ASA CAP Code Violations: The 7 Most Common Mistakes UK Marketers Make",
     description: "The ASA and CMA are actively pursuing UK marketers for CAP Code violations. Here are the 7 most common mistakes and how to fix them before you get a complaint.",
     date: "2026-05-19",
     readTime: "5 min read",
@@ -489,7 +489,7 @@ Catch the violations before regulators do.
 
 The Advertising Standards Authority receives over 40,000 complaints per year about UK advertising. The Competition and Markets Authority has expanded its enforcement powers significantly since 2024, with fines now reaching **£300,000 per violation**.
 
-Here are the 7 most common CAP Code violations UK marketers make -and how to fix each one.
+Here are the 7 most common CAP Code violations UK marketers make, and how to fix each one.
 
 ---
 
@@ -507,7 +507,7 @@ Here are the 7 most common CAP Code violations UK marketers make -and how to fix
 
 **The violation**: "Only 10 spots left!" when there is no actual limit on availability.
 
-**The rule**: CAP Code Rule 3.22 requires that scarcity claims are factually accurate. The DSA (which applies to UK digital platforms post-Brexit equivalent) specifically names fake scarcity as an illegal dark pattern.
+**The rule**: CAP Code Rule 3.22 requires that scarcity claims are factually accurate. The DSA (which applies to UK digital platforms post Brexit equivalent) specifically names fake scarcity as an illegal dark pattern.
 
 **The fix**: Only claim limited availability when it is genuinely limited. Use a live inventory counter synced to actual stock. Remove scarcity language if it isn't real.
 
@@ -519,7 +519,7 @@ Here are the 7 most common CAP Code violations UK marketers make -and how to fix
 
 **The rule**: CAP Code Rule 3.47 requires that testimonials reflect genuine opinions and, where results are claimed, that those results are typical.
 
-**The fix**: Keep records of all testimonials -including how they were obtained and who the customer is. Add disclosure when results shown are above average: "Results not typical. Individual results will vary."
+**The fix**: Keep records of all testimonials, including how they were obtained and who the customer is. Add disclosure when results shown are above average: "Results not typical. Individual results will vary."
 
 ---
 
@@ -535,11 +535,11 @@ Here are the 7 most common CAP Code violations UK marketers make -and how to fix
 
 ## 5. Hidden Fees and Drip Pricing
 
-**The violation**: Advertising a price that doesn't include mandatory fees -then adding them at checkout.
+**The violation**: Advertising a price that doesn't include mandatory fees, then adding them at checkout.
 
 **The rule**: CAP Code Rule 3.17 requires that the full price including all unavoidable costs is stated upfront. The CMA has fined multiple businesses for drip pricing.
 
-**The fix**: Include all mandatory fees in the advertised price. If fees vary, state the starting price clearly: "From £49 per month" -not a bare price that increases at checkout.
+**The fix**: Include all mandatory fees in the advertised price. If fees vary, state the starting price clearly: "From £49 per month", not a bare price that increases at checkout.
 
 ---
 
@@ -549,7 +549,7 @@ Here are the 7 most common CAP Code violations UK marketers make -and how to fix
 
 **The rule**: CAP Code Rule 3.1 requires consistency between advertised claims and actual terms. The Consumer Rights Act 2015 also provides statutory rights that cannot be contracted out of.
 
-**The fix**: Audit all guarantee language against your actual Terms of Service. Remember: UK consumers have a statutory 14-day cooling-off period for digital products purchased online. Your Terms cannot remove this right.
+**The fix**: Audit all guarantee language against your actual Terms of Service. Remember: UK consumers have a statutory 14 day cooling off period for digital products purchased online. Your Terms cannot remove this right.
 
 ---
 
@@ -565,7 +565,7 @@ Here are the 7 most common CAP Code violations UK marketers make -and how to fix
 
 ## How Red Flag AI Pro Helps UK Marketers
 
-Red Flag AI Pro scans your marketing copy against the full ASA CAP Code -alongside FTC (US), GDPR (EU), ACCC (Australia) and CASL (Canada) regulations simultaneously.
+Red Flag AI Pro scans your marketing copy against the full ASA CAP Code, alongside FTC (US), GDPR (EU), ACCC (Australia) and CASL (Canada) regulations simultaneously.
 
 In 60 seconds you get a compliance risk score, every flag explained in plain English, and an exact rewrite suggestion for every violation found.
 
@@ -574,17 +574,17 @@ In 60 seconds you get a compliance risk score, every flag explained in plain Eng
   },
   {
     slug: "gdpr-email-marketing-compliance",
-    title: "GDPR Email Marketing Compliance -What Every Marketer Needs to Know in 2026",
-    description: "GDPR fines for email marketing violations have exceeded €1 billion globally. Here's what every email marketer needs to know about consent, opt-ins and data rights in 2026.",
+    title: "GDPR Email Marketing Compliance: What Every Marketer Needs to Know in 2026",
+    description: "GDPR fines for email marketing violations have exceeded €1 billion globally. Here's what every email marketer needs to know about consent, opt ins and data rights in 2026.",
     date: "2026-05-19",
     readTime: "6 min read",
     category: "GDPR",
     content: `
 ## GDPR Email Marketing: The Stakes Have Never Been Higher
 
-Since GDPR came into force in 2018, data protection authorities across the EU and UK have issued over **€4 billion in fines**. Email marketing violations account for a significant proportion of these -and enforcement is accelerating.
+Since GDPR came into force in 2018, data protection authorities across the EU and UK have issued over **€4 billion in fines**. Email marketing violations account for a significant proportion of these, and enforcement is accelerating.
 
-In 2026, the ICO has increased its proactive enforcement activity. If your email marketing relies on unclear consent, pre-ticked boxes or purchased lists, you are at serious risk.
+In 2026, the ICO has increased its proactive enforcement activity. If your email marketing relies on unclear consent, pre ticked boxes or purchased lists, you are at serious risk.
 
 ---
 
@@ -592,10 +592,10 @@ In 2026, the ICO has increased its proactive enforcement activity. If your email
 
 GDPR Article 7 sets a clear standard for valid consent to email marketing:
 
-1. **Freely given** -the person had a genuine choice and was not penalised for refusing
-2. **Specific** -they consented to marketing emails specifically, not just to "terms and conditions"
-3. **Informed** -they knew exactly who would contact them and for what purpose
-4. **Unambiguous** -they took a clear, affirmative action (ticking a box -not a pre-ticked box)
+1. **Freely given**, the person had a genuine choice and was not penalised for refusing
+2. **Specific**, they consented to marketing emails specifically, not just to "terms and conditions"
+3. **Informed**, they knew exactly who would contact them and for what purpose
+4. **Unambiguous**, they took a clear, affirmative action (ticking a box, not a pre ticked box)
 
 If your consent mechanism doesn't meet all four criteria, it is invalid under GDPR. You cannot legally send marketing emails to that contact.
 
@@ -603,20 +603,20 @@ If your consent mechanism doesn't meet all four criteria, it is invalid under GD
 
 ## The 7 Most Common GDPR Email Marketing Violations
 
-### 1. Pre-Ticked Opt-In Boxes
-**Illegal under GDPR**. Consent must be an active, affirmative action. A box pre-ticked by default does not constitute consent.
+### 1. Pre Ticked Opt In Boxes
+**Illegal under GDPR**. Consent must be an active, affirmative action. A box pre ticked by default does not constitute consent.
 
 ### 2. Bundled Consent
 Requiring a user to consent to marketing as a condition of accessing your service or completing a purchase is not freely given consent under GDPR.
 
 ### 3. Purchased Email Lists
-Buying or renting email lists is almost universally non-compliant. The individuals on those lists have not consented to receive marketing from your specific company.
+Buying or renting email lists is almost universally non compliant. The individuals on those lists have not consented to receive marketing from your specific company.
 
 ### 4. "Legitimate Interests" for Cold Email
 Many marketers incorrectly rely on "legitimate interests" as a basis for cold email marketing. The ICO has made clear that legitimate interests rarely justifies unsolicited direct marketing to individuals.
 
 ### 5. No Clear Unsubscribe Mechanism
-Every marketing email must include a working, easy-to-use unsubscribe mechanism. Hidden unsubscribe links or requiring the user to log in to unsubscribe is non-compliant.
+Every marketing email must include a working, easy to use unsubscribe mechanism. Hidden unsubscribe links or requiring the user to log in to unsubscribe is non compliant.
 
 ### 6. Continuing to Email After Unsubscribe
 Once a person unsubscribes, you must stop sending marketing emails promptly. Continuing to email someone who has unsubscribed is a direct violation.
@@ -628,17 +628,17 @@ At the point of collecting email addresses, you must provide clear information a
 
 ## CASL: Even Stricter Than GDPR
 
-If you have any Canadian subscribers, Canada's Anti-Spam Legislation (CASL) applies -and it is arguably stricter than GDPR.
+If you have any Canadian subscribers, Canada's Anti Spam Legislation (CASL) applies, and it is arguably stricter than GDPR.
 
 CASL requires **express consent** for commercial electronic messages. Implied consent has strict time limits (typically 2 years from a business relationship or 6 months from an enquiry).
 
-Fines under CASL reach **$10 million CAD per violation** -some of the highest marketing fines in the world.
+Fines under CASL reach **$10 million CAD per violation**, some of the highest marketing fines in the world.
 
 ---
 
-## CAN-SPAM: The US Standard
+## CAN SPAM: The US Standard
 
-The US CAN-SPAM Act is less strict than GDPR but still carries significant penalties -up to **$51,744 per email** in violation.
+The US CAN SPAM Act is less strict than GDPR but still carries significant penalties, up to **$51,744 per email** in violation.
 
 Key requirements:
 - Clear identification of the sender
@@ -651,18 +651,18 @@ Key requirements:
 ## Building a Compliant Email Marketing Programme
 
 ### Consent Collection
-- Use single opt-in with a clear, unchecked checkbox
+- Use single opt in with a clear, unchecked checkbox
 - State exactly what they're signing up for
-- Include a link to your Privacy Policy at the point of sign-up
+- Include a link to your Privacy Policy at the point of sign up
 
 ### List Management
 - Segment your list by consent type and date
 - Suppress unsubscribers immediately
-- Conduct regular list audits -remove contacts who haven't engaged and whose consent is expired
+- Conduct regular list audits, remove contacts who haven't engaged and whose consent is expired
 
 ### Email Content
 - Always include your company name and physical address
-- Include a clear, one-click unsubscribe link
+- Include a clear, one click unsubscribe link
 - Never use deceptive subject lines
 
 ### Documentation
@@ -673,24 +673,24 @@ Key requirements:
 
 ## Scan Your Email Copy for GDPR Compliance
 
-Red Flag AI Pro scans your email marketing copy for GDPR, CASL, PECR and CAN-SPAM compliance issues -alongside 13 other risk categories including ASA, FTC and ACCC regulations.
+Red Flag AI Pro scans your email marketing copy for GDPR, CASL, PECR and CAN SPAM compliance issues, alongside 13 other risk categories including ASA, FTC and ACCC regulations.
 
 [Scan your email copy free →](https://www.redflagaipro.com/signup)
     `,
   },
   {
     slug: "marketing-compliance-checklist-2026",
-    title: "Marketing Compliance Checklist 2026 -16 Things to Check Before You Launch",
-    description: "Before you launch your next campaign, funnel or sales page -run through this 16-point compliance checklist covering FTC, ASA, GDPR, EU AI Act, ACCC and CASL requirements.",
+    title: "Marketing Compliance Checklist 2026: 16 Things to Check Before You Launch",
+    description: "Before you launch your next campaign, funnel or sales page, run through this 16 point compliance checklist covering FTC, ASA, GDPR, EU AI Act, ACCC and CASL requirements.",
     date: "2026-05-19",
     readTime: "7 min read",
     category: "Compliance",
     content: `
 ## Why a Compliance Checklist Matters in 2026
 
-Governments across the US, UK, EU, Australia and Canada have issued over **$6 billion in marketing compliance fines** in the last three years alone. The targets are not scammers -they are ordinary marketers, course creators, agencies and ecommerce brands who simply never checked their copy.
+Governments across the US, UK, EU, Australia and Canada have issued over **$6 billion in marketing compliance fines** in the last three years alone. The targets are not scammers, they are ordinary marketers, course creators, agencies and ecommerce brands who simply never checked their copy.
 
-2026 is a particularly high-risk year. The EU AI Act comes into force in August. The FTC has expanded its enforcement powers. The CMA has new authority to fine businesses directly without going to court.
+2026 is a particularly high risk year. The EU AI Act comes into force in August. The FTC has expanded its enforcement powers. The CMA has new authority to fine businesses directly without going to court.
 
 Before you launch your next campaign, run through this checklist.
 
@@ -698,15 +698,15 @@ Before you launch your next campaign, run through this checklist.
 
 ## Income & Earnings Claims
 
-☐ **Remove or substantiate all earnings claims** -Any claim that implies a consumer can achieve a specific income level -including lifestyle imagery -requires substantiation. Add an earnings disclaimer if you cannot remove the claim.
+☐ **Remove or substantiate all earnings claims**, Any claim that implies a consumer can achieve a specific income level, including lifestyle imagery, requires substantiation. Add an earnings disclaimer if you cannot remove the claim.
 
-☐ **Ensure testimonials reflect typical results** -If you feature a customer who achieved exceptional results, disclose that their results are not typical and provide context for what average customers achieve.
+☐ **Ensure testimonials reflect typical results**, If you feature a customer who achieved exceptional results, disclose that their results are not typical and provide context for what average customers achieve.
 
 ---
 
 ## Urgency & Scarcity
 
-☐ **Verify all countdown timers are genuine** -Countdown timers that reset are illegal under EU DSA rules and targeted by the CMA and ACCC. If your timer isn't counting down to a real deadline, remove it.
+☐ **Verify all countdown timers are genuine**, Countdown timers that reset are illegal under EU DSA rules and targeted by the CMA and ACCC. If your timer isn't counting down to a real deadline, remove it.
 
 ☐ **Confirm all scarcity claims are accurate** -"Only 3 left" or "Limited to 10 spots" must be factually accurate. Fake scarcity is specifically named as an illegal dark pattern in multiple jurisdictions.
 
@@ -714,77 +714,77 @@ Before you launch your next campaign, run through this checklist.
 
 ## Guarantees & Refunds
 
-☐ **Match your guarantee language to your Terms of Service** -If your copy says "no questions asked money back guarantee" but your ToS says "all sales final" -you have a contract contradiction. Fix one or the other.
+☐ **Match your guarantee language to your Terms of Service**, If your copy says "no questions asked money back guarantee" but your ToS says "all sales final", you have a contract contradiction. Fix one or the other.
 
-☐ **Never contract out of statutory rights** -UK consumers have a 14-day cooling-off period. EU consumers have 14 days. Australian Consumer Law provides non-waivable guarantees. Your Terms cannot remove these rights.
+☐ **Never contract out of statutory rights**, UK consumers have a 14 day cooling off period. EU consumers have 14 days. Australian Consumer Law provides non waivable guarantees. Your Terms cannot remove these rights.
 
 ---
 
 ## Health Claims
 
-☐ **Remove all unauthorised health claims** -Claims that a product "cures," "treats," "heals" or "boosts" health require regulatory authorisation in every major jurisdiction. Replace with qualified language: "may support..." rather than "boosts..."
+☐ **Remove all unauthorised health claims**, Claims that a product "cures," "treats," "heals" or "boosts" health require regulatory authorisation in every major jurisdiction. Replace with qualified language: "may support..." rather than "boosts..."
 
 ---
 
 ## Data & Privacy
 
-☐ **Verify email consent is GDPR-compliant** -All email marketing consent must be freely given, specific, informed and unambiguous. Pre-ticked boxes are illegal. Check every opt-in mechanism.
+☐ **Verify email consent is GDPR compliant**, All email marketing consent must be freely given, specific, informed and unambiguous. Pre ticked boxes are illegal. Check every opt in mechanism.
 
-☐ **Ensure your Privacy Policy is current and linked** -Your Privacy Policy must be clearly accessible from every page where you collect data. It must accurately describe what you collect and how you use it.
+☐ **Ensure your Privacy Policy is current and linked**, Your Privacy Policy must be clearly accessible from every page where you collect data. It must accurately describe what you collect and how you use it.
 
 ---
 
 ## Pricing & Fees
 
-☐ **Display the full price upfront** -All mandatory fees must be included in the advertised price. Drip pricing -adding fees at checkout that weren't shown upfront -is illegal in the UK, EU, US, Australia and Canada.
+☐ **Display the full price upfront**, All mandatory fees must be included in the advertised price. Drip pricing, adding fees at checkout that weren't shown upfront, is illegal in the UK, EU, US, Australia and Canada.
 
 ---
 
 ## Reviews & Testimonials
 
-☐ **Disclose all incentivised reviews** -If a customer was paid, gifted a product or incentivised in any way to leave a review, this must be disclosed. Failure to disclose is illegal under FTC, CMA and ACCC rules.
+☐ **Disclose all incentivised reviews**, If a customer was paid, gifted a product or incentivised in any way to leave a review, this must be disclosed. Failure to disclose is illegal under FTC, CMA and ACCC rules.
 
 ---
 
 ## Comparative Claims
 
-☐ **Substantiate all comparative and superlative claims** -"The UK's leading," "#1 rated," "better than competitors" -all require verifiable evidence. Remove or document the evidence for every such claim.
+☐ **Substantiate all comparative and superlative claims** -"The UK's leading," "#1 rated," "better than competitors", all require verifiable evidence. Remove or document the evidence for every such claim.
 
 ---
 
-## AI-Generated Content (New for 2026)
+## AI Generated Content (New for 2026)
 
-☐ **Disclose AI-generated content** -EU AI Act Article 50(4) requires disclosure of AI-generated marketing content from 2 August 2026. Add disclosure language to all AI-generated or AI-assisted copy.
+☐ **Disclose AI generated content**, EU AI Act Article 50(4) requires disclosure of AI generated marketing content from 2 August 2026. Add disclosure language to all AI generated or AI assisted copy.
 
-☐ **Review AI-generated endorsements** -FTC guidelines require disclosure when AI systems generate or select endorsements shown to consumers. Review all AI-powered recommendation features.
+☐ **Review AI generated endorsements**, FTC guidelines require disclosure when AI systems generate or select endorsements shown to consumers. Review all AI powered recommendation features.
 
-☐ **Check automated decision-making disclosures** -GDPR Article 22 gives consumers rights around automated decisions. If your marketing uses AI to personalise pricing or eligibility, this must be disclosed in your Privacy Policy.
+☐ **Check automated decision making disclosures**, GDPR Article 22 gives consumers rights around automated decisions. If your marketing uses AI to personalise pricing or eligibility, this must be disclosed in your Privacy Policy.
 
 ---
 
 ## Email Marketing
 
-☐ **Audit your CASL compliance for Canadian recipients** -CASL requires express consent and carries fines up to $10 million CAD per violation. If you have Canadian subscribers, verify your consent records are compliant.
+☐ **Audit your CASL compliance for Canadian recipients**, CASL requires express consent and carries fines up to $10 million CAD per violation. If you have Canadian subscribers, verify your consent records are compliant.
 
 ---
 
 ## Run This Checklist Automatically in 60 Seconds
 
-Checking all 16 points manually takes time -and it's easy to miss something.
+Checking all 16 points manually takes time, and it's easy to miss something.
 
 Red Flag AI Pro scans your marketing copy against all 29 risk categories across 9 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
 
-✅ A 0-100 compliance risk score
+✅ A 0 100 compliance risk score
 ✅ Every violation explained in plain English
 ✅ Exact rewrite suggestions for every issue
 ✅ Coverage across FTC, CMA, ASA, GDPR, EU AI Act, ACCC and CASL
 
-[Scan your copy free -no credit card required →](https://www.redflagaipro.com/signup)
+[Scan your copy free, no credit card required →](https://www.redflagaipro.com/signup)
     `,
   },
   {
     slug: "ai-insurance-exclusions-pi-policy-marketing",
-    title: "AI Insurance Exclusions -Why Your PI Policy May Not Cover AI-Generated Marketing Copy",
+    title: "AI Insurance Exclusions: Why Your PI Policy May Not Cover AI Generated Marketing Copy",
     description: "Major insurers including Berkley and RSA are quietly adding AI exclusions to Professional Indemnity policies. If your agency uses AI to write marketing copy, your PI cover may already have a gap you don't know about.",
     date: "2026-05-19",
     readTime: "6 min read",
@@ -794,7 +794,7 @@ Red Flag AI Pro scans your marketing copy against all 29 risk categories across 
 
 You pay for Professional Indemnity insurance to protect your agency if a client claims your work caused them financial or reputational harm. But a quiet shift in the insurance market means that protection may now have a significant hole in it.
 
-Major insurers -including **Berkley Insurance**, the world's largest writer of specialty PI insurance, and **RSA**, one of the UK's leading commercial insurers -are adding AI-specific exclusions to their policies.
+Major insurers, including **Berkley Insurance**, the world's largest writer of specialty PI insurance, and **RSA**, one of the UK's leading commercial insurers, are adding AI specific exclusions to their policies.
 
 If your agency uses AI writing tools like ChatGPT, Claude, Jasper, or Copy.ai to produce marketing copy for clients, this affects you directly.
 
@@ -803,44 +803,44 @@ If your agency uses AI writing tools like ChatGPT, Claude, Jasper, or Copy.ai to
 ## What the Insurers Are Saying
 
 ### Berkley Insurance
-Berkley has introduced explicit AI exclusion endorsements on its professional liability policies. Their position is that the liability arising from AI-generated professional work represents an unquantified and unpriced risk -and until it can be properly modelled, they are excluding it.
+Berkley has introduced explicit AI exclusion endorsements on its professional liability policies. Their position is that the liability arising from AI generated professional work represents an unquantified and unpriced risk, and until it can be properly modelled, they are excluding it.
 
-In practical terms: if a client suffers a loss because your agency produced AI-generated marketing copy that breached a regulation -say, an undisclosed AI-generated ad that violated EU AI Act Article 50 -Berkley's policy may not respond to that claim.
+In practical terms: if a client suffers a loss because your agency produced AI generated marketing copy that breached a regulation, say, an undisclosed AI generated ad that violated EU AI Act Article 50, Berkley's policy may not respond to that claim.
 
 ### Verisk ISO Endorsements
-Verisk, the data analytics company that sets the standard exclusion language used by hundreds of insurers worldwide, has developed AI exclusion endorsements through its ISO commercial lines programme. As these standard clauses propagate through the market, AI-related professional liability exclusions are becoming the norm rather than the exception.
+Verisk, the data analytics company that sets the standard exclusion language used by hundreds of insurers worldwide, has developed AI exclusion endorsements through its ISO commercial lines programme. As these standard clauses propagate through the market, AI related professional liability exclusions are becoming the norm rather than the exception.
 
 ### RSA UK -"Silent AI"
-RSA's Head of Professional Indemnity for the UK has publicly stated that the market is "assuming but not yet pricing for Gen AI exposures." This means RSA policies written today are effectively "silent" on AI -they don't explicitly cover it, and they may not respond to AI-related claims when the time comes.
+RSA's Head of Professional Indemnity for the UK has publicly stated that the market is "assuming but not yet pricing for Gen AI exposures." This means RSA policies written today are effectively "silent" on AI, they don't explicitly cover it, and they may not respond to AI related claims when the time comes.
 
-This is the same "silent cyber" problem that caused enormous coverage disputes in the 2010s -when policies didn't mention cyber risk and insurers denied claims on that basis.
+This is the same "silent cyber" problem that caused enormous coverage disputes in the 2010s, when policies didn't mention cyber risk and insurers denied claims on that basis.
 
 ---
 
 ## Why Marketing Agencies Are Particularly Exposed
 
-Most PI policies for marketing agencies cover claims arising from professional negligence -advice or work product that was professionally deficient.
+Most PI policies for marketing agencies cover claims arising from professional negligence, advice or work product that was professionally deficient.
 
-AI-generated marketing copy creates several new categories of potential claim:
+AI generated marketing copy creates several new categories of potential claim:
 
 ### Regulatory Breach by Client
-If your agency produces AI-generated copy for a client that breaches EU AI Act Article 50 (undisclosed AI content), FTC regulations, or ASA CAP Code rules, and the client suffers a fine or reputational damage as a result -they may claim against your agency.
+If your agency produces AI generated copy for a client that breaches EU AI Act Article 50 (undisclosed AI content), FTC regulations, or ASA CAP Code rules, and the client suffers a fine or reputational damage as a result, they may claim against your agency.
 
 ### Copyright Infringement
-AI writing tools have been trained on vast datasets that may include copyrighted content. If an AI generates copy that is substantially similar to an existing copyrighted work, the copyright owner can pursue the client -who may then pursue your agency.
+AI writing tools have been trained on vast datasets that may include copyrighted content. If an AI generates copy that is substantially similar to an existing copyrighted work, the copyright owner can pursue the client, who may then pursue your agency.
 
 ### Misrepresentation
-If AI-generated copy makes claims that turn out to be false -earnings claims, health claims, comparative claims -and those claims cause consumer harm, your agency may be in the chain of liability.
+If AI generated copy makes claims that turn out to be false, earnings claims, health claims, comparative claims, and those claims cause consumer harm, your agency may be in the chain of liability.
 
-Under traditional PI policies, all of these were clearly covered. Under the new AI exclusion clauses being added by Berkley, Verisk-standardised policies and potentially RSA, they may not be.
+Under traditional PI policies, all of these were clearly covered. Under the new AI exclusion clauses being added by Berkley, Verisk standardised policies and potentially RSA, they may not be.
 
 ---
 
 ## The EU AI Act Makes This Worse
 
-EU AI Act Article 50(4) -coming into force on **2 August 2026** -requires that AI-generated marketing content is clearly disclosed. Failure to disclose is a regulatory violation carrying fines of up to **€15 million or 3% of global annual turnover**.
+EU AI Act Article 50(4), coming into force on **2 August 2026**, requires that AI generated marketing content is clearly disclosed. Failure to disclose is a regulatory violation carrying fines of up to **€15 million or 3% of global annual turnover**.
 
-A fine at this level imposed on a client as a result of your agency's undisclosed AI-generated copy is precisely the kind of claim your PI policy is supposed to cover. Under the new AI exclusion endorsements, it may not.
+A fine at this level imposed on a client as a result of your agency's undisclosed AI generated copy is precisely the kind of claim your PI policy is supposed to cover. Under the new AI exclusion endorsements, it may not.
 
 The regulatory risk and the insurance gap are arriving simultaneously.
 
@@ -849,20 +849,20 @@ The regulatory risk and the insurance gap are arriving simultaneously.
 ## What You Should Do Now
 
 ### 1. Review Your PI Policy Immediately
-Read your current PI policy -specifically any endorsements added at renewal. Search for language referencing "artificial intelligence," "machine learning," "automated content" or "AI-generated." If you find an exclusion or a silence, speak to your broker.
+Read your current PI policy, specifically any endorsements added at renewal. Search for language referencing "artificial intelligence," "machine learning," "automated content" or "AI generated." If you find an exclusion or a silence, speak to your broker.
 
 ### 2. Ask Your Broker the Right Questions
-- Does our current policy cover claims arising from AI-generated work product?
+- Does our current policy cover claims arising from AI generated work product?
 - Has any AI exclusion endorsement been added at our last renewal?
 - Is there specialist AI professional liability cover available?
 
 ### 3. Document Your Human Review Process
-The best defence against both regulatory liability and PI claims is documented human editorial review. If a human professional reviewed, amended and approved every piece of AI-generated copy, you have a much stronger position -both under EU AI Act Article 50(4) exemptions and in any PI claim.
+The best defence against both regulatory liability and PI claims is documented human editorial review. If a human professional reviewed, amended and approved every piece of AI generated copy, you have a much stronger position, both under EU AI Act Article 50(4) exemptions and in any PI claim.
 
-Keep records of: who reviewed each piece of AI-generated content, what changes were made, and the date of review.
+Keep records of: who reviewed each piece of AI generated content, what changes were made, and the date of review.
 
 ### 4. Implement Compliance Scanning Before Delivery
-Scan every piece of AI-assisted marketing copy for compliance issues before it goes to the client. This demonstrates professional diligence -the standard that PI cover is designed to protect.
+Scan every piece of AI assisted marketing copy for compliance issues before it goes to the client. This demonstrates professional diligence, the standard that PI cover is designed to protect.
 
 ### 5. Update Your Client Contracts
 Add clauses to your agency agreements that address AI tool usage, disclosure responsibilities, and liability allocation between your agency and the client. Your lawyer can advise on appropriate language.
@@ -871,12 +871,12 @@ Add clauses to your agency agreements that address AI tool usage, disclosure res
 
 ## The Risk in Plain Numbers
 
-Consider a mid-size UK marketing agency with:
+Consider a mid size UK marketing agency with:
 - Annual fee income of £500,000
 - A PI policy with a £1 million limit
-- 12 active clients receiving AI-assisted copy
+- 12 active clients receiving AI assisted copy
 
-A single EU AI Act violation fine against one client -potentially up to £1.3 million for a small business -could exceed the agency's annual revenue. If that fine arose from undisclosed AI-generated copy produced by the agency, the client has a clear professional negligence claim.
+A single EU AI Act violation fine against one client, potentially up to £1.3 million for a small business, could exceed the agency's annual revenue. If that fine arose from undisclosed AI generated copy produced by the agency, the client has a clear professional negligence claim.
 
 If the PI policy contains an AI exclusion: the agency's £1 million policy does not respond. The agency faces that claim uninsured.
 
@@ -886,13 +886,13 @@ This is not a theoretical risk. It is the realistic outcome of the insurance mar
 
 ## Red Flag AI Pro: Your Compliance Paper Trail
 
-Red Flag AI Pro scans AI-generated and human-written marketing copy against 29 risk categories across 9 jurisdictions -including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
+Red Flag AI Pro scans AI generated and human written marketing copy against 29 risk categories across 9 jurisdictions, including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
 
-Every scan produces a timestamped compliance report. That report is your documented evidence of professional diligence -exactly what your broker, your client and any claims handler would need to see.
+Every scan produces a timestamped compliance report. That report is your documented evidence of professional diligence, exactly what your broker, your client and any claims handler would need to see.
 
 It takes 60 seconds. It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
 
-[Scan your first piece of copy free -no credit card required →](https://www.redflagaipro.com/signup)
+[Scan your first piece of copy free, no credit card required →](https://www.redflagaipro.com/signup)
 
 ---
 
@@ -900,20 +900,20 @@ It takes 60 seconds. It costs less than a single billable hour. And it may be th
 
 | Risk | Status |
 |------|--------|
-| Berkley Insurance AI exclusions | Active -being added at renewal |
+| Berkley Insurance AI exclusions | Active, being added at renewal |
 | Verisk ISO AI endorsements | Rolling out across market |
-| RSA UK "Silent AI" | Unresolved -policies may not respond |
+| RSA UK "Silent AI" | Unresolved, policies may not respond |
 | EU AI Act Article 50(4) | In force 2 August 2026 |
 | Maximum fine | €15m or 3% global turnover |
 | Your PI policy | Review it today |
 
-The insurance gap and the regulatory risk are arriving at the same time. The agencies that survive the next 12 months will be the ones who treated compliance as infrastructure -not an afterthought.
+The insurance gap and the regulatory risk are arriving at the same time. The agencies that survive the next 12 months will be the ones who treated compliance as infrastructure, not an afterthought.
     `,
   },
   {
     slug: "no-refunds-digital-products-illegal-uk",
-    title: "No Refunds on Digital Products Is Illegal in the UK -What Every Buyer Needs to Know",
-    description: "Most online sellers claim 'all sales final' on digital products. Under UK law, that policy is void. You have a 14-day right to cancel -and most sellers don't want you to know that.",
+    title: "No Refunds on Digital Products Is Illegal in the UK: What Every Buyer Needs to Know",
+    description: "Most online sellers claim 'all sales final' on digital products. Under UK law, that policy is void. You have a 14 day right to cancel, and most sellers don't want you to know that.",
     date: "2026-05-26",
     readTime: "5 min read",
     category: "For Buyers",
@@ -924,13 +924,13 @@ You buy an online course. It is nothing like what was advertised. You ask for a 
 
 You assume they are right. You walk away. You lose your money.
 
-But that seller was wrong -and under UK law, their "no refunds" policy was void before you even clicked the buy button.
+But that seller was wrong, and under UK law, their "no refunds" policy was void before you even clicked the buy button.
 
 ---
 
 ## What the Law Actually Says
 
-The **Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013** gives UK consumers a 14-day right to cancel most purchases made online -including digital products.
+The **Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013** gives UK consumers a 14 day right to cancel most purchases made online, including digital products.
 
 This right applies to:
 - Online courses and coaching programmes
@@ -939,13 +939,13 @@ This right applies to:
 - Membership sites
 - Digital templates and downloads
 
-The 14-day period begins the day after you purchase. During this window, you are entitled to a full refund -no questions asked -under UK law.
+The 14 day period begins the day after you purchase. During this window, you are entitled to a full refund, no questions asked, under UK law.
 
 ---
 
 ## The One Exception Sellers Misuse
 
-There is one legal exception to the 14-day rule for digital products: if the seller provides the digital content immediately and you give **express consent** to waive your right to cancel before downloading begins.
+There is one legal exception to the 14 day rule for digital products: if the seller provides the digital content immediately and you give **express consent** to waive your right to cancel before downloading begins.
 
 For this waiver to be legally valid, all of the following must happen:
 
@@ -953,9 +953,9 @@ For this waiver to be legally valid, all of the following must happen:
 2. You must actively confirm you understand and accept this
 3. The seller must provide written confirmation of your acknowledgement
 
-A buried clause in terms and conditions does not constitute valid waiver. A pre-ticked box does not constitute valid waiver. A general "all sales final" notice does not constitute valid waiver.
+A buried clause in terms and conditions does not constitute valid waiver. A pre ticked box does not constitute valid waiver. A general "all sales final" notice does not constitute valid waiver.
 
-If the seller didn't explicitly ask you to waive your cancellation right -and you didn't actively agree -the waiver is invalid and your 14-day right remains intact.
+If the seller didn't explicitly ask you to waive your cancellation right, and you didn't actively agree, the waiver is invalid and your 14 day right remains intact.
 
 ---
 
@@ -967,21 +967,21 @@ A course sold via a platform like Kajabi, Teachable or Thinkific typically grant
 
 This is only legal if you were clearly informed of this before purchase and actively agreed to it.
 
-If you were not -you still have your 14-day cancellation right.
+If you were not, you still have your 14 day cancellation right.
 
 ---
 
 ## Your Rights If a Seller Refuses a Refund
 
-If a UK seller refuses a refund and your 14-day right is intact:
+If a UK seller refuses a refund and your 14 day right is intact:
 
-1. **Write to the seller formally** -state that you are exercising your right to cancel under the Consumer Contracts Regulations 2013, regulation 29, and request a refund within 14 days.
+1. **Write to the seller formally**, state that you are exercising your right to cancel under the Consumer Contracts Regulations 2013, regulation 29, and request a refund within 14 days.
 
-2. **Raise a chargeback with your bank or card provider** -for purchases made by debit or credit card, your bank can often reverse the transaction. Cite "non-delivery of contracted services" or "misrepresentation."
+2. **Raise a chargeback with your bank or card provider**, for purchases made by debit or credit card, your bank can often reverse the transaction. Cite "non delivery of contracted services" or "misrepresentation."
 
-3. **Report to Trading Standards** -UK sellers who refuse legal refund rights can be reported to your local Trading Standards authority or to the Citizens Advice consumer helpline (0808 223 1133).
+3. **Report to Trading Standards**, UK sellers who refuse legal refund rights can be reported to your local Trading Standards authority or to the Citizens Advice consumer helpline (0808 223 1133).
 
-4. **File with the CMA** -The Competition and Markets Authority accepts reports of businesses that systematically deny consumer rights. Reports can be submitted at gov.uk/report-trading-standards.
+4. **File with the CMA**, The Competition and Markets Authority accepts reports of businesses that systematically deny consumer rights. Reports can be submitted at gov.uk/report trading standards.
 
 ---
 
@@ -991,17 +991,17 @@ Most buyers never claim the refund they are legally entitled to. Sellers rely on
 
 A seller who includes "all sales final" in their terms knows that most buyers will assume they have no recourse. For every buyer who fights back, dozens walk away without the refund they were owed.
 
-This is why Red Flag AI Pro includes a scan for contract contradictions -checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
+This is why Red Flag AI Pro includes a scan for contract contradictions, checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
 
-Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you in 60 seconds whether their refund policy is legal -and what your rights actually are.
+Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you in 60 seconds whether their refund policy is legal, and what your rights actually are.
 
-[Check a seller's copy for free -no signup needed →](https://www.redflagaipro.com)
+[Check a seller's copy for free, no signup needed →](https://www.redflagaipro.com)
     `,
   },
   {
     slug: "influencer-affiliate-disclosure-what-buyers-need-to-know",
     title: "The Person Who Recommended That Product May Have Been Breaking the Law",
-    description: "The influencer, reviewer or friend who recommended that product may have been paid to do so -and never told you. Under FTC, ASA and CMA rules, that is illegal. Here is what it means for you.",
+    description: "The influencer, reviewer or friend who recommended that product may have been paid to do so, and never told you. Under FTC, ASA and CMA rules, that is illegal. Here is what it means for you.",
     date: "2026-05-26",
     readTime: "5 min read",
     category: "For Buyers",
@@ -1012,13 +1012,13 @@ You saw a YouTube video. A blogger wrote a glowing review. Someone in a Facebook
 
 What you probably didn't know: that person may have been paid to recommend it. And they may not have told you.
 
-Under UK, US and EU law -that is illegal.
+Under UK, US and EU law, that is illegal.
 
 ---
 
 ## What the Law Requires
 
-### United Kingdom -ASA and CMA Rules
+### United Kingdom, ASA and CMA Rules
 The ASA CAP Code and the CMA's guidelines on online reviews require that any material commercial relationship between an advertiser and a person promoting their product must be clearly disclosed.
 
 This includes:
@@ -1027,16 +1027,16 @@ This includes:
 - Earning commission on sales through an affiliate link
 - Having any financial relationship with the brand
 
-The disclosure must be **prominent and clear** -not buried in a caption, not hidden below a fold, not in a hashtag list where it blends in.
+The disclosure must be **prominent and clear**, not buried in a caption, not hidden below a fold, not in a hashtag list where it blends in.
 
-### United States -FTC Endorsement Guides
+### United States, FTC Endorsement Guides
 The Federal Trade Commission's Endorsement Guides require that any material connection between an endorser and an advertiser is "clearly and conspicuously disclosed."
 
 The FTC has specifically stated that disclosures like "#collab," "#partner" or a generic "#ad" buried among other hashtags do not meet the standard. The disclosure must be hard to miss.
 
-In 2023, the FTC updated its guidance to explicitly cover AI-generated endorsements and algorithm-driven recommendations -expanding the disclosure requirement significantly.
+In 2023, the FTC updated its guidance to explicitly cover AI generated endorsements and algorithm driven recommendations, expanding the disclosure requirement significantly.
 
-### European Union -DSA and UCPD
+### European Union, DSA and UCPD
 The Digital Services Act and the Unfair Commercial Practices Directive both require that paid or incentivised content is clearly identified as advertising before a consumer engages with it. This applies to influencers, affiliates, comparison sites and review platforms operating in or targeting EU consumers.
 
 ---
@@ -1044,24 +1044,24 @@ The Digital Services Act and the Unfair Commercial Practices Directive both requ
 ## The Specific Practices That Are Illegal
 
 ### Affiliate Links Without Disclosure
-If someone includes a link to a product and earns commission when you click and buy -without telling you they earn commission -that is an undisclosed material connection. It is illegal under FTC rules and UK Consumer Protection Regulations.
+If someone includes a link to a product and earns commission when you click and buy, without telling you they earn commission, that is an undisclosed material connection. It is illegal under FTC rules and UK Consumer Protection Regulations.
 
 ### Free Product Reviews Without Disclosure
-If a reviewer received a product free of charge in exchange for coverage -even if they weren't paid cash -they must disclose it. "I received this product for free to review" is required. Failing to say so is a violation.
+If a reviewer received a product free of charge in exchange for coverage, even if they weren't paid cash, they must disclose it. "I received this product for free to review" is required. Failing to say so is a violation.
 
 ### Paid Social Media Posts Without Labels
-Instagram, TikTok and YouTube posts that are paid promotions must be clearly labelled as such before a viewer engages with the content -not at the end, not in small print, not in a hashtag group.
+Instagram, TikTok and YouTube posts that are paid promotions must be clearly labelled as such before a viewer engages with the content, not at the end, not in small print, not in a hashtag group.
 
 ### Comparison Sites Ranked by Commission
-Price comparison and review sites that rank products by commission rate rather than objective criteria -without disclosing this -are operating illegally under CMA guidelines issued in 2021.
+Price comparison and review sites that rank products by commission rate rather than objective criteria, without disclosing this, are operating illegally under CMA guidelines issued in 2021.
 
 ---
 
 ## Why "Organic" Reviews Are Often Anything But
 
-The course creator space, supplement industry, software market and online education sector all rely heavily on affiliate marketing. Commission rates of 30% to 50% are common. A single high-ticket course sale can earn an affiliate hundreds of pounds.
+The course creator space, supplement industry, software market and online education sector all rely heavily on affiliate marketing. Commission rates of 30% to 50% are common. A single high ticket course sale can earn an affiliate hundreds of pounds.
 
-This creates a powerful financial incentive to recommend products -and a powerful incentive not to disclose it, because disclosed ads convert worse than organic-looking recommendations.
+This creates a powerful financial incentive to recommend products, and a powerful incentive not to disclose it, because disclosed ads convert worse than organic looking recommendations.
 
 The result: a large proportion of online recommendations you encounter are paid. Many are undisclosed.
 
@@ -1069,28 +1069,28 @@ The result: a large proportion of online recommendations you encounter are paid.
 
 ## What To Do If You Were Misled by an Undisclosed Paid Endorsement
 
-1. **Check for disclosure** -look carefully at the content. Is there a clear #ad, #sponsored, or "paid partnership" label? Is the affiliate relationship disclosed in the first line?
+1. **Check for disclosure**, look carefully at the content. Is there a clear #ad, #sponsored, or "paid partnership" label? Is the affiliate relationship disclosed in the first line?
 
-2. **Report to the ASA** -UK consumers can report undisclosed advertising at asa.org.uk. The ASA investigates and publishes rulings.
+2. **Report to the ASA**, UK consumers can report undisclosed advertising at asa.org.uk. The ASA investigates and publishes rulings.
 
-3. **Report to the FTC** -US consumers can report at reportfraud.ftc.gov.
+3. **Report to the FTC**, US consumers can report at reportfraud.ftc.gov.
 
-4. **Chargeback if misled** -if you purchased a product based on what turned out to be an undisclosed paid endorsement, and the product didn't match what was implied, you may have grounds for a chargeback with your card provider on the basis of misrepresentation.
+4. **Chargeback if misled**, if you purchased a product based on what turned out to be an undisclosed paid endorsement, and the product didn't match what was implied, you may have grounds for a chargeback with your card provider on the basis of misrepresentation.
 
 ---
 
 ## Before You Buy: Check the Sales Page
 
-Red Flag AI Pro scans sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials -alongside income claims, fake urgency, hidden fees and 12 other risk categories.
+Red Flag AI Pro scans sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials, alongside income claims, fake urgency, hidden fees and 12 other risk categories.
 
 Paste any sales page, course landing page or promotional email into the scanner before you buy. Free. No account needed.
 
-[Check any ad or sales page for free -60 seconds →](https://www.redflagaipro.com)
+[Check any ad or sales page for free, 60 seconds →](https://www.redflagaipro.com)
     `,
   },
   {
     slug: "trigger-words-ftc-investigation-what-to-say-instead",
-    title: "The Words That Flag Your Copy to the FTC -And What to Say Instead",
+    title: "The Words That Flag Your Copy to the FTC, and What to Say Instead",
     description: "The FTC uses language pattern analysis to identify marketing copy for investigation. These specific words and phrases are known triggers. Here is what to remove and what to replace them with.",
     date: "2026-05-26",
     readTime: "6 min read",
@@ -1098,43 +1098,43 @@ Paste any sales page, course landing page or promotional email into the scanner 
     content: `
 ## How the FTC Identifies Targets
 
-The Federal Trade Commission does not wait for consumer complaints to find violators. It actively monitors online advertising -using both staff review and increasingly, automated scanning -to identify marketing copy that contains high-risk language patterns.
+The Federal Trade Commission does not wait for consumer complaints to find violators. It actively monitors online advertising, using both staff review and increasingly, automated scanning, to identify marketing copy that contains high risk language patterns.
 
 If your copy contains certain phrases, it is statistically more likely to be flagged for review. Some of these phrases are obvious. Many are not.
 
-Here is what to remove from your copy -and what to say instead.
+Here is what to remove from your copy, and what to say instead.
 
 ---
 
-## The High-Risk Word List
+## The High Risk Word List
 
 ### "Guaranteed"
 
 **Why it triggers scrutiny**: "Guaranteed" implies a promise of a specific result. Under FTC Section 5, any guarantee claim must be substantiated and the full terms of the guarantee must be clearly disclosed.
 
-**The specific problem**: "Guaranteed results" or "guaranteed income" claims require that you can document what a typical customer actually achieves -and that the guarantee matches those results. Most marketers cannot.
+**The specific problem**: "Guaranteed results" or "guaranteed income" claims require that you can document what a typical customer actually achieves, and that the guarantee matches those results. Most marketers cannot.
 
-**What to say instead**: "We stand behind our product with a 30-day money-back guarantee" -specific, time-bound, unambiguous. Or remove the guarantee language entirely and lead with social proof instead.
+**What to say instead**: "We stand behind our product with a 30 day money back guarantee", specific, time bound, unambiguous. Or remove the guarantee language entirely and lead with social proof instead.
 
 ---
 
 ### "Proven"
 
-**Why it triggers scrutiny**: "Proven system," "proven method," "proven results" -the word "proven" implies scientific or empirical validation. The FTC requires that claims of proof are backed by reliable, competent evidence.
+**Why it triggers scrutiny**: "Proven system," "proven method," "proven results", the word "proven" implies scientific or empirical validation. The FTC requires that claims of proof are backed by reliable, competent evidence.
 
 **The specific problem**: "Proven" in marketing almost never means what it claims. "Proven to work" for a business course would require a controlled study showing results across a representative sample. No course creator has that.
 
-**What to say instead**: "Based on results from over 300 students" -specific, quantified, verifiable. Or "This approach has worked for [specific named customers]" with their permission to use their names and results.
+**What to say instead**: "Based on results from over 300 students", specific, quantified, verifiable. Or "This approach has worked for [specific named customers]" with their permission to use their names and results.
 
 ---
 
 ### "Scientifically"
 
-**Why it triggers scrutiny**: "Scientifically formulated," "scientifically proven," "science-backed" -any scientific claim requires supporting scientific evidence that would withstand peer review.
+**Why it triggers scrutiny**: "Scientifically formulated," "scientifically proven," "science backed", any scientific claim requires supporting scientific evidence that would withstand peer review.
 
 **The specific problem**: Supplement, health and wellness marketers use "scientifically" as a credibility signal without any actual science behind it. The FTC specifically targets this in its health and supplement enforcement.
 
-**What to say instead**: If you have a genuine scientific basis -cite the specific study. "A 2024 study published in [journal] found..." Otherwise remove the claim entirely.
+**What to say instead**: If you have a genuine scientific basis, cite the specific study. "A 2024 study published in [journal] found..." Otherwise remove the claim entirely.
 
 ---
 
@@ -1142,27 +1142,27 @@ Here is what to remove from your copy -and what to say instead.
 
 **Why it triggers scrutiny**: Claims that a process requires minimal effort directly conflict with earnings claim rules. If your product promises income or results and describes the process as effortless, you are making an implied claim that typical users can achieve those results without significant work.
 
-**The specific problem**: "Make money while you sleep," "effortless passive income," "simple system anyone can follow" -all of these are implied earnings claims. They require the same substantiation as direct income claims.
+**The specific problem**: "Make money while you sleep," "effortless passive income," "simple system anyone can follow", all of these are implied earnings claims. They require the same substantiation as direct income claims.
 
-**What to say instead**: "Our step-by-step framework walks you through each stage" -describes the process without implying it requires no effort.
+**What to say instead**: "Our step by step framework walks you through each stage", describes the process without implying it requires no effort.
 
 ---
 
-### "Risk-Free"
+### "Risk Free"
 
-**Why it triggers scrutiny**: "Risk-free" is a specific legal term. If you use it, the FTC expects there to be genuinely zero financial risk to the consumer. That means a clear, easy-to-claim refund with no conditions.
+**Why it triggers scrutiny**: "Risk free" is a specific legal term. If you use it, the FTC expects there to be genuinely zero financial risk to the consumer. That means a clear, easy to claim refund with no conditions.
 
-**The specific problem**: Many marketers say "risk-free" but their refund policy has conditions -time limits, proof of completion requirements, "no questions asked" language that is contradicted by the actual refund process.
+**The specific problem**: Many marketers say "risk free" but their refund policy has conditions, time limits, proof of completion requirements, "no questions asked" language that is contradicted by the actual refund process.
 
-**What to say instead**: "Try it for 30 days. If you're not satisfied, contact us for a full refund -no hoops." Specific, honest, and legally defensible.
+**What to say instead**: "Try it for 30 days. If you're not satisfied, contact us for a full refund, no hoops." Specific, honest, and legally defensible.
 
 ---
 
 ### "As Seen On" / "Featured In"
 
-**Why it triggers scrutiny**: These phrases imply editorial endorsement. The FTC requires that any implied endorsement by a media outlet is genuine and not paid placement, and that the brand actually appeared in an editorial context -not just paid advertising.
+**Why it triggers scrutiny**: These phrases imply editorial endorsement. The FTC requires that any implied endorsement by a media outlet is genuine and not paid placement, and that the brand actually appeared in an editorial context, not just paid advertising.
 
-**The specific problem**: Logos of media outlets displayed without context imply that those outlets have endorsed or recommended your product. If your "feature" was a press release pickup or a paid content placement -this is misleading.
+**The specific problem**: Logos of media outlets displayed without context imply that those outlets have endorsed or recommended your product. If your "feature" was a press release pickup or a paid content placement, this is misleading.
 
 **What to say instead**: Link to the actual article. Quote the specific editorial mention. If the coverage was paid, label it as such.
 
@@ -1174,7 +1174,7 @@ Here is what to remove from your copy -and what to say instead.
 
 **The specific problem**: Beyond being illegal, fake urgency is increasingly recognisable to consumers. It actively damages trust.
 
-**What to say instead**: Use real deadlines that you honour. "This price is available until Friday 30 May at midnight" -with a countdown that actually counts down to that moment and stops. Or remove the urgency entirely and lead with value.
+**What to say instead**: Use real deadlines that you honour. "This price is available until Friday 30 May at midnight", with a countdown that actually counts down to that moment and stops. Or remove the urgency entirely and lead with value.
 
 ---
 
@@ -1182,9 +1182,9 @@ Here is what to remove from your copy -and what to say instead.
 
 The FTC's standard for all advertising claims is that they must be:
 
-1. **Truthful** -not false or misleading
-2. **Substantiated** -backed by evidence before you make them
-3. **Fair** -not causing unreasonable harm to consumers
+1. **Truthful**, not false or misleading
+2. **Substantiated**, backed by evidence before you make them
+3. **Fair**, not causing unreasonable harm to consumers
 
 If you apply these three tests to every claim in your copy before you publish, you eliminate the vast majority of FTC risk.
 
@@ -1192,24 +1192,24 @@ If you apply these three tests to every claim in your copy before you publish, y
 
 ## Scan Your Copy Before You Publish
 
-Red Flag AI Pro scans your marketing copy for FTC trigger phrases and high-risk language patterns -alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations.
+Red Flag AI Pro scans your marketing copy for FTC trigger phrases and high risk language patterns, alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations.
 
 Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions in 60 seconds.
 
-[Scan your copy free -no account needed →](https://www.redflagaipro.com)
+[Scan your copy free, no account needed →](https://www.redflagaipro.com)
     `,
   },
   {
     slug: "money-back-guarantee-legal-liability-sellers",
-    title: "Why Your Money-Back Guarantee Might Be Legally Worthless -And What It Is Actually Costing You",
-    description: "Most online sellers use a money-back guarantee to reduce purchase anxiety. But most guarantees are legally void, create chargeback liability and fail to do what sellers think they do.",
+    title: "Why Your Money Back Guarantee Might Be Legally Worthless, and What It Is Actually Costing You",
+    description: "Most online sellers use a money back guarantee to reduce purchase anxiety. But most guarantees are legally void, create chargeback liability and fail to do what sellers think they do.",
     date: "2026-05-26",
     readTime: "6 min read",
     category: "For Sellers",
     content: `
 ## The Guarantee Paradox
 
-The money-back guarantee is one of the most widely used conversion tools in online marketing. The logic is simple: remove the risk from the buyer, increase conversions, and trust that most buyers won't claim it.
+The money back guarantee is one of the most widely used conversion tools in online marketing. The logic is simple: remove the risk from the buyer, increase conversions, and trust that most buyers won't claim it.
 
 But most sellers don't understand two things about their guarantee:
 
@@ -1224,27 +1224,27 @@ But most sellers don't understand two things about their guarantee:
 
 In the UK, EU, Australia and Canada, consumers have statutory rights that cannot be contracted away. In the UK, these are set out in the Consumer Rights Act 2015 and the Consumer Contracts Regulations 2013.
 
-For digital products sold online, UK consumers have a **14-day right to cancel** and receive a full refund -regardless of what your terms say.
+For digital products sold online, UK consumers have a **14 day right to cancel** and receive a full refund, regardless of what your terms say.
 
-Here is where most sellers go wrong: they offer a 30-day money-back guarantee, thinking this is generous. But if their actual terms say the 30-day guarantee requires the buyer to complete the course, submit evidence of attempts, or go through an approval process -those conditions conflict with statutory rights that cannot be removed.
+Here is where most sellers go wrong: they offer a 30 day money back guarantee, thinking this is generous. But if their actual terms say the 30 day guarantee requires the buyer to complete the course, submit evidence of attempts, or go through an approval process, those conditions conflict with statutory rights that cannot be removed.
 
 A consumer can bypass your guarantee entirely and claim their statutory right to cancel. No completion requirement. No proof of attempts. No approval process.
 
-Your guarantee with conditions is legally unenforceable -and if it is presented in a way that misleads consumers about their statutory rights, it is itself a violation.
+Your guarantee with conditions is legally unenforceable, and if it is presented in a way that misleads consumers about their statutory rights, it is itself a violation.
 
 ### The Contract Contradiction Problem
 
-Many sellers have a "60-day money-back guarantee" in their marketing copy and "all sales final -no refunds on digital products" in their terms of service.
+Many sellers have a "60 day money back guarantee" in their marketing copy and "all sales final, no refunds on digital products" in their terms of service.
 
 These two statements are in direct contradiction. Under ASA CAP Code Rule 3.1 and FTC Section 5, marketing claims must be truthful and consistent with actual terms. A guarantee advertised in the copy that is contradicted by the terms is a misrepresentation.
 
-Red Flag AI Pro specifically scans for contract contradictions -this is one of the most common violations we identify in sales page copy.
+Red Flag AI Pro specifically scans for contract contradictions, this is one of the most common violations we identify in sales page copy.
 
 ---
 
 ## What Guarantees Actually Do to Your Chargeback Rate
 
-Many sellers believe that a visible money-back guarantee reduces chargebacks, because dissatisfied customers will claim the guarantee rather than going to their bank.
+Many sellers believe that a visible money back guarantee reduces chargebacks, because dissatisfied customers will claim the guarantee rather than going to their bank.
 
 This is sometimes true. But it creates a less obvious problem.
 
@@ -1260,20 +1260,20 @@ In this scenario, you lose the chargeback AND face a potential regulatory compla
 
 Payment processors including Stripe and PayPal operate chargeback rate thresholds. Typically, a chargeback rate above 1% puts your account at risk. Above 1.5% can trigger account termination.
 
-A poorly structured guarantee -one that creates more disputes than it resolves -can contribute to your chargeback rate creeping toward these thresholds.
+A poorly structured guarantee, one that creates more disputes than it resolves, can contribute to your chargeback rate creeping toward these thresholds.
 
 ---
 
 ## What a Legally Sound Guarantee Actually Looks Like
 
-### Simple, Unconditional, Time-Bounded
+### Simple, Unconditional, Time Bounded
 
 The most legally defensible guarantee is the simplest one:
 
 *"If you're not satisfied for any reason within 30 days of purchase, contact us at [email] for a full refund. No conditions."*
 
 This works because:
-- It is consistent with your statutory obligations (UK statutory right is 14 days -you are offering more)
+- It is consistent with your statutory obligations (UK statutory right is 14 days, you are offering more)
 - It has no conditions that could be challenged
 - It is clearly stated and easy to claim
 - It creates a documented refund pathway that protects you against chargeback claims
@@ -1292,7 +1292,7 @@ This documentation is your defence in any chargeback dispute or regulatory inves
 
 ## The Guarantee Trap: Why Low Refund Rates Are Not Always a Good Sign
 
-Many sellers celebrate a low refund rate as evidence of a good product. Sometimes it is. But sometimes a low refund rate simply means your refund process is difficult enough that dissatisfied buyers give up -and go to their bank instead.
+Many sellers celebrate a low refund rate as evidence of a good product. Sometimes it is. But sometimes a low refund rate simply means your refund process is difficult enough that dissatisfied buyers give up, and go to their bank instead.
 
 A buyer who receives a refund is a resolved dispute. A buyer who gives up and charges back is an unresolved dispute that costs you the product value plus a chargeback fee, damages your processor relationship, and may trigger regulatory interest.
 
@@ -1308,14 +1308,14 @@ Red Flag AI Pro checks your marketing copy for:
 - Guarantee claims that remove or misrepresent statutory consumer rights
 - Refund policy language that creates regulatory risk
 
-Paste your sales page or email sequence and get a plain English explanation of any issues found -plus exact rewrite suggestions.
+Paste your sales page or email sequence and get a plain English explanation of any issues found, plus exact rewrite suggestions.
 
-[Scan your copy free -no account or card needed →](https://www.redflagaipro.com)
+[Scan your copy free, no account or card needed →](https://www.redflagaipro.com)
     `,
   },
   {
     slug: "fca-financial-promotions-marketing-agencies",
-    title: "FCA Financial Promotions, What Every Marketing Agency Writing for Financial Clients Must Know",
+    title: "FCA Financial Promotions: What Every Marketing Agency Writing for Financial Clients Must Know",
     description: "Writing copy for a financial services client without FCA approval is a criminal offence. Here is what every UK marketing agency needs to know before publishing financial promotions.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -1323,7 +1323,7 @@ Paste your sales page or email sequence and get a plain English explanation of a
     content: `
 ## The Offence Most Agencies Don't Know They're Committing
 
-If your agency writes marketing copy for a financial services client, an investment firm, a trading platform, a mortgage broker, an insurance company, a fintech, and that copy contains a financial promotion, it must be approved by an FCA-authorised person before it is published.
+If your agency writes marketing copy for a financial services client, an investment firm, a trading platform, a mortgage broker, an insurance company, a fintech, and that copy contains a financial promotion, it must be approved by an FCA authorised person before it is published.
 
 If it isn't, the person who communicated the promotion has committed a criminal offence under Section 21 of the Financial Services and Markets Act 2000.
 
@@ -1351,8 +1351,8 @@ If your client's campaign does any of the above, it is a financial promotion.
 
 A financial promotion must either be:
 
-1. **Communicated by an FCA-authorised firm**, if your client is directly FCA-regulated (most financial services firms are), they must approve the copy before it is published, or
-2. **Approved by an FCA-authorised firm**, if the promoter is not FCA-regulated, a regulated firm must approve the communication
+1. **Communicated by an FCA authorised firm**, if your client is directly FCA regulated (most financial services firms are), they must approve the copy before it is published, or
+2. **Approved by an FCA authorised firm**, if the promoter is not FCA regulated, a regulated firm must approve the communication
 
 In either case, this approval must happen before publication. A "we'll sort the compliance later" approach is a criminal liability.
 
@@ -1362,20 +1362,20 @@ In either case, this approval must happen before publication. A "we'll sort the 
 
 Since October 2023, the FCA has extended financial promotion rules to cover cryptoassets. Any promotion of crypto trading, crypto investment products or NFTs must now comply with FCA financial promotion rules, including specific risk warnings.
 
-The required risk warning for crypto promotions reads: *"Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment and you are unlikely to be protected if something goes wrong. Take 2 minutes to learn more."*
+The required risk warning for crypto promotions reads: *"Don't invest unless you're prepared to lose all the money you invest. This is a high risk investment and you are unlikely to be protected if something goes wrong. Take 2 minutes to learn more."*
 
-If your agency produces social media content, landing pages or email campaigns for a crypto brand without this warning, the brand is in violation, and your agency produced the non-compliant material.
+If your agency produces social media content, landing pages or email campaigns for a crypto brand without this warning, the brand is in violation, and your agency produced the non compliant material.
 
 ---
 
-## What the FCA Actually Does to Non-Compliant Promotions
+## What the FCA Actually Does to Non Compliant Promotions
 
 The FCA has become significantly more aggressive in enforcement since 2023:
 
 - Issued 10,000 alerts about unauthorised financial promotions in 2023 alone
 - Required Google and Meta to block unauthorised financial ads
 - Pursued criminal prosecutions against individuals communicating unapproved promotions
-- Required major platforms to delist non-compliant financial promoters
+- Required major platforms to delist non compliant financial promoters
 
 The regulator is watching social media, search ads, email and landing pages. It is not waiting for complaints.
 
@@ -1387,7 +1387,7 @@ The regulator is watching social media, search ads, email and landing pages. It 
 
 Audit your client list. Which clients operate in financial services? Which campaigns touch investment, lending, insurance or crypto?
 
-### 2. Require Client Sign-Off on All Financial Promotions
+### 2. Require Client Sign Off on All Financial Promotions
 
 Build a process where every piece of copy containing financial claims is approved in writing by your client's compliance team before publication. Get this approval in writing and keep the record.
 
@@ -1415,15 +1415,15 @@ The protection is a documented approval process, and it starts with identifying 
   },
   {
     slug: "greenwashing-laws-2026-brand-guide",
-    title: "Greenwashing Laws 2026, Every Environmental Claim on Your Website Is Now a Legal Risk",
+    title: "Greenwashing Laws 2026: Every Environmental Claim on Your Website Is Now a Legal Risk",
     description: "The EU Green Claims Directive, CMA Green Claims Code and FTC Green Guides are actively enforced. Here is what every brand needs to know about sustainability claims before publishing.",
     date: "2026-05-29",
     readTime: "5 min read",
     category: "Greenwashing",
     content: `
-## "Eco-Friendly" Is Now a Regulated Claim
+## "Eco Friendly" Is Now a Regulated Claim
 
-If your website, product packaging or marketing copy includes any of these words, sustainable, eco-friendly, carbon neutral, net zero, green, planet friendly, biodegradable, recyclable, regulators want to see your evidence.
+If your website, product packaging or marketing copy includes any of these words, sustainable, eco friendly, carbon neutral, net zero, green, planet friendly, biodegradable, recyclable, regulators want to see your evidence.
 
 In 2026, three major regulatory frameworks are actively targeting greenwashing:
 
@@ -1453,13 +1453,13 @@ A marketing team deciding that a product "feels" sustainable is not substantiati
 ## The 8 Most Common Greenwashing Violations
 
 ### 1. "Carbon Neutral" Without an Accredited Offset
-Carbon neutrality claims require verified offsets under a recognised standard such as Gold Standard or VCS. Self-reported calculations do not qualify.
+Carbon neutrality claims require verified offsets under a recognised standard such as Gold Standard or VCS. Self reported calculations do not qualify.
 
 ### 2. "Sustainable" With No Definition
 "Sustainable" is meaningless without specifying what dimension of sustainability, materials, supply chain, energy, water, packaging, and providing evidence for that specific dimension.
 
-### 3. "Eco-Friendly" Packaging That Isn't
-Claiming packaging is eco-friendly when it contains non-recyclable elements or is not accepted by most UK local authorities is misleading under the CMA Code.
+### 3. "Eco Friendly" Packaging That Isn't
+Claiming packaging is eco friendly when it contains non recyclable elements or is not accepted by most UK local authorities is misleading under the CMA Code.
 
 ### 4. "Biodegradable" Without Time Frame or Conditions
 Biodegradable claims require disclosure of the conditions under which biodegradation occurs and the time frame. "Biodegradable in industrial composting facilities only" is very different from "biodegrades naturally."
@@ -1467,7 +1467,7 @@ Biodegradable claims require disclosure of the conditions under which biodegrada
 ### 5. Offsetting Claims That Omit the Fine Print
 "We offset our carbon footprint" without disclosing that this applies only to shipping, or only to 50% of emissions, is misleading by omission.
 
-### 6. Recycling Claims for Non-Recyclable Packaging
+### 6. Recycling Claims for Non Recyclable Packaging
 Claiming a product is recyclable when most consumers cannot actually recycle it through standard collection channels is a violation under both FTC Green Guides and CMA Code.
 
 ### 7. "Plastic Free" Claims With Plastic Components
@@ -1489,7 +1489,7 @@ Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking co
   },
   {
     slug: "vsl-compliance-checklist-video-sales-letters",
-    title: "VSL Compliance Checklist, What Every Video Sales Letter Must Include (and Avoid)",
+    title: "VSL Compliance Checklist: What Every Video Sales Letter Must Include (and Avoid)",
     description: "Video sales letters face the same compliance requirements as written copy, but with higher stakes. One viral VSL with illegal claims can generate thousands of complaints. Here is the complete checklist.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -1499,7 +1499,7 @@ Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking co
 
 A written sales page gets a few thousand visitors. A VSL can reach millions. When the FTC or ASA investigate, the scale of a VSL's reach directly affects the severity of the enforcement action and the size of any fine.
 
-VSLs also have a specific problem: every word of a 30-minute video is indexed, archived and can be submitted as evidence in a complaint. The voiceover script is your compliance record, make sure it passes before you spend money on traffic.
+VSLs also have a specific problem: every word of a 30 minute video is indexed, archived and can be submitted as evidence in a complaint. The voiceover script is your compliance record, make sure it passes before you spend money on traffic.
 
 Here is the complete compliance checklist.
 
@@ -1535,15 +1535,15 @@ Standard FTC/ASA format: *"Results are not typical. Individual results will vary
 
 ## Guarantees
 
-☐ **Match spoken guarantee terms to written Terms of Service**, If the voiceover says "60-day money-back guarantee, no questions asked" but your Terms say "all sales final," you have a contract contradiction. Fix one or the other before the VSL goes live.
+☐ **Match spoken guarantee terms to written Terms of Service**, If the voiceover says "60 day money back guarantee, no questions asked" but your Terms say "all sales final," you have a contract contradiction. Fix one or the other before the VSL goes live.
 
 ---
 
 ## AI Disclosure (New for 2026)
 
-☐ **Disclose if the VSL script was AI-generated**, EU AI Act Article 50(4) requires disclosure of AI-generated content from August 2026. If your script was written by AI, this must be disclosed.
+☐ **Disclose if the VSL script was AI generated**, EU AI Act Article 50(4) requires disclosure of AI generated content from August 2026. If your script was written by AI, this must be disclosed.
 
-☐ **Disclose AI-generated voiceover or video**, If you are using an AI-generated voice or video avatar, this must be clearly disclosed to viewers in the EU.
+☐ **Disclose AI generated voiceover or video**, If you are using an AI generated voice or video avatar, this must be clearly disclosed to viewers in the EU.
 
 ---
 
@@ -1566,7 +1566,7 @@ Catch compliance issues before you spend money on production and traffic.
   },
   {
     slug: "marketing-compliance-agencies-cold-email-guide",
-    title: "The Marketing Agency's Guide to Compliance, How to Protect Yourself When a Client Campaign Gets a Complaint",
+    title: "The Marketing Agency's Guide to Compliance: How to Protect Yourself When a Client Campaign Gets a Complaint",
     description: "When a client's campaign triggers a regulatory complaint, agencies are increasingly named alongside brands. Here is how to structure your compliance process to protect your agency.",
     date: "2026-05-29",
     readTime: "7 min read",
@@ -1607,20 +1607,20 @@ Every piece of copy should go through a compliance review before it is submitted
 - Guarantee language that contradicts terms
 - Endorsement and testimonial disclosures
 - Financial promotion language requiring FCA approval
-- AI-generated content requiring disclosure
+- AI generated content requiring disclosure
 
 Document that this review happened, who conducted it, and what was changed as a result.
 
-### Step 2, Client Sign-Off as a Compliance Document
+### Step 2, Client Sign Off as a Compliance Document
 
-Client approval is not just project management, it is compliance documentation. Your sign-off process should require the client to confirm:
+Client approval is not just project management, it is compliance documentation. Your sign off process should require the client to confirm:
 
 - They have reviewed the copy for compliance with applicable regulations
 - They take responsibility for the factual accuracy of all claims
 - They have obtained any necessary regulatory approvals (FCA, for financial promotions)
 - They confirm the copy is consistent with their Terms of Service
 
-This sign-off should be in writing, email is sufficient, but a documented approval workflow is better.
+This sign off should be in writing, email is sufficient, but a documented approval workflow is better.
 
 ### Step 3, Timestamped Records
 
@@ -1639,7 +1639,7 @@ Your standard client contract should include:
 
 - A clause requiring the client to confirm they hold any necessary regulatory approvals
 - A clause requiring the client to indemnify the agency against claims arising from the client's failure to meet regulatory requirements
-- A clause giving your agency the right to refuse to produce copy that you believe is non-compliant
+- A clause giving your agency the right to refuse to produce copy that you believe is non compliant
 - A clause specifying that the client takes responsibility for the factual accuracy of all claims
 
 Have your solicitor review these clauses, generic templates are not sufficient for regulated industries.
@@ -1656,7 +1656,7 @@ On the Sentinel plan, agencies can:
 - Organise scans by client workspace
 - Generate signed PDF compliance certificates showing the scan was run, when, and what was found
 - Monitor live client URLs weekly for changes that introduce new compliance risks
-- White-label PDF reports under the agency's own branding
+- White label PDF reports under the agency's own branding
 
 The timestamped PDF certificate is exactly the kind of documented evidence that demonstrates professional diligence, to clients, to regulators, and to PI insurers.
 
@@ -1665,17 +1665,17 @@ The timestamped PDF certificate is exactly the kind of documented evidence that 
   },
   {
     slug: "saas-founder-compliance-marketing-checklist",
-    title: "SaaS Founder Marketing Compliance, The 10 Mistakes That Lead to FTC and GDPR Investigations",
-    description: "SaaS companies are the fastest-growing target of FTC and GDPR enforcement. Subscription practices, free trial terms, data collection and earnings claims are all in the crosshairs. Here are the 10 most common mistakes.",
+    title: "SaaS Founder Marketing Compliance: The 10 Mistakes That Lead to FTC and GDPR Investigations",
+    description: "SaaS companies are the fastest growing target of FTC and GDPR enforcement. Subscription practices, free trial terms, data collection and earnings claims are all in the crosshairs. Here are the 10 most common mistakes.",
     date: "2026-05-29",
     readTime: "6 min read",
     category: "For Sellers",
     content: `
 ## Why SaaS Is in the Regulatory Crosshairs
 
-The FTC's updated Negative Option Rule (2024) was written with SaaS companies in mind. The EU's revised Consumer Rights Directive has specific provisions for digital subscriptions. The ICO has made subscription consent and free-trial-to-paid-conversion one of its enforcement priorities.
+The FTC's updated Negative Option Rule (2024) was written with SaaS companies in mind. The EU's revised Consumer Rights Directive has specific provisions for digital subscriptions. The ICO has made subscription consent and free trial to paid conversion one of its enforcement priorities.
 
-SaaS marketing, with its reliance on free trials, recurring billing, and conversion-optimised onboarding, is a particularly high-risk category. Here are the 10 most common compliance mistakes.
+SaaS marketing, with its reliance on free trials, recurring billing, and conversion optimised onboarding, is a particularly high risk category. Here are the 10 most common compliance mistakes.
 
 ---
 
@@ -1695,17 +1695,17 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 **The rule**: "Cancel anytime" is a promise. Under FTC Negative Option Rule 2024, cancellation must be as easy as subscription, one click, or a simple online form.
 
-**The fix**: Build a self-serve cancellation flow. One-click cancellation from the account settings page. No hoops, no "are you sure" gauntlets that delay the cancellation.
+**The fix**: Build a self serve cancellation flow. One click cancellation from the account settings page. No hoops, no "are you sure" gauntlets that delay the cancellation.
 
 ---
 
 ## 3. Data Collection Beyond What Was Consented To
 
-**The violation**: Collecting usage data, behaviour analytics, or third-party tracking data that was not clearly disclosed and consented to at signup.
+**The violation**: Collecting usage data, behaviour analytics, or third party tracking data that was not clearly disclosed and consented to at signup.
 
 **The rule**: UK GDPR and EU GDPR require that data collection is limited to what was explicitly consented to or is strictly necessary for the service.
 
-**The fix**: Audit every third-party tool in your stack, analytics, session recording, marketing pixels, A/B testing platforms. Ensure each one is covered by your privacy policy and your consent mechanism.
+**The fix**: Audit every third party tool in your stack, analytics, session recording, marketing pixels, A/B testing platforms. Ensure each one is covered by your privacy policy and your consent mechanism.
 
 ---
 
@@ -1719,11 +1719,11 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 ---
 
-## 5. Pre-Checked Boxes for Email Marketing Consent
+## 5. Pre Checked Boxes for Email Marketing Consent
 
-**The violation**: Using a pre-ticked checkbox at signup to obtain consent for marketing emails.
+**The violation**: Using a pre ticked checkbox at signup to obtain consent for marketing emails.
 
-**The rule**: UK GDPR, EU GDPR and CASL all require that consent to marketing emails is an active, affirmative action. Pre-ticked boxes are explicitly illegal.
+**The rule**: UK GDPR, EU GDPR and CASL all require that consent to marketing emails is an active, affirmative action. Pre ticked boxes are explicitly illegal.
 
 **The fix**: Use an unchecked checkbox with clear language: "I'd like to receive product updates and marketing emails from [Company]. You can unsubscribe at any time."
 
@@ -1769,13 +1769,13 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 ---
 
-## 10. AI-Powered Features Without Disclosure
+## 10. AI Powered Features Without Disclosure
 
 **The violation**: Using AI to personalise pricing, generate recommendations, or score users without disclosing this in your Privacy Policy, and without providing a mechanism for users to opt out or request human review.
 
-**The rule**: GDPR Article 22 gives consumers the right not to be subject to solely automated decisions that significantly affect them. Your Privacy Policy must disclose automated decision-making and provide users with their rights.
+**The rule**: GDPR Article 22 gives consumers the right not to be subject to solely automated decisions that significantly affect them. Your Privacy Policy must disclose automated decision making and provide users with their rights.
 
-**The fix**: Add a section to your Privacy Policy describing all automated decision-making. Provide a contact email for users who want human review of automated decisions.
+**The fix**: Add a section to your Privacy Policy describing all automated decision making. Provide a contact email for users who want human review of automated decisions.
 
 ---
 
@@ -1790,7 +1790,7 @@ Paste your pricing page, onboarding emails or sales copy and get a compliance sc
   },
   {
     slug: "how-to-check-if-an-ad-is-legal-uk",
-    title: "How to Check If an Ad Is Legal in the UK, A Plain English Guide for Buyers and Sellers",
+    title: "How to Check If an Ad Is Legal in the UK: A Plain English Guide for Buyers and Sellers",
     description: "Before you buy from an ad or publish one, here is exactly how to check if it is legal under UK law. No lawyer needed. Takes 60 seconds.",
     date: "2026-05-29",
     readTime: "5 min read",
@@ -1818,7 +1818,7 @@ An ad is illegal if it:
 - Contains **health claims** that are not authorised under UK regulations
 - Uses **drip pricing**, showing a price that increases with hidden fees at checkout
 - Makes a **guarantee** that contradicts the Terms of Service
-- Uses **AI-generated content** without disclosure from August 2026
+- Uses **AI generated content** without disclosure from August 2026
 
 ---
 
@@ -1848,7 +1848,7 @@ Run your copy through the same tool before you spend a penny on ads. Every flag 
 "Only 10 places available." You come back a week later, still 10 places available. Illegal under CAP Code Rule 3.22 and CMA dark patterns enforcement.
 
 ### 4. The Conditional Refund That Contradicts Statutory Rights
-"30-day money back guarantee, but you must complete all modules first." UK consumers have a statutory 14-day right to cancel digital purchases. Any condition that makes a refund harder to claim than the statutory right is unenforceable, and advertising it is misleading.
+"30 day money back guarantee, but you must complete all modules first." UK consumers have a statutory 14 day right to cancel digital purchases. Any condition that makes a refund harder to claim than the statutory right is unenforceable, and advertising it is misleading.
 
 ### 5. The Testimonial Without Disclosure
 "I made £20,000 in my first month." The person who said this received a free product or commission. The commercial relationship was not disclosed. ASA CAP Code Rule 2.1 and FTC Endorsement Guides both require disclosure of any material relationship.
@@ -1858,7 +1858,7 @@ Run your copy through the same tool before you spend a penny on ads. Every flag 
 ## Report It If You Find It
 
 **ASA complaints**: asa.org.uk, free, online, takes 5 minutes
-**CMA reports**: gov.uk/report-trading-standards
+**CMA reports**: gov.uk/report trading standards
 **Trading Standards**: Citizens Advice consumer helpline 0808 223 1133
 
 If you have been financially harmed by an illegal ad, contact your bank about a chargeback on grounds of misrepresentation.
@@ -1897,7 +1897,7 @@ If it opens an investigation:
 1. The ASA contacts the **advertiser** (your client) asking for evidence to substantiate the claims
 2. If the ad was produced by an agency, the ASA may contact the agency directly
 3. The client and agency submit their response
-4. The ASA adjudicates, usually within 3-4 months
+4. The ASA adjudicates, usually within 3 4 months
 5. The ruling is published publicly on the ASA website
 6. If upheld, the ad must be withdrawn and not appear again in that form
 
@@ -1920,11 +1920,11 @@ The FTC in the US goes further, agencies that organise and manage influencer cam
 
 Your Professional Indemnity insurance covers professional negligence, work that was below the standard expected of a competent professional.
 
-If a client suffers loss because your agency produced non-compliant marketing copy, they have a claim against you.
+If a client suffers loss because your agency produced non compliant marketing copy, they have a claim against you.
 
-The problem: many PI policies now include AI exclusions. If the copy was AI-generated and not properly disclosed, the claim may fall outside your policy.
+The problem: many PI policies now include AI exclusions. If the copy was AI generated and not properly disclosed, the claim may fall outside your policy.
 
-Ask your broker this question now: **"Does our current policy cover claims arising from AI-generated copy that breaches advertising regulations?"**
+Ask your broker this question now: **"Does our current policy cover claims arising from AI generated copy that breaches advertising regulations?"**
 
 ---
 
@@ -1961,7 +1961,7 @@ Every scan produces a signed PDF certificate. Sentinel plan includes team seats,
   },
   {
     slug: "income-claim-disclaimer-example-uk",
-    title: "Income Claim Disclaimer, Examples and Templates for UK Marketers",
+    title: "Income Claim Disclaimer: Examples and Templates for UK Marketers",
     description: "If your marketing copy contains income or earnings claims, you need a disclaimer. Here are compliant templates for UK, EU, US and Australian regulations with plain English guidance.",
     date: "2026-05-29",
     readTime: "4 min read",
@@ -2003,7 +2003,7 @@ The disclaimer does not make a false claim legal. But it is a required element o
 
 *"Results not typical. Individual results will vary. Many people who purchase online business programmes never earn any money at all. The income examples shown are exceptional results and are not what you should expect to achieve."*
 
-The FTC requires that if you show a testimonial with above-average results, you also disclose what typical customers earn. If most customers earn nothing, you must say so.
+The FTC requires that if you show a testimonial with above average results, you also disclose what typical customers earn. If most customers earn nothing, you must say so.
 
 ### Australia (ACCC)
 
@@ -2016,7 +2016,7 @@ The FTC requires that if you show a testimonial with above-average results, you 
 - **On the sales page**, prominently, near the income claims, not buried in the footer
 - **On the order page**, visible before the customer pays
 - **In any email** containing income claims
-- **In video content**, as an on-screen text overlay or spoken disclosure
+- **In video content**, as an on screen text overlay or spoken disclosure
 
 The ASA and FTC are both explicit: a disclaimer in small print that contradicts a bold headline claim does not make the headline legal.
 
@@ -2039,7 +2039,7 @@ Red Flag AI Pro flags income claims, guarantee contradictions and missing discla
   },
   {
     slug: "marketing-compliance-software-comparison-2026",
-    title: "Marketing Compliance Software 2026, What Actually Exists and What It Costs",
+    title: "Marketing Compliance Software 2026: What Actually Exists and What It Costs",
     description: "A plain English comparison of the tools agencies and marketers use for compliance checking. What they do, what they cost, and the gap Red Flag AI Pro fills.",
     date: "2026-05-29",
     readTime: "6 min read",
@@ -2059,7 +2059,7 @@ This is the honest comparison.
 
 ### Enterprise Compliance Platforms (Red Marker, Blee, Veeva Vault)
 
-**What they do**: Workflow-based review platforms used by enterprise legal and compliance teams. Copy is submitted, reviewed by compliance officers, approved or rejected with comments.
+**What they do**: Workflow based review platforms used by enterprise legal and compliance teams. Copy is submitted, reviewed by compliance officers, approved or rejected with comments.
 
 **Who they are for**: Banks, pharmaceuticals, insurance companies, regulated industries with dedicated compliance headcount.
 
@@ -2089,7 +2089,7 @@ This is the honest comparison.
 
 **What they cost**: Included in the ad platform.
 
-**The gap**: Platform-specific. Does not check for FTC, ASA, GDPR or FCA violations. Does not cover landing pages, VSLs, email copy. Does not produce compliance records.
+**The gap**: Platform specific. Does not check for FTC, ASA, GDPR or FCA violations. Does not cover landing pages, VSLs, email copy. Does not produce compliance records.
 
 ---
 
@@ -2102,18 +2102,18 @@ This is the honest comparison.
 **What it costs**: Free assessment (lead magnet). Pro £350/month. Sentinel £5000+/month.
 
 **What makes it different**:
-- Real-time, results in 60 seconds, not 48-72 hours
-- Multi-jurisdiction, all five major markets in one scan
+- Real time, results in 60 seconds, not 48 72 hours
+- Multi jurisdiction, all five major markets in one scan
 - Covers all formats, text, URL, VSL transcript, audio, whole website
 - Produces signed PDF certificates as audit evidence
-- Sentinel includes team seats, client workspaces, weekly monitoring, white-label reports, API and webhooks
+- Sentinel includes team seats, client workspaces, weekly monitoring, white label reports, API and webhooks
 - Live in a day, not weeks of onboarding
 
 ---
 
 ## What Still Requires a Human
 
-Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high-stakes decisions, FCA-regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
+Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high stakes decisions, FCA regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
 
 What Red Flag AI Pro does is catch the 90% of compliance issues that are detectable through language pattern analysis: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
 
@@ -2127,7 +2127,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
 |------|-------------|
 | Quick check before publishing | Red Flag AI Pro free scan |
 | Agency compliance infrastructure | Red Flag AI Pro Sentinel |
-| FCA-regulated financial promotions | Red Flag AI Pro Sentinel + FCA-authorised approver |
+| FCA regulated financial promotions | Red Flag AI Pro Sentinel + FCA authorised approver |
 | Enterprise workflow management | Red Marker / Blee |
 | Complex legal advice | Qualified compliance solicitor |
 
@@ -2136,7 +2136,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
   },
   {
     slug: "fake-urgency-countdown-timers-illegal-uk-eu",
-    title: "Fake Urgency and Countdown Timers, When They Are Illegal and What to Do Instead",
+    title: "Fake Urgency and Countdown Timers: When They Are Illegal and What to Do Instead",
     description: "Countdown timers that reset, limited time offers that never end and fake scarcity are now specifically illegal under UK CMA guidance and EU DSA rules. Here is what you need to know.",
     date: "2026-05-29",
     readTime: "5 min read",
@@ -2191,8 +2191,8 @@ Genuine urgency and genuine scarcity are completely legal, and highly effective.
 
 **Legal urgency examples**:
 - A cart countdown that expires unused baskets after 30 minutes (genuine, documented)
-- An early-bird price that ends on a specified date and is honoured
-- A cohort-based course with a genuine enrolment close date
+- An early bird price that ends on a specified date and is honoured
+- A cohort based course with a genuine enrolment close date
 
 **Legal scarcity examples**:
 - Live inventory counts synced to actual stock levels
@@ -2207,7 +2207,7 @@ The test is simple: is the claim factually accurate? Can you verify it?
 
 The CMA has published enforcement notices and required businesses to remove fake countdown timers. The ASA has upheld complaints against advertisers using manufactured urgency.
 
-The EU Commission has run coordinated sweeps of e-commerce sites and found dark patterns including fake timers on a significant proportion of sites reviewed.
+The EU Commission has run coordinated sweeps of e commerce sites and found dark patterns including fake timers on a significant proportion of sites reviewed.
 
 Neither regulator is waiting for complaints. Both are proactively monitoring.
 
@@ -2232,7 +2232,7 @@ Paste your sales page or email sequence and see exactly which claims are at risk
     content: `
 ## The Question Everyone Is Asking Wrong
 
-If you've been searching for ways to make AI-generated content undetectable, you're not alone. Thousands of marketers and agencies are doing the same thing right now.
+If you've been searching for ways to make AI generated content undetectable, you're not alone. Thousands of marketers and agencies are doing the same thing right now.
 
 But you're asking the wrong question.
 
@@ -2242,7 +2242,7 @@ The answer to AI content compliance is not to hide it. It's to disclose it prope
 
 ## What the EU AI Act Actually Says
 
-EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI-generated content intended for public audiences carries clear disclosure that it was created with AI assistance.
+EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI generated content intended for public audiences carries clear disclosure that it was created with AI assistance.
 
 This is not a suggestion. It is a legal obligation.
 
@@ -2267,7 +2267,7 @@ Here is why:
 
 **It does not remove the obligation.** The EU AI Act does not say "disclose AI content unless it has been rewritten." The obligation is based on whether AI was used in the creation process, not whether the output looks human.
 
-**It creates a paper trail of intent.** If a regulator investigates and finds you used AI writing tools and then used AI detection-avoidance tools, that sequence suggests deliberate concealment. That is significantly worse than non-disclosure.
+**It creates a paper trail of intent.** If a regulator investigates and finds you used AI writing tools and then used AI detection avoidance tools, that sequence suggests deliberate concealment. That is significantly worse than non disclosure.
 
 **It does not protect your clients.** If you are an agency and a client is fined for undisclosed AI content, the fact that you tried to hide it rather than disclose it is not a defence. It is an aggravating factor.
 
@@ -2279,7 +2279,7 @@ The EU AI Act does not require you to put a giant warning on every piece of cont
 
 In practice, this means:
 
-**Disclosure language on AI-assisted content:**
+**Disclosure language on AI assisted content:**
 *"This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date]."*
 
 This can be placed in a footer, an about page, a terms of service, or inline depending on the content type and platform.
@@ -2308,9 +2308,9 @@ If your answer is "here is our signed review log, here is the disclosure we adde
 
 **Step 1: Stop trying to hide AI use.** It does not work legally and it creates more risk than it eliminates.
 
-**Step 2: Add disclosure language** to all AI-assisted content you produce for clients. Simple, clear, consistent.
+**Step 2: Add disclosure language** to all AI assisted content you produce for clients. Simple, clear, consistent.
 
-**Step 3: Create a documented review process.** Every piece of AI-generated copy reviewed by a human, recorded with a timestamp, before it publishes.
+**Step 3: Create a documented review process.** Every piece of AI generated copy reviewed by a human, recorded with a timestamp, before it publishes.
 
 **Step 4: Update your client contracts.** Your agency agreement should include clauses covering AI tool usage and disclosure obligations. If a client refuses disclosure, that is a client relationship conversation, not a reason to hide it.
 
@@ -2336,7 +2336,7 @@ The question is whether you have proof that you did it properly.
   {
     slug: "how-to-disclose-affiliate-links-instagram-tiktok-youtube",
     title: "How to Disclose Affiliate Links and Sponsorships on Instagram, TikTok and YouTube (Without Killing Your Engagement)",
-    description: "\"#ad\" in a wall of hashtags isn't enough. Here's exactly how the FTC and ASA expect creators to disclose affiliate links and sponsored content on each platform -with wording that actually converts.",
+    description: "\"#ad\" in a wall of hashtags isn't enough. Here's exactly how the FTC and ASA expect creators to disclose affiliate links and sponsored content on each platform, with wording that actually converts.",
     date: "2026-06-07",
     readTime: "7 min read",
     category: "For Sellers",
@@ -2345,9 +2345,9 @@ The question is whether you have proof that you did it properly.
 
 If you're a creator, course seller or run paid partnerships, you've probably typed some version of this into Google: "do I really need to say #ad" or "how do I disclose affiliate links without it looking spammy."
 
-The honest answer: yes, you really do need to disclose -and the way most creators do it doesn't actually meet the legal bar. Burying "#ad" at the bottom of a 30-hashtag block, or relying on a platform's built-in "Paid partnership" tag alone, is not enough in the eyes of the FTC or the ASA.
+The honest answer: yes, you really do need to disclose, and the way most creators do it doesn't actually meet the legal bar. Burying "#ad" at the bottom of a 30 hashtag block, or relying on a platform's built in "Paid partnership" tag alone, is not enough in the eyes of the FTC or the ASA.
 
-This isn't a grey area anymore. Both regulators have published explicit guidance, and enforcement against creators -not just brands -has picked up sharply since 2024.
+This isn't a grey area anymore. Both regulators have published explicit guidance, and enforcement against creators, not just brands, has picked up sharply since 2024.
 
 Here's what's actually required on each platform, and how to word it so it doesn't tank your engagement.
 
@@ -2357,40 +2357,40 @@ Here's what's actually required on each platform, and how to word it so it doesn
 
 Whether you're in the US (FTC) or UK (ASA/CMA), the underlying principle is the same:
 
-**A disclosure must be clear, prominent, and understood by the audience before they engage with the content -not buried, not abbreviated into obscurity, and not separated from the claim it relates to.**
+**A disclosure must be clear, prominent, and understood by the audience before they engage with the content, not buried, not abbreviated into obscurity, and not separated from the claim it relates to.**
 
 That means:
 
-- It must appear **before** the "swipe up," the link, or the call to action -not after
-- It must use **plain language** ("Ad," "Advertisement," "Paid partnership," "I get a commission if you buy through this link") -not just a hashtag
-- It must be **visible without extra clicks** -not hidden in a caption that requires "see more," not buried under 30 other hashtags
-- It applies **even if you weren't paid in cash** -free products, discounts, affiliate commissions and "gifted" items all count
+- It must appear **before** the "swipe up," the link, or the call to action, not after
+- It must use **plain language** ("Ad," "Advertisement," "Paid partnership," "I get a commission if you buy through this link"), not just a hashtag
+- It must be **visible without extra clicks**, not hidden in a caption that requires "see more," not buried under 30 other hashtags
+- It applies **even if you weren't paid in cash**, free products, discounts, affiliate commissions and "gifted" items all count
 
 ---
 
 ## Instagram
 
 ### What's required
-- Use Instagram's built-in "Paid partnership with [Brand]" label **and** include a written disclosure in the caption itself (the label alone is not always considered sufficient by the FTC)
-- For affiliate links (where you earn commission but there's no formal brand partnership), disclose this explicitly -e.g., "This post contains affiliate links. I may earn a commission if you purchase through them, at no extra cost to you."
+- Use Instagram's built in "Paid partnership with [Brand]" label **and** include a written disclosure in the caption itself (the label alone is not always considered sufficient by the FTC)
+- For affiliate links (where you earn commission but there's no formal brand partnership), disclose this explicitly, e.g., "This post contains affiliate links. I may earn a commission if you purchase through them, at no extra cost to you."
 - Place the disclosure **at the start of the caption**, not the end. Audiences scanning quickly often won't see text below the fold.
 
 ### What to avoid
-- "#ad" alone, especially buried mid-hashtag-block
-- "#sp" or "#spon" -these are not considered clear to the average consumer
-- Relying solely on Instagram's automatic tag without a written disclosure for affiliate (non-partnership) content
+- "#ad" alone, especially buried mid hashtag block
+- "#sp" or "#spon", these are not considered clear to the average consumer
+- Relying solely on Instagram's automatic tag without a written disclosure for affiliate (non partnership) content
 
 ### Wording that works
-> "Ad -[Brand] sent me this to try, and I loved it enough to share. Link below to grab your own (affiliate link -I earn a small commission if you buy through it)."
+> "Ad -[Brand] sent me this to try, and I loved it enough to share. Link below to grab your own (affiliate link, I earn a small commission if you buy through it)."
 
 ---
 
 ## TikTok
 
 ### What's required
-- Use TikTok's "Branded content" toggle for paid partnerships -this is mandatory under TikTok's own terms, not optional
-- For affiliate content (TikTok Shop links, Amazon affiliate links, etc.), state clearly in the **video itself** (verbally or via on-screen text) that the link is an affiliate link -not just in the caption, since many viewers don't read captions on short-form video
-- Keep the disclosure on screen long enough to actually be read -a flash of text for half a second does not count as "clear and conspicuous"
+- Use TikTok's "Branded content" toggle for paid partnerships, this is mandatory under TikTok's own terms, not optional
+- For affiliate content (TikTok Shop links, Amazon affiliate links, etc.), state clearly in the **video itself** (verbally or via on screen text) that the link is an affiliate link, not just in the caption, since many viewers don't read captions on short form video
+- Keep the disclosure on screen long enough to actually be read, a flash of text for half a second does not count as "clear and conspicuous"
 
 ### What to avoid
 - Relying only on the caption when the claim and link are in the video
@@ -2398,65 +2398,65 @@ That means:
 - Disclosure that appears only in a pinned comment
 
 ### Wording that works
-> On-screen text: "Affiliate link -I earn commission if you shop this." Spoken: "Quick heads up, the link in my bio is an affiliate link, so I get a small cut if you buy through it -doesn't cost you anything extra."
+> On screen text: "Affiliate link, I earn commission if you shop this." Spoken: "Quick heads up, the link in my bio is an affiliate link, so I get a small cut if you buy through it, doesn't cost you anything extra."
 
 ---
 
 ## YouTube
 
 ### What's required
-- Use YouTube's built-in paid promotion disclosure toggle for sponsored videos (this triggers the on-screen "Includes paid promotion" label)
-- **Verbally disclose** sponsorships and affiliate relationships near the start of the video -not just in the description, which most viewers never open
+- Use YouTube's built in paid promotion disclosure toggle for sponsored videos (this triggers the on screen "Includes paid promotion" label)
+- **Verbally disclose** sponsorships and affiliate relationships near the start of the video, not just in the description, which most viewers never open
 - For affiliate links in the description, state clearly which links are affiliate links and that you earn commission from them
 
 ### What to avoid
 - Burying the disclosure at the very end of a long video, after most viewers have dropped off
-- Assuming the description box is "enough" -the FTC has specifically called this out as insufficient on its own
-- Generic catch-all disclaimers buried in channel "About" pages that don't relate to the specific video
+- Assuming the description box is "enough", the FTC has specifically called this out as insufficient on its own
+- Generic catch all disclaimers buried in channel "About" pages that don't relate to the specific video
 
 ### Wording that works
-> Spoken, in the first 30-60 seconds: "Before we get into it -this video is sponsored by [Brand], and some of the links below are affiliate links, which means I earn a small commission if you use them. As always, everything I'm about to say is my honest opinion."
+> Spoken, in the first 30 60 seconds: "Before we get into it, this video is sponsored by [Brand], and some of the links below are affiliate links, which means I earn a small commission if you use them. As always, everything I'm about to say is my honest opinion."
 
 ---
 
 ## "But Won't This Hurt My Engagement?"
 
-This is the real reason most creators under-disclose -and it's a legitimate concern. But the data and enforcement trends both point the same direction:
+This is the real reason most creators under disclose, and it's a legitimate concern. But the data and enforcement trends both point the same direction:
 
 1. **Audiences increasingly expect it.** Transparent creators are rated as more trustworthy in consumer research, not less. The "ick" factor comes from *hidden* promotion being discovered, not from upfront honesty.
-2. **The penalty for getting caught is far worse than any engagement dip.** The FTC has issued five and six-figure fines to individual creators -not just brands -for inadequate disclosure. The ASA can force takedowns and publicly name creators in rulings that show up in search results next to their name, permanently.
+2. **The penalty for getting caught is far worse than any engagement dip.** The FTC has issued five and six figure fines to individual creators, not just brands, for inadequate disclosure. The ASA can force takedowns and publicly name creators in rulings that show up in search results next to their name, permanently.
 3. **Brands are now vetting this.** More sponsors are explicitly checking creators' disclosure history before signing deals, because *they* carry liability too if their partner doesn't disclose properly.
 
-Disclosing well -with personality, not as a legal disclaimer dump -is now a competitive advantage, not a tax on your content.
+Disclosing well, with personality, not as a legal disclaimer dump, is now a competitive advantage, not a tax on your content.
 
 ---
 
-## The Quick Self-Check
+## The Quick Self Check
 
 Before you hit publish, ask:
 
 - Would someone scrolling quickly **see or hear** the disclosure before they see the link or claim?
 - Does it use **plain words** ("ad," "sponsored," "affiliate link, I earn a commission") rather than abbreviations or jargon?
-- Is it placed **at the point of the claim** -not buried at the end, in a pinned comment, or in an About page?
+- Is it placed **at the point of the claim**, not buried at the end, in a pinned comment, or in an About page?
 - Would a regulator reviewing this post in isolation, with no other context, immediately understand it's a paid or commissioned relationship?
 
-If you hesitated on any of those, it's worth rewording before you post -not after a complaint lands.
+If you hesitated on any of those, it's worth rewording before you post, not after a complaint lands.
 
 ---
 
 ## Need the Wording, Fast?
 
-If you'd rather not write the disclosure from scratch, use our free **[Affiliate & Sponsorship Disclosure Generator](https://www.redflagaipro.com/tools/disclosure-generator)** -pick your platform, your relationship to the brand, and your jurisdiction (US/FTC or UK/ASA), and get compliant wording you can paste straight in. No signup required.
+If you'd rather not write the disclosure from scratch, use our free **[Affiliate & Sponsorship Disclosure Generator](https://www.redflagaipro.com/tools/disclosure-generator)**, pick your platform, your relationship to the brand, and your jurisdiction (US/FTC or UK/ASA), and get compliant wording you can paste straight in. No signup required.
 
 ---
 
 ## Scan Before You Post
 
-Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language -alongside 15 other compliance risk categories covering FTC, ASA, GDPR and more.
+Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language, alongside 15 other compliance risk categories covering FTC, ASA, GDPR and more.
 
 Paste your caption or video script and get a compliance score with specific rewrite suggestions in 60 seconds.
 
-[Scan your copy free -no account needed →](https://www.redflagaipro.com)
+[Scan your copy free, no account needed →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -2471,7 +2471,7 @@ Paste your caption or video script and get a compliance score with specific rewr
 
 A UK tribunal case about legal privilege just set a precedent that changes everything about how organizations will be held liable for governance failure.
 
-**Munir v SSHD [2026] UKUT 81** is not a headline-grabbing ruling about AI replacing lawyers. It's a quiet, technical decision about one thing: what happens when an organization uses a tool it doesn't control.
+**Munir v SSHD [2026] UKUT 81** is not a headline grabbing ruling about AI replacing lawyers. It's a quiet, technical decision about one thing: what happens when an organization uses a tool it doesn't control.
 
 And the implications are enormous.
 
@@ -2536,7 +2536,7 @@ Under the Munir principle, invisible governance is liable governance.
 
 ## The 59% Problem
 
-A recent study found: **59% of UK fee-earners admit to using unapproved AI tools for client work.**
+A recent study found: **59% of UK fee earners admit to using unapproved AI tools for client work.**
 
 And **68% of firm leaders believe they have zero risk.**
 
@@ -2559,7 +2559,7 @@ If your answer is "we can try," you've already lost.
 Because the Munir principle says: **If you can't reconstruct your governance decisions with precision and speed, your governance is not real.**
 
 A real governance framework produces:
-- A named decision-maker
+- A named decision maker
 - A decision log with dates and reasoning
 - A record of who was consulted
 - Evidence that the decision was communicated and understood
@@ -2575,7 +2575,7 @@ Organizations don't get fined because they have a bad governance framework.
 
 They get fined because they **had a governance framework and nobody knew it.**
 
-Because infrastructure existed but controls were non-operational.
+Because infrastructure existed but controls were non operational.
 
 Because when audited, they couldn't demonstrate that their governance was actually being executed.
 
@@ -2680,7 +2680,7 @@ The pattern is always the same:
 
 **For the regulator:**
 - Invisible governance is **functionally equivalent to no governance**
-- An audit uncovers: the infrastructure exists but the controls are non-operational because nobody knows how to use them
+- An audit uncovers: the infrastructure exists but the controls are non operational because nobody knows how to use them
 - Under UK GDPR, GDPR and the EU AI Act, "We hired someone for that role" is not a defence.
 
 ---
@@ -2705,7 +2705,7 @@ Governance visibility requires three things:
 - What was the decision rationale? Archive it.
 - Can you reconstruct this decision in real time if asked? If not, it's invisible.
 
-This is not optional. Regulators now treat invisible governance as non-existent governance.
+This is not optional. Regulators now treat invisible governance as non existent governance.
 
 ---
 
@@ -2715,7 +2715,7 @@ Organizations don't get fined because they have a bad DPO.
 
 They get fined because they **had a DPO and nobody knew it.**
 
-Because governance infrastructure existed but controls were non-operational.
+Because governance infrastructure existed but controls were non operational.
 
 Because when audited, they couldn't demonstrate that their governance framework was actually being executed.
 
