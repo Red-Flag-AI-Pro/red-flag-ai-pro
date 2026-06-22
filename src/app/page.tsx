@@ -129,7 +129,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <ProveItWidget />
+      <div id="scanner">
+        <ProveItWidget />
+      </div>
 
       {/* WHAT YOU GET */}
       <section style={{
