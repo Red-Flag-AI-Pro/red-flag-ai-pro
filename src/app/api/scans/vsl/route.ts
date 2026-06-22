@@ -161,7 +161,7 @@ export async function POST(request: Request) {
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const title = `VSL - youtube.com/watch?v=${videoId}`;
 
-  // Run the analyzer - YouTube mode is Sentinel-only, so sees all 29 categories
+  // Run the analyzer - YouTube mode is Sentinel-only, so sees all 30 categories
   const { flags: allFlags } = analyzeContent(title, content);
   const excludedCategories = getExcludedCategories(plan);
   const flags = excludedCategories.length === 0

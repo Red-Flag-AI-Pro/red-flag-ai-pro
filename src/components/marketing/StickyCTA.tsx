@@ -22,7 +22,7 @@ export function StickyCTA() {
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-4">
         <div className="hidden sm:block">
           <p className="text-sm font-bold text-white">Are you a Builder? Are you a Buyer?</p>
-          <p className="text-xs text-gray-400">29 risk categories. 9 jurisdictions. 60 seconds. Free.</p>
+          <p className="text-xs text-gray-400">30 risk categories. 9 jurisdictions. 60 seconds. Free.</p>
         </div>
         <p className="sm:hidden text-sm font-bold text-white">Scan it before it&apos;s too late!</p>
         <div className="flex items-center gap-3 flex-shrink-0">

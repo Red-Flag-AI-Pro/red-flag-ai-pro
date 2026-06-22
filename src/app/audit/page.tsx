@@ -20,7 +20,7 @@ const TICKER_ITEMS = [
   "PDF Report",
   "Reviewed Badge",
   "48 Hour Delivery",
-  "29 Risk Categories",
+  "30 Risk Categories",
   "9 Jurisdictions",
   "Plain English",
   "Compliant Rewrites",
@@ -33,7 +33,7 @@ const INCLUDES = [
   {
     num: "01",
     headline: "Full site scan",
-    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 29 risk categories, across all 9 jurisdictions.",
+    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 30 risk categories, across all 9 jurisdictions.",
   },
   {
     num: "02",

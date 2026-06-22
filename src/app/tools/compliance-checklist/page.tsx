@@ -150,7 +150,7 @@ export default function ComplianceChecklistPage() {
           Marketing Compliance Checklist
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "580px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
-          {total} checkpoints across 9 jurisdictions and 29 risk categories. Tick each one off — or find out what needs fixing before you publish.
+          {total} checkpoints across 9 jurisdictions and 30 risk categories. Tick each one off — or find out what needs fixing before you publish.
         </p>
         <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", maxWidth: "500px", margin: "0 auto" }}>
           Free to use. For a full AI-powered scan of your actual copy, use the scanner below.

@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Free Compliance and AI Governance Tools: Red Flag AI Pro",
   description:
-    "Free AI governance assessment, plus marketing compliance tools: a 29 category compliance checklist, an affiliate disclosure generator, and more, included free with every account.",
+    "Free AI governance assessment, plus marketing compliance tools: a 30 category compliance checklist, an affiliate disclosure generator, and more, included free with every account.",
   alternates: { canonical: "https://www.redflagaipro.com/tools" },
 };
 
@@ -51,7 +51,7 @@ export default function ToolsPage() {
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>5 minutes, 6 dimensions, a real score, and a roadmap mapped to the EU AI Act, SEC and GDPR.</p>
             </Link>
             <Link href="/tools/compliance-checklist" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
-              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>29 Category Compliance Checklist</h2>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>30 Category Compliance Checklist</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Every compliance check to run before you launch a campaign. Free.</p>
             </Link>
             <Link href="/tools/disclosure-generator" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>

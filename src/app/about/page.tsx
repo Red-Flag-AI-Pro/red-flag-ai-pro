@@ -268,7 +268,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Catch It Before It Ships",
-                desc: "Real time scanner checks marketing copy against 29 risk categories across 9 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
+                desc: "Real time scanner checks marketing copy against 30 risk categories across 9 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
               },
               {
                 icon: "",

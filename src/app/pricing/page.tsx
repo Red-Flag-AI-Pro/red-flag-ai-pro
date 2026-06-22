@@ -39,7 +39,7 @@ const GROWTH_FEATURES = [
 
 const SENTINEL_FEATURES = [
   "Everything in Growth",
-  "Full compliance scanner: 9 jurisdictions, all 29 risk categories",
+  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
   "Managed governance implementation (we work it with you)",
   "Automated audit logging & forensic proof",
   "Ongoing governance & vendor monitoring reviews",

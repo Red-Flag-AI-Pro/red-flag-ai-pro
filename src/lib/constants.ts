@@ -12,12 +12,13 @@ export const PLAN_LIMITS: Record<Plan, number> = {
   sentinel: Infinity,
 };
 
-// Category tiers: Pro/Free see 16, Growth adds 4 more (20), Sentinel sees all 29.
+// Category tiers: Pro/Free see 16, Growth adds 5 more (21), Sentinel sees all 30.
 export const GROWTH_PLUS_CATEGORIES = [
   "comparative_advertising",
   "contract_contradiction",
   "automated_decisions",
   "online_safety",
+  "age_assurance",
 ] as const;
 
 export const SENTINEL_ONLY_CATEGORIES = [
@@ -99,4 +100,5 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   crypto_promotion: "Crypto Promotion",
   country_of_origin: "Country of Origin Claim",
   accessibility: "Web Accessibility Risk",
+  age_assurance: "Age Assurance / Under-16 Safety",
 };

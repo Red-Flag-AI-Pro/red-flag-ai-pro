@@ -71,7 +71,7 @@ export default function BlogPage() {
         <div style={{maxWidth: "700px", margin: "0 auto", textAlign: "center"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem"}}>Free download</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}}>
-            The 29-Category Marketing Compliance Checklist
+            The 30 Category Marketing Compliance Checklist
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
             Every compliance check you need before you launch. Every red flag to look for before you buy. Free. No spam.
@@ -171,7 +171,7 @@ export default function BlogPage() {
             Stop reading about compliance.<br />Start scanning.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            Red Flag AI Pro checks your copy against 29 risk categories across 9 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your copy against 30 risk categories across 9 jurisdictions in 60 seconds.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

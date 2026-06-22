@@ -979,6 +979,39 @@ const RULES: Rule[] = [
     jurisdictions: ["us", "eu", "gb", "ca"],
   },
 
+  // ─── AGE ASSURANCE / UNDER-16 SAFETY ─────────────────────────────────────────
+  {
+    category: "age_assurance",
+    severity: "high",
+    keywords: [
+      "no age verification",
+      "open to all ages",
+      "ages 13 and up",
+      "ages 13+",
+      "teen",
+      "teens",
+      "for kids",
+      "for children",
+      "sign up, no id needed",
+      "join free, any age",
+      "algorithmic feed",
+      "direct messaging feature",
+      "social feed for users",
+    ],
+    flag_description:
+      "Markets a social, content, or app feature in a way that implies open access for under-16s without age verification or parental consent language. The UK's under-16 social media restrictions (2026) require platforms reaching UK minors to verify age and restrict feed/DM features accordingly; Australia's under-16 social media ban (effective Dec 2025) imposes similar duties; the EU Digital Services Act requires minor-protection measures from platforms accessible to under-18s; and the US COPPA already requires verifiable parental consent for under-13 data collection.",
+    suggestion:
+      "Add explicit age verification or age-gating language to any sign-up or onboarding copy, disclose parental consent requirements for users under 16 (or under 13 in the US), and avoid copy that implies algorithmic feeds, DMs, or open social features are available to all ages without restriction. If the product is genuinely youth-facing, publish a clear safety and data-handling statement aimed at parents.",
+    regulations: [
+      "Online Safety Act 2023 — Under-16 Social Media Restrictions (UK, 2026)",
+      "Social Media Minimum Age Act (Australia, 2025)",
+      "Digital Services Act — Minor Protection (EU)",
+      "Children's Online Privacy Protection Act / COPPA (US)",
+      "UK Age Appropriate Design Code (UK)",
+    ],
+    jurisdictions: ["gb", "au", "eu", "us"],
+  },
+
   // ─── COUNTRY OF ORIGIN / 'MADE IN' CLAIMS ────────────────────────────────────
   {
     category: "country_of_origin",
