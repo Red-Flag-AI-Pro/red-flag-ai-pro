@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro vs Competitors — Marketing Compliance Tool Comparison",
+  title: "Red Flag AI Pro vs Competitors: Marketing Compliance Tool Comparison",
   description: "How Red Flag AI Pro compares to Red Marker, Blee, and manual compliance consultants. Feature comparison, pricing and honest assessment of what each tool actually does.",
   alternates: { canonical: "https://www.redflagaipro.com/compare" },
 };
@@ -14,25 +14,25 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const COMPARISON = [
-  { feature: "Price per month", rfp: "Free – £5000+", redmarker: "£2,000 – £10,000", consultant: "£500 – £3,000" },
+  { feature: "Price per month", rfp: "Free to £5000+", redmarker: "£2,000 to £10,000", consultant: "£500 to £3,000" },
   { feature: "Setup time", rfp: "Same day", redmarker: "Weeks", consultant: "Days" },
-  { feature: "Scan speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48–72 hours" },
+  { feature: "Scan speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48 to 72 hours" },
   { feature: "Free scan available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
   { feature: "URL page scanning", rfp: "✓ Growth & Sentinel", redmarker: "Limited", consultant: "Manual" },
   { feature: "YouTube VSL scanning", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
   { feature: "Audio transcription", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
   { feature: "Full site audit", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Extra charge" },
-  { feature: "Weekly auto-monitoring", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
+  { feature: "Weekly auto monitoring", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "FCA financial promotions", rfp: "✓ Sentinel only", redmarker: "Enterprise only", consultant: "Specialist only" },
   { feature: "Greenwashing scanner", rfp: "✓ Sentinel only", redmarker: "Limited", consultant: "Specialist only" },
   { feature: "EU AI Act compliance", rfp: "✓ All plans", redmarker: "Partial", consultant: "Variable" },
-  { feature: "Multi-jurisdiction", rfp: "✓ All plans", redmarker: "Sometimes", consultant: "Variable" },
+  { feature: "Multi jurisdiction", rfp: "✓ All plans", redmarker: "Sometimes", consultant: "Variable" },
   { feature: "Team seats", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "N/A" },
-  { feature: "White-label reports", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
+  { feature: "White label reports", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "Video scan summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
-  { feature: "Tamper-resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
-  { feature: "Risk categories covered", rfp: "28 — Sentinel / 20 — Pro", redmarker: "8–12", consultant: "Variable" },
+  { feature: "Tamper resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
+  { feature: "Risk categories covered", rfp: "28 (Sentinel) / 20 (Pro)", redmarker: "8 to 12", consultant: "Variable" },
 ];
 
 export default function ComparePage() {
@@ -66,7 +66,7 @@ export default function ComparePage() {
             Red Flag AI Pro<br />vs the alternatives
           </h1>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            Enterprise compliance tools charge £2,000–£10,000 a month and take weeks to onboard. Manual consultants charge by the hour and take days. Here is the honest comparison.
+            Enterprise compliance tools charge £2,000 to £10,000 a month and take weeks to onboard. Manual consultants charge by the hour and take days. Here is the honest comparison.
           </p>
         </div>
       </section>
@@ -80,15 +80,15 @@ export default function ComparePage() {
                 <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "35%" }}>Feature</th>
                 <th style={{ padding: "1rem", textAlign: "center", background: "rgba(229,72,77,0.05)", borderLeft: "1px solid rgba(239,68,68,0.15)", borderRight: "1px solid rgba(239,68,68,0.15)" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444" }}>Red Flag AI Pro</p>
-                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free–£5000+/mo</p>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free to £5000+/mo</p>
                 </th>
                 <th style={{ padding: "1rem", textAlign: "center" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)" }}>Red Marker / Blee</p>
-                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "2px" }}>£2,000–£10,000/mo</p>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "2px" }}>£2,000 to £10,000/mo</p>
                 </th>
                 <th style={{ padding: "1rem", textAlign: "center" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)" }}>Compliance consultant</p>
-                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "2px" }}>£500–£3,000/mo</p>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "2px" }}>£500 to £3,000/mo</p>
                 </th>
               </tr>
             </thead>

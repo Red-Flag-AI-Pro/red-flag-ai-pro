@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Case Study — What Red Flag AI Pro Found on a Real Agency Campaign",
+  title: "Case Study: What Red Flag AI Pro Found on a Real Agency Campaign",
   description: "Six real compliance violations found on live agency campaigns. FCA criminal liability, CASL, drip pricing, influencer disclosure, EU AI Act and greenwashing. None obvious. All fixable.",
   alternates: { canonical: "https://www.redflagaipro.com/case-study" },
 };
@@ -15,57 +15,57 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const FLAGS = [
   {
-    category: "FCA Financial Promotion — Criminal Liability",
+    category: "FCA Financial Promotion: Criminal Liability",
     severity: "HIGH",
     context: "A digital agency wrote landing page copy for a fintech client offering a savings product. The copy looked professional and compliant to everyone who reviewed it.",
     excerpt: "Start growing your money today. Our members earn an average of 4.2% annually. Low risk, high reward. Open your account in minutes.",
-    description: "This is an unapproved financial promotion under Section 21 of the Financial Services and Markets Act 2000. Communicating a financial promotion without FCA authorisation is a criminal offence — not a civil fine. A criminal offence. The agency that wrote this copy, not just the client, is exposed. The '4.2% annually' figure is a specific return claim that requires FCA approval before publication. The 'low risk' claim is false — all investment carries risk and this wording is specifically prohibited.",
-    fix: "Any copy that invites someone to invest, save or engage with a financial product must be approved by an FCA-authorised person before publication. The agency should have flagged this before writing a word. Without that sign-off, neither the client nor the agency should publish.",
+    description: "This is an unapproved financial promotion under Section 21 of the Financial Services and Markets Act 2000. Communicating a financial promotion without FCA authorisation is a criminal offence, not a civil fine. A criminal offence. The agency that wrote this copy, not just the client, is exposed. The '4.2% annually' figure is a specific return claim that requires FCA approval before publication. The 'low risk' claim is false: all investment carries risk and this wording is specifically prohibited.",
+    fix: "Any copy that invites someone to invest, save or engage with a financial product must be approved by an FCA authorised person before publication. The agency should have flagged this before writing a word. Without that sign off, neither the client nor the agency should publish.",
     impact: "Criminal prosecution of the person who communicated the promotion. FCA public censure. Campaign takedown. PI insurance may not respond.",
     regulations: ["FSMA 2000 Section 21 (UK)", "FCA Financial Promotions Rules (UK)", "FCA Compliance Sourcebook (UK)"],
   },
   {
-    category: "CASL Consent Violation — $10M CAD Per Breach",
+    category: "CASL Consent Violation: $10M CAD Per Breach",
     severity: "HIGH",
     context: "An ecommerce brand's email capture form had been running for two years. The agency built it. It had 40,000 subscribers on the list, including Canadian recipients.",
     excerpt: "Enter your email to receive exclusive offers and our weekly newsletter. By signing up you agree to receive marketing communications from us.",
-    description: "Canada's Anti-Spam Legislation (CASL) requires express consent before sending commercial electronic messages. 'By signing up you agree to receive marketing' is not express consent — it is implied consent. Under CASL, every email sent to a Canadian recipient without proper express consent is a separate violation carrying fines up to $10 million CAD per violation for businesses. With 40,000 subscribers, this list has been accumulating liability for two years.",
-    fix: "Add an unchecked checkbox with explicit language: 'I agree to receive marketing emails from [Brand]. I can unsubscribe at any time.' This must be a separate, affirmative action — not bundled with terms acceptance. All existing Canadian subscribers without proper consent should be suppressed.",
+    description: "Canada's Anti Spam Legislation (CASL) requires express consent before sending commercial electronic messages. 'By signing up you agree to receive marketing' is not express consent, it is implied consent. Under CASL, every email sent to a Canadian recipient without proper express consent is a separate violation carrying fines up to $10 million CAD per violation for businesses. With 40,000 subscribers, this list has been accumulating liability for two years.",
+    fix: "Add an unchecked checkbox with explicit language: 'I agree to receive marketing emails from [Brand]. I can unsubscribe at any time.' This must be a separate, affirmative action, not bundled with terms acceptance. All existing Canadian subscribers without proper consent should be suppressed.",
     impact: "Potential fines of millions per violation. CRTC enforcement. List destruction. Campaign suspension.",
     regulations: ["CASL + CRTC (Canada)", "PECR + ICO (UK)", "GDPR (EU)", "CAN-SPAM (US)"],
   },
   {
-    category: "Drip Pricing — CMA Enforcement Priority",
+    category: "Drip Pricing: CMA Enforcement Priority",
     severity: "HIGH",
     context: "A SaaS client's pricing page was written and managed by the agency. It had been running for eight months generating significant paid traffic.",
     excerpt: "Start for just £29/month. Join over 5,000 businesses already growing with our platform.",
-    description: "The £29 figure appears in the hero, the ads and the Google Shopping feed. The actual first month cost is £29 plus a mandatory £49 onboarding fee plus VAT — a total of £92.80 for month one. This is drip pricing. The CMA has made drip pricing one of its top enforcement priorities under the Digital Markets Competition and Consumers Act 2024. The agency that wrote and managed this campaign is in the chain of liability.",
+    description: "The £29 figure appears in the hero, the ads and the Google Shopping feed. The actual first month cost is £29 plus a mandatory £49 onboarding fee plus VAT: a total of £92.80 for month one. This is drip pricing. The CMA has made drip pricing one of its top enforcement priorities under the Digital Markets Competition and Consumers Act 2024. The agency that wrote and managed this campaign is in the chain of liability.",
     fix: "The advertised price must represent the total mandatory cost from the first point of contact. Either include all fees in the headline price, or clearly state 'from £29/month + £49 setup fee' in every placement. This must be updated in ads, landing page and comparison sites simultaneously.",
     impact: "CMA enforcement notice. Fines without court order under DMCC Act 2024. Ad account suspension. Chargeback wave from existing customers.",
     regulations: ["CMA + DMCC Act 2024 (UK)", "ACCC (Australia)", "FTC (US)", "UCPD (EU)"],
   },
   {
-    category: "EU AI Act Article 50 — Undisclosed AI Copy, August 2026",
+    category: "EU AI Act Article 50: Undisclosed AI Copy, August 2026",
     severity: "HIGH",
     context: "A content agency used ChatGPT to write blog posts, email sequences and ad copy for twelve clients. The content was edited and published without any disclosure that AI was used in its creation.",
-    excerpt: "Our team of experts has crafted this guide to help you navigate the landscape. We believe in putting people first — which is why every piece of content we create comes from genuine human expertise.",
-    description: "EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI-generated content intended for public audiences is clearly disclosed. This copy was written by ChatGPT, edited by a human, and then published with the claim that it comes from 'genuine human expertise.' That is not disclosure — it is the opposite. The agency is producing this content for twelve clients across the EU market. Every piece of undisclosed AI content published after 2 August 2026 is a violation. Fines reach €15 million or 3% of global annual turnover.",
-    fix: "Add disclosure language to all AI-assisted content: 'This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date].' Document your human editorial review process. Update all client contracts to include AI tool usage clauses.",
-    impact: "Fines up to €15 million or 3% of global annual turnover. ICO investigation. PI insurance exclusions may apply to AI-generated content claims.",
-    regulations: ["EU AI Act Article 50(4) — effective 2 August 2026", "UK ICO AI Transparency Guidance (UK)", "FTC AI Endorsement Guidelines (US)"],
+    excerpt: "Our team of experts has crafted this guide to help you navigate the landscape. We believe in putting people first, which is why every piece of content we create comes from genuine human expertise.",
+    description: "EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI generated content intended for public audiences is clearly disclosed. This copy was written by ChatGPT, edited by a human, and then published with the claim that it comes from 'genuine human expertise.' That is not disclosure, it is the opposite. The agency is producing this content for twelve clients across the EU market. Every piece of undisclosed AI content published after 2 August 2026 is a violation. Fines reach €15 million or 3% of global annual turnover.",
+    fix: "Add disclosure language to all AI assisted content: 'This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date].' Document your human editorial review process. Update all client contracts to include AI tool usage clauses.",
+    impact: "Fines up to €15 million or 3% of global annual turnover. ICO investigation. PI insurance exclusions may apply to AI generated content claims.",
+    regulations: ["EU AI Act Article 50(4), effective 2 August 2026", "UK ICO AI Transparency Guidance (UK)", "FTC AI Endorsement Guidelines (US)"],
   },
   {
-    category: "Greenwashing — EU Green Claims Directive and CMA Enforcement",
+    category: "Greenwashing: EU Green Claims Directive and CMA Enforcement",
     severity: "HIGH",
     context: "A fashion brand client briefed the agency to write copy positioning their new product line as sustainable. The agency wrote the copy based on information provided by the client's marketing team.",
     excerpt: "Our new collection is made from eco-friendly materials and is carbon neutral from production to delivery. We are committed to a sustainable future and are proud to offer products that are kind to the planet.",
     description: "Every environmental claim in this copy requires substantiation under the EU Green Claims Directive, the CMA Green Claims Code and the FTC Green Guides. 'Eco-friendly' is a vague claim with no legal definition. 'Carbon neutral' requires independently verified offsets under a recognised standard. 'Kind to the planet' is meaningless under any regulatory framework. The agency wrote and published this copy without asking the client for substantiation.",
-    fix: "Never write environmental claims without first obtaining documented substantiation from the client. 'Carbon neutral' requires a specific offsetting certificate. 'Eco-friendly' must be replaced with a specific, verifiable claim. Add a clause to your agency agreement requiring clients to provide evidence before you write sustainability claims.",
+    fix: "Never write environmental claims without first obtaining documented substantiation from the client. 'Carbon neutral' requires a specific offsetting certificate. 'Eco friendly' must be replaced with a specific, verifiable claim. Add a clause to your agency agreement requiring clients to provide evidence before you write sustainability claims.",
     impact: "CMA enforcement notice and public censure. EU Commission investigation. Product withdrawal from EU market. Agency named in proceedings.",
     regulations: ["EU Green Claims Directive (EU)", "CMA Green Claims Code (UK)", "ASA CAP Code (UK)", "FTC Green Guides (US)", "ACCC (Australia)"],
   },
   {
-    category: "Affiliate Non-Disclosure — FTC Criminal Referral Territory",
+    category: "Affiliate Non Disclosure: FTC Criminal Referral Territory",
     severity: "MEDIUM",
     context: "An agency managed an influencer campaign for a supplement brand. Twenty influencers posted content. The agency briefed them, managed the contracts and approved the content.",
     excerpt: "Honestly the best thing I have tried this year. I have been using this for three months and the results speak for themselves. Link in bio.",
@@ -120,7 +120,7 @@ export default function CaseStudyPage() {
         <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Score before</p>
           <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.04em", lineHeight: 1 }}>{SCORE_BEFORE}</p>
-          <p style={{ ...syne, fontSize: "11px", color: "#ef4444", marginTop: "0.5rem", fontWeight: 600 }}>High risk — do not publish</p>
+          <p style={{ ...syne, fontSize: "11px", color: "#ef4444", marginTop: "0.5rem", fontWeight: 600 }}>High risk. Do not publish</p>
         </div>
         <div style={{ background: "#0D1B2E", borderLeft: "1px solid rgba(255,255,255,0.05)", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Violations found</p>
@@ -130,7 +130,7 @@ export default function CaseStudyPage() {
         <div style={{ background: "rgba(34,197,94,0.05)", border: "1px solid rgba(34,197,94,0.12)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Score after fixes</p>
           <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "#4ade80", letterSpacing: "-0.04em", lineHeight: 1 }}>{SCORE_AFTER}</p>
-          <p style={{ ...syne, fontSize: "11px", color: "#4ade80", marginTop: "0.5rem", fontWeight: 600 }}>Low risk — safe to publish</p>
+          <p style={{ ...syne, fontSize: "11px", color: "#4ade80", marginTop: "0.5rem", fontWeight: 600 }}>Low risk. Safe to publish</p>
         </div>
       </div>
 
@@ -144,7 +144,7 @@ export default function CaseStudyPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(251,191,36,0.8)", lineHeight: 1.7 }}>
             <span style={{ fontWeight: 700 }}>Before you read this:</span>{" "}
-            If your agency writes copy for financial services clients, manages influencer campaigns, runs email capture or manages paid ads with headline pricing — at least one of these violations is almost certainly present in live campaigns right now.
+            If your agency writes copy for financial services clients, manages influencer campaigns, runs email capture or manages paid ads with headline pricing, at least one of these violations is almost certainly present in live campaigns right now.
           </p>
         </div>
       </div>
@@ -268,7 +268,7 @@ export default function CaseStudyPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            Sentinel plan includes unlimited scanning, a tamper-resistant audit trail, client workspaces and weekly monitoring of live campaigns.
+            Sentinel plan includes unlimited scanning, a tamper resistant audit trail, client workspaces and weekly monitoring of live campaigns.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
