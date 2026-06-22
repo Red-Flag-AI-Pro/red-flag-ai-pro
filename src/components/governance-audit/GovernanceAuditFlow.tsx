@@ -12,10 +12,10 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const START_ITEMS = [
-  'Your Governance Maturity Index — scored across all 6 dimensions',
-  'Your 3–5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
-  'A prioritised 90-day → 12-month remediation roadmap',
-  'A board-ready PDF you can take straight to your next meeting',
+  'Your Governance Maturity Index, scored across all 6 dimensions',
+  'Your 3 to 5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
+  'A prioritised 90 day to 12 month remediation roadmap',
+  'A board ready PDF you can take straight to your next meeting',
 ];
 
 export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } = {}) {

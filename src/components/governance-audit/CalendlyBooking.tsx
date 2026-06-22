@@ -70,7 +70,7 @@ export function CalendlyBooking({ email, onSuccess }: CalendlyBookingProps) {
         ) : (
           <div className="p-8 text-center">
             <p className="text-sm text-gray-300 leading-relaxed mb-5">
-              Email us and we&apos;ll send you a few times that work — usually within one business day.
+              Email us and we&apos;ll send you a few times that work, usually within one business day.
             </p>
             <a
               href={mailto}

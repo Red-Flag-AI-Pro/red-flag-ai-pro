@@ -58,10 +58,10 @@ export function GovernanceAuditResults({
   const benchmark = PEER_BENCHMARK.overall;
   const compareLine =
     response.overallScore >= benchmark.quartile.q4
-      ? `Top tier — above the top-quartile benchmark of ${benchmark.quartile.q4}/100.`
+      ? `Top tier. Above the top quartile benchmark of ${benchmark.quartile.q4}/100.`
       : response.overallScore >= benchmark.average
         ? `Above the industry average of ${benchmark.average}/100.`
-        : `Below the industry average of ${benchmark.average}/100 — ${benchmark.average - response.overallScore} points to close.`;
+        : `Below the industry average of ${benchmark.average}/100. ${benchmark.average - response.overallScore} points to close.`;
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 py-8">
@@ -302,7 +302,7 @@ export function GovernanceAuditResults({
             What You're Getting
           </h4>
           <p className="text-xs text-gray-400">
-            Auto-generated audit-ready artifacts (included in your report)
+            Automatically generated audit ready artifacts (included in your report)
           </p>
         </div>
 
