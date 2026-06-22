@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { GovernanceAuditForm } from './GovernanceAuditForm';
 import { GovernanceAuditResults } from './GovernanceAuditResults';
 import { CalendlyBooking } from './CalendlyBooking';
-import { generateGovernanceAuditPDF } from '@/lib/governance-audit-pdf';
 import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit';
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -80,6 +79,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     if (!results) return;
     try {
       setIsDownloading(true);
+      const { generateGovernanceAuditPDF } = await import('@/lib/governance-audit-pdf');
       const pdfBytes = await generateGovernanceAuditPDF(results);
       const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
