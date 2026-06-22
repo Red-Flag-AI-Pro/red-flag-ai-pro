@@ -7,27 +7,15 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Pro £300-600/mo for monitoring. Sentinel £5000+/mo for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel £5,000+/mo for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
-const FREE_FEATURES = [
-  "Governance maturity assessment (5 min)",
-  "Six dimension breakdown (0 to 30 per dimension)",
-  "Top 3 to 5 critical gaps identified",
-  "Peer benchmarking (compare to industry)",
-  "Strategic 90 day + 6 month + 12 month roadmap",
-  "Executive summary PDF (board ready)",
-  "Regulatory context (EU AI Act, SEC, GDPR, Munir)",
-  "One assessment per email",
-  "No credit card required",
-];
-
 const PRO_FEATURES = [
-  "Everything in Free",
+  "Includes the free governance assessment",
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
   "Monthly compliance dashboard",
@@ -39,8 +27,18 @@ const PRO_FEATURES = [
   "14 day money back guarantee",
 ];
 
-const SENTINEL_FEATURES = [
+const GROWTH_FEATURES = [
   "Everything in Pro",
+  "Higher monthly scan limit (30 scans)",
+  "20 risk categories, up from 16 on Pro",
+  "Multiple team seats",
+  "API & webhook access",
+  "White label PDF reports",
+  "Priority email support",
+];
+
+const SENTINEL_FEATURES = [
+  "Everything in Growth",
   "Managed governance implementation (we work it with you)",
   "Automated audit logging & forensic proof",
   "Ongoing governance & vendor monitoring reviews",
@@ -163,44 +161,41 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* FREE ASSESSMENT BANNER */}
+      <section style={{ padding: "0 1.5rem", marginTop: "-2rem", position: "relative", zIndex: 2 }}>
+        <div style={{
+          maxWidth: "900px", margin: "0 auto",
+          background: "rgba(229,72,77,0.08)",
+          border: "1px solid rgba(229,72,77,0.3)",
+          borderRadius: "12px",
+          padding: "2rem",
+          textAlign: "center",
+        }}>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.75rem" }}>Start here, free</p>
+          <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>
+            Every plan below starts with a free governance assessment.
+          </p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem" }}>
+            Six dimension breakdown, your top critical gaps, peer benchmarking, and a 90 day to 12 month roadmap, delivered as a board ready PDF. One assessment per email, no credit card required.
+          </p>
+          <Link href="/governance-audit" style={{
+            display: "inline-block",
+            background: "rgba(239,68,68,0.2)",
+            color: "#ef4444",
+            border: "1px solid rgba(239,68,68,0.4)",
+            ...syne, fontSize: "0.875rem", fontWeight: 700,
+            padding: "12px 24px", borderRadius: "9999px",
+            textDecoration: "none",
+          }}>
+            Start free assessment (5 min)
+          </Link>
+        </div>
+      </section>
+
       {/* PLANS */}
       <section style={{ padding: "6rem 1.5rem" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
-
-            {/* FREE */}
-            <div style={{
-              background: "#102943",
-              border: "1px solid rgba(255,255,255,0.1)",
-              padding: "2.5rem",
-              position: "relative"
-            }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Assessment</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>See where your governance stands. No commitment.</p>
-              <p style={{ ...mono, fontSize: "2.5rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                Free<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}></span>
-              </p>
-              <Link href="/governance-audit" style={{
-                display: "block", textAlign: "center",
-                background: "rgba(239,68,68,0.2)",
-                color: "#ef4444",
-                border: "1px solid rgba(239,68,68,0.4)",
-                ...syne, fontSize: "0.875rem", fontWeight: 700,
-                padding: "12px 24px", borderRadius: "9999px",
-                textDecoration: "none", marginTop: "1.5rem"
-              }}>
-                Start assessment (5 min)
-              </Link>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
-                {FREE_FEATURES.map((f) => (
-                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
-                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* PRO */}
             <div style={{
@@ -240,6 +235,43 @@ export default function PricingPage() {
               <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
                 {PRO_FEATURES.map((f) => (
+                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+                    <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
+                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* GROWTH */}
+            <div style={{
+              background: "#102943",
+              border: "1px solid rgba(255,255,255,0.1)",
+              padding: "2.5rem",
+              position: "relative"
+            }}>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Growth</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams who've outgrown a single seat.</p>
+              <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+              </p>
+              <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
+                display: "block", textAlign: "center",
+                background: "rgba(239,68,68,0.2)",
+                color: "#ef4444",
+                border: "1px solid rgba(239,68,68,0.4)",
+                ...syne, fontSize: "0.875rem", fontWeight: 700,
+                padding: "12px 24px", borderRadius: "9999px",
+                textDecoration: "none", marginTop: "1.5rem"
+              }}>
+                Book a demo
+              </a>
+              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
+                or email support@redflagaipro.com
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
+                {GROWTH_FEATURES.map((f) => (
                   <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
                     <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
                     <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
@@ -315,25 +347,27 @@ export default function PricingPage() {
                 <thead>
                   <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "left", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Need</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Free</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Pro</th>
+                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Growth</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Sentinel</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { need: "See governance gaps", free: "✓", pro: "✓", sentinel: "✓" },
-                    { need: "Monitor governance ongoing", free: "✗", pro: "✓", sentinel: "✓" },
-                    { need: "Automated compliance proof", free: "✗", pro: "✓", sentinel: "✓" },
-                    { need: "Financial impact modeling", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Board ready reporting", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Managed implementation", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Regulatory readiness review", free: "✗", pro: "✗", sentinel: "✓" },
+                    { need: "See governance gaps", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Monitor governance ongoing", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Automated compliance proof", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Multiple team seats", pro: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "API & webhook access", pro: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Financial impact modeling", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Board ready reporting", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Managed implementation", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Regulatory readiness review", pro: "✗", growth: "✗", sentinel: "✓" },
                   ].map((row) => (
                     <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.free === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.free}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.pro === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.pro}</td>
+                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.pro === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.pro}</td>
+                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
                     </tr>
                   ))}
@@ -375,6 +409,7 @@ export default function PricingPage() {
                   { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 to £160,000", highlight: false },
                   { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
+                  { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
                   { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
