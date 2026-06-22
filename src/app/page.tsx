@@ -54,7 +54,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>AI Governance Assurance</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Compliance Scanning + AI Governance</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
@@ -62,7 +62,7 @@ export default function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            A five minute assessment produces your Governance Maturity Index across 6 dimensions, benchmarks you against peers, and generates the audit ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
+            A five minute assessment scores your AI governance across 6 dimensions and builds audit ready evidence for the EU AI Act, DORA and SEC exams. The same engine scans your marketing copy in real time across 9 jurisdictions and 28 risk categories.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
