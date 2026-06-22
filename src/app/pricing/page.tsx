@@ -216,10 +216,12 @@ export default function PricingPage() {
 
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening.</p>
-              <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-              </p>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
+              <div style={{ minHeight: "4.6rem" }}>
+                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                  £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                </p>
+                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
+              </div>
               <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
@@ -253,9 +255,11 @@ export default function PricingPage() {
             }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>Growth</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams who've outgrown a single seat.</p>
-              <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-              </p>
+              <div style={{ minHeight: "4.6rem" }}>
+                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                  £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                </p>
+              </div>
               <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                 display: "block", textAlign: "center",
                 background: "rgba(239,68,68,0.2)",
@@ -301,10 +305,12 @@ export default function PricingPage() {
                 </div>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
                 <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
-                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                  £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
-                </p>
-                <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
+                <div style={{ minHeight: "4.6rem" }}>
+                  <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                    £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
+                  </p>
+                  <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
+                </div>
                 <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                   display: "block", textAlign: "center",
                   background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
