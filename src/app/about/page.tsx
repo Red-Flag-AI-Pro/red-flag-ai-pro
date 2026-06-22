@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "About — Red Flag AI Pro",
+  title: "About: Red Flag AI Pro",
   description:
     "Red Flag was built to solve a real problem: you can't prove governance happened. Built by James Stokes. For CFOs, compliance teams, and regulated businesses.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
@@ -97,7 +97,7 @@ export default function AboutPage() {
             }}
           >
             Every organization has policies. But when a regulator asks, "Can you
-            prove governance happened?"—most organizations can&apos;t. Red Flag
+            prove governance happened?" most organizations can&apos;t. Red Flag
             was built to close that gap.
           </p>
         </div>
@@ -273,7 +273,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Know What to Fix",
-                desc: "Strategic roadmap prioritizes gaps by impact. Quick wins in 90 days. Medium-term in 6 months. Transformation in 12.",
+                desc: "Strategic roadmap prioritizes gaps by impact. Quick wins in 90 days. Medium term in 6 months. Transformation in 12.",
               },
               {
                 icon: "",
