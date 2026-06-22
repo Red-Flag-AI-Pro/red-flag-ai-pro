@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "API Documentation — Red Flag AI Pro",
+  title: "API Documentation: Red Flag AI Pro",
   description: "REST API for scanning marketing copy programmatically. Sentinel plan required.",
 };
 

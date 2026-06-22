@@ -6,7 +6,7 @@ import { BLOG_POSTS } from "@/lib/blog";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Blog — Marketing Compliance Guides & Updates",
+  title: "Blog: Marketing Compliance Guides & Updates",
   description: "Expert guides on FTC compliance, GDPR email marketing, ASA CAP Code violations, EU AI Act requirements and marketing compliance best practices for 2026.",
   alternates: { canonical: "https://www.redflagaipro.com/blog" },
 };
@@ -62,7 +62,7 @@ export default function BlogPage() {
           }}>
             Subscribe free
           </a>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>One email a week. Real cases, real fines, no fluff — unsubscribe in one click.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>One email a week. Real cases, real fines, no fluff. Unsubscribe in one click.</p>
         </div>
       </section>
 
@@ -116,7 +116,7 @@ export default function BlogPage() {
             Know the rules.<br />Before they cost you.
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
-            Plain-English guides to FTC, ASA, GDPR, EU AI Act and global marketing compliance law — written for marketers, not lawyers.
+            Plain English guides to FTC, ASA, GDPR, EU AI Act and global marketing compliance law, written for marketers, not lawyers.
           </p>
         </div>
       </section>

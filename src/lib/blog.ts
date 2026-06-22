@@ -2032,7 +2032,7 @@ The disclaimer accompanies a substantiated claim, it does not replace substantia
 
 ## Scan Your Income Claims
 
-Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 9 jurisdictions simultaneously — with AI-powered specific rewrites for every violation found.
+Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 9 jurisdictions simultaneously, with AI powered specific rewrites for every violation found.
 
 [Scan your copy free →](https://www.redflagaipro.com)
     `,
@@ -2063,9 +2063,9 @@ This is the honest comparison.
 
 **Who they are for**: Banks, pharmaceuticals, insurance companies, regulated industries with dedicated compliance headcount.
 
-**What they cost**: £2,000–£10,000 per month. Minimum contract terms. Weeks of onboarding.
+**What they cost**: £2,000 to £10,000 per month. Minimum contract terms. Weeks of onboarding.
 
-**The gap**: Not designed for agencies or digital marketers. Not real-time. Requires compliance staff to operate. No multi-jurisdiction scanning.
+**The gap**: Not designed for agencies or digital marketers. Not real time. Requires compliance staff to operate. No multi jurisdiction scanning.
 
 ---
 
@@ -2075,7 +2075,7 @@ This is the honest comparison.
 
 **Who they are for**: Businesses that need expert advice on specific, complex compliance questions.
 
-**What they cost**: £150–£400 per hour. 48–72 hour turnaround. Ongoing retainer £500–£2,000 per month.
+**What they cost**: £150 to £400 per hour. 48 to 72 hour turnaround. Ongoing retainer £500 to £2,000 per month.
 
 **The gap**: Does not scale. Cannot review copy at the speed modern marketing requires. Does not produce automated audit trails.
 
@@ -2225,7 +2225,7 @@ Paste your sales page or email sequence and see exactly which claims are at risk
   {
     slug: "ai-content-disclosure-eu-ai-act-2026",
     title: "You Don't Need to Hide AI Content. You Need to Disclose It Properly.",
-    description: "Searching for ways to make AI content undetectable? That's the wrong move — and from August 2026, it's also illegal. Here's what the EU AI Act actually requires and how to stay compliant.",
+    description: "Searching for ways to make AI content undetectable? That's the wrong move, and from August 2026, it's also illegal. Here's what the EU AI Act actually requires and how to stay compliant.",
     date: "2026-06-04",
     readTime: "7 min read",
     category: "EU AI Act",
@@ -2236,7 +2236,7 @@ If you've been searching for ways to make AI-generated content undetectable, you
 
 But you're asking the wrong question.
 
-The answer to AI content compliance is not to hide it. It's to disclose it properly. And from **2 August 2026**, hiding it is not just bad practice — it's a regulatory offence.
+The answer to AI content compliance is not to hide it. It's to disclose it properly. And from **2 August 2026**, hiding it is not just bad practice. It's a regulatory offence.
 
 ---
 
@@ -2285,22 +2285,22 @@ In practice, this means:
 This can be placed in a footer, an about page, a terms of service, or inline depending on the content type and platform.
 
 **Documented human review:**
-Someone at your agency must review AI-generated copy before publication. That review must be recorded — who reviewed it, when, and what was checked.
+Someone at your agency must review AI generated copy before publication. That review must be recorded: who reviewed it, when, and what was checked.
 
 **An audit trail:**
 If a regulator asks, you need to be able to show that your process includes AI disclosure and human oversight. An email thread is not an audit trail. A timestamped, signed compliance record is.
 
 ---
 
-## The Real Risk Is Not Detection — It Is Documentation
+## The Real Risk Is Not Detection. It Is Documentation
 
 The agencies and marketers who will face fines under the EU AI Act are not the ones who disclosed AI use. They are the ones who cannot prove they had a process.
 
 A regulator investigating a complaint does not start by running your content through an AI detector. They ask for your compliance documentation. They ask what your review process was. They ask who approved the copy and when.
 
-If your answer is "we rewrote it until it looked human" — you have no defence.
+If your answer is "we rewrote it until it looked human," you have no defence.
 
-If your answer is "here is our signed review log, here is the disclosure we added, here is the timestamp" — the conversation ends quickly.
+If your answer is "here is our signed review log, here is the disclosure we added, here is the timestamp," the conversation ends quickly.
 
 ---
 
@@ -2312,7 +2312,7 @@ If your answer is "here is our signed review log, here is the disclosure we adde
 
 **Step 3: Create a documented review process.** Every piece of AI-generated copy reviewed by a human, recorded with a timestamp, before it publishes.
 
-**Step 4: Update your client contracts.** Your agency agreement should include clauses covering AI tool usage and disclosure obligations. If a client refuses disclosure, that is a client relationship conversation — not a reason to hide it.
+**Step 4: Update your client contracts.** Your agency agreement should include clauses covering AI tool usage and disclosure obligations. If a client refuses disclosure, that is a client relationship conversation, not a reason to hide it.
 
 **Step 5: Build an audit trail.** When the regulator asks, the answer should be instant.
 
@@ -2320,11 +2320,11 @@ If your answer is "here is our signed review log, here is the disclosure we adde
 
 ## Sentinel Makes This Automatic
 
-Sentinel — the agency tier of Red Flag AI Pro — creates a signed, timestamped audit trail for every piece of copy reviewed before publication.
+Sentinel, the agency tier of Red Flag AI Pro, creates a signed, timestamped audit trail for every piece of copy reviewed before publication.
 
 Every scan is logged. Every review is recorded. Every certificate is retrievable in seconds.
 
-When the EU AI Act comes into force on 2 August 2026, Sentinel gives your agency exactly the documentation it needs — automatically, on every review.
+When the EU AI Act comes into force on 2 August 2026, Sentinel gives your agency exactly the documentation it needs, automatically, on every review.
 
 The question is not whether AI content needs to be disclosed. It does.
 
@@ -2502,7 +2502,7 @@ It doesn't matter if you:
 - Appointed someone to oversee compliance
 - Created a governance framework
 
-If the execution is uncontrolled—if you can't prove you stopped it—you are liable.
+If the execution is uncontrolled, if you can't prove you stopped it, you are liable.
 
 The lesson: **Visible governance is the only governance that counts.**
 
@@ -2540,7 +2540,7 @@ A recent study found: **59% of UK fee-earners admit to using unapproved AI tools
 
 And **68% of firm leaders believe they have zero risk.**
 
-That gap—between what leadership thinks is happening and what actually is—is exactly what Munir addresses.
+That gap, between what leadership thinks is happening and what actually is, is exactly what Munir addresses.
 
 You can't be liable for what you don't know is happening *if you have reasonable controls*. But if 59% of your team is using unapproved tools and leadership doesn't know about it, you don't have reasonable controls.
 
@@ -2606,7 +2606,7 @@ Organizations that close the visibility gap in the next 90 days will have plausi
   },
   {
     slug: "dpo-nobody-knows-invisible-governance",
-    title: "Your DPO Exists But Nobody Knows It — The Invisible Governance Crisis",
+    title: "Your DPO Exists But Nobody Knows It: The Invisible Governance Crisis",
     description: "An organization hired a regional Data Protection Officer covering the entire Middle East. Nobody knew who they were, how to contact them, or what they were responsible for. Yet they claim to take data privacy seriously.",
     date: "2026-06-16",
     readTime: "5 min read",

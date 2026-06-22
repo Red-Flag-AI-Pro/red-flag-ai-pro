@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: Props) {
             boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
-            Start Free — No Credit Card
+            Start Free: No Credit Card
           </Link>
         </div>
 
