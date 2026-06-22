@@ -5,7 +5,7 @@ import { TrustBar } from '@/components/marketing/TrustBar';
 export const metadata: Metadata = {
   title: 'AI Governance Maturity Assessment',
   description:
-    'Score your AI governance across 6 critical dimensions. Get your maturity score, identify governance gaps, and access audit-ready evidence framework.',
+    'Score your AI governance across 6 critical dimensions. Get your maturity score, identify governance gaps, and access an audit ready evidence framework.',
   alternates: {
     canonical: 'https://www.redflagaipro.com/governance-audit',
   },
@@ -40,7 +40,7 @@ export default function GovernanceAuditPage() {
             maxWidth: '820px',
             margin: '0 auto',
           }}>
-            Your <span style={{ fontStyle: 'italic', color: '#E5484D' }}>Governance Maturity Index</span> — scored across 6 dimensions, with audit-ready evidence, in 5 minutes.
+            Your <span style={{ fontStyle: 'italic', color: '#E5484D' }}>Governance Maturity Index</span>, scored across 6 dimensions, with audit ready evidence, in 5 minutes.
           </h1>
 
           <p style={{
@@ -130,7 +130,7 @@ export default function GovernanceAuditPage() {
               color: 'rgba(255,255,255,0.4)',
               lineHeight: 1.5,
             }}>
-              Auto-generated audit-ready framework for regulators (assessment + risk register + roadmap)
+              Automatically generated audit ready framework for regulators (assessment plus risk register plus roadmap)
             </p>
           </div>
         </div>
