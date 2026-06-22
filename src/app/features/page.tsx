@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Governance Features — Red Flag AI Pro",
+  title: "Governance Features: Red Flag AI Pro",
   description:
-    "6-dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, regulatory evidence packages, board-ready reporting, and managed governance enforcement support.",
+    "Six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, regulatory evidence packages, board ready reporting, and managed governance enforcement support.",
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -15,9 +15,9 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 const RECENT_REGULATORY_UPDATES = [
-  { date: "May 2026", text: "FTC settled with Cox Media Group and two other firms for ~$1M over deceptive claims about an AI-powered marketing service — first major \"AI washing\" settlement of the year." },
-  { date: "May 2026", text: "EU AI Act timeline revised: high-risk system deadlines pushed to Dec 2027 (Annex III) and Aug 2028 (Annex I) — but prohibited-practice and GPAI rules are already enforceable now, with fines up to €35M / 7% of turnover." },
-  { date: "Jan 2026", text: "SEC named AI governance a cross-cutting 2026 exam priority — examiners will test whether firms' AI disclosures and controls match what their systems actually do, and scrutinise \"AI washing\" claims directly." },
+  { date: "May 2026", text: "FTC settled with Cox Media Group and two other firms for ~$1M over deceptive claims about an AI powered marketing service. First major \"AI washing\" settlement of the year." },
+  { date: "May 2026", text: "EU AI Act timeline revised: high risk system deadlines pushed to Dec 2027 (Annex III) and Aug 2028 (Annex I), but prohibited practice and GPAI rules are already enforceable now, with fines up to €35M / 7% of turnover." },
+  { date: "Jan 2026", text: "SEC named AI governance a cross cutting 2026 exam priority. Examiners will test whether firms' AI disclosures and controls match what their systems actually do, and scrutinise \"AI washing\" claims directly." },
 ];
 
 export default function FeaturesPage() {
@@ -88,17 +88,17 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Critical Gap Identification",
-                  desc: "Top 3-5 gaps ranked by severity. Each flagged with regulatory context (Munir, SEC, EU AI Act, FTC, GDPR).",
+                  desc: "Top 3 to 5 gaps ranked by severity. Each flagged with regulatory context (Munir, SEC, EU AI Act, FTC, GDPR).",
                 },
                 {
                   icon: "",
                   title: "Strategic Roadmap",
-                  desc: "90-day quick wins, 6-month medium-term, 12-month strategic plan. Owner + timeline for each action.",
+                  desc: "90 day quick wins, 6 month medium term, 12 month strategic plan. Owner + timeline for each action.",
                 },
                 {
                   icon: "",
-                  title: "Board-Ready PDF",
-                  desc: "6-page report: cover, dimension breakdown, red flags, strategic roadmap, executive summary, regulatory mapping.",
+                  title: "Board Ready PDF",
+                  desc: "Six page report: cover, dimension breakdown, red flags, strategic roadmap, executive summary, regulatory mapping.",
                 },
                 {
                   icon: "",
@@ -140,7 +140,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Vendor AI Risk Tracking",
-                  desc: "Track all third-party AI tools. Risk assessment scores. Data flow mapping. Contract checklist per vendor.",
+                  desc: "Track all third party AI tools. Risk assessment scores. Data flow mapping. Contract checklist per vendor.",
                 },
                 {
                   icon: "",
@@ -149,13 +149,13 @@ export default function FeaturesPage() {
                 },
                 {
                   icon: "",
-                  title: "Policy-to-Practice Gap Detection",
-                  desc: "Identify where policy differs from actual desk behavior. Governance drift alerts. Non-compliance flags.",
+                  title: "Policy to Practice Gap Detection",
+                  desc: "Identify where policy differs from actual desk behavior. Governance drift alerts. Non compliance flags.",
                 },
                 {
                   icon: "",
                   title: "Evidence Package Generation",
-                  desc: "Auto-generated audit-ready artifacts. Governance logs. Compliance checklist. Regulatory framework mapping.",
+                  desc: "Auto generated audit ready artifacts. Governance logs. Compliance checklist. Regulatory framework mapping.",
                 },
                 {
                   icon: "",
@@ -197,7 +197,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Automated Audit Logging",
-                  desc: "Immutable, tamper-resistant audit trail of every governance action — report downloads, vendor reviews, policy changes — stored server-side, never editable by a user.",
+                  desc: "Immutable, tamper resistant audit trail of every governance action. Report downloads, vendor reviews, policy changes, stored server side, never editable by a user.",
                 },
                 {
                   icon: "",
@@ -207,27 +207,27 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Financial Impact Modeling",
-                  desc: "Compliance cost calculator. Penalty risk modeling. ROI of governance investment. Board-ready financial impact.",
+                  desc: "Compliance cost calculator. Penalty risk modeling. ROI of governance investment. Board ready financial impact.",
                 },
                 {
                   icon: "",
                   title: "Governance Enforcement Support",
-                  desc: "We help you design and roll out real guardrails — policy enforcement, tool approval processes, data flow controls — with your team.",
+                  desc: "We help you design and roll out real guardrails: policy enforcement, tool approval processes, data flow controls, with your team.",
                 },
                 {
                   icon: "",
-                  title: "Board-Ready Reporting",
+                  title: "Board Ready Reporting",
                   desc: "Governance scorecard. Risk trends. Compliance status. Built into a report you can take straight into your next board meeting.",
                 },
                 {
                   icon: "",
                   title: "Regulatory Readiness Review",
-                  desc: "Your governance mapped to EU AI Act, SEC, GDPR, Munir. Audit-ready evidence package showing exactly where you stand against each framework.",
+                  desc: "Your governance mapped to EU AI Act, SEC, GDPR, Munir. Audit ready evidence package showing exactly where you stand against each framework.",
                 },
                 {
                   icon: "",
                   title: "API Access",
-                  desc: "Programmatic access to your scan and assessment data — build it into your own vendor management, security or finance workflows.",
+                  desc: "Programmatic access to your scan and assessment data, build it into your own vendor management, security or finance workflows.",
                 },
                 {
                   icon: "",

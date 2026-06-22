@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Sentinel — Compliance Infrastructure for Agencies and Regulated Businesses",
+  title: "Sentinel: Compliance Infrastructure for Agencies and Regulated Businesses",
   description:
-    "Stop managing compliance in email threads. Sentinel gives agencies a tamper-resistant, timestamped audit trail for every piece of copy reviewed. Built for the teams where a compliance failure is a regulatory event.",
+    "Stop managing compliance in email threads. Sentinel gives agencies a tamper resistant, timestamped audit trail for every piece of copy reviewed. Built for the teams where a compliance failure is a regulatory event.",
   alternates: { canonical: "https://www.redflagaipro.com/sentinel" },
 };
 
@@ -17,7 +17,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 const BENEFITS = [
   {
     headline: "A complaint lands. You have proof.",
-    body: "Without a record, your agency has no defence. Sentinel logs every review with a timestamp in a tamper-resistant audit trail and generates a PDF report. When the regulator or client asks what you checked and when, the answer is instant.",
+    body: "Without a record, your agency has no defence. Sentinel logs every review with a timestamp in a tamper resistant audit trail and generates a PDF report. When the regulator or client asks what you checked and when, the answer is instant.",
   },
   {
     headline: "Your PI insurer will ask. Now you can answer.",
@@ -25,11 +25,11 @@ const BENEFITS = [
   },
   {
     headline: "Compliance that keeps pace with delivery.",
-    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act in under 60 seconds — the compliance review happens before the brief leaves your desk.",
+    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act in under 60 seconds. The compliance review happens before the brief leaves your desk.",
   },
   {
     headline: "FCA and financial promotions handled.",
-    body: "Financial promotion rules are the highest-stakes area of UK advertising law. One unapproved copy can trigger an FCA investigation for both you and your client. Sentinel checks financial copy at source, before it publishes.",
+    body: "Financial promotion rules are the highest stakes area of UK advertising law. One unapproved copy can trigger an FCA investigation for both you and your client. Sentinel checks financial copy at source, before it publishes.",
   },
   {
     headline: "Greenwashing is now an enforcement priority.",
@@ -49,11 +49,11 @@ const BENEFITS = [
   },
   {
     headline: "AI copy. August 2026. Your responsibility.",
-    body: "The EU AI Act requires disclosure on AI-assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
+    body: "The EU AI Act requires disclosure on AI assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
   },
   {
     headline: "Turn scan results into something you can actually show.",
-    body: "Every scan can be rendered into a short video summary — the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
+    body: "Every scan can be rendered into a short video summary: the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
   },
 ];
 
@@ -61,7 +61,7 @@ const WHO = [
   {
     label: "Digital agencies",
     title: "You write copy for clients. Their compliance failure is your liability.",
-    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a timestamped, tamper-resistant audit log proving you reviewed it before it went out — plus white-label reports, team seats, client workspaces and ongoing monitoring.",
+    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a timestamped, tamper resistant audit log proving you reviewed it before it went out, plus white label reports, team seats, client workspaces and ongoing monitoring.",
   },
   {
     label: "Legal and compliance teams",
@@ -69,32 +69,32 @@ const WHO = [
     description: "Sentinel replaces informal email review with a logged, timestamped audit trail. API access and webhooks let you integrate scanning into your existing workflow. Every report is retrievable in seconds.",
   },
   {
-    label: "FCA-regulated businesses",
+    label: "FCA regulated businesses",
     title: "Financial promotions carry the heaviest penalties in UK advertising law.",
     description: "Sentinel checks copy against FCA financial promotion rules before publication and logs a timestamped audit record confirming it was checked.",
   },
   {
     label: "Enterprise marketing teams",
-    title: "Multi-jurisdiction campaigns. One failure can shut a campaign in five countries.",
+    title: "Multi jurisdiction campaigns. One failure can shut a campaign in five countries.",
     description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Bulk scan flags risk across every page in one run. Weekly monitoring flags changes before they become complaints.",
   },
 ];
 
 const LAWS = [
   { law: "EU AI Act", date: "Enforceable August 2026", description: "If you use AI to write copy for clients, you must disclose it and prove it was reviewed before publication. The obligation sits with the creator, not just the brand.", hot: true },
-  { law: "FCA Financial Promotions", date: "Active now", description: "Any copy touching investments, returns, crypto or financial products must be pre-approved by an FCA-authorised person. One unapproved ad triggers an investigation.", hot: false },
-  { law: "EU Green Claims Directive", date: "Enforcement ramping 2026", description: "Sustainability claims like carbon neutral, eco-friendly or net zero require substantiated evidence. Writing them without proof is now a regulatory offence across the EU.", hot: false },
+  { law: "FCA Financial Promotions", date: "Active now", description: "Any copy touching investments, returns, crypto or financial products must be pre approved by an FCA authorised person. One unapproved ad triggers an investigation.", hot: false },
+  { law: "EU Green Claims Directive", date: "Enforcement ramping 2026", description: "Sustainability claims like carbon neutral, eco friendly or net zero require substantiated evidence. Writing them without proof is now a regulatory offence across the EU.", hot: false },
   { law: "ASA CAP Code", date: "Active now", description: "UK advertising rules cover every ad your agency produces. Income claims, guarantees, testimonials and urgency tactics are all regulated. Agencies are routinely named in upheld complaints.", hot: false },
-  { law: "FTC Endorsement Guides", date: "Updated 2023 — active now", description: "Influencer content, affiliate links and paid partnerships for US-facing clients must all be clearly disclosed. Agencies managing these relationships carry liability if disclosure is missing.", hot: false },
-  { law: "CMA Green Claims Code", date: "Active now — UK", description: "The CMA is actively pursuing greenwashing cases. Environmental claims must be accurate, clear and substantiated or your agency is exposed.", hot: false },
+  { law: "FTC Endorsement Guides", date: "Updated 2023, active now", description: "Influencer content, affiliate links and paid partnerships for US facing clients must all be clearly disclosed. Agencies managing these relationships carry liability if disclosure is missing.", hot: false },
+  { law: "CMA Green Claims Code", date: "Active now, UK", description: "The CMA is actively pursuing greenwashing cases. Environmental claims must be accurate, clear and substantiated or your agency is exposed.", hot: false },
 ];
 
 const RISKS = [
-  { label: "ASA investigation", cost: "£5k–£50k", detail: "legal costs, campaign takedown, management time" },
+  { label: "ASA investigation", cost: "£5k to £50k", detail: "legal costs, campaign takedown, management time" },
   { label: "FCA unapproved promotion", cost: "Criminal", detail: "fine, public censure, FCA investigation" },
   { label: "GDPR violation", cost: "€20m", detail: "or 4% of global annual turnover" },
   { label: "CMA dark pattern", cost: "£300k", detail: "per violation plus injunction" },
-  { label: "Client claim vs agency", cost: "PI excess", detail: "plus policy review, possible non-renewal" },
+  { label: "Client claim vs agency", cost: "PI excess", detail: "plus policy review, possible non renewal" },
 ];
 
 export default function SentinelPage() {
@@ -110,9 +110,9 @@ export default function SentinelPage() {
         borderTop: "1px solid rgba(255,255,255,0.05)"
       }}>
         <div style={{maxWidth: "600px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel — enterprise compliance</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel: enterprise compliance</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks and a tamper-resistant audit trail.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks and a tamper resistant audit trail.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
             <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
@@ -173,7 +173,7 @@ export default function SentinelPage() {
           </p>
 
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, maxWidth: "520px", margin: "0 auto 3.5rem" }}>
-            All 29 risk categories, legally mapped across 9 jurisdictions. Human review logs. Legal timestamps. Tamper-resistant audit trail. Built for the teams where a compliance failure is a regulatory event.
+            All 29 risk categories, legally mapped across 9 jurisdictions. Human review logs. Legal timestamps. Tamper resistant audit trail. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
@@ -210,7 +210,7 @@ export default function SentinelPage() {
       }}>
         <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", flexShrink: 0, animation: "pulseRed 2s ease-in-out infinite" }} />
         <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.05em" }}>
-          EU AI Act Article 50 enforcement begins <span style={{ color: "#ef4444" }}>2 August 2026</span> — AI-generated marketing copy must be disclosed or documented. Agencies are in the frame.
+          EU AI Act Article 50 enforcement begins <span style={{ color: "#ef4444" }}>2 August 2026</span>. AI generated marketing copy must be disclosed or documented. Agencies are in the frame.
         </p>
       </div>
 
@@ -453,7 +453,7 @@ export default function SentinelPage() {
               Enterprise compliance.<br />Without the enterprise price.
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.35)", marginTop: "1rem" }}>
-              The tools agencies traditionally use cost £2,000–£10,000 a month. Sentinel is live in a day.
+              The tools agencies traditionally use cost £2,000 to £10,000 a month. Sentinel is live in a day.
             </p>
           </div>
 
@@ -468,20 +468,20 @@ export default function SentinelPage() {
               </thead>
               <tbody>
                 {[
-                  ["Multi-jurisdiction scanning", "Sometimes", "✓ FTC, GDPR, ASA, FCA, ACCC, CASL"],
+                  ["Multi jurisdiction scanning", "Sometimes", "✓ FTC, GDPR, ASA, FCA, ACCC, CASL"],
                   ["EU AI Act compliance", "Partial", "✓ Full"],
                   ["FCA financial promotions", "Enterprise only", "✓ Included"],
                   ["Greenwashing scanner", "Limited", "✓ EU Green Claims Directive"],
                   ["URL page scanning", "✗", "✓ Live page fetch"],
                   ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
                   ["Full site audit", "✗", "✓ Up to 50 pages"],
-                  ["Weekly auto-monitoring", "✗", "✓ Unlimited URLs"],
+                  ["Weekly auto monitoring", "✗", "✓ Unlimited URLs"],
                   ["REST API + webhooks", "✗", "✓ Zapier ready"],
-                  ["White-label PDF reports", "✗", "✓ Your branding"],
+                  ["White label PDF reports", "✗", "✓ Your branding"],
                   ["Video scan summaries", "✗", "✓ Shareable MP4"],
-                  ["Tamper-resistant audit trail", "✗", "✓"],
+                  ["Tamper resistant audit trail", "✗", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
-                  ["Typical monthly cost", "£2,000 – £10,000", "£5000+"],
+                  ["Typical monthly cost", "£2,000 to £10,000", "£5000+"],
                 ].map(([feature, them, us], i) => (
                   <tr key={feature} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
                     <td style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", padding: "0.875rem 1rem 0.875rem 0" }}>{feature}</td>
@@ -520,7 +520,7 @@ export default function SentinelPage() {
             Ready when you are.
           </h2>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "3rem" }}>
-            Compliance is not a one-off task. It is a constant. Sentinel keeps your agency protected every time copy is created, reviewed and published.
+            Compliance is not a one off task. It is a constant. Sentinel keeps your agency protected every time copy is created, reviewed and published.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>

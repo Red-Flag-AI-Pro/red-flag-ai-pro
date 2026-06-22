@@ -10,7 +10,7 @@ import { ProveItWidget } from "@/components/marketing/ProveItWidget";
 import { JurisdictionStrip } from "@/components/marketing/JurisdictionStrip";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro — AI Governance Maturity Assessment & Compliance Proof",
+  title: "Red Flag AI Pro: AI Governance Maturity Assessment & Compliance Proof",
   description:
     "Free 5-minute governance assessment reveals your AI maturity across 6 dimensions, identifies critical gaps, and generates a 90-day roadmap. For CFOs, compliance teams, and regulated businesses. Know where you stand before regulators ask.",
   alternates: { canonical: "https://www.redflagaipro.com" },
@@ -62,7 +62,7 @@ export default function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            A 5-minute assessment produces your Governance Maturity Index across 6 dimensions, benchmarks you against peers, and generates the audit-ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
+            A five minute assessment produces your Governance Maturity Index across 6 dimensions, benchmarks you against peers, and generates the audit ready evidence CFOs and compliance teams need for the EU AI Act, DORA and SEC exams.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
@@ -97,8 +97,8 @@ export default function LandingPage() {
             {[
               { tag: "UK · ENFORCED NOW", title: "Munir v SSHD", desc: "Governance you cannot demonstrate is treated as liability. Already case law." },
               { tag: "EU · 2 AUGUST 2026", title: "EU AI Act, Article 50", desc: "Mandatory AI disclosure and governance evidence for systems touching the EU." },
-              { tag: "EU · IN FORCE", title: "DORA", desc: "Operational-resilience reporting under active audit. 93.5% failed the 2024 dry run." },
-              { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance — and monitor it — not just describe it." },
+              { tag: "EU · IN FORCE", title: "DORA", desc: "Reporting on operational resilience under active audit. 93.5% failed the 2024 dry run." },
+              { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance, and monitor it, not just describe it." },
             ].map((item) => (
               <div key={item.title} style={{
                 background: "var(--navy-raised)",
@@ -159,7 +159,7 @@ export default function LandingPage() {
               {
                 icon: "",
                 title: "90-Day Roadmap",
-                desc: "Quick wins (2-3 weeks), medium-term (6 months), strategic (12 months). Who owns each, timeline."
+                desc: "Quick wins (2 to 3 weeks), medium term (6 months), strategic (12 months). Who owns each, timeline."
               },
               {
                 icon: "",
@@ -169,7 +169,7 @@ export default function LandingPage() {
               {
                 icon: "",
                 title: "6-Page PDF Report",
-                desc: "Board-ready executive summary, dimension breakdown, red flags with recommendations, full roadmap"
+                desc: "Board ready executive summary, dimension breakdown, red flags with recommendations, full roadmap"
               },
               {
                 icon: "",
@@ -210,11 +210,11 @@ export default function LandingPage() {
               {
                 role: "CFOs & Finance Leaders",
                 pain: "Can you prove AI governance to the board? Can you quantify compliance risk?",
-                solution: "Score governance maturity. Model financial impact. Get board-ready reports.",
+                solution: "Score governance maturity. Model financial impact. Get board ready reports.",
               },
               {
                 role: "Compliance Officers",
-                pain: "Are you ready for SEC exams? Can you demonstrate policy-to-practice alignment?",
+                pain: "Are you ready for SEC exams? Can you demonstrate policy to practice alignment?",
                 solution: "Gap assessment + evidence package. Regulatory framework mapping.",
               },
               {
@@ -253,14 +253,14 @@ export default function LandingPage() {
             {[
               {
                 quote: "Took the assessment and realized we had zero vendor governance. That gap alone could have cost us £millions in a breach. 90 days later, we had contracts in place and were monitoring all third-party AI.",
-                role: "CFO, Mid-Market Enterprise",
+                role: "CFO, Mid Market Enterprise",
               },
               {
-                quote: "We scored 38/100. The governance roadmap showed us which quick wins to do first (2 weeks) vs. the strategic work (6-12 months). Board meeting next week—finally have numbers to show.",
+                quote: "We scored 38/100. The governance roadmap showed us which quick wins to do first (2 weeks) vs. the strategic work (6 to 12 months). Board meeting next week, finally have numbers to show.",
                 role: "Compliance Director, FinTech",
               },
               {
-                quote: "The PDF report was ready-to-present to our audit team. Mapped straight to SEC requirements. Instead of a month of back-and-forth, we had proof in a week.",
+                quote: "The PDF report was ready to present to our audit team. Mapped straight to SEC requirements. Instead of a month of back and forth, we had proof in a week.",
                 role: "COO, Regulated Tech",
               },
             ].map((t, i) => (

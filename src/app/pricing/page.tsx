@@ -6,7 +6,7 @@ import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Governance Pricing — Red Flag AI Pro",
+  title: "Governance Pricing: Red Flag AI Pro",
   description: "Free AI governance assessment. Pro £300-600/mo for monitoring. Sentinel £5000+/mo for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
@@ -16,11 +16,11 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const FREE_FEATURES = [
   "Governance maturity assessment (5 min)",
-  "6-dimension breakdown (0-30 per dimension)",
-  "Top 3-5 critical gaps identified",
+  "Six dimension breakdown (0 to 30 per dimension)",
+  "Top 3 to 5 critical gaps identified",
   "Peer benchmarking (compare to industry)",
-  "Strategic 90-day + 6-month + 12-month roadmap",
-  "Executive summary PDF (board-ready)",
+  "Strategic 90 day + 6 month + 12 month roadmap",
+  "Executive summary PDF (board ready)",
   "Regulatory context (EU AI Act, SEC, GDPR, Munir)",
   "One assessment per email",
   "No credit card required",
@@ -31,12 +31,12 @@ const PRO_FEATURES = [
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
   "Monthly compliance dashboard",
-  "Policy-to-practice gap detection",
+  "Policy to practice gap detection",
   "Unlimited PDF reports",
-  "Governance evidence package (audit-ready)",
+  "Governance evidence package (audit ready)",
   "Quarterly improvement roadmaps",
   "Email support",
-  "14-day money-back guarantee",
+  "14 day money back guarantee",
 ];
 
 const SENTINEL_FEATURES = [
@@ -46,12 +46,12 @@ const SENTINEL_FEATURES = [
   "Ongoing governance & vendor monitoring reviews",
   "Financial impact modeling (compliance cost calculator)",
   "Governance enforcement support & guardrail design",
-  "Board-ready reporting, built with your team",
+  "Board ready reporting, built with your team",
   "Regulatory readiness review",
-  "Multi-team governance workflows",
+  "Multi team governance workflows",
   "API access to your scan & assessment data",
   "Dedicated governance advisor (quarterly calls)",
-  "White-label reports for client facing",
+  "White label reports for client facing",
   "Priority support",
 ];
 
@@ -86,7 +86,7 @@ export default function PricingPage() {
               {
                 icon: "",
                 title: "EU AI Act (Aug 2, 2026)",
-                desc: "Mandatory disclosure of AI-generated content + governance evidence. 45 days away.",
+                desc: "Mandatory disclosure of AI generated content + governance evidence. 45 days away.",
               },
               {
                 icon: "",
@@ -267,7 +267,7 @@ export default function PricingPage() {
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Enterprise</p>
                 </div>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
-                <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance-ready proof, forever.</p>
+                <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
                 <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
                   £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
                 </p>
@@ -326,7 +326,7 @@ export default function PricingPage() {
                     { need: "Monitor governance ongoing", free: "✗", pro: "✓", sentinel: "✓" },
                     { need: "Automated compliance proof", free: "✗", pro: "✓", sentinel: "✓" },
                     { need: "Financial impact modeling", free: "✗", pro: "✗", sentinel: "✓" },
-                    { need: "Board-ready reporting", free: "✗", pro: "✗", sentinel: "✓" },
+                    { need: "Board ready reporting", free: "✗", pro: "✗", sentinel: "✓" },
                     { need: "Managed implementation", free: "✗", pro: "✗", sentinel: "✓" },
                     { need: "Regulatory readiness review", free: "✗", pro: "✗", sentinel: "✓" },
                   ].map((row) => (
@@ -343,7 +343,7 @@ export default function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            Pro tier: 14-day money-back guarantee. Sentinel: custom contract. All plans include priority email support.
+            Pro tier: 14 day money back guarantee. Sentinel: custom contract. All plans include priority email support.
           </p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
@@ -371,12 +371,12 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  { name: "Legacy enterprise GRC (ServiceNow, AuditBoard, MetricStream)", cost: "£200,000 – £790,000+", highlight: false },
-                  { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 – £160,000", highlight: false },
-                  { name: "Credo AI", cost: "£24,000 – £120,000", highlight: false },
-                  { name: "Red Flag AI Pro — Sentinel", cost: "£60,000", highlight: true },
-                  { name: "Red Flag AI Pro — Pro", cost: "£4,200", highlight: true },
-                  { name: "Red Flag AI Pro — Assessment", cost: "Free", highlight: true },
+                  { name: "Legacy enterprise GRC (ServiceNow, AuditBoard, MetricStream)", cost: "£200,000 to £790,000+", highlight: false },
+                  { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 to £160,000", highlight: false },
+                  { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
+                  { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
+                  { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
                   <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>
                     <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", color: row.highlight ? "#F4F1EA" : "rgba(255,255,255,0.55)", fontWeight: row.highlight ? 700 : 400 }}>{row.name}</td>
@@ -387,7 +387,7 @@ export default function PricingPage() {
             </table>
           </div>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1.5rem" }}>
-            Competitor figures from published 2026 market research (Credo AI, OneTrust, legacy GRC vendor pricing reports). Most platforms quote custom enterprise pricing — figures shown are typical ranges, not list prices.
+            Competitor figures from published 2026 market research (Credo AI, OneTrust, legacy GRC vendor pricing reports). Most platforms quote custom enterprise pricing. Figures shown are typical ranges, not list prices.
           </p>
         </div>
       </section>
@@ -398,23 +398,23 @@ export default function PricingPage() {
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>Build vs. Buy</p>
             <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
-              Building this in-house costs<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>far more than it looks.</span>
+              Building this in house costs<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>far more than it looks.</span>
             </h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", overflow: "hidden" }}>
             <div style={{ background: "#0D1B2E", padding: "2.25rem" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "1rem" }}>Build it yourself</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "rgba(244,241,234,0.85)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>£350k–500k<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.4)" }}> /yr</span></p>
-              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", marginBottom: "1.5rem" }}>fully-loaded, conservative estimate</p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "rgba(244,241,234,0.85)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>£350k to £500k<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.4)" }}> /yr</span></p>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", marginBottom: "1.5rem" }}>fully loaded, conservative estimate</p>
               {[
-                "Engineers to build assessment, evidence & audit-log pipelines",
+                "Engineers to build assessment, evidence & audit log pipelines",
                 "Ongoing rework as the EU AI Act, DORA & SEC rules evolve",
-                "6+ months before your first board-ready report",
-                "Your compliance team's time — the scarcest resource you have",
+                "6+ months before your first board ready report",
+                "Your compliance team's time: the scarcest resource you have",
               ].map((t) => (
                 <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
-                  <span style={{ color: "rgba(244,241,234,0.3)", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(244,241,234,0.3)", flexShrink: 0 }}>✕</span>
                   <span style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.5 }}>{t}</span>
                 </div>
               ))}
@@ -425,9 +425,9 @@ export default function PricingPage() {
               <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £350<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
               {[
-                "Audit-ready evidence out of the box — nothing to build",
+                "Audit ready evidence out of the box, nothing to build",
                 "Maintained against regulatory change, automatically",
-                "Your first board-ready report in 5 minutes",
+                "Your first board ready report in 5 minutes",
                 "No engineering, no maintenance, no internal headcount",
               ].map((t) => (
                 <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
@@ -466,7 +466,7 @@ export default function PricingPage() {
               },
               {
                 title: "Implementation Partner",
-                desc: "We don't just identify gaps—we build the infrastructure. You're not managing consultants; we're doing it.",
+                desc: "We don't just identify gaps. We build the infrastructure. You're not managing consultants; we're doing it.",
               },
               {
                 title: "Board Reporting",
