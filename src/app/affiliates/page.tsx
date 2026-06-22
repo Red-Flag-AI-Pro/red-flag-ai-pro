@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PromoBox } from "@/components/affiliates/PromoBox";
 
 export const metadata: Metadata = {
-  title: "Affiliate Programme — Red Flag AI Pro",
+  title: "Affiliate Programme: Red Flag AI Pro",
   description: "Earn 15% recurring commission promoting Red Flag AI Pro. Share your link, earn every month your referrals stay subscribed. Free to join.",
   alternates: { canonical: "https://www.redflagaipro.com/affiliates" },
 };
@@ -15,17 +15,17 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
-  { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations — anywhere your audience trusts you." },
+  { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations: anywhere your audience trusts you." },
   { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Sentinel referral (£5000+/mo) pays ~£750/month. One Pro referral (£350/mo) pays ~£52.50/month. As long as they stay subscribed, you earn." },
 ];
 
 const WHO_IT_IS_FOR = [
   { label: "Governance consultants", desc: "Your clients need proven governance. Red Flag provides the assessment, roadmap, and monitoring. You earn 15% on every client who signs up." },
   { label: "Compliance officers", desc: "Recommend Red Flag to your network of CFOs, board members, and regulated enterprises. 15% recurring from each who subscribes." },
-  { label: "Executive coaches", desc: "Your C-suite clients need AI governance proof. Red Flag gives them the score, gaps, and strategic roadmap. Earn passive income from referrals." },
+  { label: "Executive coaches", desc: "Your executive clients need AI governance proof. Red Flag gives them the score, gaps, and strategic roadmap. Earn passive income from referrals." },
   { label: "Risk & legal advisors", desc: "Your clients are asking about Munir compliance, SEC readiness, EU AI Act. Point them to Red Flag. Get 15% recurring on each." },
   { label: "Newsletter writers (B2B)", desc: "Write about CFO challenges, AI regulation, compliance, or financial risk? Your audience will convert. One mention pays you monthly." },
-  { label: "Anyone with a CFO/compliance audience", desc: "If you influence CFOs, compliance teams, or regulated enterprises on governance topics, Red Flag is a high-converting recommendation. 15% recurring." },
+  { label: "Anyone with a CFO or compliance audience", desc: "If you influence CFOs, compliance teams, or regulated enterprises on governance topics, Red Flag is a high converting recommendation. 15% recurring." },
 ];
 
 const EARNINGS = [
@@ -53,7 +53,7 @@ export default function AffiliatesPage() {
             </span>
           </h1>
           <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "520px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-            15% recurring commission. Free to join. No approval process. Share your unique link — earn every month your referrals stay subscribed.
+            15% recurring commission. Free to join. No approval process. Share your unique link, earn every month your referrals stay subscribed.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1rem" }}>
             <a
@@ -154,13 +154,13 @@ export default function AffiliatesPage() {
       <section style={{ background: "#0C1929", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Promo pack</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ready-made posts. Just add your link.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ready made posts. Just add your link.</h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginBottom: "3.5rem" }}>Copy any of these, swap in your affiliate link, and post. Click a box to select all.</p>
 
           <PromoBox
             platform="LinkedIn"
             label="Professional / agency audience"
-            post={`I just scanned a well-known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations — income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns — you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 15% recurring commission. One agency referral pays you every month they stay subscribed.\n\n→ [YOUR AFFILIATE LINK]`}
+            post={`I just scanned a well known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations: income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns, you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 15% recurring commission. One agency referral pays you every month they stay subscribed.\n\nLink: [YOUR AFFILIATE LINK]`}
           />
           <PromoBox
             platform="X / Twitter"
@@ -169,18 +169,18 @@ export default function AffiliatesPage() {
           />
           <PromoBox
             platform="Instagram / TikTok caption"
-            label="Visual-first, short"
+            label="Visual first, short"
             post={`Did you know most online ads are technically illegal?\n\nIncome claims that break the law. Fake scarcity. Health claims with zero evidence.\n\nI found a tool that scans any ad or sales page in 60 seconds and tells you exactly what regulators would flag.\n\nFree to use. Link in bio 👇\n\n[YOUR AFFILIATE LINK]`}
           />
           <PromoBox
             platform="Facebook Group / Forum"
             label="Helpful, not salesy"
-            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non-compliant — fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 29 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it — 15% recurring commission.`}
+            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non compliant: fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 29 risk categories across 9 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree scan here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it. 15% recurring commission.`}
           />
           <PromoBox
             platform="Newsletter / Email"
             label="For newsletter writers"
-            post={`Quick one this week — a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy — sales page, ad, email — and it scans it against 29 compliance categories across 9 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First scan is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link — I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
+            post={`Quick one this week: a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy, sales page, ad, email, and it scans it against 29 compliance categories across 9 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First scan is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link. I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
           />
         </div>
       </section>

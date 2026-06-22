@@ -5,8 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Red Flag AI Pro",
-  description: "Terms of Service for Red Flag AI Pro — please read before using our service.",
+  title: "Terms of Service: Red Flag AI Pro",
+  description: "Terms of Service for Red Flag AI Pro. Please read before using our service.",
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -43,16 +43,16 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI-powered marketing compliance scanning tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance scanning tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
             </p>
           </div>
 
           {/* 2 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice — Important Disclaimer</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice: Important Disclaimer</h2>
             <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#ef4444", lineHeight: 1.8, marginBottom: "0.75rem" }}>
-                Red Flag AI Pro is an AI-powered tool and does not constitute legal advice. Our scans and reports are provided for informational purposes only.
+                Red Flag AI Pro is an AI powered tool and does not constitute legal advice. Our scans and reports are provided for informational purposes only.
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
                 Nothing produced by Red Flag AI Pro should be relied upon as a substitute for professional legal counsel. We strongly recommend consulting a qualified solicitor or compliance professional for definitive legal guidance specific to your business. Red Flag AI Pro accepts no liability for decisions made based solely on our scan results.
@@ -84,7 +84,7 @@ export default function TermsPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Starter Plan", "1 scan per month at no charge. No credit card required."],
-                ["Pro Plan", "£49/month (subject to change — existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
+                ["Pro Plan", "£49/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
                 ["Enterprise Plan", "£149/month. Billed monthly via Stripe."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],
                 ["Renewal", "Subscriptions renew automatically unless cancelled before the renewal date."],
@@ -119,7 +119,7 @@ export default function TermsPage() {
                 ))}
               </ul>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                We reserve the right to decline refund requests where the service has been used as intended without technical fault. Approved refunds will be returned to the original payment method within 5–10 business days.
+                We reserve the right to decline refund requests where the service has been used as intended without technical fault. Approved refunds will be returned to the original payment method within 5 to 10 business days.
               </p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function TermsPage() {
                 "Use Red Flag AI Pro for any unlawful purpose",
                 "Attempt to reverse engineer, scrape, or copy our platform",
                 "Share your account credentials with others",
-                "Submit content that is harmful, abusive, or violates third-party rights",
+                "Submit content that is harmful, abusive, or violates third party rights",
                 "Use our service to circumvent compliance regulations rather than comply with them",
               ].map((item) => (
                 <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
@@ -161,7 +161,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to These Terms</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              We may update these Terms from time to time. We will notify you of material changes by email or via an in-app notice. Continued use of Red Flag AI Pro after changes constitutes acceptance of the updated Terms.
+              We may update these Terms from time to time. We will notify you of material changes by email or via an in app notice. Continued use of Red Flag AI Pro after changes constitutes acceptance of the updated Terms.
             </p>
           </div>
 

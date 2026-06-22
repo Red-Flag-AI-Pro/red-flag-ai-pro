@@ -5,8 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Red Flag AI Pro",
-  description: "Privacy Policy for Red Flag AI Pro — how we collect, use and protect your data.",
+  title: "Privacy Policy: Red Flag AI Pro",
+  description: "Privacy Policy for Red Flag AI Pro. How we collect, use and protect your data.",
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
                 <tbody>
                   {[
                     ["Name & email address", "To create and manage your account"],
-                    ["Payment information", "Processed securely by Stripe — we never store card details"],
+                    ["Payment information", "Processed securely by Stripe, we never store card details"],
                     ["Copy you submit for scanning", "To generate your compliance scan results only"],
                     ["Scan results and history", "To display your dashboard and scan history"],
                     ["Usage data (pages visited, features used)", "To improve our service"],
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
 
           {/* 3 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy — Data Handling & Confidentiality</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy: Data Handling and Confidentiality</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
                 The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your scan results</strong>. This is your data. It remains your data. We do not:
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
               </ul>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard. Deletion is permanent.</p>
               <p style={{ ...syne, fontSize: "12px", color: "#4ade80", lineHeight: 1.7, marginTop: "1rem", background: "rgba(74,222,128,0.08)", padding: "0.75rem", borderRadius: "6px", border: "1px solid rgba(74,222,128,0.15)" }}>
-                <strong>Munir v SSHD Compliance:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This satisfies the data handling requirements established in the Munir ruling and is equivalent to closed-enterprise AI tools.
+                <strong>Munir v SSHD Compliance:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This satisfies the data handling requirements established in the Munir ruling and is equivalent to closed enterprise AI tools.
               </p>
             </div>
           </div>
@@ -114,8 +114,8 @@ export default function PrivacyPage() {
                 ["Contract", "Processing your account data and scans to deliver the service you signed up for"],
                 ["Legitimate interests", "Improving our service, preventing fraud, ensuring security"],
                 ["Legal obligation", "Retaining billing records as required by law"],
-                ["Consent", "Marketing emails — you can unsubscribe at any time"],
-                ["Consent", "Sharing conversion data with Google Ads for advertising measurement and Customer Match — you can opt out via Google's Ads Settings"],
+                ["Consent", "Marketing emails, you can unsubscribe at any time"],
+                ["Consent", "Sharing conversion data with Google Ads for advertising measurement and Customer Match, you can opt out via Google's Ads Settings"],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
                   <strong style={{ color: "white" }}>{label}:</strong> {text}
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
-                  <strong style={{ color: "white" }}>{label}</strong> — {text}
+                  <strong style={{ color: "white" }}>{label}:</strong> {text}
                 </li>
               ))}
             </ul>
@@ -171,7 +171,7 @@ export default function PrivacyPage() {
                 ["Restrict", "Request we limit how we process your data"],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
-                  <strong style={{ color: "white" }}>{label}</strong> — {text}
+                  <strong style={{ color: "white" }}>{label}:</strong> {text}
                 </li>
               ))}
             </ul>
@@ -198,7 +198,7 @@ export default function PrivacyPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Data Security</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              We implement industry-standard security measures including encrypted data storage, HTTPS, and access controls. However, no method of transmission over the internet is 100% secure and we cannot guarantee absolute security.
+              We implement industry standard security measures including encrypted data storage, HTTPS, and access controls. However, no method of transmission over the internet is 100% secure and we cannot guarantee absolute security.
             </p>
           </div>
 

@@ -107,7 +107,7 @@ function SignupForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       {fromDemo && (
         <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-          Picking up where you left off — create your account to unlock your full scan results and the compliant rewrites.
+          Picking up where you left off. Create your account to unlock your full scan results and the compliant rewrites.
         </div>
       )}
       {error && (
