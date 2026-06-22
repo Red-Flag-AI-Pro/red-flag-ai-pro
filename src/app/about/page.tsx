@@ -373,8 +373,8 @@ export default function AboutPage() {
               Most tools in this space do one thing. The enterprise governance
               platforms, OneTrust, Credo AI, never touch the actual copy your
               team publishes. The compliance scanners that do check copy have
-              no idea what AI governance even means. Red Flag does both, off
-              one engine.
+              no idea what AI governance even means. Red Flag does both,
+              under one roof, built on the same regulatory research.
             </p>
 
             <p

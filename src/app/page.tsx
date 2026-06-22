@@ -62,7 +62,7 @@ export default function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            A five minute assessment scores your AI governance across 6 dimensions and builds audit ready evidence for the EU AI Act, DORA and SEC exams. The same engine scans your marketing copy in real time across 9 jurisdictions and 28 risk categories.
+            A five minute assessment scores your AI governance across 6 dimensions and builds audit ready evidence for the EU AI Act, DORA and SEC exams. Red Flag also scans your marketing copy in real time across 9 jurisdictions and 29 risk categories.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
