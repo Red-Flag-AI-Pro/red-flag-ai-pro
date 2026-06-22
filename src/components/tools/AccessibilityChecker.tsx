@@ -91,7 +91,7 @@ export function AccessibilityChecker() {
       {error && <p style={{ ...syne, fontSize: "13px", color: "#ef4444", marginTop: "1rem" }}>{error}</p>}
 
       {result && (
-        <ResultsGate tool="accessibility-checker" title="Enter your email to see your accessibility score — free, no spam.">
+        <ResultsGate tool="accessibility-checker" title="Enter your email to see your accessibility score. Free, no spam.">
         <div style={{ marginTop: "3rem" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.5rem" }}>Accessibility Score</p>
@@ -102,7 +102,7 @@ export function AccessibilityChecker() {
           {result.flags.length === 0 ? (
             <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "10px", padding: "2rem", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#22c55e" }}>No common accessibility issues detected.</p>
-              <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "0.5rem" }}>This checks structural HTML markers only — not a substitute for a full WCAG audit.</p>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "0.5rem" }}>This checks structural HTML markers only. Not a substitute for a full WCAG audit.</p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
@@ -122,7 +122,7 @@ export function AccessibilityChecker() {
 
           <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
             <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginBottom: "1rem" }}>
-              ADA, EAA and Equality Act accessibility demand letters are rising fast. This is a structural check — not a substitute for a full WCAG 2.2 audit.
+              ADA, EAA and Equality Act accessibility demand letters are rising fast. This is a structural check, not a substitute for a full WCAG 2.2 audit.
             </p>
             <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", textDecoration: "none" }}>
               See your full compliance risk →

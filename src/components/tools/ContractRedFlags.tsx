@@ -82,12 +82,12 @@ export function ContractRedFlags() {
       </div>
 
       {flags !== null && (
-        <ResultsGate tool="contract-red-flags" title="Enter your email to see the flagged clauses — free, no spam.">
+        <ResultsGate tool="contract-red-flags" title="Enter your email to see the flagged clauses. Free, no spam.">
         <div style={{ marginTop: "3rem" }}>
           {flags.length === 0 ? (
             <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "10px", padding: "2rem", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#22c55e" }}>No common red flags detected.</p>
-              <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "0.5rem" }}>This checks for common risky clause patterns only — not a substitute for legal review.</p>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "0.5rem" }}>This checks for common risky clause patterns only. Not a substitute for legal review.</p>
             </div>
           ) : (
             <>
@@ -126,7 +126,7 @@ export function ContractRedFlags() {
 
           <div style={{ marginTop: "2rem", textAlign: "center" }}>
             <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginBottom: "1rem" }}>
-              This is a pattern-based check, not legal advice. For a full review, talk to a qualified lawyer.
+              This is a pattern based check, not legal advice. For a full review, talk to a qualified lawyer.
             </p>
             <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", textDecoration: "none" }}>
               See your full governance risk →

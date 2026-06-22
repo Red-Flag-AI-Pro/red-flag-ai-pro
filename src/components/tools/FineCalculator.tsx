@@ -49,12 +49,12 @@ const JURISDICTIONS: Jur[] = [
     aiActFloorGBP: Math.round(35_000_000 * FX.EUR),
     note: "EU AI Act raises this to 7% / €35M when you use AI",
   },
-  { id: "au", name: "Australia", law: "Privacy Act 1988", kind: "higher", pct: 0.30, floorGBP: Math.round(50_000_000 * FX.AUD), note: "Up to 30% of adjusted turnover — the harshest %" },
+  { id: "au", name: "Australia", law: "Privacy Act 1988", kind: "higher", pct: 0.30, floorGBP: Math.round(50_000_000 * FX.AUD), note: "Up to 30% of adjusted turnover, the harshest %" },
   { id: "sg", name: "Singapore", law: "PDPA", kind: "higher", pct: 0.10, floorGBP: Math.round(1_000_000 * FX.SGD) },
   { id: "br", name: "Brazil", law: "LGPD", kind: "capped", pct: 0.02, capGBP: Math.round(50_000_000 * FX.BRL), note: "2% of revenue, capped at R$50M" },
   { id: "in", name: "India", law: "DPDP Act 2023", kind: "fixed", floorGBP: Math.round(2_500_000_000 * FX.INR), note: "Up to ₹250 crore per breach" },
   { id: "ae", name: "United Arab Emirates", law: "PDPL", kind: "fixed", floorGBP: Math.round(5_000_000 * FX.AED), note: "Fixed range up to AED 5M" },
-  { id: "us", name: "United States", law: "FTC Act §5", kind: "perViolation", perViolationGBP: Math.round(53_088 * FX.USD), note: "Per violation — multiplies fast (per consumer / per day)" },
+  { id: "us", name: "United States", law: "FTC Act §5", kind: "perViolation", perViolationGBP: Math.round(53_088 * FX.USD), note: "Per violation, multiplies fast (per consumer / per day)" },
   { id: "ca", name: "Canada", law: "PIPEDA", kind: "fixed", floorGBP: Math.round(100_000 * FX.CAD), note: "Low today; tougher reform (C$25M/5%) proposed, not yet law" },
 ];
 
@@ -197,7 +197,7 @@ export function FineCalculator() {
       </div>
 
       {/* ── Result ── */}
-      <ResultsGate tool="fine-calculator" title="Enter your email to see your maximum regulatory exposure — free, no spam.">
+      <ResultsGate tool="fine-calculator" title="Enter your email to see your maximum regulatory exposure. Free, no spam.">
       <div style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "2rem 2rem 1.75rem" }}>
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: "200px" }}>
@@ -257,7 +257,7 @@ export function FineCalculator() {
 
       {/* Honest footnote */}
       <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.38)", lineHeight: 1.6, marginTop: "1rem", textAlign: "center" }}>
-        Statutory maximum exposure — the legal ceiling, not a prediction. Actual penalties are at each regulator&apos;s discretion. Foreign caps converted to GBP at approximate rates. Figures verified June 2026.
+        Statutory maximum exposure, the legal ceiling, not a prediction. Actual penalties are at each regulator&apos;s discretion. Foreign caps converted to GBP at approximate rates. Figures verified June 2026.
       </p>
     </div>
   );

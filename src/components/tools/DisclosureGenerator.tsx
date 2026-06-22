@@ -20,8 +20,8 @@ const RELATIONSHIPS: { value: Relationship; label: string; hint: string }[] = [
 ];
 
 const JURISDICTIONS: { value: Jurisdiction; label: string }[] = [
-  { value: "us", label: "United States — FTC" },
-  { value: "uk", label: "United Kingdom — ASA / CMA" },
+  { value: "us", label: "United States: FTC" },
+  { value: "uk", label: "United Kingdom: ASA / CMA" },
 ];
 
 const PLATFORMS: { value: Platform; label: string }[] = [
@@ -37,7 +37,7 @@ const BRAND_TOKEN = "[Brand]";
 const DISCLOSURE_TEXT: Record<Jurisdiction, Record<Relationship, string>> = {
   us: {
     affiliate:
-      `Ad — this post contains affiliate links. If you buy through one of them, I may earn a commission at no extra cost to you.`,
+      `Ad: this post contains affiliate links. If you buy through one of them, I may earn a commission at no extra cost to you.`,
     sponsored:
       `This post is sponsored by ${BRAND_TOKEN}. I was compensated to share it, and everything I'm saying is my honest opinion.`,
     gifted:
@@ -47,27 +47,27 @@ const DISCLOSURE_TEXT: Record<Jurisdiction, Record<Relationship, string>> = {
   },
   uk: {
     affiliate:
-      `Ad — this post contains affiliate links. I earn a commission if you buy through them, at no extra cost to you.`,
+      `Ad: this post contains affiliate links. I earn a commission if you buy through them, at no extra cost to you.`,
     sponsored:
-      `Ad — this is a paid partnership with ${BRAND_TOKEN}.`,
+      `Ad: this is a paid partnership with ${BRAND_TOKEN}.`,
     gifted:
-      `Gifted — ${BRAND_TOKEN} sent me this to try for free. This isn't a paid partnership, but I wanted to be upfront that it wasn't something I bought myself.`,
+      `Gifted: ${BRAND_TOKEN} sent me this to try for free. This isn't a paid partnership, but I wanted to be upfront that it wasn't something I bought myself.`,
     income:
-      `Income examples shown are not typical. Your results will depend on your own effort, your market, and other factors outside our control — there's no guarantee you'll achieve the same.`,
+      `Income examples shown are not typical. Your results will depend on your own effort, your market, and other factors outside our control. There's no guarantee you'll achieve the same.`,
   },
 };
 
 const PLACEMENT_TIPS: Record<Platform, string> = {
   instagram:
-    "Put this at the very start of your caption — not after a block of hashtags — and use Instagram's \"Paid partnership\" label too if it's a brand deal. The label alone usually isn't considered enough on its own.",
+    "Put this at the very start of your caption, not after a block of hashtags, and use Instagram's \"Paid partnership\" label too if it's a brand deal. The label alone usually isn't considered enough on its own.",
   tiktok:
-    "Say it out loud in the first few seconds of the video AND show it as on-screen text for at least 3–4 seconds. Turn on TikTok's \"Branded content\" toggle for any paid partnership.",
+    "Say it out loud in the first few seconds of the video AND show it as on screen text for at least 3 to 4 seconds. Turn on TikTok's \"Branded content\" toggle for any paid partnership.",
   youtube:
-    "Say it verbally in the first 30–60 seconds of the video, and also switch on YouTube's paid-promotion disclosure toggle. Don't rely on the description box alone — most viewers never open it.",
+    "Say it verbally in the first 30 to 60 seconds of the video, and also switch on YouTube's paid promotion disclosure toggle. Don't rely on the description box alone, most viewers never open it.",
   email:
-    "Place it near the top of the email, before the first product mention or link — not tucked away in a footer that most subscribers will never scroll to.",
+    "Place it near the top of the email, before the first product mention or link, not tucked away in a footer that most subscribers will never scroll to.",
   page:
-    "Place it clearly near the top of the page, or directly next to the relevant link or claim — not only on a separate \"disclosures\" page linked from the footer.",
+    "Place it clearly near the top of the page, or directly next to the relevant link or claim, not only on a separate \"disclosures\" page linked from the footer.",
 };
 
 export function DisclosureGenerator() {
@@ -149,7 +149,7 @@ export function DisclosureGenerator() {
               ))}
             </select>
             <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>
-              Pick where your audience is mainly based — not just where you live.
+              Pick where your audience is mainly based, not just where you live.
             </p>
           </div>
 
@@ -178,7 +178,7 @@ export function DisclosureGenerator() {
       </div>
 
       {/* Output */}
-      <ResultsGate tool="disclosure-generator" title="Enter your email to see your disclosure wording — free, no spam.">
+      <ResultsGate tool="disclosure-generator" title="Enter your email to see your disclosure wording. Free, no spam.">
       <div style={{ marginTop: "1.5rem" }}>
         <div style={{
           background: "#102943",
@@ -238,7 +238,7 @@ export function DisclosureGenerator() {
           This disclosure is one piece of the puzzle.
         </p>
         <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.5rem", maxWidth: "440px", margin: "0.5rem auto 1.5rem" }}>
-          The rest of your caption, script or sales page can carry its own risk — health claims, income promises, fake urgency and more. Paste it in and get a full compliance score, free.
+          The rest of your caption, script or sales page can carry its own risk: health claims, income promises, fake urgency and more. Paste it in and get a full compliance score, free.
         </p>
         <Link href="/#demo" style={{
           display: "inline-block",
@@ -253,12 +253,12 @@ export function DisclosureGenerator() {
           textDecoration: "none",
           letterSpacing: "0.02em",
         }}>
-          Scan your full copy — free
+          Scan your full copy: free
         </Link>
       </div>
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.7, marginTop: "1.5rem", textAlign: "center" }}>
-        This tool gives general guidance, not legal advice. Rules vary by platform, country and your specific situation — when in doubt, check the FTC&apos;s{" "}
+        This tool gives general guidance, not legal advice. Rules vary by platform, country and your specific situation. When in doubt, check the FTC&apos;s{" "}
         <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>
           Disclosures 101
         </a>{" "}
