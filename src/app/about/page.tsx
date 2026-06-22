@@ -267,6 +267,11 @@ export default function AboutPage() {
             {[
               {
                 icon: "",
+                title: "Catch It Before It Ships",
+                desc: "Real time scanner checks marketing copy against 29 risk categories across 9 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
+              },
+              {
+                icon: "",
                 title: "See Reality",
                 desc: "Assessment shows where governance actually is (not where you hope it is). 6-dimension audit reveals every gap.",
               },
@@ -365,23 +370,11 @@ export default function AboutPage() {
                 marginBottom: "1.5rem",
               }}
             >
-              I&apos;ve built products before. But this one came from a different place.
-            </p>
-
-            <p
-              style={{
-                ...syne,
-                fontSize: "1rem",
-                color: "rgba(255,255,255,0.7)",
-                lineHeight: 1.8,
-                marginBottom: "1.5rem",
-              }}
-            >
-              I watched teams write governance policies that nobody read. I saw
-              compliance officers struggling to answer one simple question:
-              &ldquo;Can you prove governance is actually happening?&rdquo; The
-              answer was always no. Not because they didn&apos;t care. Because
-              there was no tool to make it visible.
+              Most tools in this space do one thing. The enterprise governance
+              platforms, OneTrust, Credo AI, never touch the actual copy your
+              team publishes. The compliance scanners that do check copy have
+              no idea what AI governance even means. Red Flag does both, off
+              one engine.
             </p>
 
             <p
@@ -392,10 +385,10 @@ export default function AboutPage() {
                 lineHeight: 1.8,
               }}
             >
-              Red Flag solves that. It makes governance visible. It shows you
-              exactly what&apos;s broken, prioritizes fixes, and then proves to
-              regulators that governance actually happened. That&apos;s the only
-              thing that matters now.
+              It catches the risk in your marketing copy before it publishes.
+              And it makes AI governance visible to a regulator or board, what
+              is broken, what to fix first, and proof that it actually
+              happened. Nobody else on the market does both.
             </p>
           </div>
         </div>
@@ -434,22 +427,41 @@ export default function AboutPage() {
             Start with a free assessment. 5 minutes. See your governance
             maturity, gaps, and roadmap.
           </p>
-          <Link
-            href="/governance-audit"
-            style={{
-              ...syne,
-              fontSize: "1rem",
-              fontWeight: 700,
-              background: "#ef4444",
-              color: "white",
-              padding: "14px 40px",
-              borderRadius: "9999px",
-              textDecoration: "none",
-              display: "inline-block",
-            }}
-          >
-            Start assessment
-          </Link>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link
+              href="/governance-audit"
+              style={{
+                ...syne,
+                fontSize: "1rem",
+                fontWeight: 700,
+                background: "#ef4444",
+                color: "white",
+                padding: "14px 40px",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              Start assessment
+            </Link>
+            <Link
+              href="/#scanner"
+              style={{
+                ...syne,
+                fontSize: "1rem",
+                fontWeight: 700,
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "white",
+                padding: "14px 40px",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              Try the scanner
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />
