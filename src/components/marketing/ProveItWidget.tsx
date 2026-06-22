@@ -15,10 +15,10 @@ const QUESTIONS = [
 ];
 
 const VERDICTS = [
-  { label: 'Critically exposed', color: '#E5484D', note: "On paper you have a policy. In practice, you can't prove governance happened — that's the liability." },
+  { label: 'Critically exposed', color: '#E5484D', note: "On paper you have a policy. In practice, you can't prove governance happened. That's the liability." },
   { label: 'Exposed', color: '#E5484D', note: 'Most of your governance is undocumented. When the question comes, "we have a policy" is not an answer.' },
-  { label: 'Partially defensible', color: '#C9A66B', note: 'Better than most — but the gaps are exactly where regulators and liability live.' },
-  { label: 'Confident?', color: '#C9A66B', note: "Then prove it across all 30 checks — not 3. Most teams who feel ready score lower than they expect." },
+  { label: 'Partially defensible', color: '#C9A66B', note: 'Better than most, but the gaps are exactly where regulators and liability live.' },
+  { label: 'Confident?', color: '#C9A66B', note: "Then prove it across all 30 checks, not 3. Most teams who feel ready score lower than they expect." },
 ];
 
 export function ProveItWidget() {
@@ -39,7 +39,7 @@ export function ProveItWidget() {
       <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '1.25rem' }}>
           <span style={{ width: '24px', height: '1px', background: 'rgba(229,72,77,0.6)' }} />
-          <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.55)' }}>10-second self-check</p>
+          <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.55)' }}>10 second self check</p>
           <span style={{ width: '24px', height: '1px', background: 'rgba(229,72,77,0.6)' }} />
         </div>
 
@@ -47,7 +47,7 @@ export function ProveItWidget() {
           Can you <span style={{ fontStyle: 'italic', color: '#E5484D' }}>prove it?</span>
         </h2>
         <p style={{ ...syne, fontSize: '0.98rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, maxWidth: '520px', margin: '0 auto 2.5rem' }}>
-          Three questions every regulator now asks. Answer honestly — watch your exposure.
+          Three questions every regulator now asks. Answer honestly, watch your exposure.
         </p>
 
         {/* Exposure meter */}
@@ -133,7 +133,7 @@ export function ProveItWidget() {
               Get your Governance Maturity Index <span className="arrow">→</span>
             </Link>
             <p style={{ ...syne, fontSize: '11px', color: 'rgba(244,241,234,0.4)', marginTop: '1rem' }}>
-              That was 3 questions. The full Index is 30 — across 6 dimensions, in 5 minutes.
+              That was 3 questions. The full Index is 30, across 6 dimensions, in 5 minutes.
             </p>
           </div>
         </div>

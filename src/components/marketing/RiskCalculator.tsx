@@ -93,7 +93,7 @@ function ShareButton({ text }: { text: string }) {
     if (navigator.share) {
       await navigator.share({ text, url: "https://redflagaipro.com" }).catch(() => {});
     } else {
-      await navigator.clipboard.writeText(text + " — redflagaipro.com");
+      await navigator.clipboard.writeText(text + ", redflagaipro.com");
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     }
@@ -117,7 +117,7 @@ function ShareButton({ text }: { text: string }) {
 
 /* ── Data ── */
 const INDUSTRIES = [
-  { label: "E-commerce",             riskMult: 1.0, fineMult: 1.0 },
+  { label: "Ecommerce",              riskMult: 1.0, fineMult: 1.0 },
   { label: "Health & Supplements",   riskMult: 2.5, fineMult: 3.0 },
   { label: "Finance & Investing",    riskMult: 2.0, fineMult: 4.0 },
   { label: "Coaching & Courses",     riskMult: 1.8, fineMult: 2.0 },
@@ -256,14 +256,14 @@ function SellerCalculator() {
         <p style={{...syne, fontSize: "11px", color: "rgba(134,239,172,0.65)", marginTop: "3px"}}>Red Flag AI Pro is £350/month. Your exposure is {fmt(total)}.</p>
       </div>
 
-      <ShareButton text={`My marketing compliance exposure is ${fmt(total)} — just calculated it. What's yours?`} />
+      <ShareButton text={`My marketing compliance exposure is ${fmt(total)}, just calculated it. What's yours?`} />
 
       <Link href="/signup" style={{
         display: "block", textAlign: "center", background: "#E5484D", color: "white",
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
         borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
-        Scan my copy free — protect {fmt(total)}
+        Scan my copy free, protect {fmt(total)}
       </Link>
     </div>
   );
@@ -377,7 +377,7 @@ function BuyerCalculator() {
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
         borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
-        Scan before you buy — protect {fmt(amount)}
+        Scan before you buy, protect {fmt(amount)}
       </a>
     </div>
   );
@@ -394,7 +394,7 @@ export function RiskCalculator() {
         What is your compliance risk worth?
       </h3>
       <p style={{...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginBottom: "3rem"}}>
-        Whether you are selling or buying — see your personal exposure
+        Whether you are selling or buying, see your personal exposure
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
         <SellerCalculator />

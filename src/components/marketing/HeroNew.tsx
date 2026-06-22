@@ -33,7 +33,7 @@ export function HeroNew() {
       <div className="urgency-bar" style={{background: "#b91c1c", borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
         <p className="py-2.5 px-4 text-center text-xs font-medium text-white/90 tracking-wide">
           <span className="urgency-text-full">
-            EU AI Act Article 50 enforcement begins August 2026 — AI-generated marketing copy must be disclosed.{" "}
+            EU AI Act Article 50 enforcement begins August 2026. AI generated marketing copy must be disclosed.{" "}
           </span>
           <span className="urgency-text-short">EU AI Act enforcement begins Aug 2026.{" "}</span>
           <Link href="/blog/eu-ai-act-article-50-marketing-agencies" className="font-bold underline underline-offset-2 hover:no-underline">
@@ -45,8 +45,8 @@ export function HeroNew() {
       {/* ── Ticker — decorative, hidden on mobile to save fold space ── */}
       <div className="hero-ticker-wrap" style={{background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", padding: "14px 0"}}>
         <div className="ticker-track">
-          {["FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code",
-            "FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN-SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code"].map((item, i) => (
+          {["FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code",
+            "FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code"].map((item, i) => (
             <span key={i} style={{color: "#ef4444", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", margin: "0 24px", fontFamily: "'Syne', sans-serif"}}>
               {item}
             </span>
@@ -160,7 +160,7 @@ export function HeroNew() {
               backgroundClip: "text",
               fontWeight: 600,
               fontSize: "1rem"
-            }}>See exactly what regulators would flag — before they do.</span>
+            }}>See exactly what regulators would flag, before they do.</span>
           </p>
 
           {/* CTA — single primary action; everything else demoted below the fold */}
@@ -199,7 +199,7 @@ export function HeroNew() {
             letterSpacing: "0.02em", marginBottom: "4rem",
             fontFamily: "'Syne', sans-serif"
           }}>
-            No credit card · No signup needed · Results in 60 seconds · 14-day money-back guarantee
+            No credit card · No signup needed · Results in 60 seconds · 14 day money back guarantee
           </p>
 
           {/* Jurisdiction flags — hidden on mobile */}
@@ -274,7 +274,7 @@ export function HeroNew() {
             "No data stored",
             "Results in 60 seconds",
             "FTC · GDPR · ASA · FCA · ACCC · CASL",
-            "14-day money-back guarantee",
+            "14 day money back guarantee",
           ].map((t, i) => (
             <span key={t} style={{
               display: "flex", alignItems: "center", gap: "8px",
@@ -299,7 +299,7 @@ export function HeroNew() {
           textDecoration: "none",
           letterSpacing: "0.02em"
         }}>
-          Rather have a human do it? Done-For-You Audit — £97 →
+          Rather have a human do it? Done For You Audit: £97 →
         </Link>
       </div>
 

@@ -33,11 +33,11 @@ export function ExitIntent() {
 
         <p className="text-4xl"></p>
         <h2 className="mt-4 text-2xl font-extrabold text-white">
-          Wait — Is Your Copy Actually Legal?
+          Wait. Is Your Copy Actually Legal?
         </h2>
         <p className="mt-3 text-gray-400 text-sm leading-relaxed">
           Most marketers have no idea their copy breaks FTC, ASA or GDPR rules.
-          Find out in 60 seconds — completely free.
+          Find out in 60 seconds. Completely free.
         </p>
 
         <Link
