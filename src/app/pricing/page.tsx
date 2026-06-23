@@ -216,7 +216,7 @@ export default function PricingPage() {
 
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening.</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening, and you don&apos;t re-buy a new tool every time a new law lands.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>

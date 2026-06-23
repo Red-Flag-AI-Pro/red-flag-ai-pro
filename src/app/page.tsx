@@ -55,7 +55,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Compliance Scanning + AI Governance</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>New AI rules every quarter. One platform that keeps up.</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
@@ -76,6 +76,8 @@ export default function LandingPage() {
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
         </div>
       </section>
+
+      <RegulatoryCountdown />
 
       <TrustBar />
 
@@ -132,8 +134,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      <RegulatoryCountdown />
 
       <div id="scanner">
         <ProveItWidget />

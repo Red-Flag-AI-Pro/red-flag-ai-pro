@@ -101,7 +101,7 @@ export function RegulatoryCountdown() {
             Every jurisdiction is running its <span style={{ fontStyle: "italic", color: "#E5484D" }}>own clock.</span>
           </h2>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.6, maxWidth: "620px", margin: "1rem auto 0" }}>
-            Real deadlines, ticking right now, in parallel, in different markets. Miss the one that applies to you and there&apos;s no warning shot.
+            5 jurisdictions, real deadlines, ticking right now, in parallel. Miss the one that applies to you and there&apos;s no warning shot. We track every one of these so you don&apos;t have to.
           </p>
         </div>
 
