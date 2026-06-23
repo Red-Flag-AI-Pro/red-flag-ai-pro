@@ -157,9 +157,14 @@ export default function WhyCompliancePage() {
             ))}
           </div>
           <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "3rem" }}>If it catches one thing, it has paid for itself a thousand times over.</p>
-          <Link href="/signup" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
-            Scan free: 60 seconds →
-          </Link>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/#scanner" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
+              Scan free: 60 seconds →
+            </Link>
+            <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", textDecoration: "none" }}>
+              Free governance assessment
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />

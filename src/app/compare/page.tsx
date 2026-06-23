@@ -23,8 +23,8 @@ const COMPARISON = [
   { feature: "Audio transcription", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
   { feature: "Full site audit", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Extra charge" },
   { feature: "Weekly auto monitoring", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
-  { feature: "FCA financial promotions", rfp: "✓ Sentinel only", redmarker: "Enterprise only", consultant: "Specialist only" },
-  { feature: "Greenwashing scanner", rfp: "✓ Sentinel only", redmarker: "Limited", consultant: "Specialist only" },
+  { feature: "FCA financial promotions", rfp: "✓ All paid plans", redmarker: "Enterprise only", consultant: "Specialist only" },
+  { feature: "Greenwashing scanner", rfp: "✓ All paid plans", redmarker: "Limited", consultant: "Specialist only" },
   { feature: "EU AI Act compliance", rfp: "✓ All plans", redmarker: "Partial", consultant: "Variable" },
   { feature: "Multi jurisdiction", rfp: "✓ All plans", redmarker: "Sometimes", consultant: "Variable" },
   { feature: "Team seats", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "N/A" },
@@ -32,7 +32,7 @@ const COMPARISON = [
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "Video scan summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
   { feature: "Tamper resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
-  { feature: "Risk categories covered", rfp: "29 (Sentinel) / 20 (Growth) / 16 (Pro)", redmarker: "8 to 12", consultant: "Variable" },
+  { feature: "Risk categories covered", rfp: "30 (all paid plans) / 16 (free)", redmarker: "8 to 12", consultant: "Variable" },
 ];
 
 export default function ComparePage() {

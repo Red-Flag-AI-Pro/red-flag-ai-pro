@@ -20,12 +20,14 @@ const HOW_IT_WORKS = [
 ];
 
 const WHO_IT_IS_FOR = [
+  { label: "Course creator communities", desc: "Your audience runs ads and sells courses. One scan can save them from a fine or a platform ban. An easy, relevant recommendation that pays you monthly." },
+  { label: "Marketing & ads educators", desc: "If you teach people how to run ads or write copy, compliance is the gap nobody else covers. Recommend the scanner alongside your own content." },
   { label: "Governance consultants", desc: "Your clients need proven governance. Red Flag provides the assessment, roadmap, and monitoring. You earn 15% on every client who signs up." },
   { label: "Compliance officers", desc: "Recommend Red Flag to your network of CFOs, board members, and regulated enterprises. 15% recurring from each who subscribes." },
   { label: "Executive coaches", desc: "Your executive clients need AI governance proof. Red Flag gives them the score, gaps, and strategic roadmap. Earn passive income from referrals." },
   { label: "Risk & legal advisors", desc: "Your clients are asking about Munir compliance, SEC readiness, EU AI Act. Point them to Red Flag. Get 15% recurring on each." },
-  { label: "Newsletter writers (B2B)", desc: "Write about CFO challenges, AI regulation, compliance, or financial risk? Your audience will convert. One mention pays you monthly." },
-  { label: "Anyone with a CFO or compliance audience", desc: "If you influence CFOs, compliance teams, or regulated enterprises on governance topics, Red Flag is a high converting recommendation. 15% recurring." },
+  { label: "Newsletter writers (B2B or creator economy)", desc: "Write about CFO challenges, AI regulation, compliance, marketing, or the creator economy? Your audience will convert. One mention pays you monthly." },
+  { label: "Anyone with a marketing, CFO, or compliance audience", desc: "If you influence creators, agencies, CFOs, or compliance teams on either side of this, Red Flag is a high converting recommendation. 15% recurring." },
 ];
 
 const EARNINGS = [
