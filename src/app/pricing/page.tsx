@@ -266,9 +266,9 @@ export default function PricingPage() {
               </div>
               <Link href="/signup?plan=enterprise" style={{
                 display: "block", textAlign: "center",
-                background: "rgba(239,68,68,0.2)",
-                color: "#ef4444",
-                border: "1px solid rgba(239,68,68,0.4)",
+                background: "transparent",
+                color: "white",
+                border: "1.5px solid #C9A66B",
                 ...syne, fontSize: "0.875rem", fontWeight: 700,
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
