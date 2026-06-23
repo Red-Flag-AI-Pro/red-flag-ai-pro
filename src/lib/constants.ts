@@ -12,16 +12,16 @@ export const PLAN_LIMITS: Record<Plan, number> = {
   sentinel: Infinity,
 };
 
-// Category tiers: Pro/Free see 16, Growth adds 5 more (21), Sentinel sees all 30.
-export const GROWTH_PLUS_CATEGORIES = [
+// Category tiers: Free sees 16. Every paid plan (Pro/Growth/Sentinel, and the
+// upcoming Scanner tier) sees all 30 — paywalling individual categories felt
+// punitive ("pay more to see what's wrong with your own ad"). Paid tiers are
+// now differentiated by scan volume and governance features, not category count.
+export const FREE_ONLY_EXCLUDED_CATEGORIES = [
   "comparative_advertising",
   "contract_contradiction",
   "automated_decisions",
   "online_safety",
   "age_assurance",
-] as const;
-
-export const SENTINEL_ONLY_CATEGORIES = [
   "claims_policy_mismatch",
   "ai_endorsement",
   "financial_promotion",
@@ -35,9 +35,8 @@ export const SENTINEL_ONLY_CATEGORIES = [
 
 // Returns the categories excluded from results for a given plan.
 export function getExcludedCategories(plan: Plan): readonly string[] {
-  if (plan === "sentinel") return [];
-  if (plan === "enterprise") return SENTINEL_ONLY_CATEGORIES;
-  return [...GROWTH_PLUS_CATEGORIES, ...SENTINEL_ONLY_CATEGORIES];
+  if (plan === "free") return FREE_ONLY_EXCLUDED_CATEGORIES;
+  return [];
 }
 
 export const AUDIT_PRICE = {

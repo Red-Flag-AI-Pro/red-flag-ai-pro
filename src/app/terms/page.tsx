@@ -83,9 +83,10 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Starter Plan", "1 scan per month at no charge. No credit card required."],
-                ["Pro Plan", "£49/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
-                ["Enterprise Plan", "£149/month. Billed monthly via Stripe."],
+                ["Free Plan", "1 scan per month at no charge. No credit card required."],
+                ["Pro Plan", "£350/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
+                ["Growth Plan", "£1,200/month. Billed monthly via Stripe."],
+                ["Sentinel Plan", "From £5,000/month, custom contract for larger engagements."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],
                 ["Renewal", "Subscriptions renew automatically unless cancelled before the renewal date."],
                 ["Cancellation", "You may cancel your subscription at any time via your billing settings or by contacting support."],

@@ -5,7 +5,9 @@ const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as Reac
 
 const FRAMEWORKS = [
   "EU AI Act",
+  "FTC",
   "DORA",
+  "ASA",
   "NIST AI RMF",
   "ISO 42001",
   "SEC",

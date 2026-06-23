@@ -8,11 +8,12 @@ import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ProveItWidget } from "@/components/marketing/ProveItWidget";
 import { JurisdictionStrip } from "@/components/marketing/JurisdictionStrip";
+import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro: AI Governance Maturity Assessment & Compliance Proof",
+  title: "Red Flag AI Pro: Compliance Scanning + AI Governance Proof",
   description:
-    "Free 5-minute governance assessment reveals your AI maturity across 6 dimensions, identifies critical gaps, and generates a 90-day roadmap. For CFOs, compliance teams, and regulated businesses. Know where you stand before regulators ask.",
+    "Scan your marketing copy for compliance risk across 9 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -58,18 +59,18 @@ export default function LandingPage() {
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
-            Prove your AI governance<br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>before regulators ask.</span>
+            Catch what you said.<br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>Prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            A five minute assessment scores your AI governance across 6 dimensions and builds audit ready evidence for the EU AI Act, DORA and SEC exams. Red Flag also scans your marketing copy in real time across 9 jurisdictions and 30 risk categories.
+            Scan your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, and we update every category and jurisdiction as the law changes, so you're never caught running on rules that already moved.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-            <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Start free assessment <span className="arrow">→</span>
+            <Link href="/#scanner" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              Start free scan <span className="arrow">→</span>
             </Link>
-            <Link href="/pricing" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              View pricing <span className="arrow">→</span>
+            <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              Free governance assessment <span className="arrow">→</span>
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
@@ -128,6 +129,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <RegulatoryCountdown />
 
       <div id="scanner">
         <ProveItWidget />
@@ -204,11 +207,21 @@ export default function LandingPage() {
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Built for</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>CFOs, Compliance Teams & Regulated Businesses</h2>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Built for both halves</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>Creators protecting their copy. CFOs proving their governance.</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
             {[
+              {
+                role: "Creators & Course Sellers",
+                pain: "Is your ad about to get you fined, or flagged by the platform you're paying to run it on?",
+                solution: "Scan your copy in under 60 seconds. Catch income claims, fake urgency, and missing disclosures before you publish.",
+              },
+              {
+                role: "Marketing Agencies",
+                pain: "Are you confident every client account is compliant, across every jurisdiction you serve?",
+                solution: "Run the scanner across every client's copy from one dashboard. Catch what slips past human review.",
+              },
               {
                 role: "CFOs & Finance Leaders",
                 pain: "Can you prove AI governance to the board? Can you quantify compliance risk?",
@@ -218,16 +231,6 @@ export default function LandingPage() {
                 role: "Compliance Officers",
                 pain: "Are you ready for SEC exams? Can you demonstrate policy to practice alignment?",
                 solution: "Gap assessment + evidence package. Regulatory framework mapping.",
-              },
-              {
-                role: "Risk & Legal Teams",
-                pain: "What's your exposure? What do you need to prove?",
-                solution: "Forensic evidence roadmap. Munir compliance checklist. Audit trail automation.",
-              },
-              {
-                role: "Enterprise AI Leaders",
-                pain: "How do you scale AI governance across 50+ models/teams?",
-                solution: "Centralized monitoring. Vendor risk tracking. Enforcement automation.",
               },
             ].map((item) => (
               <div key={item.role} style={{
@@ -245,61 +248,44 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS — GOVERNANCE FOCUSED */}
+      {/* PROOF POINTS — VERIFIABLE, NOT UNVERIFIED TESTIMONIALS */}
       <section style={{ background: "#0A1628", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>How teams use it</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", color: "white", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>From assessment to compliance.</h2>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>No unsubstantiated claims, on principle</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.5rem", color: "white", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>We flag fake testimonials. We won&apos;t use them either.</h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "640px", margin: "0 auto 4rem", lineHeight: 1.7 }}>
+            Our own scanner flags unsubstantiated testimonials as a compliance risk. So instead of quotes we can&apos;t verify, here&apos;s what we can actually show you.
+          </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
               {
-                quote: "Took the assessment and realized we had zero vendor governance. That gap alone could have cost us £millions in a breach. 90 days later, we had contracts in place and were monitoring all third-party AI.",
-                role: "CFO, Mid Market Enterprise",
+                stat: "0/100",
+                title: "We scanned our own site first",
+                detail: "10 violations found before launch. We fixed them, then published the score. You can run the same scan on yours right now.",
               },
               {
-                quote: "We scored 38/100. The governance roadmap showed us which quick wins to do first (2 weeks) vs. the strategic work (6 to 12 months). Board meeting next week, finally have numbers to show.",
-                role: "Compliance Director, FinTech",
+                stat: "30",
+                title: "Risk categories, updated as law changes",
+                detail: "Added a 30th category, Age Assurance, within days of the UK's under-16 social media restriction announcement. Not an annual update cycle.",
               },
               {
-                quote: "The PDF report was ready to present to our audit team. Mapped straight to SEC requirements. Instead of a month of back and forth, we had proof in a week.",
-                role: "COO, Regulated Tech",
+                stat: "9",
+                title: "Jurisdictions mapped, with sources",
+                detail: "Every regulation cited traces to official text or a government announcement, not a generic 'AI compliance' explainer.",
               },
-            ].map((t, i) => (
-              <div key={t.role} style={{
-                background: i % 2 === 0 ? "rgba(16,41,67,0.8)" : "rgba(15, 15, 15, 0.6)",
-                border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
+            ].map((item) => (
+              <div key={item.title} style={{
+                background: "rgba(16,41,67,0.8)",
+                border: "1px solid rgba(239,68,68,0.2)",
                 padding: "2.5rem",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                minHeight: "250px"
               }}>
-                <div>
-                  <p style={{
-                    ...syne,
-                    fontSize: "4rem",
-                    color: "#ef4444",
-                    lineHeight: 1,
-                    marginBottom: "0.5rem",
-                    opacity: 0.3
-                  }}>&ldquo;</p>
-                  <p style={{
-                    ...syne,
-                    fontSize: "1.05rem",
-                    lineHeight: 1.7,
-                    color: "rgba(255,255,255,0.85)",
-                    fontStyle: "italic",
-                    marginBottom: "2rem"
-                  }}>{t.quote}</p>
-                </div>
-                <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.5rem" }}>
-                  <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>{t.role}</p>
-                </div>
+                <p style={{ ...mono, fontSize: "2.5rem", fontWeight: 700, color: "#ef4444", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
+                <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>{item.detail}</p>
               </div>
             ))}
           </div>
-          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2rem" }}>Roles withheld at request.</p>
         </div>
       </section>
 
@@ -313,17 +299,28 @@ export default function LandingPage() {
           <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#ef4444", marginBottom: "1rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>Ready?</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", color: "white" }}>Know where you stand in 5 minutes.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
-            Free assessment. No credit card. No account. Results delivered instantly to your inbox.
+            Free either way. No credit card. No account. Results delivered instantly to your inbox.
           </p>
-          <Link href="/governance-audit" style={{
-            ...syne, fontSize: "1rem", fontWeight: 700,
-            background: "#ef4444", color: "white",
-            padding: "14px 40px", borderRadius: "9999px",
-            textDecoration: "none", display: "inline-block"
-          }}>
-            Start assessment
-          </Link>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}>or <Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>see pricing for Pro + Sentinel</Link></p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/#scanner" style={{
+              ...syne, fontSize: "1rem", fontWeight: 700,
+              background: "#ef4444", color: "white",
+              padding: "14px 40px", borderRadius: "9999px",
+              textDecoration: "none", display: "inline-block"
+            }}>
+              Start free scan
+            </Link>
+            <Link href="/governance-audit" style={{
+              ...syne, fontSize: "1rem", fontWeight: 700,
+              background: "transparent", color: "white",
+              border: "1px solid rgba(255,255,255,0.2)",
+              padding: "14px 40px", borderRadius: "9999px",
+              textDecoration: "none", display: "inline-block"
+            }}>
+              Start governance assessment
+            </Link>
+          </div>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Pro + Sentinel</Link></p>
         </div>
       </section>
       <Footer />

@@ -1003,7 +1003,7 @@ const RULES: Rule[] = [
     suggestion:
       "Add explicit age verification or age-gating language to any sign-up or onboarding copy, disclose parental consent requirements for users under 16 (or under 13 in the US), and avoid copy that implies algorithmic feeds, DMs, or open social features are available to all ages without restriction. If the product is genuinely youth-facing, publish a clear safety and data-handling statement aimed at parents.",
     regulations: [
-      "Online Safety Act 2023 — Under-16 Social Media Restrictions (UK, 2026)",
+      "Online Safety Act 2023 — Under-16 Social Media Restrictions (UK, early 2027)",
       "Social Media Minimum Age Act (Australia, 2025)",
       "Digital Services Act — Minor Protection (EU)",
       "Children's Online Privacy Protection Act / COPPA (US)",
