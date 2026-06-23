@@ -96,7 +96,7 @@ export default function LandingPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)" }}>
             {[
-              { tag: "UK · NOV 2025", title: "Munir v SSHD", desc: "Tribunal sanctioned a firm for filing AI-hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.", source: "https://www.bailii.org/uk/cases/UKUT/IAC/2026/81.html" },
+              { tag: "UK · NOV 2025", title: "Munir v SSHD", desc: "Tribunal sanctioned a firm for filing AI hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.", source: "https://www.bailii.org/uk/cases/UKUT/IAC/2026/81.html" },
               { tag: "EU · 2 AUGUST 2026", title: "EU AI Act, Article 50", desc: "Mandatory AI disclosure and governance evidence for systems touching the EU.", source: "https://artificialintelligenceact.eu/article/50/" },
               { tag: "EU · IN FORCE", title: "DORA", desc: "Reporting on operational resilience under active audit. 93.5% failed the 2024 dry run.", source: "https://www.eiopa.europa.eu/publications/key-findings-2024-esas-dry-run-exercise-dora_en" },
               { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance, and monitor it, not just describe it.", source: "https://www.sec.gov/newsroom/press-releases" },

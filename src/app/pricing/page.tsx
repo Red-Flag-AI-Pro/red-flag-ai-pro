@@ -80,7 +80,7 @@ export default function PricingPage() {
               {
                 icon: "",
                 title: "Munir v SSHD",
-                desc: "Tribunal sanctioned a firm for filing AI-hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.",
+                desc: "Tribunal sanctioned a firm for filing AI hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.",
               },
               {
                 icon: "",
