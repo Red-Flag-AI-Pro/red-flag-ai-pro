@@ -186,6 +186,11 @@ export function RegulatoryCountdown() {
         <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.3)", textAlign: "center", marginTop: "1.5rem" }}>
           Dates sourced from official regulatory text and government announcements. Updated {new Date(now).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
         </p>
+        <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", textAlign: "center", marginTop: "0.75rem" }}>
+          <a href="/blog/five-ai-compliance-deadlines-2026" style={{ color: "#E5484D", textDecoration: "underline" }}>
+            Read what each of these 5 deadlines actually means
+          </a>
+        </p>
       </div>
     </section>
   );
