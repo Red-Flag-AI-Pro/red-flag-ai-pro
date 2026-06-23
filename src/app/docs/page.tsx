@@ -196,7 +196,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         {/* Risk categories */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Risk categories</h2>
-          <p className="text-gray-400 text-sm">Sentinel scans all 30 categories. Growth scans 21. Pro and the free plan scan 16.</p>
+          <p className="text-gray-400 text-sm">Every paid plan (Pro, Growth, Sentinel) scans all 30 categories. The free plan scans 16.</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               "income_claim", "urgency", "scarcity", "testimonial", "guarantee",

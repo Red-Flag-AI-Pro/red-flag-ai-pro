@@ -15,7 +15,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const PRO_FEATURES = [
-  "Full compliance scanner: 9 jurisdictions, 16 risk categories",
+  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
   "Includes the free governance assessment",
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
@@ -30,7 +30,7 @@ const PRO_FEATURES = [
 
 const GROWTH_FEATURES = [
   "Everything in Pro",
-  "Full compliance scanner: 9 jurisdictions, 20 risk categories, 30 scans/month",
+  "Full compliance scanner: 9 jurisdictions, all 30 risk categories, 30 scans/month",
   "Multiple team seats",
   "API & webhook access",
   "White label PDF reports",
