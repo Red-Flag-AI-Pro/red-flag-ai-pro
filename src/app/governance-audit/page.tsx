@@ -30,8 +30,8 @@ export default function GovernanceAuditPage() {
               maxWidth: '700px',
               margin: '0 auto',
             }}>
-              Regulators want proof of AI governance.<br />
-              You can't show it yet.
+              Your marketing copy is one piece. Your AI governance is the other.<br />
+              Regulators want proof of both, and you can't show the second one yet.
             </p>
           </div>
 
@@ -153,6 +153,13 @@ export default function GovernanceAuditPage() {
             color: 'rgba(255,255,255,0.3)',
           }}>
             No spam. One governance assessment per email. Results delivered instantly.
+          </p>
+          <p style={{
+            fontSize: '0.875rem',
+            color: 'rgba(255,255,255,0.4)',
+            marginTop: '0.75rem',
+          }}>
+            Here for the marketing copy side instead? <a href="/#scanner" style={{ color: '#E5484D', textDecoration: 'underline' }}>Run a free compliance scan</a>.
           </p>
         </div>
       </div>
