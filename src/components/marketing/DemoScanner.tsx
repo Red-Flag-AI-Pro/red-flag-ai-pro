@@ -531,13 +531,13 @@ export function DemoScanner() {
             }}>
               <div>
                 <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.5rem"}}>Compliance Score</p>
-                <p style={{...mono, fontSize: "3.5rem", fontWeight: 700, color: scoreColor, lineHeight: 1, letterSpacing: "-0.03em"}}>
+                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, color: scoreColor, lineHeight: 1}}>
                   {result.score}<span style={{fontSize: "1.25rem", color: "rgba(255,255,255,0.2)"}}>/ 100</span>
                 </p>
               </div>
               <div style={{textAlign: "right"}}>
                 <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.5rem"}}>Flags Found</p>
-                <p style={{...mono, fontSize: "3.5rem", fontWeight: 700, color: result.totalFlags > 0 ? "#ef4444" : "#4ade80", lineHeight: 1, letterSpacing: "-0.03em"}}>{result.totalFlags}</p>
+                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, color: result.totalFlags > 0 ? "#ef4444" : "#4ade80", lineHeight: 1}}>{result.totalFlags}</p>
               </div>
             </div>
 

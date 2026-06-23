@@ -186,7 +186,7 @@ function SellerCalculator() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
         <RiskDial riskPercent={riskPct} color={dialColor} />
         <div style={{ textAlign: "center" }}>
-          <p style={{...mono, fontSize: "2.75rem", fontWeight: 700, color: dialColor, letterSpacing: "-0.03em", lineHeight: 1, transition: "color 0.6s"}}>
+          <p className="font-display" style={{fontSize: "2.75rem", fontWeight: 500, color: dialColor, lineHeight: 1, transition: "color 0.6s"}}>
             {fmt(animTotal)}
           </p>
           <p style={{...syne, fontSize: "10px", color: "rgba(255,255,255,0.3)", marginTop: "4px", letterSpacing: "0.08em", textTransform: "uppercase"}}>total exposure</p>
@@ -302,7 +302,7 @@ function BuyerCalculator() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
         <RiskDial riskPercent={riskPct} color={dialColor} />
         <div style={{ textAlign: "center" }}>
-          <p style={{...mono, fontSize: "2.75rem", fontWeight: 700, color: dialColor, letterSpacing: "-0.03em", lineHeight: 1, transition: "color 0.6s"}}>
+          <p className="font-display" style={{fontSize: "2.75rem", fontWeight: 500, color: dialColor, lineHeight: 1, transition: "color 0.6s"}}>
             {fmt(animAtRisk)}
           </p>
           <p style={{...syne, fontSize: "10px", color: "rgba(255,255,255,0.3)", marginTop: "4px", letterSpacing: "0.08em", textTransform: "uppercase"}}>at risk per year</p>

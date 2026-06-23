@@ -108,7 +108,7 @@ export default function GovernanceAuditGatedPage() {
             marginBottom: '3rem'
           }}>
             {[
-              { text: 'Munir v SSHD:\nGovernance you can\'t prove = liability' },
+              { text: 'Munir v SSHD:\nFirm sanctioned over AI hallucinated citations' },
               { text: 'EU AI Act:\nEnforcement starts August 2, 2026' },
               { text: 'FTC Penalties:\n$53,088 per violation (April 2026+)' },
             ].map((item) => (

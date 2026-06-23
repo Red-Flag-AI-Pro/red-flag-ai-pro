@@ -101,7 +101,7 @@ export default function PrivacyPage() {
               </ul>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard. Deletion is permanent.</p>
               <p style={{ ...syne, fontSize: "12px", color: "#4ade80", lineHeight: 1.7, marginTop: "1rem", background: "rgba(74,222,128,0.08)", padding: "0.75rem", borderRadius: "6px", border: "1px solid rgba(74,222,128,0.15)" }}>
-                <strong>Munir v SSHD Compliance:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This satisfies the data handling requirements established in the Munir ruling and is equivalent to closed enterprise AI tools.
+                <strong>No human review, no training:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This is equivalent to closed enterprise AI tools.
               </p>
             </div>
           </div>

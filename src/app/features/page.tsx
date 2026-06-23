@@ -36,7 +36,7 @@ export default function FeaturesPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Compliance Scanning + AI Governance</p>
           <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Every tool you need to prove governance.
+            Every tool you need to catch risk, then prove governance.
           </h1>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", lineHeight: 1.7 }}>
             From real time copy scanning to governance assessment to forensic proof. Infrastructure built for marketers, agencies, CFOs, and compliance teams alike.
@@ -187,7 +187,7 @@ export default function FeaturesPage() {
 
           {/* SENTINEL TIER FEATURES */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>SENTINEL Tier (£5000+/mo)</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>SENTINEL Tier (custom pricing)</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>
               Managed Governance + Forensic Proof
             </h2>

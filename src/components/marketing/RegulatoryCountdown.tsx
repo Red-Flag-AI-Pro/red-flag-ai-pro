@@ -12,6 +12,7 @@ type Lane = {
   detail: string;
   date: string | null; // ISO date string, or null if status is fixed (no countdown)
   status?: "in-force" | "expected";
+  source: string;
 };
 
 const LANES: Lane[] = [
@@ -21,6 +22,7 @@ const LANES: Lane[] = [
     law: "EU AI Act, Article 50(4)",
     detail: "AI content disclosure mandatory",
     date: "2026-08-02T00:00:00Z",
+    source: "https://artificialintelligenceact.eu/article/50/",
   },
   {
     code: "eu",
@@ -28,6 +30,7 @@ const LANES: Lane[] = [
     law: "EU AI Act, Article 50(2)",
     detail: "Machine-readable watermarking required",
     date: "2026-12-02T00:00:00Z",
+    source: "https://artificialintelligenceact.eu/article/50/",
   },
   {
     code: "gb",
@@ -36,6 +39,7 @@ const LANES: Lane[] = [
     detail: "Exact date not yet confirmed",
     date: null,
     status: "expected",
+    source: "https://www.gov.uk/government/organisations/ofcom",
   },
   {
     code: "us",
@@ -43,6 +47,7 @@ const LANES: Lane[] = [
     law: "Vermont Data Privacy & Online Surveillance Act",
     detail: "23rd/24th US state privacy law takes effect",
     date: "2028-01-01T00:00:00Z",
+    source: "https://www.dataguidance.com/jurisdictions/vermont",
   },
   {
     code: "au",
@@ -51,6 +56,7 @@ const LANES: Lane[] = [
     detail: "Under-16 social media ban",
     date: null,
     status: "in-force",
+    source: "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions",
   },
 ];
 
@@ -126,7 +132,18 @@ export function RegulatoryCountdown() {
                   />
                   <div>
                     <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#F4F1EA" }}>{lane.law}</p>
-                    <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.5)" }}>{lane.detail}</p>
+                    <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.5)" }}>
+                      {lane.detail}
+                      {" · "}
+                      <a
+                        href={lane.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "rgba(229,72,77,0.85)", textDecoration: "underline" }}
+                      >
+                        source
+                      </a>
+                    </p>
                   </div>
                 </div>
 

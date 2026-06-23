@@ -17,9 +17,9 @@ const PLANS = [
   },
   {
     key: "enterprise" as const,
-    name: "Sentinel",
-    price: "£5000+/mo",
-    features: ["Unlimited scans", "Managed implementation", "Automated audit logging", "Ongoing governance monitoring", "Financial impact modeling", "Governance enforcement support", "Board-ready reporting", "Regulatory readiness review", "API access", "Dedicated advisor"],
+    name: "Growth",
+    price: "£1,200/mo",
+    features: ["30 scans per month", "Multiple team seats", "API & webhook access", "White label PDF reports", "Priority email support"],
   },
 ];
 
@@ -46,9 +46,19 @@ function BillingNotice() {
 }
 
 export default function BillingPage() {
+  return (
+    <Suspense>
+      <BillingPageInner />
+    </Suspense>
+  );
+}
+
+function BillingPageInner() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState<string | null>(null);
   const supabase = createClient();
+  const searchParams = useSearchParams();
+  const requestedPlan = searchParams.get("plan");
 
   useEffect(() => {
     (async () => {
@@ -66,6 +76,14 @@ export default function BillingPage() {
   }, [supabase]);
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
+
+  useEffect(() => {
+    if (!profile) return;
+    if (plan !== "free") return;
+    if (requestedPlan !== "pro" && requestedPlan !== "enterprise") return;
+    handleCheckout(requestedPlan);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile, plan, requestedPlan]);
 
   async function handleCheckout(planKey: "pro" | "enterprise" | "sentinel") {
     setLoading(planKey);

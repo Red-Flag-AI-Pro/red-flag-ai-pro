@@ -80,9 +80,9 @@ export default function AboutPage() {
               backgroundClip: "text",
             }}
           >
-            The real problem isn&apos;t<br />
-            governance policy.<br />
-            It&apos;s proving it happened.
+            We started by catching<br />
+            risky copy. We ended up<br />
+            proving governance.
           </h1>
 
           <p
@@ -96,9 +96,7 @@ export default function AboutPage() {
               margin: "0 auto",
             }}
           >
-            Every organization has policies. But when a regulator asks, "Can you
-            prove governance happened?" most organizations can&apos;t. Red Flag
-            was built to close that gap.
+            Red Flag started as a scanner that catches compliance risk in your marketing copy before it ships. The same gap shows up at the next level: every organization has governance policies, but when a regulator asks, "Can you prove governance happened?" most organizations can&apos;t. Red Flag now closes both gaps.
           </p>
         </div>
       </section>
@@ -152,7 +150,7 @@ export default function AboutPage() {
               },
               {
                 title: "Proof doesn't exist",
-                desc: "When regulators ask, 'prove governance happened?' most organizations can't. That's liability under Munir.",
+                desc: "When regulators ask, 'prove governance happened?' most organizations can't. Munir v SSHD shows courts already sanctioning firms for unverified AI outputs, and the same exposure applies to ungoverned AI use anywhere in the business.",
               },
             ].map((item) => (
               <div
@@ -210,7 +208,7 @@ export default function AboutPage() {
                 letterSpacing: "0.1em",
               }}
             >
-              Munir v SSHD (2024)
+              Munir v SSHD (2026)
             </p>
             <p
               style={{
@@ -220,7 +218,7 @@ export default function AboutPage() {
                 color: "white",
               }}
             >
-              &ldquo;Governance you cannot demonstrate is liability.&rdquo;
+              A tribunal sanctioned a firm for filing AI hallucinated case citations. Delegating to AI never removes the duty to verify and supervise.
             </p>
           </div>
         </div>

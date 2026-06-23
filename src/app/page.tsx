@@ -96,10 +96,10 @@ export default function LandingPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)" }}>
             {[
-              { tag: "UK · ENFORCED NOW", title: "Munir v SSHD", desc: "Governance you cannot demonstrate is treated as liability. Already case law." },
-              { tag: "EU · 2 AUGUST 2026", title: "EU AI Act, Article 50", desc: "Mandatory AI disclosure and governance evidence for systems touching the EU." },
-              { tag: "EU · IN FORCE", title: "DORA", desc: "Reporting on operational resilience under active audit. 93.5% failed the 2024 dry run." },
-              { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance, and monitor it, not just describe it." },
+              { tag: "UK · NOV 2025", title: "Munir v SSHD", desc: "Tribunal sanctioned a firm for filing AI-hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.", source: "https://www.bailii.org/uk/cases/UKUT/IAC/2026/81.html" },
+              { tag: "EU · 2 AUGUST 2026", title: "EU AI Act, Article 50", desc: "Mandatory AI disclosure and governance evidence for systems touching the EU.", source: "https://artificialintelligenceact.eu/article/50/" },
+              { tag: "EU · IN FORCE", title: "DORA", desc: "Reporting on operational resilience under active audit. 93.5% failed the 2024 dry run.", source: "https://www.eiopa.europa.eu/publications/key-findings-2024-esas-dry-run-exercise-dora_en" },
+              { tag: "US · 2026 EXAMS", title: "SEC & FTC", desc: "Examiners now test whether you can prove governance, and monitor it, not just describe it.", source: "https://www.sec.gov/newsroom/press-releases" },
             ].map((item) => (
               <div key={item.title} style={{
                 background: "var(--navy-raised)",
@@ -108,7 +108,10 @@ export default function LandingPage() {
                 <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.1rem" }} />
                 <p className="font-mono-fig" style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.12em", color: "rgba(229,72,77,0.85)", marginBottom: "0.6rem" }}>{item.tag}</p>
                 <p className="font-display" style={{ fontSize: "1.15rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.5rem" }}>{item.title}</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.6 }}>{item.desc}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.6, marginBottom: "0.6rem" }}>{item.desc}</p>
+                <a href={item.source} target="_blank" rel="noopener noreferrer" style={{ ...syne, fontSize: "11px", color: "rgba(229,72,77,0.85)", textDecoration: "underline" }}>
+                  source
+                </a>
               </div>
             ))}
           </div>
@@ -280,7 +283,7 @@ export default function LandingPage() {
                 border: "1px solid rgba(239,68,68,0.2)",
                 padding: "2.5rem",
               }}>
-                <p style={{ ...mono, fontSize: "2.5rem", fontWeight: 700, color: "#ef4444", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
+                <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#ef4444", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
                 <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>{item.detail}</p>
               </div>

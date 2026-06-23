@@ -46,7 +46,7 @@ export default function WhyCompliancePage() {
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
           $6 billion in marketing compliance fines globally in the last three years. Same illegal copy: sellers face regulators, buyers lose money.
         </p>
-        <p style={{ ...mono, fontSize: "3rem", fontWeight: 800, color: "#ef4444", marginBottom: "3rem" }}>$6B+</p>
+        <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#ef4444", marginBottom: "3rem" }}>$6B+</p>
         <Link href="/#scanner" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
           Scan your copy free
         </Link>
@@ -62,7 +62,7 @@ export default function WhyCompliancePage() {
               <div key={item.label} style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{item.label}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{item.sub}</p>
-                <p style={{ ...mono, fontSize: "2.25rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px" }}>{item.amount}</p>
+                <p className="font-display" style={{ fontSize: "2.25rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "6px" }}>{item.amount}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{item.detail}</p>
               </div>
             ))}
@@ -80,12 +80,12 @@ export default function WhyCompliancePage() {
               <div key={f.country} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{f.country}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{f.body}</p>
-                <p style={{ ...mono, fontSize: "1.75rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "6px" }}>{f.fine}</p>
+                <p className="font-display" style={{ fontSize: "1.75rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "6px" }}>{f.fine}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{f.detail}</p>
               </div>
             ))}
             <div style={{ background: "#1a0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p style={{ ...mono, fontSize: "3rem", fontWeight: 800, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>$6B+</p>
+              <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>$6B+</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>in marketing compliance fines globally in the last 3 years</p>
             </div>
           </div>

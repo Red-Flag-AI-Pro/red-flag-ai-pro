@@ -14,7 +14,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const COMPARISON = [
-  { feature: "Price per month", rfp: "Free to £5000+", redmarker: "£2,000 to £10,000", consultant: "£500 to £3,000" },
+  { feature: "Price per month", rfp: "Free to £1,200, custom for enterprise", redmarker: "£2,000 to £10,000", consultant: "£500 to £3,000" },
   { feature: "Setup time", rfp: "Same day", redmarker: "Weeks", consultant: "Days" },
   { feature: "Scan speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48 to 72 hours" },
   { feature: "Free scan available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
@@ -80,7 +80,7 @@ export default function ComparePage() {
                 <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "35%" }}>Feature</th>
                 <th style={{ padding: "1rem", textAlign: "center", background: "rgba(229,72,77,0.05)", borderLeft: "1px solid rgba(239,68,68,0.15)", borderRight: "1px solid rgba(239,68,68,0.15)" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444" }}>Red Flag AI Pro</p>
-                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free to £5000+/mo</p>
+                  <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free to £1,200/mo, custom for enterprise</p>
                 </th>
                 <th style={{ padding: "1rem", textAlign: "center" }}>
                   <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.4)" }}>Red Marker / Blee</p>

@@ -16,7 +16,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations: anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Sentinel referral (£5000+/mo) pays ~£750/month. One Pro referral (£350/mo) pays ~£52.50/month. As long as they stay subscribed, you earn." },
+  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Pro referral (£350/mo) pays ~£52.50/month. One Sentinel referral (custom, from £3,000+/mo) pays £450+/month. As long as they stay subscribed, you earn." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -33,9 +33,9 @@ const WHO_IT_IS_FOR = [
 const EARNINGS = [
   { referrals: 5, plan: "Pro (£350/mo)", monthly: "£263", annual: "£3,150" },
   { referrals: 10, plan: "Pro (£350/mo)", monthly: "£525", annual: "£6,300" },
-  { referrals: 1, plan: "Sentinel (£5000/mo)", monthly: "£750", annual: "£9,000" },
-  { referrals: 2, plan: "Sentinel (£5000/mo)", monthly: "£1,500", annual: "£18,000" },
-  { referrals: 3, plan: "Sentinel (£5000/mo)", monthly: "£2,250", annual: "£27,000" },
+  { referrals: 1, plan: "Sentinel (from £3,000/mo)", monthly: "£450+", annual: "£5,400+" },
+  { referrals: 2, plan: "Sentinel (from £3,000/mo)", monthly: "£900+", annual: "£10,800+" },
+  { referrals: 3, plan: "Sentinel (from £3,000/mo)", monthly: "£1,350+", annual: "£16,200+" },
 ];
 
 export default function AffiliatesPage() {
@@ -79,12 +79,12 @@ export default function AffiliatesPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", textAlign: "center" }}>
           {[
             { value: "15%", label: "Recurring commission", sub: "on every payment they make" },
-            { value: "£750+", label: "Monthly per Sentinel referral", sub: "15% of £5000+/mo" },
+            { value: "£450+", label: "Monthly per Sentinel referral", sub: "15% of custom Sentinel pricing" },
             { value: "£52.50+", label: "Monthly per Pro referral", sub: "15% of £350/mo" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
             <div key={stat.label} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
-              <p style={{ ...mono, fontSize: "2.5rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "8px" }}>{stat.value}</p>
+              <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>{stat.value}</p>
               <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{stat.label}</p>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)" }}>{stat.sub}</p>
             </div>
@@ -100,7 +100,7 @@ export default function AffiliatesPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {HOW_IT_WORKS.map((s) => (
               <div key={s.num} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
-                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "rgba(239,68,68,0.4)", lineHeight: 1, marginBottom: "1.5rem", letterSpacing: "-0.03em" }}>{s.num}</p>
+                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "rgba(239,68,68,0.4)", lineHeight: 1, marginBottom: "1.5rem" }}>{s.num}</p>
                 <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{s.title}</p>
                 <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{s.body}</p>
               </div>

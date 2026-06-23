@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { GovernanceAuditFlow } from '@/components/governance-audit/GovernanceAuditFlow';
 import { TrustBar } from '@/components/marketing/TrustBar';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'AI Governance Maturity Assessment',
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
 
 export default function GovernanceAuditPage() {
   return (
-    <div style={{ background: '#0A1628', minHeight: '100vh' }} className="py-12 px-4">
+    <div style={{ background: '#0A1628', minHeight: '100vh' }}>
+      <Navbar />
+      <div className="py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-6">
@@ -152,6 +156,8 @@ export default function GovernanceAuditPage() {
           </p>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }

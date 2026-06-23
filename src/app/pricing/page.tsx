@@ -7,7 +7,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel £5,000+/mo for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -80,7 +80,7 @@ export default function PricingPage() {
               {
                 icon: "",
                 title: "Munir v SSHD",
-                desc: "UK ruling: governance you cannot demonstrate = liability. You need forensic proof.",
+                desc: "Tribunal sanctioned a firm for filing AI-hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.",
               },
               {
                 icon: "",
@@ -131,9 +131,9 @@ export default function PricingPage() {
           }}>
             <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444", marginBottom: "0.5rem" }}>THE REALITY</p>
             <p style={{ ...syne, fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.6 }}>
-              A single compliance fine for undisclosed AI claims: £millions. A regulator finding you can't prove governance: enterprise reputation destroyed. Your insurance won't cover it.
+              One unchecked ad with an undisclosed claim can trigger a fine before legal ever sees it. A regulator finding you can't prove governance afterward: enterprise reputation destroyed. Your insurance won't cover either.
             </p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>You need governance TODAY, not when the regulator calls.</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>You need both checked TODAY, not when the regulator calls.</p>
           </div>
         </div>
       </section>
@@ -152,12 +152,12 @@ export default function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Governance Infrastructure</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Scanner + Governance, one price</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
-            Know where you stand.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove it.</span>
+            Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            5-minute free assessment shows your governance maturity, gaps, and 90-day roadmap. Then choose how to close them.
+            Every plan includes the full compliance scanner for your marketing copy, plus a 5-minute free assessment that shows your governance maturity, gaps, and 90-day roadmap.
           </p>
         </div>
       </section>
@@ -219,12 +219,12 @@ export default function PricingPage() {
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
-                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
                   £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                 </p>
                 <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
               </div>
-              <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
+              <Link href="/signup?plan=pro" style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
                 color: "white",
@@ -232,10 +232,10 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Book a demo
-              </a>
+                Start Pro
+              </Link>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                or email support@redflagaipro.com
+                14 day money back guarantee. No call required.
               </p>
               <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
@@ -251,20 +251,20 @@ export default function PricingPage() {
             {/* GROWTH */}
             <div style={{
               background: "#102943",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(201,166,107,0.35)",
               padding: "2.5rem",
               position: "relative"
             }}>
               <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams who've outgrown a single seat.</p>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams of 3 or more who've outgrown a single seat.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
-                <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>
+                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
                   £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                 </p>
               </div>
-              <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
+              <Link href="/signup?plan=enterprise" style={{
                 display: "block", textAlign: "center",
                 background: "rgba(239,68,68,0.2)",
                 color: "#ef4444",
@@ -273,10 +273,10 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Book a demo
-              </a>
+                Start Growth
+              </Link>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                or email support@redflagaipro.com
+                or <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>book a call</a> first
               </p>
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
@@ -312,10 +312,10 @@ export default function PricingPage() {
                   <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
                 </div>
                 <div style={{ minHeight: "4.6rem" }}>
-                  <p style={{ ...mono, fontSize: "3rem", fontWeight: 700, color: "#0F2138", letterSpacing: "-0.04em", lineHeight: 1 }}>
-                    £5000<span style={{ fontSize: "0.9rem", color: "#666" }}>/mo</span>
+                  <p className="font-display" style={{ fontSize: "2.2rem", fontWeight: 500, color: "#0F2138", lineHeight: 1 }}>
+                    Custom pricing
                   </p>
-                  <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Volume discounts available for £20k+/mo</p>
+                  <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Scoped to your team size and governance needs</p>
                 </div>
                 <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
                   display: "block", textAlign: "center",

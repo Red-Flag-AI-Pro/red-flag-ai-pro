@@ -119,17 +119,17 @@ export default function CaseStudyPage() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Score before</p>
-          <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "#ef4444", letterSpacing: "-0.04em", lineHeight: 1 }}>{SCORE_BEFORE}</p>
+          <p className="font-display" style={{ fontSize: "3.5rem", fontWeight: 500, color: "#ef4444", lineHeight: 1 }}>{SCORE_BEFORE}</p>
           <p style={{ ...syne, fontSize: "11px", color: "#ef4444", marginTop: "0.5rem", fontWeight: 600 }}>High risk. Do not publish</p>
         </div>
         <div style={{ background: "#0D1B2E", borderLeft: "1px solid rgba(255,255,255,0.05)", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Violations found</p>
-          <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "white", letterSpacing: "-0.04em", lineHeight: 1 }}>6</p>
+          <p className="font-display" style={{ fontSize: "3.5rem", fontWeight: 500, color: "white", lineHeight: 1 }}>6</p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>5 high · 1 medium</p>
         </div>
         <div style={{ background: "rgba(34,197,94,0.05)", border: "1px solid rgba(34,197,94,0.12)", padding: "2.5rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Score after fixes</p>
-          <p style={{ ...mono, fontSize: "3.5rem", fontWeight: 700, color: "#4ade80", letterSpacing: "-0.04em", lineHeight: 1 }}>{SCORE_AFTER}</p>
+          <p className="font-display" style={{ fontSize: "3.5rem", fontWeight: 500, color: "#4ade80", lineHeight: 1 }}>{SCORE_AFTER}</p>
           <p style={{ ...syne, fontSize: "11px", color: "#4ade80", marginTop: "0.5rem", fontWeight: 600 }}>Low risk. Safe to publish</p>
         </div>
       </div>
