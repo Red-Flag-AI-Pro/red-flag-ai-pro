@@ -4,6 +4,7 @@ import type { Plan } from "@/types";
 
 const MONITOR_LIMITS: Record<Plan, number> = {
   free: 0,
+  scanner: 0,
   pro: 0,
   enterprise: 5,
   sentinel: Infinity,

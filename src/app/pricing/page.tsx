@@ -7,12 +7,20 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Scanner £149/mo for compliance scanning, Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
+
+const SCANNER_FEATURES = [
+  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
+  "5 scans per month",
+  "PDF reports",
+  "Scan history",
+  "Email support",
+];
 
 const PRO_FEATURES = [
   "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
@@ -198,6 +206,47 @@ export default function PricingPage() {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
 
+            {/* SCANNER */}
+            <div style={{
+              background: "#0D1B2E",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: "2.5rem",
+              position: "relative"
+            }}>
+              <div style={{ minHeight: "7.5rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", marginTop: "1rem" }}>Scanner</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Just the compliance scanner, for solo creators and small teams who need it checked, not monitored.</p>
+              </div>
+              <div style={{ minHeight: "4.6rem" }}>
+                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                  £149<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                </p>
+              </div>
+              <Link href="/signup?plan=scanner" style={{
+                display: "block", textAlign: "center",
+                background: "transparent",
+                color: "white",
+                border: "1.5px solid rgba(255,255,255,0.25)",
+                ...syne, fontSize: "0.875rem", fontWeight: 700,
+                padding: "12px 24px", borderRadius: "9999px",
+                textDecoration: "none", marginTop: "1.5rem"
+              }}>
+                Start Scanner
+              </Link>
+              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
+                No call required.
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
+                {SCANNER_FEATURES.map((f) => (
+                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+                    <span style={{ color: "rgba(255,255,255,0.5)", flexShrink: 0, marginTop: "2px" }}>✓</span>
+                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* PRO */}
             <div style={{
               background: "#0D1B2E",
@@ -360,6 +409,7 @@ export default function PricingPage() {
                 <thead>
                   <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "left", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Need</th>
+                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Scanner</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Pro</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Growth</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Sentinel</th>
@@ -367,18 +417,20 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   {[
-                    { need: "See governance gaps", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Monitor governance ongoing", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Automated compliance proof", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Multiple team seats", pro: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "API & webhook access", pro: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Financial impact modeling", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Board ready reporting", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Managed implementation", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Regulatory readiness review", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Compliance scanner (9 jurisdictions, 30 categories)", scanner: "✓", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "See governance gaps", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Monitor governance ongoing", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Automated compliance proof", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "Multiple team seats", scanner: "✗", pro: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "API & webhook access", scanner: "✗", pro: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Financial impact modeling", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Board ready reporting", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Managed implementation", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Regulatory readiness review", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
                   ].map((row) => (
                     <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
+                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.scanner === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.scanner}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.pro === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.pro}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
@@ -424,6 +476,7 @@ export default function PricingPage() {
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
                   { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
                   { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro (Scanner)", cost: "£1,788", highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
                   <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>

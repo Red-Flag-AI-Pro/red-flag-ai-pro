@@ -68,6 +68,7 @@ export async function POST(request: Request) {
       const customerId = sub.customer as string;
 
       const planMap: Record<string, string> = {
+        [process.env.STRIPE_PRICE_SCANNER_ID!]: "scanner",
         [process.env.STRIPE_PRICE_PRO_ID!]: "pro",
         [process.env.STRIPE_PRICE_ENTERPRISE_ID!]: "enterprise",
         [process.env.STRIPE_PRICE_SENTINEL_ID!]: "sentinel",

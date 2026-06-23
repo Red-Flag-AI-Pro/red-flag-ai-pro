@@ -7,13 +7,20 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import type { Plan, Profile } from "@/types";
 import { createClient } from "@/lib/supabase/client";
+import { PLAN_LIMITS } from "@/lib/constants";
 
 const PLANS = [
+  {
+    key: "scanner" as const,
+    name: "Scanner",
+    price: "£149/mo",
+    features: ["5 scans per month", "All 30 risk categories", "PDF reports", "Scan history", "Email support"],
+  },
   {
     key: "pro" as const,
     name: "Pro",
     price: "£350/mo",
-    features: ["20 scans per month", "Monthly reassessment", "Vendor tracking", "Dashboard", "Gap detection", "Evidence package", "Email support"],
+    features: ["10 scans per month", "Monthly reassessment", "Vendor tracking", "Dashboard", "Gap detection", "Evidence package", "Email support"],
   },
   {
     key: "enterprise" as const,
@@ -78,11 +85,11 @@ function BillingPageInner() {
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
   const pendingPlan =
-    plan === "free" && (requestedPlan === "pro" || requestedPlan === "enterprise")
+    plan === "free" && (requestedPlan === "scanner" || requestedPlan === "pro" || requestedPlan === "enterprise")
       ? PLANS.find((p) => p.key === requestedPlan)
       : null;
 
-  async function handleCheckout(planKey: "pro" | "enterprise" | "sentinel") {
+  async function handleCheckout(planKey: "scanner" | "pro" | "enterprise" | "sentinel") {
     setLoading(planKey);
     const res = await fetch("/api/stripe/checkout", {
       method: "POST",
@@ -206,19 +213,19 @@ function BillingPageInner() {
           <div className="flex justify-between">
             <dt className="text-[rgba(244,241,234,0.5)]">Scans per month</dt>
             <dd className="font-medium text-[#F4F1EA]">
-              {plan === "free" ? "1" : plan === "pro" ? "20" : "Unlimited"}
+              {PLAN_LIMITS[plan] === Infinity ? "Unlimited" : PLAN_LIMITS[plan]}
             </dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-[rgba(244,241,234,0.5)]">Risk categories</dt>
             <dd className="font-medium text-[#F4F1EA]">
-              {plan === "sentinel" ? "21" : "16"}
+              {plan === "free" ? "16" : "30"}
             </dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-[rgba(244,241,234,0.5)]">PDF reports</dt>
             <dd className="font-medium text-[#F4F1EA]">
-              {plan === "pro" || plan === "free" ? "No" : "Yes"}
+              {plan === "free" ? "No" : "Yes"}
             </dd>
           </div>
           <div className="flex justify-between">

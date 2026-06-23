@@ -11,6 +11,7 @@ import type { Plan, Scan } from "@/types";
 
 const PLAN_DISPLAY: Record<Plan, string> = {
   free: "Starter",
+  scanner: "Scanner",
   pro: "Pro",
   enterprise: "Growth",
   sentinel: "Sentinel",
