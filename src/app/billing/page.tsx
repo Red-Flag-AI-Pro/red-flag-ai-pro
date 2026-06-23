@@ -77,13 +77,10 @@ function BillingPageInner() {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  useEffect(() => {
-    if (!profile) return;
-    if (plan !== "free") return;
-    if (requestedPlan !== "pro" && requestedPlan !== "enterprise") return;
-    handleCheckout(requestedPlan);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile, plan, requestedPlan]);
+  const pendingPlan =
+    plan === "free" && (requestedPlan === "pro" || requestedPlan === "enterprise")
+      ? PLANS.find((p) => p.key === requestedPlan)
+      : null;
 
   async function handleCheckout(planKey: "pro" | "enterprise" | "sentinel") {
     setLoading(planKey);
@@ -115,6 +112,25 @@ function BillingPageInner() {
       <Suspense>
         <BillingNotice />
       </Suspense>
+
+      {pendingPlan && (
+        <Card>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="text-sm text-[rgba(244,241,234,0.5)]">Ready to start</p>
+              <p className="mt-1 text-lg font-bold text-[#F4F1EA]">
+                {pendingPlan.name}, {pendingPlan.price}
+              </p>
+            </div>
+            <Button
+              onClick={() => handleCheckout(pendingPlan.key)}
+              loading={loading === pendingPlan.key}
+            >
+              Continue to checkout
+            </Button>
+          </div>
+        </Card>
+      )}
 
       {/* Current plan */}
       <Card>
