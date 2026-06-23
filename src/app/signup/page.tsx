@@ -13,6 +13,7 @@ function SignupForm() {
   const plan = searchParams.get("plan");
   const prefillEmail = searchParams.get("email") ?? "";
   const fromDemo = !!prefillEmail;
+  const planLabel = plan === "pro" ? "Pro" : plan === "enterprise" ? "Growth" : null;
   const [name, setName] = useState("");
   const [email, setEmail] = useState(prefillEmail);
   const [password, setPassword] = useState("");
@@ -108,6 +109,15 @@ function SignupForm() {
       {fromDemo && (
         <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
           Picking up where you left off. Create your account to unlock your full scan results and the compliant rewrites.
+        </div>
+      )}
+      {planLabel ? (
+        <div className="rounded-lg bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-gray-300">
+          Next: you will land on a checkout page for {planLabel}, no charge until you confirm there.
+        </div>
+      ) : (
+        <div className="rounded-lg bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-gray-300">
+          Next: you will land on your dashboard, where you can paste your first piece of copy to scan, or start your free governance assessment.
         </div>
       )}
       {error && (
