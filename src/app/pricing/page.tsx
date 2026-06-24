@@ -86,7 +86,7 @@ export default function PricingPage() {
               {
                 icon: "",
                 title: "EU AI Act (Aug 2, 2026)",
-                desc: "Mandatory disclosure of AI generated content + governance evidence. 45 days away.",
+                desc: "Mandatory disclosure of AI generated content + governance evidence. Weeks away, not years.",
               },
               {
                 icon: "",
@@ -134,7 +134,7 @@ export default function PricingPage() {
             <p style={{ ...syne, fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.6 }}>
               One unchecked ad with an undisclosed claim can trigger a fine before legal ever sees it. A regulator finding you can't prove governance afterward: enterprise reputation destroyed. Your insurance won't cover either.
             </p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>You need both checked TODAY, not when the regulator calls.</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. Most compliance tools are built once and left to go stale. We re-check every jurisdiction against the official text, so you're never caught running on a rule that already moved.</p>
           </div>
         </div>
       </section>
@@ -153,7 +153,7 @@ export default function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Scanner + Governance, one price</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>9 jurisdictions tracked. The only scanner that keeps pace with the law.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
