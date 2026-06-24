@@ -1,10 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { GovernanceAuditForm } from './GovernanceAuditForm';
-import { GovernanceAuditResults } from './GovernanceAuditResults';
-import { CalendlyBooking } from './CalendlyBooking';
+import dynamic from 'next/dynamic';
 import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit';
+
+const GovernanceAuditForm = dynamic(
+  () => import('./GovernanceAuditForm').then((m) => m.GovernanceAuditForm),
+  { ssr: false }
+);
+const GovernanceAuditResults = dynamic(
+  () => import('./GovernanceAuditResults').then((m) => m.GovernanceAuditResults),
+  { ssr: false }
+);
+const CalendlyBooking = dynamic(
+  () => import('./CalendlyBooking').then((m) => m.CalendlyBooking),
+  { ssr: false }
+);
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
