@@ -837,7 +837,7 @@ export function generateRedFlags(
       title: 'Unclear AI Governance Ownership',
       description: 'Your organization lacks a clear owner for AI governance. This gaps accountability and executive oversight.',
       recommendation: 'Designate a CFO or CIO as primary AI governance owner. Establish cross-functional governance committee (CFO + CIO + Chief Risk + Legal).',
-      regulatoryContext: ['Brad Wolfe: "ownership gap is the real gap"', 'SEC 2026 exams test decision rights'],
+      regulatoryContext: ['Brad Wolfe: "ownership gap is the real gap"', 'SEC 2026 exams test decision rights', 'ISO 42001 Clause 5: Leadership and roles'],
     });
   }
 
@@ -849,7 +849,7 @@ export function generateRedFlags(
       title: 'High Shadow AI Usage / Data Visibility Gap',
       description: 'You have significant unapproved AI tool usage or lack visibility into what data is going into tools.',
       recommendation: 'Conduct tool audit. Implement DLP controls. Set up monthly data governance reviews.',
-      regulatoryContext: ['Artem Gabrielyan: "gap between policy and practice is the exam"', 'Munir v SSHD: governance you cannot demonstrate = liability'],
+      regulatoryContext: ['Artem Gabrielyan: "gap between policy and practice is the exam"', 'Munir v SSHD: governance you cannot demonstrate = liability', 'ISO 42001 Clause 8.1: Operational planning and control'],
     });
   }
 
@@ -861,7 +861,7 @@ export function generateRedFlags(
       title: 'No Written AI Governance Policy',
       description: 'Your organization lacks a formal, documented AI governance policy. This exposes you to regulatory liability.',
       recommendation: 'Draft formal AI governance policy addressing data privacy, vendor risk, model transparency, and prohibited use cases. Get board approval.',
-      regulatoryContext: ['SEC 2026 exams require written policies', 'EU AI Act requires governance documentation'],
+      regulatoryContext: ['SEC 2026 exams require written policies', 'EU AI Act requires governance documentation', 'ISO 42001 Clause 7.5: Documented information'],
     });
   }
 
@@ -873,7 +873,7 @@ export function generateRedFlags(
       title: 'Cannot Prove AI Governance Happened',
       description: 'You lack audit trails and monitoring to prove what your AI systems are doing and who approved them.',
       recommendation: 'Implement automated audit logging. Set up real-time monitoring for output drift. Create governance evidence package for regulators.',
-      regulatoryContext: ['Michael Shuler: "Can you prove exactly what happened?"', 'Munir v SSHD: governance you cannot demonstrate = liability'],
+      regulatoryContext: ['Michael Shuler: "Can you prove exactly what happened?"', 'Munir v SSHD: governance you cannot demonstrate = liability', 'ISO 42001 Clause 9: Performance evaluation'],
     });
   }
 
@@ -885,7 +885,7 @@ export function generateRedFlags(
       title: 'Vendor AI Risk Not Assessed or Managed',
       description: 'You don\'t formally assess AI vendors or require governance compliance in contracts.',
       recommendation: 'Create vendor AI assessment checklist. Add data privacy, audit rights, and liability clauses to vendor contracts. Map vendor data flows.',
-      regulatoryContext: ['SEC Reg S-P requires vendor oversight', 'Artem Gabrielyan: "proof the review happened" angle for vendors'],
+      regulatoryContext: ['SEC Reg S-P requires vendor oversight', 'Artem Gabrielyan: "proof the review happened" angle for vendors', 'ISO 42001 Annex A.10: Supplier relationships'],
     });
   }
 
@@ -897,7 +897,7 @@ export function generateRedFlags(
       title: 'Not Prepared for Regulatory Examination',
       description: 'You cannot produce evidence of AI governance to regulators, or are unaware of applicable frameworks.',
       recommendation: 'Identify applicable regulations (EU AI Act, GDPR, FTC, SEC, industry-specific). Conduct gap assessment. Build audit-ready evidence package.',
-      regulatoryContext: ['EU AI Act enforcement starts August 2026', 'SEC 2026 exams focus on AI governance', 'Munir v SSHD: prove governance or face liability'],
+      regulatoryContext: ['EU AI Act enforcement starts August 2026', 'SEC 2026 exams focus on AI governance', 'Munir v SSHD: prove governance or face liability', 'ISO 42001 Clause 9.2: Internal audit'],
     });
   }
 
