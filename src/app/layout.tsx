@@ -38,11 +38,11 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Red Flag AI Pro — AI Governance Maturity Index & Compliance Proof",
+    default: "Red Flag AI Pro — AI Compliance and AI Governance, Done Properly.",
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Red Flag AI Pro scores your AI governance maturity across 6 dimensions, benchmarks you against peers, and generates audit-ready evidence for the EU AI Act, DORA, SEC and Munir. Free 5-minute assessment — built for CFOs, compliance and risk teams.",
+    "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
   keywords: [
     // Core positioning
     "AI governance assessment",
