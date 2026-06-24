@@ -19,7 +19,7 @@ const PLANS = [
   {
     key: "pro" as const,
     name: "Pro",
-    price: "£350/mo",
+    price: "£499/mo",
     features: ["10 scans per month", "Monthly reassessment", "Vendor tracking", "Dashboard", "Gap detection", "Evidence package", "Email support"],
   },
   {

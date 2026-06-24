@@ -41,7 +41,7 @@ export function getExcludedCategories(plan: Plan): readonly string[] {
 }
 
 export const AUDIT_PRICE = {
-  amount: 97,
+  amount: 149,
   label: "Done-For-You Audit",
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
@@ -53,7 +53,7 @@ export const PLAN_PRICES = {
     priceId: process.env.STRIPE_PRICE_SCANNER_ID!,
   },
   pro: {
-    monthly: 350,
+    monthly: 499,
     label: "Pro",
     priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },

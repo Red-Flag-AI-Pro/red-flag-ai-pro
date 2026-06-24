@@ -7,7 +7,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Scanner £149/mo for compliance scanning, Pro £350/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Scanner £149/mo for compliance scanning, Pro £499/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -269,9 +269,9 @@ export default function PricingPage() {
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  £499<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                 </p>
-                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £3,500/year (2 months free)</p>
+                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £4,990/year (2 months free)</p>
               </div>
               <Link href="/signup?plan=pro" style={{
                 display: "block", textAlign: "center",
@@ -475,7 +475,7 @@ export default function PricingPage() {
                   { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
                   { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
-                  { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro (Pro)", cost: "£5,988", highlight: true },
                   { name: "Red Flag AI Pro (Scanner)", cost: "£1,788", highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
@@ -523,7 +523,7 @@ export default function PricingPage() {
 
             <div style={{ background: "#102943", padding: "2.25rem", borderLeft: "2px solid #E5484D" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Red Flag</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £350<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £149<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
               {[
                 "Audit ready evidence out of the box, nothing to build",

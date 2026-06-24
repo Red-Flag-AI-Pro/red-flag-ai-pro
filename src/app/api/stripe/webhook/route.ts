@@ -46,7 +46,7 @@ export async function POST(request: Request) {
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: session.payment_intent as string ?? null,
-          amount_gbp: 97,
+          amount_gbp: 149,
           status: "paid",
         });
         break;
