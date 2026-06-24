@@ -45,8 +45,8 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             </>
           ) : (
             <>
-              <Link href="/#scanner" className="nav-link px-3 py-1.5 text-sm">Scanner</Link>
-              <Link href="/governance-audit" className="nav-link px-3 py-1.5 text-sm">Assessment</Link>
+              <Link href="/#scanner" className="nav-link px-3 py-1.5 text-sm">Compliance Assessment</Link>
+              <Link href="/governance-audit" className="nav-link px-3 py-1.5 text-sm">Governance Assessment</Link>
               <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
               <Link href="/tools" className="nav-link px-3 py-1.5 text-sm">Tools</Link>
@@ -101,8 +101,8 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               </>
             ) : (
               <>
-                <Link href="/#scanner" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Scanner</Link>
-                <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Free assessment</Link>
+                <Link href="/#scanner" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compliance Assessment</Link>
+                <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Governance Assessment</Link>
                 <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: managed governance</Link>
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
                 <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
