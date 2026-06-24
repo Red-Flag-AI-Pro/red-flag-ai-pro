@@ -186,10 +186,10 @@ export default function PrivacyPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Cookies</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              We use essential cookies for authentication and session management. No cookie consent banner is required for essential cookies under UK GDPR.
+              We use essential cookies for authentication and session management. No consent banner is required for these under UK GDPR, since the service cannot function without them.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
-              We also use Google Ads conversion tracking to measure the performance of our advertising and to share conversion data with Google for Customer Match (showing ads to existing and similar potential customers). You can opt out of personalised advertising at any time via{" "}
+              We also use non-essential cookies for Google Ads conversion tracking and our affiliate referral programme. These are not loaded until you accept cookies via the banner shown on your first visit. You can withdraw consent at any time by clearing your browser's site data, which will show the banner again. Google Ads conversion data is used to measure advertising performance and for Customer Match (showing ads to existing and similar potential customers). You can opt out of personalised advertising at any time via{" "}
               <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>Google&apos;s Ads Settings</a>.
             </p>
           </div>

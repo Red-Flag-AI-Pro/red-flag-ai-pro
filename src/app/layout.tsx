@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Syne, DM_Mono, Newsreader } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
+import { ConsentScripts } from "@/components/ConsentScripts";
 import "./globals.css";
 
 const inter = Inter({
@@ -136,11 +136,6 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${dmMono.variable} ${newsreader.variable}`}>
       <body className={inter.className}>
         {children}
-        <Script
-          src="https://files.tlt-cdn.com/tlt.js"
-          data-tolt="pk_uHSrWu9BsJAGNpueQV69rTrd"
-          strategy="lazyOnload"
-        />
         <Analytics />
         <SpeedInsights />
         <CookieBanner />
@@ -198,23 +193,7 @@ export default function RootLayout({
             })
           }}
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18172154544"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="gtag-config"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18172154544');
-              gtag('config', 'AW-18172153815');
-            `,
-          }}
-        />
+        <ConsentScripts />
       </body>
     </html>
   );
