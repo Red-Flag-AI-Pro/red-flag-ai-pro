@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
-  if (plan === "free" || plan === "pro") {
+  if (plan === "free" || plan === "scanner") {
     return NextResponse.json(
       { error: "Client workspaces are available on Growth and Sentinel plans." },
       { status: 403 }

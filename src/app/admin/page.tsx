@@ -49,7 +49,7 @@ export default async function AdminPage() {
     service
       .from("profiles")
       .select("id", { count: "exact", head: true })
-      .in("plan", ["pro", "enterprise"]),
+      .in("plan", ["scanner", "enterprise", "sentinel"]),
     service
       .from("scans")
       .select("id", { count: "exact", head: true })
@@ -123,7 +123,7 @@ export default async function AdminPage() {
                     <div className="text-right">
                       <span className={[
                         "inline-block rounded-full px-2 py-0.5 text-xs font-semibold",
-                        u.plan === "pro" || u.plan === "enterprise"
+                        u.plan === "scanner" || u.plan === "enterprise" || u.plan === "sentinel"
                           ? "bg-green-900 text-green-300"
                           : "bg-gray-800 text-[rgba(244,241,234,0.4)]"
                       ].join(" ")}>

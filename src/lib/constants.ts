@@ -8,15 +8,14 @@ export const REGULATORY_MAPPING_LAST_REVIEWED = "21 June 2026";
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 1,
   scanner: 5,
-  pro: 15,
   enterprise: 30,
   sentinel: Infinity,
 };
 
-// Category tiers: Free sees 16. Every paid plan (Pro/Growth/Sentinel, and the
-// upcoming Scanner tier) sees all 30 — paywalling individual categories felt
-// punitive ("pay more to see what's wrong with your own ad"). Paid tiers are
-// now differentiated by scan volume and governance features, not category count.
+// Category tiers: Free sees 16. Every paid plan (Pro/Growth/Sentinel) sees
+// all 30 — paywalling individual categories felt punitive ("pay more to see
+// what's wrong with your own ad"). Paid tiers are now differentiated by scan
+// volume and governance features, not category count.
 export const FREE_ONLY_EXCLUDED_CATEGORIES = [
   "comparative_advertising",
   "contract_contradiction",
@@ -46,7 +45,7 @@ export const AUDIT_PRICE = {
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
 
-// Founder's birthday sale: Scanner at £149/mo for anyone who signs up before
+// Founder's birthday sale: Pro at £149/mo for anyone who signs up before
 // 1 Aug 2026. Existing-subscriber-grandfathering policy applies, same as any
 // other price change, so sale signups keep £149/mo for as long as they stay
 // subscribed rather than reverting after the sale window closes.
@@ -56,15 +55,10 @@ export const SCANNER_SALE_ACTIVE = new Date() < new Date(SCANNER_SALE_ENDS);
 export const PLAN_PRICES = {
   scanner: {
     monthly: SCANNER_SALE_ACTIVE ? 149 : 350,
-    label: "Scanner",
+    label: "Pro",
     priceId: SCANNER_SALE_ACTIVE
       ? process.env.STRIPE_PRICE_SCANNER_SALE_ID!
       : process.env.STRIPE_PRICE_SCANNER_ID!,
-  },
-  pro: {
-    monthly: 499,
-    label: "Pro",
-    priceId: process.env.STRIPE_PRICE_PRO_ID!,
   },
   enterprise: {
     monthly: 1200,

@@ -12,7 +12,7 @@ import { PLAN_LIMITS, SCANNER_SALE_ACTIVE } from "@/lib/constants";
 const PLANS = [
   {
     key: "scanner" as const,
-    name: "Scanner",
+    name: "Pro",
     price: SCANNER_SALE_ACTIVE ? "£149/mo" : "£350/mo",
     features: ["5 scans per month", "All 30 risk categories", "PDF reports", "Scan history", "Email support"],
   },

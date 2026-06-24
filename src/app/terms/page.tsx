@@ -84,7 +84,7 @@ export default function TermsPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Free Plan", "1 scan per month at no charge. No credit card required."],
-                ["Scanner Plan", "£350/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
+                ["Pro Plan", "£350/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
                 ["Growth Plan", "£1,200/month. Billed monthly via Stripe."],
                 ["Sentinel Plan", "From £5,000/month, custom contract for larger engagements."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],

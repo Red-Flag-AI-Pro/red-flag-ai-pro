@@ -11,7 +11,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Scanner £350/mo for compliance scanning, Growth £1,200/mo for ongoing governance monitoring and teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Pro £350/mo for full compliance checking, Growth £1,200/mo for ongoing governance monitoring and teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -233,8 +233,8 @@ export default function PricingPage() {
               )}
 
               <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Scanner</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Just the compliance scanner, for solo creators and small teams who need it checked, not monitored.</p>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Full compliance checking, for solo creators and small teams who need it checked, not monitored.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 {SCANNER_SALE_ACTIVE ? (
@@ -270,7 +270,7 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Start Scanner
+                Start Pro
               </Link>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
                 No call required.
@@ -295,7 +295,7 @@ export default function PricingPage() {
             }}>
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Scanner plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Everything in Pro, plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
@@ -398,7 +398,7 @@ export default function PricingPage() {
                 <thead>
                   <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "left", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Need</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Scanner</th>
+                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Pro</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Growth</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Sentinel</th>
                   </tr>
@@ -462,7 +462,7 @@ export default function PricingPage() {
                   { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
                   { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
-                  { name: "Red Flag AI Pro (Scanner)", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
                   <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>

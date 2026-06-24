@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       .gte("created_at", startOfMonth.toISOString());
 
     if ((count ?? 0) >= limit) {
-      const upgradeMessage = plan === "pro"
+      const upgradeMessage = plan === "scanner"
         ? `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`
         : `You've reached your scan limit. Please upgrade to continue.`;
       return NextResponse.json(

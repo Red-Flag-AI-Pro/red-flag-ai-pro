@@ -76,7 +76,7 @@ export default function InvestorsPage() {
                 { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 to £160,000", highlight: false },
                 { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                 { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
-                { name: "Red Flag AI Pro (Scanner)", cost: "£4,200", highlight: true },
+                { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
                 { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
               ].map((row) => (
                 <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>

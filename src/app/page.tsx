@@ -190,7 +190,7 @@ export default function LandingPage() {
               Start governance assessment
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Scanner, Growth + Sentinel</Link></p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Pro, Growth + Sentinel</Link></p>
         </div>
       </section>
       <Footer />

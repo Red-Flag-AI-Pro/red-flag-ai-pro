@@ -2,8 +2,7 @@ import type { Plan } from "@/types";
 
 const CONFIG: Record<Plan, { label: string; className: string }> = {
   free: { label: "Starter", className: "bg-white/5 text-[rgba(244,241,234,0.6)]" },
-  scanner: { label: "Scanner", className: "bg-blue-100 text-blue-700" },
-  pro: { label: "Pro", className: "bg-red-100 text-[#ff9b9e]" },
+  scanner: { label: "Pro", className: "bg-blue-100 text-blue-700" },
   enterprise: { label: "Growth", className: "bg-purple-100 text-purple-700" },
   sentinel: { label: "Sentinel", className: "bg-gray-900 text-red-400 border border-red-500/30" },
 };

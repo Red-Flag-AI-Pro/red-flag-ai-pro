@@ -1,4 +1,4 @@
-export type Plan = "free" | "scanner" | "pro" | "enterprise" | "sentinel";
+export type Plan = "free" | "scanner" | "enterprise" | "sentinel";
 export type ScanStatus = "pending" | "complete" | "error";
 export type Severity = "low" | "medium" | "high";
 

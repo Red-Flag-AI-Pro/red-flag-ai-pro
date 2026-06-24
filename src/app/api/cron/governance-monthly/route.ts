@@ -70,7 +70,7 @@ export async function GET(request: Request) {
   const { data: profiles } = await supabase
     .from("profiles")
     .select("user_id, full_name, plan")
-    .in("plan", ["pro", "enterprise", "sentinel"]);
+    .in("plan", ["enterprise", "sentinel"]);
 
   if (!profiles || profiles.length === 0) {
     return NextResponse.json({ sent: 0 });

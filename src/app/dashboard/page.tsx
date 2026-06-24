@@ -12,8 +12,7 @@ import type { Plan, Scan } from "@/types";
 
 const PLAN_DISPLAY: Record<Plan, string> = {
   free: "Starter",
-  scanner: "Scanner",
-  pro: "Pro",
+  scanner: "Pro",
   enterprise: "Growth",
   sentinel: "Sentinel",
 };
@@ -162,7 +161,7 @@ export default async function DashboardPage({
               Upgrade →
             </Link>
           )}
-          {plan === "pro" && (
+          {plan === "scanner" && (
             <Link
               href="/sentinel"
               className="mt-1 block text-xs font-medium text-[#E5484D] hover:underline"
@@ -215,7 +214,7 @@ export default async function DashboardPage({
         <div className="rounded-xl border border-white/10 bg-gradient-to-r from-[#0A1628] to-[#0C1929] px-5 py-4 flex items-center justify-between gap-4">
           <div>
             <p className="text-sm font-semibold text-[#F4F1EA]">
-              {plan === "free" ? "Scan smarter with Scanner" : "Need team access? Try Sentinel"}
+              {plan === "free" ? "Check smarter with Pro" : "Need team access? Try Sentinel"}
             </p>
             <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
               {plan === "free"

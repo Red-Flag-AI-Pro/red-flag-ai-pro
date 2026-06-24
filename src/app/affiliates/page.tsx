@@ -16,7 +16,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations: anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Scanner referral (£350/mo) pays ~£52.50/month. One Growth referral (£1,200/mo) pays £180/month. As long as they stay subscribed, you earn. Referring an enterprise or Sentinel-sized account? Contact us directly, those are negotiated case by case." },
+  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Pro referral (£350/mo) pays ~£52.50/month. One Growth referral (£1,200/mo) pays £180/month. As long as they stay subscribed, you earn. Referring an enterprise or Sentinel-sized account? Contact us directly, those are negotiated case by case." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -31,8 +31,8 @@ const WHO_IT_IS_FOR = [
 ];
 
 const EARNINGS = [
-  { referrals: 5, plan: "Scanner (£350/mo)", monthly: "£263", annual: "£3,150" },
-  { referrals: 10, plan: "Scanner (£350/mo)", monthly: "£525", annual: "£6,300" },
+  { referrals: 5, plan: "Pro (£350/mo)", monthly: "£263", annual: "£3,150" },
+  { referrals: 10, plan: "Pro (£350/mo)", monthly: "£525", annual: "£6,300" },
   { referrals: 1, plan: "Growth (£1,200/mo)", monthly: "£180", annual: "£2,160" },
   { referrals: 5, plan: "Growth (£1,200/mo)", monthly: "£900", annual: "£10,800" },
 ];
@@ -79,7 +79,7 @@ export default function AffiliatesPage() {
           {[
             { value: "15%", label: "Recurring commission", sub: "on every payment they make" },
             { value: "£180", label: "Monthly per Growth referral", sub: "15% of £1,200/mo" },
-            { value: "£52.50+", label: "Monthly per Scanner referral", sub: "15% of £350/mo" },
+            { value: "£52.50+", label: "Monthly per Pro referral", sub: "15% of £350/mo" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
             <div key={stat.label} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>

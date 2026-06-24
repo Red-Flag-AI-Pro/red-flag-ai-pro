@@ -13,7 +13,7 @@ function SignupForm() {
   const plan = searchParams.get("plan");
   const prefillEmail = searchParams.get("email") ?? "";
   const fromDemo = !!prefillEmail;
-  const planLabel = plan === "pro" ? "Pro" : plan === "enterprise" ? "Growth" : null;
+  const planLabel = plan === "scanner" ? "Pro" : plan === "enterprise" ? "Growth" : null;
   const [name, setName] = useState("");
   const [email, setEmail] = useState(prefillEmail);
   const [password, setPassword] = useState("");

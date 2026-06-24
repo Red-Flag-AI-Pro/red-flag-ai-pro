@@ -45,7 +45,7 @@ export default function VendorsPage() {
   const [riskLevel, setRiskLevel] = useState<Vendor["risk_level"]>("unassessed");
   const [nextReviewDue, setNextReviewDue] = useState("");
 
-  const isPaid = plan === "pro" || plan === "enterprise" || plan === "sentinel";
+  const isPaid = plan === "scanner" || plan === "enterprise" || plan === "sentinel";
 
   useEffect(() => {
     async function load() {

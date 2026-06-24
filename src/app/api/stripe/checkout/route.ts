@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-  const plan = body.plan as "scanner" | "pro" | "enterprise" | "sentinel" | "audit";
+  const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit";
   const toltReferral = body.tolt_referral as string | undefined;
 
   const { data: profile } = await supabase
