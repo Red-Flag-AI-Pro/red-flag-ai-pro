@@ -130,7 +130,7 @@ export default function LandingPage() {
             <p style={{ ...syne, fontSize: "1.3rem", fontWeight: 700, color: "white", marginBottom: "0.5rem", lineHeight: 1.5 }}>
               You're one compliance fine away from £millions in penalties + reputation destruction.
             </p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. Your insurance won't cover regulatory fines.</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. 72% are increasing GRC spend right now, but 78% are still unprepared for the EU AI Act. Your insurance won't cover regulatory fines.</p>
           </div>
         </div>
       </section>

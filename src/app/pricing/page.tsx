@@ -134,7 +134,7 @@ export default function PricingPage() {
             <p style={{ ...syne, fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.6 }}>
               One unchecked ad with an undisclosed claim can trigger a fine before legal ever sees it. A regulator finding you can't prove governance afterward: enterprise reputation destroyed. Your insurance won't cover either.
             </p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. Most compliance tools are built once and left to go stale. We re-check every jurisdiction against the official text, so you're never caught running on a rule that already moved.</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. 72% are increasing GRC spend right now, but 78% are still unprepared for the EU AI Act. Most compliance tools are built once and left to go stale. We re-check every jurisdiction against the official text, so you're never caught running on a rule that already moved.</p>
           </div>
         </div>
       </section>
@@ -158,7 +158,7 @@ export default function PricingPage() {
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Every plan includes the full compliance scanner for your marketing copy, plus a 5-minute free assessment that shows your governance maturity, gaps, and 90-day roadmap.
+            Every plan includes the full compliance scanner for your marketing copy, plus a 5-minute free assessment scored across 6 dimensions, strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness, that shows your governance maturity, gaps, and 90-day roadmap.
           </p>
         </div>
       </section>
