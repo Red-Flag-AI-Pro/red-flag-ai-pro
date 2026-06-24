@@ -48,7 +48,7 @@ export const AUDIT_PRICE = {
 
 export const PLAN_PRICES = {
   scanner: {
-    monthly: 149,
+    monthly: 350,
     label: "Scanner",
     priceId: process.env.STRIPE_PRICE_SCANNER_ID!,
   },

@@ -130,7 +130,7 @@ export default function FeaturesPage() {
 
           {/* PRO TIER FEATURES */}
           <div style={{ marginBottom: "4rem", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>PRO Tier (£499/mo)</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>GROWTH Tier (£1,200/mo)</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>
               Ongoing Monitoring & Proof
             </h2>

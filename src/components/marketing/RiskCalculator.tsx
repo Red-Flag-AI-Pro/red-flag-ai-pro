@@ -252,8 +252,8 @@ function SellerCalculator() {
 
       {/* Value line */}
       <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)", padding: "12px 14px" }}>
-        <p style={{...mono, fontSize: "1rem", fontWeight: 700, color: "#4ade80"}}>{fmt(Math.round(total / 499))}x cheaper than your risk</p>
-        <p style={{...syne, fontSize: "11px", color: "rgba(134,239,172,0.65)", marginTop: "3px"}}>Red Flag AI Pro is £499/month. Your exposure is {fmt(total)}.</p>
+        <p style={{...mono, fontSize: "1rem", fontWeight: 700, color: "#4ade80"}}>{fmt(Math.round(total / 350))}x cheaper than your risk</p>
+        <p style={{...syne, fontSize: "11px", color: "rgba(134,239,172,0.65)", marginTop: "3px"}}>Red Flag AI Pro is £350/month. Your exposure is {fmt(total)}.</p>
       </div>
 
       <ShareButton text={`My marketing compliance exposure is ${fmt(total)}, just calculated it. What's yours?`} />

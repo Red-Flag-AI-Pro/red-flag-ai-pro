@@ -13,20 +13,14 @@ const PLANS = [
   {
     key: "scanner" as const,
     name: "Scanner",
-    price: "£149/mo",
+    price: "£350/mo",
     features: ["5 scans per month", "All 30 risk categories", "PDF reports", "Scan history", "Email support"],
-  },
-  {
-    key: "pro" as const,
-    name: "Pro",
-    price: "£499/mo",
-    features: ["10 scans per month", "Monthly reassessment", "Vendor tracking", "Dashboard", "Gap detection", "Evidence package", "Email support"],
   },
   {
     key: "enterprise" as const,
     name: "Growth",
     price: "£1,200/mo",
-    features: ["30 scans per month", "Multiple team seats", "API & webhook access", "White label PDF reports", "Priority email support"],
+    features: ["30 scans per month", "Ongoing governance monitoring", "Multiple team seats", "API & webhook access", "White label PDF reports", "Priority email support"],
   },
 ];
 
@@ -85,11 +79,11 @@ function BillingPageInner() {
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
   const pendingPlan =
-    plan === "free" && (requestedPlan === "scanner" || requestedPlan === "pro" || requestedPlan === "enterprise")
+    plan === "free" && (requestedPlan === "scanner" || requestedPlan === "enterprise")
       ? PLANS.find((p) => p.key === requestedPlan)
       : null;
 
-  async function handleCheckout(planKey: "scanner" | "pro" | "enterprise" | "sentinel") {
+  async function handleCheckout(planKey: "scanner" | "enterprise" | "sentinel") {
     setLoading(planKey);
     const res = await fetch("/api/stripe/checkout", {
       method: "POST",

@@ -7,7 +7,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Scanner £149/mo for compliance scanning, Pro £499/mo for ongoing monitoring, Growth £1,200/mo for teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Scanner £350/mo for compliance scanning, Growth £1,200/mo for ongoing governance monitoring and teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -22,8 +22,8 @@ const SCANNER_FEATURES = [
   "Email support",
 ];
 
-const PRO_FEATURES = [
-  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
+const GROWTH_FEATURES = [
+  "Full compliance scanner: 9 jurisdictions, all 30 risk categories, 30 scans/month",
   "Includes the free governance assessment",
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
@@ -32,22 +32,15 @@ const PRO_FEATURES = [
   "Unlimited PDF reports",
   "Governance evidence package (audit ready)",
   "Quarterly improvement roadmaps",
-  "Email support",
-  "14 day money back guarantee",
-];
-
-const GROWTH_FEATURES = [
-  "Everything in Pro",
-  "Full compliance scanner: 9 jurisdictions, all 30 risk categories, 30 scans/month",
   "Multiple team seats",
   "API & webhook access",
   "White label PDF reports",
   "Priority email support",
+  "14 day money back guarantee",
 ];
 
 const SENTINEL_FEATURES = [
   "Everything in Growth",
-  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
   "Managed governance implementation (we work it with you)",
   "Automated audit logging & forensic proof",
   "Ongoing governance & vendor monitoring reviews",
@@ -209,47 +202,6 @@ export default function PricingPage() {
             {/* SCANNER */}
             <div style={{
               background: "#0D1B2E",
-              border: "1px solid rgba(255,255,255,0.08)",
-              padding: "2.5rem",
-              position: "relative"
-            }}>
-              <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", marginTop: "1rem" }}>Scanner</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Just the compliance scanner, for solo creators and small teams who need it checked, not monitored.</p>
-              </div>
-              <div style={{ minHeight: "4.6rem" }}>
-                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  £149<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                </p>
-              </div>
-              <Link href="/signup?plan=scanner" style={{
-                display: "block", textAlign: "center",
-                background: "transparent",
-                color: "white",
-                border: "1.5px solid rgba(255,255,255,0.25)",
-                ...syne, fontSize: "0.875rem", fontWeight: 700,
-                padding: "12px 24px", borderRadius: "9999px",
-                textDecoration: "none", marginTop: "1.5rem"
-              }}>
-                Start Scanner
-              </Link>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                No call required.
-              </p>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
-                {SCANNER_FEATURES.map((f) => (
-                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "rgba(255,255,255,0.5)", flexShrink: 0, marginTop: "2px" }}>✓</span>
-                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* PRO */}
-            <div style={{
-              background: "#0D1B2E",
               border: "2px solid rgba(239,68,68,0.5)",
               padding: "2.5rem",
               position: "relative",
@@ -264,16 +216,15 @@ export default function PricingPage() {
               }}>Recommended</div>
 
               <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Ongoing proof that governance is actually happening, and you don&apos;t re-buy a new tool every time a new law lands.</p>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Scanner</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Just the compliance scanner, for solo creators and small teams who need it checked, not monitored.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  £499<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                 </p>
-                <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "0.5rem" }}>or £4,990/year (2 months free)</p>
               </div>
-              <Link href="/signup?plan=pro" style={{
+              <Link href="/signup?plan=scanner" style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
                 color: "white",
@@ -281,14 +232,14 @@ export default function PricingPage() {
                 padding: "12px 24px", borderRadius: "9999px",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Start Pro
+                Start Scanner
               </Link>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                14 day money back guarantee. No call required.
+                No call required.
               </p>
               <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
-                {PRO_FEATURES.map((f) => (
+                {SCANNER_FEATURES.map((f) => (
                   <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
                     <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
                     <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
@@ -306,7 +257,7 @@ export default function PricingPage() {
             }}>
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>For teams of 3 or more who've outgrown a single seat.</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Scanner plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
@@ -410,28 +361,26 @@ export default function PricingPage() {
                   <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "left", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Need</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Scanner</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Pro</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Growth</th>
                     <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Sentinel</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { need: "Compliance scanner (9 jurisdictions, 30 categories)", scanner: "✓", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "See governance gaps", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Monitor governance ongoing", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Automated compliance proof", scanner: "✗", pro: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "Multiple team seats", scanner: "✗", pro: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "API & webhook access", scanner: "✗", pro: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Financial impact modeling", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Board ready reporting", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Managed implementation", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Regulatory readiness review", scanner: "✗", pro: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Compliance scanner (9 jurisdictions, 30 categories)", scanner: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "See governance gaps", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Monitor governance ongoing", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Automated compliance proof", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Multiple team seats", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "API & webhook access", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Financial impact modeling", scanner: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Board ready reporting", scanner: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Managed implementation", scanner: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "Regulatory readiness review", scanner: "✗", growth: "✗", sentinel: "✓" },
                   ].map((row) => (
                     <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.scanner === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.scanner}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.pro === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.pro}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
                     </tr>
@@ -442,7 +391,7 @@ export default function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            Pro tier: 14 day money back guarantee. Sentinel: custom contract. All plans include priority email support.
+            Growth tier: 14 day money back guarantee. Sentinel: custom contract. All plans include priority email support.
           </p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
@@ -475,8 +424,7 @@ export default function PricingPage() {
                   { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
                   { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
-                  { name: "Red Flag AI Pro (Pro)", cost: "£5,988", highlight: true },
-                  { name: "Red Flag AI Pro (Scanner)", cost: "£1,788", highlight: true },
+                  { name: "Red Flag AI Pro (Scanner)", cost: "£4,200", highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
                   <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>
@@ -523,7 +471,7 @@ export default function PricingPage() {
 
             <div style={{ background: "#102943", padding: "2.25rem", borderLeft: "2px solid #E5484D" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Red Flag</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £149<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £350<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
               {[
                 "Audit ready evidence out of the box, nothing to build",

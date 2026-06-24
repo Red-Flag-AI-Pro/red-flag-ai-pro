@@ -152,7 +152,7 @@ export default async function DashboardPage() {
               href="/billing"
               className="mt-1 block text-xs font-medium text-[#E5484D] hover:underline"
             >
-              Upgrade to Pro →
+              Upgrade →
             </Link>
           )}
           {plan === "pro" && (
@@ -208,11 +208,11 @@ export default async function DashboardPage() {
         <div className="rounded-xl border border-white/10 bg-gradient-to-r from-[#0A1628] to-[#0C1929] px-5 py-4 flex items-center justify-between gap-4">
           <div>
             <p className="text-sm font-semibold text-[#F4F1EA]">
-              {plan === "free" ? "Scan smarter with Pro" : "Need team access? Try Sentinel"}
+              {plan === "free" ? "Scan smarter with Scanner" : "Need team access? Try Sentinel"}
             </p>
             <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
               {plan === "free"
-                ? "10 scans/month, monthly monitoring, vendor tracking, dashboard. £499/mo."
+                ? "5 scans/month, all 30 risk categories, PDF reports. £350/mo."
                 : "Managed implementation, audit logging, drift detection, board reporting, dedicated advisor. £5000+/mo."}
             </p>
           </div>

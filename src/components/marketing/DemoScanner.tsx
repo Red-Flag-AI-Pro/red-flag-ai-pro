@@ -671,9 +671,9 @@ export function DemoScanner() {
                   {result.totalFlags} violation{result.totalFlags !== 1 ? "s" : ""} found.
                 </p>
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem", maxWidth: "420px", margin: "0.5rem auto 1.75rem"}}>
-                  You&apos;ve seen 1 of {result.totalFlags}. Upgrade to Pro to unlock every flag, the exact regulation it breaks, and a compliant rewrite for each one.
+                  You&apos;ve seen 1 of {result.totalFlags}. Upgrade to Scanner to unlock every flag, the exact regulation it breaks, and a compliant rewrite for each one.
                 </p>
-                <Link href={`/signup?plan=pro${email.trim() ? `&email=${encodeURIComponent(email.trim())}` : ""}`} style={{
+                <Link href={`/signup?plan=scanner${email.trim() ? `&email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                   display: "inline-block",
                   background: "#E5484D",
                   color: "white",
@@ -686,9 +686,9 @@ export function DemoScanner() {
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
-                  Unlock With Pro: £499/mo
+                  Unlock With Scanner: £350/mo
                 </Link>
-                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 20 scans a month, every flag fully unlocked.</p>
+                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 5 scans a month, every flag fully unlocked.</p>
               </div>
             )}
 
