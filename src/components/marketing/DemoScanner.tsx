@@ -80,7 +80,7 @@ export function DemoScanner() {
     if (!content.trim()) return;
 
     if (!EMAIL_REGEX.test(email.trim())) {
-      setError("Please enter a valid email address. Each address gets one free scan.");
+      setError("Please enter a valid email address. Each address gets one free check.");
       return;
     }
 
@@ -178,7 +178,7 @@ export function DemoScanner() {
           </p>
 
           <p style={{...syne, fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em"}}>
-            No account. No card. Just your email, one free scan per address.
+            No account. No card. Just your email, one free check per address.
           </p>
         </div>
 
@@ -248,7 +248,7 @@ export function DemoScanner() {
               Private & Secure
             </p>
             <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.5}}>
-              Your copy is scanned in your browser only. We never store, sell, or see your data.
+              Your copy is checked in your browser only. We never store, sell, or see your data.
             </p>
           </div>
         </div>
@@ -309,7 +309,7 @@ export function DemoScanner() {
           boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)",
           borderRadius: "8px"
         }}>
-          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email: one free scan per address</p>
+          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email: one free check per address</p>
           <input
             type="email"
             value={email}
@@ -410,7 +410,7 @@ export function DemoScanner() {
             ) : (
               <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px"}}>
                 <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)"}}>
-                  Scanning for{" "}
+                  Checking for{" "}
                   <span style={{color: "white", fontWeight: 700}}>
                     {jurisdictions.length === JURISDICTIONS.length
                       ? "all 9 jurisdictions"
@@ -454,10 +454,10 @@ export function DemoScanner() {
               textAlign: "center"
             }}>
               <p style={{...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.4rem"}}>
-                You&apos;ve already used your free scan
+                You&apos;ve already used your free check
               </p>
               <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem"}}>
-                {email.trim()} has already claimed its one free scan. Create a free account to scan this copy and keep scanning more.
+                {email.trim()} has already claimed its one free check. Create a free account to check this copy and keep checking more.
               </p>
               <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
                 display: "inline-block",
@@ -507,13 +507,13 @@ export function DemoScanner() {
                   display: "inline-block",
                   animation: "spin 0.7s linear infinite"
                 }} />
-                Scanning...
+                Checking...
               </span>
             ) : jurisdictions.length === 0
               ? "Select at least one jurisdiction"
               : jurisdictions.length === JURISDICTIONS.length
-              ? "Scan Now: All 9 Jurisdictions"
-              : `Scan Now: ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
+              ? "Check Now: All 9 Jurisdictions"
+              : `Check Now: ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
             }
           </button>
         </div>

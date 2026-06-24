@@ -11,9 +11,9 @@ import { JurisdictionStrip } from "@/components/marketing/JurisdictionStrip";
 import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro: Compliance Scanning + AI Governance Proof",
+  title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
-    "Scan your marketing copy for compliance risk across 9 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
+    "Check your marketing copy for compliance risk across 9 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -55,7 +55,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>9 jurisdictions. 30 categories. The only scanner that tracks both as they change.</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>9 jurisdictions. 30 categories. The only checker that tracks both as they change.</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
@@ -63,11 +63,11 @@ export default function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>Prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
-            Scan your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, and we update every category and jurisdiction as the law changes, so you're never caught running on rules that already moved.
+            Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, and we update every category and jurisdiction as the law changes, so you're never caught running on rules that already moved.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <Link href="/#scanner" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Start free scan <span className="arrow">→</span>
+              Start free check <span className="arrow">→</span>
             </Link>
             <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
               Free governance assessment <span className="arrow">→</span>
@@ -218,12 +218,12 @@ export default function LandingPage() {
               {
                 role: "Creators & Course Sellers",
                 pain: "Is your ad about to get you fined, or flagged by the platform you're paying to run it on?",
-                solution: "Scan your copy in under 60 seconds. Catch income claims, fake urgency, and missing disclosures before you publish.",
+                solution: "Check your copy in under 60 seconds. Catch income claims, fake urgency, and missing disclosures before you publish.",
               },
               {
                 role: "Marketing Agencies",
                 pain: "Are you confident every client account is compliant, across every jurisdiction you serve?",
-                solution: "Run the scanner across every client's copy from one dashboard. Catch what slips past human review.",
+                solution: "Run the checker across every client's copy from one dashboard. Catch what slips past human review.",
               },
               {
                 role: "CFOs & Finance Leaders",
@@ -257,15 +257,15 @@ export default function LandingPage() {
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>No unsubstantiated claims, on principle</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.5rem", color: "white", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>We flag fake testimonials. We won&apos;t use them either.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "640px", margin: "0 auto 4rem", lineHeight: 1.7 }}>
-            Our own scanner flags unsubstantiated testimonials as a compliance risk. So instead of quotes we can&apos;t verify, here&apos;s what we can actually show you.
+            Our own checker flags unsubstantiated testimonials as a compliance risk. So instead of quotes we can&apos;t verify, here&apos;s what we can actually show you.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
               {
                 stat: "0/100",
-                title: "We scanned our own site first",
-                detail: "10 violations found before launch. We fixed them, then published the score. You can run the same scan on yours right now.",
+                title: "We checked our own site first",
+                detail: "10 violations found before launch. We fixed them, then published the score. You can run the same check on yours right now.",
               },
               {
                 stat: "30",
@@ -300,7 +300,7 @@ export default function LandingPage() {
             Six violations. None of them obvious. All happening right now.
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "680px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
-            A composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here&apos;s what a compliance scanner found that nobody else did.
+            A composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here&apos;s what a compliance checker found that nobody else did.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
@@ -367,7 +367,7 @@ export default function LandingPage() {
               padding: "14px 40px", borderRadius: "9999px",
               textDecoration: "none", display: "inline-block"
             }}>
-              Start free scan
+              Start free check
             </Link>
             <Link href="/governance-audit" style={{
               ...syne, fontSize: "1rem", fontWeight: 700,
