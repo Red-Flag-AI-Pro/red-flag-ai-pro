@@ -16,7 +16,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations: anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Scanner referral (£350/mo) pays ~£52.50/month. One Sentinel referral (custom, from £5,000+/mo) pays £750+/month. As long as they stay subscribed, you earn." },
+  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Scanner referral (£350/mo) pays ~£52.50/month. One Growth referral (£1,200/mo) pays £180/month. As long as they stay subscribed, you earn. Referring an enterprise or Sentinel-sized account? Contact us directly, those are negotiated case by case." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -33,9 +33,8 @@ const WHO_IT_IS_FOR = [
 const EARNINGS = [
   { referrals: 5, plan: "Scanner (£350/mo)", monthly: "£263", annual: "£3,150" },
   { referrals: 10, plan: "Scanner (£350/mo)", monthly: "£525", annual: "£6,300" },
-  { referrals: 1, plan: "Sentinel (from £5,000/mo)", monthly: "£750+", annual: "£9,000+" },
-  { referrals: 2, plan: "Sentinel (from £5,000/mo)", monthly: "£1,500+", annual: "£18,000+" },
-  { referrals: 3, plan: "Sentinel (from £5,000/mo)", monthly: "£2,250+", annual: "£27,000+" },
+  { referrals: 1, plan: "Growth (£1,200/mo)", monthly: "£180", annual: "£2,160" },
+  { referrals: 5, plan: "Growth (£1,200/mo)", monthly: "£900", annual: "£10,800" },
 ];
 
 export default function AffiliatesPage() {
@@ -79,7 +78,7 @@ export default function AffiliatesPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", textAlign: "center" }}>
           {[
             { value: "15%", label: "Recurring commission", sub: "on every payment they make" },
-            { value: "£750+", label: "Monthly per Sentinel referral", sub: "15% of custom Sentinel pricing" },
+            { value: "£180", label: "Monthly per Growth referral", sub: "15% of £1,200/mo" },
             { value: "£52.50+", label: "Monthly per Scanner referral", sub: "15% of £350/mo" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
@@ -121,18 +120,18 @@ export default function AffiliatesPage() {
               ))}
             </div>
             {EARNINGS.map((row, i) => {
-              const isSentinel = row.plan.includes("Sentinel");
+              const isGrowth = row.plan.includes("Growth");
               return (
-                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", padding: "1.25rem 1.5rem", borderBottom: i < EARNINGS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", background: isSentinel ? "rgba(229,72,77,0.06)" : i % 2 === 0 ? "#0D1B2E" : "#0C1929" }}>
-                  <span style={{ ...mono, fontSize: "1.25rem", fontWeight: 700, color: isSentinel ? "#fca5a5" : "white" }}>{row.referrals}</span>
-                  <span style={{ ...syne, fontSize: "13px", color: isSentinel ? "#fca5a5" : "rgba(255,255,255,0.5)", alignSelf: "center", fontWeight: isSentinel ? 700 : 400 }}>{row.plan}</span>
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", padding: "1.25rem 1.5rem", borderBottom: i < EARNINGS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", background: isGrowth ? "rgba(229,72,77,0.06)" : i % 2 === 0 ? "#0D1B2E" : "#0C1929" }}>
+                  <span style={{ ...mono, fontSize: "1.25rem", fontWeight: 700, color: isGrowth ? "#fca5a5" : "white" }}>{row.referrals}</span>
+                  <span style={{ ...syne, fontSize: "13px", color: isGrowth ? "#fca5a5" : "rgba(255,255,255,0.5)", alignSelf: "center", fontWeight: isGrowth ? 700 : 400 }}>{row.plan}</span>
                   <span style={{ ...mono, fontSize: "1.1rem", fontWeight: 700, color: "#ef4444" }}>{row.monthly}</span>
-                  <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: isSentinel ? "white" : "rgba(255,255,255,0.6)", alignSelf: "center" }}>{row.annual}</span>
+                  <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: isGrowth ? "white" : "rgba(255,255,255,0.6)", alignSelf: "center" }}>{row.annual}</span>
                 </div>
               );
             })}
           </div>
-          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem", textAlign: "center" }}>15% of net revenue. Paid monthly. Referrals must remain active subscribers.</p>
+          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem", textAlign: "center" }}>15% of net revenue. Paid monthly. Referrals must remain active subscribers. Sentinel referrals are negotiated directly, contact us before promoting one.</p>
         </div>
       </section>
 
