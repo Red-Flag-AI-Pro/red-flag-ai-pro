@@ -14,6 +14,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   const router = useRouter();
   const supabase = createClient();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   async function handleSignOut() {
     await supabase.auth.signOut();
@@ -24,7 +25,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10" style={{background: "rgba(10,22,40,0.85)", backdropFilter: "saturate(140%) blur(12px)", WebkitBackdropFilter: "saturate(140%) blur(12px)"}}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="flex items-center shrink-0" onClick={() => setMenuOpen(false)}>
           <Image
             src="/redflag-logo-full.png"
             alt="Red Flag AI Pro"
@@ -36,29 +37,70 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-1 sm:gap-2">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {isAuthenticated ? (
             <>
-              <Link href="/dashboard" className="nav-link px-3 py-1.5 text-sm">Dashboard</Link>
-              <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs">New Scan</Link>
-              <button onClick={handleSignOut} className="nav-link px-3 py-1.5 text-sm">Sign out</button>
+              <Link href="/dashboard" className="nav-link px-2.5 py-1.5 text-sm">Dashboard</Link>
+              <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs ml-2">New Scan</Link>
+              <button onClick={handleSignOut} className="nav-link px-2.5 py-1.5 text-sm">Sign out</button>
             </>
           ) : (
             <>
-              <Link href="/#scanner" className="nav-link px-3 py-1.5 text-sm">Compliance Assessment</Link>
-              <Link href="/governance-audit" className="nav-link px-3 py-1.5 text-sm">Governance Assessment</Link>
-              <Link href="/sentinel" className="nav-link px-3 py-1.5 text-sm">Sentinel</Link>
-              <Link href="/pricing" className="nav-link px-3 py-1.5 text-sm">Pricing</Link>
-              <Link href="/tools" className="nav-link px-3 py-1.5 text-sm">Tools</Link>
-              <Link href="/case-study" className="nav-link px-3 py-1.5 text-sm">Case Study</Link>
-              <Link href="/about" className="nav-link px-3 py-1.5 text-sm">About</Link>
-              <Link href="/blog" className="nav-link px-3 py-1.5 text-sm">Insights</Link>
-              <Link href="/affiliates" className="nav-link px-3 py-1.5 text-sm flex items-center gap-1.5">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>EARN</span></Link>
-              <Link href="/login" className="nav-link px-3 py-1.5 text-sm">Log in</Link>
-              <Link href="/governance-audit" className="btn-primary !py-2 !px-4 !text-xs">Free assessment</Link>
+              <Link href="/#scanner" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Compliance Assessment</Link>
+              <Link href="/governance-audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Governance Assessment</Link>
+              <Link href="/sentinel" className="nav-link px-2.5 py-1.5 text-sm">Sentinel</Link>
+              <Link href="/pricing" className="nav-link px-2.5 py-1.5 text-sm">Pricing</Link>
+
+              <div
+                className="relative"
+                onMouseEnter={() => setResourcesOpen(true)}
+                onMouseLeave={() => setResourcesOpen(false)}
+              >
+                <button className="nav-link px-2.5 py-1.5 text-sm flex items-center gap-1">
+                  Resources
+                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {resourcesOpen && (
+                  <div
+                    className="absolute left-0 top-full pt-1 w-44"
+                    style={{ zIndex: 50 }}
+                  >
+                    <div className="rounded-lg border border-white/10 py-1.5" style={{ background: "#0D1B2E" }}>
+                      <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Tools</Link>
+                      <Link href="/case-study" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
+                      <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
+                      <Link href="/about" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/affiliates" className="nav-link px-2.5 py-1.5 text-sm flex items-center gap-1.5">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>EARN</span></Link>
+              <Link href="/login" className="nav-link px-2.5 py-1.5 text-sm">Log in</Link>
+              <Link href="/governance-audit" className="btn-primary !py-2 !px-4 !text-xs ml-2 whitespace-nowrap">Free assessment</Link>
             </>
           )}
         </nav>
+
+        {/* Tablet: hamburger fallback between sm and lg */}
+        <div className="hidden sm:flex lg:hidden items-center gap-2">
+          {!isAuthenticated ? (
+            <Link href="/governance-audit" className="btn-primary !py-2 !px-4 !text-xs whitespace-nowrap">Free assessment</Link>
+          ) : (
+            <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs">New Scan</Link>
+          )}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="rounded-md p-2 text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
 
         {/* Mobile: CTA + hamburger */}
         <div className="flex sm:hidden items-center gap-2">
