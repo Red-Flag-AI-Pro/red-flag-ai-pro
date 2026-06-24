@@ -52,14 +52,16 @@ export default async function NewScanPage() {
           </h2>
           <p className="mt-2 text-sm text-[#E5484D]">
             {plan === "free"
-              ? "You're on the Starter plan. Upgrade to Pro for 10 scans a month."
-              : `You've used all ${limit} scans this month. Upgrade to Growth for unlimited scans.`}
+              ? `You're on the Starter plan. Upgrade to Scanner for ${PLAN_LIMITS.scanner} scans a month.`
+              : plan === "enterprise"
+              ? `You've used all ${limit} scans this month. Upgrade to Sentinel for unlimited scans.`
+              : `You've used all ${limit} scans this month. Upgrade to Growth for ${PLAN_LIMITS.enterprise} scans a month.`}
           </p>
           <Link
             href="/billing"
             className="mt-5 inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
           >
-            Upgrade to Pro
+            {plan === "enterprise" ? "Upgrade to Sentinel" : plan === "free" ? "Upgrade to Scanner" : "Upgrade to Growth"}
           </Link>
         </div>
       ) : (
@@ -69,9 +71,9 @@ export default async function NewScanPage() {
               You&apos;ve used <strong>{scansUsed}</strong> of <strong>{limit}</strong>{" "}
               scans this month.{" "}
               <Link href="/billing" className="font-semibold underline">
-                {plan === "free" ? "Upgrade to Pro" : "Upgrade to Growth"}
+                {plan === "free" ? "Upgrade to Scanner" : plan === "enterprise" ? "Upgrade to Sentinel" : "Upgrade to Growth"}
               </Link>{" "}
-              for {plan === "free" ? "10 scans per month" : "unlimited scans"}.
+              for {plan === "free" ? `${PLAN_LIMITS.scanner} scans per month` : plan === "enterprise" ? "unlimited scans" : `${PLAN_LIMITS.enterprise} scans per month`}.
             </div>
           )}
           <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
