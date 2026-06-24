@@ -2,6 +2,7 @@
 
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
 import {
   GOVERNANCE_DIMENSIONS,
   PEER_BENCHMARK,
@@ -77,7 +78,7 @@ export function GovernanceAuditResults({
             </p>
             <div className="flex items-baseline gap-3">
               <span className={`text-6xl font-bold ${colors.text}`}>
-                {response.overallScore}
+                <AnimatedNumber value={response.overallScore} />
               </span>
               <span className="text-3xl text-gray-500">/100</span>
             </div>
@@ -137,7 +138,7 @@ export function GovernanceAuditResults({
                     </p>
                   </div>
                   <span className={`text-2xl font-bold ${dimColors.text}`}>
-                    {score}
+                    <AnimatedNumber value={score} />
                   </span>
                 </div>
 
@@ -145,7 +146,7 @@ export function GovernanceAuditResults({
                 <div className="w-full bg-gray-900 rounded-full h-1">
                   <div
                     className={`h-full rounded-full ${dimColors.badge}`}
-                    style={{ width: `${Math.min(100, score)}%` }}
+                    style={{ width: `${Math.min(100, score)}%`, transition: 'width 0.9s cubic-bezier(0.16,1,0.3,1)' }}
                   />
                 </div>
               </div>

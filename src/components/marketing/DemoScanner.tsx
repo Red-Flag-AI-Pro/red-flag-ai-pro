@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { JurisdictionPicker, JURISDICTIONS } from "@/components/ui/JurisdictionPicker";
+import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import type { JurisdictionCode } from "@/lib/analyzer";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" };
@@ -531,13 +532,16 @@ export function DemoScanner() {
             }}>
               <div>
                 <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.5rem"}}>Compliance Score</p>
-                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, color: scoreColor, lineHeight: 1}}>
-                  {result.score}<span style={{fontSize: "1.25rem", color: "rgba(255,255,255,0.2)"}}>/ 100</span>
+                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, lineHeight: 1}}>
+                  <AnimatedNumber value={result.score} style={{color: scoreColor}} />
+                  <span style={{fontSize: "1.25rem", color: "rgba(255,255,255,0.2)"}}>/ 100</span>
                 </p>
               </div>
               <div style={{textAlign: "right"}}>
                 <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.5rem"}}>Flags Found</p>
-                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, color: result.totalFlags > 0 ? "#ef4444" : "#4ade80", lineHeight: 1}}>{result.totalFlags}</p>
+                <p className="font-display" style={{fontSize: "3.5rem", fontWeight: 500, lineHeight: 1}}>
+                  <AnimatedNumber value={result.totalFlags} style={{color: result.totalFlags > 0 ? "#ef4444" : "#4ade80"}} />
+                </p>
               </div>
             </div>
 
