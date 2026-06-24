@@ -266,7 +266,7 @@ export default function FeaturesPage() {
             Ready to know where you stand?
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
-            Start with a free assessment. See your score, gaps, and roadmap. Then choose Pro or Sentinel.
+            Start with a free assessment. See your score, gaps, and roadmap. Then choose Scanner, Growth, or Sentinel.
           </p>
           <Link href="/governance-audit" style={{
             ...syne, fontSize: "1rem", fontWeight: 700,

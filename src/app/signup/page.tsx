@@ -62,17 +62,6 @@ function SignupForm() {
       return;
     }
 
-    // Fire Google Ads purchase conversion (enhanced conversions via user_data)
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      const gtag = (window as any).gtag;
-      gtag("set", "user_data", { email });
-      gtag("event", "purchase", {
-        value: 1.0,
-        currency: "GBP",
-      });
-      window.localStorage.setItem("rfa_signup_conversion_fired", "1");
-    }
-
     // If email confirmation is required, signUp() doesn't return a session —
     // pushing to /dashboard would just bounce off the auth middleware.
     if (!data.session) {
