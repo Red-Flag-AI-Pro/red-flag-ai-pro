@@ -90,9 +90,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://www.redflagaipro.com",
     siteName: "Red Flag AI Pro",
-    title: "Red Flag AI Pro — Prove your AI governance before regulators ask.",
+    title: "Red Flag AI Pro — AI Compliance and AI Governance, Done Properly.",
     description:
-      "Score your AI governance maturity across 6 dimensions, benchmark against peers, and generate audit-ready evidence for the EU AI Act, DORA, SEC and Munir. Free assessment for CFOs, compliance and risk teams.",
+      "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
     images: [
       {
         url: "/og-image.png",
@@ -104,9 +104,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Red Flag AI Pro — AI Governance Maturity Index & Compliance Proof",
+    title: "Red Flag AI Pro — AI Compliance and AI Governance, Done Properly.",
     description:
-      "Score your AI governance maturity, benchmark against peers, and generate audit-ready evidence for the EU AI Act, DORA, SEC and Munir. Free 5-minute assessment.",
+      "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
     images: ["/og-image.png"],
     creator: "@redflagaipro",
   },
