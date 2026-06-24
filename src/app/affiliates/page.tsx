@@ -16,7 +16,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 const HOW_IT_WORKS = [
   { num: "01", title: "Sign up free", body: "Apply in one click. No approval process, no monthly fee. You get a unique tracking link the moment you join." },
   { num: "02", title: "Share your link", body: "Add it to your content, newsletter, social posts, or client recommendations: anywhere your audience trusts you." },
-  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Scanner referral (£350/mo) pays ~£52.50/month. One Sentinel referral (custom, from £3,000+/mo) pays £450+/month. As long as they stay subscribed, you earn." },
+  { num: "03", title: "Earn every month", body: "You get 15% recurring commission on every payment. One Scanner referral (£350/mo) pays ~£52.50/month. One Sentinel referral (custom, from £5,000+/mo) pays £750+/month. As long as they stay subscribed, you earn." },
 ];
 
 const WHO_IT_IS_FOR = [
@@ -33,9 +33,9 @@ const WHO_IT_IS_FOR = [
 const EARNINGS = [
   { referrals: 5, plan: "Scanner (£350/mo)", monthly: "£263", annual: "£3,150" },
   { referrals: 10, plan: "Scanner (£350/mo)", monthly: "£525", annual: "£6,300" },
-  { referrals: 1, plan: "Sentinel (from £3,000/mo)", monthly: "£450+", annual: "£5,400+" },
-  { referrals: 2, plan: "Sentinel (from £3,000/mo)", monthly: "£900+", annual: "£10,800+" },
-  { referrals: 3, plan: "Sentinel (from £3,000/mo)", monthly: "£1,350+", annual: "£16,200+" },
+  { referrals: 1, plan: "Sentinel (from £5,000/mo)", monthly: "£750+", annual: "£9,000+" },
+  { referrals: 2, plan: "Sentinel (from £5,000/mo)", monthly: "£1,500+", annual: "£18,000+" },
+  { referrals: 3, plan: "Sentinel (from £5,000/mo)", monthly: "£2,250+", annual: "£27,000+" },
 ];
 
 export default function AffiliatesPage() {
@@ -79,7 +79,7 @@ export default function AffiliatesPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", textAlign: "center" }}>
           {[
             { value: "15%", label: "Recurring commission", sub: "on every payment they make" },
-            { value: "£450+", label: "Monthly per Sentinel referral", sub: "15% of custom Sentinel pricing" },
+            { value: "£750+", label: "Monthly per Sentinel referral", sub: "15% of custom Sentinel pricing" },
             { value: "£52.50+", label: "Monthly per Scanner referral", sub: "15% of £350/mo" },
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
@@ -162,7 +162,7 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="LinkedIn"
             label="Professional / agency audience"
-            post={`I just scanned a well known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations: income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns, you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 25 other risk categories. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 15% recurring commission. One agency referral pays you every month they stay subscribed.\n\nLink: [YOUR AFFILIATE LINK]`}
+            post={`I just scanned a well known brand's homepage through Red Flag AI Pro.\n\nScore: 0/100. Seven compliance violations: income claims, fake urgency, GDPR issues.\n\nThey had no idea.\n\nIf you run ads, write copy, or manage client campaigns, you need to run this before anything goes live. It checks against FTC, ASA, GDPR, FCA and 26 other risk categories, 30 in total. Takes 60 seconds. Free scan, no account needed.\n\nIf you want to earn from it: they have an affiliate programme. 15% recurring commission. One agency referral pays you every month they stay subscribed.\n\nLink: [YOUR AFFILIATE LINK]`}
           />
           <PromoBox
             platform="X / Twitter"
