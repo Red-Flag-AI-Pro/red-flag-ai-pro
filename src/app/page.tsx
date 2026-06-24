@@ -7,6 +7,7 @@ import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ProveItWidget } from "@/components/marketing/ProveItWidget";
+import { DemoScanner } from "@/components/marketing/DemoScanner";
 import { JurisdictionStrip } from "@/components/marketing/JurisdictionStrip";
 import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
 
@@ -136,8 +137,10 @@ export default function LandingPage() {
       </section>
 
       <div id="scanner">
-        <ProveItWidget />
+        <DemoScanner />
       </div>
+
+      <ProveItWidget />
 
       {/* WHAT YOU GET */}
       <section style={{

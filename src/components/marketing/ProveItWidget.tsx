@@ -39,7 +39,7 @@ export function ProveItWidget() {
       <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '1.25rem' }}>
           <span style={{ width: '24px', height: '1px', background: 'rgba(229,72,77,0.6)' }} />
-          <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.55)' }}>The Compliance Assessment</p>
+          <p style={{ ...syne, fontSize: '11px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(244,241,234,0.55)' }}>Governance self-check</p>
           <span style={{ width: '24px', height: '1px', background: 'rgba(229,72,77,0.6)' }} />
         </div>
 
