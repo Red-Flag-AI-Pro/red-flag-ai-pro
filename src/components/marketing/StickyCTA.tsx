@@ -27,7 +27,7 @@ export function StickyCTA() {
         <p className="sm:hidden text-sm font-bold text-white">Free scan or free assessment, your call.</p>
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
-            href="/#scanner"
+            href="/compliance-assessment"
             className="rounded-lg bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
             Free scan →

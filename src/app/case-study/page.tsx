@@ -281,7 +281,7 @@ export default function CaseStudyPage() {
             }}>
               See Sentinel for agencies
             </Link>
-            <a href="/#scanner" style={{
+            <a href="/compliance-assessment" style={{
               display: "inline-block",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "rgba(255,255,255,0.5)",

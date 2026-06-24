@@ -155,7 +155,7 @@ export default function ComparePage() {
             Comparing us against AI governance platforms like OneTrust or Credo AI instead? See the <Link href="/pricing" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>governance pricing comparison</Link>.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/#scanner" style={{
+            <a href="/compliance-assessment" style={{
               display: "inline-block",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.875rem", fontWeight: 700,

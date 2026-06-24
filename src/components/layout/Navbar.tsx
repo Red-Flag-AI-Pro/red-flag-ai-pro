@@ -46,7 +46,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             </>
           ) : (
             <>
-              <Link href="/#scanner" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Compliance Assessment</Link>
+              <Link href="/compliance-assessment" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Compliance Assessment</Link>
               <Link href="/governance-audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Governance Assessment</Link>
               <Link href="/sentinel" className="nav-link px-2.5 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-2.5 py-1.5 text-sm">Pricing</Link>
@@ -143,7 +143,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               </>
             ) : (
               <>
-                <Link href="/#scanner" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compliance Assessment</Link>
+                <Link href="/compliance-assessment" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compliance Assessment</Link>
                 <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Governance Assessment</Link>
                 <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: managed governance &amp; compliance</Link>
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>

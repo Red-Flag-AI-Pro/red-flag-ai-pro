@@ -443,7 +443,7 @@ export default function AboutPage() {
               Start assessment
             </Link>
             <Link
-              href="/#scanner"
+              href="/compliance-assessment"
               style={{
                 ...syne,
                 fontSize: "1rem",

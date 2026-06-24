@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { GovernanceAuditFlow } from '@/components/governance-audit/GovernanceAuditFlow';
 import { TrustBar } from '@/components/marketing/TrustBar';
+import { ProveItWidget } from '@/components/marketing/ProveItWidget';
+import { JurisdictionStrip } from '@/components/marketing/JurisdictionStrip';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
@@ -141,7 +143,14 @@ export default function GovernanceAuditPage() {
 
         {/* Quiz Flow Component */}
         <GovernanceAuditFlow />
+      </div>
+      </div>
 
+      <ProveItWidget />
+      <JurisdictionStrip />
+
+      <div className="py-12 px-4">
+      <div className="max-w-4xl mx-auto">
         {/* Footer */}
         <div style={{
           borderTop: '1px solid rgba(255,255,255,0.05)',
@@ -159,7 +168,7 @@ export default function GovernanceAuditPage() {
             color: 'rgba(255,255,255,0.4)',
             marginTop: '0.75rem',
           }}>
-            Here for the marketing copy side instead? <a href="/#scanner" style={{ color: '#E5484D', textDecoration: 'underline' }}>Run a free compliance check</a>.
+            Here for the marketing copy side instead? <a href="/compliance-assessment" style={{ color: '#E5484D', textDecoration: 'underline' }}>Run a free compliance check</a>.
           </p>
         </div>
       </div>
