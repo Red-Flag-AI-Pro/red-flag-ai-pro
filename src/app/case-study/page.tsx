@@ -110,7 +110,7 @@ export default function CaseStudyPage() {
             All happening right now.
           </h1>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: "600px" }}>
-            This is a composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here is what a compliance scanner found that nobody else did.
+            This is a composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here is what a compliance checker found that nobody else did.
           </p>
         </div>
       </section>
@@ -201,7 +201,7 @@ export default function CaseStudyPage() {
 
                 {/* What we found */}
                 <div>
-                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "0.75rem" }}>What the scanner found</p>
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "0.75rem" }}>What the checker found</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8 }}>{flag.description}</p>
                 </div>
 
@@ -252,7 +252,7 @@ export default function CaseStudyPage() {
               The point of this case study
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>
-              None of these violations were caught in internal review. None of them looked wrong to the people who wrote, approved and published them. All of them were found in 60 seconds by a compliance scanner.
+              None of these violations were caught in internal review. None of them looked wrong to the people who wrote, approved and published them. All of them were found in 60 seconds by a compliance checker.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
               The FCA violation could result in criminal prosecution. The CASL violation had been running for two years building liability on every send. The drip pricing was being amplified by paid ads the agency was managing. The influencer campaign had twenty posts live without a single disclosure.
@@ -268,7 +268,7 @@ export default function CaseStudyPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            Sentinel plan includes unlimited scanning, a tamper resistant audit trail, client workspaces and weekly monitoring of live campaigns. If you're a CFO or compliance lead rather than an agency, the same audit trail thinking applies to AI governance.
+            Sentinel plan includes unlimited checks, a tamper resistant audit trail, client workspaces and weekly monitoring of live campaigns. If you're a CFO or compliance lead rather than an agency, the same audit trail thinking applies to AI governance.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
@@ -289,7 +289,7 @@ export default function CaseStudyPage() {
               padding: "13px 28px", borderRadius: "9999px",
               textDecoration: "none"
             }}>
-              Try a free scan
+              Try a free check
             </a>
             <Link href="/governance-audit" style={{
               display: "inline-block",
