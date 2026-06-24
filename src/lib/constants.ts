@@ -8,7 +8,7 @@ export const REGULATORY_MAPPING_LAST_REVIEWED = "21 June 2026";
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 1,
   scanner: 5,
-  pro: 10,
+  pro: 15,
   enterprise: 30,
   sentinel: Infinity,
 };
