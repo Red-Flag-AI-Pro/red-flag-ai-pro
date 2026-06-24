@@ -2,7 +2,7 @@
  * AI Governance Audit Tool
  * Quiz framework, scoring logic, and governance assessment engine
  *
- * 6 dimensions × 4-5 questions each = 25-30 total questions
+ * 6 dimensions, 23 total questions
  * Scoring: 0-100 governance maturity score
  * Risk levels: Critical (0-30), Moderate (31-60), Managed (61-80), Mature (81-100)
  */
