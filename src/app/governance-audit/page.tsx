@@ -159,7 +159,7 @@ export default function GovernanceAuditPage() {
             color: 'rgba(255,255,255,0.4)',
             marginTop: '0.75rem',
           }}>
-            Here for the marketing copy side instead? <a href="/#scanner" style={{ color: '#E5484D', textDecoration: 'underline' }}>Run a free compliance scan</a>.
+            Here for the marketing copy side instead? <a href="/#scanner" style={{ color: '#E5484D', textDecoration: 'underline' }}>Run a free compliance check</a>.
           </p>
         </div>
       </div>
