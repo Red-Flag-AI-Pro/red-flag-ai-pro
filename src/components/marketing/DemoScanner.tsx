@@ -5,6 +5,7 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { JurisdictionPicker, JURISDICTIONS } from "@/components/ui/JurisdictionPicker";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
+import { SCANNER_SALE_ACTIVE } from "@/lib/constants";
 import type { JurisdictionCode } from "@/lib/analyzer";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" };
@@ -690,7 +691,7 @@ export function DemoScanner() {
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
-                  Unlock With Scanner: £350/mo
+                  Unlock With Scanner: {SCANNER_SALE_ACTIVE ? "£149/mo (birthday sale)" : "£350/mo"}
                 </Link>
                 <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 5 scans a month, every flag fully unlocked.</p>
               </div>

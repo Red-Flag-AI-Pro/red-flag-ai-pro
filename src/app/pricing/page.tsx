@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE } from "@/lib/constants";
 import React from "react";
+
+// Revalidate hourly so the founder's birthday sale price flips back to £350
+// shortly after SCANNER_SALE_ENDS without needing a fresh deploy.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
@@ -215,14 +219,48 @@ export default function PricingPage() {
                 padding: "4px 12px"
               }}>Recommended</div>
 
+              {SCANNER_SALE_ACTIVE && (
+                <div style={{
+                  position: "absolute", top: "-1px", right: "-1px",
+                  background: "#C9A66B",
+                  ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
+                  textTransform: "uppercase", color: "#0A1628",
+                  padding: "5px 14px",
+                  borderBottomLeftRadius: "8px",
+                }}>
+                  Founder&apos;s birthday sale → 31 Jul
+                </div>
+              )}
+
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Scanner</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Just the compliance scanner, for solo creators and small teams who need it checked, not monitored.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
-                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                </p>
+                {SCANNER_SALE_ACTIVE ? (
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
+                    <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
+                      £350
+                      <span style={{
+                        position: "absolute", left: "-4%", right: "-4%", top: "50%",
+                        height: "2px", background: "#C9A66B",
+                        transform: "rotate(-8deg)",
+                      }} />
+                    </p>
+                    <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                      £149<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                    </p>
+                  </div>
+                ) : (
+                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                    £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  </p>
+                )}
+                {SCANNER_SALE_ACTIVE && (
+                  <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
+                    Lock this rate in for as long as you stay subscribed.
+                  </p>
+                )}
               </div>
               <Link href="/signup?plan=scanner" style={{
                 display: "block", textAlign: "center",

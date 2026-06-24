@@ -46,11 +46,20 @@ export const AUDIT_PRICE = {
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
 
+// Founder's birthday sale: Scanner at £149/mo for anyone who signs up before
+// 1 Aug 2026. Existing-subscriber-grandfathering policy applies, same as any
+// other price change, so sale signups keep £149/mo for as long as they stay
+// subscribed rather than reverting after the sale window closes.
+export const SCANNER_SALE_ENDS = "2026-08-01T00:00:00+01:00";
+export const SCANNER_SALE_ACTIVE = new Date() < new Date(SCANNER_SALE_ENDS);
+
 export const PLAN_PRICES = {
   scanner: {
-    monthly: 350,
+    monthly: SCANNER_SALE_ACTIVE ? 149 : 350,
     label: "Scanner",
-    priceId: process.env.STRIPE_PRICE_SCANNER_ID!,
+    priceId: SCANNER_SALE_ACTIVE
+      ? process.env.STRIPE_PRICE_SCANNER_SALE_ID!
+      : process.env.STRIPE_PRICE_SCANNER_ID!,
   },
   pro: {
     monthly: 499,
