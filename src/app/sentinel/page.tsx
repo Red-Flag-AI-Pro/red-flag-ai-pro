@@ -437,7 +437,7 @@ export default function SentinelPage() {
                 boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Get started
+                Get compliant today
               </Link>
             </div>
           </div>
