@@ -693,7 +693,7 @@ export function DemoScanner() {
                 }}>
                   Unlock With Scanner: {SCANNER_SALE_ACTIVE ? "£149/mo (birthday sale)" : "£350/mo"}
                 </Link>
-                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 5 scans a month, every flag fully unlocked.</p>
+                <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 5 checks a month, every flag fully unlocked.</p>
               </div>
             )}
 
@@ -730,7 +730,7 @@ export function DemoScanner() {
 
         {/* Feedback link */}
         <div style={{textAlign: "center", marginTop: "3rem"}}>
-          <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", marginBottom: "0.5rem"}}>Tried the scanner? Let us know what you found.</p>
+          <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", marginBottom: "0.5rem"}}>Tried it? Let us know what you found.</p>
           <Link href="/feedback" style={{
             ...syne, fontSize: "12px", fontWeight: 700,
             color: "rgba(239,68,68,0.6)",

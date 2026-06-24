@@ -8,8 +8,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Product",
     links: [
-      { label: "Scanner", href: "/#scanner" },
-      { label: "Assessment", href: "/governance-audit" },
+      { label: "Compliance Assessment", href: "/#scanner" },
+      { label: "Governance Assessment", href: "/governance-audit" },
       { label: "Sentinel", href: "/sentinel" },
       { label: "Pricing", href: "/pricing" },
       { label: "Case study", href: "/case-study" },

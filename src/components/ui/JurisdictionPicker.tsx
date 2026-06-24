@@ -229,7 +229,7 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
           letterSpacing: "0.04em",
           lineHeight: 1.6,
         }}>
-          Scanning:{" "}
+          Checking:{" "}
           {value.map(code => {
             const j = JURISDICTIONS.find(j => j.code === code)!;
             return j.laws;
