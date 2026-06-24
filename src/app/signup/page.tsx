@@ -30,7 +30,7 @@ function SignupForm() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}` : "/dashboard"}`,
+        redirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}` : "/dashboard?welcome=1"}`,
       },
     });
     if (error) {
@@ -52,7 +52,7 @@ function SignupForm() {
       password,
       options: {
         data: { full_name: name },
-        emailRedirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}` : "/dashboard"}`,
+        emailRedirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}` : "/dashboard?welcome=1"}`,
       },
     });
 
@@ -70,7 +70,7 @@ function SignupForm() {
       return;
     }
 
-    router.push("/dashboard");
+    router.push("/dashboard?welcome=1");
     router.refresh();
   }
 
