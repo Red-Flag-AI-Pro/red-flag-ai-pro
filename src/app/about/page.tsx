@@ -96,7 +96,7 @@ export default function AboutPage() {
               margin: "0 auto",
             }}
           >
-            Red Flag started as a scanner that catches compliance risk in your marketing copy before it ships. The same gap shows up at the next level: every organization has governance policies, but when a regulator asks, "Can you prove governance happened?" most organizations can&apos;t. Red Flag now closes both gaps.
+            Red Flag started as a checker that catches compliance risk in your marketing copy before it ships. The same gap shows up at the next level: every organization has governance policies, but when a regulator asks, "Can you prove governance happened?" most organizations can&apos;t. Red Flag now closes both gaps.
           </p>
         </div>
       </section>
@@ -162,6 +162,7 @@ export default function AboutPage() {
                   padding: "2rem",
                 }}
               >
+                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
                 <p
                   style={{
                     ...syne,
@@ -266,7 +267,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Catch It Before It Ships",
-                desc: "Real time scanner checks marketing copy against 30 risk categories across 9 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
+                desc: "Real time check on marketing copy against 30 risk categories across 9 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
               },
               {
                 icon: "",
@@ -370,7 +371,7 @@ export default function AboutPage() {
             >
               Most tools in this space do one thing. The enterprise governance
               platforms, OneTrust, Credo AI, never touch the actual copy your
-              team publishes. The compliance scanners that do check copy have
+              team publishes. The compliance checkers that do check copy have
               no idea what AI governance even means. Red Flag does both,
               under one roof, built on the same regulatory research.
             </p>
@@ -457,7 +458,7 @@ export default function AboutPage() {
                 display: "inline-block",
               }}
             >
-              Try the scanner
+              Try the checker
             </Link>
           </div>
         </div>
