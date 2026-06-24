@@ -292,6 +292,62 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* CASE STUDY TEASER */}
+      <section style={{ background: "#0D1B2E", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Case study</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.25rem", color: "white", textAlign: "center" }}>
+            Six violations. None of them obvious. All happening right now.
+          </h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "680px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
+            A composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here&apos;s what a compliance scanner found that nobody else did.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
+            {[
+              {
+                tag: "FCA Financial Promotion",
+                severity: "HIGH",
+                excerpt: "“Start growing your money today. Our members earn an average of 4.2% annually. Low risk, high reward.”",
+                finding: "Unapproved financial promotion under FSMA 2000 Section 21. Not a civil fine: a criminal offence. The agency that wrote it is exposed, not just the client.",
+              },
+              {
+                tag: "EU AI Act, Article 50",
+                severity: "HIGH",
+                excerpt: "“Every piece of content we create comes from genuine human expertise.”",
+                finding: "Written by ChatGPT, published with a claim that it wasn't. Article 50(4) requires disclosure from 2 August 2026. Fines reach €15M or 3% of global turnover.",
+              },
+            ].map((item) => (
+              <div key={item.tag} style={{
+                background: "rgba(16,41,67,0.8)",
+                border: "1px solid rgba(239,68,68,0.2)",
+                borderRadius: "12px",
+                padding: "2rem",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1rem" }}>
+                  <span style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#ef4444", padding: "4px 10px", borderRadius: "9999px", background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)" }}>{item.severity}</span>
+                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white" }}>{item.tag}</p>
+                </div>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", fontStyle: "italic", marginBottom: "1rem", borderLeft: "2px solid rgba(239,68,68,0.3)", paddingLeft: "1rem" }}>{item.excerpt}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>{item.finding}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <Link href="/case-study" style={{
+              ...syne, fontSize: "0.95rem", fontWeight: 700,
+              background: "transparent", color: "white",
+              border: "1px solid rgba(255,255,255,0.2)",
+              padding: "14px 32px", borderRadius: "9999px",
+              textDecoration: "none", display: "inline-block"
+            }}>
+              Read the full case study →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
@@ -323,7 +379,7 @@ export default function LandingPage() {
               Start governance assessment
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Pro + Sentinel</Link></p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Scanner, Growth + Sentinel</Link></p>
         </div>
       </section>
       <Footer />
