@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { GoogleConversion } from "@/components/marketing/GoogleConversion";
+import { SignupVerifiedConversion } from "@/components/marketing/SignupVerifiedConversion";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PlanBadge } from "@/components/billing/PlanBadge";
@@ -23,7 +24,12 @@ function scoreColor(score: number) {
   return "text-[#E5484D]";
 }
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ welcome?: string }>;
+}) {
+  const { welcome } = await searchParams;
   const supabase = await createClient();
 
   const {
@@ -92,6 +98,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <GoogleConversion email={user.email} />
+      {welcome === "1" && <SignupVerifiedConversion />}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[#F4F1EA]">
