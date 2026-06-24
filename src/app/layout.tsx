@@ -164,8 +164,15 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Offer",
-                  "name": "Pro",
+                  "name": "Scanner",
                   "price": "350",
+                  "priceCurrency": "GBP",
+                  "billingPeriod": "P1M"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Growth",
+                  "price": "1200",
                   "priceCurrency": "GBP",
                   "billingPeriod": "P1M"
                 },
