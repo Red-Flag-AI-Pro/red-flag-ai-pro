@@ -103,7 +103,7 @@ export default function WhyCompliancePage() {
             <span style={{ display: "block", fontStyle: "italic" }}>Or safe to buy.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", marginBottom: "4rem", maxWidth: "600px", lineHeight: 1.7 }}>
-            From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI generated copy that breaches advertising law is now an <span style={{ color: "white", fontWeight: 600 }}>uninsured liability</span>.
+            Adoption is not just getting faster because the tools improved. It is a <span style={{ color: "white", fontWeight: 600 }}>self sustaining acceleration loop</span>, the culture of instant output feeding the speed of adoption, which keeps outrunning governance. From January 2026, major insurers began adding AI exclusions to Professional Indemnity policies. AI generated copy that breaches advertising law is now an <span style={{ color: "white", fontWeight: 600 }}>uninsured liability</span>.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px", marginBottom: "3rem" }}>
             {[
