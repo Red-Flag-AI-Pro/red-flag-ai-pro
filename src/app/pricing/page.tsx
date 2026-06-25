@@ -46,7 +46,7 @@ const GROWTH_FEATURES = [
 const SENTINEL_FEATURES = [
   "Everything in Growth",
   "Managed governance implementation (we work it with you)",
-  "Automated audit logging & forensic proof",
+  "Cryptographically sealed audit log, verifiable on demand",
   "Ongoing governance & vendor monitoring reviews",
   "Financial impact modeling (compliance cost calculator)",
   "Governance enforcement support & guardrail design",
@@ -549,7 +549,7 @@ export default function PricingPage() {
             {[
               {
                 title: "Forensic Proof",
-                desc: "Automated audit logs + output tracking. When regulators ask 'prove it happened,' you have the answer.",
+                desc: "A cryptographic hash chain seals every audit log entry. Edit, delete, or backdate one and the chain breaks, verifiably. When regulators ask 'prove it happened,' you have the answer.",
               },
               {
                 title: "Implementation Partner",

@@ -7,7 +7,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Sentinel: Managed Governance & Compliance for Agencies and Regulated Businesses",
   description:
-    "Stop managing governance and compliance in email threads. Sentinel gives agencies a tamper resistant, timestamped audit trail for every piece of copy reviewed, plus governance evidence for boards and regulators. Built for the teams where a failure is a regulatory event.",
+    "Stop managing governance and compliance in email threads. Sentinel gives agencies a cryptographically sealed, timestamped audit trail for every piece of copy reviewed, verifiable on demand, plus governance evidence for boards and regulators. Built for the teams where a failure is a regulatory event.",
   alternates: { canonical: "https://www.redflagaipro.com/sentinel" },
 };
 
@@ -17,7 +17,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 const BENEFITS = [
   {
     headline: "A complaint lands. You have proof.",
-    body: "Without a record, your agency has no defence. Sentinel logs every review with a timestamp in a tamper resistant audit trail and generates a PDF report. When the regulator or client asks what you checked and when, the answer is instant.",
+    body: "Without a record, your agency has no defence. Sentinel logs every review with a timestamp, sealed into a cryptographic hash chain you can verify on demand, and generates a PDF report. When the regulator or client asks what you checked and when, the answer is instant, and provably untampered.",
   },
   {
     headline: "Your PI insurer will ask. Now you can answer.",
@@ -61,7 +61,7 @@ const WHO = [
   {
     label: "Digital agencies",
     title: "You write copy for clients. Their compliance failure is your liability.",
-    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a timestamped, tamper resistant audit log proving you reviewed it before it went out, plus white label reports, team seats, client workspaces and ongoing monitoring.",
+    description: "When a client campaign triggers an ASA or FCA complaint, the agency that wrote the copy is named too. Sentinel gives you a timestamped audit log sealed in a cryptographic hash chain, verifiable on demand, proving you reviewed it before it went out, plus white label reports, team seats, client workspaces and ongoing monitoring.",
   },
   {
     label: "Legal and compliance teams",
@@ -112,7 +112,7 @@ export default function SentinelPage() {
         <div style={{maxWidth: "600px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel: managed governance &amp; compliance</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks, governance evidence and a tamper resistant audit trail.</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks, governance evidence and a cryptographically sealed audit trail you can verify on demand.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
             <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>

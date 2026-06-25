@@ -202,7 +202,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Automated Audit Logging",
-                  desc: "Immutable, tamper resistant audit trail of every governance action. Report downloads, vendor reviews, policy changes, stored server side, never editable by a user.",
+                  desc: "Every governance action is sealed into a cryptographic hash chain, verifiable on demand. Report downloads, vendor reviews, policy changes, stored server side, never editable by a user.",
                 },
                 {
                   icon: "",
