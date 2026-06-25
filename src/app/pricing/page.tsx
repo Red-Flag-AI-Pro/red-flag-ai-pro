@@ -19,7 +19,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const SCANNER_FEATURES = [
-  "Full compliance scanner: 9 jurisdictions, all 30 risk categories",
+  "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected.",
   "5 scans per month",
   "PDF reports",
   "Scan history",
@@ -27,7 +27,7 @@ const SCANNER_FEATURES = [
 ];
 
 const GROWTH_FEATURES = [
-  "Full compliance scanner: 9 jurisdictions, all 30 risk categories, 30 scans/month",
+  "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 scans/month.",
   "Includes the free governance assessment",
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
@@ -157,7 +157,7 @@ export default function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>9 jurisdictions tracked. The only scanner that keeps pace with the law.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -211,14 +211,6 @@ export default function PricingPage() {
               position: "relative",
               boxShadow: "0 0 40px rgba(239,68,68,0.15)"
             }}>
-              <div style={{
-                position: "absolute", top: "-1px", left: "2rem",
-                background: "#ef4444",
-                ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.12em",
-                textTransform: "uppercase", color: "white",
-                padding: "4px 12px"
-              }}>Recommended</div>
-
               {SCANNER_SALE_ACTIVE && (
                 <div style={{
                   position: "absolute", top: "-1px", right: "-1px",
@@ -289,10 +281,18 @@ export default function PricingPage() {
             {/* GROWTH */}
             <div style={{
               background: "#102943",
-              border: "1px solid rgba(201,166,107,0.35)",
+              border: "2px solid rgba(201,166,107,0.6)",
               padding: "2.5rem",
-              position: "relative"
+              position: "relative",
+              boxShadow: "0 0 40px rgba(201,166,107,0.15)"
             }}>
+              <div style={{
+                position: "absolute", top: "-1px", left: "2rem",
+                background: "#C9A66B",
+                ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.12em",
+                textTransform: "uppercase", color: "#0A1628",
+                padding: "4px 12px"
+              }}>Recommended</div>
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Everything in Pro, plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
@@ -405,7 +405,7 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   {[
-                    { need: "Compliance scanner (9 jurisdictions, 30 categories)", scanner: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "9 separate countries covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
                     { need: "See governance gaps", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "Monitor governance ongoing", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "Automated compliance proof", scanner: "✗", growth: "✓", sentinel: "✓" },
