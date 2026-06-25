@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { SHADOW_AI_QUESTIONS, scoreShadowAISurvey, type AnswerValue } from "@/lib/shadow-ai-survey";
 import { ResultsGate } from "./ResultsGate";
+import { QuizWizard } from "./QuizWizard";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
@@ -18,70 +19,19 @@ function scoreColor(score: number) {
 }
 
 export function ShadowAISurvey() {
-  const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [submittedAnswers, setSubmittedAnswers] = useState<Record<string, AnswerValue> | null>(null);
 
-  const allAnswered = SHADOW_AI_QUESTIONS.every((q) => answers[q.id]);
-  const result = submitted ? scoreShadowAISurvey(answers) : null;
-
-  function setAnswer(id: string, value: AnswerValue) {
-    setAnswers((prev) => ({ ...prev, [id]: value }));
-  }
+  const result = submittedAnswers ? scoreShadowAISurvey(submittedAnswers) : null;
 
   return (
     <div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-        {SHADOW_AI_QUESTIONS.map((q, i) => (
-          <div key={q.id} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "1.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem" }}>Question {i + 1} of {SHADOW_AI_QUESTIONS.length}</p>
-            <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "1rem" }}>{q.question}</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {q.options.map((opt) => {
-                const selected = answers[q.id] === opt.value;
-                return (
-                  <button
-                    key={opt.value}
-                    onClick={() => setAnswer(q.id, opt.value)}
-                    style={{
-                      textAlign: "left",
-                      background: selected ? "rgba(229,72,77,0.12)" : "#0A1628",
-                      border: selected ? "1px solid rgba(229,72,77,0.5)" : "1px solid rgba(255,255,255,0.08)",
-                      borderRadius: "8px",
-                      padding: "0.75rem 1rem",
-                      color: selected ? "white" : "rgba(255,255,255,0.65)",
-                      ...syne,
-                      fontSize: "13px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ marginTop: "1.5rem", textAlign: "center" }}>
-        <button
-          onClick={() => setSubmitted(true)}
-          disabled={!allAnswered}
-          style={{
-            background: !allAnswered ? "rgba(229,72,77,0.3)" : "#E5484D",
-            color: "white",
-            ...syne,
-            fontSize: "0.9rem",
-            fontWeight: 700,
-            padding: "13px 32px",
-            borderRadius: "9999px",
-            border: "none",
-            cursor: !allAnswered ? "not-allowed" : "pointer",
-          }}
-        >
-          See my Shadow AI Exposure Score →
-        </button>
-      </div>
+      {!submittedAnswers && (
+        <QuizWizard
+          questions={SHADOW_AI_QUESTIONS}
+          completeLabel="See my Shadow AI Exposure Score →"
+          onComplete={(answers) => setSubmittedAnswers(answers as Record<string, AnswerValue>)}
+        />
+      )}
 
       {result && (
         <ResultsGate tool="shadow-ai-survey" title="Enter your email to see your Shadow AI Exposure Score — free, no spam.">
