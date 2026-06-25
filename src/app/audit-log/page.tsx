@@ -44,8 +44,24 @@ export default function AuditLogPage() {
   const [loading, setLoading] = useState(true);
   const [plan, setPlan] = useState<Plan>("free");
   const [entries, setEntries] = useState<AuditEntry[]>([]);
+  const [verifying, setVerifying] = useState(false);
+  const [verifyResult, setVerifyResult] = useState<{ valid: boolean; checkedEntries: number } | null>(null);
 
   const isSentinel = plan === "sentinel";
+
+  async function handleVerify() {
+    setVerifying(true);
+    setVerifyResult(null);
+    try {
+      const res = await fetch("/api/audit-log/verify");
+      const data = await res.json();
+      setVerifyResult(data);
+    } catch {
+      setVerifyResult(null);
+    } finally {
+      setVerifying(false);
+    }
+  }
 
   useEffect(() => {
     async function load() {
@@ -91,10 +107,27 @@ export default function AuditLogPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-[#F4F1EA]">Audit Log</h1>
-        <p className="text-sm text-[rgba(244,241,234,0.5)]">Every governance action, timestamped automatically. Written server-side — nothing here can be edited or backdated.</p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-[#F4F1EA]">Audit Log</h1>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Every governance action, timestamped automatically and sealed in a cryptographic hash chain — nothing here can be edited, deleted, or backdated without breaking the chain.</p>
+        </div>
+        <button
+          onClick={handleVerify}
+          disabled={verifying || entries.length === 0}
+          className="shrink-0 rounded-lg border border-white/15 px-3 py-2 text-xs font-medium text-[#F4F1EA] hover:bg-white/5 disabled:opacity-50 transition-colors"
+        >
+          {verifying ? "Verifying…" : "Verify integrity"}
+        </button>
       </div>
+
+      {verifyResult && (
+        <div className={`rounded-lg border px-4 py-3 text-sm ${verifyResult.valid ? "border-green-800 bg-green-950/40 text-green-300" : "border-red-800 bg-red-950/40 text-red-300"}`}>
+          {verifyResult.valid
+            ? `Chain verified. All ${verifyResult.checkedEntries} entries are intact and in order.`
+            : `Tampering detected — the hash chain breaks before entry ${verifyResult.checkedEntries}. Contact support immediately.`}
+        </div>
+      )}
 
       <Card padding="none">
         {entries.length === 0 ? (
