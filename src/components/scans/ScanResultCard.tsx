@@ -138,9 +138,10 @@ interface ScanResultCardProps {
   scan: Scan;
   flags: ScanFlag[];
   plan: Plan;
+  print?: boolean;
 }
 
-export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
+export function ScanResultCard({ scan, flags, plan, print = false }: ScanResultCardProps) {
   const highCount = flags.filter((f) => f.severity === "high").length;
   const medCount = flags.filter((f) => f.severity === "medium").length;
   const lowCount = flags.filter((f) => f.severity === "low").length;
@@ -199,7 +200,7 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             </div>
           )}
 
-          {scan.score < 80 && (
+          {!print && scan.score < 80 && (
             <div className="flex items-start gap-3 rounded-lg border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] px-4 py-3">
               <span className="text-xl"></span>
               <div>
@@ -212,37 +213,39 @@ export function ScanResultCard({ scan, flags, plan }: ScanResultCardProps) {
             </div>
           )}
 
-          <div className="flex flex-wrap gap-2">
-            {plan !== "free" ? (
-              <a
-                href={`/api/scans/${scan.id}/pdf`}
-                className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
-              >
-                Download PDF Report
-              </a>
-            ) : (
-              <div className="flex items-center gap-3 rounded-lg border border-dashed border-white/15 bg-[#0A1628] px-4 py-2">
-                <span className="text-sm text-[rgba(244,241,234,0.5)]">
-                  PDF reports require Pro
-                </span>
-                <Link
-                  href="/billing"
-                  className="text-sm font-medium text-[#E5484D] hover:underline"
+          {!print && (
+            <div className="flex flex-wrap gap-2">
+              {plan !== "free" ? (
+                <a
+                  href={`/api/scans/${scan.id}/pdf`}
+                  className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
                 >
-                  Upgrade →
-                </Link>
-              </div>
-            )}
-            <Link
-              href="/scans/new"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
-            >
-              New scan
-            </Link>
-            <ShareButton scanId={scan.id} />
-            <BadgeButton scanId={scan.id} />
-            <VideoButton scanId={scan.id} />
-          </div>
+                  Download PDF Report
+                </a>
+              ) : (
+                <div className="flex items-center gap-3 rounded-lg border border-dashed border-white/15 bg-[#0A1628] px-4 py-2">
+                  <span className="text-sm text-[rgba(244,241,234,0.5)]">
+                    PDF reports require Pro
+                  </span>
+                  <Link
+                    href="/billing"
+                    className="text-sm font-medium text-[#E5484D] hover:underline"
+                  >
+                    Upgrade →
+                  </Link>
+                </div>
+              )}
+              <Link
+                href="/scans/new"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
+              >
+                New scan
+              </Link>
+              <ShareButton scanId={scan.id} />
+              <BadgeButton scanId={scan.id} />
+              <VideoButton scanId={scan.id} />
+            </div>
+          )}
         </div>
       </div>
     </div>

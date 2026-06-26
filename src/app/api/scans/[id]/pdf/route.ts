@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { generateScanPdf } from "@/lib/pdf";
+import { renderPagePdf } from "@/lib/pdf-render";
 import { logAuditEvent } from "@/lib/audit-log";
 import type { Plan } from "@/types";
 
+export const maxDuration = 60;
+
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
@@ -21,12 +23,11 @@ export async function GET(
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("plan, agency_name")
+    .select("plan")
     .eq("user_id", user.id)
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
-  const agencyName = (profile as { agency_name?: string | null })?.agency_name ?? null;
 
   if (plan === "free") {
     return NextResponse.json(
@@ -37,7 +38,7 @@ export async function GET(
 
   const { data: scan } = await supabase
     .from("scans")
-    .select("*")
+    .select("id, score")
     .eq("id", id)
     .eq("user_id", user.id)
     .single();
@@ -46,15 +47,15 @@ export async function GET(
     return NextResponse.json({ error: "Scan not found" }, { status: 404 });
   }
 
-  const { data: flags } = await supabase
-    .from("scan_flags")
-    .select("*")
-    .eq("scan_id", id);
+  const origin = new URL(request.url).origin;
+  const pdfBuffer = await renderPagePdf({
+    url: `${origin}/print/scans/${id}`,
+    cookieHeader: request.headers.get("cookie"),
+  });
 
-  const pdfBytes = await generateScanPdf(scan, flags ?? [], agencyName);
   await logAuditEvent(user.id, "report_downloaded", { scan_id: id, score: scan.score });
 
-  return new Response(Buffer.from(pdfBytes), {
+  return new Response(new Uint8Array(pdfBuffer), {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename="scan-${id}.pdf"`,
