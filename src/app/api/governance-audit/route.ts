@@ -89,10 +89,13 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // ALSO SAVE A TRACKABLE COPY FOR LOGGED-IN SENTINEL USERS
+    // CHECK FOR A PAYING (SENTINEL) ACCOUNT
     // ============================================================
-    // Account-linked, separate from the anonymous lead-gen row above, so
-    // their remediation roadmap shows up as a managed checklist in /governance.
+    // Only Sentinel accounts get the full report unlocked. Everyone else —
+    // including every anonymous lead-gen completion — gets the scare layer
+    // (score + one fully-revealed gap) with the fix locked behind upgrade.
+
+    let fullAccess = false;
 
     try {
       const serverSupabase = await createServerClient();
@@ -108,6 +111,10 @@ export async function POST(request: Request) {
           .single();
 
         if (profile?.plan === 'sentinel') {
+          fullAccess = true;
+
+          // Account-linked, separate from the anonymous lead-gen row above, so
+          // their remediation roadmap shows up as a managed checklist in /governance.
           await serverSupabase.from('governance_assessments').insert({
             user_id: user.id,
             score: overallScore,
@@ -124,8 +131,30 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // BUILD RESPONSE
+    // BUILD RESPONSE — lock everything except the score + one gap
+    // unless this is a paying Sentinel account.
     // ============================================================
+
+    const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
+    const sortedFlags = [...redFlags].sort(
+      (a, b) => severityRank[a.severity] - severityRank[b.severity]
+    );
+
+    const responseFlags = fullAccess
+      ? sortedFlags.map((f) => ({ ...f, unlocked: true }))
+      : sortedFlags.map((f, i) =>
+          i === 0
+            ? { ...f, unlocked: true }
+            : {
+                severity: f.severity,
+                dimension: f.dimension,
+                title: f.title,
+                description: '',
+                recommendation: '',
+                regulatoryContext: [],
+                unlocked: false,
+              }
+        );
 
     const response: GovernanceQuizResponse = {
       email: trimmedEmail,
@@ -133,8 +162,10 @@ export async function POST(request: Request) {
       dimensionScores,
       overallScore,
       riskLevel,
-      redFlags,
-      roadmap,
+      redFlags: responseFlags,
+      roadmap: fullAccess ? roadmap : [],
+      roadmapCount: roadmap.length,
+      fullAccess,
     };
 
     return Response.json(response);

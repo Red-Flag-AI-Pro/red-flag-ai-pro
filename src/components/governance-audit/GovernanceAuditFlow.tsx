@@ -87,7 +87,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
   };
 
   const handleDownloadReport = async () => {
-    if (!results) return;
+    if (!results || !results.fullAccess) return;
     try {
       setIsDownloading(true);
       const { generateGovernanceAuditPDF } = await import('@/lib/governance-audit-pdf');
@@ -120,6 +120,9 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
   const handleExploreFeatures = () => {
     window.location.href = '/pricing';
   };
+  const handleUnlock = () => {
+    window.location.href = '/sentinel';
+  };
 
   // ── Full results (email was already captured before the quiz started) ─────
   if (results) {
@@ -130,6 +133,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
           onDownloadReport={handleDownloadReport}
           onScheduleCall={handleScheduleCall}
           onExploreFeatures={handleExploreFeatures}
+          onUnlock={handleUnlock}
         />
         {showCalendly && (
           <CalendlyBooking

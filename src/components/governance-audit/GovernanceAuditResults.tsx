@@ -16,6 +16,7 @@ interface GovernanceAuditResultsProps {
   onDownloadReport?: () => void;
   onScheduleCall?: () => void;
   onExploreFeatures?: () => void;
+  onUnlock?: () => void;
 }
 
 const RISK_COLORS: Record<RiskLevel, { bg: string; text: string; badge: string }> =
@@ -54,6 +55,7 @@ export function GovernanceAuditResults({
   onDownloadReport,
   onScheduleCall,
   onExploreFeatures,
+  onUnlock,
 }: GovernanceAuditResultsProps) {
   const colors = RISK_COLORS[response.riskLevel];
   const benchmark = PEER_BENCHMARK.overall;
@@ -173,6 +175,7 @@ export function GovernanceAuditResults({
                     ? 'medium'
                     : 'low';
               const dimInfo = GOVERNANCE_DIMENSIONS[flag.dimension];
+              const locked = flag.unlocked === false;
 
               return (
                 <div
@@ -206,36 +209,62 @@ export function GovernanceAuditResults({
                     <span className="text-2xl">#{idx + 1}</span>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-gray-300 leading-relaxed">
-                    {flag.description}
-                  </p>
+                  {locked ? (
+                    <div className="relative">
+                      <p className="text-sm text-gray-400 leading-relaxed blur-sm select-none">
+                        This gap could expose your organisation to regulatory action. Unlock the full report to see exactly why, and the specific fix.
+                      </p>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="rounded-full border border-gray-700 bg-black/80 px-3 py-1 text-xs font-semibold text-gray-300">
+                          Locked — Sentinel only
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      {/* Description */}
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {flag.description}
+                      </p>
 
-                  {/* Recommendation */}
-                  <div className="bg-gray-900 border border-gray-800 rounded p-3 space-y-1">
-                    <p className="text-xs font-semibold text-gray-400">
-                      RECOMMENDATION:
-                    </p>
-                    <p className="text-sm text-gray-300">
-                      {flag.recommendation}
-                    </p>
-                  </div>
+                      {/* Recommendation */}
+                      <div className="bg-gray-900 border border-gray-800 rounded p-3 space-y-1">
+                        <p className="text-xs font-semibold text-gray-400">
+                          RECOMMENDATION:
+                        </p>
+                        <p className="text-sm text-gray-300">
+                          {flag.recommendation}
+                        </p>
+                      </div>
 
-                  {/* Regulatory Context */}
-                  <div className="flex flex-wrap gap-2">
-                    {flag.regulatoryContext.map((context, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-gray-900 border border-gray-800 rounded px-2 py-1 text-gray-400"
-                      >
-                        {context}
-                      </span>
-                    ))}
-                  </div>
+                      {/* Regulatory Context */}
+                      <div className="flex flex-wrap gap-2">
+                        {flag.regulatoryContext.map((context, i) => (
+                          <span
+                            key={i}
+                            className="text-xs bg-gray-900 border border-gray-800 rounded px-2 py-1 text-gray-400"
+                          >
+                            {context}
+                          </span>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })}
           </div>
+        </div>
+      )}
+
+      {!response.fullAccess && response.roadmapCount > 0 && (
+        <div className="border border-gray-800 rounded-lg p-5 bg-gray-950 text-center space-y-2">
+          <p className="text-sm font-semibold text-white">
+            {response.roadmapCount} remediation action{response.roadmapCount === 1 ? '' : 's'} identified across 90 days, 6 months and 12 months
+          </p>
+          <p className="text-xs text-gray-400">
+            Your prioritised roadmap — with owners and timelines — unlocks with Sentinel.
+          </p>
         </div>
       )}
 
@@ -249,19 +278,34 @@ export function GovernanceAuditResults({
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* CTA 1: Download Report */}
-          <Button
-            onClick={onDownloadReport}
-            variant="primary"
-            className="h-auto py-4 flex flex-col items-center gap-2"
-          >
-            <div className="text-center">
-              <p className="font-semibold text-sm">Download Full Report</p>
-              <p className="text-xs text-gray-300 mt-1">
-                Governance assessment + roadmap
-              </p>
-            </div>
-          </Button>
+          {/* CTA 1: Download Report (full access) or Unlock (locked) */}
+          {response.fullAccess ? (
+            <Button
+              onClick={onDownloadReport}
+              variant="primary"
+              className="h-auto py-4 flex flex-col items-center gap-2"
+            >
+              <div className="text-center">
+                <p className="font-semibold text-sm">Download Full Report</p>
+                <p className="text-xs text-gray-300 mt-1">
+                  Governance assessment + roadmap
+                </p>
+              </div>
+            </Button>
+          ) : (
+            <Button
+              onClick={onUnlock}
+              variant="primary"
+              className="h-auto py-4 flex flex-col items-center gap-2"
+            >
+              <div className="text-center">
+                <p className="font-semibold text-sm">Unlock Full Report</p>
+                <p className="text-xs text-gray-300 mt-1">
+                  Every gap + your remediation roadmap
+                </p>
+              </div>
+            </Button>
+          )}
 
           {/* CTA 2: Schedule Call */}
           <Button
@@ -303,7 +347,9 @@ export function GovernanceAuditResults({
             What You're Getting
           </h4>
           <p className="text-xs text-gray-400">
-            Automatically generated audit ready artifacts (included in your report)
+            {response.fullAccess
+              ? 'Automatically generated audit ready artifacts (included in your report)'
+              : 'Automatically generated audit ready artifacts (unlocks with Sentinel)'}
           </p>
         </div>
 

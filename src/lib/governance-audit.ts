@@ -59,6 +59,12 @@ export interface GovernanceQuizResponse {
   riskLevel: RiskLevel;
   redFlags: RedFlag[];
   roadmap: RoadmapAction[];
+  // True for paying (Sentinel) accounts — everything below is unlocked.
+  // False for the free/anonymous quiz — only the first red flag carries
+  // its description/recommendation/regulatoryContext, the rest are
+  // stripped to title-only, and roadmap is empty (see roadmapCount).
+  fullAccess: boolean;
+  roadmapCount: number;
 }
 
 export interface RedFlag {
@@ -68,6 +74,7 @@ export interface RedFlag {
   description: string;
   recommendation: string;
   regulatoryContext: string[]; // e.g., ['EU AI Act', 'SEC 2026', 'Munir v SSHD']
+  unlocked?: boolean;
 }
 
 // ============================================================
