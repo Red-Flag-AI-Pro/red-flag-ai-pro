@@ -48,9 +48,18 @@ export default async function PrintScanPage({
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/redflag-logo-full.png" alt="Red Flag AI Pro" width={140} height={110} className="object-contain" />
-          <div className="text-right">
-            <p className="text-sm font-bold text-[#E5484D]">Compliance Risk Report</p>
-            <p className="text-xs text-[rgba(244,241,234,0.4)]">Generated {dateStr} · redflagaipro.com</p>
+          <div className="flex flex-col items-end gap-2">
+            <div className="text-right">
+              <p className="text-sm font-bold text-[#E5484D]">Compliance Risk Report</p>
+              <p className="text-xs text-[rgba(244,241,234,0.4)]">Generated {dateStr} · redflagaipro.com</p>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/api/badge/${scan.id}`}
+              alt={`Compliance score badge: ${scan.score}/100`}
+              width={220}
+              height={60}
+            />
           </div>
         </div>
 

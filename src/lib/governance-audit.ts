@@ -2,7 +2,7 @@
  * AI Governance Audit Tool
  * Quiz framework, scoring logic, and governance assessment engine
  *
- * 6 dimensions, 23 total questions
+ * 6 dimensions, 24 total questions
  * Scoring: 0-100 governance maturity score
  * Risk levels: Critical (0-30), Moderate (31-60), Managed (61-80), Mature (81-100)
  */
@@ -383,6 +383,38 @@ export const TOOL_DATA_QUESTIONS = [
         text: 'Don\'t know',
         riskPoints: 2,
         context: 'Lack of visibility into incidents',
+      },
+    ],
+  },
+  {
+    id: 'tool_5',
+    dimension: 'tool_data_governance' as const,
+    question: 'When an AI agent or tool connects to a system (CRM, ERP, knowledge base), are its data access permissions scoped to what it actually needs, or does it get broad default access?',
+    options: [
+      {
+        text: 'Broad default access, nobody has reviewed the scope',
+        riskPoints: 3,
+        context: 'Unreviewed broad access is the most common source of unintended AI data exposure',
+      },
+      {
+        text: 'Some tools reviewed, most have not been checked',
+        riskPoints: 2,
+        context: 'Partial visibility into access scope',
+      },
+      {
+        text: 'Most tools scoped per role, a few legacy exceptions',
+        riskPoints: 1,
+        context: 'Mostly scoped, residual gaps',
+      },
+      {
+        text: 'Every AI tool\'s access is scoped and reviewed on a schedule',
+        riskPoints: 0,
+        context: 'Strong: access reviewed and minimised by design',
+      },
+      {
+        text: 'Don\'t know',
+        riskPoints: 3,
+        context: 'No visibility into what data AI agents can actually reach',
       },
     ],
   },
