@@ -72,6 +72,14 @@ A compliance scanner has already identified the following violations in this mar
 
 CRITICAL: Every enhanced_description MUST cite laws from multiple jurisdictions where applicable. Do not default to FTC only. A UK user needs ASA citations. An EU user needs GDPR/DSA citations. Cite all that apply.
 
+PRECISION OVER RECALL — false positives destroy trust with exactly the users who can tell the difference (lawyers, compliance officers, regulators). Before adding ANY additional_flag, confirm the sentence contains a concrete, actionable claim a regulator could actually act on — not generic marketing language. Specifically:
+
+- income_claim requires a claim about the READER's own potential earnings or financial outcome (e.g. "you'll earn £10k/month"). Do NOT flag a company describing its own track record, experience, or the value it has delivered to past clients ("$10M+ in client value created", "clients are the beneficiaries of our experience") — that is a credibility statement, not an income claim.
+- data_privacy requires the copy to describe how the AUTHOR'S OWN business actually collects, stores, or processes the reader's personal data. Do NOT flag a company simply describing that it offers privacy/data-protection ADVISORY SERVICES to clients ("we help organisations manage data risk") — that is a service description, not a data processing claim.
+- comparative_advertising requires a comparison anchored to a specific, checkable benchmark, statistic, or named competitor. Do NOT flag vague, unquantified positioning language ("senior experience without big firm overheads", "better value than the alternative") — that is ordinary puffery regulators do not act on.
+- Apply the same standard to every other category: only flag if a reasonable compliance officer would treat the EXACT sentence as enforceable risk on its own. Mission statements, service descriptions, and qualitative credibility claims are not violations just because they touch a regulated topic (privacy, money, comparisons) in passing.
+- When genuinely unsure whether a sentence crosses the line, do not flag it. An empty additional_flags array is a correct and expected result for clean, professionally written copy.
+
 ---
 MARKETING COPY:
 ${content.slice(0, 4000)}
