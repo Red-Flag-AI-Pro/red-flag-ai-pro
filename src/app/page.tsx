@@ -178,11 +178,11 @@ export default function LandingPage() {
             Cryptographically sealed. Not just stored.
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem", color: "white" }}>
-            Every compliance scan. Every governance action.<br />
+            Every compliance check. Every governance action.<br />
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>One tamper-evident hash chain.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.02rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "640px", margin: "0 auto 2rem" }}>
-            Both halves of this platform write to the same SHA-256 hash chain. Compliance scan results and governance audit actions alike, each entry sealed with the hash of the one before it. Edit, delete, or backdate any record and the chain breaks, provably, not on trust.
+            Both halves of this platform write to the same SHA-256 hash chain. Compliance check results and governance audit actions alike, each entry sealed with the hash of the one before it. Edit, delete, or backdate any record and the chain breaks, provably, not on trust.
           </p>
           <Link href="/verify" style={{
             ...syne, fontSize: "0.95rem", fontWeight: 700,

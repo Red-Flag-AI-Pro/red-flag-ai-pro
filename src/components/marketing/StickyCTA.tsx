@@ -24,13 +24,13 @@ export function StickyCTA() {
           <p className="text-sm font-bold text-white">Catch what you said. Prove what you did.</p>
           <p className="text-xs text-gray-400">30 risk categories. 9 jurisdictions. Both free, both 5 minutes or less.</p>
         </div>
-        <p className="sm:hidden text-sm font-bold text-white">Free scan or free assessment, your call.</p>
+        <p className="sm:hidden text-sm font-bold text-white">Free check or free assessment, your call.</p>
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
             href="/compliance-assessment"
             className="rounded-lg bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
-            Free scan →
+            Free check →
           </a>
           <Link
             href="/governance-audit"

@@ -41,7 +41,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           {isAuthenticated ? (
             <>
               <Link href="/dashboard" className="nav-link px-2.5 py-1.5 text-sm">Dashboard</Link>
-              <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs ml-2">New Scan</Link>
+              <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs ml-2">New Check</Link>
               <button onClick={handleSignOut} className="nav-link px-2.5 py-1.5 text-sm">Sign out</button>
             </>
           ) : (
@@ -89,7 +89,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           {!isAuthenticated ? (
             <Link href="/governance-audit" className="btn-primary !py-2 !px-4 !text-xs whitespace-nowrap">Free assessment</Link>
           ) : (
-            <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs">New Scan</Link>
+            <Link href="/scans/new" className="btn-primary !py-2 !px-4 !text-xs">New Check</Link>
           )}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -111,7 +111,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           )}
           {isAuthenticated && (
             <Link href="/scans/new" className="rounded-md bg-red-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-500 transition-colors">
-              New Scan
+              New Check
             </Link>
           )}
           <button

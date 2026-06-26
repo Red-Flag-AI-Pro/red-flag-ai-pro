@@ -36,8 +36,8 @@ const BENEFITS = [
     body: "The EU Green Claims Directive and CMA Green Claims Code are actively enforced. Agencies writing sustainability copy for clients are exposed if claims are unsubstantiated. Sentinel catches it before it becomes a headline.",
   },
   {
-    headline: "Scan live pages, not just copy you paste.",
-    body: "Give Sentinel a URL and it fetches the live page, strips navigation and boilerplate, and runs a full compliance scan against the actual published copy. If the page changes, run it again in seconds.",
+    headline: "Check live pages, not just copy you paste.",
+    body: "Give Sentinel a URL and it fetches the live page, strips navigation and boilerplate, and runs a full compliance check against the actual published copy. If the page changes, run it again in seconds.",
   },
   {
     headline: "VSLs checked before they cost you money.",
@@ -45,15 +45,15 @@ const BENEFITS = [
   },
   {
     headline: "Compliance in your workflow, not outside it.",
-    body: "Every scan fires a webhook to any URL. Paste your Zapier hook into Settings and scan results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed scanning into your own systems.",
+    body: "Every check fires a webhook to any URL. Paste your Zapier hook into Settings and check results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed checking into your own systems.",
   },
   {
     headline: "AI copy. August 2026. Your responsibility.",
     body: "The EU AI Act requires disclosure on AI assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
   },
   {
-    headline: "Turn scan results into something you can actually show.",
-    body: "Every scan can be rendered into a short video summary: the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
+    headline: "Turn check results into something you can actually show.",
+    body: "Every check can be rendered into a short video summary: the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
   },
 ];
 
@@ -66,7 +66,7 @@ const WHO = [
   {
     label: "Legal and compliance teams",
     title: "Your review process lives in inboxes. That is not a system.",
-    description: "Sentinel replaces informal email review with a logged, timestamped audit trail. API access and webhooks let you integrate scanning into your existing workflow. Every report is retrievable in seconds.",
+    description: "Sentinel replaces informal email review with a logged, timestamped audit trail. API access and webhooks let you integrate checking into your existing workflow. Every report is retrievable in seconds.",
   },
   {
     label: "FCA regulated businesses",
@@ -76,7 +76,7 @@ const WHO = [
   {
     label: "Enterprise marketing teams",
     title: "Multi jurisdiction campaigns. One failure can shut a campaign in five countries.",
-    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Bulk scan flags risk across every page in one run. Weekly monitoring flags changes before they become complaints.",
+    description: "GDPR, FTC, ASA, EU AI Act, ACCC and CASL checked simultaneously. Bulk check flags risk across every page in one run. Weekly monitoring flags changes before they become complaints.",
   },
 ];
 
@@ -420,7 +420,7 @@ export default function SentinelPage() {
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginTop: "8px" }}>Scoped to your team and engagement</p>
                 </div>
                 {[
-                  "Unlimited scans across your whole team",
+                  "Unlimited checks across your whole team",
                   "Every campaign reviewed before it goes live",
                   "Timestamped audit log + PDF report on every review",
                   "Weekly monitoring of live pages",
@@ -471,17 +471,17 @@ export default function SentinelPage() {
               </thead>
               <tbody>
                 {[
-                  ["Multi jurisdiction scanning", "Sometimes", "✓ FTC, GDPR, ASA, FCA, ACCC, CASL"],
+                  ["Multi jurisdiction checking", "Sometimes", "✓ FTC, GDPR, ASA, FCA, ACCC, CASL"],
                   ["EU AI Act compliance", "Partial", "✓ Full"],
                   ["FCA financial promotions", "Enterprise only", "✓ Included"],
-                  ["Greenwashing scanner", "Limited", "✓ EU Green Claims Directive"],
-                  ["URL page scanning", "✗", "✓ Live page fetch"],
-                  ["YouTube VSL scanning", "✗", "✓ Auto transcript"],
+                  ["Greenwashing checker", "Limited", "✓ EU Green Claims Directive"],
+                  ["URL page checking", "✗", "✓ Live page fetch"],
+                  ["YouTube VSL checking", "✗", "✓ Auto transcript"],
                   ["Full site audit", "✗", "✓ Up to 50 pages"],
                   ["Weekly auto monitoring", "✗", "✓ Unlimited URLs"],
                   ["REST API + webhooks", "✗", "✓ Zapier ready"],
                   ["White label PDF reports", "✗", "✓ Your branding"],
-                  ["Video scan summaries", "✗", "✓ Shareable MP4"],
+                  ["Video check summaries", "✗", "✓ Shareable MP4"],
                   ["Tamper resistant audit trail", "✗", "✓"],
                   ["Onboarding time", "Weeks", "Same day"],
                   ["Typical monthly cost", "£2,000 to £10,000", "Custom, talk to sales"],

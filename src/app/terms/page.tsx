@@ -43,7 +43,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance scanning tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance checking tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
             </p>
           </div>
 
@@ -52,10 +52,10 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice: Important Disclaimer</h2>
             <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#ef4444", lineHeight: 1.8, marginBottom: "0.75rem" }}>
-                Red Flag AI Pro is an AI powered tool and does not constitute legal advice. Our scans and reports are provided for informational purposes only.
+                Red Flag AI Pro is an AI powered tool and does not constitute legal advice. Our checks and reports are provided for informational purposes only.
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
-                Nothing produced by Red Flag AI Pro should be relied upon as a substitute for professional legal counsel. We strongly recommend consulting a qualified solicitor or compliance professional for definitive legal guidance specific to your business. Red Flag AI Pro accepts no liability for decisions made based solely on our scan results.
+                Nothing produced by Red Flag AI Pro should be relied upon as a substitute for professional legal counsel. We strongly recommend consulting a qualified solicitor or compliance professional for definitive legal guidance specific to your business. Red Flag AI Pro accepts no liability for decisions made based solely on our check results.
               </p>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Free Plan", "1 scan per month at no charge. No credit card required."],
+                ["Free Plan", "1 check per month at no charge. No credit card required."],
                 ["Pro Plan", "£350/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
                 ["Growth Plan", "£1,200/month. Billed monthly via Stripe."],
                 ["Sentinel Plan", "From £5,000/month, custom contract for larger engagements."],
@@ -146,7 +146,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Intellectual Property</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for scanning. We do not store or use your submitted copy for any purpose other than generating your scan results.
+              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not store or use your submitted copy for any purpose other than generating your check results.
             </p>
           </div>
 

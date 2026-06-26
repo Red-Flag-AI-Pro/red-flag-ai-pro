@@ -48,7 +48,7 @@ export default function WhyCompliancePage() {
         </p>
         <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#ef4444", marginBottom: "3rem" }}>$6B+</p>
         <Link href="/compliance-assessment" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
-          Scan your copy free
+          Check your copy free
         </Link>
       </section>
 
@@ -159,7 +159,7 @@ export default function WhyCompliancePage() {
           <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "3rem" }}>If it catches one thing, it has paid for itself a thousand times over.</p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/compliance-assessment" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
-              Scan free: 60 seconds →
+              Check free: 60 seconds →
             </Link>
             <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", textDecoration: "none" }}>
               Free governance assessment

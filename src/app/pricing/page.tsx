@@ -20,14 +20,14 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const SCANNER_FEATURES = [
   "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected.",
-  "5 scans per month",
+  "5 checks per month",
   "PDF reports",
-  "Scan history",
+  "Check history",
   "Email support",
 ];
 
 const GROWTH_FEATURES = [
-  "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 scans/month.",
+  "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
   "Includes the free governance assessment",
   "Ongoing governance monitoring (monthly)",
   "Vendor AI risk tracking & assessments",
@@ -53,7 +53,7 @@ const SENTINEL_FEATURES = [
   "Board ready reporting, built with your team",
   "Regulatory readiness review",
   "Multi team governance workflows",
-  "API access to your scan & assessment data",
+  "API access to your check & assessment data",
   "Dedicated governance advisor (quarterly calls)",
   "White label reports for client facing",
   "Priority support",
@@ -162,7 +162,7 @@ export default function PricingPage() {
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Every plan includes the full compliance scanner for your marketing copy, plus a 5-minute free assessment scored across 6 dimensions, strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness, that shows your governance maturity, gaps, and 90-day roadmap.
+            Every plan includes the full compliance checker for your marketing copy, plus a 5-minute free assessment scored across 6 dimensions, strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness, that shows your governance maturity, gaps, and 90-day roadmap.
           </p>
         </div>
       </section>

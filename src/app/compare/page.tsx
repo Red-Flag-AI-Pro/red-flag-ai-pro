@@ -16,21 +16,21 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 const COMPARISON = [
   { feature: "Price per month", rfp: "Free to £1,200, custom for enterprise", redmarker: "£2,000 to £10,000", consultant: "£500 to £3,000" },
   { feature: "Setup time", rfp: "Same day", redmarker: "Weeks", consultant: "Days" },
-  { feature: "Scan speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48 to 72 hours" },
-  { feature: "Free scan available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
-  { feature: "URL page scanning", rfp: "✓ Growth & Sentinel", redmarker: "Limited", consultant: "Manual" },
-  { feature: "YouTube VSL scanning", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
+  { feature: "Check speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48 to 72 hours" },
+  { feature: "Free check available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
+  { feature: "URL page checking", rfp: "✓ Growth & Sentinel", redmarker: "Limited", consultant: "Manual" },
+  { feature: "YouTube VSL checking", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
   { feature: "Audio transcription", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
   { feature: "Full site audit", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Extra charge" },
   { feature: "Weekly auto monitoring", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "FCA financial promotions", rfp: "✓ All paid plans", redmarker: "Enterprise only", consultant: "Specialist only" },
-  { feature: "Greenwashing scanner", rfp: "✓ All paid plans", redmarker: "Limited", consultant: "Specialist only" },
+  { feature: "Greenwashing checker", rfp: "✓ All paid plans", redmarker: "Limited", consultant: "Specialist only" },
   { feature: "EU AI Act compliance", rfp: "✓ All plans", redmarker: "Partial", consultant: "Variable" },
   { feature: "Multi jurisdiction", rfp: "✓ All plans", redmarker: "Sometimes", consultant: "Variable" },
   { feature: "Team seats", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "N/A" },
   { feature: "White label reports", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
   { feature: "REST API + webhooks", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "✗" },
-  { feature: "Video scan summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
+  { feature: "Video check summaries", rfp: "✓ Pro & Sentinel", redmarker: "✗", consultant: "✗" },
   { feature: "Tamper resistant audit trail", rfp: "✓ Sentinel only", redmarker: "✓", consultant: "✓" },
   { feature: "Risk categories covered", rfp: "30 (all paid plans) / 16 (free)", redmarker: "8 to 12", consultant: "Variable" },
 ];
@@ -126,7 +126,7 @@ export default function ComparePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
               { title: "Software, not consultants", body: "Enterprise tools charge for account managers, onboarding specialists and support teams. We built software that does the work. No overhead means lower prices." },
-              { title: "Built for speed", body: "60 seconds to scan, same day to set up. No onboarding calls, no implementation projects, no change management. You log in and it works." },
+              { title: "Built for speed", body: "60 seconds to check, same day to set up. No onboarding calls, no implementation projects, no change management. You log in and it works." },
               { title: "Built from experience", body: "This was built by someone who needed it and couldn't afford the alternative. The pricing reflects that. It always will." },
             ].map((item, i) => (
               <div key={item.title} style={{
@@ -163,7 +163,7 @@ export default function ComparePage() {
               boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
               textDecoration: "none"
             }}>
-              Run a free scan
+              Run a free check
             </a>
             <Link href="/pricing" style={{
               display: "inline-block",

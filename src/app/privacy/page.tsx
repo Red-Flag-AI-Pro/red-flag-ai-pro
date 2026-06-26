@@ -66,8 +66,8 @@ export default function PrivacyPage() {
                   {[
                     ["Name & email address", "To create and manage your account"],
                     ["Payment information", "Processed securely by Stripe, we never store card details"],
-                    ["Copy you submit for scanning", "To generate your compliance scan results only"],
-                    ["Scan results and history", "To display your dashboard and scan history"],
+                    ["Copy you submit for checking", "To generate your compliance check results only"],
+                    ["Check results and history", "To display your dashboard and check history"],
                     ["Usage data (pages visited, features used)", "To improve our service"],
                     ["IP address", "For security and fraud prevention"],
                   ].map(([data, reason], i) => (
@@ -86,20 +86,20 @@ export default function PrivacyPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy: Data Handling and Confidentiality</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your scan results</strong>. This is your data. It remains your data. We do not:
+                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your check results</strong>. This is your data. It remains your data. We do not:
               </p>
               <ul style={{ paddingLeft: "1.25rem", marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 {[
-                  "Store your submitted copy beyond processing (removed after scan delivery unless you retain history)",
+                  "Store your submitted copy beyond processing (removed after check delivery unless you retain history)",
                   "Allow any human to view, access, or read your submitted copy",
                   "Use your copy to train AI models or improve our service",
                   "Share your copy with third parties for any reason",
-                  "Retain your copy for longer than necessary to display your scan history",
+                  "Retain your copy for longer than necessary to display your check history",
                 ].map((item) => (
                   <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
                 ))}
               </ul>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your scan history at any time from your dashboard. Deletion is permanent.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your check history at any time from your dashboard. Deletion is permanent.</p>
               <p style={{ ...syne, fontSize: "12px", color: "#4ade80", lineHeight: 1.7, marginTop: "1rem", background: "rgba(74,222,128,0.08)", padding: "0.75rem", borderRadius: "6px", border: "1px solid rgba(74,222,128,0.15)" }}>
                 <strong>No human review, no training:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This is equivalent to closed enterprise AI tools.
               </p>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Legal Basis for Processing (UK & EU GDPR)</h2>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Contract", "Processing your account data and scans to deliver the service you signed up for"],
+                ["Contract", "Processing your account data and checks to deliver the service you signed up for"],
                 ["Legitimate interests", "Improving our service, preventing fraud, ensuring security"],
                 ["Legal obligation", "Retaining billing records as required by law"],
                 ["Consent", "Marketing emails, you can unsubscribe at any time"],
@@ -132,7 +132,7 @@ export default function PrivacyPage() {
                 ["Supabase", "Database and authentication (data stored in EU region)"],
                 ["Stripe", "Payment processing (PCI DSS compliant)"],
                 ["Vercel", "Website hosting"],
-                ["OpenAI / Anthropic", "AI processing of scan requests"],
+                ["OpenAI / Anthropic", "AI processing of check requests"],
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
               {[
                 "Account data: retained while your account is active and for 30 days after deletion",
                 "Billing records: 7 years as required by UK law",
-                "Scan history: retained until you delete it or close your account",
+                "Check history: retained until you delete it or close your account",
               ].map((item) => (
                 <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
               ))}

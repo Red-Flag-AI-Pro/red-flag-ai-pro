@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Governance and Compliance Scanning Features: Red Flag AI Pro",
+  title: "Governance and Compliance Checking Features: Red Flag AI Pro",
   description:
-    "Real time compliance scanning across 9 jurisdictions and 30 risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.",
+    "Real time compliance checking across 9 jurisdictions and 30 risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.",
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -34,12 +34,12 @@ export default function FeaturesPage() {
         textAlign: "center"
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Compliance Scanning + AI Governance, re-checked against the official text every time the law moves</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Compliance Checking + AI Governance, re-checked against the official text every time the law moves</p>
           <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Every tool you need to catch risk, then prove governance.
           </h1>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", lineHeight: 1.7 }}>
-            From real time copy scanning to governance assessment to forensic proof. Infrastructure built for marketers, agencies, CFOs, and compliance teams alike.
+            From real time copy checking to governance assessment to forensic proof. Infrastructure built for marketers, agencies, CFOs, and compliance teams alike.
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
@@ -77,7 +77,7 @@ export default function FeaturesPage() {
               {[
                 {
                   icon: "",
-                  title: "Real Time Compliance Scanning",
+                  title: "Real Time Compliance Checking",
                   desc: "9 jurisdictions, up to 30 risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.",
                 },
                 {
@@ -232,7 +232,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "API Access",
-                  desc: "Programmatic access to your scan and assessment data, build it into your own vendor management, security or finance workflows.",
+                  desc: "Programmatic access to your check and assessment data, build it into your own vendor management, security or finance workflows.",
                 },
                 {
                   icon: "",
