@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { track } from '@vercel/analytics';
 import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit';
 
 const GovernanceAuditForm = dynamic(
@@ -61,6 +62,12 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
 
       const result = (await response.json()) as GovernanceQuizResponse;
       setResults(result);
+      track('governance_quiz_completed', {
+        score: result.overallScore,
+        riskLevel: result.riskLevel,
+        fullAccess: result.fullAccess,
+        managed: result.managed,
+      });
     } catch (err) {
       setError(
         err instanceof Error ? err.message : 'An error occurred. Please try again.'

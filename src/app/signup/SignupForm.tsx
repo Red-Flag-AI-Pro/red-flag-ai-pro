@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
 
@@ -25,6 +26,7 @@ function SignupFormInner() {
   async function handleGoogleSignup() {
     setGoogleLoading(true);
     setError(null);
+    track("signup_started", { method: "google", plan: plan ?? "free", fromDemo });
     const appUrl = window.location.origin;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -60,6 +62,8 @@ function SignupFormInner() {
       setLoading(false);
       return;
     }
+
+    track("signup_completed", { method: "email", plan: plan ?? "free", fromDemo });
 
     // If email confirmation is required, signUp() doesn't return a session —
     // pushing to /dashboard would just bounce off the auth middleware.
