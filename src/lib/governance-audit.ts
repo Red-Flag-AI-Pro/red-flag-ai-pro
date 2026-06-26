@@ -34,6 +34,23 @@ export interface RoadmapAction {
   timeline: string;
 }
 
+export type RoadmapStatus = 'not_started' | 'in_progress' | 'done';
+
+export interface TrackedRoadmapAction extends RoadmapAction {
+  id: string;
+  status: RoadmapStatus;
+}
+
+// Stamps a stable id + initial status onto each roadmap action so it can be
+// persisted and its progress tracked over time (account-linked assessments only).
+export function trackRoadmap(roadmap: RoadmapAction[]): TrackedRoadmapAction[] {
+  return roadmap.map((action, i) => ({
+    ...action,
+    id: `${action.dimension}-${action.phase}-${i}`,
+    status: 'not_started',
+  }));
+}
+
 export interface GovernanceQuizResponse {
   email: string;
   answers: Answer[];

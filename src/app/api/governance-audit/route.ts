@@ -1,10 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 import {
   calculateScores,
   calculateOverallScore,
   getRiskLevel,
   generateRedFlags,
   generateRoadmap,
+  trackRoadmap,
   type Answer,
   type GovernanceQuizResponse,
 } from '@/lib/governance-audit';
@@ -84,6 +86,41 @@ export async function POST(request: Request) {
           { status: 500 }
         );
       }
+    }
+
+    // ============================================================
+    // ALSO SAVE A TRACKABLE COPY FOR LOGGED-IN SENTINEL USERS
+    // ============================================================
+    // Account-linked, separate from the anonymous lead-gen row above, so
+    // their remediation roadmap shows up as a managed checklist in /governance.
+
+    try {
+      const serverSupabase = await createServerClient();
+      const {
+        data: { user },
+      } = await serverSupabase.auth.getUser();
+
+      if (user) {
+        const { data: profile } = await serverSupabase
+          .from('profiles')
+          .select('plan')
+          .eq('user_id', user.id)
+          .single();
+
+        if (profile?.plan === 'sentinel') {
+          await serverSupabase.from('governance_assessments').insert({
+            user_id: user.id,
+            score: overallScore,
+            risk_level: riskLevel,
+            dimension_scores: dimensionScores,
+            red_flags: redFlags,
+            roadmap: trackRoadmap(roadmap),
+          });
+        }
+      }
+    } catch (linkError) {
+      // Never let account-linking failures break the public assessment flow.
+      console.error('Governance assessment account-link error:', linkError);
     }
 
     // ============================================================

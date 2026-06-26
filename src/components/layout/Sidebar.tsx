@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { href: "/vendors", label: "Vendor Tracker", icon: "◎" },
   { href: "/audit-log", label: "Audit Log", icon: "▤" },
   { href: "/monitor", label: "Monitoring", icon: "◉" },
+  { href: "/governance", label: "Governance", icon: "◆" },
   { href: "/team", label: "Team", icon: "⬡" },
   { href: "/billing", label: "Billing", icon: "◈" },
   { href: "/dashboard/tools", label: "Toolkit", icon: "▣" },

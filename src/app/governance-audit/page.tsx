@@ -15,7 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GovernanceAuditPage() {
+export default async function GovernanceAuditPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ email?: string }>;
+}) {
+  const { email } = await searchParams;
   return (
     <div style={{ background: '#0A1628', minHeight: '100vh' }}>
       <Navbar />
@@ -142,7 +147,7 @@ export default function GovernanceAuditPage() {
         </div>
 
         {/* Quiz Flow Component */}
-        <GovernanceAuditFlow />
+        <GovernanceAuditFlow initialEmail={email} />
       </div>
       </div>
 
