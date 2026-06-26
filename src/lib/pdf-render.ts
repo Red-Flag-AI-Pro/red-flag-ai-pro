@@ -1,15 +1,14 @@
-import chromium from "@sparticuz/chromium-min";
+import chromium from "@sparticuz/chromium";
 import puppeteer, { type Browser } from "puppeteer-core";
-
-const CHROMIUM_PACK_URL =
-  "https://github.com/Sparticuz/chromium/releases/download/v149.0.0/chromium-v149.0.0-pack.tar";
 
 async function launchBrowser(): Promise<Browser> {
   // Local dev: point CHROME_EXECUTABLE_PATH at a real Chrome/Chromium install.
-  // Production (Vercel): chromium-min downloads the brotli pack at cold start.
+  // Production (Vercel): @sparticuz/chromium bundles the brotli binary in the
+  // package itself, decompressed to /tmp on cold start — no remote download,
+  // no release-tag guessing (chromium-min requires a hosted pack URL, which
+  // is brittle to keep pinned to the right architecture/version).
   const executablePath =
-    process.env.CHROME_EXECUTABLE_PATH ??
-    (await chromium.executablePath(CHROMIUM_PACK_URL));
+    process.env.CHROME_EXECUTABLE_PATH ?? (await chromium.executablePath());
 
   return puppeteer.launch({
     args: chromium.args,
