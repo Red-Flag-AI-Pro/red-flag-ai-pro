@@ -117,6 +117,9 @@ export default function SentinelPage() {
             <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
             <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
           </div>
+          <Link href="/verify" style={{display: "block", marginTop: "1.5rem", fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(229,72,77,0.85)", textDecoration: "underline"}}>
+            Don&apos;t take our word for it — verify a real audit record yourself →
+          </Link>
         </div>
       </section>
 

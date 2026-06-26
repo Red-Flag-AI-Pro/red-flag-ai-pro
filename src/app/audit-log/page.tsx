@@ -20,6 +20,7 @@ const ACTION_LABELS: Record<string, string> = {
   vendor_removed: "Vendor removed",
   vendor_reviewed: "Vendor marked reviewed",
   report_downloaded: "Compliance report downloaded",
+  scan_completed: "Compliance scan run",
 };
 
 function describeEntry(entry: AuditEntry): string {
@@ -32,6 +33,8 @@ function describeEntry(entry: AuditEntry): string {
       return typeof d.name === "string" ? d.name : "";
     case "report_downloaded":
       return typeof d.score === "number" ? `Score: ${d.score}` : "";
+    case "scan_completed":
+      return typeof d.title === "string" && typeof d.score === "number" ? `${d.title} — Score: ${d.score}` : "";
     default:
       return "";
   }
@@ -142,9 +145,18 @@ export default function AuditLogPage() {
                   <p className="text-sm font-medium text-[#F4F1EA]">{ACTION_LABELS[e.action] ?? e.action}</p>
                   <p className="text-xs text-[rgba(244,241,234,0.4)] truncate">{describeEntry(e)}</p>
                 </div>
-                <p className="shrink-0 text-xs text-[rgba(244,241,234,0.35)]">
-                  {new Date(e.created_at).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
-                </p>
+                <div className="shrink-0 flex items-center gap-3">
+                  <p className="text-xs text-[rgba(244,241,234,0.35)]">
+                    {new Date(e.created_at).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                  </p>
+                  <Link
+                    href={`/verify?id=${e.id}`}
+                    target="_blank"
+                    className="text-xs text-red-400 hover:underline"
+                  >
+                    Share proof →
+                  </Link>
+                </div>
               </li>
             ))}
           </ul>

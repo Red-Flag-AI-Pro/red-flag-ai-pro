@@ -96,3 +96,43 @@ export async function verifyAuditChain(userId: string): Promise<AuditChainVerifi
 
   return { valid: true, checkedEntries: entries.length, brokenAtEntryId: null };
 }
+
+export interface PublicVerificationResult {
+  found: boolean;
+  intact: boolean;
+  action?: string;
+  createdAt?: string;
+}
+
+// Public, unauthenticated check on a single audit log entry by id. Recomputes
+// its hash from its own stored data and prev_hash and compares to the stored
+// hash, proving this specific record hasn't been altered since it was sealed.
+// Deliberately does not expose the user_id, other entries, or the full chain,
+// so this can be safely exposed to anyone with the entry id printed on a report.
+export async function verifyPublicEntry(entryId: string): Promise<PublicVerificationResult> {
+  const supabase = await createServiceClient();
+
+  const { data: entry } = await supabase
+    .from("audit_log")
+    .select("user_id, action, details, created_at, prev_hash, hash")
+    .eq("id", entryId)
+    .maybeSingle();
+
+  if (!entry) {
+    return { found: false, intact: false };
+  }
+
+  const recomputed = computeHash(entry.prev_hash ?? GENESIS_HASH, {
+    user_id: entry.user_id,
+    action: entry.action,
+    details: entry.details,
+    created_at: entry.created_at,
+  });
+
+  return {
+    found: true,
+    intact: recomputed === entry.hash,
+    action: entry.action,
+    createdAt: entry.created_at,
+  };
+}

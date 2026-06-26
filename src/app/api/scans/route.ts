@@ -4,6 +4,7 @@ import { analyzeContent } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
 import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { sendLoopsEvent } from "@/lib/loops";
+import { logAuditEvent } from "@/lib/audit-log";
 import type { Plan } from "@/types";
 
 export async function POST(request: Request) {
@@ -95,6 +96,16 @@ export async function POST(request: Request) {
       flags.map((f) => ({ ...f, scan_id: scan.id }))
     );
   }
+
+  // Every scan joins the same hash-chained audit trail as governance actions,
+  // so the tamper-evidence claim covers the actual compliance check, not just
+  // metadata around it.
+  await logAuditEvent(user.id, "scan_completed", {
+    scanId: scan.id,
+    title,
+    score,
+    flagCount: flags.length,
+  });
 
   // Nudge good scorers to embed their compliance badge — fires a Loops event
   // so a "show off your badge" email can be triggered from the Loops dashboard
