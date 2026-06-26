@@ -28,14 +28,11 @@ const SCANNER_FEATURES = [
 
 const GROWTH_FEATURES = [
   "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
-  "Includes the free governance assessment",
-  "Ongoing governance monitoring (monthly)",
+  "Full AI governance assessment — every gap revealed, not just one",
+  "1 free fix-it document for your worst-scoring dimension",
   "Vendor AI risk tracking & assessments",
-  "Monthly compliance dashboard",
   "Policy to practice gap detection",
   "Unlimited PDF reports",
-  "Governance evidence package (audit ready)",
-  "Quarterly improvement roadmaps",
   "Multiple team seats",
   "API & webhook access",
   "White label PDF reports",
@@ -406,11 +403,12 @@ export default function PricingPage() {
                 <tbody>
                   {[
                     { need: "9 separate countries covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "See governance gaps", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Monitor governance ongoing", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Automated compliance proof", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "See every governance gap (full assessment)", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "Multiple team seats", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "API & webhook access", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "Tracked governance roadmap (managed checklist)", scanner: "✗", growth: "✗", sentinel: "✓" },
+                    { need: "All 6 fix-it documents", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "Financial impact modeling", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "Board ready reporting", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "Managed implementation", scanner: "✗", growth: "✗", sentinel: "✓" },

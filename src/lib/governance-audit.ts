@@ -59,11 +59,16 @@ export interface GovernanceQuizResponse {
   riskLevel: RiskLevel;
   redFlags: RedFlag[];
   roadmap: RoadmapAction[];
-  // True for paying (Sentinel) accounts — everything below is unlocked.
-  // False for the free/anonymous quiz — only the first red flag carries
-  // its description/recommendation/regulatoryContext, the rest are
+  // True for Growth and Sentinel accounts — every red flag + the full roadmap
+  // is unlocked (the diagnosis). False for free/anonymous: only the first red
+  // flag carries description/recommendation/regulatoryContext, the rest are
   // stripped to title-only, and roadmap is empty (see roadmapCount).
   fullAccess: boolean;
+  // True only for Sentinel — the roadmap is persisted as a tracked, status-
+  // toggling checklist in /governance, and all 6 documents are unlocked.
+  // Growth gets fullAccess (the diagnosis) but not managed (the fix), plus
+  // one free document as a taste of what Sentinel manages in full.
+  managed: boolean;
   roadmapCount: number;
 }
 

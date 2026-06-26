@@ -28,15 +28,16 @@ export default async function GovernancePage() {
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
+  const isGrowth = plan === "enterprise";
+  const isSentinel = plan === "sentinel";
 
-  if (plan !== "enterprise" && plan !== "sentinel") {
+  if (!isGrowth && !isSentinel) {
     return (
       <div className="rounded-xl border border-white/10 bg-[#102943] p-8 text-center">
-        <h1 className="text-xl font-bold text-[#F4F1EA]">Managed governance is a Growth feature</h1>
+        <h1 className="text-xl font-bold text-[#F4F1EA]">Governance tracking is a Growth+ feature</h1>
         <p className="mx-auto mt-2 max-w-md text-sm text-[rgba(244,241,234,0.5)]">
-          The free assessment scores your AI governance and hands you a roadmap. Growth turns that
-          roadmap into a tracked checklist here in your dashboard, so it actually gets managed instead
-          of sitting in a PDF.
+          The free assessment scores your AI governance. Growth shows you every gap in full, plus one
+          free fix-it document. Sentinel manages the whole roadmap for you as a tracked checklist.
         </p>
         <Link
           href="/pricing"
@@ -62,8 +63,8 @@ export default async function GovernancePage() {
       <div className="rounded-xl border border-white/10 bg-[#102943] p-8 text-center">
         <h1 className="text-xl font-bold text-[#F4F1EA]">No governance assessment yet</h1>
         <p className="mx-auto mt-2 max-w-md text-sm text-[rgba(244,241,234,0.5)]">
-          Take the assessment while signed in and it will save here automatically with a tracked
-          remediation roadmap you can manage over time.
+          Take the assessment while signed in and it will save here automatically
+          {isSentinel ? " with a tracked remediation roadmap you can manage over time." : "."}
         </p>
         <Link
           href={`/governance-audit${email ? `?email=${encodeURIComponent(email)}` : ""}`}
@@ -77,6 +78,11 @@ export default async function GovernancePage() {
 
   const dimensionScores = assessment.dimension_scores as Record<Dimension, number>;
   const roadmap = assessment.roadmap as TrackedRoadmapAction[];
+
+  // Growth's one free document: whichever dimension scored worst (most urgent gap).
+  const worstDimension = (Object.keys(GOVERNANCE_DIMENSIONS) as Dimension[]).reduce((worst, dim) =>
+    (dimensionScores[dim] ?? 0) < (dimensionScores[worst] ?? 0) ? dim : worst
+  );
 
   return (
     <div className="space-y-6">
@@ -119,19 +125,38 @@ export default async function GovernancePage() {
         </Link>
       </div>
 
-      <RoadmapChecklist assessmentId={assessment.id} roadmap={roadmap} />
+      {isSentinel ? (
+        <RoadmapChecklist assessmentId={assessment.id} roadmap={roadmap} />
+      ) : (
+        <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
+          <h2 className="text-lg font-bold text-[#F4F1EA]">Remediation roadmap</h2>
+          <p className="mt-1 text-sm text-[rgba(244,241,234,0.5)]">
+            {roadmap.length} action{roadmap.length === 1 ? "" : "s"} identified across 90 days, 6 months and 12
+            months. Sentinel turns this into a tracked checklist — assign owners, mark progress, prove it's
+            actually happening.
+          </p>
+          <Link
+            href="/pricing"
+            className="mt-3 inline-block text-sm font-semibold text-[#E5484D] hover:underline"
+          >
+            Upgrade to Sentinel to track it →
+          </Link>
+        </div>
+      )}
 
       <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
         <h2 className="text-lg font-bold text-[#F4F1EA]">Fix it: Governance Documents</h2>
         <p className="mt-1 text-sm text-[rgba(244,241,234,0.5)]">
-          The roadmap tells you what to do. These are the actual documents — drafted from your
-          assessment, ready to review and adopt, not just a reminder to go write one yourself.
+          {isSentinel
+            ? "The roadmap tells you what to do. These are the actual documents — drafted from your assessment, ready to review and adopt, not just a reminder to go write one yourself."
+            : "One free document, drafted from your worst-scoring dimension. Sentinel unlocks all 6."}
         </p>
         <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {GOVERNANCE_DOCUMENTS.map((doc) => {
             const score = dimensionScores[doc.dimension] ?? 0;
             const max = GOVERNANCE_DIMENSIONS[doc.dimension].maxScore;
-            return (
+            const unlocked = isSentinel || doc.dimension === worstDimension;
+            return unlocked ? (
               <a
                 key={doc.type}
                 href={`/api/governance/documents/${doc.type}`}
@@ -146,6 +171,21 @@ export default async function GovernancePage() {
                 </div>
                 <span className="shrink-0 text-xs font-semibold text-[#E5484D]">Download →</span>
               </a>
+            ) : (
+              <Link
+                key={doc.type}
+                href="/pricing"
+                className="flex items-start justify-between gap-3 rounded-lg border border-dashed border-white/15 bg-[#0A1628] p-4 opacity-60 hover:opacity-90 transition-opacity"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-[#F4F1EA]">{doc.title}</p>
+                  <p className="mt-1 text-xs text-[rgba(244,241,234,0.5)]">{doc.description}</p>
+                  <p className="mt-2 text-xs text-[rgba(244,241,234,0.35)]">
+                    Your score in this dimension: {score}/{max}
+                  </p>
+                </div>
+                <span className="shrink-0 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel →</span>
+              </Link>
             );
           })}
         </div>

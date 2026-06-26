@@ -347,9 +347,11 @@ export function GovernanceAuditResults({
             What You're Getting
           </h4>
           <p className="text-xs text-gray-400">
-            {response.fullAccess
-              ? 'Automatically generated audit ready artifacts (included in your report)'
-              : 'Automatically generated audit ready artifacts (unlocks with Growth)'}
+            {response.managed
+              ? 'Automatically generated audit ready artifacts — all 6 documents included'
+              : response.fullAccess
+                ? 'Automatically generated audit ready artifacts — 1 free document with Growth, all 6 with Sentinel'
+                : 'Automatically generated audit ready artifacts (unlocks with Growth)'}
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generateGovernanceDocument, GOVERNANCE_DOCUMENTS, type DocumentType } from "@/lib/governance-documents";
-import type { Dimension, RedFlag, RoadmapAction } from "@/lib/governance-audit";
+import { GOVERNANCE_DIMENSIONS, type Dimension, type RedFlag, type RoadmapAction } from "@/lib/governance-audit";
 import type { Plan } from "@/types";
 
 export async function GET(
@@ -51,6 +51,23 @@ export async function GET(
       { error: "No governance assessment found. Take the assessment first." },
       { status: 404 }
     );
+  }
+
+  // Growth only gets one document — whichever dimension scored worst. The
+  // other 5 require Sentinel. Enforced here, not just hidden in the UI.
+  if (plan === "enterprise") {
+    const dimensionScores = assessment.dimension_scores as Record<Dimension, number>;
+    const worstDimension = (Object.keys(GOVERNANCE_DIMENSIONS) as Dimension[]).reduce((worst, dim) =>
+      (dimensionScores[dim] ?? 0) < (dimensionScores[worst] ?? 0) ? dim : worst
+    );
+    const requestedDoc = GOVERNANCE_DOCUMENTS.find((d) => d.type === type);
+
+    if (requestedDoc?.dimension !== worstDimension) {
+      return NextResponse.json(
+        { error: "This document is a Sentinel feature. Growth includes one free document for your worst-scoring dimension." },
+        { status: 403 }
+      );
+    }
   }
 
   const companyName = (profile as { agency_name?: string | null })?.agency_name ?? "[Your Organisation]";

@@ -91,15 +91,18 @@ export async function POST(request: Request) {
     // ============================================================
     // CHECK FOR A PAYING (GROWTH OR SENTINEL) ACCOUNT
     // ============================================================
-    // Growth is where compliance and governance first meet — it gets the full
-    // report unlocked and the tracked /governance dashboard, matching what
-    // /pricing already promises ("See governance gaps", "Monitor governance
-    // ongoing"). Sentinel gets everything Growth has plus the consulting-layer
-    // extras (financial modeling, board reporting, managed implementation).
-    // Free/anonymous and Pro/Scanner accounts get the scare layer only —
-    // score + one fully-revealed gap, fix locked behind upgrade.
+    // Growth is where compliance and governance first meet — it sees the full
+    // diagnosis (every gap, the full roadmap) because that's the urgency that
+    // sells the upgrade. What Growth does NOT get is the managed tooling: no
+    // tracked /governance checklist, no full document library (just one free
+    // document, as a taste). Sentinel adds the management layer on top —
+    // tracked roadmap, all 6 documents, plus the human consulting extras
+    // (financial modeling, board reporting, managed implementation) sold
+    // separately from code gates. Free/anonymous and Pro/Scanner accounts get
+    // the scare layer only — score + one fully-revealed gap, rest locked.
 
     let fullAccess = false;
+    let managed = false;
 
     try {
       const serverSupabase = await createServerClient();
@@ -116,9 +119,12 @@ export async function POST(request: Request) {
 
         if (profile?.plan === 'enterprise' || profile?.plan === 'sentinel') {
           fullAccess = true;
+          managed = profile.plan === 'sentinel';
 
-          // Account-linked, separate from the anonymous lead-gen row above, so
-          // their remediation roadmap shows up as a managed checklist in /governance.
+          // Account-linked, separate from the anonymous lead-gen row above.
+          // Persisted for both tiers so Growth's one free document can be
+          // generated later — only Sentinel's roadmap is actually tracked
+          // (status toggling) via the /governance dashboard.
           await serverSupabase.from('governance_assessments').insert({
             user_id: user.id,
             score: overallScore,
@@ -170,6 +176,7 @@ export async function POST(request: Request) {
       roadmap: fullAccess ? roadmap : [],
       roadmapCount: roadmap.length,
       fullAccess,
+      managed,
     };
 
     return Response.json(response);
