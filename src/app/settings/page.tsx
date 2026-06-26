@@ -118,7 +118,7 @@ export default function SettingsPage() {
           <div>
             <label className="block text-xs font-medium text-[rgba(244,241,234,0.8)] mb-1">Your name</label>
             <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Jane Smith"
-              className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+              className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
           </div>
         </div>
       </Card>
@@ -132,7 +132,7 @@ export default function SettingsPage() {
         <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">Your agency name appears on PDF reports instead of Red Flag AI Pro.</p>
         <input type="text" value={agencyName} onChange={(e) => setAgencyName(e.target.value)}
           placeholder="e.g. Loom Digital Compliance" disabled={!isSentinel}
-          className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
+          className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
         {!isSentinel && <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]"><Link href="/sentinel" className="text-[#E5484D] hover:underline font-medium">Upgrade to Sentinel</Link> to white-label reports.</p>}
       </Card>
 
@@ -145,7 +145,7 @@ export default function SettingsPage() {
         <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make or your own system.</p>
         <input type="text" value={webhookUrl} onChange={(e) => setWebhookUrl(e.target.value)}
           placeholder="https://hooks.zapier.com/hooks/catch/…" disabled={!isSentinel}
-          className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
+          className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
         {isSentinel && <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>}
       </Card>
 
@@ -182,7 +182,7 @@ export default function SettingsPage() {
             <div className="flex gap-2 mb-4">
               <input type="text" value={newKeyName} onChange={(e) => setNewKeyName(e.target.value)}
                 placeholder="Key name (optional)"
-                className="flex-1 rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+                className="flex-1 rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
               <Button size="sm" onClick={handleCreateKey} loading={creatingKey} disabled={apiKeys.length >= 5}>
                 Create key
               </Button>
@@ -221,7 +221,7 @@ export default function SettingsPage() {
           <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">Share your referral link. We track everyone who signs up through it.</p>
           <div className="flex gap-2">
             <input type="text" readOnly value={referralLink}
-              className="flex-1 rounded-lg border border-white/15 px-3 py-2 text-xs font-mono bg-[#0A1628] text-[rgba(244,241,234,0.6)]" />
+              className="flex-1 rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-xs font-mono text-[rgba(244,241,234,0.6)]" />
             <button onClick={() => { navigator.clipboard.writeText(referralLink); setCopiedReferral(true); setTimeout(() => setCopiedReferral(false), 2000); }}
               className="shrink-0 rounded-lg border border-white/15 px-3 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5">
               {copiedReferral ? "Copied!" : "Copy"}

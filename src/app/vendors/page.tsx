@@ -166,17 +166,17 @@ export default function VendorsPage() {
             <div>
               <label className="block text-xs font-medium text-[rgba(244,241,234,0.8)] mb-1">Vendor / tool name</label>
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. OpenAI, Jasper, Zapier AI"
-                className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+                className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
             </div>
             <div>
               <label className="block text-xs font-medium text-[rgba(244,241,234,0.8)] mb-1">What is it used for?</label>
               <input value={purpose} onChange={(e) => setPurpose(e.target.value)} placeholder="e.g. Drafting ad copy"
-                className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+                className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
             </div>
             <div>
               <label className="block text-xs font-medium text-[rgba(244,241,234,0.8)] mb-1">What data does it touch?</label>
               <input value={dataShared} onChange={(e) => setDataShared(e.target.value)} placeholder="e.g. Customer emails, no PII"
-                className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+                className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>

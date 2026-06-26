@@ -108,14 +108,14 @@ export function MonitorManager({ initialUrls, plan }: Props) {
               value={newLabel}
               onChange={(e) => setNewLabel(e.target.value)}
               placeholder="Label (e.g. Client homepage)"
-              className="rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] w-full sm:w-48 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] w-full sm:w-48 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
             <input
               type="text"
               value={newUrl}
               onChange={(e) => setNewUrl(e.target.value)}
               placeholder="https://example.com/sales"
-              className="flex-1 rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="flex-1 rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               onKeyDown={(e) => e.key === "Enter" && handleAdd()}
             />
             <Button size="sm" loading={loading} onClick={handleAdd} disabled={!newUrl.trim()}>

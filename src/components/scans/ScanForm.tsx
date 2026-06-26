@@ -15,6 +15,20 @@ interface Props {
 type Tab = "paste" | "url" | "upload" | "vsl";
 type VslMode = "youtube" | "audio" | "script";
 
+const JUNK_LINE = /^(logo|company logo|image|icon|menu|nav(igation)?|skip to (main )?content|home|about|services|insights|contact|get in touch|book a (call|consultation)|view services)\b/i;
+
+function guessTitle(raw: string): string {
+  const lines = raw
+    .trim()
+    .split(/[\n\r]+/)
+    .flatMap((line) => line.split(/(?<=[.!?])\s+/))
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  const candidate = lines.find((line) => line.split(" ").length >= 4 && !JUNK_LINE.test(line));
+  return (candidate ?? lines[0] ?? "").slice(0, 60);
+}
+
 export function ScanForm({ plan = "free" }: Props) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("paste");
@@ -97,7 +111,7 @@ export function ScanForm({ plan = "free" }: Props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            title: title.trim() || content.trim().split(/[\n.!?]/)[0].replace(/\s+/g, " ").trim().slice(0, 60) || "Untitled Scan",
+            title: title.trim() || guessTitle(content) || "Untitled Scan",
             content: content.trim(),
             jurisdictions: jurisdictions.length === JURISDICTIONS.length ? [] : jurisdictions,
           }),
@@ -160,7 +174,7 @@ export function ScanForm({ plan = "free" }: Props) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Homepage Funnel — April 2025"
-            className="mt-1 w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+            className="mt-1 w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
         </div>
       )}
@@ -204,7 +218,7 @@ export function ScanForm({ plan = "free" }: Props) {
               onChange={(e) => setContent(e.target.value)}
               rows={16}
               placeholder="Paste your sales page, email sequence, landing page copy, VSL script or any funnel content here…"
-              className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           )}
 
@@ -236,7 +250,7 @@ export function ScanForm({ plan = "free" }: Props) {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://yourlandingpage.com/sales"
-                  className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs text-blue-700 space-y-1">
@@ -307,7 +321,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslUrl}
                       onChange={(e) => setVslUrl(e.target.value)}
                       placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                      className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                   <div className="rounded-lg border border-amber-100 bg-[rgba(245,158,11,0.1)] px-4 py-3 text-xs text-amber-300 space-y-1">
@@ -369,7 +383,7 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslTitle}
                       onChange={(e) => setVslTitle(e.target.value)}
                       placeholder="e.g. Product Launch VSL — June 2025"
-                      className="w-full rounded-lg border border-white/15 px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                   <div>
@@ -380,8 +394,8 @@ export function ScanForm({ plan = "free" }: Props) {
                       value={vslScript}
                       onChange={(e) => setVslScript(e.target.value)}
                       rows={14}
-                      placeholder="Paste your full video sales letter script here. Include the complete voiceover text for the most accurate scan."
-                      className="w-full rounded-lg border border-white/15 px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      placeholder="Paste your full video sales letter script here. Include the complete voiceover text for the most accurate check."
+                      className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2.5 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                 </div>
