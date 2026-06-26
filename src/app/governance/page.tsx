@@ -29,20 +29,20 @@ export default async function GovernancePage() {
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
-  if (plan !== "sentinel") {
+  if (plan !== "enterprise" && plan !== "sentinel") {
     return (
       <div className="rounded-xl border border-white/10 bg-[#102943] p-8 text-center">
-        <h1 className="text-xl font-bold text-[#F4F1EA]">Managed governance is a Sentinel feature</h1>
+        <h1 className="text-xl font-bold text-[#F4F1EA]">Managed governance is a Growth feature</h1>
         <p className="mx-auto mt-2 max-w-md text-sm text-[rgba(244,241,234,0.5)]">
-          The free assessment scores your AI governance and hands you a roadmap. Sentinel turns that
+          The free assessment scores your AI governance and hands you a roadmap. Growth turns that
           roadmap into a tracked checklist here in your dashboard, so it actually gets managed instead
           of sitting in a PDF.
         </p>
         <Link
-          href="/sentinel"
+          href="/pricing"
           className="mt-5 inline-block rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
         >
-          See Sentinel →
+          See plans →
         </Link>
       </div>
     );

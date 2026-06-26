@@ -89,11 +89,15 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // CHECK FOR A PAYING (SENTINEL) ACCOUNT
+    // CHECK FOR A PAYING (GROWTH OR SENTINEL) ACCOUNT
     // ============================================================
-    // Only Sentinel accounts get the full report unlocked. Everyone else —
-    // including every anonymous lead-gen completion — gets the scare layer
-    // (score + one fully-revealed gap) with the fix locked behind upgrade.
+    // Growth is where compliance and governance first meet — it gets the full
+    // report unlocked and the tracked /governance dashboard, matching what
+    // /pricing already promises ("See governance gaps", "Monitor governance
+    // ongoing"). Sentinel gets everything Growth has plus the consulting-layer
+    // extras (financial modeling, board reporting, managed implementation).
+    // Free/anonymous and Pro/Scanner accounts get the scare layer only —
+    // score + one fully-revealed gap, fix locked behind upgrade.
 
     let fullAccess = false;
 
@@ -110,7 +114,7 @@ export async function POST(request: Request) {
           .eq('user_id', user.id)
           .single();
 
-        if (profile?.plan === 'sentinel') {
+        if (profile?.plan === 'enterprise' || profile?.plan === 'sentinel') {
           fullAccess = true;
 
           // Account-linked, separate from the anonymous lead-gen row above, so

@@ -121,7 +121,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     window.location.href = '/pricing';
   };
   const handleUnlock = () => {
-    window.location.href = '/sentinel';
+    window.location.href = '/pricing';
   };
 
   // ── Full results (email was already captured before the quiz started) ─────

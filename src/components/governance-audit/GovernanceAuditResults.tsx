@@ -216,7 +216,7 @@ export function GovernanceAuditResults({
                       </p>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className="rounded-full border border-gray-700 bg-black/80 px-3 py-1 text-xs font-semibold text-gray-300">
-                          Locked — Sentinel only
+                          Locked — Growth plan and up
                         </span>
                       </div>
                     </div>
@@ -263,7 +263,7 @@ export function GovernanceAuditResults({
             {response.roadmapCount} remediation action{response.roadmapCount === 1 ? '' : 's'} identified across 90 days, 6 months and 12 months
           </p>
           <p className="text-xs text-gray-400">
-            Your prioritised roadmap — with owners and timelines — unlocks with Sentinel.
+            Your prioritised roadmap — with owners and timelines — unlocks with Growth.
           </p>
         </div>
       )}
@@ -321,14 +321,14 @@ export function GovernanceAuditResults({
             </div>
           </Button>
 
-          {/* CTA 3: Explore Sentinel */}
+          {/* CTA 3: Explore plans */}
           <Button
             onClick={onExploreFeatures}
             variant="secondary"
             className="h-auto py-4 flex flex-col items-center gap-2"
           >
             <div className="text-center">
-              <p className="font-semibold text-sm">Explore Sentinel</p>
+              <p className="font-semibold text-sm">Explore Growth & Sentinel</p>
               <p className="text-xs text-gray-300 mt-1">
                 Governance monitoring & enforcement
               </p>
@@ -349,7 +349,7 @@ export function GovernanceAuditResults({
           <p className="text-xs text-gray-400">
             {response.fullAccess
               ? 'Automatically generated audit ready artifacts (included in your report)'
-              : 'Automatically generated audit ready artifacts (unlocks with Sentinel)'}
+              : 'Automatically generated audit ready artifacts (unlocks with Growth)'}
           </p>
         </div>
 

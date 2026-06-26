@@ -26,9 +26,9 @@ export async function GET(
     .single();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
-  if (plan !== "sentinel") {
+  if (plan !== "enterprise" && plan !== "sentinel") {
     return NextResponse.json(
-      { error: "Governance documents are a Sentinel feature." },
+      { error: "Governance documents are a Growth feature." },
       { status: 403 }
     );
   }
