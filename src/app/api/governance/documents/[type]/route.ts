@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { generateGovernanceDocument, GOVERNANCE_DOCUMENTS, type DocumentType } from "@/lib/governance-documents";
+import { generateGovernanceDocument, GOVERNANCE_DOCUMENTS, SENTINEL_REPORTING_DOCUMENTS, type DocumentType } from "@/lib/governance-documents";
 import { GOVERNANCE_DIMENSIONS, type Dimension, type RedFlag, type RoadmapAction } from "@/lib/governance-audit";
 import type { Plan } from "@/types";
 
@@ -33,9 +33,20 @@ export async function GET(
     );
   }
 
-  const isValidType = GOVERNANCE_DOCUMENTS.some((d) => d.type === type);
-  if (!isValidType) {
+  const isDimensionDoc = GOVERNANCE_DOCUMENTS.some((d) => d.type === type);
+  const isReportingDoc = SENTINEL_REPORTING_DOCUMENTS.some((d) => d.type === type);
+  if (!isDimensionDoc && !isReportingDoc) {
     return NextResponse.json({ error: "Unknown document type" }, { status: 400 });
+  }
+
+  // Financial Exposure Summary and Board Memo are cross-dimension and feed
+  // the human Sentinel deliverables (financial modeling, board reporting) —
+  // not eligible for Growth's one-free-document allowance.
+  if (isReportingDoc && plan !== "sentinel") {
+    return NextResponse.json(
+      { error: "This document is a Sentinel feature." },
+      { status: 403 }
+    );
   }
 
   const { data: assessment } = await supabase
@@ -78,6 +89,8 @@ export async function GET(
     redFlags: assessment.red_flags as RedFlag[],
     roadmap: assessment.roadmap as RoadmapAction[],
     generatedAt: new Date(),
+    overallScore: assessment.score as number,
+    riskLevel: assessment.risk_level as string,
   });
 
   const filename = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.md`;

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { GOVERNANCE_DIMENSIONS, type Dimension, type TrackedRoadmapAction } from "@/lib/governance-audit";
-import { GOVERNANCE_DOCUMENTS } from "@/lib/governance-documents";
+import { GOVERNANCE_DOCUMENTS, SENTINEL_REPORTING_DOCUMENTS } from "@/lib/governance-documents";
 import { RoadmapChecklist } from "@/components/governance/RoadmapChecklist";
 import type { Plan } from "@/types";
 
@@ -190,6 +190,31 @@ export default async function GovernancePage() {
           })}
         </div>
       </div>
+
+      {isSentinel && (
+        <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
+          <h2 className="text-lg font-bold text-[#F4F1EA]">Reporting</h2>
+          <p className="mt-1 text-sm text-[rgba(244,241,234,0.5)]">
+            Drafts for your quarterly advisor call — financial exposure for budget conversations,
+            a board-ready memo. Review and customise with your advisor before sending either on.
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {SENTINEL_REPORTING_DOCUMENTS.map((doc) => (
+              <a
+                key={doc.type}
+                href={`/api/governance/documents/${doc.type}`}
+                className="flex items-start justify-between gap-3 rounded-lg border border-white/10 bg-[#0A1628] p-4 hover:border-white/20 transition-colors"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-[#F4F1EA]">{doc.title}</p>
+                  <p className="mt-1 text-xs text-[rgba(244,241,234,0.5)]">{doc.description}</p>
+                </div>
+                <span className="shrink-0 text-xs font-semibold text-[#E5484D]">Download →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

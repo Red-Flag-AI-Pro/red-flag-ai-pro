@@ -17,7 +17,9 @@ export type DocumentType =
   | "governance_policy"
   | "monitoring_policy"
   | "vendor_questionnaire"
-  | "evidence_checklist";
+  | "evidence_checklist"
+  | "financial_exposure"
+  | "board_memo";
 
 export interface DocumentMeta {
   type: DocumentType;
@@ -65,12 +67,38 @@ export const GOVERNANCE_DOCUMENTS: DocumentMeta[] = [
   },
 ];
 
+// Cross-dimension Sentinel-only documents — these draw on the whole
+// assessment rather than one dimension, so they don't carry a `dimension`
+// and aren't eligible for Growth's one-free-document allowance. They power
+// the "human" parts of Sentinel (financial modeling, board reporting): the
+// draft is generated here, the advisor call is reviewing/customizing it.
+export interface SentinelDocumentMeta {
+  type: DocumentType;
+  title: string;
+  description: string;
+}
+
+export const SENTINEL_REPORTING_DOCUMENTS: SentinelDocumentMeta[] = [
+  {
+    type: "financial_exposure",
+    title: "Financial Exposure Summary",
+    description: "Your red flags mapped to statutory maximum fines, by jurisdiction.",
+  },
+  {
+    type: "board_memo",
+    title: "Board Governance Memo",
+    description: "A 1-2 page board-ready summary of your governance position and plan.",
+  },
+];
+
 interface GenerateParams {
   companyName: string;
   dimensionScores: Record<Dimension, number>;
   redFlags: RedFlag[];
   roadmap: RoadmapAction[];
   generatedAt: Date;
+  overallScore?: number;
+  riskLevel?: string;
 }
 
 function gapsForDimension(redFlags: RedFlag[], dimension: Dimension): string {
@@ -304,6 +332,117 @@ a new jurisdiction, or after any material AI incident.
 `;
 }
 
+// Statutory maximum fines, verified 2026-06-20 (same source as the public
+// Fine Calculator tool). These are caps, not predictions — actual fines are
+// at regulator discretion. Kept to the 3 jurisdictions most relevant to a
+// governance conversation; the full 9-jurisdiction breakdown lives in the
+// Fine Calculator itself.
+const EXPOSURE_TABLE: { jurisdiction: string; law: string; cap: string }[] = [
+  { jurisdiction: "UK", law: "UK GDPR / DPA 2018", cap: "Higher of £17.5M or 4% of global turnover" },
+  { jurisdiction: "EU", law: "EU AI Act (in force from Aug 2026)", cap: "Higher of ~£29.75M (€35M) or 7% of global turnover for prohibited/high-risk AI breaches" },
+  { jurisdiction: "US", law: "FTC Act §5", cap: "~£41,900 per violation — multiplies fast (per consumer, per day)" },
+];
+
+const SEVERITY_WEIGHT: Record<RedFlag["severity"], number> = { high: 3, medium: 2, low: 1 };
+
+function financialExposure(params: GenerateParams): string {
+  const sortedFlags = [...params.redFlags].sort(
+    (a, b) => SEVERITY_WEIGHT[b.severity] - SEVERITY_WEIGHT[a.severity]
+  );
+
+  const flagLines = sortedFlags.length
+    ? sortedFlags
+        .map((f) => `- [${f.severity.toUpperCase()}] ${f.title} (${f.dimension.replace(/_/g, " ")})\n  Cited: ${f.regulatoryContext.slice(0, 2).join("; ") || "see assessment"}`)
+        .join("\n")
+    : "No red flags on file for this assessment.";
+
+  return header("FINANCIAL EXPOSURE SUMMARY", params) + `THIS IS NOT A PREDICTION
+This document shows maximum statutory exposure under current law if a regulator
+acted on your worst-case gaps. Actual fines are at regulator discretion and are
+typically far lower — this is the ceiling, not a forecast, used to size urgency
+and budget for fixing governance gaps, not to alarm.
+
+1. YOUR CURRENT POSITION
+Score: ${params.overallScore ?? "—"}/100 (${(params.riskLevel ?? "unassessed").toUpperCase()})
+Gaps identified: ${params.redFlags.length}
+
+2. MAXIMUM STATUTORY EXPOSURE BY JURISDICTION
+${EXPOSURE_TABLE.map((j) => `- ${j.jurisdiction} (${j.law}): ${j.cap}`).join("\n")}
+
+These caps apply per breach/incident, not per gap — multiple unresolved gaps
+increase the chance any single incident triggers one of them, not the size of
+the cap itself.
+
+3. YOUR GAPS, RANKED BY SEVERITY
+${flagLines}
+
+4. WHAT THIS MEANS FOR BUDGET
+The cost of closing a governance gap (a documented policy, a named owner, an
+audit log) is a fixed, predictable, one-time or low-recurring cost. The cost of
+leaving it open is the uncapped exposure above. Use this contrast when
+requesting budget or headcount for governance work.
+
+5. FOR A FULL JURISDICTION-BY-JURISDICTION BREAKDOWN
+See your Fine Calculator results for all 9 jurisdictions Red Flag AI Pro tracks,
+sized to your actual turnover: ${params.companyName !== "[Your Organisation]" ? "available in your dashboard" : "redflagaipro.com/tools/fine-calculator"}.
+
+Prepared for discussion with your Sentinel governance advisor — not a substitute
+for legal or financial advice.
+`;
+}
+
+function boardMemo(params: GenerateParams): string {
+  const sortedFlags = [...params.redFlags].sort(
+    (a, b) => SEVERITY_WEIGHT[b.severity] - SEVERITY_WEIGHT[a.severity]
+  );
+  const topFlags = sortedFlags.slice(0, 3);
+
+  const phaseLabel: Record<RoadmapAction["phase"], string> = {
+    quick_wins: "Next 90 days",
+    medium_term: "Next 6 months",
+    strategic: "Next 12 months",
+  };
+
+  const roadmapByPhase = (["quick_wins", "medium_term", "strategic"] as const)
+    .map((phase) => {
+      const actions = params.roadmap.filter((a) => a.phase === phase);
+      if (actions.length === 0) return null;
+      return `${phaseLabel[phase]} (${actions.length} action${actions.length === 1 ? "" : "s"}):\n` +
+        actions.map((a) => `  - ${a.title} [${a.effort} effort, ${a.impact} impact, owner: ${a.owner}]`).join("\n");
+    })
+    .filter(Boolean)
+    .join("\n\n");
+
+  return header("BOARD GOVERNANCE MEMO", params) + `TO: The Board
+FROM: [Name], AI Governance Lead
+RE: AI Governance Position — ${params.generatedAt.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}
+
+1. EXECUTIVE SUMMARY
+${params.companyName}'s current AI governance maturity score is ${params.overallScore ?? "—"}/100,
+rated ${(params.riskLevel ?? "unassessed").toUpperCase()}. ${params.redFlags.length} specific gap${params.redFlags.length === 1 ? "" : "s"} ${params.redFlags.length === 1 ? "has" : "have"} been
+identified against recognised frameworks (NIST AI RMF, ISO 42001, OECD AI
+Principles) and live regulatory deadlines (EU AI Act, SEC 2026 exam priorities).
+
+2. TOP RISKS REQUIRING BOARD AWARENESS
+${topFlags.length ? topFlags.map((f, i) => `${i + 1}. [${f.severity.toUpperCase()}] ${f.title}\n   ${f.recommendation || f.description}`).join("\n") : "No material gaps currently flagged."}
+
+3. WHAT IS BEING DONE
+${roadmapByPhase || "Roadmap pending — see remediation plan once finalised."}
+
+4. ASK OF THE BOARD
+- Note the current risk position and the plan to close it.
+- Approve [budget/headcount/named owner] required to execute the roadmap above.
+- Schedule the next governance review for [date — recommend within 90 days].
+
+5. NEXT REVIEW
+This memo is refreshed each quarter as part of Sentinel governance management.
+Next scheduled review: [date].
+
+Prepared with Red Flag AI Pro (Sentinel) — reviewed and customised by your
+governance advisor before board submission.
+`;
+}
+
 const GENERATORS: Record<DocumentType, (params: GenerateParams) => string> = {
   charter,
   tools_policy: toolsPolicy,
@@ -311,10 +450,14 @@ const GENERATORS: Record<DocumentType, (params: GenerateParams) => string> = {
   monitoring_policy: monitoringPolicy,
   vendor_questionnaire: vendorQuestionnaire,
   evidence_checklist: evidenceChecklist,
+  financial_exposure: financialExposure,
+  board_memo: boardMemo,
 };
 
 export function generateGovernanceDocument(type: DocumentType, params: GenerateParams): { title: string; content: string } {
-  const meta = GOVERNANCE_DOCUMENTS.find((d) => d.type === type);
+  const meta =
+    GOVERNANCE_DOCUMENTS.find((d) => d.type === type) ??
+    SENTINEL_REPORTING_DOCUMENTS.find((d) => d.type === type);
   if (!meta) throw new Error(`Unknown document type: ${type}`);
   return { title: meta.title, content: GENERATORS[type](params) };
 }
