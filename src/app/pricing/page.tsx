@@ -28,7 +28,7 @@ const SCANNER_FEATURES = [
 
 const GROWTH_FEATURES = [
   "9 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
-  "Full AI governance assessment — every gap revealed, not just one",
+  "Full AI governance diagnosis — every gap revealed, not just one (fixes unlock with Sentinel)",
   "1 free fix-it document for your worst-scoring dimension",
   "Vendor AI risk tracking & assessments",
   "Policy to practice gap detection",
@@ -403,7 +403,8 @@ export default function PricingPage() {
                 <tbody>
                   {[
                     { need: "9 separate countries covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "See every governance gap (full assessment)", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "See every governance gap (the warnings)", scanner: "✗", growth: "✓", sentinel: "✓" },
+                    { need: "The fix for every gap (not just a warning)", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "Multiple team seats", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "API & webhook access", scanner: "✗", growth: "✓", sentinel: "✓" },

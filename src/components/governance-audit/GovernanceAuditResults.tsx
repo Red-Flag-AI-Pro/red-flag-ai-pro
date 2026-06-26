@@ -222,20 +222,31 @@ export function GovernanceAuditResults({
                     </div>
                   ) : (
                     <>
-                      {/* Description */}
+                      {/* Description — the warning, visible from Growth up */}
                       <p className="text-sm text-gray-300 leading-relaxed">
                         {flag.description}
                       </p>
 
-                      {/* Recommendation */}
-                      <div className="bg-gray-900 border border-gray-800 rounded p-3 space-y-1">
-                        <p className="text-xs font-semibold text-gray-400">
-                          RECOMMENDATION:
-                        </p>
-                        <p className="text-sm text-gray-300">
-                          {flag.recommendation}
-                        </p>
-                      </div>
+                      {/* Recommendation — the fix, Sentinel only */}
+                      {flag.recommendation ? (
+                        <div className="bg-gray-900 border border-gray-800 rounded p-3 space-y-1">
+                          <p className="text-xs font-semibold text-gray-400">
+                            RECOMMENDATION:
+                          </p>
+                          <p className="text-sm text-gray-300">
+                            {flag.recommendation}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="bg-gray-900 border border-dashed border-gray-700 rounded p-3 space-y-1">
+                          <p className="text-xs font-semibold text-gray-500">
+                            RECOMMENDATION: Locked — Sentinel only
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            We've confirmed this is a real gap. The specific fix unlocks with Sentinel.
+                          </p>
+                        </div>
+                      )}
 
                       {/* Regulatory Context */}
                       <div className="flex flex-wrap gap-2">
@@ -257,13 +268,13 @@ export function GovernanceAuditResults({
         </div>
       )}
 
-      {!response.fullAccess && response.roadmapCount > 0 && (
+      {!response.managed && response.roadmapCount > 0 && (
         <div className="border border-gray-800 rounded-lg p-5 bg-gray-950 text-center space-y-2">
           <p className="text-sm font-semibold text-white">
             {response.roadmapCount} remediation action{response.roadmapCount === 1 ? '' : 's'} identified across 90 days, 6 months and 12 months
           </p>
           <p className="text-xs text-gray-400">
-            Your prioritised roadmap — with owners and timelines — unlocks with Growth.
+            Your prioritised roadmap — with owners and timelines — unlocks with Sentinel.
           </p>
         </div>
       )}
@@ -279,7 +290,7 @@ export function GovernanceAuditResults({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* CTA 1: Download Report (full access) or Unlock (locked) */}
-          {response.fullAccess ? (
+          {response.managed ? (
             <Button
               onClick={onDownloadReport}
               variant="primary"
@@ -288,7 +299,20 @@ export function GovernanceAuditResults({
               <div className="text-center">
                 <p className="font-semibold text-sm">Download Full Report</p>
                 <p className="text-xs text-gray-300 mt-1">
-                  Governance assessment + roadmap
+                  Governance assessment + roadmap + fixes
+                </p>
+              </div>
+            </Button>
+          ) : response.fullAccess ? (
+            <Button
+              onClick={onDownloadReport}
+              variant="primary"
+              className="h-auto py-4 flex flex-col items-center gap-2"
+            >
+              <div className="text-center">
+                <p className="font-semibold text-sm">Download Diagnosis</p>
+                <p className="text-xs text-gray-300 mt-1">
+                  Every gap — fixes unlock with Sentinel
                 </p>
               </div>
             </Button>

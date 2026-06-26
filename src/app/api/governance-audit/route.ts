@@ -91,18 +91,20 @@ export async function POST(request: Request) {
     // ============================================================
     // CHECK FOR A PAYING (GROWTH OR SENTINEL) ACCOUNT
     // ============================================================
-    // Growth is where compliance and governance first meet — it sees the full
-    // diagnosis (every gap, the full roadmap) because that's the urgency that
-    // sells the upgrade. What Growth does NOT get is the managed tooling: no
-    // tracked /governance checklist, no full document library (just one free
-    // document, as a taste). Sentinel adds the management layer on top —
-    // tracked roadmap, all 6 documents, plus the human consulting extras
-    // (financial modeling, board reporting, managed implementation) sold
-    // separately from code gates. Free/anonymous and Pro/Scanner accounts get
-    // the scare layer only — score + one fully-revealed gap, rest locked.
+    // The split is warnings vs fixes, not "some flags vs all flags" — Growth
+    // and Sentinel looked nearly identical when Growth got full detail
+    // (including the fix) on half its gaps. Now:
+    //   - Free: ONE warning (what's wrong + why), no fix, no citation.
+    //   - Growth: EVERY warning, with citation — the full diagnosis, scary
+    //     and complete — but the recommendation (the fix) is stripped from
+    //     all of them, and the roadmap (the action plan) stays locked to a
+    //     count. Growth tells you everything that's wrong; Sentinel is the
+    //     only tier that tells you how to fix it.
+    //   - Sentinel: every warning + every fix + the full roadmap, plus the
+    //     managed layer (tracked /governance checklist, all 6 documents,
+    //     financial modeling, board reporting — sold outside code gates).
 
-    let fullAccess = false;
-    let managed = false;
+    let tier: 'free' | 'growth' | 'sentinel' = 'free';
 
     try {
       const serverSupabase = await createServerClient();
@@ -118,8 +120,7 @@ export async function POST(request: Request) {
           .single();
 
         if (profile?.plan === 'enterprise' || profile?.plan === 'sentinel') {
-          fullAccess = true;
-          managed = profile.plan === 'sentinel';
+          tier = profile.plan === 'sentinel' ? 'sentinel' : 'growth';
 
           // Account-linked, separate from the anonymous lead-gen row above.
           // Persisted for both tiers so Growth's one free document can be
@@ -140,9 +141,11 @@ export async function POST(request: Request) {
       console.error('Governance assessment account-link error:', linkError);
     }
 
+    const fullAccess = tier !== 'free'; // every warning visible (Growth + Sentinel)
+    const managed = tier === 'sentinel'; // fixes unlocked + managed tooling
+
     // ============================================================
-    // BUILD RESPONSE — lock everything except the score + one gap
-    // unless this is a paying Sentinel account.
+    // BUILD RESPONSE
     // ============================================================
 
     const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
@@ -150,21 +153,29 @@ export async function POST(request: Request) {
       (a, b) => severityRank[a.severity] - severityRank[b.severity]
     );
 
-    const responseFlags = fullAccess
-      ? sortedFlags.map((f) => ({ ...f, unlocked: true }))
-      : sortedFlags.map((f, i) =>
-          i === 0
-            ? { ...f, unlocked: true }
-            : {
-                severity: f.severity,
-                dimension: f.dimension,
-                title: f.title,
-                description: '',
-                recommendation: '',
-                regulatoryContext: [],
-                unlocked: false,
-              }
-        );
+    // Free: only the single worst gap is shown at all (everything else is a
+    // bare locked stub). Growth: every gap's warning is visible, but with the
+    // fix stripped. Sentinel: every gap, warning and fix both.
+    const warningVisibleCount = fullAccess ? sortedFlags.length : 1;
+
+    const responseFlags = sortedFlags.map((f, i) => {
+      if (i >= warningVisibleCount) {
+        return {
+          severity: f.severity,
+          dimension: f.dimension,
+          title: f.title,
+          description: '',
+          recommendation: '',
+          regulatoryContext: [],
+          unlocked: false,
+        };
+      }
+      return {
+        ...f,
+        recommendation: managed ? f.recommendation : '',
+        unlocked: true,
+      };
+    });
 
     const response: GovernanceQuizResponse = {
       email: trimmedEmail,
@@ -173,7 +184,7 @@ export async function POST(request: Request) {
       overallScore,
       riskLevel,
       redFlags: responseFlags,
-      roadmap: fullAccess ? roadmap : [],
+      roadmap: managed ? roadmap : [],
       roadmapCount: roadmap.length,
       fullAccess,
       managed,
