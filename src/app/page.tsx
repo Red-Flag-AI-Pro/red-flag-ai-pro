@@ -159,6 +159,44 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* TAMPER-EVIDENCE / VERIFY */}
+      <section style={{
+        padding: "6rem 1.5rem",
+        background: "#0D1B2E",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        <div style={{
+          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: "600px", height: "300px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.1) 0%, transparent 70%)"
+        }} />
+        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.25rem" }}>
+            Cryptographically sealed. Not just stored.
+          </p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem", color: "white" }}>
+            Every compliance scan. Every governance action.<br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>One tamper-evident hash chain.</span>
+          </h2>
+          <p style={{ ...syne, fontSize: "1.02rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "640px", margin: "0 auto 2rem" }}>
+            Both halves of this platform write to the same SHA-256 hash chain. Compliance scan results and governance audit actions alike, each entry sealed with the hash of the one before it. Edit, delete, or backdate any record and the chain breaks, provably, not on trust.
+          </p>
+          <Link href="/verify" style={{
+            ...syne, fontSize: "0.95rem", fontWeight: 700,
+            background: "transparent", color: "#E5484D",
+            border: "1px solid rgba(229,72,77,0.4)",
+            padding: "13px 32px", borderRadius: "9999px",
+            textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px"
+          }}>
+            Verify a real record yourself <span className="arrow">→</span>
+          </Link>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1rem" }}>No account needed. We don&apos;t ask you to trust us on this.</p>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
