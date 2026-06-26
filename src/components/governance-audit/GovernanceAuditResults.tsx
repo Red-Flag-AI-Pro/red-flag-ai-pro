@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
@@ -10,6 +11,13 @@ import {
   type Dimension,
   type RiskLevel,
 } from '@/lib/governance-audit';
+
+interface BenchmarkData {
+  average: number;
+  quartile: { q1: number; q2: number; q3: number; q4: number };
+  sampleSize: number;
+  source: 'real' | 'estimate';
+}
 
 interface GovernanceAuditResultsProps {
   response: GovernanceQuizResponse;
@@ -58,7 +66,23 @@ export function GovernanceAuditResults({
   onUnlock,
 }: GovernanceAuditResultsProps) {
   const colors = RISK_COLORS[response.riskLevel];
-  const benchmark = PEER_BENCHMARK.overall;
+  const [benchmark, setBenchmark] = useState<BenchmarkData>({
+    ...PEER_BENCHMARK.overall,
+    sampleSize: 0,
+    source: 'estimate',
+  });
+
+  useEffect(() => {
+    fetch('/api/governance-audit/benchmark')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: BenchmarkData | null) => {
+        if (data) setBenchmark(data);
+      })
+      .catch(() => {
+        // Static fallback already set as initial state — nothing to do.
+      });
+  }, []);
+
   const compareLine =
     response.overallScore >= benchmark.quartile.q4
       ? `Top tier. Above the top quartile benchmark of ${benchmark.quartile.q4}/100.`
@@ -103,6 +127,9 @@ export function GovernanceAuditResults({
           </p>
           <p className="text-xs text-gray-500">
             Industry average: {benchmark.average}/100 | Top performers: {benchmark.quartile.q4}/100
+            {benchmark.source === 'real' && (
+              <> · based on {benchmark.sampleSize.toLocaleString()} real Red Flag assessments</>
+            )}
           </p>
         </div>
       </div>

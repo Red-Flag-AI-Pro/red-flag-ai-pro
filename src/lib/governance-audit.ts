@@ -1081,8 +1081,11 @@ export function generateRoadmap(
 }
 
 // ============================================================
-// PEER BENCHMARKING (Mock Data)
+// PEER BENCHMARKING (fallback estimate)
 // ============================================================
+// /api/governance-audit/benchmark computes the real anonymized average and
+// quartiles from governance_audit_emails once enough assessments exist
+// (see MIN_SAMPLE_SIZE there). This stays as the fallback shown until then.
 
 export const PEER_BENCHMARK = {
   overall: {
