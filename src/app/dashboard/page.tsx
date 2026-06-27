@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { GoogleConversion } from "@/components/marketing/GoogleConversion";
 import { SignupVerifiedConversion } from "@/components/marketing/SignupVerifiedConversion";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -96,8 +95,7 @@ export default async function DashboardPage({
 
   return (
     <div className="space-y-6">
-      <GoogleConversion email={user.email} />
-      {welcome === "1" && <SignupVerifiedConversion />}
+      {welcome === "1" && <SignupVerifiedConversion email={user.email} />}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[#F4F1EA]">
