@@ -5,10 +5,12 @@ export async function addContactToLoops({
   email,
   name,
   plan = "free",
+  source = "signup",
 }: {
   email: string;
   name?: string;
   plan?: string;
+  source?: string;
 }) {
   if (!LOOPS_API_KEY) {
     console.warn("LOOPS_API_KEY not set");
@@ -27,7 +29,7 @@ export async function addContactToLoops({
         firstName: name?.split(" ")[0] ?? "",
         lastName: name?.split(" ").slice(1).join(" ") ?? "",
         plan,
-        source: "signup",
+        source,
         subscribed: true,
       }),
     });

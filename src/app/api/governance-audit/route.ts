@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { addContactToLoops, sendLoopsEvent } from '@/lib/loops';
 import {
   calculateScores,
   calculateOverallScore,
@@ -15,6 +16,12 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Where the "new governance lead" notification event is sent. A Loops automation
+// (Loops > Automations > Event triggered: "governanceLeadCaptured") can email
+// this address whenever a real visitor completes the quiz, so leads are never
+// invisible again.
+const FOUNDER_NOTIFY_EMAIL = 'jamesbstokes82@gmail.com';
 
 export async function POST(request: Request) {
   try {
@@ -85,6 +92,32 @@ export async function POST(request: Request) {
           { error: 'Failed to save results' },
           { status: 500 }
         );
+      }
+
+      // Lead capture side effects. Wrapped so a Loops outage can never break the
+      // visitor's assessment. Two things happen:
+      //   1. The lead is added to the Loops audience (source "governance-audit")
+      //      so it's immediately visible and nurturable, not just a hidden DB row.
+      //   2. A "governanceLeadCaptured" event fires to the founder's own address
+      //      so a Loops automation can notify James the moment someone completes it.
+      try {
+        const leadEmail = trimmedEmail.toLowerCase();
+        await addContactToLoops({
+          email: leadEmail,
+          plan: 'free',
+          source: 'governance-audit',
+        });
+        await sendLoopsEvent({
+          email: FOUNDER_NOTIFY_EMAIL,
+          eventName: 'governanceLeadCaptured',
+          properties: {
+            leadEmail,
+            score: overallScore,
+            riskLevel,
+          },
+        });
+      } catch (notifyError) {
+        console.error('Governance lead notification error:', notifyError);
       }
     }
 
