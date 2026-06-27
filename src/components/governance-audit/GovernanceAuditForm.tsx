@@ -4,10 +4,11 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import {
-  ALL_QUESTIONS,
+  SHORT_QUESTIONS,
   GOVERNANCE_DIMENSIONS,
   type Answer,
   type Dimension,
+  type QuizQuestion,
 } from '@/lib/governance-audit';
 
 interface GovernanceAuditFormProps {
@@ -15,6 +16,9 @@ interface GovernanceAuditFormProps {
   // (no up-front gate) — this materially lifts completion + capture rate.
   onComplete?: (answers: Answer[]) => void;
   isLoading?: boolean;
+  // Defaults to the short 12-question public quiz. Pass ALL_QUESTIONS for the
+  // full 24-question deep assessment (Growth/Sentinel).
+  questions?: QuizQuestion[];
 }
 
 type FormStage = 'quiz' | 'submitted';
@@ -22,6 +26,7 @@ type FormStage = 'quiz' | 'submitted';
 export function GovernanceAuditForm({
   onComplete,
   isLoading = false,
+  questions = SHORT_QUESTIONS,
 }: GovernanceAuditFormProps) {
   const [stage, setStage] = useState<FormStage>('quiz');
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -31,9 +36,9 @@ export function GovernanceAuditForm({
   // QUIZ STAGE
   // ============================================================
 
-  const currentQuestion = ALL_QUESTIONS[currentQuestionIndex];
-  const questionsRemaining = ALL_QUESTIONS.length - currentQuestionIndex;
-  const progressPercent = ((currentQuestionIndex + 1) / ALL_QUESTIONS.length) * 100;
+  const currentQuestion = questions[currentQuestionIndex];
+  const questionsRemaining = questions.length - currentQuestionIndex;
+  const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   const handleAnswerSelect = (optionIndex: number) => {
     const option = currentQuestion.options[optionIndex];
@@ -57,7 +62,7 @@ export function GovernanceAuditForm({
     }
 
     // Move to next question
-    if (currentQuestionIndex < ALL_QUESTIONS.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       // Quiz complete
@@ -91,7 +96,7 @@ export function GovernanceAuditForm({
         <div className="space-y-2">
           <div className="flex justify-between items-center">
             <p className="text-xs font-medium text-gray-400">
-              Question {currentQuestionIndex + 1} of {ALL_QUESTIONS.length}
+              Question {currentQuestionIndex + 1} of {questions.length}
             </p>
             <p className="text-xs text-gray-500">{questionsRemaining} remaining</p>
           </div>
@@ -159,7 +164,7 @@ export function GovernanceAuditForm({
           </Button>
           <div className="flex-1" />
           <p className="text-xs text-gray-500 pt-2">
-            Question {currentQuestionIndex + 1} of {ALL_QUESTIONS.length}
+            Question {currentQuestionIndex + 1} of {questions.length}
           </p>
         </div>
       </div>

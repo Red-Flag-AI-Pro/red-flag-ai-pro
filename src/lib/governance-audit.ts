@@ -1119,3 +1119,26 @@ export const ALL_QUESTIONS = [
   ...VENDOR_QUESTIONS,
   ...REGULATORY_QUESTIONS,
 ];
+
+export type QuizQuestion = (typeof ALL_QUESTIONS)[number];
+
+// ============================================================
+// SHORT QUIZ (public, free signal check)
+// ============================================================
+// 2 highest-signal questions per dimension, 12 total. This is the
+// public entry point — fast enough to finish on mobile. The full
+// 24-question ALL_QUESTIONS set becomes the deep assessment unlocked
+// for Growth/Sentinel, asking more detailed, specific follow-up
+// questions rather than just showing more of the same answers.
+const SHORT_QUESTION_IDS = [
+  'strat_1', 'strat_2',
+  'tool_1', 'tool_5',
+  'policy_1', 'policy_3',
+  'monitor_1', 'monitor_2',
+  'vendor_1', 'vendor_3',
+  'reg_1', 'reg_3',
+];
+
+export const SHORT_QUESTIONS = SHORT_QUESTION_IDS.map(
+  id => ALL_QUESTIONS.find(q => q.id === id)!
+);

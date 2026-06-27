@@ -101,7 +101,7 @@ export default function LandingPage() {
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Governance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Prove your AI governance</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                24 questions across 6 dimensions. Get a Governance Maturity Index, your top gaps, and an audit ready evidence package, in 5 minutes.
+                12 quick questions across 6 dimensions. Get a Governance Maturity Index and your top gap, in under 2 minutes.
               </p>
               <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                 Start the assessment <span className="arrow">→</span>

@@ -23,10 +23,9 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const START_ITEMS = [
-  'Your Governance Maturity Index, scored across all 6 dimensions',
-  'Your 3 to 5 most critical gaps, mapped to EU AI Act, DORA, SEC & Munir',
-  'A prioritised 90 day to 12 month remediation roadmap',
-  'A board ready PDF you can take straight to your next meeting',
+  'A signal score across all 6 governance dimensions, in under 2 minutes',
+  'Your top critical gap, mapped to EU AI Act, DORA, SEC & Munir',
+  'A quick read on where to look first, not yet a full report',
 ];
 
 export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } = {}) {
@@ -194,7 +193,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
           Enter your work email to begin.
         </h2>
         <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-          Takes 5 minutes. You&apos;ll get:
+          12 quick questions, under 2 minutes. You&apos;ll get:
         </p>
 
         <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem' }}>
@@ -207,6 +206,10 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
             </li>
           ))}
         </ul>
+
+        <p style={{ ...syne, fontSize: '12px', color: 'rgba(244,241,234,0.45)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+          This is a quick signal, not a full audit. Growth and Sentinel customers complete a deeper, 24 point assessment built around their specific setup.
+        </p>
 
         <form onSubmit={handleStartSubmit}>
           <label htmlFor="start-email" style={{ ...syne, display: 'block', fontSize: '12px', fontWeight: 600, color: 'rgba(244,241,234,0.6)', marginBottom: '8px' }}>
