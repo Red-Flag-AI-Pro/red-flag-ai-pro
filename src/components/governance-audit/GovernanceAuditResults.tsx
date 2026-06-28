@@ -189,9 +189,19 @@ export function GovernanceAuditResults({
           ============================================================ */}
       {response.redFlags.length > 0 && (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-white">
-            Top Governance Gaps
-          </h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-white">
+              Top Governance Gaps
+            </h3>
+            {(() => {
+              const lockedCount = response.redFlags.filter(f => f.unlocked === false).length;
+              return lockedCount > 0 ? (
+                <span className="text-xs font-semibold text-red-400 bg-red-950 border border-red-800 rounded-full px-3 py-1">
+                  {lockedCount} governance gap{lockedCount === 1 ? '' : 's'} hidden
+                </span>
+              ) : null;
+            })()}
+          </div>
 
           <div className="space-y-3">
             {response.redFlags.map((flag, idx) => {
@@ -207,7 +217,7 @@ export function GovernanceAuditResults({
               return (
                 <div
                   key={idx}
-                  className="border border-gray-800 rounded-lg p-4 space-y-3 bg-gray-950"
+                  className={`border rounded-lg p-4 space-y-3 ${locked ? 'border-gray-800 bg-gray-950/60' : 'border-gray-800 bg-gray-950'}`}
                 >
                   {/* Header */}
                   <div className="flex items-start justify-between gap-4">
@@ -229,23 +239,31 @@ export function GovernanceAuditResults({
                           {dimInfo.title}
                         </span>
                       </div>
-                      <h4 className="text-sm font-semibold text-white">
+                      <h4 className={`text-sm font-semibold ${locked ? 'text-gray-500' : 'text-white'}`}>
                         {flag.title}
                       </h4>
                     </div>
-                    <span className="text-2xl">#{idx + 1}</span>
+                    <span className={`text-2xl ${locked ? 'opacity-30' : ''}`}>#{idx + 1}</span>
                   </div>
 
                   {locked ? (
-                    <div className="relative">
-                      <p className="text-sm text-gray-400 leading-relaxed blur-sm select-none">
-                        This gap could expose your organisation to regulatory action. Unlock the full report to see exactly why, and the specific fix.
-                      </p>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="rounded-full border border-gray-700 bg-black/80 px-3 py-1 text-xs font-semibold text-gray-300">
-                          Locked — Growth plan and up
-                        </span>
+                    <div className="space-y-3">
+                      <div className="relative">
+                        <p className="text-sm text-gray-400 leading-relaxed blur-sm select-none">
+                          This gap could expose your organisation to significant regulatory liability. The description, regulatory mapping, and exact remediation step are all visible with Growth.
+                        </p>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="rounded-full border border-red-900 bg-black/90 px-3 py-1 text-xs font-semibold text-red-400">
+                            Details hidden
+                          </span>
+                        </div>
                       </div>
+                      <button
+                        onClick={onUnlock}
+                        className="w-full text-center text-xs font-semibold text-white bg-[#E5484D] hover:bg-red-600 transition-colors rounded px-4 py-2"
+                      >
+                        Unlock all gaps — Growth from £1,200/yr
+                      </button>
                     </div>
                   ) : (
                     <>
@@ -265,13 +283,26 @@ export function GovernanceAuditResults({
                           </p>
                         </div>
                       ) : (
-                        <div className="bg-gray-900 border border-dashed border-gray-700 rounded p-3 space-y-1">
-                          <p className="text-xs font-semibold text-gray-500">
-                            RECOMMENDATION: Locked — Sentinel only
+                        <div className="bg-gray-900 border border-dashed border-amber-900/50 rounded p-3 space-y-2">
+                          <p className="text-xs font-semibold text-amber-600/80 tracking-wide">
+                            REMEDIATION PLAN — SENTINEL
                           </p>
-                          <p className="text-xs text-gray-500">
-                            We've confirmed this is a real gap. The specific fix unlocks with Sentinel.
-                          </p>
+                          <div className="relative">
+                            <p className="text-sm text-gray-400 leading-relaxed blur-sm select-none">
+                              Appoint a named executive as AI Governance Owner in writing, with board sign-off recorded in the next board minutes. Within 30 days, convene a cross-functional committee and document the charter, meeting cadence, and escalation path. This single step closes the accountability gap regulators test first.
+                            </p>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="rounded-full border border-amber-800 bg-black/90 px-3 py-1 text-xs font-semibold text-amber-500">
+                                Unlock with Sentinel
+                              </span>
+                            </div>
+                          </div>
+                          <a
+                            href="/pricing"
+                            className="block w-full text-center text-xs font-semibold text-amber-500 border border-amber-800 hover:bg-amber-950 transition-colors rounded px-4 py-2 mt-1"
+                          >
+                            See Sentinel pricing
+                          </a>
                         </div>
                       )}
 

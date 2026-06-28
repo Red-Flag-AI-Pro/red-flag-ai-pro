@@ -897,7 +897,7 @@ export function generateRedFlags(
       dimension: 'strategy_ownership',
       title: 'Unclear AI Governance Ownership',
       description: 'Your organization lacks a clear owner for AI governance. This gaps accountability and executive oversight.',
-      recommendation: 'Designate a CFO or CIO as primary AI governance owner. Establish cross-functional governance committee (CFO + CIO + Chief Risk + Legal).',
+      recommendation: 'Appoint a named executive (CFO or CIO) as AI Governance Owner in writing, with board sign-off recorded in the next board minutes. Within 30 days, convene a cross-functional AI Governance Committee including Legal, Risk, and at least one business unit lead. Document the committee charter, meeting cadence, and escalation path. This single step closes the accountability gap that regulators and courts (Mobley v. Workday, 2026) test first: who owned the decision, and can you prove it?',
       regulatoryContext: ['Brad Wolfe: "ownership gap is the real gap"', 'SEC 2026 exams test decision rights', 'ISO 42001 Clause 5: Leadership and roles', 'NIST AI RMF Govern 1.1: Accountability structures', 'OECD AI Principles: Accountability'],
     });
   }
@@ -909,7 +909,7 @@ export function generateRedFlags(
       dimension: 'tool_data_governance',
       title: 'High Shadow AI Usage / Data Visibility Gap',
       description: 'You have significant unapproved AI tool usage or lack visibility into what data is going into tools.',
-      recommendation: 'Conduct tool audit. Implement DLP controls. Set up monthly data governance reviews.',
+      recommendation: 'Run a full AI tool inventory across every team: ask each department head to list every AI tool in use, approved or not, within two weeks. Cross-reference against your approved software register and flag any tool touching customer data, financial records, or personally identifiable information. Implement a Data Loss Prevention policy that blocks unapproved tools from accessing sensitive data stores, and set a monthly data governance review as a standing agenda item. Shadow AI is not an IT problem — it is a liability that sits with whoever deployed the tool, whether they knew about it or not.',
       regulatoryContext: ['Artem Gabrielyan: "gap between policy and practice is the exam"', 'Munir v SSHD: governance you cannot demonstrate = liability', 'ISO 42001 Clause 8.1: Operational planning and control', 'NIST AI RMF Map 1.1: Context and AI system inventory', 'OECD AI Principles: Transparency and explainability'],
     });
   }
@@ -921,7 +921,7 @@ export function generateRedFlags(
       dimension: 'policy_documentation',
       title: 'No Written AI Governance Policy',
       description: 'Your organization lacks a formal, documented AI governance policy. This exposes you to regulatory liability.',
-      recommendation: 'Draft formal AI governance policy addressing data privacy, vendor risk, model transparency, and prohibited use cases. Get board approval.',
+      recommendation: 'Draft a single-page AI Governance Policy as the immediate priority — it does not need to be long, it needs to exist and be board-approved. Cover four things: what AI tools are permitted, what data they may not touch, who approves exceptions, and what the prohibited use cases are. Once approved, version it, date it, and store it somewhere auditable. A regulator does not need a 40-page document; they need proof that someone in authority made a decision and wrote it down.',
       regulatoryContext: ['SEC 2026 exams require written policies', 'EU AI Act requires governance documentation', 'ISO 42001 Clause 7.5: Documented information', 'NIST AI RMF Govern 1.2: Documented policies and procedures', 'OECD AI Principles: Robustness, security and safety'],
     });
   }
@@ -933,7 +933,7 @@ export function generateRedFlags(
       dimension: 'monitoring_accountability',
       title: 'Cannot Prove AI Governance Happened',
       description: 'You lack audit trails and monitoring to prove what your AI systems are doing and who approved them.',
-      recommendation: 'Implement automated audit logging. Set up real-time monitoring for output drift. Create governance evidence package for regulators.',
+      recommendation: 'Configure immutable audit logging on every AI system that touches a decision: who ran it, when, on what input, and what it returned. Logs must be tamper-evident — a mutable spreadsheet is not an audit trail. Alongside logging, establish a quarterly output review to catch drift between what the model was approved to do and what it is actually doing. Compile these into a governance evidence package now, before you are asked for it — because the regulator asking is not the time to start building it.',
       regulatoryContext: ['Michael Shuler: "Can you prove exactly what happened?"', 'Munir v SSHD: governance you cannot demonstrate = liability', 'ISO 42001 Clause 9: Performance evaluation', 'NIST AI RMF Measure 2.7: Monitoring for drift and performance', 'OECD AI Principles: Accountability'],
     });
   }
@@ -945,7 +945,7 @@ export function generateRedFlags(
       dimension: 'vendor_risk',
       title: 'Vendor AI Risk Not Assessed or Managed',
       description: 'You don\'t formally assess AI vendors or require governance compliance in contracts.',
-      recommendation: 'Create vendor AI assessment checklist. Add data privacy, audit rights, and liability clauses to vendor contracts. Map vendor data flows.',
+      recommendation: 'Build a vendor AI assessment checklist covering five questions: what data does this vendor process, where is it stored, can you audit their AI outputs, who is liable if the AI causes harm, and can you exit the contract cleanly if they breach governance terms. Apply this checklist to every current AI vendor at next renewal, and make it a gate for any new vendor onboarding. Under delegated authority frameworks (insurance, financial services, legal) the regulator looks through to the vendor — "they did it, not us" is not a defence.',
       regulatoryContext: ['SEC Reg S-P requires vendor oversight', 'Artem Gabrielyan: "proof the review happened" angle for vendors', 'ISO 42001 Annex A.10: Supplier relationships', 'NIST AI RMF Govern 6.1: Third-party risk management', 'OECD AI Principles: Human-centred values and fairness'],
     });
   }
@@ -957,7 +957,7 @@ export function generateRedFlags(
       dimension: 'regulatory_readiness',
       title: 'Not Prepared for Regulatory Examination',
       description: 'You cannot produce evidence of AI governance to regulators, or are unaware of applicable frameworks.',
-      recommendation: 'Identify applicable regulations (EU AI Act, GDPR, FTC, SEC, industry-specific). Conduct gap assessment. Build audit-ready evidence package.',
+      recommendation: 'Map your applicable regulatory obligations first: EU AI Act if you operate in or sell to Europe (enforcement begins August 2026), GDPR if you process EU personal data, sector-specific rules if you are in financial services, legal, or healthcare. For each framework, identify the three to five controls you currently cannot evidence, and prioritise closing those gaps before the others. Then build a single audit-ready evidence package — a folder, physical or digital, that contains your policy, your logs, your vendor assessments, and your ownership structure. When the exam comes, you hand over the folder.',
       regulatoryContext: ['EU AI Act enforcement starts August 2026', 'SEC 2026 exams focus on AI governance', 'Munir v SSHD: prove governance or face liability', 'ISO 42001 Clause 9.2: Internal audit', 'NIST AI RMF Govern 1.5: Regulatory and legal compliance review', 'OECD AI Principles: International cooperation and standards'],
     });
   }
