@@ -216,8 +216,17 @@ export default function PrivacyPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Complaints</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              If you are unhappy with how we handle your data, you have the right to lodge a complaint with the UK Information Commissioner&apos;s Office (ICO) at{" "}
+              If you are unhappy with how we handle your data, please contact us first so we can try to resolve it:
+            </p>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+              <strong style={{ color: "white" }}>Email:</strong>{" "}
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a><br />
+              <strong style={{ color: "white" }}>Response time:</strong> We will acknowledge your complaint within 5 working days and aim to resolve it within 30 days.
+            </p>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+              If you remain dissatisfied after our internal process, you have the right to escalate to the UK Information Commissioner&apos;s Office (ICO) at{" "}
               <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>ico.org.uk</a>.
+              {" "}This internal complaints process is provided in accordance with the Data Use and Access Act 2025.
             </p>
           </div>
 
