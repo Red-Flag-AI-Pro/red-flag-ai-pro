@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 12 June 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 June 2026</p>
         </div>
       </section>
 
@@ -68,6 +68,7 @@ export default function PrivacyPage() {
                     ["Payment information", "Processed securely by Stripe, we never store card details"],
                     ["Copy you submit for checking", "To generate your compliance check results only"],
                     ["Check results and history", "To display your dashboard and check history"],
+                    ["AI governance quiz answers and scores", "To generate your governance maturity score, gap report and roadmap. Stored against your email address in our database."],
                     ["Usage data (pages visited, features used)", "To improve our service"],
                     ["IP address", "For security and fraud prevention"],
                   ].map(([data, reason], i) => (
@@ -133,6 +134,7 @@ export default function PrivacyPage() {
                 ["Stripe", "Payment processing (PCI DSS compliant)"],
                 ["Vercel", "Website hosting"],
                 ["OpenAI / Anthropic", "AI processing of check requests"],
+                ["Loops", "Email marketing and transactional emails (your email address and plan tier are shared to send relevant communications). You can unsubscribe at any time."],
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
