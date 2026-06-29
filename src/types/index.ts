@@ -52,5 +52,5 @@ export interface VideoJob {
 
 export interface AnalysisResult {
   score: number;
-  flags: Omit<ScanFlag, "id" | "scan_id">[];
+  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note">[];
 }
