@@ -159,6 +159,11 @@ export async function POST(request: Request) {
           // Persisted for both tiers so Growth's one free document can be
           // generated later — only Sentinel's roadmap is actually tracked
           // (status toggling) via the /governance dashboard.
+          const { count: existingAuditCount } = await serverSupabase
+            .from('governance_assessments')
+            .select('id', { count: 'exact', head: true })
+            .eq('user_id', user.id);
+
           await serverSupabase.from('governance_assessments').insert({
             user_id: user.id,
             score: overallScore,
@@ -167,6 +172,29 @@ export async function POST(request: Request) {
             red_flags: redFlags,
             roadmap: trackRoadmap(roadmap),
           });
+
+          // First governance audit — lets Loops suppress the activation nudge
+          if ((existingAuditCount ?? 0) === 0 && user.email) {
+            sendLoopsEvent({
+              email: user.email,
+              eventName: 'first_tool_used',
+              properties: { tool: 'governance_audit', score: overallScore, risk_level: riskLevel },
+            }).catch(() => {});
+          }
+        } else if (user.email) {
+          // Free user completed governance audit — still fire activation event
+          const { count: existingAuditCount } = await serverSupabase
+            .from('governance_audit_emails')
+            .select('id', { count: 'exact', head: true })
+            .eq('email', user.email);
+
+          if ((existingAuditCount ?? 0) <= 1) {
+            sendLoopsEvent({
+              email: user.email,
+              eventName: 'first_tool_used',
+              properties: { tool: 'governance_audit', score: overallScore, risk_level: riskLevel },
+            }).catch(() => {});
+          }
         }
       }
     } catch (linkError) {

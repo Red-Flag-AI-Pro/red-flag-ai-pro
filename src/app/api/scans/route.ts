@@ -78,6 +78,11 @@ export async function POST(request: Request) {
   // Recalculate score from the allowed flags only
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 
+  const { count: existingScanCount } = await supabase
+    .from("scans")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id);
+
   const { data: scan, error: scanError } = await supabase
     .from("scans")
     .insert({ user_id: user.id, title, content, score, status: "complete" })
@@ -107,15 +112,24 @@ export async function POST(request: Request) {
     flagCount: flags.length,
   });
 
-  // Nudge good scorers to embed their compliance badge — fires a Loops event
-  // so a "show off your badge" email can be triggered from the Loops dashboard
-  // (best-effort, never blocks the response).
-  if (score >= 70 && user.email) {
-    sendLoopsEvent({
-      email: user.email,
-      eventName: "scan_good_score",
-      properties: { scanId: scan.id, score, title },
-    }).catch(() => {});
+  if (user.email) {
+    // First compliance scan — lets Loops suppress the "haven't tried it yet" nudge
+    if ((existingScanCount ?? 0) === 0) {
+      sendLoopsEvent({
+        email: user.email,
+        eventName: "first_tool_used",
+        properties: { tool: "compliance_scanner", scanId: scan.id, score },
+      }).catch(() => {});
+    }
+
+    // Nudge good scorers to embed their compliance badge
+    if (score >= 70) {
+      sendLoopsEvent({
+        email: user.email,
+        eventName: "scan_good_score",
+        properties: { scanId: scan.id, score, title },
+      }).catch(() => {});
+    }
   }
 
   // Fire webhook if configured
