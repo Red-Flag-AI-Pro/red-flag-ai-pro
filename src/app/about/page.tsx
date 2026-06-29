@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "About: Red Flag AI Pro",
+  title: "About Red Flag AI Pro: AI Governance Scoring and Compliance Platform",
   description:
-    "Red Flag was built to solve a real problem: you can't prove governance happened. Built by James Stokes. For CFOs, compliance teams, and regulated businesses.",
+    "Red Flag AI Pro was built to solve the gap between AI compliance and AI governance. Immutable audit trails, named human sign-off, and compliance checking across 10 jurisdictions. Built by James Stokes for CFOs, legal and risk teams.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
 };
 

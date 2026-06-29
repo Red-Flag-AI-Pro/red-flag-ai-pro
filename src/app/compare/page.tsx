@@ -5,8 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro vs Competitors: Marketing Compliance Tool Comparison",
-  description: "How Red Flag AI Pro compares to Red Marker, Blee, and manual compliance consultants. Feature comparison, pricing and honest assessment of what each tool actually does.",
+  title: "Red Flag AI Pro vs Competitors: AI Governance and Compliance Platform Comparison",
+  description: "How Red Flag AI Pro compares to other AI governance and compliance tools. 10 jurisdictions, 30 risk categories, immutable audit trail, and human sign-off. Feature comparison and honest assessment.",
   alternates: { canonical: "https://www.redflagaipro.com/compare" },
 };
 

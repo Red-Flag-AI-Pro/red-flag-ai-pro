@@ -6,9 +6,9 @@ import { DemoScanner } from "@/components/marketing/DemoScanner";
 import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
 
 export const metadata: Metadata = {
-  title: "Compliance Assessment: Check Marketing Copy Against 30 Risk Categories",
+  title: "AI Compliance Assessment: Check Content Against 30 Risk Categories Across 10 Jurisdictions",
   description:
-    "Check your marketing copy for compliance risk across 10 jurisdictions and 30 risk categories. Free, instant, no account required.",
+    "Run a free compliance assessment across US, UK, EU, Australia, Canada, Brazil, India, Singapore, UAE and Nigeria. 30 risk categories including EU AI Act Article 50, GDPR, FTC and NDPR. Instant results, no account required.",
   alternates: { canonical: "https://www.redflagaipro.com/compliance-assessment" },
 };
 
