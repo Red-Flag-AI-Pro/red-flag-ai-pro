@@ -179,9 +179,9 @@ export default async function DashboardPage({
       </div>
 
       {/* First-time welcome */}
-      {scansThisMonth === 0 && !recentScans?.length && (
+      {scansThisMonth === 0 && !recentScans?.length && plan === "scanner" && (
         <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-gradient-to-br from-[rgba(229,72,77,0.12)] to-[#102943] p-6">
-          <h2 className="text-base font-bold text-[#F4F1EA] mb-1">Welcome — run your first scan</h2>
+          <h2 className="text-base font-bold text-[#F4F1EA] mb-1">Welcome. Run your first scan.</h2>
           <p className="text-sm text-[rgba(244,241,234,0.5)] mb-4">Paste any marketing copy, sales page or ad and get a compliance score in 60 seconds.</p>
           <div className="grid gap-3 sm:grid-cols-3 mb-4">
             {[
@@ -207,6 +207,44 @@ export default async function DashboardPage({
         </div>
       )}
 
+      {/* First-time welcome — two tools for non-Pro plans */}
+      {scansThisMonth === 0 && !recentScans?.length && plan !== "scanner" && (
+        <div className="space-y-4">
+          <h2 className="text-base font-bold text-[#F4F1EA]">Where do you want to start?</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {/* Compliance Scanner card */}
+            <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-gradient-to-br from-[rgba(229,72,77,0.08)] to-[#102943] p-5 flex flex-col justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-[#E5484D] mb-2">COMPLIANCE SCANNER</p>
+                <h3 className="text-sm font-bold text-[#F4F1EA] mb-1">Check your marketing copy</h3>
+                <p className="text-xs text-[rgba(244,241,234,0.5)]">Paste any sales page, email or ad. Get a 0–100 compliance score with plain English flags and suggested rewrites in 60 seconds.</p>
+              </div>
+              <Link
+                href="/scans/new"
+                className="inline-block rounded-lg bg-[#E5484D] px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 transition-colors text-center"
+              >
+                Run a compliance check →
+              </Link>
+            </div>
+
+            {/* Governance Audit card */}
+            <div className="rounded-xl border border-[rgba(229,72,77,0.3)] bg-gradient-to-br from-[rgba(229,72,77,0.08)] to-[#0A1628] p-5 flex flex-col justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-[#E5484D] mb-2">AI GOVERNANCE AUDIT</p>
+                <h3 className="text-sm font-bold text-[#F4F1EA] mb-1">Assess your AI governance posture</h3>
+                <p className="text-xs text-[rgba(244,241,234,0.5)]">Answer 6 questions about how your organisation owns and governs AI. Get a scored gap report across 9 jurisdictions in under 3 minutes.</p>
+              </div>
+              <Link
+                href="/governance-audit"
+                className="inline-block rounded-lg bg-[#E5484D] px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 transition-colors text-center"
+              >
+                Run a governance audit →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Sentinel upsell for non-Sentinel plans */}
       {plan !== "sentinel" && (
         <div className="rounded-xl border border-white/10 bg-gradient-to-r from-[#0A1628] to-[#0C1929] px-5 py-4 flex items-center justify-between gap-4">
@@ -225,6 +263,32 @@ export default async function DashboardPage({
             className="shrink-0 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
           >
             {plan === "free" ? "Upgrade" : "Learn more"}
+          </Link>
+        </div>
+      )}
+
+      {/* Persistent tool shortcuts — shown for all non-Pro users after first scan too */}
+      {plan !== "scanner" && (recentScans?.length ?? 0) > 0 && (
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/scans/new"
+            className="flex items-center justify-between rounded-xl border border-white/10 bg-[#0A1628] px-4 py-3 hover:border-[rgba(229,72,77,0.4)] transition-colors group"
+          >
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-[#E5484D] mb-0.5">COMPLIANCE SCANNER</p>
+              <p className="text-sm font-semibold text-[#F4F1EA]">Check marketing copy</p>
+            </div>
+            <span className="text-[rgba(244,241,234,0.3)] group-hover:text-[#E5484D] transition-colors text-lg">→</span>
+          </Link>
+          <Link
+            href="/governance-audit"
+            className="flex items-center justify-between rounded-xl border border-white/10 bg-[#0A1628] px-4 py-3 hover:border-[rgba(229,72,77,0.4)] transition-colors group"
+          >
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-[#E5484D] mb-0.5">AI GOVERNANCE AUDIT</p>
+              <p className="text-sm font-semibold text-[#F4F1EA]">Assess governance posture</p>
+            </div>
+            <span className="text-[rgba(244,241,234,0.3)] group-hover:text-[#E5484D] transition-colors text-lg">→</span>
           </Link>
         </div>
       )}
