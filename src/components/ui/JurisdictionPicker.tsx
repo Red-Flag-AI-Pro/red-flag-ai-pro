@@ -20,6 +20,7 @@ export const JURISDICTIONS: {
   { code: "in", name: "India",     flag: "in", laws: "DPDP 2023" },
   { code: "sg", name: "Singapore", flag: "sg", laws: "PDPA" },
   { code: "ae", name: "UAE",       flag: "ae", laws: "PDPL 2022" },
+  { code: "ng", name: "Nigeria",   flag: "ng", laws: "NDPR · FCCPC" },
 ];
 
 interface Props {

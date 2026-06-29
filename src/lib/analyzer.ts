@@ -1,7 +1,7 @@
 import type { AnalysisResult, Severity } from "@/types";
 import { SEVERITY_DEDUCTIONS } from "./constants";
 
-export type JurisdictionCode = "us" | "gb" | "eu" | "au" | "ca" | "br" | "in" | "sg" | "ae";
+export type JurisdictionCode = "us" | "gb" | "eu" | "au" | "ca" | "br" | "in" | "sg" | "ae" | "ng";
 
 interface Rule {
   category: string;
@@ -52,8 +52,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "Competition Bureau (CA)",
       "UCPD (EU)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── FAKE URGENCY ─────────────────────────────────────────────────────────────
@@ -90,8 +91,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "DSA (EU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── FAKE SCARCITY ────────────────────────────────────────────────────────────
@@ -126,8 +128,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "DSA (EU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
@@ -159,8 +162,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "UCPD (EU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── GUARANTEES ───────────────────────────────────────────────────────────────
@@ -190,8 +194,9 @@ const RULES: Rule[] = [
       "ACCC + Australian Consumer Law (AU)",
       "Competition Bureau (CA)",
       "Consumer Rights Directive (EU)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── HEALTH CLAIMS ────────────────────────────────────────────────────────────
@@ -232,8 +237,9 @@ const RULES: Rule[] = [
       "TGA + ACCC (AU)",
       "Health Canada + Competition Bureau (CA)",
       "EMA + UCPD (EU)",
+      "NAFDAC + FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── LEGAL DISCLAIMER ─────────────────────────────────────────────────────────
@@ -262,8 +268,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "UCPD (EU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── CONTRACT CONTRADICTION ───────────────────────────────────────────────────
@@ -290,8 +297,9 @@ const RULES: Rule[] = [
       "Australian Consumer Law (AU)",
       "Consumer Protection Act (CA)",
       "Consumer Rights Directive (EU)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── GDPR / ICO / DATA PRIVACY ────────────────────────────────────────────────
@@ -311,7 +319,7 @@ const RULES: Rule[] = [
     flag_description:
       "Contains data collection or sharing language aimed at the visitor (e.g. near a signup/lead form), without a visible privacy policy link nearby. Data privacy law applies across all major jurisdictions and carries some of the highest fines in marketing compliance.",
     suggestion:
-      "Ensure your Privacy Policy is clearly linked. Key rules: UK GDPR/ICO requires explicit opt-in for email marketing. EU GDPR fines up to 4% of global turnover. CASL (Canada) requires express consent — fines up to $10M CAD. Australian Privacy Act requires transparency on all data use. CCPA/CPRA (California) requires a 'Do Not Sell My Personal Information' link. Brazil LGPD, India DPDP Act 2023, Singapore PDPA, and Quebec Law 25 all require equivalent transparency and consent. UAE PDPL 2022 requires a lawful basis for processing, data subject rights, and a Privacy Policy — Dubai-based businesses must comply even if selling globally. Pre-ticked boxes are illegal in all jurisdictions we cover.",
+      "Ensure your Privacy Policy is clearly linked. Key rules: UK GDPR/ICO requires explicit opt-in for email marketing. EU GDPR fines up to 4% of global turnover. CASL (Canada) requires express consent — fines up to $10M CAD. Australian Privacy Act requires transparency on all data use. CCPA/CPRA (California) requires a 'Do Not Sell My Personal Information' link. Brazil LGPD, India DPDP Act 2023, Singapore PDPA, and Quebec Law 25 all require equivalent transparency and consent. UAE PDPL 2022 requires a lawful basis for processing, data subject rights, and a Privacy Policy — Dubai-based businesses must comply even if selling globally. Nigeria NDPR 2019 requires a lawful basis for processing, explicit consent for sensitive data, and a published Privacy Policy — NITDA enforces with fines up to 2% of annual gross revenue. Pre-ticked boxes are illegal in all jurisdictions we cover.",
     regulations: [
       "UK GDPR + ICO (UK)",
       "GDPR (EU)",
@@ -324,8 +332,9 @@ const RULES: Rule[] = [
       "DPDP Act 2023 (India)",
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
+      "NDPR 2019 + NITDA (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae", "ng"],
   },
 
   // ─── DRIP PRICING / HIDDEN FEES ───────────────────────────────────────────────
@@ -362,8 +371,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "LGPD (Brazil)",
       "PDPA (Singapore)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "sg"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "sg", "ng"],
   },
 
   // ─── FAKE REVIEWS ─────────────────────────────────────────────────────────────
@@ -395,8 +405,9 @@ const RULES: Rule[] = [
       "UCPD + Omnibus Directive (EU)",
       "Competition Bureau (CA)",
       "PDPA (Singapore)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "sg"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "sg", "ng"],
   },
 
   // ─── COMPARATIVE ADVERTISING ──────────────────────────────────────────────────
@@ -430,8 +441,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "UCPD (EU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── CASL / EMAIL MARKETING ───────────────────────────────────────────────────
@@ -451,7 +463,7 @@ const RULES: Rule[] = [
     flag_description:
       "Email or SMS marketing consent language detected. Canada's CASL carries fines up to $10 million CAD per violation. Quebec Law 25 adds stricter requirements for Quebec residents. The US TCPA governs SMS marketing with fines up to $1,500 per unsolicited text.",
     suggestion:
-      "Ensure explicit opt-in consent is obtained before sending any commercial electronic messages. For SMS/text marketing: TCPA (US) requires prior express written consent — fines up to $1,500 per text. Under CASL (Canada) implied consent has a strict time limit. Quebec Law 25 requires explicit consent in French for Quebec residents. Under UK PECR and EU GDPR, pre-ticked opt-in boxes are illegal. India DPDP Act 2023 requires explicit consent for all digital communications. Always include a working unsubscribe mechanism in every message.",
+      "Ensure explicit opt-in consent is obtained before sending any commercial electronic messages. For SMS/text marketing: TCPA (US) requires prior express written consent — fines up to $1,500 per text. Under CASL (Canada) implied consent has a strict time limit. Quebec Law 25 requires explicit consent in French for Quebec residents. Under UK PECR and EU GDPR, pre-ticked opt-in boxes are illegal. India DPDP Act 2023 requires explicit consent for all digital communications. Nigeria NDPR 2019 requires clear consent before sending marketing communications and a working unsubscribe mechanism in every message. Always include a working unsubscribe mechanism in every message.",
     regulations: [
       "CASL + CRTC (CA)",
       "Quebec Law 25 (CA)",
@@ -463,8 +475,9 @@ const RULES: Rule[] = [
       "DPDP Act 2023 (India)",
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
+      "NDPR 2019 + NITDA (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "in", "sg", "ae"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "in", "sg", "ae", "ng"],
   },
 
   // ─── EU AI ACT / AI CONTENT DISCLOSURE ───────────────────────────────────────
@@ -496,8 +509,9 @@ const RULES: Rule[] = [
       "UK ICO AI Transparency Guidance (UK)",
       "FTC AI Endorsement Guidelines (US)",
       "ACCC AI Guidelines (AU)",
+      "NITDA AI Policy Framework (NG)",
     ],
-    jurisdictions: ["eu", "gb", "us", "au"],
+    jurisdictions: ["eu", "gb", "us", "au", "ng"],
   },
 
   // ─── FTC AI ENDORSEMENTS ──────────────────────────────────────────────────────
@@ -528,8 +542,9 @@ const RULES: Rule[] = [
       "ASA CAP Code (UK)",
       "UCPD (EU)",
       "ACCC (AU)",
+      "NITDA AI Policy Framework (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au"],
+    jurisdictions: ["us", "gb", "eu", "au", "ng"],
   },
 
   // ─── AUTOMATED DECISION MAKING ────────────────────────────────────────────────
@@ -561,8 +576,9 @@ const RULES: Rule[] = [
       "FTC (US)",
       "Privacy Act (AU)",
       "PIPEDA (CA)",
+      "NDPR 2019 + NITDA (NG)",
     ],
-    jurisdictions: ["eu", "gb", "us", "au", "ca"],
+    jurisdictions: ["eu", "gb", "us", "au", "ca", "ng"],
   },
 
   // ─── DARK PATTERNS / MANIPULATIVE DESIGN ─────────────────────────────────────
@@ -592,8 +608,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "CMA (UK)",
       "FTC (US)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["eu", "au", "gb", "us"],
+    jurisdictions: ["eu", "au", "gb", "us", "ng"],
   },
 
   // ─── FCA FINANCIAL PROMOTIONS ─────────────────────────────────────────────────
@@ -635,8 +652,9 @@ const RULES: Rule[] = [
       "ASIC (AU)",
       "OSC + CSA (CA)",
       "ESMA (EU)",
+      "SEC Nigeria + CBN (NG)",
     ],
-    jurisdictions: ["gb", "us", "au", "ca", "eu"],
+    jurisdictions: ["gb", "us", "au", "ca", "eu", "ng"],
   },
 
   // ─── GREENWASHING / EU GREEN CLAIMS DIRECTIVE ─────────────────────────────────
@@ -679,8 +697,9 @@ const RULES: Rule[] = [
       "FTC Green Guides (US)",
       "ACCC (AU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["eu", "gb", "us", "au", "ca"],
+    jurisdictions: ["eu", "gb", "us", "au", "ca", "ng"],
   },
 
   // ─── SUBSCRIPTION TRAPS / NEGATIVE OPTION BILLING ────────────────────────────
@@ -724,8 +743,9 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "LGPD (Brazil)",
       "DPDP Act 2023 (India)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "ng"],
   },
 
   // ─── INFLUENCER / PAID PROMOTION NON-DISCLOSURE ───────────────────────────────
@@ -759,8 +779,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "ACCC (AU)",
       "Competition Bureau (CA)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
   },
 
   // ─── SMS / TEXT MARKETING ─────────────────────────────────────────────────────
@@ -801,8 +822,9 @@ const RULES: Rule[] = [
       "PDPA (Singapore)",
       "DPDP Act 2023 (India)",
       "UAE PDPL 2022 (UAE)",
+      "NCC + NDPR 2019 (NG)",
     ],
-    jurisdictions: ["us", "gb", "ca", "eu", "sg", "in", "ae"],
+    jurisdictions: ["us", "gb", "ca", "eu", "sg", "in", "ae", "ng"],
   },
 
   // ─── ONLINE SAFETY / HARMFUL CONTENT ─────────────────────────────────────────
@@ -875,8 +897,9 @@ const RULES: Rule[] = [
       "Directive 2019/2161 'Omnibus Directive' (EU)",
       "FTC Guides Against Deceptive Pricing (US)",
       "Australian Consumer Law — Section 29 (AU)",
+      "FCCPC (NG)",
     ],
-    jurisdictions: ["gb", "eu", "us", "au"],
+    jurisdictions: ["gb", "eu", "us", "au", "ng"],
   },
 
   // ─── COOKIE CONSENT / TRACKING ────────────────────────────────────────────────
@@ -905,8 +928,9 @@ const RULES: Rule[] = [
       "ICO Cookie Guidance (UK)",
       "ePrivacy Directive 2002/58/EC (EU)",
       "GDPR Article 7 (EU)",
+      "NDPR 2019 + NITDA (NG)",
     ],
-    jurisdictions: ["gb", "eu"],
+    jurisdictions: ["gb", "eu", "ng"],
   },
 
   // ─── CRYPTO / DIGITAL ASSET PROMOTION ────────────────────────────────────────
@@ -1187,6 +1211,7 @@ export function analyzeContent(
                 if (j === "in") return lower.includes("dpdp") || lower.includes("india");
                 if (j === "sg") return lower.includes("pdpa") || lower.includes("singapore");
                 if (j === "ae") return lower.includes("pdpl") || lower.includes("uae");
+                if (j === "ng") return lower.includes("(ng") || lower.includes("ndpr") || lower.includes("nitda") || lower.includes("fccpc") || lower.includes("nigeria") || lower.includes("ncc");
                 return false;
               });
             })

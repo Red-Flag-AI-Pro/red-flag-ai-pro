@@ -383,7 +383,7 @@ leaving it open is the uncapped exposure above. Use this contrast when
 requesting budget or headcount for governance work.
 
 5. FOR A FULL JURISDICTION-BY-JURISDICTION BREAKDOWN
-See your Fine Calculator results for all 9 jurisdictions Red Flag AI Pro tracks,
+See your Fine Calculator results for all 10 jurisdictions Red Flag AI Pro tracks,
 sized to your actual turnover: ${params.companyName !== "[Your Organisation]" ? "available in your dashboard" : "redflagaipro.com/tools/fine-calculator"}.
 
 Prepared for discussion with your Sentinel governance advisor — not a substitute

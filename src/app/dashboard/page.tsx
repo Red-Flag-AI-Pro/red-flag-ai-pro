@@ -232,7 +232,7 @@ export default async function DashboardPage({
               <div>
                 <p className="text-xs font-semibold tracking-widest text-[#E5484D] mb-2">AI GOVERNANCE AUDIT</p>
                 <h3 className="text-sm font-bold text-[#F4F1EA] mb-1">Assess your AI governance posture</h3>
-                <p className="text-xs text-[rgba(244,241,234,0.5)]">Answer 6 questions about how your organisation owns and governs AI. Get a scored gap report across 9 jurisdictions in under 3 minutes.</p>
+                <p className="text-xs text-[rgba(244,241,234,0.5)]">Answer 6 questions about how your organisation owns and governs AI. Get a scored gap report across 10 jurisdictions in under 3 minutes.</p>
               </div>
               <Link
                 href="/governance-audit"

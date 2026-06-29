@@ -10,7 +10,7 @@ import { TrustBar } from "@/components/marketing/TrustBar";
 export const metadata: Metadata = {
   title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
-    "Check your marketing copy for compliance risk across 9 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
+    "Check your marketing copy for compliance risk across 10 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -90,7 +90,7 @@ export default function LandingPage() {
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Compliance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Check your marketing copy</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                Paste an ad, page, or email. Get a compliance score across 30 risk categories and 9 jurisdictions, with every flag explained, in 60 seconds.
+                Paste an ad, page, or email. Get a compliance score across 30 risk categories and 10 jurisdictions, with every flag explained, in 60 seconds.
               </p>
               <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                 Check your copy <span className="arrow">→</span>

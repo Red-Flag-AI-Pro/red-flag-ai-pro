@@ -413,7 +413,7 @@ export function DemoScanner() {
                   Checking for{" "}
                   <span style={{color: "white", fontWeight: 700}}>
                     {jurisdictions.length === JURISDICTIONS.length
-                      ? "all 9 jurisdictions"
+                      ? "all 10 jurisdictions"
                       : jurisdictions.map(c => JURISDICTIONS.find(j => j.code === c)?.name).join(" + ")}
                   </span>
                 </p>

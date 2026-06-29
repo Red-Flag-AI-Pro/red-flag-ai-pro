@@ -8,7 +8,7 @@ import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown"
 export const metadata: Metadata = {
   title: "Compliance Assessment: Check Marketing Copy Against 30 Risk Categories",
   description:
-    "Check your marketing copy for compliance risk across 9 jurisdictions and 30 risk categories. Free, instant, no account required.",
+    "Check your marketing copy for compliance risk across 10 jurisdictions and 30 risk categories. Free, instant, no account required.",
   alternates: { canonical: "https://www.redflagaipro.com/compliance-assessment" },
 };
 
@@ -39,7 +39,7 @@ export default function ComplianceAssessmentPage() {
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1.25rem", color: "#F4F1EA" }}>
-            30 risk categories. <span style={{ fontStyle: "italic", color: "#E5484D" }}>9 jurisdictions.</span> 60 seconds.
+            30 risk categories. <span style={{ fontStyle: "italic", color: "#E5484D" }}>10 jurisdictions.</span> 60 seconds.
           </h1>
           <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
             Paste your marketing copy and get a compliance score with every flag explained: which rule it breaks, in which jurisdiction, and how to fix it.

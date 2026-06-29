@@ -149,7 +149,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>30 risk categories. 9 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>30 risk categories. 10 jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
@@ -242,7 +242,7 @@ export function HeroNew() {
           }}>
             {[
               "30 risk categories",
-              "9 jurisdictions",
+              "10 jurisdictions",
               "URL + VSL + site audit",
               "60 second results",
             ].map((s, i) => (

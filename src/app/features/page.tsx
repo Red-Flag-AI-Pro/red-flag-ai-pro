@@ -7,7 +7,7 @@ import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Governance and Compliance Checking Features: Red Flag AI Pro",
   description:
-    "Real time compliance checking across 9 jurisdictions and 30 risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.",
+    "Real time compliance checking across 10 jurisdictions and 30 risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.",
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -78,7 +78,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Real Time Compliance Checking",
-                  desc: "9 jurisdictions, up to 30 risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.",
+                  desc: "10 jurisdictions, up to 30 risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.",
                 },
                 {
                   icon: "",
