@@ -49,7 +49,7 @@ export default async function ScanResultPage({
         <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">
           Compliance Flags
         </h2>
-        <FlagList flags={(flags ?? []) as ScanFlag[]} score={scan.score} />
+        <FlagList flags={(flags ?? []) as ScanFlag[]} score={scan.score} plan={plan} scanId={id} />
       </div>
     </div>
   );

@@ -21,6 +21,8 @@ export interface Scan {
   created_at: string;
 }
 
+export type Disposition = "resolved" | "accepted_risk" | "not_applicable";
+
 export interface ScanFlag {
   id: string;
   scan_id: string;
@@ -29,6 +31,10 @@ export interface ScanFlag {
   text_excerpt: string | null;
   flag_description: string;
   suggestion: string | null;
+  disposition: Disposition | null;
+  reviewed_by: string | null;
+  reviewed_at: string | null;
+  reviewer_note: string | null;
 }
 
 export type VideoJobStatus = "pending" | "processing" | "complete" | "error";

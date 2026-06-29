@@ -10,6 +10,117 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "ai-compliance-vs-ai-governance",
+    title: "AI Compliance vs AI Governance: What Is the Difference and Why Does It Matter?",
+    description: "Most organisations can pass an AI compliance check. Very few can prove they governed their AI decisions. This is the difference, why it matters, and what regulators are now asking for.",
+    date: "2026-06-29",
+    readTime: "5 min read",
+    category: "AI Governance",
+    content: `
+## The Question Regulators Are Now Asking
+
+For most of the last decade, the question was simple: are you compliant?
+
+Do you have a policy? Does it cover the relevant rules? Have you signed off on it? Good. Move on.
+
+That question has not gone away. But a second question has arrived alongside it, and this one is harder to answer.
+
+Can you prove it?
+
+Not "do you have a policy that says you govern AI responsibly." Not "did you tick the box in the audit." The question is whether you can produce a documented, time-stamped, named chain of evidence that shows what your AI systems did, who reviewed the output, what decision was made, and when.
+
+That is the difference between compliance and governance. And in 2026, with the EU AI Act enforcement clock running and regulators across ten jurisdictions sharpening their focus on AI decision-making, it is the most important distinction in the room.
+
+---
+
+## What Compliance Actually Means
+
+Compliance is a threshold. It is a point in time answer to a specific question.
+
+You read the regulation. You assess whether your current practices meet it. You document that assessment. You pass or you do not.
+
+Compliance is necessary. It is not sufficient.
+
+The problem with compliance as a standalone posture is that it is retrospective and static. You were compliant on the day you ran the audit. What happened after that, who used the AI tool, what it produced, whether a human reviewed the output before it reached a customer or a regulator, none of that is captured by the compliance check.
+
+When something goes wrong, which it eventually does, the compliance document tells a regulator what you intended. It does not tell them what happened.
+
+---
+
+## What Governance Actually Means
+
+Governance is an ongoing posture. It is the infrastructure that sits underneath compliance and makes it verifiable over time.
+
+Real AI governance means you can answer four questions at any point, not just on audit day:
+
+**What did your AI system do?** Every output, every decision, every action is logged at the moment it happens.
+
+**Who reviewed it?** A named person, with a timestamp, signed off on the output before it was acted on. That sign-off is recorded.
+
+**What was the decision?** Was the flag resolved, accepted as a known risk, or marked not applicable? That judgment is documented.
+
+**Can you prove the record has not been altered?** The audit trail is cryptographically sealed. Each entry is chained to the previous one. Tampering breaks the chain.
+
+If you can answer all four of those questions on demand, you have governance. If you can answer the first one but not the others, you have logging. If you cannot answer any of them, you have a policy document and nothing else.
+
+---
+
+## Why the Gap Is Now a Legal Exposure
+
+The EU AI Act, which moves to active enforcement on 2 August 2026, does not simply require organisations to comply with transparency obligations. It requires them to maintain documentation that demonstrates how their AI systems operate, what oversight mechanisms are in place, and how decisions affecting individuals are made and reviewed.
+
+Under Article 11 of the Act, providers of high-risk AI systems must maintain technical documentation. Under Article 14, human oversight must be meaningful, not nominal. A rubber stamp is not oversight. A named reviewer who can demonstrate what they assessed, when they assessed it, and what conclusion they reached is.
+
+The same principle is embedded in the UK ICO's guidance on AI, in DORA for financial entities, in Consumer Duty for regulated firms, and in the NDPR in Nigeria. The language differs. The underlying requirement does not.
+
+Regulators audit records. Not intentions.
+
+---
+
+## The Practical Difference
+
+Here is how the gap shows up in practice.
+
+An organisation deploys an AI tool to help draft customer communications. They have an acceptable use policy. They ran a data protection impact assessment. They are compliant.
+
+Six months later a customer receives a communication that contains incorrect information about their account. The regulator asks what oversight was in place at the point of production.
+
+The organisation with compliance but no governance has a policy. They do not have a log of what the AI produced, who reviewed it, whether anyone signed off, or what criteria were applied. They are now reconstructing a story from memory and Slack threads.
+
+The organisation with governance has a timestamped record of the AI output, the name of the person who reviewed it, their disposition, their note, and a cryptographically sealed audit chain that proves the record has not been altered since it was created.
+
+One of those organisations is having a very different conversation with the regulator.
+
+---
+
+## What Good Governance Looks Like in Practice
+
+Building the governance layer does not require a data science team. It requires discipline applied consistently to four things:
+
+**Logging at the point of action.** Every AI output that influences a decision should be captured at the moment it is produced, not reconstructed after the fact.
+
+**Named human sign-off.** The person who reviewed the output should be identifiable by name, not by role or team. Accountability without a named individual is not accountability.
+
+**Documented disposition.** Was the finding acted on? Accepted as a known risk? Marked not applicable? That judgment should be recorded alongside the original output.
+
+**Tamper-evident storage.** The audit trail should be cryptographically sealed. If a record has been altered, it should be detectable. If it has not, that should be provable.
+
+Red Flag AI Pro builds this layer into the compliance workflow. Every flagged output from the AI governance audit is logged at the point of generation. Sentinel plan users can sign off on each flag with a named disposition and a reviewer note. Every sign-off is chained into a SHA-256 hash chain, the same cryptographic standard used in financial transaction logging, which means the record of what was reviewed, who reviewed it, and what was decided is tamper-evident from the moment it is created.
+
+That is not compliance. That is governance. And in 2026, the organisations that have built it are the ones who will be able to answer the question regulators are now asking.
+
+---
+
+## Start With a Free Governance Audit
+
+If you are not sure where your organisation sits on the compliance to governance spectrum, the Red Flag AI Pro governance audit scores your current posture across six dimensions including human oversight, audit trail, vendor risk, and regulatory readiness, and produces a gap report with a prioritised action plan.
+
+It takes under ten minutes. It is free. And it tells you which of the four questions above you can currently answer and which ones you cannot.
+
+[Run your governance audit at redflagaipro.com](https://www.redflagaipro.com/governance-audit)
+`,
+  },
+  {
     slug: "five-ai-compliance-deadlines-2026",
     title: "5 AI Compliance Deadlines Hitting in 2026, and What Each One Actually Means",
     description: "From the EU AI Act's August disclosure rule to a UK tribunal sanctioning AI hallucinated citations, five separate jurisdictions are tightening AI and marketing rules at the same time. A plain English breakdown of each one, what triggers it, and who it actually affects.",

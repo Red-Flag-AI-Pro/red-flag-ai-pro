@@ -78,8 +78,8 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
             {value.length === 0
               ? "Select jurisdictions"
               : value.length === JURISDICTIONS.length
-              ? "All 9 jurisdictions"
-              : `${value.length} of 9 selected`}
+              ? "All 10 jurisdictions"
+              : `${value.length} of 10 selected`}
           </span>
         </div>
 

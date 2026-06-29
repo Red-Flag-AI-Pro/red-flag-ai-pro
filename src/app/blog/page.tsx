@@ -6,8 +6,8 @@ import { BLOG_POSTS } from "@/lib/blog";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Blog: Marketing Compliance Guides & Updates",
-  description: "Expert guides on FTC compliance, GDPR email marketing, ASA CAP Code violations, EU AI Act requirements and marketing compliance best practices for 2026.",
+  title: "AI Governance & Compliance Blog | Red Flag AI Pro",
+  description: "Plain English guides on AI governance, EU AI Act compliance, audit trails, and regulatory requirements across 10 jurisdictions. Written for compliance, legal and risk teams.",
   alternates: { canonical: "https://www.redflagaipro.com/blog" },
 };
 
