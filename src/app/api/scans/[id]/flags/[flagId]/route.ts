@@ -31,6 +31,8 @@ export async function PATCH(
   const body = await request.json();
   const disposition: Disposition = body.disposition;
   const reviewerNote: string | undefined = body.reviewer_note;
+  const reviewerRole: string | undefined = body.reviewer_role;
+  const reviewerMandate: string | undefined = body.reviewer_mandate;
 
   if (!["resolved", "accepted_risk", "not_applicable"].includes(disposition)) {
     return NextResponse.json({ error: "Invalid disposition." }, { status: 400 });
@@ -55,6 +57,8 @@ export async function PATCH(
       reviewed_by: reviewerName,
       reviewed_at: reviewedAt,
       reviewer_note: reviewerNote ?? null,
+      reviewer_role: reviewerRole ?? null,
+      reviewer_mandate: reviewerMandate ?? null,
     })
     .eq("id", flagId)
     .eq("scan_id", scanId)
@@ -70,6 +74,8 @@ export async function PATCH(
     flagId,
     disposition,
     reviewedBy: reviewerName,
+    reviewerRole: reviewerRole ?? null,
+    reviewerMandate: reviewerMandate ?? null,
     reviewerNote: reviewerNote ?? null,
     category: updated.category,
     severity: updated.severity,

@@ -36,6 +36,8 @@ function DispositionPanel({
   const [open, setOpen] = useState(false);
   const [disposition, setDisposition] = useState<Disposition>("resolved");
   const [note, setNote] = useState("");
+  const [role, setRole] = useState("");
+  const [mandate, setMandate] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,7 +48,12 @@ function DispositionPanel({
       const res = await fetch(`/api/scans/${scanId}/flags/${flag.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ disposition, reviewer_note: note || undefined }),
+        body: JSON.stringify({
+          disposition,
+          reviewer_note: note || undefined,
+          reviewer_role: role || undefined,
+          reviewer_mandate: mandate || undefined,
+        }),
       });
       if (!res.ok) {
         const body = await res.json();
@@ -73,7 +80,10 @@ function DispositionPanel({
           )}
         </div>
         <div className="text-right shrink-0">
-          <p className="text-xs opacity-60">{flag.reviewed_by}</p>
+          <p className="text-xs opacity-60">{flag.reviewed_by}{flag.reviewer_role ? ` · ${flag.reviewer_role}` : ""}</p>
+          {flag.reviewer_mandate && (
+            <p className="text-xs opacity-50 italic">{flag.reviewer_mandate}</p>
+          )}
           {flag.reviewed_at && (
             <p className="text-xs opacity-40">{new Date(flag.reviewed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
           )}
@@ -109,6 +119,21 @@ function DispositionPanel({
                 {DISPOSITION_LABELS[d]}
               </button>
             ))}
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              placeholder="Your role e.g. DPO, CRO, Legal Counsel"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+            <input
+              value={mandate}
+              onChange={(e) => setMandate(e.target.value)}
+              placeholder="Authority e.g. Authorised by Board resolution"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
           </div>
 
           <textarea

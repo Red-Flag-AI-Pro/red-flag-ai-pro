@@ -35,6 +35,8 @@ export interface ScanFlag {
   reviewed_by: string | null;
   reviewed_at: string | null;
   reviewer_note: string | null;
+  reviewer_role: string | null;
+  reviewer_mandate: string | null;
 }
 
 export type VideoJobStatus = "pending" | "processing" | "complete" | "error";
@@ -52,5 +54,5 @@ export interface VideoJob {
 
 export interface AnalysisResult {
   score: number;
-  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note">[];
+  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note" | "reviewer_role" | "reviewer_mandate">[];
 }
