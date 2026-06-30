@@ -60,6 +60,7 @@ function BillingPageInner() {
   const supabase = createClient();
   const searchParams = useSearchParams();
   const requestedPlan = searchParams.get("plan");
+  const requestedRegion = searchParams.get("region");
 
   useEffect(() => {
     (async () => {
@@ -88,7 +89,7 @@ function BillingPageInner() {
     const res = await fetch("/api/stripe/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plan: planKey }),
+      body: JSON.stringify({ plan: planKey, ...(requestedRegion ? { region: requestedRegion } : {}) }),
     });
     const data = await res.json();
     if (data.url) window.location.href = data.url;

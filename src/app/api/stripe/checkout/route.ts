@@ -16,6 +16,7 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit";
+  const region = body.region as string | undefined;
   const toltReferral = body.tolt_referral as string | undefined;
 
   const { data: profile } = await supabase
@@ -51,6 +52,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
+  const ngnPriceMap: Partial<Record<string, string>> = {
+    scanner: process.env.STRIPE_PRICE_SCANNER_NGN_ID,
+    enterprise: process.env.STRIPE_PRICE_ENTERPRISE_NGN_ID,
+  };
+  const priceId =
+    region === "ng" && ngnPriceMap[plan]
+      ? ngnPriceMap[plan]!
+      : PLAN_PRICES[plan as keyof typeof PLAN_PRICES].priceId;
+
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     payment_method_types: ["card"],
@@ -58,7 +68,7 @@ export async function POST(request: Request) {
     customer_email: profile?.stripe_customer_id ? undefined : user.email,
     line_items: [
       {
-        price: PLAN_PRICES[plan as keyof typeof PLAN_PRICES].priceId,
+        price: priceId,
         quantity: 1,
       },
     ],

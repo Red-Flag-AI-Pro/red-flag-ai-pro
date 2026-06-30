@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE } from "@/lib/constants";
 import React from "react";
 
-// Revalidate hourly so the founder's birthday sale price flips back to £350
-// shortly after SCANNER_SALE_ENDS without needing a fresh deploy.
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
@@ -56,7 +55,10 @@ const SENTINEL_FEATURES = [
   "Priority support",
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const cookieStore = await cookies();
+  const isNigeria = cookieStore.get("rfai_geo")?.value === "NG";
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
@@ -226,7 +228,11 @@ export default function PricingPage() {
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Full compliance checking, for solo creators and small teams who need it checked, not monitored.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
-                {SCANNER_SALE_ACTIVE ? (
+                {isNigeria ? (
+                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                    $49<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  </p>
+                ) : SCANNER_SALE_ACTIVE ? (
                   <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
                     <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
                       £350
@@ -245,13 +251,13 @@ export default function PricingPage() {
                     £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                   </p>
                 )}
-                {SCANNER_SALE_ACTIVE && (
+                {!isNigeria && SCANNER_SALE_ACTIVE && (
                   <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
                     Lock this rate in for as long as you stay subscribed.
                   </p>
                 )}
               </div>
-              <Link href="/signup?plan=scanner" style={{
+              <Link href={isNigeria ? "/signup?plan=scanner&region=ng" : "/signup?plan=scanner"} style={{
                 display: "block", textAlign: "center",
                 background: "#ef4444",
                 color: "white",
@@ -296,10 +302,10 @@ export default function PricingPage() {
               </div>
               <div style={{ minHeight: "4.6rem" }}>
                 <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  {isNigeria ? "$449" : "£1,200"}<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                 </p>
               </div>
-              <Link href="/signup?plan=enterprise" style={{
+              <Link href={isNigeria ? "/signup?plan=enterprise&region=ng" : "/signup?plan=enterprise"} style={{
                 display: "block", textAlign: "center",
                 background: "transparent",
                 color: "white",

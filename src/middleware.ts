@@ -13,7 +13,20 @@ export function middleware(request: NextRequest) {
   if (isSpam) {
     return new NextResponse(null, { status: 403 });
   }
-  return NextResponse.next();
+
+  const response = NextResponse.next();
+
+  const country = request.headers.get("x-vercel-ip-country") ?? "";
+  if (country === "NG") {
+    response.cookies.set("rfai_geo", "NG", {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+      sameSite: "lax",
+      httpOnly: false,
+    });
+  }
+
+  return response;
 }
 
 export const config = {
