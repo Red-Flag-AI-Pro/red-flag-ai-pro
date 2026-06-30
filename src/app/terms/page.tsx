@@ -31,7 +31,7 @@ export default function TermsPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             Terms of Service
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 18 May 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 30 June 2026</p>
         </div>
       </section>
 
@@ -84,8 +84,8 @@ export default function TermsPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Free Plan", "1 check per month at no charge. No credit card required."],
-                ["Pro Plan", "£350/month (subject to change, existing subscribers grandfathered at their original rate). Billed monthly via Stripe."],
-                ["Growth Plan", "£1,200/month. Billed monthly via Stripe."],
+                ["Pro Plan", "£350/month for most regions (subject to change, existing subscribers grandfathered at their original rate). Pricing may vary by location. Billed monthly via Stripe."],
+                ["Growth Plan", "£1,200/month for most regions. Pricing may vary by location. Billed monthly via Stripe."],
                 ["Sentinel Plan", "From £5,000/month, custom contract for larger engagements."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],
                 ["Renewal", "Subscriptions renew automatically unless cancelled before the renewal date."],
