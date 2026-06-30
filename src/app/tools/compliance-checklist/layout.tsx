@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Marketing Compliance Checklist — 30 Categories, 9 Jurisdictions | Red Flag AI Pro",
-  description: "Free interactive marketing compliance checklist. 35 checkpoints across income claims, health claims, fake urgency, GDPR, influencer disclosure, email marketing and more — covering FTC, CMA, GDPR, ACCC and all 9 major jurisdictions.",
+  title: "Marketing Compliance Checklist — 30 Categories, 10 Jurisdictions | Red Flag AI Pro",
+  description: "Free interactive marketing compliance checklist. 35 checkpoints across income claims, health claims, fake urgency, GDPR, influencer disclosure, email marketing and more — covering FTC, CMA, GDPR, ACCC and all 10 major jurisdictions.",
   alternates: { canonical: "https://www.redflagaipro.com/tools/compliance-checklist" },
 };
 

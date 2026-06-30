@@ -103,8 +103,8 @@ export function HeroNew() {
                   <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
                 </svg>
               </span>
-              <span className="hero-eyebrow-text-full">Marketing Compliance · 9 Jurisdictions · 30 Risk Categories</span>
-              <span className="hero-eyebrow-text-short">9 Jurisdictions · 30 Risk Categories</span>
+              <span className="hero-eyebrow-text-full">Marketing Compliance · 10 Jurisdictions · 30 Risk Categories</span>
+              <span className="hero-eyebrow-text-short">10 Jurisdictions · 30 Risk Categories</span>
             </span>
           </div>
 

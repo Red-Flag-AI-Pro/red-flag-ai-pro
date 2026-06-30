@@ -512,7 +512,7 @@ export function DemoScanner() {
             ) : jurisdictions.length === 0
               ? "Select at least one jurisdiction"
               : jurisdictions.length === JURISDICTIONS.length
-              ? "Check Now: All 9 Jurisdictions"
+              ? `Check Now: All ${JURISDICTIONS.length} Jurisdictions`
               : `Check Now: ${jurisdictions.length} Jurisdiction${jurisdictions.length > 1 ? "s" : ""}`
             }
           </button>

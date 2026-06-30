@@ -15,16 +15,16 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const TICKER_ITEMS = [
-  "Full Site Scan",
+  "Full Site Check",
   "Video Walkthrough",
   "PDF Report",
   "Reviewed Badge",
   "48 Hour Delivery",
   "30 Risk Categories",
-  "9 Jurisdictions",
+  "10 Jurisdictions",
   "Plain English",
   "Compliant Rewrites",
-  "FTC · ASA · GDPR · CMA · ACCC · PDPA · DPDP · UAE PDPL",
+  "FTC · ASA · GDPR · CMA · ACCC · CASL · LGPD · PDPA · DPDP · NDPR",
   "No Subscription",
   "By the Founder",
 ];
