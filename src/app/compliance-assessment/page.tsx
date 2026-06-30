@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import { DemoScanner } from "@/components/marketing/DemoScanner";
 import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "AI Compliance Assessment: Check Content Against 30 Risk Categories Across 10 Jurisdictions",
   description:

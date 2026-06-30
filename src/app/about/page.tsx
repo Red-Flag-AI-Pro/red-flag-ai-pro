@@ -4,6 +4,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "About Red Flag AI Pro: AI Governance Scoring and Compliance Platform",
   description:

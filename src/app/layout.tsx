@@ -24,7 +24,7 @@ const syne = Syne({
 const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   style: ["normal", "italic"],
   variable: "--font-newsreader",
 });
@@ -32,7 +32,7 @@ const newsreader = Newsreader({
 const dmMono = DM_Mono({
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500"],
+  weight: ["400", "500"],
   variable: "--font-dm-mono",
 });
 

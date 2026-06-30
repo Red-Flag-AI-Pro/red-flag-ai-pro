@@ -7,6 +7,8 @@ import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
