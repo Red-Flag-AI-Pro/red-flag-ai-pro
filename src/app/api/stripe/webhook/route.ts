@@ -72,6 +72,8 @@ export async function POST(request: Request) {
         [process.env.STRIPE_PRICE_SCANNER_SALE_ID!]: "scanner",
         [process.env.STRIPE_PRICE_ENTERPRISE_ID!]: "enterprise",
         [process.env.STRIPE_PRICE_SENTINEL_ID!]: "sentinel",
+        [process.env.STRIPE_PRICE_SCANNER_NGN_ID!]: "scanner",
+        [process.env.STRIPE_PRICE_ENTERPRISE_NGN_ID!]: "enterprise",
       };
 
       const priceId = sub.items.data[0]?.price.id;
