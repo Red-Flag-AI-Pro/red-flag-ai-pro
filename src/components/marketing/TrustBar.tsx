@@ -3,6 +3,19 @@ import React from "react";
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
 
+const JURISDICTIONS = [
+  { flag: "🇬🇧", name: "UK" },
+  { flag: "🇺🇸", name: "USA" },
+  { flag: "🇪🇺", name: "EU" },
+  { flag: "🇨🇦", name: "Canada" },
+  { flag: "🇦🇺", name: "Australia" },
+  { flag: "🇸🇬", name: "Singapore" },
+  { flag: "🇦🇪", name: "UAE" },
+  { flag: "🇿🇦", name: "S. Africa" },
+  { flag: "🇮🇳", name: "India" },
+  { flag: "🇳🇬", name: "Nigeria" },
+];
+
 const FRAMEWORKS = [
   "EU AI Act",
   "FTC",
@@ -37,6 +50,15 @@ export function TrustBar() {
       }}
     >
       <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center", alignItems: "center", marginBottom: "1.75rem" }}>
+          {JURISDICTIONS.map((j) => (
+            <div key={j.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+              <span style={{ fontSize: "1.75rem", lineHeight: 1 }}>{j.flag}</span>
+              <span style={{ ...syne, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", color: "rgba(244,241,234,0.4)", textTransform: "uppercase" }}>{j.name}</span>
+            </div>
+          ))}
+        </div>
+
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.5rem" }}>
           <span style={{ width: "24px", height: "1px", background: "rgba(229,72,77,0.5)" }} />
           <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.55)" }}>
