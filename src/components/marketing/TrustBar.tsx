@@ -4,16 +4,16 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
 
 const JURISDICTIONS = [
-  { flag: "🇬🇧", name: "UK" },
-  { flag: "🇺🇸", name: "USA" },
-  { flag: "🇪🇺", name: "EU" },
-  { flag: "🇨🇦", name: "Canada" },
-  { flag: "🇦🇺", name: "Australia" },
-  { flag: "🇸🇬", name: "Singapore" },
-  { flag: "🇦🇪", name: "UAE" },
-  { flag: "🇿🇦", name: "S. Africa" },
-  { flag: "🇮🇳", name: "India" },
-  { flag: "🇳🇬", name: "Nigeria" },
+  { code: "gb", name: "UK" },
+  { code: "us", name: "USA" },
+  { code: "eu", name: "EU" },
+  { code: "ca", name: "Canada" },
+  { code: "au", name: "Australia" },
+  { code: "sg", name: "Singapore" },
+  { code: "ae", name: "UAE" },
+  { code: "za", name: "S. Africa" },
+  { code: "in", name: "India" },
+  { code: "ng", name: "Nigeria" },
 ];
 
 const FRAMEWORKS = [
@@ -50,10 +50,17 @@ export function TrustBar() {
       }}
     >
       <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center", alignItems: "center", marginBottom: "1.75rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px 20px", justifyContent: "center", alignItems: "center", marginBottom: "1.75rem" }}>
           {JURISDICTIONS.map((j) => (
-            <div key={j.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-              <span style={{ fontSize: "1.75rem", lineHeight: 1 }}>{j.flag}</span>
+            <div key={j.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
+              <img
+                src={`https://flagcdn.com/w40/${j.code}.png`}
+                srcSet={`https://flagcdn.com/w80/${j.code}.png 2x`}
+                width={32}
+                height={22}
+                alt={j.name}
+                style={{ borderRadius: "3px", objectFit: "cover", display: "block" }}
+              />
               <span style={{ ...syne, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", color: "rgba(244,241,234,0.4)", textTransform: "uppercase" }}>{j.name}</span>
             </div>
           ))}
