@@ -43,6 +43,7 @@ const SENTINEL_FEATURES = [
   "Everything in Growth",
   "Managed governance implementation (we work it with you)",
   "Cryptographically sealed audit log, verifiable on demand",
+  "Sign offs stamped with the signer's role and authority, not just their name",
   "Ongoing governance & vendor monitoring reviews",
   "Financial impact modeling (compliance cost calculator)",
   "Governance enforcement support & guardrail design",
