@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/Badge";
 import { FLAG_CATEGORY_LABELS } from "@/lib/constants";
-import type { ScanFlag } from "@/types";
+import type { Plan, ScanFlag } from "@/types";
 
 function scoreColor(score: number) {
   if (score >= 70) return "text-green-600";
@@ -22,18 +22,27 @@ export default async function ComparePage({
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const [{ data: scanA }, { data: scanB }, { data: flagsA }, { data: flagsB }] =
+  const [{ data: scanA }, { data: scanB }, { data: flagsA }, { data: flagsB }, { data: profile }] =
     await Promise.all([
-      supabase.from("scans").select("*").eq("id", idA).single(),
-      supabase.from("scans").select("*").eq("id", idB).single(),
+      supabase.from("scans").select("*").eq("id", idA).eq("user_id", user.id).single(),
+      supabase.from("scans").select("*").eq("id", idB).eq("user_id", user.id).single(),
       supabase.from("scan_flags").select("*").eq("scan_id", idA),
       supabase.from("scan_flags").select("*").eq("scan_id", idB),
+      supabase.from("profiles").select("plan").eq("user_id", user.id).single(),
     ]);
 
   if (!scanA || !scanB) notFound();
 
-  const fa = (flagsA ?? []) as ScanFlag[];
-  const fb = (flagsB ?? []) as ScanFlag[];
+  const plan: Plan = (profile?.plan as Plan) ?? "free";
+  const redact = (list: ScanFlag[]) =>
+    list.map((f) =>
+      plan === "free" && f.suggestion
+        ? { ...f, suggestion: "Unlock Pro to see the exact fix for this flag, rewritten and ready to use." }
+        : f
+    );
+
+  const fa = redact((flagsA ?? []) as ScanFlag[]);
+  const fb = redact((flagsB ?? []) as ScanFlag[]);
 
   const catsA = new Set(fa.map((f) => f.category));
   const catsB = new Set(fb.map((f) => f.category));
@@ -125,7 +134,18 @@ export default async function ComparePage({
                 {f.suggestion && (
                   <div className="rounded bg-white border border-red-200 px-3 py-2">
                     <p className="text-xs font-semibold text-green-700 mb-0.5">Fix</p>
-                    <p className="text-xs text-green-800">{f.suggestion}</p>
+                    {plan === "free" ? (
+                      <div className="relative">
+                        <p className="text-xs text-green-800 blur-sm select-none">{f.suggestion}</p>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <a href="/billing?plan=scanner" className="rounded-full border border-green-700 bg-black/90 px-2 py-0.5 text-[10px] font-semibold text-green-300 hover:border-green-500 transition-colors">
+                            Unlock with Pro
+                          </a>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-xs text-green-800">{f.suggestion}</p>
+                    )}
                   </div>
                 )}
               </div>

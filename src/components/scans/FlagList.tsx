@@ -271,7 +271,23 @@ export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
                 <p className="text-xs font-semibold text-green-300 mb-1">
                   Suggested fix
                 </p>
-                <p className="text-sm text-green-300">{flag.suggestion}</p>
+                {plan === "free" ? (
+                  <div className="relative">
+                    <p className="text-sm text-green-300 blur-sm select-none">
+                      {flag.suggestion}
+                    </p>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <a
+                        href="/billing?plan=scanner"
+                        className="rounded-full border border-green-700 bg-black/90 px-3 py-1 text-xs font-semibold text-green-300 hover:border-green-500 transition-colors"
+                      >
+                        Unlock the fix with Pro
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-sm text-green-300">{flag.suggestion}</p>
+                )}
               </div>
             )}
 

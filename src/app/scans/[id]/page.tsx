@@ -37,11 +37,21 @@ export default async function ScanResultPage({
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
 
+  // Free users see that a fix exists (blurred, teased in the UI) but the
+  // actual fix text must never reach the client, or it's readable from the
+  // page payload regardless of the blur. Swap in a placeholder so the tease
+  // still renders without leaking the real suggestion.
+  const visibleFlags = (flags ?? []).map((f) =>
+    plan === "free" && f.suggestion
+      ? { ...f, suggestion: "Unlock Pro to see the exact fix for this flag, rewritten and ready to use." }
+      : f
+  ) as ScanFlag[];
+
   return (
     <div className="space-y-6">
       <ScanResultCard
         scan={scan as Scan}
-        flags={(flags ?? []) as ScanFlag[]}
+        flags={visibleFlags}
         plan={plan}
       />
 
@@ -49,7 +59,7 @@ export default async function ScanResultPage({
         <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">
           Compliance Flags
         </h2>
-        <FlagList flags={(flags ?? []) as ScanFlag[]} score={scan.score} plan={plan} scanId={id} />
+        <FlagList flags={visibleFlags} score={scan.score} plan={plan} scanId={id} />
       </div>
     </div>
   );

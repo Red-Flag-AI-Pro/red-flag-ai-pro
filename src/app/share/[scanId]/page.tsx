@@ -5,7 +5,7 @@ import { FlagList } from "@/components/scans/FlagList";
 import { ScoreGauge } from "@/components/ui/ScoreGauge";
 import { Badge } from "@/components/ui/Badge";
 import { Navbar } from "@/components/layout/Navbar";
-import type { ScanFlag } from "@/types";
+import type { Plan, ScanFlag } from "@/types";
 
 export default async function SharePage({
   params,
@@ -18,18 +18,27 @@ export default async function SharePage({
   // Public read — no user_id filter, scan ID is the access token
   const { data: scan } = await supabase
     .from("scans")
-    .select("id, title, score, created_at, status")
+    .select("id, title, score, created_at, status, user_id")
     .eq("id", scanId)
     .single();
 
   if (!scan) notFound();
 
-  const { data: flags } = await supabase
-    .from("scan_flags")
-    .select("*")
-    .eq("scan_id", scanId);
+  const [{ data: flags }, { data: ownerProfile }] = await Promise.all([
+    supabase.from("scan_flags").select("*").eq("scan_id", scanId),
+    supabase.from("profiles").select("plan").eq("user_id", scan.user_id).single(),
+  ]);
 
-  const fl = (flags ?? []) as ScanFlag[];
+  const ownerPlan = (ownerProfile?.plan as Plan) ?? "free";
+
+  // Anyone can view a shared report, but the owner's plan still governs
+  // whether fix text is visible — a free scan shared publicly must not
+  // leak the paid-tier suggestion text.
+  const fl = (flags ?? []).map((f) =>
+    ownerPlan === "free" && f.suggestion
+      ? { ...f, suggestion: "Unlock Pro to see the exact fix for this flag, rewritten and ready to use." }
+      : f
+  ) as ScanFlag[];
   const highCount = fl.filter((f) => f.severity === "high").length;
   const medCount = fl.filter((f) => f.severity === "medium").length;
   const lowCount = fl.filter((f) => f.severity === "low").length;
@@ -91,7 +100,7 @@ export default async function SharePage({
         {/* Flags */}
         <div>
           <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">Compliance Flags</h2>
-          <FlagList flags={fl} />
+          <FlagList flags={fl} plan={ownerPlan} />
         </div>
 
         {/* CTA */}
