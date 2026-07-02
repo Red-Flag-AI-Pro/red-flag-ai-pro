@@ -12,7 +12,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
-    "Check your marketing copy for compliance risk across 10 jurisdictions and 30 risk categories. Prove your AI governance to regulators and boards with a free 5-minute assessment. One platform, both halves, kept current as the law changes.",
+    "Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across 10 jurisdictions and 30 risk categories, so the confidence is backed by something real.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -92,7 +92,7 @@ export default function LandingPage() {
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Compliance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Check your marketing copy</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                Paste an ad, page, or email. Get a compliance score across 30 risk categories and 10 jurisdictions, with every flag explained, in 60 seconds.
+                Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 10 jurisdictions, with every flag explained so you know exactly what to fix.
               </p>
               <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                 Check your copy <span className="arrow">→</span>
@@ -103,7 +103,7 @@ export default function LandingPage() {
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Governance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Prove your AI governance</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                12 quick questions across 6 dimensions. Get a Governance Maturity Index and your top gap, in under 2 minutes.
+                Find out in 2 minutes whether you could survive an audit tomorrow. 12 questions across 6 dimensions reveal your governance maturity and your single biggest gap, before someone else finds it first.
               </p>
               <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                 Start the assessment <span className="arrow">→</span>
@@ -180,11 +180,11 @@ export default function LandingPage() {
             Cryptographically sealed. Not just stored.
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem", color: "white" }}>
-            Every compliance check. Every governance action.<br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>One tamper-evident hash chain.</span>
+            Never be the person who cannot explain a decision<br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>when the board asks.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.02rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "640px", margin: "0 auto 2rem" }}>
-            Both halves of this platform write to the same SHA-256 hash chain. Compliance check results and governance audit actions alike, each entry sealed with the hash of the one before it. Edit, delete, or backdate any record and the chain breaks, provably, not on trust.
+            Every check and every governance action is sealed the moment it happens, chained to the one before it with SHA-256. Edit, delete, or backdate any record and the break is provable, not something you have to take our word for.
           </p>
           <Link href="/verify" style={{
             ...syne, fontSize: "0.95rem", fontWeight: 700,
