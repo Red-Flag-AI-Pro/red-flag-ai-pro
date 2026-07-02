@@ -345,7 +345,7 @@ export default function AuditPage() {
               }}>This audit</span>
               <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£149</p>
               <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · 48 hours</p>
-              <a href="mailto:support@redflagaipro.com?subject=Done For You Audit" style={{
+              <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.8rem", fontWeight: 700,
@@ -359,7 +359,10 @@ export default function AuditPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center" }}>
-            Done personally, by the person who built the tool. No retainer, no hourly clock, no waiting weeks for a callback.
+            One payment. Not per hour, not per month, not a retainer.
+          </p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "0.35rem" }}>
+            Done personally, by the person who built the tool, or <a href="mailto:support@redflagaipro.com?subject=Done For You Audit" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>email me first</a> if you want to talk before you pay.
           </p>
         </div>
       </section>
