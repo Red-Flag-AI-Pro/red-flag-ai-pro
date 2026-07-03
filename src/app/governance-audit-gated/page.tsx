@@ -109,7 +109,7 @@ export default function GovernanceAuditGatedPage() {
           }}>
             {[
               { text: 'Munir v SSHD:\nFirm sanctioned over AI hallucinated citations' },
-              { text: 'EU AI Act:\nEnforcement starts August 2, 2026' },
+              { text: 'EU AI Act:\nArticle 50/4 transparency duties start 2 August 2026 (high risk rules delayed to Dec 2027)' },
               { text: 'FTC Penalties:\n$53,088 per violation (April 2026+)' },
             ].map((item) => (
               <div key={item.text} style={{
@@ -262,9 +262,9 @@ export default function GovernanceAuditGatedPage() {
           }}>
             {[
               {
-                days: '45 days',
+                days: '30 days',
                 deadline: 'August 2, 2026',
-                desc: 'EU AI Act enforcement begins. AI generated content must be disclosed.'
+                desc: 'EU AI Act Article 50 transparency and Article 4 literacy duties begin. AI generated content must be disclosed. High risk system rules were delayed to Dec 2027.'
               },
               {
                 days: '6+ months',
