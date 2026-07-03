@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         },
       ],
       metadata: { user_id: user.id, plan: "audit", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
-      success_url: `${appUrl}/audit?success=1`,
+      success_url: `${appUrl}/audit?success=1&plan=audit&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/audit?canceled=1`,
     });
     return NextResponse.json({ url: session.url });
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
       },
     ],
     metadata: { user_id: user.id, plan, ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
-    success_url: `${appUrl}/billing?success=1`,
+    success_url: `${appUrl}/billing?success=1&plan=${plan}${region ? `&region=${region}` : ""}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${appUrl}/billing?canceled=1`,
   });
 

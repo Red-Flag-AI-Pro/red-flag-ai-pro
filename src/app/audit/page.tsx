@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import React from "react";
+import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
+import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Done For You Compliance Audit: Red Flag AI Pro",
@@ -96,6 +97,9 @@ const FAQS = [
 export default function AuditPage() {
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
+      <Suspense>
+        <PurchaseConversion />
+      </Suspense>
       <Navbar />
 
       {/* ── HERO ── */}

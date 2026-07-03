@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/Card";
 import type { Plan, Profile } from "@/types";
 import { createClient } from "@/lib/supabase/client";
 import { PLAN_LIMITS, SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
 
 const PLANS = [
   {
@@ -110,6 +111,10 @@ function BillingPageInner() {
         <h1 className="text-2xl font-bold text-[#F4F1EA]">Billing</h1>
         <p className="text-sm text-[rgba(244,241,234,0.5)]">Manage your plan and subscription</p>
       </div>
+
+      <Suspense>
+        <PurchaseConversion />
+      </Suspense>
 
       <Suspense>
         <BillingNotice />
