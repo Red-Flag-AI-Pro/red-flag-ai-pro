@@ -24,6 +24,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog/ai-content-disclosure-eu-ai-act-2026",
+        destination: "/blog/eu-ai-act-article-50-marketing-agencies",
+        permanent: true,
+      },
+      {
+        source: "/blog/who-owns-ai-compliance-marketing-governance-gap",
+        destination: "/blog/ai-compliance-vs-ai-governance",
+        permanent: true,
+      },
+      {
+        source: "/blog/dpo-nobody-knows-invisible-governance",
+        destination: "/blog/ai-compliance-vs-ai-governance",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
