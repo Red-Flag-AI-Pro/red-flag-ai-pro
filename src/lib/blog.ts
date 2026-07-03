@@ -2720,7 +2720,7 @@ Under the Munir principle, invisible governance is liable governance.
 
 ## The 59% Problem
 
-A recent study found: **59% of UK fee earners admit to using unapproved AI tools for client work.**
+A survey by Access Legal found: **59% of UK fee earners admit to using unapproved AI tools for client work.**
 
 And **68% of firm leaders believe they have zero risk.**
 
