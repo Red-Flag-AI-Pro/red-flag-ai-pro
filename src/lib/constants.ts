@@ -52,9 +52,14 @@ export const AUDIT_PRICE = {
 export const SCANNER_SALE_ENDS = "2026-08-01T00:00:00+01:00";
 export const SCANNER_SALE_ACTIVE = new Date() < new Date(SCANNER_SALE_ENDS);
 
+// Single source of truth for the Pro price. Upsell copy interpolates these
+// so a future price change here cannot silently leave stale figures in the UI.
+export const SCANNER_STANDARD_PRICE = 350;
+export const SCANNER_SALE_PRICE = 149;
+
 export const PLAN_PRICES = {
   scanner: {
-    monthly: SCANNER_SALE_ACTIVE ? 149 : 350,
+    monthly: SCANNER_SALE_ACTIVE ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE,
     label: "Pro",
     priceId: SCANNER_SALE_ACTIVE
       ? process.env.STRIPE_PRICE_SCANNER_SALE_ID!

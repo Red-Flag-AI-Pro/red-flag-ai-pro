@@ -4,6 +4,12 @@ import { useState } from "react";
 import type { Scan, ScanFlag, Plan } from "@/types";
 import { ScoreGauge } from "@/components/ui/ScoreGauge";
 import { Badge } from "@/components/ui/Badge";
+import {
+  PLAN_LIMITS,
+  PLAN_PRICES,
+  SCANNER_SALE_ACTIVE,
+  SCANNER_STANDARD_PRICE,
+} from "@/lib/constants";
 import Link from "next/link";
 
 function ShareButton({ scanId }: { scanId: string }) {
@@ -223,15 +229,24 @@ export function ScanResultCard({ scan, flags, plan, print = false }: ScanResultC
                   Download PDF Report
                 </a>
               ) : (
-                <div className="flex items-center gap-3 rounded-lg border border-dashed border-white/15 bg-[#0A1628] px-4 py-2">
-                  <span className="text-sm text-[rgba(244,241,234,0.5)]">
-                    PDF reports require Pro
-                  </span>
+                <div className="w-full rounded-lg border border-[rgba(229,72,77,0.3)] bg-[#0A1628] px-4 py-3">
+                  <p className="text-sm font-semibold text-[#F4F1EA]">
+                    {highCount > 0
+                      ? `${highCount} high severity ${highCount === 1 ? "risk" : "risks"} found. Unlock the exact fix for every flag and your full PDF report.`
+                      : flags.length > 0
+                      ? `${flags.length} ${flags.length === 1 ? "risk" : "risks"} found. Unlock the exact fix for every flag and your full PDF report.`
+                      : `Unlock PDF reports and ${PLAN_LIMITS.scanner} checks a month with Pro.`}
+                  </p>
+                  <p className="mt-1 text-sm text-[rgba(244,241,234,0.6)]">
+                    {SCANNER_SALE_ACTIVE
+                      ? `Pro is £${PLAN_PRICES.scanner.monthly}/mo in the founder's birthday sale, normally £${SCANNER_STANDARD_PRICE}. Lock this rate in for as long as you stay subscribed.`
+                      : `Pro is £${PLAN_PRICES.scanner.monthly}/mo, with ${PLAN_LIMITS.scanner} checks a month and every fix unlocked.`}
+                  </p>
                   <Link
-                    href="/billing"
-                    className="text-sm font-medium text-[#E5484D] hover:underline"
+                    href="/billing?plan=scanner"
+                    className="mt-2 inline-block text-sm font-medium text-[#E5484D] hover:underline"
                   >
-                    Upgrade →
+                    Unlock every fix with Pro →
                   </Link>
                 </div>
               )}
