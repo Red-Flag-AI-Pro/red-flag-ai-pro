@@ -63,13 +63,21 @@ export async function POST(request: Request) {
 
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      // The Resend SDK resolves with { data, error } on API-level failures rather
+      // than throwing — checking the response is required, not optional, or a
+      // rejected send (bad from-address, rate limit, etc.) fails completely silently.
+      const { data, error } = await resend.emails.send({
         from: "Red Flag AI Pro <audit@redflagaipro.com>",
         to: NOTIFY_TO,
         replyTo: email,
         subject: `New audit request — ${name}${company ? ` (${company})` : ""}`,
         html,
       });
+      if (error) {
+        console.error("audit-request Resend send failed:", error, { name, email });
+      } else {
+        console.log("audit-request email sent:", data?.id);
+      }
     } else {
       // No mail provider configured — still log so the lead is visible in server logs.
       console.error("audit-request received but RESEND_API_KEY not set:", { name, email, phone, company, website });

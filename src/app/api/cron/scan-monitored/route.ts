@@ -118,7 +118,7 @@ export async function GET(request: Request) {
                     <div style="font-size:12px;color:#6b7280;">Weekly compliance report for ${client.name}</div>
                   </div>
                   <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin-bottom:16px;">
-                    <p style="font-size:14px;color:#374151;margin:0 0 16px;">Your weekly compliance scan for <strong>${monitored.url}</strong> is complete.</p>
+                    <p style="font-size:14px;color:#374151;margin:0 0 16px;">Your weekly compliance check for <strong>${monitored.url}</strong> is complete.</p>
                     <div style="text-align:center;padding:20px;background:#f9fafb;border-radius:8px;margin-bottom:16px;">
                       <div style="font-size:48px;font-weight:800;color:${riskColor};">${score}</div>
                       <div style="font-size:13px;font-weight:600;color:${riskColor};">${riskLabel}</div>

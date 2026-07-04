@@ -24,7 +24,7 @@ function buildEmail(userName: string, urls: { url: string; label: string | null;
     const displayLabel = u.label || u.url;
     const date = u.last_scanned_at
       ? new Date(u.last_scanned_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" })
-      : "Not yet scanned";
+      : "Not yet checked";
 
     return `
       <tr>

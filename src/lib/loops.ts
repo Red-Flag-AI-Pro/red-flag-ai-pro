@@ -1,4 +1,7 @@
-const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
+// .trim() also strips a leading U+FEFF byte-order-mark, which is what the
+// Vercel env var actually has — without it, "Bearer <key>" becomes an invalid
+// header value and every Loops call throws before the request is even sent.
+const LOOPS_API_KEY = process.env.LOOPS_API_KEY?.trim();
 const LOOPS_API_URL = "https://app.loops.so/api/v1";
 
 export async function addContactToLoops({
