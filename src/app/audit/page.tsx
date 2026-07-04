@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
+import { AuditRequestForm } from "@/components/marketing/AuditRequestForm";
 import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Done For You Compliance Audit: Red Flag AI Pro",
+  title: "Done For You Compliance & Governance Audit: Red Flag AI Pro",
   description:
-    "I'll personally run your site through Red Flag AI Pro, record a video walkthrough of every flag, and send you a complete report with a reviewed badge. One-time. No subscription.",
+    "I'll personally check your site and AI use for both compliance and governance risk, record a video walkthrough of every flag, and send you a complete report with a reviewed badge. One-time. No subscription.",
   alternates: { canonical: "https://www.redflagaipro.com/audit" },
 };
 
@@ -33,7 +34,7 @@ const TICKER_ITEMS = [
 const INCLUDES = [
   {
     num: "01",
-    headline: "Full site scan",
+    headline: "Full site check",
     body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 30 risk categories, across all 10 jurisdictions.",
   },
   {
@@ -61,7 +62,7 @@ const STEPS = [
   },
   {
     num: "02",
-    title: "I run the scan and review every flag personally",
+    title: "I run the check and review every flag personally",
     body: "Using the same engine behind Red Flag AI Pro, plus my own pass through the results so nothing gets missed and nothing gets over explained.",
   },
   {
@@ -78,7 +79,7 @@ const FAQS = [
   },
   {
     q: "Is this the same as the Pro subscription?",
-    a: "No. Pro is the self serve tool, you run your own scans whenever you want. This is a one time, fully done for you service: I run it, explain it, and package it for you.",
+    a: "No. Pro is the self serve tool, you run your own checks whenever you want. This is a one time, fully done for you service: I run it, explain it, and package it for you.",
   },
   {
     q: "What if my site comes back clean?",
@@ -90,7 +91,7 @@ const FAQS = [
   },
   {
     q: "How do I pay?",
-    a: "Email me with your URL and I will send a payment link. Delivery starts once payment is confirmed.",
+    a: "Fill in the short request form with your details and anything you want me to look at. I will reply personally within one working day with a secure payment link. Delivery starts once payment is confirmed.",
   },
 ];
 
@@ -105,7 +106,7 @@ export default function AuditPage() {
       {/* ── HERO ── */}
       <section style={{
         position: "relative", overflow: "hidden",
-        padding: "6rem 1.5rem 5rem",
+        padding: "4.5rem 1.5rem 3.5rem",
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
         {/* Red glow */}
@@ -122,6 +123,11 @@ export default function AuditPage() {
         }} />
 
         <div style={{ maxWidth: "760px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+
+          {/* Eyebrow — big */}
+          <p className="animate-fade-up" style={{ ...syne, fontSize: "clamp(1.4rem, 4vw, 2.1rem)", fontWeight: 800, letterSpacing: "-0.02em", color: "#F4F1EA", lineHeight: 1.1, marginBottom: "0.85rem" }}>
+            One time full audit
+          </p>
 
           {/* Label */}
           <div className="animate-fade-up" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.75rem" }}>
@@ -148,11 +154,11 @@ export default function AuditPage() {
           </h1>
 
           <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem" }}>
-            No dashboard. No learning curve. No guessing what the flags mean. I scan your full funnel myself, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, in 48 hours.
+            No dashboard. No learning curve. No guessing what the flags mean. I check your full funnel and your AI use myself, for both compliance and governance risk, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, in 48 hours.
           </p>
 
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <Link href="/audit/checkout" style={{
+            <Link href="#request" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -160,7 +166,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £149
+              Request my audit: £179
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
@@ -204,7 +210,7 @@ export default function AuditPage() {
       </div>
 
       {/* ── THE PROBLEM ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>
             The problem
@@ -220,9 +226,9 @@ export default function AuditPage() {
       </section>
 
       {/* ── WHAT YOU GET ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What you get</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Everything packaged.<br />
@@ -290,9 +296,9 @@ export default function AuditPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How it works</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Three steps. 48 hours.
@@ -312,9 +318,9 @@ export default function AuditPage() {
       </section>
 
       {/* ── PRICING ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Pricing</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               What this would cost anywhere else.
@@ -347,9 +353,9 @@ export default function AuditPage() {
                 padding: "3px 10px", borderRadius: "9999px",
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
-              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£149</p>
-              <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · 48 hours</p>
-              <a href="/audit/checkout" style={{
+              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£179</p>
+              <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
+              <a href="#request" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.8rem", fontWeight: 700,
@@ -371,6 +377,19 @@ export default function AuditPage() {
         </div>
       </section>
 
+      {/* ── REQUEST FORM ── */}
+      <section id="request" style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929", scrollMarginTop: "80px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Get started</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              One audit. Compliance and governance.
+            </h2>
+          </div>
+          <AuditRequestForm />
+        </div>
+      </section>
+
       {/* ── DISCLAIMER NOTE ── */}
       <div style={{ padding: "2rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.9, textAlign: "center", maxWidth: "660px", margin: "0 auto" }}>
@@ -379,7 +398,7 @@ export default function AuditPage() {
       </div>
 
       {/* ── FAQ ── */}
-      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Questions</p>
@@ -400,7 +419,7 @@ export default function AuditPage() {
       </section>
 
       {/* ── CTA CLOSE ── */}
-      <section style={{ padding: "7rem 1.5rem", background: "#0C1929" }}>
+      <section style={{ padding: "4.5rem 1.5rem", background: "#0C1929" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             You&apos;ll either find out you&apos;re already safe.{" "}
@@ -411,7 +430,7 @@ export default function AuditPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <Link href="/audit/checkout" style={{
+            <Link href="#request" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -419,7 +438,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £149
+              Request my audit: £179
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",

@@ -39,9 +39,14 @@ export function getExcludedCategories(plan: Plan): readonly string[] {
   return [];
 }
 
+// Display price for the done-for-you audit. The audit is requested via a form
+// (/audit) that emails support@; payment is taken by a manual Stripe link, so
+// this figure is the headline price shown on the page. priceId is left as the
+// existing Stripe object and is only used if the instant-checkout route is ever
+// re-enabled — changing the number here does not change what Stripe charges.
 export const AUDIT_PRICE = {
-  amount: 149,
-  label: "Done-For-You Audit",
+  amount: 179,
+  label: "Done-For-You Compliance & Governance Audit",
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
 
