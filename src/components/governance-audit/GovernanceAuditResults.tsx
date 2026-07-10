@@ -58,6 +58,25 @@ const RISK_LABELS: Record<RiskLevel, string> = {
   mature: 'Mature Governance',
 };
 
+// Per dimension "what is at stake" line for locked gaps. Derived from the gap's
+// dimension (which is not gated) so every hidden gap reads as a specific,
+// distinct finding rather than one identical placeholder — while the actual
+// description, regulatory mapping and remediation stay locked behind Growth.
+const DIMENSION_STAKES: Record<Dimension, string> = {
+  strategy_ownership:
+    'This gap sits in who owns AI decisions at board level. Regulators and courts test ownership first: who authorised it, and can you prove it.',
+  tool_data_governance:
+    'This gap concerns which AI tools touch your data and whether anyone is watching. Unapproved tools carry liability back to whoever deployed them.',
+  policy_documentation:
+    'This gap is the distance between what your policy says and what actually happens. That gap is exactly what an examiner opens the file on.',
+  monitoring_accountability:
+    'This gap is about proof. If you cannot show what a system did and who signed it off, governance you cannot demonstrate counts as governance you did not do.',
+  vendor_risk:
+    'This gap is third party exposure. Under delegated authority the regulator looks through to your vendor, so their weakness becomes your liability.',
+  regulatory_readiness:
+    'This gap is examination readiness. If a regulator asked for evidence tomorrow, this is where you could not yet produce it.',
+};
+
 export function GovernanceAuditResults({
   response,
   onDownloadReport,
@@ -248,13 +267,21 @@ export function GovernanceAuditResults({
 
                   {locked ? (
                     <div className="space-y-3">
+                      {/* Visible, specific-to-this-gap hook derived from its
+                          dimension — no longer one identical placeholder. */}
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {DIMENSION_STAKES[flag.dimension]}
+                      </p>
+                      {/* The actual finding, regulatory mapping and remediation
+                          stay locked. The blurred line names what is hidden per
+                          dimension so it reads as real withheld detail. */}
                       <div className="relative">
-                        <p className="text-sm text-gray-400 leading-relaxed blur-sm select-none">
-                          This gap could expose your organisation to significant regulatory liability. The description, regulatory mapping, and exact remediation step are all visible with Growth.
+                        <p className="text-sm text-gray-500 leading-relaxed blur-sm select-none">
+                          Full finding for {dimInfo.title.toLowerCase()}, the specific regulatory frameworks it engages, your maximum statutory exposure, and the exact first remediation step are all visible with Growth.
                         </p>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <span className="rounded-full border border-red-900 bg-black/90 px-3 py-1 text-xs font-semibold text-red-400">
-                            Details hidden
+                            Finding + fix locked
                           </span>
                         </div>
                       </div>
@@ -262,7 +289,7 @@ export function GovernanceAuditResults({
                         onClick={onUnlock}
                         className="w-full text-center text-xs font-semibold text-white bg-[#E5484D] hover:bg-red-600 transition-colors rounded px-4 py-2"
                       >
-                        Unlock all gaps — Growth from £1,200/yr
+                        Unlock all gaps with Growth, from £1,200/yr
                       </button>
                     </div>
                   ) : (

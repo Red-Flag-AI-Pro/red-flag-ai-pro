@@ -11,6 +11,7 @@ import {
   type Answer,
   type GovernanceQuizResponse,
 } from '@/lib/governance-audit';
+import { enhanceGovernanceReport } from '@/lib/governance-enhance';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
@@ -65,7 +66,20 @@ export async function POST(request: Request) {
     const dimensionScores = calculateScores(answers);
     const overallScore = calculateOverallScore(dimensionScores);
     const riskLevel = getRiskLevel(overallScore);
-    const redFlags = generateRedFlags(dimensionScores, answers);
+    const templateFlags = generateRedFlags(dimensionScores, answers);
+
+    // Tailor each finding to the respondent's actual answers before anything
+    // downstream (DB persistence, PDF, on-screen gating) consumes it. Falls
+    // back silently to the template findings if the AI layer is unavailable,
+    // so the assessment always completes.
+    const redFlags = await enhanceGovernanceReport(
+      templateFlags,
+      answers,
+      dimensionScores,
+      overallScore,
+      riskLevel
+    );
+
     const roadmap = generateRoadmap(dimensionScores, redFlags);
 
     // ============================================================
@@ -106,6 +120,7 @@ export async function POST(request: Request) {
           email: leadEmail,
           plan: 'free',
           source: 'governance-audit',
+          track: 'governance',
         });
         await sendLoopsEvent({
           email: FOUNDER_NOTIFY_EMAIL,
