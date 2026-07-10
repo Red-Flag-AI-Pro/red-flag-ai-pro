@@ -120,7 +120,6 @@ export async function POST(request: Request) {
           email: leadEmail,
           plan: 'free',
           source: 'governance-audit',
-          track: 'governance',
         });
         await sendLoopsEvent({
           email: FOUNDER_NOTIFY_EMAIL,
