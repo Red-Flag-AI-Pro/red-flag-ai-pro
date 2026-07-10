@@ -4,16 +4,25 @@
 const LOOPS_API_KEY = process.env.LOOPS_API_KEY?.trim();
 const LOOPS_API_URL = "https://app.loops.so/api/v1";
 
+// Which product journey a contact entered through, so Loops automations can
+// branch a compliance-flavoured welcome vs a governance-flavoured one instead
+// of a single generic sequence. Left undefined when the entry point genuinely
+// doesn't know (e.g. a nav-bar "Start free" click with no product context) —
+// guessing a track is worse than leaving it unset.
+export type ProductTrack = "compliance" | "governance" | "both";
+
 export async function addContactToLoops({
   email,
   name,
   plan = "free",
   source = "signup",
+  track,
 }: {
   email: string;
   name?: string;
   plan?: string;
   source?: string;
+  track?: ProductTrack;
 }) {
   if (!LOOPS_API_KEY) {
     console.warn("LOOPS_API_KEY not set");
@@ -33,6 +42,7 @@ export async function addContactToLoops({
         lastName: name?.split(" ").slice(1).join(" ") ?? "",
         plan,
         source,
+        ...(track ? { track } : {}),
         subscribed: true,
       }),
     });

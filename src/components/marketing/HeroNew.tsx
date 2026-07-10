@@ -182,7 +182,7 @@ export function HeroNew() {
           <div className="hero-rest-2" style={{
             display: "flex", justifyContent: "center", marginBottom: "1.5rem"
           }}>
-            <Link href="/signup" style={{
+            <Link href="/signup?track=compliance" style={{
               fontSize: "13px", fontWeight: 600,
               color: "rgba(255,255,255,0.45)",
               fontFamily: "'Syne', sans-serif",

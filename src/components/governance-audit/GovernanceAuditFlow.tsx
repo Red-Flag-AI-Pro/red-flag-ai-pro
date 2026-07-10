@@ -13,11 +13,6 @@ const GovernanceAuditResults = dynamic(
   () => import('./GovernanceAuditResults').then((m) => m.GovernanceAuditResults),
   { ssr: false }
 );
-const CalendlyBooking = dynamic(
-  () => import('./CalendlyBooking').then((m) => m.CalendlyBooking),
-  { ssr: false }
-);
-
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +32,6 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
   const [results, setResults] = useState<GovernanceQuizResponse | null>(null);
   const [error, setError] = useState('');
   const [isDownloading, setIsDownloading] = useState(false);
-  const [showCalendly, setShowCalendly] = useState(false);
 
   const submitToApi = async (finalAnswers: Answer[], emailToUse: string) => {
     setIsLoading(true);
@@ -122,7 +116,11 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     }
   };
 
-  const handleScheduleCall = () => setShowCalendly(true);
+  // Calendly retired (zero bookings, trial ending). The consultation path now
+  // converges on the founder-reply request form on /sentinel.
+  const handleScheduleCall = () => {
+    window.location.href = '/sentinel#request';
+  };
   const handleExploreFeatures = () => {
     window.location.href = '/pricing';
   };
@@ -141,12 +139,6 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
           onExploreFeatures={handleExploreFeatures}
           onUnlock={handleUnlock}
         />
-        {showCalendly && (
-          <CalendlyBooking
-            email={results.email}
-            onSuccess={() => setShowCalendly(false)}
-          />
-        )}
       </>
     );
   }

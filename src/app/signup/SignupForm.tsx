@@ -12,6 +12,8 @@ function SignupFormInner() {
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan");
   const region = searchParams.get("region");
+  const trackParam = searchParams.get("track");
+  const trackQuery = trackParam ? `&track=${encodeURIComponent(trackParam)}` : "";
   const prefillEmail = searchParams.get("email") ?? "";
   const fromDemo = !!prefillEmail;
   const planLabel = plan === "scanner" ? "Pro" : plan === "enterprise" ? "Growth" : null;
@@ -32,7 +34,7 @@ function SignupFormInner() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}`,
+        redirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}${trackQuery}`,
       },
     });
     if (error) {
@@ -54,7 +56,7 @@ function SignupFormInner() {
       password,
       options: {
         data: { full_name: name },
-        emailRedirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}`,
+        emailRedirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}${trackQuery}`,
       },
     });
 

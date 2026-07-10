@@ -459,7 +459,7 @@ export function DemoScanner() {
               <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem"}}>
                 {email.trim()} has already claimed its one free check. Create a free account to check this copy and keep checking more.
               </p>
-              <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
+              <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}&track=compliance` : "?track=compliance"}`} style={{
                 display: "inline-block",
                 background: "#E5484D",
                 color: "white",
@@ -678,7 +678,7 @@ export function DemoScanner() {
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem", maxWidth: "420px", margin: "0.5rem auto 1.75rem"}}>
                   You&apos;ve seen 1 of {result.totalFlags}. Upgrade to Pro to unlock every flag, the exact regulation it breaks, and a compliant rewrite for each one.
                 </p>
-                <Link href={`/signup?plan=scanner${email.trim() ? `&email=${encodeURIComponent(email.trim())}` : ""}`} style={{
+                <Link href={`/signup?plan=scanner${email.trim() ? `&email=${encodeURIComponent(email.trim())}` : ""}&track=compliance`} style={{
                   display: "inline-block",
                   background: "#E5484D",
                   color: "white",
@@ -709,7 +709,7 @@ export function DemoScanner() {
                 <p style={{...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.5rem"}}>
                   Save this result. A free account lets you track compliance over time and download a PDF certificate.
                 </p>
-                <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}` : ""}`} style={{
+                <Link href={`/signup${email.trim() ? `?email=${encodeURIComponent(email.trim())}&track=compliance` : "?track=compliance"}`} style={{
                   display: "inline-block",
                   background: "#E5484D",
                   color: "white",

@@ -3,14 +3,14 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, PLAN_PRICES } from "@/lib/constants";
 import React from "react";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Governance Pricing: Red Flag AI Pro",
-  description: "Free AI governance assessment. Pro £350/mo for full compliance checking, Growth £1,200/mo for ongoing governance monitoring and teams, Sentinel custom pricing for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  description: "Free AI governance assessment. Pro for full compliance checking, Growth for ongoing governance monitoring and teams, Sentinel for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
@@ -18,7 +18,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const SCANNER_FEATURES = [
-  "10 separate countries covered across 30 risk categories. Wherever your business operates, you are protected.",
+  "10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.",
   "5 checks per month",
   "PDF reports",
   "Check history",
@@ -26,7 +26,7 @@ const SCANNER_FEATURES = [
 ];
 
 const GROWTH_FEATURES = [
-  "10 separate countries covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
+  "10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
   "Full AI governance diagnosis — every gap revealed, not just one (fixes unlock with Sentinel)",
   "1 free fix-it document for your worst-scoring dimension",
   "Vendor AI risk tracking & assessments",
@@ -157,7 +157,7 @@ export default async function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>10 separate countries covered across 30 risk categories. Wherever your business operates, you are protected.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -318,7 +318,7 @@ export default async function PricingPage() {
                 Start Growth
               </Link>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                or <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>book a call</a> first
+                or <Link href="/sentinel#request" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>get in touch</Link> first
               </p>
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
@@ -359,7 +359,7 @@ export default async function PricingPage() {
                   </p>
                   <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Scoped to your team size and governance needs</p>
                 </div>
-                <a href="https://calendly.com/redflagaipro/30min" target="_blank" rel="noopener noreferrer" style={{
+                <Link href="/sentinel#request" style={{
                   display: "block", textAlign: "center",
                   background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
                   color: "#e0e0f0",
@@ -368,7 +368,7 @@ export default async function PricingPage() {
                   textDecoration: "none", marginTop: "1.5rem"
                 }}>
                   Talk to sales
-                </a>
+                </Link>
                 <p style={{ ...syne, fontSize: "11px", color: "#555", textAlign: "center", marginTop: "0.75rem", fontWeight: 700 }}>
                   or email support@redflagaipro.com
                 </p>
@@ -409,7 +409,7 @@ export default async function PricingPage() {
                 </thead>
                 <tbody>
                   {[
-                    { need: "10 separate countries covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "10 jurisdictions covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
                     { need: "See every governance gap (the warnings)", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "The fix for every gap (not just a warning)", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },
@@ -435,7 +435,7 @@ export default async function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            Growth tier: 14 day money back guarantee. Sentinel: custom contract. All plans include priority email support.
+            Growth tier: 14 day money back guarantee. Sentinel: custom contract. All plans include email support.
           </p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
@@ -468,7 +468,7 @@ export default async function PricingPage() {
                   { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
                   { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
                   { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
-                  { name: "Red Flag AI Pro (Pro)", cost: "£4,200", highlight: true },
+                  { name: "Red Flag AI Pro (Pro)", cost: `£${(PLAN_PRICES.scanner.monthly * 12).toLocaleString("en-GB")}`, highlight: true },
                   { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
                 ].map((row) => (
                   <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>
@@ -515,7 +515,7 @@ export default async function PricingPage() {
 
             <div style={{ background: "#102943", padding: "2.25rem", borderLeft: "2px solid #E5484D" }}>
               <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Red Flag</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £350<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
+              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £{PLAN_PRICES.scanner.monthly}<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
               {[
                 "Audit ready evidence out of the box, nothing to build",

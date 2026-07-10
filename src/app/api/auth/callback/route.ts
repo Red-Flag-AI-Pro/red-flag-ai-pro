@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
-import { addContactToLoops } from "@/lib/loops";
+import { addContactToLoops, type ProductTrack } from "@/lib/loops";
 import { analyzeContent } from "@/lib/analyzer";
 import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
+
+const VALID_TRACKS = new Set<ProductTrack>(["compliance", "governance", "both"]);
 
 // If this person already ran the free demo scan with this email, convert
 // that scan into their first real (fully unlocked) scan — so their
@@ -48,6 +50,8 @@ export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/dashboard";
+  const trackParam = searchParams.get("track");
+  const track = VALID_TRACKS.has(trackParam as ProductTrack) ? (trackParam as ProductTrack) : undefined;
 
   if (code) {
     const supabase = await createClient();
@@ -56,8 +60,11 @@ export async function GET(request: Request) {
       const user = data.user;
       const name = user.user_metadata?.full_name ?? "";
 
-      // Add to Loops for welcome email
-      await addContactToLoops({ email: user.email!, name, plan: "free" });
+      // Add to Loops for welcome email — track carries which product journey
+      // (compliance scanner / governance audit / DFY audit) they signed up
+      // from, so Loops can send a matching welcome instead of one generic
+      // sequence for every new account regardless of intent.
+      await addContactToLoops({ email: user.email!, name, plan: "free", track });
 
       // Carry over their demo scan as their first real scan, if they ran one
       if (user.email) {

@@ -120,6 +120,9 @@ export async function POST(request: Request) {
           email: leadEmail,
           plan: 'free',
           source: 'governance-audit',
+          // Restored now that loops.ts ships the track param (it was stripped
+          // at cf9910c while that change was still unshipped).
+          track: 'governance',
         });
         await sendLoopsEvent({
           email: FOUNDER_NOTIFY_EMAIL,

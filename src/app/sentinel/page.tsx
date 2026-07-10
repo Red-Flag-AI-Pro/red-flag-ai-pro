@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SentinelRequestForm } from "@/components/marketing/SentinelRequestForm";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -114,8 +115,8 @@ export default function SentinelPage() {
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks, governance evidence and a cryptographically sealed audit trail you can verify on demand.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
-            <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
-            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
+            <Link href="/signup?track=both" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
+            <a href="#request" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
           </div>
           <Link href="/verify" style={{display: "block", marginTop: "1.5rem", fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(229,72,77,0.85)", textDecoration: "underline"}}>
             Don&apos;t take our word for it — verify a real audit record yourself →
@@ -180,7 +181,7 @@ export default function SentinelPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
+            <a href="#request" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -432,7 +433,7 @@ export default function SentinelPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/signup" style={{
+              <Link href="/signup?track=both" style={{
                 display: "block", textAlign: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.875rem", fontWeight: 700,
@@ -501,6 +502,22 @@ export default function SentinelPage() {
         </div>
       </section>
 
+      {/* ── REQUEST FORM ── */}
+      <section id="request" style={{ padding: "5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", background: "#0C1929", scrollMarginTop: "80px" }}>
+        <div style={{ maxWidth: "640px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Talk to the founder</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "0.75rem" }}>
+              Tell us what you need to prove.
+            </h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto" }}>
+              Sentinel is scoped and priced to your team. Send the short form and you will hear back within one working day.
+            </p>
+          </div>
+          <SentinelRequestForm />
+        </div>
+      </section>
+
       {/* ── FINAL CTA ── */}
       <section style={{
         padding: "10rem 1.5rem",
@@ -527,7 +544,7 @@ export default function SentinelPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <a href="mailto:support@redflagaipro.com?subject=Sentinel Enquiry" style={{
+            <a href="#request" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -537,7 +554,7 @@ export default function SentinelPage() {
             }}>
               Get in touch
             </a>
-            <Link href="/signup" style={{
+            <Link href="/signup?track=both" style={{
               display: "inline-flex", alignItems: "center",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "rgba(255,255,255,0.55)",
