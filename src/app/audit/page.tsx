@@ -91,7 +91,7 @@ const FAQS = [
   },
   {
     q: "How do I pay?",
-    a: "Fill in the short request form with your details and anything you want me to look at. I will reply personally within one working day with a secure payment link. Delivery starts once payment is confirmed.",
+    a: "Pay securely online by card and your audit is booked on the spot, no waiting. Prefer to talk first? Use the request form instead and I will reply personally within one working day. Delivery starts once payment is confirmed.",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function AuditPage() {
           </p>
 
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <Link href="#request" style={{
+            <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -166,7 +166,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Request my audit: £179
+              Get my audit: £179
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
@@ -355,7 +355,7 @@ export default function AuditPage() {
               }}>This audit</span>
               <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£179</p>
               <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
-              <a href="#request" style={{
+              <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.8rem", fontWeight: 700,
@@ -363,7 +363,7 @@ export default function AuditPage() {
                 boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
                 textDecoration: "none", letterSpacing: "0.02em"
               }}>
-                Get started
+                Pay £179 now
               </a>
             </div>
           </div>
@@ -372,7 +372,7 @@ export default function AuditPage() {
             One payment. Not per hour, not per month, not a retainer.
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "0.35rem" }}>
-            Done personally, by the person who built the tool, or <a href="mailto:support@redflagaipro.com?subject=Done For You Audit" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>email me first</a> if you want to talk before you pay.
+            Done personally, by the person who built the tool, or <a href="#request" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>request it by email first</a> if you want to talk before you pay.
           </p>
         </div>
       </section>
@@ -381,7 +381,7 @@ export default function AuditPage() {
       <section id="request" style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929", scrollMarginTop: "80px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Get started</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Prefer to talk first?</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               One audit. Compliance and governance.
             </h2>
@@ -430,7 +430,7 @@ export default function AuditPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-            <Link href="#request" style={{
+            <Link href="/audit/checkout" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
               ...syne, fontSize: "0.9rem", fontWeight: 700,
@@ -438,7 +438,7 @@ export default function AuditPage() {
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Request my audit: £179
+              Get my audit: £179
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",

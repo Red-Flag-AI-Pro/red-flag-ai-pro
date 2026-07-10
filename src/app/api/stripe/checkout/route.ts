@@ -27,7 +27,11 @@ export async function POST(request: Request) {
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
-  // One-time audit purchase
+  // One-time audit purchase. Priced inline from AUDIT_PRICE.amount so the
+  // charge always matches the price displayed on /audit — the old fixed
+  // STRIPE_PRICE_AUDIT_ID object still carries the pre-4-Jul £149 and Stripe
+  // prices are immutable, so referencing it would undercharge against the
+  // advertised £179.
   if (plan === "audit") {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -36,7 +40,11 @@ export async function POST(request: Request) {
       customer_email: profile?.stripe_customer_id ? undefined : user.email,
       line_items: [
         {
-          price: AUDIT_PRICE.priceId,
+          price_data: {
+            currency: "gbp",
+            unit_amount: AUDIT_PRICE.amount * 100,
+            product_data: { name: AUDIT_PRICE.label },
+          },
           quantity: 1,
         },
       ],

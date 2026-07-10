@@ -97,7 +97,9 @@ export async function POST(request: Request) {
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: session.payment_intent as string ?? null,
-          amount_gbp: 149,
+          // Record what Stripe actually charged rather than a hardcoded figure
+          // (was stuck at the old £149 after the 4 Jul price rise to £179).
+          amount_gbp: session.amount_total ? session.amount_total / 100 : 179,
           status: "paid",
         });
         break;
