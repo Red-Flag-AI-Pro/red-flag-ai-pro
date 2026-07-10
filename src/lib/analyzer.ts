@@ -1067,6 +1067,18 @@ const RULES: Rule[] = [
   },
 ];
 
+// Maps each finding category to the jurisdictions whose regimes it engages,
+// built from the rule table above. Consumed by penalty-exposure.ts to show the
+// maximum statutory ceiling attached to the violations a report actually found.
+// claims_policy_mismatch is added by hand because it is a cross-check, not a
+// keyword rule, so it never appears in RULES.
+export const CATEGORY_JURISDICTIONS: Record<string, JurisdictionCode[]> = (() => {
+  const map: Record<string, JurisdictionCode[]> = {};
+  for (const rule of RULES) map[rule.category] = rule.jurisdictions;
+  map["claims_policy_mismatch"] = ["us", "gb", "eu", "au", "ca"];
+  return map;
+})();
+
 // ─── CLAIMS vs. POLICY MISMATCH ──────────────────────────────────────────────
 // Cross-reference check: looks for a marketing "guarantee" claim AND a
 // contradicting refund/cancellation restriction within the same content.

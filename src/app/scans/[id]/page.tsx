@@ -2,6 +2,7 @@ import { redirect, notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ScanResultCard } from "@/components/scans/ScanResultCard";
 import { FlagList } from "@/components/scans/FlagList";
+import { RegulatoryExposure } from "@/components/scans/RegulatoryExposure";
 import { analyzeContent } from "@/lib/analyzer";
 import { FREE_ONLY_EXCLUDED_CATEGORIES } from "@/lib/constants";
 import type { Plan, Scan, ScanFlag } from "@/types";
@@ -85,6 +86,8 @@ export default async function ScanResultPage({
         flags={visibleFlags}
         plan={plan}
       />
+
+      <RegulatoryExposure flags={visibleFlags} />
 
       {hiddenCategoryCount > 0 && (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#102943] px-5 py-4">

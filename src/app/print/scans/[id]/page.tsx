@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ScanResultCard } from "@/components/scans/ScanResultCard";
 import { FlagList } from "@/components/scans/FlagList";
+import { RegulatoryExposure } from "@/components/scans/RegulatoryExposure";
 import type { Plan, Scan, ScanFlag } from "@/types";
 
 export default async function PrintScanPage({
@@ -69,6 +70,8 @@ export default async function PrintScanPage({
           plan={plan}
           print
         />
+
+        <RegulatoryExposure flags={(flags ?? []) as ScanFlag[]} />
 
         <div>
           <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">
