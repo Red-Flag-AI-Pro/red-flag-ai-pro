@@ -45,6 +45,17 @@ export default function LandingPage() {
         position: "relative",
         overflow: "hidden"
       }}>
+        {/* Photo: the compliance overwhelm this product solves */}
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          backgroundImage: "url(/images/hero-compliance.jpg)",
+          backgroundSize: "cover", backgroundPosition: "center 30%",
+          opacity: 0.45
+        }} />
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(180deg, rgba(10,22,40,0.86) 0%, rgba(10,22,40,0.68) 50%, #0A1628 100%)"
+        }} />
         <div style={{
           position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
           width: "800px", height: "600px", pointerEvents: "none",
