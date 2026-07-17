@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { href: "/clients", label: "Clients", icon: "▢" },
   { href: "/vendors", label: "Vendor Tracker", icon: "◎" },
   { href: "/audit-log", label: "Audit Log", icon: "▤" },
+  { href: "/boundary-records", label: "Boundary Records", icon: "◫" },
   { href: "/monitor", label: "Monitoring", icon: "◉" },
   { href: "/governance", label: "Governance", icon: "◆" },
   { href: "/team", label: "Team", icon: "⬡" },

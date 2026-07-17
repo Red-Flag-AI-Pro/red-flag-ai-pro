@@ -39,6 +39,33 @@ export interface ScanFlag {
   reviewer_mandate: string | null;
 }
 
+export interface BoundaryOption {
+  label: string;
+}
+
+export interface BoundaryRisk {
+  risk: string;
+  mitigation: string;
+}
+
+export interface BoundaryEvidence {
+  label: string;
+}
+
+export interface BoundaryAuthorizationRecord {
+  id: string;
+  user_id: string;
+  decision: string;
+  owner_name: string;
+  owner_role: string;
+  options_considered: BoundaryOption[];
+  risks_accepted: BoundaryRisk[];
+  evidence: BoundaryEvidence[];
+  decision_date: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export type VideoJobStatus = "pending" | "processing" | "complete" | "error";
 
 export interface VideoJob {
