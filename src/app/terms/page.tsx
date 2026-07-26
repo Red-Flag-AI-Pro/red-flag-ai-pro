@@ -26,9 +26,9 @@ export default function TermsPage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Legal</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>Legal</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Terms of Service
           </h1>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 30 June 2026</p>
@@ -41,7 +41,7 @@ export default function TermsPage() {
 
           {/* 1 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance checking tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
             </p>
@@ -49,9 +49,9 @@ export default function TermsPage() {
 
           {/* 2 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice: Important Disclaimer</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice: Important Disclaimer</h2>
             <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.5rem" }}>
-              <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#ef4444", lineHeight: 1.8, marginBottom: "0.75rem" }}>
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#E5484D", lineHeight: 1.8, marginBottom: "0.75rem" }}>
                 Red Flag AI Pro is an AI powered tool and does not constitute legal advice. Our checks and reports are provided for informational purposes only.
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
@@ -62,7 +62,7 @@ export default function TermsPage() {
 
           {/* 3 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Eligibility</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Eligibility</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               You must be at least 18 years old and capable of entering into a legally binding agreement to use Red Flag AI Pro. By using our service you confirm that you meet these requirements.
             </p>
@@ -70,17 +70,17 @@ export default function TermsPage() {
 
           {/* 4 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Your Account</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Your Account</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
               of any unauthorised use of your account.
             </p>
           </div>
 
           {/* 5 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Free Plan", "1 check per month at no charge. No credit card required."],
@@ -101,7 +101,7 @@ export default function TermsPage() {
 
           {/* 6 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. Refund Policy</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. Refund Policy</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
                 We want every customer to be satisfied with Red Flag AI Pro. However, because our service delivers immediate digital value upon use, refunds are not automatically granted.
@@ -127,7 +127,7 @@ export default function TermsPage() {
 
           {/* 7 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>7. Acceptable Use</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>7. Acceptable Use</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "0.75rem" }}>You agree not to:</p>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
@@ -144,7 +144,7 @@ export default function TermsPage() {
 
           {/* 8 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Intellectual Property</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Intellectual Property</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not store or use your submitted copy for any purpose other than generating your check results.
             </p>
@@ -152,7 +152,7 @@ export default function TermsPage() {
 
           {/* 9 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Limitation of Liability</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Limitation of Liability</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               To the fullest extent permitted by law, Red Flag AI Pro shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our service, including but not limited to regulatory fines, lost revenue, or business interruption. Our total liability to you shall not exceed the amount you paid us in the 3 months preceding the claim.
             </p>
@@ -160,7 +160,7 @@ export default function TermsPage() {
 
           {/* 10 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to These Terms</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to These Terms</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We may update these Terms from time to time. We will notify you of material changes by email or via an in app notice. Continued use of Red Flag AI Pro after changes constitutes acceptance of the updated Terms.
             </p>
@@ -168,7 +168,7 @@ export default function TermsPage() {
 
           {/* 11 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Governing Law</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Governing Law</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.
             </p>
@@ -176,10 +176,10 @@ export default function TermsPage() {
 
           {/* 12 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>12. Contact Us</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>12. Contact Us</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               For any questions about these Terms, please contact us at:{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", fontWeight: 700, textDecoration: "none" }}>
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", fontWeight: 700, textDecoration: "none" }}>
                 support@redflagaipro.com
               </a>
             </p>
@@ -189,7 +189,7 @@ export default function TermsPage() {
 
         {/* Footer nav */}
         <div style={{ maxWidth: "720px", margin: "4rem auto 0", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "2rem", display: "flex", gap: "2rem" }}>
-          <Link href="/privacy" style={{ ...syne, fontSize: "13px", color: "#ef4444", textDecoration: "none" }}>Privacy Policy</Link>
+          <Link href="/privacy" style={{ ...syne, fontSize: "13px", color: "#E5484D", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/" style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Back to home</Link>
         </div>
       </section>

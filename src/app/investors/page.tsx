@@ -28,7 +28,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section style={{ padding: "3.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-        <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>{title}</p>
+        <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>{title}</p>
         {children}
       </div>
     </section>
@@ -42,7 +42,7 @@ export default function InvestorsPage() {
 
       <section style={{ padding: "8rem 1.5rem 3rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>For Investors</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>For Investors</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "1.25rem" }}>
             Verifiable AI governance for the price bracket <span style={{ fontStyle: "italic", color: "#E5484D" }}>enterprise tools ignore.</span>
           </h1>

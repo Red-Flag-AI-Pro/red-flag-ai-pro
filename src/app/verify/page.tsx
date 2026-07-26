@@ -12,7 +12,7 @@ type Result =
   | { state: "idle" }
   | { state: "loading" }
   | { state: "not-found" }
-  | { state: "intact"; actionLabel: string; createdAt: string }
+  | { state: "intact"; actionLabel: string; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
   | { state: "tampered"; actionLabel: string; createdAt: string };
 
 function VerifyForm() {
@@ -35,6 +35,8 @@ function VerifyForm() {
         state: data.intact ? "intact" : "tampered",
         actionLabel: data.actionLabel ?? "Audit record",
         createdAt: data.createdAt,
+        timestampedAt: data.timestampedAt ?? null,
+        timestampAuthority: data.timestampAuthority ?? null,
       });
     } catch {
       setResult({ state: "not-found" });
@@ -43,7 +45,7 @@ function VerifyForm() {
 
   return (
     <div style={{ maxWidth: "640px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
-      <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>
+      <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>
         Public verification
       </p>
       <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.25rem", textAlign: "center", color: "#F4F1EA" }}>
@@ -105,6 +107,13 @@ function VerifyForm() {
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)" }}>
             {result.actionLabel}, sealed {new Date(result.createdAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. This record matches its cryptographic seal exactly. It has not been edited, deleted, or backdated since.
           </p>
+          {result.timestampedAt && (
+            <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,222,128,0.2)" }}>
+              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.7)", lineHeight: 1.6 }}>
+                Independently timestamped by {result.timestampAuthority ?? "a third-party authority"} (RFC 3161) on {new Date(result.timestampedAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. The record existed and was unaltered by that time, provable without trusting us.
+              </p>
+            </div>
+          )}
         </div>
       )}
 

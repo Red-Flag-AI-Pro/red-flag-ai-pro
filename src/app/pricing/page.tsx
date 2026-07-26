@@ -72,11 +72,11 @@ export default async function PricingPage() {
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The Problem</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>The Problem</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.5rem, 5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.5rem", color: "white" }}>
               You can't prove governance happened.
               <br />
-              <span style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>That's the problem.</span>
+              <span style={{ color: "#F4F1EA" }}>That's the problem.</span>
             </h2>
           </div>
 
@@ -134,7 +134,7 @@ export default async function PricingPage() {
             padding: "2rem",
             textAlign: "center",
           }}>
-            <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444", marginBottom: "0.5rem" }}>THE REALITY</p>
+            <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#E5484D", marginBottom: "0.5rem" }}>THE REALITY</p>
             <p style={{ ...syne, fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.6 }}>
               One unchecked ad with an undisclosed claim can trigger a fine before legal ever sees it. A regulator finding you can't prove governance afterward: enterprise reputation destroyed. Your insurance won't cover either.
             </p>
@@ -157,7 +157,7 @@ export default async function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -177,7 +177,7 @@ export default async function PricingPage() {
           padding: "2rem",
           textAlign: "center",
         }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.75rem" }}>Start here, free</p>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>Start here, free</p>
           <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>
             Every plan below starts with a free governance assessment.
           </p>
@@ -187,7 +187,7 @@ export default async function PricingPage() {
           <Link href="/governance-audit" style={{
             display: "inline-block",
             background: "rgba(239,68,68,0.2)",
-            color: "#ef4444",
+            color: "#E5484D",
             border: "1px solid rgba(239,68,68,0.4)",
             ...syne, fontSize: "0.875rem", fontWeight: 700,
             padding: "12px 24px", borderRadius: "9999px",
@@ -225,7 +225,7 @@ export default async function PricingPage() {
               )}
 
               <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
+                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Full compliance checking, for solo creators and small teams who need it checked, not monitored.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
@@ -260,7 +260,7 @@ export default async function PricingPage() {
               </div>
               <Link href={isNigeria ? "/signup?plan=scanner&region=ng" : "/signup?plan=scanner"} style={{
                 display: "block", textAlign: "center",
-                background: "#ef4444",
+                background: "#E5484D",
                 color: "white",
                 ...syne, fontSize: "0.875rem", fontWeight: 700,
                 padding: "12px 24px", borderRadius: "9999px",
@@ -275,7 +275,7 @@ export default async function PricingPage() {
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
                 {SCANNER_FEATURES.map((f) => (
                   <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
+                    <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
                     <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
                   </div>
                 ))}
@@ -324,7 +324,7 @@ export default async function PricingPage() {
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
                 {GROWTH_FEATURES.map((f) => (
                   <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px" }}>✓</span>
+                    <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
                     <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
                   </div>
                 ))}
@@ -425,7 +425,7 @@ export default async function PricingPage() {
                     <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.scanner === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.scanner}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#ef4444" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
+                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
                       <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
                     </tr>
                   ))}
@@ -546,9 +546,9 @@ export default async function PricingPage() {
         borderTop: "1px solid rgba(239,68,68,0.15)"
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Why CFOs choose Sentinel</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Why CFOs choose Sentinel</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2rem", color: "white" }}>
-            Governance that <span style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>regulators accept.</span>
+            Governance that <span style={{ color: "#F4F1EA" }}>regulators accept.</span>
           </h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
@@ -590,11 +590,11 @@ export default async function PricingPage() {
             borderRadius: "12px",
             padding: "2rem"
           }}>
-            <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#ef4444", marginBottom: "0.5rem" }}>Ready to know where you stand?</p>
+            <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", marginBottom: "0.5rem" }}>Ready to know where you stand?</p>
             <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 2 minute governance assessment. One work email, 12 questions, your top gap on screen instantly.</p>
             <Link href="/governance-audit" style={{
               display: "inline-block",
-              background: "#ef4444",
+              background: "#E5484D",
               color: "white",
               ...syne, fontSize: "0.875rem", fontWeight: 700,
               padding: "12px 32px", borderRadius: "9999px",

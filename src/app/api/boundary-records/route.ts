@@ -91,7 +91,7 @@ export async function POST(request: Request) {
 
   if (error) return NextResponse.json({ error: "Failed to create boundary record." }, { status: 500 });
 
-  await logAuditEvent(result.user.id, "boundary_record.created", { id: data.id, decision: data.decision });
+  await logAuditEvent(result.user.id, "boundary_record.created", { id: data.id, decision: data.decision }, { timestamp: true });
 
   return NextResponse.json({ record: data });
 }

@@ -63,7 +63,7 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <span style={{
             width: "6px", height: "6px", borderRadius: "50%",
-            background: value.length > 0 ? "#ef4444" : "rgba(255,255,255,0.2)",
+            background: value.length > 0 ? "#E5484D" : "rgba(255,255,255,0.2)",
             display: "inline-block",
             boxShadow: value.length > 0 ? "0 0 8px rgba(239,68,68,0.6)" : "none",
             transition: "all 0.3s",
@@ -91,7 +91,7 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
             fontWeight: 700,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: allSelected ? "#ef4444" : "rgba(255,255,255,0.4)",
+            color: allSelected ? "#E5484D" : "rgba(255,255,255,0.4)",
             background: allSelected ? "rgba(239,68,68,0.08)" : "rgba(255,255,255,0.04)",
             border: allSelected ? "1px solid rgba(239,68,68,0.25)" : "1px solid rgba(255,255,255,0.08)",
             borderRadius: "6px",
@@ -102,11 +102,11 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
           }}
           onMouseEnter={e => {
             (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(239,68,68,0.4)";
-            (e.currentTarget as HTMLButtonElement).style.color = "#ef4444";
+            (e.currentTarget as HTMLButtonElement).style.color = "#E5484D";
           }}
           onMouseLeave={e => {
             (e.currentTarget as HTMLButtonElement).style.borderColor = allSelected ? "rgba(239,68,68,0.25)" : "rgba(255,255,255,0.08)";
-            (e.currentTarget as HTMLButtonElement).style.color = allSelected ? "#ef4444" : "rgba(255,255,255,0.4)";
+            (e.currentTarget as HTMLButtonElement).style.color = allSelected ? "#E5484D" : "rgba(255,255,255,0.4)";
           }}
         >
           {allSelected ? "Clear all" : "Select all"}
@@ -205,7 +205,7 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
                   width: compact ? "12px" : "14px",
                   height: compact ? "12px" : "14px",
                   borderRadius: "50%",
-                  background: "#ef4444",
+                  background: "#E5484D",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

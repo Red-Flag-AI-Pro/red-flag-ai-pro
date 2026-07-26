@@ -33,7 +33,7 @@ export default function DocsPage() {
 
         <div>
           <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">Developer Docs</p>
-          <h1 className="text-4xl font-extrabold mb-3" style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Red Flag AI Pro API</h1>
+          <h1 className="text-4xl font-extrabold mb-3" style={{ color: "#F4F1EA" }}>Red Flag AI Pro API</h1>
           <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
             Check marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Available on the Sentinel plan.
           </p>

@@ -104,7 +104,7 @@ function renderContent(content: string) {
         <ul key={key++} style={{ margin: "1rem 0", paddingLeft: "0" }}>
           {items.map((item, ii) => (
             <li key={ii} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.625rem" }}>
-              <span style={{ color: "#ef4444", flexShrink: 0, marginTop: "2px", fontFamily: "'Syne', system-ui, sans-serif" }}>•</span>
+              <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px", fontFamily: "'Syne', system-ui, sans-serif" }}>•</span>
               <span style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8 }} dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
             </li>
           ))}
@@ -155,7 +155,7 @@ function formatInline(text: string): string {
   return text
     .replace(/\*\*([^*]+)\*\*/g, "<strong style=\"color:white;font-weight:700\">$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#ef4444;text-decoration:underline">$1</a>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#E5484D;text-decoration:underline">$1</a>');
 }
 
 const CATEGORY_STYLES: Record<string, React.CSSProperties> = {
@@ -209,8 +209,7 @@ export default async function BlogPostPage({ params }: Props) {
             fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 800,
             letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
+            color: "#F4F1EA"
           }}>
             {post.title}
           </h1>
@@ -239,7 +238,7 @@ export default async function BlogPostPage({ params }: Props) {
             position: "absolute", top: 0, left: "3rem", right: "3rem",
             height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
-          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Check Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>

@@ -164,8 +164,8 @@ export default async function AuditPage({
 
           {/* Label */}
           <div className="animate-fade-up" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.75rem" }}>
-            <span className="animate-pulse-red" style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", flexShrink: 0, display: "inline-block" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>
+            <span className="animate-pulse-red" style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", flexShrink: 0, display: "inline-block" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>
               Done for you · By the founder · 48 hours
             </p>
           </div>
@@ -178,8 +178,7 @@ export default async function AuditPage({
             lineHeight: 1.1,
             letterSpacing: "-0.035em",
             marginBottom: "1.5rem",
-            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
+            color: "#F4F1EA"
           }}>
             I&apos;ll personally run your site and funnel through{" "}
             <span>Red Flag AI Pro</span>{" "}
@@ -236,7 +235,7 @@ export default async function AuditPage({
               <span style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", whiteSpace: "nowrap" }}>
                 {item}
               </span>
-              <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#ef4444", display: "inline-block", flexShrink: 0 }} />
+              <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#E5484D", display: "inline-block", flexShrink: 0 }} />
             </span>
           ))}
         </div>
@@ -245,10 +244,10 @@ export default async function AuditPage({
       {/* ── THE PROBLEM ── */}
       <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
             The problem
           </p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", color: "#F4F1EA" }}>
             You don&apos;t have time to learn a compliance tool.{" "}
             <span>You just need to know what&apos;s wrong.</span>
           </h2>
@@ -262,8 +261,8 @@ export default async function AuditPage({
       <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What you get</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>What you get</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA" }}>
               Everything packaged.<br />
               <span>Nothing left for you to interpret.</span>
             </h2>
@@ -276,7 +275,7 @@ export default async function AuditPage({
                 border: `1px solid ${i % 2 === 0 ? "rgba(239,68,68,0.12)" : "rgba(255,255,255,0.05)"}`,
                 padding: "2rem"
               }}>
-                <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.15em", marginBottom: "0.75rem" }}>{item.num}</p>
+                <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "0.75rem" }}>{item.num}</p>
                 <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.6rem", lineHeight: 1.4 }}>{item.headline}</h3>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{item.body}</p>
                 {item.num === "04" && (
@@ -332,8 +331,8 @@ export default async function AuditPage({
       <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How it works</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>How it works</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA" }}>
               Three steps. 48 hours.
             </h2>
           </div>
@@ -341,7 +340,7 @@ export default async function AuditPage({
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
             {STEPS.map((s) => (
               <div key={s.num} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "2rem" }}>
-                <p style={{ ...syne, fontSize: "13px", fontWeight: 800, color: "#ef4444", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>{s.num}</p>
+                <p style={{ ...syne, fontSize: "13px", fontWeight: 800, color: "#E5484D", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>{s.num}</p>
                 <h3 style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.6rem", lineHeight: 1.4 }}>{s.title}</h3>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{s.body}</p>
               </div>
@@ -354,8 +353,8 @@ export default async function AuditPage({
       <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Pricing</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Pricing</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA" }}>
               What this would cost anywhere else.
             </h2>
           </div>
@@ -380,14 +379,14 @@ export default async function AuditPage({
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #E5484D, transparent)" }} />
               <span style={{
                 ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em",
-                textTransform: "uppercase", color: "#ef4444",
+                textTransform: "uppercase", color: "#E5484D",
                 background: "rgba(239,68,68,0.1)",
                 border: "1px solid rgba(239,68,68,0.25)",
                 padding: "3px 10px", borderRadius: "9999px",
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
               <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£179</p>
-              <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
+              <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
               <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
@@ -414,8 +413,8 @@ export default async function AuditPage({
       <section id="request" style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929", scrollMarginTop: "80px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Prefer to talk first?</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Prefer to talk first?</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, color: "#F4F1EA" }}>
               One audit. Compliance and governance.
             </h2>
           </div>
@@ -434,8 +433,8 @@ export default async function AuditPage({
       <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Questions</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Questions</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "#F4F1EA" }}>
               Still on the fence?
             </h2>
           </div>
@@ -454,7 +453,7 @@ export default async function AuditPage({
       {/* ── CTA CLOSE ── */}
       <section style={{ padding: "4.5rem 1.5rem", background: "#0C1929" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", color: "#F4F1EA" }}>
             You&apos;ll either find out you&apos;re already safe.{" "}
             <span>or find out before it costs you.</span>
           </h2>

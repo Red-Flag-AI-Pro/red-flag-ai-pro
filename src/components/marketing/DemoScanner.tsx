@@ -152,7 +152,7 @@ export function DemoScanner() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444"}}>
+            <p style={{...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D"}}>
               Try It Free: No Account Needed
             </p>
           </div>
@@ -164,10 +164,7 @@ export function DemoScanner() {
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
             marginBottom: "1rem",
-            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text"
+            color: "#F4F1EA"
           }}>
             Paste Your Copy.<br />
             <span>Get Your Verdict.</span>
@@ -196,7 +193,7 @@ export function DemoScanner() {
             background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
 
-          <p style={{...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem"}}>
+          <p style={{...syne, fontSize: "11px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem"}}>
             Why We Built This
           </p>
 
@@ -207,7 +204,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             marginBottom: "1.25rem"
           }}>
-            I've watched <span style={{color: "#ef4444", fontWeight: 700}}>creators get destroyed by false income claims they didn't know were illegal.</span> I've seen <span style={{color: "#ef4444", fontWeight: 700}}>agencies lose clients to compliance fines</span> that could have been prevented in 60 seconds. And I've watched <span style={{color: "#ef4444", fontWeight: 700}}>buyers lose thousands to ads that broke every rule in the book.</span>
+            I've watched <span style={{color: "#E5484D", fontWeight: 700}}>creators get destroyed by false income claims they didn't know were illegal.</span> I've seen <span style={{color: "#E5484D", fontWeight: 700}}>agencies lose clients to compliance fines</span> that could have been prevented in 60 seconds. And I've watched <span style={{color: "#E5484D", fontWeight: 700}}>buyers lose thousands to ads that broke every rule in the book.</span>
           </p>
 
           <p style={{
@@ -227,7 +224,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             fontWeight: 700
           }}>
-            One check covers <span style={{color: "#ef4444"}}>all</span> 10 jurisdictions at once.
+            One check covers <span style={{color: "#E5484D"}}>all</span> 10 jurisdictions at once.
           </p>
         </div>
 
@@ -259,7 +256,7 @@ export function DemoScanner() {
             ...syne,
             fontSize: "13px",
             fontWeight: 700,
-            color: "#ef4444",
+            color: "#E5484D",
             cursor: "pointer",
             padding: "0.75rem 1rem",
             background: "rgba(239,68,68,0.08)",
@@ -426,7 +423,7 @@ export function DemoScanner() {
                     fontWeight: 700,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "#ef4444",
+                    color: "#E5484D",
                     background: "rgba(239,68,68,0.08)",
                     border: "1px solid rgba(239,68,68,0.25)",
                     borderRadius: "6px",
@@ -641,7 +638,7 @@ export function DemoScanner() {
             {result.flags.some((f) => !f.unlocked) && (
               <div style={{
                 background: "#102943",
-                borderLeft: "3px solid #ef4444",
+                borderLeft: "3px solid #E5484D",
                 padding: "1.25rem 1.75rem",
                 marginTop: "2px"
               }}>
@@ -649,7 +646,7 @@ export function DemoScanner() {
                   &ldquo;This is exactly the blind spot I had.{" "}
                   <span style={{color: "white", fontWeight: 700, fontStyle: "italic"}}>here&apos;s what I built so you don&apos;t make the same mistake.</span>&rdquo;
                 </p>
-                <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.6rem"}}>
+                <p style={{...syne, fontSize: "10px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.6rem"}}>
                   James, Founder
                 </p>
               </div>

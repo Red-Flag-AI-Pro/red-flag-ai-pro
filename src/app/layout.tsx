@@ -16,7 +16,9 @@ const inter = Inter({
 const syne = Syne({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "700"],
+  // 600 and 800 are used widely across the site; without loading them the
+  // browser synthesises (faux-bold) those weights and headings look smeared.
+  weight: ["400", "600", "700", "800"],
   variable: "--font-syne",
 });
 

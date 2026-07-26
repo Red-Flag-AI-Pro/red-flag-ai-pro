@@ -42,20 +42,20 @@ export default function FAQPage() {
       <Navbar />
 
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Questions</p>
-        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Everything you need to know.</h1>
-        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", maxWidth: "500px", margin: "0 auto" }}>Can't find what you need? <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>Email us</a>.</p>
+        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Questions</p>
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", color: "#F4F1EA" }}>Everything you need to know.</h1>
+        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", maxWidth: "500px", margin: "0 auto" }}>Can't find what you need? <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>Email us</a>.</p>
       </section>
 
       <section style={{ padding: "2rem 1.5rem 10rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           {categories.map((cat) => (
             <div key={cat} style={{ marginBottom: "5rem" }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>{cat}</p>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "2rem" }}>{cat}</p>
               {FAQS.filter((f) => f.category === cat).map((faq, i) => (
                 <div key={faq.q} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", padding: "2.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
                   <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3, letterSpacing: "-0.01em" }}>{faq.q}</p>
-                  <p style={{ ...syne, fontSize: "1rem", lineHeight: 1.7, color: "#fca5a5", borderLeft: "2px solid #ef4444", paddingLeft: "1.5rem" }}>{faq.a}</p>
+                  <p style={{ ...syne, fontSize: "1rem", lineHeight: 1.7, color: "#fca5a5", borderLeft: "2px solid #E5484D", paddingLeft: "1.5rem" }}>{faq.a}</p>
                 </div>
               ))}
             </div>

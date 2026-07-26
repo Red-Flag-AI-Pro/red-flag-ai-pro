@@ -18,12 +18,11 @@ export default function ToolsPage() {
       {/* Toolkit teaser — locked reward, unlocked on signup */}
       <section style={{background: "#0C1929", padding: "10rem 1.5rem 6rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Unlocked free the moment you sign up</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Unlocked free the moment you sign up</p>
           <h1 style={{
             fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700,
             letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem",
-            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            color: "#F4F1EA",
           }}>Your compliance toolkit. A free gift for signing up.</h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
             Create a free account and these 9 compliance tools unlock instantly in your dashboard: risk calculators, disclaimer generator, testimonial checker, email compliance, refund rights checker and more. No check credits used. Always free.
@@ -44,7 +43,7 @@ export default function ToolsPage() {
       {/* Free, ungated tools */}
       <section style={{background: "#0A1628", padding: "5rem 1.5rem"}}>
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center"}}>Or try these now: free, no account needed</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center"}}>Or try these now: free, no account needed</p>
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
             <Link href="/governance-audit" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>AI Governance Maturity Assessment</h2>

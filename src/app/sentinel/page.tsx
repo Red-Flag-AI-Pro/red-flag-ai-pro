@@ -111,7 +111,7 @@ export default function SentinelPage() {
         borderTop: "1px solid rgba(255,255,255,0.05)"
       }}>
         <div style={{maxWidth: "600px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem"}}>Sentinel: managed governance &amp; compliance</p>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Sentinel: managed governance &amp; compliance</p>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks, governance evidence and a cryptographically sealed audit trail you can verify on demand.</p>
           <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
@@ -152,7 +152,7 @@ export default function SentinelPage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>
               Stay compliant. Stay protected. Stay ahead.
             </p>
           </div>
@@ -163,10 +163,7 @@ export default function SentinelPage() {
             fontWeight: 800,
             lineHeight: 1.0,
             letterSpacing: "-0.04em",
-            background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "#F4F1EA",
             marginBottom: "2.5rem"
           }}>
             Sentinel
@@ -212,9 +209,9 @@ export default function SentinelPage() {
         padding: "1rem 1.5rem",
         display: "flex", alignItems: "center", justifyContent: "center", gap: "12px"
       }}>
-        <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ef4444", flexShrink: 0, animation: "pulseRed 2s ease-in-out infinite" }} />
+        <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", flexShrink: 0, animation: "pulseRed 2s ease-in-out infinite" }} />
         <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.05em" }}>
-          EU AI Act Article 50 enforcement begins <span style={{ color: "#ef4444" }}>2 August 2026</span>. AI generated marketing copy must be disclosed or documented. Agencies are in the frame.
+          EU AI Act Article 50 enforcement begins <span style={{ color: "#E5484D" }}>2 August 2026</span>. AI generated marketing copy must be disclosed or documented. Agencies are in the frame.
         </p>
       </div>
 
@@ -226,7 +223,7 @@ export default function SentinelPage() {
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>What is already coming for your agency</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>What is already coming for your agency</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
               The rules your clients expect you to know.<br />
               <span style={{ color: "rgba(255,255,255,0.35)" }}>Most agencies don&apos;t.</span>
@@ -243,7 +240,7 @@ export default function SentinelPage() {
                 {item.hot && (
                   <span style={{
                     ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.15em",
-                    textTransform: "uppercase", color: "#ef4444",
+                    textTransform: "uppercase", color: "#E5484D",
                     background: "rgba(239,68,68,0.1)",
                     border: "1px solid rgba(239,68,68,0.25)",
                     padding: "3px 10px", borderRadius: "9999px",
@@ -251,7 +248,7 @@ export default function SentinelPage() {
                   }}>Urgent</span>
                 )}
                 <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{item.law}</h3>
-                <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>{item.date}</p>
+                <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>{item.date}</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item.description}</p>
               </div>
             ))}
@@ -267,7 +264,7 @@ export default function SentinelPage() {
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Why Sentinel</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Why Sentinel</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
               What it actually means<br />for your agency
             </h2>
@@ -298,7 +295,7 @@ export default function SentinelPage() {
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Who it&apos;s for</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Who it&apos;s for</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
               Built for teams where<br />compliance is not optional
             </h2>
@@ -313,7 +310,7 @@ export default function SentinelPage() {
               }}>
                 <span style={{
                   ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em",
-                  textTransform: "uppercase", color: "#ef4444",
+                  textTransform: "uppercase", color: "#E5484D",
                   border: "1px solid rgba(239,68,68,0.25)",
                   padding: "4px 12px", borderRadius: "9999px",
                   display: "inline-block", marginBottom: "1.5rem"
@@ -330,7 +327,7 @@ export default function SentinelPage() {
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The difference</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>The difference</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em" }}>
               Replace your compliance spreadsheet
             </h2>
@@ -348,7 +345,7 @@ export default function SentinelPage() {
                 "PI insurer asks: can you prove it?",
               ].map((item) => (
                 <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "0.875rem" }}>
-                  <span style={{ color: "#ef4444", flexShrink: 0, ...syne, fontSize: "12px", marginTop: "2px" }}>✕</span>
+                  <span style={{ color: "#E5484D", flexShrink: 0, ...syne, fontSize: "12px", marginTop: "2px" }}>✕</span>
                   <span style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>{item}</span>
                 </div>
               ))}
@@ -363,7 +360,7 @@ export default function SentinelPage() {
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
                 background: "linear-gradient(90deg, #E5484D, transparent)"
               }} />
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>With Sentinel</p>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "2rem" }}>With Sentinel</p>
               {[
                 "Copy reviewed in a proper system",
                 "Every check logged and timestamped",
@@ -386,7 +383,7 @@ export default function SentinelPage() {
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>The numbers</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>The numbers</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em" }}>
               What one complaint actually costs
             </h2>
@@ -395,7 +392,7 @@ export default function SentinelPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
             {/* Risk column */}
             <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", padding: "2.5rem" }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "2rem" }}>The risk without Sentinel</p>
+              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "2rem" }}>The risk without Sentinel</p>
               {RISKS.map((r) => (
                 <div key={r.label} style={{
                   display: "flex", justifyContent: "space-between", alignItems: "flex-start",
@@ -407,7 +404,7 @@ export default function SentinelPage() {
                     <p style={{ ...syne, fontSize: "13px", fontWeight: 600, color: "white", marginBottom: "2px" }}>{r.label}</p>
                     <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>{r.detail}</p>
                   </div>
-                  <span style={{ ...mono, fontSize: "14px", fontWeight: 700, color: "#ef4444", flexShrink: 0 }}>{r.cost}</span>
+                  <span style={{ ...mono, fontSize: "14px", fontWeight: 700, color: "#E5484D", flexShrink: 0 }}>{r.cost}</span>
                 </div>
               ))}
             </div>
@@ -452,7 +449,7 @@ export default function SentinelPage() {
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>How we compare</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>How we compare</p>
             <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
               Enterprise compliance.<br />Without the enterprise price.
             </h2>
@@ -467,7 +464,7 @@ export default function SentinelPage() {
                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                   <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "40%" }}>Feature</th>
                   <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "center", padding: "1rem" }}>Red Marker / Blee</th>
-                  <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "#ef4444", textAlign: "center", padding: "1rem" }}>Sentinel</th>
+                  <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "#E5484D", textAlign: "center", padding: "1rem" }}>Sentinel</th>
                 </tr>
               </thead>
               <tbody>
@@ -506,7 +503,7 @@ export default function SentinelPage() {
       <section id="request" style={{ padding: "5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", background: "#0C1929", scrollMarginTop: "80px" }}>
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Talk to the founder</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Talk to the founder</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "0.75rem" }}>
               Tell us what you need to prove.
             </h2>
@@ -532,7 +529,7 @@ export default function SentinelPage() {
         }} />
 
         <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Get started</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Get started</p>
           <h2 style={{
             ...syne, fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800,
             color: "white", letterSpacing: "-0.04em", lineHeight: 1.0, marginBottom: "1.5rem"

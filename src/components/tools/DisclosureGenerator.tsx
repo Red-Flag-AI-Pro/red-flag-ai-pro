@@ -183,7 +183,7 @@ export function DisclosureGenerator() {
         <div style={{
           background: "#102943",
           border: "1px solid rgba(239,68,68,0.2)",
-          borderLeft: "3px solid #ef4444",
+          borderLeft: "3px solid #E5484D",
           padding: "1.5rem 1.75rem",
         }}>
           <p style={labelStyle}>Your disclosure wording</p>
@@ -259,7 +259,7 @@ export function DisclosureGenerator() {
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.7, marginTop: "1.5rem", textAlign: "center" }}>
         This tool gives general guidance, not legal advice. Rules vary by platform, country and your specific situation. When in doubt, check the FTC&apos;s{" "}
-        <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>
+        <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" style={{ color: "#E5484D", textDecoration: "none" }}>
           Disclosures 101
         </a>{" "}
         guidance or the ASA&apos;s influencer guidance directly.

@@ -103,9 +103,9 @@ export default function CaseStudyPage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Case Study</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>Case Study</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", color: "#F4F1EA" }}>
             Six violations.<br />None of them obvious.<br />
             All happening right now.
           </h1>
@@ -213,7 +213,7 @@ export default function CaseStudyPage() {
 
                 {/* If not fixed */}
                 <div style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.12)", padding: "1.25rem 1.5rem" }}>
-                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.5rem" }}>If not fixed</p>
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.5rem" }}>If not fixed</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(252,165,165,0.7)", lineHeight: 1.7 }}>{flag.impact}</p>
                 </div>
 
@@ -248,7 +248,7 @@ export default function CaseStudyPage() {
               position: "absolute", top: 0, left: "3rem", right: "3rem",
               height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
             }} />
-            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, marginBottom: "1.5rem", letterSpacing: "-0.02em", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 800, marginBottom: "1.5rem", letterSpacing: "-0.02em", color: "#F4F1EA" }}>
               The point of this case study
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>
@@ -257,7 +257,7 @@ export default function CaseStudyPage() {
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
               The FCA violation could result in criminal prosecution. The CASL violation had been running for two years building liability on every send. The drip pricing was being amplified by paid ads the agency was managing. The influencer campaign had twenty posts live without a single disclosure.
             </p>
-            <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", lineHeight: 1.7 }}>
+            <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", lineHeight: 1.7 }}>
               The question is not whether your campaigns have violations. The question is whether you find them before a regulator does.
             </p>
           </div>

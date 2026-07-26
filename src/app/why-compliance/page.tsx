@@ -38,15 +38,15 @@ export default function WhyCompliancePage() {
 
       {/* Hero */}
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
-        <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The cost of getting it wrong</p>
-        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>The cost of getting it wrong</p>
+        <h1 style={{ ...syne, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.5rem", color: "#F4F1EA" }}>
           Real fines. Real losses.<br />
           <span style={{ fontStyle: "italic" }}>Both sides.</span>
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
           $6 billion in marketing compliance fines globally in the last three years. Same illegal copy: sellers face regulators, buyers lose money.
         </p>
-        <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#ef4444", marginBottom: "3rem" }}>$6B+</p>
+        <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#E5484D", marginBottom: "3rem" }}>$6B+</p>
         <Link href="/compliance-assessment" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
           Check your copy free
         </Link>
@@ -56,13 +56,13 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#0C1929", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>What buyers lose</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Every year. From the same ads.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", color: "#F4F1EA" }}>Every year. From the same ads.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px" }}>
             {BUYER_LOSSES.map((item) => (
               <div key={item.label} style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{item.label}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{item.sub}</p>
-                <p className="font-display" style={{ fontSize: "2.25rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "6px" }}>{item.amount}</p>
+                <p className="font-display" style={{ fontSize: "2.25rem", fontWeight: 500, color: "#E5484D", lineHeight: 1, marginBottom: "6px" }}>{item.amount}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{item.detail}</p>
               </div>
             ))}
@@ -74,18 +74,18 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#0A1628", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>What sellers face</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Maximum regulatory penalties per jurisdiction.</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", color: "#F4F1EA" }}>Maximum regulatory penalties per jurisdiction.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "2px" }}>
             {FINES.map((f) => (
               <div key={f.country} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{f.country}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}>{f.body}</p>
-                <p className="font-display" style={{ fontSize: "1.75rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "6px" }}>{f.fine}</p>
+                <p className="font-display" style={{ fontSize: "1.75rem", fontWeight: 500, color: "#E5484D", lineHeight: 1, marginBottom: "6px" }}>{f.fine}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{f.detail}</p>
               </div>
             ))}
             <div style={{ background: "#1a0505", border: "1px solid rgba(239,68,68,0.2)", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>$6B+</p>
+              <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#E5484D", lineHeight: 1, marginBottom: "8px" }}>$6B+</p>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>in marketing compliance fines globally in the last 3 years</p>
             </div>
           </div>
@@ -97,8 +97,8 @@ export default function WhyCompliancePage() {
       <section style={{ background: "#0C1929", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "600px", height: "300px", background: "radial-gradient(ellipse at center, rgba(185,28,28,0.12), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>New threat: 2026</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", lineHeight: 1.2, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>New threat: 2026</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", lineHeight: 1.2, color: "#F4F1EA" }}>
             AI generated it.<br />That does not make it legal.
             <span style={{ display: "block", fontStyle: "italic" }}>Or safe to buy.</span>
           </h2>
@@ -112,7 +112,7 @@ export default function WhyCompliancePage() {
               { title: "RSA (UK)", body: "RSA's UK Head of PI confirmed they are \"assuming but not yet pricing\" AI exposures, meaning exclusions are coming at next renewal." },
             ].map((item) => (
               <div key={item.title} style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#ef4444", marginBottom: "1.25rem" }} />
+                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5484D", marginBottom: "1.25rem" }} />
                 <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{item.body}</p>
               </div>
@@ -141,8 +141,8 @@ export default function WhyCompliancePage() {
       {/* The maths */}
       <section style={{ background: "#0A1628", padding: "8rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>The maths</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>For both sides.</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>The maths</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "#F4F1EA" }}>For both sides.</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 0, marginBottom: "3rem", textAlign: "left" }}>
             {[
               { label: "Compliance lawyer", value: "£400 per hour" },
@@ -152,7 +152,7 @@ export default function WhyCompliancePage() {
             ].map((item, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", padding: "1.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                 <p style={{ ...syne, fontSize: "1.1rem", color: item.highlight ? "white" : "rgba(255,255,255,0.6)", fontWeight: item.highlight ? 700 : 500 }}>{item.label}</p>
-                <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: item.highlight ? "#ef4444" : "rgba(255,255,255,0.6)", textAlign: "right" }}>{item.value}</p>
+                <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: item.highlight ? "#E5484D" : "rgba(255,255,255,0.6)", textAlign: "right" }}>{item.value}</p>
               </div>
             ))}
           </div>

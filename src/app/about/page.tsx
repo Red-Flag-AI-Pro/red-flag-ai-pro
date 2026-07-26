@@ -60,7 +60,7 @@ export default function AboutPage() {
               fontWeight: 700,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#ef4444",
+              color: "#E5484D",
               marginBottom: "1.5rem",
             }}
           >
@@ -75,11 +75,7 @@ export default function AboutPage() {
               lineHeight: 1.05,
               letterSpacing: "-0.04em",
               marginBottom: "1.5rem",
-              background:
-                "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              color: "#F4F1EA",
             }}
           >
             We started by catching<br />
@@ -114,7 +110,7 @@ export default function AboutPage() {
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#ef4444",
+                color: "#E5484D",
                 marginBottom: "1rem",
               }}
             >
@@ -205,7 +201,7 @@ export default function AboutPage() {
                 ...syne,
                 fontSize: "12px",
                 fontWeight: 700,
-                color: "#ef4444",
+                color: "#E5484D",
                 marginBottom: "0.75rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
@@ -238,7 +234,7 @@ export default function AboutPage() {
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#ef4444",
+                color: "#E5484D",
                 marginBottom: "1rem",
               }}
             >
@@ -346,7 +342,7 @@ export default function AboutPage() {
               fontWeight: 700,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#ef4444",
+              color: "#E5484D",
               marginBottom: "1.5rem",
               textAlign: "center",
             }}
@@ -435,7 +431,7 @@ export default function AboutPage() {
                 ...syne,
                 fontSize: "1rem",
                 fontWeight: 700,
-                background: "#ef4444",
+                background: "#E5484D",
                 color: "white",
                 padding: "14px 40px",
                 borderRadius: "9999px",

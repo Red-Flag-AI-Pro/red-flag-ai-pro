@@ -47,7 +47,7 @@ export function HeroNew() {
         <div className="ticker-track">
           {["FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code",
             "FTC","GDPR","ASA","CMA","ACCC","CASL","ICO","UCPD","DSA","PIPEDA","ACL","FDA","CAN SPAM","EU AI Act","FCA","FSMA 2000","EU Green Claims","PECR","MHRA","TGA","ESMA","ASIC","FTC Negative Option Rule","CMA Green Claims Code","FTC Green Guides","BCAP Code"].map((item, i) => (
-            <span key={i} style={{color: "#ef4444", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", margin: "0 24px", fontFamily: "'Syne', sans-serif"}}>
+            <span key={i} style={{color: "#E5484D", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", margin: "0 24px", fontFamily: "'Syne', sans-serif"}}>
               {item}
             </span>
           ))}
@@ -252,7 +252,7 @@ export function HeroNew() {
                 {i > 0 && <span style={{color: "rgba(255,255,255,0.15)", fontSize: "16px"}}>·</span>}
                 <span style={{
                   fontSize: "14px", fontWeight: 500,
-                  color: "#ef4444", fontFamily: "'Syne', system-ui, sans-serif", letterSpacing: "0.01em"
+                  color: "#E5484D", fontFamily: "'Syne', system-ui, sans-serif", letterSpacing: "0.01em"
                 }}>
                   {s}
                 </span>
@@ -279,11 +279,11 @@ export function HeroNew() {
             <span key={t} style={{
               display: "flex", alignItems: "center", gap: "8px",
               fontSize: "12px", fontWeight: 600,
-              color: "#ef4444",
+              color: "#E5484D",
               fontFamily: "'Syne', sans-serif",
               letterSpacing: "0.04em", textTransform: "uppercase"
             }}>
-              <span style={{width: "4px", height: "4px", borderRadius: "50%", background: "#ef4444", flexShrink: 0}} />
+              <span style={{width: "4px", height: "4px", borderRadius: "50%", background: "#E5484D", flexShrink: 0}} />
               {t}
             </span>
           ))}

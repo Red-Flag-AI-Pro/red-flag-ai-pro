@@ -39,27 +39,41 @@ export default function LandingPage() {
 
       {/* HERO */}
       <section style={{
-        padding: "8rem 1.5rem 6rem",
+        padding: "clamp(5rem, 12vw, 8rem) 1.5rem clamp(4rem, 10vw, 6rem)",
         background: "linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Photo: the compliance overwhelm this product solves */}
+        {/* Photo, graded to a navy duotone so it reads as premium texture
+            rather than a literal stock image. Low opacity + a navy wash +
+            an edge vignette keep the headline crisp and the picture quiet. */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           backgroundImage: "url(/images/hero-compliance.jpg)",
-          backgroundSize: "cover", backgroundPosition: "center 30%",
-          opacity: 0.62
+          backgroundSize: "cover", backgroundPosition: "center 28%",
+          opacity: 0.34
         }} />
+        {/* Navy colour wash over the photo (duotone feel) */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(180deg, rgba(10,22,40,0.78) 0%, rgba(10,22,40,0.52) 50%, #0A1628 100%)"
+          background: "linear-gradient(150deg, rgba(13,27,46,0.55) 0%, rgba(10,22,40,0.35) 45%, rgba(13,27,46,0.6) 100%)",
+          mixBlendMode: "multiply"
+        }} />
+        {/* Vertical legibility gradient: darker top and bottom, image peeks mid */}
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(180deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.55) 48%, #0A1628 100%)"
+        }} />
+        {/* Edge vignette for a graded, intentional look */}
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "radial-gradient(120% 90% at 50% 38%, transparent 55%, rgba(10,22,40,0.55) 100%)"
         }} />
         <div style={{
           position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
-          width: "800px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 65%)"
+          width: "min(800px, 120vw)", height: "600px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.1) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
@@ -71,7 +85,7 @@ export default function LandingPage() {
             Catch what you said.<br />
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>Prove what you did.</span>
           </h1>
-          <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
+          <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.74)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
             Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. Pick the side you need, or run both.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
@@ -82,7 +96,7 @@ export default function LandingPage() {
               Free governance assessment <span className="arrow">→</span>
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.38)" }}>No credit card · No account required · Results delivered instantly</p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)" }}>No credit card · No account required · Results delivered instantly</p>
         </div>
       </section>
 
@@ -92,7 +106,7 @@ export default function LandingPage() {
       <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Two halves, two free checks</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Two halves, two free checks</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "white" }}>
               Which side are you here for?
             </h2>
@@ -100,7 +114,7 @@ export default function LandingPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
             <div style={{ background: "#0F2138", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Compliance Assessment</p>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Compliance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Check your marketing copy</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
                 Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 10 jurisdictions, with every flag explained so you know exactly what to fix.
@@ -111,7 +125,7 @@ export default function LandingPage() {
             </div>
 
             <div style={{ background: "#0F2138", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem" }}>Governance Assessment</p>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Governance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Prove your AI governance</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
                 Find out in 2 minutes whether you could survive an audit tomorrow. 12 questions across 6 dimensions reveal your governance maturity and your single biggest gap, before someone else finds it first.
@@ -131,7 +145,7 @@ export default function LandingPage() {
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Built for both halves</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Built for both halves</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>Creators protecting their copy. CFOs proving their governance.</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
@@ -163,7 +177,7 @@ export default function LandingPage() {
                 borderRadius: "12px",
                 padding: "2rem"
               }}>
-                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444", marginBottom: "0.75rem", textTransform: "uppercase", letterSpacing: "0.04em" }}>{item.role}</p>
+                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#E5484D", marginBottom: "0.75rem", textTransform: "uppercase", letterSpacing: "0.04em" }}>{item.role}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", borderLeft: "2px solid rgba(239,68,68,0.3)", paddingLeft: "1rem", fontStyle: "italic" }}>{item.pain}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>✓ {item.solution}</p>
               </div>
@@ -187,7 +201,7 @@ export default function LandingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.1) 0%, transparent 70%)"
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.25rem" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.25rem" }}>
             Cryptographically sealed. Not just stored.
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem", color: "white" }}>
@@ -217,7 +231,7 @@ export default function LandingPage() {
         textAlign: "center"
       }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#ef4444", marginBottom: "1rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>Ready?</p>
+          <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", marginBottom: "1rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>Ready?</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", color: "white" }}>Know where you stand in 5 minutes.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
             Free either way. No credit card. No account. Results delivered instantly to your inbox.
@@ -225,7 +239,7 @@ export default function LandingPage() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/compliance-assessment" style={{
               ...syne, fontSize: "1rem", fontWeight: 700,
-              background: "#ef4444", color: "white",
+              background: "#E5484D", color: "white",
               padding: "14px 40px", borderRadius: "9999px",
               textDecoration: "none", display: "inline-block"
             }}>
@@ -241,7 +255,7 @@ export default function LandingPage() {
               Start governance assessment
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#ef4444", textDecoration: "none" }}>See pricing for Pro, Growth + Sentinel</Link></p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/pricing" style={{ color: "#E5484D", textDecoration: "none" }}>See pricing for Pro, Growth + Sentinel</Link></p>
         </div>
       </section>
       <Footer />

@@ -28,7 +28,7 @@ export default function GovernanceAuditGatedPage() {
         <Navbar />
         <div style={{ padding: '4rem 1.5rem' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <p style={{ ...syne, fontSize: '12px', fontWeight: 700, color: '#ef4444', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Assessment</p>
+            <p style={{ ...syne, fontSize: '12px', fontWeight: 700, color: '#E5484D', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Assessment</p>
             <p style={{ ...syne, fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginBottom: '2rem' }}>Email: {email}</p>
             <GovernanceAuditFlow initialEmail={email} />
           </div>
@@ -68,7 +68,7 @@ export default function GovernanceAuditGatedPage() {
             padding: '8px 16px',
             marginBottom: '2rem'
           }}>
-            <p style={{ ...syne, fontSize: '11px', fontWeight: 700, color: '#ef4444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Regulatory enforcement active now</p>
+            <p style={{ ...syne, fontSize: '11px', fontWeight: 700, color: '#E5484D', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Regulatory enforcement active now</p>
           </div>
 
           {/* Main headline — FEAR */}
@@ -79,10 +79,7 @@ export default function GovernanceAuditGatedPage() {
             lineHeight: 1.0,
             letterSpacing: '-0.04em',
             marginBottom: '1.5rem',
-            background: 'linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+            color: "#F4F1EA"
           }}>
             Can you prove AI governance happened?
           </h1>
@@ -132,7 +129,7 @@ export default function GovernanceAuditGatedPage() {
             padding: '2rem',
             marginBottom: '2rem'
           }}>
-            <p style={{ ...syne, fontSize: '12px', color: '#ef4444', marginBottom: '0.5rem', fontWeight: 700, textTransform: 'uppercase' }}>THE REALITY</p>
+            <p style={{ ...syne, fontSize: '12px', color: '#E5484D', marginBottom: '0.5rem', fontWeight: 700, textTransform: 'uppercase' }}>THE REALITY</p>
             <p style={{ ...syne, fontSize: '1.05rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>83% of organizations use AI. Only 25% have adequate governance.</p>
             <p style={{ ...syne, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>72% are increasing GRC spending. 78% are unprepared for EU AI Act.</p>
           </div>
@@ -196,7 +193,7 @@ export default function GovernanceAuditGatedPage() {
               style={{
                 width: '100%',
                 padding: '14px 16px',
-                background: '#ef4444',
+                background: '#E5484D',
                 color: 'white',
                 border: 'none',
                 borderRadius: '8px',
@@ -240,7 +237,7 @@ export default function GovernanceAuditGatedPage() {
             fontWeight: 700,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#ef4444',
+            color: '#E5484D',
             marginBottom: '1.5rem'
           }}>Why right now?</p>
 
@@ -283,7 +280,7 @@ export default function GovernanceAuditGatedPage() {
                 borderRadius: '12px',
                 padding: '2rem'
               }}>
-                <p style={{ ...syne, fontSize: '2rem', fontWeight: 700, color: '#ef4444', marginBottom: '0.5rem' }}>{item.days}</p>
+                <p style={{ ...syne, fontSize: '2rem', fontWeight: 700, color: '#E5484D', marginBottom: '0.5rem' }}>{item.days}</p>
                 <p style={{ ...syne, fontSize: '14px', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>{item.deadline}</p>
                 <p style={{ ...syne, fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>{item.desc}</p>
               </div>
@@ -304,7 +301,7 @@ export default function GovernanceAuditGatedPage() {
             ...syne,
             fontSize: '12px',
             fontWeight: 700,
-            color: '#ef4444',
+            color: '#E5484D',
             marginBottom: '1rem',
             textTransform: 'uppercase',
             letterSpacing: '0.05em'

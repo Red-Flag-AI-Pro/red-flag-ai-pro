@@ -68,7 +68,7 @@ export function ResultsGate({ tool, title = "Enter your email to see your result
         }}
       >
         <div style={{ maxWidth: "380px", width: "100%", background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "14px", padding: "2rem", boxShadow: "0 20px 50px rgba(0,0,0,0.4)" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#ef4444", marginBottom: "0.75rem", textAlign: "center" }}>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem", textAlign: "center" }}>
             Unlock your results
           </p>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", textAlign: "center", marginBottom: "1.5rem", lineHeight: 1.6 }}>

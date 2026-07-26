@@ -181,7 +181,7 @@ function SellerCalculator() {
       transition: "border-color 0.6s",
     }}>
       <div>
-        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "4px"}}>For Sellers</p>
+        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "4px"}}>For Sellers</p>
         <p style={{...syne, fontSize: "1.05rem", fontWeight: 700, color: "white", letterSpacing: "-0.02em"}}>What's your compliance exposure?</p>
       </div>
 
@@ -297,7 +297,7 @@ function BuyerCalculator() {
       transition: "border-color 0.6s",
     }}>
       <div>
-        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "4px"}}>For Buyers</p>
+        <p style={{...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "4px"}}>For Buyers</p>
         <p style={{...syne, fontSize: "1.05rem", fontWeight: 700, color: "white", letterSpacing: "-0.02em"}}>How much are you being misled out of?</p>
       </div>
 
@@ -390,7 +390,7 @@ function BuyerCalculator() {
 export function RiskCalculator() {
   return (
     <div>
-      <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1rem", textAlign: "center"}}>
+      <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textAlign: "center"}}>
         Your risk exposure
       </p>
       <h3 style={{...syne, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 700, color: "white", textAlign: "center", marginBottom: "0.75rem", letterSpacing: "-0.02em"}}>

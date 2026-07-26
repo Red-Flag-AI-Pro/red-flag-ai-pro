@@ -109,7 +109,7 @@ export async function PATCH(
 
   if (error || !data) return NextResponse.json({ error: "Failed to update boundary record." }, { status: 500 });
 
-  await logAuditEvent(result.user.id, "boundary_record.updated", { id: data.id, decision: data.decision });
+  await logAuditEvent(result.user.id, "boundary_record.updated", { id: data.id, decision: data.decision }, { timestamp: true });
 
   return NextResponse.json({ record: data });
 }

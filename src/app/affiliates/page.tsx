@@ -46,10 +46,10 @@ export default function AffiliatesPage() {
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)", width: "800px", height: "500px", background: "radial-gradient(ellipse at center, rgba(229,72,77,0.12), transparent 65%)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "760px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Affiliate Programme</p>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Affiliate Programme</p>
           <h1 style={{ ...syne, fontSize: "clamp(2.25rem, 6vw, 4rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1.25rem" }}>
             Get paid every month<br />
-            <span style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ color: "#F4F1EA" }}>
               for a link you share once.
             </span>
           </h1>
@@ -83,7 +83,7 @@ export default function AffiliatesPage() {
             { value: "Free", label: "To join", sub: "no approval, no fee" },
           ].map((stat) => (
             <div key={stat.label} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
-              <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#ef4444", lineHeight: 1, marginBottom: "8px" }}>{stat.value}</p>
+              <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#E5484D", lineHeight: 1, marginBottom: "8px" }}>{stat.value}</p>
               <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "4px" }}>{stat.label}</p>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)" }}>{stat.sub}</p>
             </div>
@@ -94,8 +94,8 @@ export default function AffiliatesPage() {
       {/* How it works */}
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>How it works</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Three steps. Recurring income.</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>How it works</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", color: "#F4F1EA" }}>Three steps. Recurring income.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {HOW_IT_WORKS.map((s) => (
               <div key={s.num} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
@@ -111,8 +111,8 @@ export default function AffiliatesPage() {
       {/* Earnings table */}
       <section style={{ background: "#0C1929", padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>What you can earn</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Numbers, not promises.</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>What you can earn</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", textAlign: "center", color: "#F4F1EA" }}>Numbers, not promises.</h2>
           <div style={{ border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", background: "#0F2138", padding: "1rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
               {["Referrals", "Plan", "Monthly earnings", "Annual earnings"].map((h) => (
@@ -125,7 +125,7 @@ export default function AffiliatesPage() {
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr 1fr 1fr", padding: "1.25rem 1.5rem", borderBottom: i < EARNINGS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", background: isGrowth ? "rgba(229,72,77,0.06)" : i % 2 === 0 ? "#0D1B2E" : "#0C1929" }}>
                   <span style={{ ...mono, fontSize: "1.25rem", fontWeight: 700, color: isGrowth ? "#fca5a5" : "white" }}>{row.referrals}</span>
                   <span style={{ ...syne, fontSize: "13px", color: isGrowth ? "#fca5a5" : "rgba(255,255,255,0.5)", alignSelf: "center", fontWeight: isGrowth ? 700 : 400 }}>{row.plan}</span>
-                  <span style={{ ...mono, fontSize: "1.1rem", fontWeight: 700, color: "#ef4444" }}>{row.monthly}</span>
+                  <span style={{ ...mono, fontSize: "1.1rem", fontWeight: 700, color: "#E5484D" }}>{row.monthly}</span>
                   <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: isGrowth ? "white" : "rgba(255,255,255,0.6)", alignSelf: "center" }}>{row.annual}</span>
                 </div>
               );
@@ -138,8 +138,8 @@ export default function AffiliatesPage() {
       {/* Who it's for */}
       <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Who it&apos;s for</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>If your audience does marketing, this fits.</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Who it&apos;s for</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "#F4F1EA" }}>If your audience does marketing, this fits.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
             {WHO_IT_IS_FOR.map((item) => (
               <div key={item.label} style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
@@ -154,8 +154,8 @@ export default function AffiliatesPage() {
       {/* Promo pack */}
       <section style={{ background: "#0C1929", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Promo pack</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ready made posts. Just add your link.</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Promo pack</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "0.75rem", textAlign: "center", color: "#F4F1EA" }}>Ready made posts. Just add your link.</h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginBottom: "3.5rem" }}>Copy any of these, swap in your affiliate link, and post. Click a box to select all.</p>
 
           <PromoBox
@@ -189,8 +189,8 @@ export default function AffiliatesPage() {
       {/* Jurisdictions */}
       <section style={{ background: "#0D1B2E", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Governance Frameworks Covered</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Red Flag covers 10 jurisdictions</h2>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Governance Frameworks Covered</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", color: "#F4F1EA" }}>Red Flag covers 10 jurisdictions</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
             {[
@@ -231,8 +231,8 @@ export default function AffiliatesPage() {
       {/* CTA */}
       <section style={{ background: "#0C1929", padding: "7rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Ready to start?</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "1rem", lineHeight: 1.1, background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Ready to start?</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "1rem", lineHeight: 1.1, color: "#F4F1EA" }}>
             One link. Monthly income.<br />Zero cost to join.
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
@@ -247,7 +247,7 @@ export default function AffiliatesPage() {
             Join the programme →
           </a>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1.25rem" }}>
-            Questions? <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>Email us</a>
+            Questions? <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>Email us</a>
           </p>
         </div>
       </section>

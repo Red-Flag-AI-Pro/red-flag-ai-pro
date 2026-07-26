@@ -26,9 +26,9 @@ export default function PrivacyPage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Legal</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>Legal</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Privacy Policy
           </h1>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 June 2026</p>
@@ -41,19 +41,19 @@ export default function PrivacyPage() {
 
           {/* 1 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. Who We Are</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. Who We Are</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>. We are committed to protecting your personal data and complying with the UK GDPR, EU GDPR, and applicable data protection laws.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               For data protection queries, contact us at:{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>
             </p>
           </div>
 
           {/* 2 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. What Data We Collect</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. What Data We Collect</h2>
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
 
           {/* 3 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy: Data Handling and Confidentiality</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy: Data Handling and Confidentiality</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
                 The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your check results</strong>. This is your data. It remains your data. We do not:
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
 
           {/* 4 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Legal Basis for Processing (UK & EU GDPR)</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Legal Basis for Processing (UK & EU GDPR)</h2>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Contract", "Processing your account data and checks to deliver the service you signed up for"],
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
 
           {/* 5 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Third Parties We Use</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Third Parties We Use</h2>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Supabase", "Database and authentication (data stored in EU region)"],
@@ -147,7 +147,7 @@ export default function PrivacyPage() {
 
           {/* 6 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. How Long We Keep Your Data</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. How Long We Keep Your Data</h2>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
                 "Account data: retained while your account is active and for 30 days after deletion",
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
 
           {/* 7 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>7. Your Rights</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>7. Your Rights</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "0.75rem" }}>Under UK and EU GDPR, you have the right to:</p>
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
@@ -179,26 +179,26 @@ export default function PrivacyPage() {
             </ul>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>
               To exercise any of these rights, email{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a>.
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>.
               {" "}We will respond within 30 days.
             </p>
           </div>
 
           {/* 8 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Cookies</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Cookies</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We use essential cookies for authentication and session management. No consent banner is required for these under UK GDPR, since the service cannot function without them.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               We also use non-essential cookies for Google Ads conversion tracking and our affiliate referral programme. These are not loaded until you accept cookies via the banner shown on your first visit. You can withdraw consent at any time by clearing your browser's site data, which will show the banner again. Google Ads conversion data is used to measure advertising performance and for Customer Match (showing ads to existing and similar potential customers). You can opt out of personalised advertising at any time via{" "}
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>Google&apos;s Ads Settings</a>.
+              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style={{ color: "#E5484D", textDecoration: "none" }}>Google&apos;s Ads Settings</a>.
             </p>
           </div>
 
           {/* 9 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Data Security</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Data Security</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We implement industry standard security measures including encrypted data storage, HTTPS, and access controls. However, no method of transmission over the internet is 100% secure and we cannot guarantee absolute security.
             </p>
@@ -206,7 +206,7 @@ export default function PrivacyPage() {
 
           {/* 10 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to This Policy</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>10. Changes to This Policy</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               We may update this Privacy Policy periodically. We will notify you of significant changes by email. Continued use of Red Flag AI Pro after changes constitutes acceptance.
             </p>
@@ -214,28 +214,28 @@ export default function PrivacyPage() {
 
           {/* 11 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Complaints</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>11. Complaints</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               If you are unhappy with how we handle your data, please contact us first so we can try to resolve it:
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               <strong style={{ color: "white" }}>Email:</strong>{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "none" }}>support@redflagaipro.com</a><br />
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a><br />
               <strong style={{ color: "white" }}>Response time:</strong> We will acknowledge your complaint within 5 working days and aim to resolve it within 30 days.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               If you remain dissatisfied after our internal process, you have the right to escalate to the UK Information Commissioner&apos;s Office (ICO) at{" "}
-              <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444", textDecoration: "none" }}>ico.org.uk</a>.
+              <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: "#E5484D", textDecoration: "none" }}>ico.org.uk</a>.
               {" "}This internal complaints process is provided in accordance with the Data Use and Access Act 2025.
             </p>
           </div>
 
           {/* 12 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#ef4444", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>12. Contact</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>12. Contact</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               For any privacy questions:{" "}
-              <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", fontWeight: 700, textDecoration: "none" }}>
+              <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", fontWeight: 700, textDecoration: "none" }}>
                 support@redflagaipro.com
               </a>
             </p>
@@ -245,7 +245,7 @@ export default function PrivacyPage() {
 
         {/* Footer nav */}
         <div style={{ maxWidth: "720px", margin: "4rem auto 0", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "2rem", display: "flex", gap: "2rem" }}>
-          <Link href="/terms" style={{ ...syne, fontSize: "13px", color: "#ef4444", textDecoration: "none" }}>Terms of Service</Link>
+          <Link href="/terms" style={{ ...syne, fontSize: "13px", color: "#E5484D", textDecoration: "none" }}>Terms of Service</Link>
           <Link href="/" style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Back to home</Link>
         </div>
       </section>

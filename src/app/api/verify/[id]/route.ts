@@ -7,7 +7,10 @@ const ACTION_LABELS: Record<string, string> = {
   vendor_removed: "Vendor removed",
   vendor_reviewed: "Vendor marked reviewed",
   report_downloaded: "Compliance report downloaded",
-  scan_completed: "Compliance scan run",
+  scan_completed: "Compliance check run",
+  flag_reviewed: "Compliance flag signed off",
+  "boundary_record.created": "Boundary authorization recorded",
+  "boundary_record.updated": "Boundary authorization updated",
 };
 
 // No auth required by design — this is meant to be checkable by anyone
@@ -25,5 +28,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     intact: result.intact,
     actionLabel: result.action ? ACTION_LABELS[result.action] ?? result.action : null,
     createdAt: result.createdAt,
+    timestampedAt: result.timestampedAt ?? null,
+    timestampAuthority: result.timestampAuthority ?? null,
   });
 }

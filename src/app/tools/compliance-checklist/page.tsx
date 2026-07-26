@@ -145,7 +145,7 @@ export default function ComplianceChecklistPage() {
 
       {/* Hero */}
       <section style={{ padding: "10rem 1.5rem 4rem", textAlign: "center" }}>
-        <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Free tool</p>
+        <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Free tool</p>
         <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem" }}>
           Marketing Compliance Checklist
         </h1>
@@ -240,7 +240,7 @@ export default function ComplianceChecklistPage() {
       {/* CTA block */}
       <section style={{ background: "#0C1929", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
         <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem" }}>Go deeper</p>
+          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Go deeper</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.02em", marginBottom: "1rem", lineHeight: 1.1 }}>
             Checklist says you're clean?<br />Let the AI confirm it.
           </h2>

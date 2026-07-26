@@ -79,7 +79,7 @@ export async function PATCH(
     reviewerNote: reviewerNote ?? null,
     category: updated.category,
     severity: updated.severity,
-  });
+  }, { timestamp: true });
 
   return NextResponse.json({ flag: updated });
 }

@@ -141,7 +141,7 @@ export default function LoginPage() {
           </Link>
           <h1
             className="mt-4 text-2xl font-bold"
-            style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+            style={{ color: "#F4F1EA" }}
           >
             Welcome back
           </h1>

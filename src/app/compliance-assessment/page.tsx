@@ -59,7 +59,7 @@ export default function ComplianceAssessmentPage() {
       {/* PROOF POINTS */}
       <section style={{ background: "#0A1628", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>No unsubstantiated claims, on principle</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>No unsubstantiated claims, on principle</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.5rem", color: "white", textAlign: "center" }}>We flag fake testimonials. We won&apos;t use them either.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "640px", margin: "0 auto 4rem", lineHeight: 1.7 }}>
             Our own checker flags unsubstantiated testimonials as a compliance risk. So instead of quotes we can&apos;t verify, here&apos;s what we can actually show you.
@@ -88,7 +88,7 @@ export default function ComplianceAssessmentPage() {
                 border: "1px solid rgba(239,68,68,0.2)",
                 padding: "2.5rem",
               }}>
-                <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#ef4444", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
+                <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#E5484D", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
                 <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>{item.detail}</p>
               </div>
@@ -100,7 +100,7 @@ export default function ComplianceAssessmentPage() {
       {/* CASE STUDY TEASER */}
       <section style={{ background: "#0D1B2E", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "1.5rem", textAlign: "center" }}>Case study</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Case study</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.25rem", color: "white", textAlign: "center" }}>
             Six violations. None of them obvious. All happening right now.
           </h2>

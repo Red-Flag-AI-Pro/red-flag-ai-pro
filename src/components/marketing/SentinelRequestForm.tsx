@@ -96,7 +96,7 @@ export function SentinelRequestForm() {
         <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.8 }}>
           Thank you. We will reply personally within one working day to talk through what Sentinel would look like for
           your team. If it is urgent, email us at{" "}
-          <a href="mailto:support@redflagaipro.com" style={{ color: "#ef4444", textDecoration: "underline" }}>
+          <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "underline" }}>
             support@redflagaipro.com
           </a>
           .
@@ -118,7 +118,7 @@ export function SentinelRequestForm() {
       }}
     >
       <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
-        <p style={{ ...mono, fontSize: "10px", color: "#ef4444", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>
+        <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>
           SENTINEL · MANAGED GOVERNANCE &amp; COMPLIANCE
         </p>
         <h3 style={{ ...syne, fontSize: "clamp(1.3rem, 3.5vw, 1.7rem)", fontWeight: 800, color: "#F4F1EA", letterSpacing: "-0.025em", lineHeight: 1.2 }}>

@@ -27,3 +27,6 @@ next-env.d.ts
 
 remotion/node_modules
 remotion/out
+
+# Business brain (Obsidian vault) — local knowledge base, never deploy
+brain/

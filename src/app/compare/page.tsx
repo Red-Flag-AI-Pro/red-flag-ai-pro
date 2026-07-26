@@ -62,9 +62,9 @@ export default function ComparePage() {
                 <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
               </svg>
             </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444" }}>Comparison</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>Comparison</p>
           </div>
-          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", color: "#F4F1EA" }}>
             Red Flag AI Pro<br />vs the alternatives
           </h1>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
@@ -81,7 +81,7 @@ export default function ComparePage() {
               <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.08)" }}>
                 <th style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.3)", textAlign: "left", padding: "1rem 1rem 1rem 0", width: "35%" }}>Feature</th>
                 <th style={{ padding: "1rem", textAlign: "center", background: "rgba(229,72,77,0.05)", borderLeft: "1px solid rgba(239,68,68,0.15)", borderRight: "1px solid rgba(239,68,68,0.15)" }}>
-                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444" }}>Red Flag AI Pro</p>
+                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#E5484D" }}>Red Flag AI Pro</p>
                   <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginTop: "2px" }}>Free to £1,200/mo, custom for enterprise</p>
                 </th>
                 <th style={{ padding: "1rem", textAlign: "center" }}>
@@ -124,7 +124,7 @@ export default function ComparePage() {
       {/* WHY CHEAPER */}
       <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#ef4444", marginBottom: "3rem", textAlign: "center" }}>Why cheaper</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "3rem", textAlign: "center" }}>Why cheaper</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
               { title: "Software, not consultants", body: "Enterprise tools charge for account managers, onboarding specialists and support teams. We built software that does the work. No overhead means lower prices." },
@@ -147,7 +147,7 @@ export default function ComparePage() {
       {/* CTA */}
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", color: "#F4F1EA" }}>
             Try it free. No account needed.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>

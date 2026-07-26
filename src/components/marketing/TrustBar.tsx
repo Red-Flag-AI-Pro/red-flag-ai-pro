@@ -1,7 +1,25 @@
 import React from "react";
+import { createServiceClient } from "@/lib/supabase/server";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
+
+// Honest live figures. We only surface the checks-run number once it clears a
+// floor, so an empty product never shows an embarrassing "3 checks run". Below
+// the floor we fall back to the coverage figures, which are always true.
+async function getLiveStats(): Promise<{ checks: number | null }> {
+  try {
+    const supabase = await createServiceClient();
+    const { count } = await supabase
+      .from("scans")
+      .select("id", { count: "exact", head: true });
+    return { checks: typeof count === "number" ? count : null };
+  } catch {
+    return { checks: null };
+  }
+}
+
+const STAT_FLOOR = 100;
 
 const JURISDICTIONS = [
   { name: "UK", svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clipPath="url(#a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" strokeWidth="6"/><path d="M0 0l60 30m0-30L0 30" clipPath="url(#b)" stroke="#C8102E" strokeWidth="4"/><path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6"/></g></svg> },
@@ -38,7 +56,19 @@ const ASSURANCES = [
  * Institutional credibility band. Regulatory-framework mapping is the single
  * highest-impact trust signal for CFO / compliance / risk buyers — lead with it.
  */
-export function TrustBar() {
+export async function TrustBar() {
+  const { checks } = await getLiveStats();
+
+  // Three figures that are always true. Checks-run only shown above the floor.
+  const figures: { value: string; label: string }[] = [
+    ...(checks && checks >= STAT_FLOOR
+      ? [{ value: checks.toLocaleString("en-GB"), label: "checks run" }]
+      : []),
+    { value: "30", label: "risk categories" },
+    { value: "10", label: "jurisdictions" },
+    { value: "6", label: "governance dimensions" },
+  ];
+
   return (
     <section
       aria-label="Regulatory alignment"
@@ -50,6 +80,16 @@ export function TrustBar() {
       }}
     >
       <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
+        {/* Live figures row: mono numerals, restrained, institutional */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem 2.5rem", justifyContent: "center", alignItems: "baseline", marginBottom: "2rem" }}>
+          {figures.map((f) => (
+            <div key={f.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
+              <span style={{ ...mono, fontSize: "clamp(1.5rem, 4vw, 2rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.01em" }}>{f.value}</span>
+              <span style={{ ...syne, fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,241,234,0.45)" }}>{f.label}</span>
+            </div>
+          ))}
+        </div>
+
         <div style={{ display: "flex", flexWrap: "wrap", gap: "16px 20px", justifyContent: "center", alignItems: "center", marginBottom: "1.75rem" }}>
           {JURISDICTIONS.map((j) => (
             <div key={j.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>

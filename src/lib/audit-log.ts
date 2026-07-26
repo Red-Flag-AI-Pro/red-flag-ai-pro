@@ -1,5 +1,6 @@
 import { createHash } from "crypto";
 import { createServiceClient } from "@/lib/supabase/server";
+import { requestTimestamp } from "@/lib/audit-timestamp";
 
 const GENESIS_HASH = "0".repeat(64);
 
@@ -20,7 +21,12 @@ function computeHash(prevHash: string, entry: {
 export async function logAuditEvent(
   userId: string,
   action: string,
-  details: Record<string, unknown> = {}
+  details: Record<string, unknown> = {},
+  // High-value Sentinel events (sign-offs, boundary authorizations) pass
+  // timestamp:true to also seal the entry with an RFC 3161 trusted timestamp
+  // from a third-party authority. Off by default so routine, high-frequency
+  // logging stays instant.
+  options: { timestamp?: boolean } = {}
 ): Promise<void> {
   try {
     const supabase = await createServiceClient();
@@ -37,6 +43,13 @@ export async function logAuditEvent(
     const createdAt = new Date().toISOString();
     const hash = computeHash(prevHash, { user_id: userId, action, details, created_at: createdAt });
 
+    // Best-effort third-party timestamp. Never blocks or breaks logging: a
+    // TSA outage just leaves ts_* null and the internal hash chain still holds.
+    let ts: { tsa: string; token: string; time: string } | null = null;
+    if (options.timestamp) {
+      ts = await requestTimestamp(hash);
+    }
+
     await supabase.from("audit_log").insert({
       user_id: userId,
       action,
@@ -44,6 +57,9 @@ export async function logAuditEvent(
       created_at: createdAt,
       prev_hash: prevHash,
       hash,
+      ts_token: ts?.token ?? null,
+      ts_time: ts?.time ?? null,
+      ts_tsa: ts?.tsa ?? null,
     });
   } catch {
     // Audit logging must never break the action it's logging.
@@ -102,6 +118,9 @@ export interface PublicVerificationResult {
   intact: boolean;
   action?: string;
   createdAt?: string;
+  // Present when the entry was sealed with a third-party RFC 3161 timestamp.
+  timestampedAt?: string;
+  timestampAuthority?: string;
 }
 
 // Public, unauthenticated check on a single audit log entry by id. Recomputes
@@ -114,7 +133,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
 
   const { data: entry } = await supabase
     .from("audit_log")
-    .select("user_id, action, details, created_at, prev_hash, hash")
+    .select("user_id, action, details, created_at, prev_hash, hash, ts_time, ts_tsa")
     .eq("id", entryId)
     .maybeSingle();
 
@@ -134,5 +153,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     intact: recomputed === entry.hash,
     action: entry.action,
     createdAt: entry.created_at,
+    timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
+    timestampAuthority: (entry as { ts_tsa?: string }).ts_tsa ?? undefined,
   };
 }
