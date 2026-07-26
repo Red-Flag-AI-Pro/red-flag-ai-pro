@@ -180,9 +180,7 @@ export default async function AuditPage({
             marginBottom: "1.5rem",
             color: "#F4F1EA"
           }}>
-            I&apos;ll personally run your site and funnel through{" "}
-            <span>Red Flag AI Pro</span>{" "}
-            and hand you back exactly what to fix.
+            I&apos;ll personally go through your site and funnel, and hand you back exactly what to fix.
           </h1>
 
           <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem" }}>
