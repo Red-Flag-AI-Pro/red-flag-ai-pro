@@ -52,13 +52,13 @@ export default async function SharePage({
         {/* Shared banner */}
         <div className="rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 flex items-center justify-between gap-4">
           <p className="text-sm text-blue-800">
-            <span className="font-semibold">Shared compliance report</span> — verified by Red Flag AI Pro
+            <span className="font-semibold">Shared compliance report</span>, verified by Red Flag AI Pro
           </p>
           <Link
             href="/"
             className="shrink-0 text-xs font-semibold text-blue-700 hover:underline"
           >
-            Run your own scan →
+            Run your own check →
           </Link>
         </div>
 
@@ -70,7 +70,7 @@ export default async function SharePage({
               <div>
                 <h1 className="text-xl font-bold text-[#F4F1EA]">{scan.title}</h1>
                 <p className="text-sm text-[rgba(244,241,234,0.5)]">
-                  Scanned {new Date(scan.created_at).toLocaleDateString("en-GB", {
+                  Checked {new Date(scan.created_at).toLocaleDateString("en-GB", {
                     day: "numeric", month: "long", year: "numeric",
                   })}
                 </p>
@@ -105,8 +105,8 @@ export default async function SharePage({
 
         {/* CTA */}
         <div className="rounded-xl border border-white/10 bg-[#102943] p-6 text-center">
-          <p className="text-sm font-semibold text-[#F4F1EA] mb-1">Want to scan your own copy?</p>
-          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">Free scan — no signup needed. Results in 60 seconds.</p>
+          <p className="text-sm font-semibold text-[#F4F1EA] mb-1">Want to check your own copy?</p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">Free check, no signup needed. Results in 60 seconds.</p>
           <Link
             href="/compliance-assessment"
             className="inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"

@@ -153,7 +153,7 @@ export default function ComplianceChecklistPage() {
           {total} checkpoints across 10 jurisdictions and 30 risk categories. Tick each one off — or find out what needs fixing before you publish.
         </p>
         <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", maxWidth: "500px", margin: "0 auto" }}>
-          Free to use. For a full AI-powered scan of your actual copy, use the scanner below.
+          Free to use. For a full AI powered check of your actual copy, use the checker below.
         </p>
       </section>
 
@@ -245,11 +245,11 @@ export default function ComplianceChecklistPage() {
             Checklist says you're clean?<br />Let the AI confirm it.
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            The checklist tells you what to look for. The scanner reads your actual copy — every sentence — and flags what you missed. 60 seconds. Free.
+            The checklist tells you what to look for. The checker reads your actual copy, every sentence, and flags what you missed. 60 seconds. Free.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/compliance-assessment" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.95rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
-              Scan my copy free →
+              Check my copy free →
             </Link>
             <Link href="/signup" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)", ...syne, fontSize: "0.95rem", fontWeight: 600, padding: "13px 32px", borderRadius: "9999px", textDecoration: "none" }}>
               Create free account

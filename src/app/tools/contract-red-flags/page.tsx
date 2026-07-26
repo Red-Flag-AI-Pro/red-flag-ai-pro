@@ -5,8 +5,8 @@ import { ContractRedFlags } from "@/components/tools/ContractRedFlags";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Free Contract Red Flags Checker — Spot Risky Clauses | Red Flag AI Pro",
-  description: "Paste any contract, terms of service or agreement and instantly flag risky clauses — auto-renewal traps, uncapped liability, broad IP assignment, non-competes and more. Free.",
+  title: "Free Contract Red Flags Checker | Red Flag AI Pro",
+  description: "Paste any contract, terms of service or agreement and instantly flag risky clauses: auto renewal traps, uncapped liability, broad IP assignment, non compete clauses and more. Free.",
   alternates: { canonical: "https://www.redflagaipro.com/tools/contract-red-flags" },
 };
 
@@ -24,7 +24,7 @@ export default function ContractRedFlagsPage() {
             Contract Red Flags <span style={{ fontStyle: "italic", color: "#E5484D" }}>Checker</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            Paste any contract, terms of service or agreement. We flag the clauses worth a second look — auto-renewal traps, uncapped liability, one-sided IP assignment, and more.
+            Paste any contract, terms of service or agreement. We flag the clauses worth a second look: auto renewal traps, uncapped liability, one sided IP assignment, and more.
           </p>
         </div>
       </section>

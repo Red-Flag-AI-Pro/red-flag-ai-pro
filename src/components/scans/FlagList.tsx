@@ -212,7 +212,11 @@ export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
                 <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-red-600 text-white text-xs font-bold mt-0.5">{i + 1}</span>
                 <div>
                   <p className="text-sm font-semibold text-red-900">{FLAG_CATEGORY_LABELS[f.category] ?? f.category}</p>
-                  {f.suggestion && <p className="text-xs text-[#ff9b9e] mt-0.5">{f.suggestion.slice(0, 120)}…</p>}
+                  {f.suggestion && (plan === "free" ? (
+                    <p className="text-xs text-[rgba(255,155,158,0.6)] mt-0.5 italic">Suggested rewrite available with Pro</p>
+                  ) : (
+                    <p className="text-xs text-[#ff9b9e] mt-0.5">{f.suggestion.slice(0, 120)}…</p>
+                  ))}
                 </div>
               </div>
             ))}

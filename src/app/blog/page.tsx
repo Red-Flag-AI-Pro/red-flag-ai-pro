@@ -168,7 +168,7 @@ export default function BlogPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Stop reading about compliance.<br />Start scanning.
+            Stop reading about compliance.<br />Find out what your own copy would trigger.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
             Red Flag AI Pro checks your copy against 30 risk categories across 10 jurisdictions in 60 seconds.
@@ -181,7 +181,7 @@ export default function BlogPage() {
             boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
-            Scan Your Copy Free
+            Check Your Copy Free
           </Link>
         </div>
       </section>

@@ -5,8 +5,8 @@ import { DisclosureGenerator } from "@/components/tools/DisclosureGenerator";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Free Affiliate Disclosure & Sponsorship Disclaimer Generator — Red Flag AI Pro",
-  description: "Generate a compliant FTC and ASA affiliate disclosure, sponsorship disclaimer or income-claim notice for Instagram, TikTok, YouTube, email or your sales page — free, in seconds.",
+  title: "Free Disclosure & Disclaimer Generator | Red Flag AI Pro",
+  description: "Generate a compliant FTC and ASA affiliate disclosure, sponsorship disclaimer or income claim notice for Instagram, TikTok, YouTube, email or your sales page, free, in seconds.",
   alternates: { canonical: "https://www.redflagaipro.com/tools/disclosure-generator" },
 };
 
@@ -43,7 +43,7 @@ export default function DisclosureGeneratorPage() {
             Affiliate &amp; sponsorship<br />disclosure generator
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get FTC- and ASA-compliant wording you can paste straight in — free.
+            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get FTC and ASA compliant wording you can paste straight in, free.
           </p>
         </div>
       </section>

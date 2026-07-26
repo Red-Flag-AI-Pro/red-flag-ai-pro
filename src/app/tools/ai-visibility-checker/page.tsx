@@ -5,7 +5,7 @@ import { AIVisibilitySurvey } from "@/components/tools/AIVisibilitySurvey";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Free AI Visibility Checker — Will AI Assistants Recommend You? | Red Flag AI Pro",
+  title: "Free AI Visibility Checker | Red Flag AI Pro",
   description: "AI assistants like ChatGPT recommend brands based on trust-signal density: reviews, recency, cross-platform mentions and structured data. 7-question self-assessment, free.",
   alternates: { canonical: "https://www.redflagaipro.com/tools/ai-visibility-checker" },
 };
@@ -24,7 +24,7 @@ export default function AIVisibilityCheckerPage() {
             AI Visibility <span style={{ fontStyle: "italic", color: "#E5484D" }}>Checker</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            AI assistants recommend brands based on trust-signal density — reviews, recency, cross-platform presence, and structured data. 7 quick questions to find your gaps.
+            AI assistants recommend brands based on trust signal density: reviews, recency, cross platform presence, and structured data. 7 quick questions to find your gaps.
           </p>
         </div>
       </section>

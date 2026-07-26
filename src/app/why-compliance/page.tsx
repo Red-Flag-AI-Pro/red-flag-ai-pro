@@ -129,7 +129,7 @@ export default function WhyCompliancePage() {
               The same question sits behind every fine on this page: can you prove what you checked, and when?
             </p>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem", lineHeight: 1.7 }}>
-              That is the broader AI governance question CFOs and boards are now being asked directly. Take the free 5 minute Governance Maturity Index to see where your organisation stands.
+              That is the broader AI governance question CFOs and boards are now being asked directly. Take the free 2 minute Governance Maturity Index to see where your organisation stands.
             </p>
             <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "1px solid rgba(255,255,255,0.25)", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", textDecoration: "none" }}>
               Take the free governance assessment

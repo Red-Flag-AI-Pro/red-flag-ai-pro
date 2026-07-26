@@ -425,7 +425,7 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}
           >
-            Start with a free assessment. 5 minutes. See your governance
+            Start with a free assessment. 2 minutes. See your governance
             maturity, gaps, and roadmap.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>

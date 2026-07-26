@@ -9,7 +9,7 @@ import React from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Governance Pricing: Red Flag AI Pro",
+  title: "Pricing: Compliance Checking and Governance Proof | Red Flag AI Pro",
   description: "Free AI governance assessment. Pro for full compliance checking, Growth for ongoing governance monitoring and teams, Sentinel for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
@@ -162,7 +162,7 @@ export default async function PricingPage() {
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Every plan includes the full compliance checker for your marketing copy, plus a 5-minute free assessment scored across 6 dimensions, strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness, that shows your governance maturity, gaps, and 90-day roadmap.
+            Every plan starts with two answers: is your copy safe to publish, and would your governance survive an audit. The free assessment scores you across 6 dimensions and hands you a 90 day roadmap.
           </p>
         </div>
       </section>
@@ -591,7 +591,7 @@ export default async function PricingPage() {
             padding: "2rem"
           }}>
             <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#ef4444", marginBottom: "0.5rem" }}>Ready to know where you stand?</p>
-            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 5-minute governance assessment. No email required for the first 2 questions.</p>
+            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 2 minute governance assessment. One work email, 12 questions, your top gap on screen instantly.</p>
             <Link href="/governance-audit" style={{
               display: "inline-block",
               background: "#ef4444",

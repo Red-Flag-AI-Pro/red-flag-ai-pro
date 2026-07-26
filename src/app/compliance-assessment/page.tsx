@@ -78,7 +78,7 @@ export default function ComplianceAssessmentPage() {
                 detail: "Added a 30th category, Age Assurance, within days of the UK's under-16 social media restriction announcement. Not an annual update cycle.",
               },
               {
-                stat: "9",
+                stat: "10",
                 title: "Jurisdictions mapped, with sources",
                 detail: "Every regulation cited traces to official text or a government announcement, not a generic 'AI compliance' explainer.",
               },

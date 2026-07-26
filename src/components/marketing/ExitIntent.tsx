@@ -41,7 +41,7 @@ export function ExitIntent() {
         </p>
 
         <Link
-          href="/signup"
+          href="/compliance-assessment"
           onClick={() => setDismissed(true)}
           className="mt-6 block w-full rounded-xl bg-red-600 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
         >

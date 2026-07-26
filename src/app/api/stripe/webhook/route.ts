@@ -1,8 +1,47 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createClient } from "@supabase/supabase-js";
-import { updateContactPlan } from "@/lib/loops";
+import { updateContactPlan, sendLoopsEvent } from "@/lib/loops";
+import { Resend } from "resend";
 import type Stripe from "stripe";
+
+const NOTIFY_TO = "support@redflagaipro.com";
+
+// A paid £179 audit starts a 48 hour delivery promise — the founder must
+// know the moment it happens, not whenever Stripe is next checked. Never
+// throws: a mail failure must not fail the webhook or Stripe retries the
+// whole event.
+async function notifyAuditPaid(session: Stripe.Checkout.Session) {
+  const email = session.customer_email ?? session.customer_details?.email ?? "unknown";
+  const name = session.customer_details?.name ?? "";
+  const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : "179.00";
+  try {
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { error } = await resend.emails.send({
+        from: "Red Flag AI Pro <audit@redflagaipro.com>",
+        to: NOTIFY_TO,
+        ...(email !== "unknown" ? { replyTo: email } : {}),
+        subject: `PAID audit order: £${amount} from ${name || email}`,
+        html: `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.6">
+          <p><strong>An audit was just paid for via instant checkout.</strong> The 48 hour delivery window starts now.</p>
+          <p>Buyer: ${name ? `${name}, ` : ""}${email}<br/>
+          Amount: £${amount}<br/>
+          Stripe session: ${session.id}</p>
+          <p>Reply straight to this email to reach the buyer and ask for their URL if they haven't sent it.</p>
+        </div>`,
+      });
+      if (error) console.error("audit-paid notify failed:", error);
+    } else {
+      console.error("audit paid but RESEND_API_KEY not set:", { email, amount });
+    }
+    if (email !== "unknown") {
+      await sendLoopsEvent({ email, eventName: "audit_purchased", properties: { amount } });
+    }
+  } catch (err) {
+    console.error("audit-paid notification error:", err);
+  }
+}
 
 function getAdminClient() {
   return createClient(
@@ -102,6 +141,7 @@ export async function POST(request: Request) {
           amount_gbp: session.amount_total ? session.amount_total / 100 : 179,
           status: "paid",
         });
+        await notifyAuditPaid(session);
         break;
       }
 

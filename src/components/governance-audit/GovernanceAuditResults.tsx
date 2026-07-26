@@ -289,7 +289,7 @@ export function GovernanceAuditResults({
                         onClick={onUnlock}
                         className="w-full text-center text-xs font-semibold text-white bg-[#E5484D] hover:bg-red-600 transition-colors rounded px-4 py-2"
                       >
-                        Unlock all gaps with Growth, from £1,200/yr
+                        Unlock all gaps with Growth, from £1,200/mo
                       </button>
                     </div>
                   ) : (

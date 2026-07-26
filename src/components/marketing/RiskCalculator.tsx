@@ -266,7 +266,7 @@ function SellerCalculator() {
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
         borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
-        Scan my copy free, protect {fmt(total)}
+        Check my copy free, protect {fmt(total)}
       </Link>
     </div>
   );
@@ -368,7 +368,7 @@ function BuyerCalculator() {
 
       <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)", padding: "12px 14px" }}>
         <p style={{...syne, fontSize: "13px", color: "rgba(134,239,172,0.8)", lineHeight: 1.6}}>
-          A free 60-second scan before you buy could protect <span style={{ color: "white", fontWeight: 700 }}>{fmt(amount)}</span> right now.
+          A free 60 second check before you buy could protect <span style={{ color: "white", fontWeight: 700 }}>{fmt(amount)}</span> right now.
         </p>
         <p style={{...mono, fontSize: "0.85rem", fontWeight: 700, color: "#4ade80", marginTop: "4px"}}>Free. No signup. 60 seconds.</p>
       </div>
@@ -380,7 +380,7 @@ function BuyerCalculator() {
         ...syne, fontSize: "0.875rem", fontWeight: 700, padding: "13px 24px",
         borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none",
       }}>
-        Scan before you buy, protect {fmt(amount)}
+        Check before you buy, protect {fmt(amount)}
       </a>
     </div>
   );

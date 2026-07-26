@@ -5,8 +5,8 @@ import { AccessibilityChecker } from "@/components/tools/AccessibilityChecker";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Free Website Accessibility Score Checker — ADA / WCAG Risk | Red Flag AI Pro",
-  description: "Enter your URL and get an instant accessibility score — missing alt text, unlabeled forms, broken heading structure and more. ADA, EAA and Equality Act demand letters are rising fast. Free.",
+  title: "Free Accessibility Checker: ADA / WCAG Risk | Red Flag AI Pro",
+  description: "Enter your URL and get an instant accessibility score: missing alt text, unlabeled forms, broken heading structure and more. ADA, EAA and Equality Act demand letters are rising fast. Free.",
   alternates: { canonical: "https://www.redflagaipro.com/tools/accessibility-checker" },
 };
 
@@ -24,7 +24,7 @@ export default function AccessibilityCheckerPage() {
             Accessibility Score <span style={{ fontStyle: "italic", color: "#E5484D" }}>Checker</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            Enter any URL. We check the page for the structural accessibility issues most commonly cited in ADA, EAA and Equality Act demand letters — in seconds.
+            Enter any URL. We check the page for the structural accessibility issues most commonly cited in ADA, EAA and Equality Act demand letters, in seconds.
           </p>
         </div>
       </section>

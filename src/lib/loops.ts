@@ -78,7 +78,7 @@ export async function sendLoopsEvent({
         "Content-Type": "application/json",
         Authorization: `Bearer ${LOOPS_API_KEY}`,
       },
-      body: JSON.stringify({ email, eventName, ...properties }),
+      body: JSON.stringify({ email, eventName, eventProperties: properties }),
     });
 
     if (!res.ok) {

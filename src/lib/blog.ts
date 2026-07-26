@@ -137,7 +137,7 @@ Red Flag AI Pro builds the evidentiary layer into the compliance workflow. Every
 
 | Governance question | How Red Flag AI Pro answers it |
 |----------------------|--------------------------------|
-| Was this copy checked before publishing? | Scan timestamp plus compliance score |
+| Was this copy checked before publishing? | Check timestamp plus compliance score |
 | What was flagged, and was it fixed? | Flag by flag breakdown plus rewrite suggestions |
 | Is this AI generated content disclosed correctly? | AI Disclosure category, EU AI Act Article 50 |
 | Who signed off, and when? | Sentinel signed PDF certificates |
@@ -291,11 +291,11 @@ Your privacy policy should tell people *how* to complain, to you, and that they 
 
 ---
 
-## How This Maps to a Compliance Scan
+## How This Maps to a Compliance Check
 
 Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy reference data handling, consent and complaints in a way that's consistent with current UK requirements, alongside \`email_compliance\` for your list building and marketing emails.
 
-| Requirement | Scanner category |
+| Requirement | Checker category |
 |-------------|------------------|
 | Privacy policy references complaints process | \`data_privacy\` |
 | Marketing email consent and opt out | \`email_compliance\` |
@@ -308,9 +308,9 @@ Red Flag AI Pro's \`data_privacy\` category checks whether your pages and copy r
 
 This isn't a distant deadline, it's **one week away**. The fix is mostly about process and documentation, not technology. But "we'll get to it" stops being an option on 19 June 2026.
 
-Scan your site's privacy policy, checkout flow and marketing copy now, while there's still time to fix anything that's missing.
+Check your site's privacy policy, checkout flow and marketing copy now, while there's still time to fix anything that's missing.
 
-[Scan your copy free →](https://www.redflagaipro.com/signup)
+[Check your copy free →](https://www.redflagaipro.com/signup)
 
 ---
 
@@ -403,11 +403,11 @@ The moment someone enters an email to download a lead magnet or buy your course,
 
 ---
 
-## How This Maps to a Compliance Scan
+## How This Maps to a Compliance Check
 
-Every one of these six areas corresponds to a category Red Flag AI Pro checks automatically when you scan a sales page, email or ad:
+Every one of these six areas corresponds to a category Red Flag AI Pro checks automatically when you run a sales page, email or ad through it:
 
-| Risk area | Scanner category |
+| Risk area | Checker category |
 |-----------|------------------|
 | Income / outcome claims | \`income_claim\`, \`guarantee\` |
 | Hidden fees, pre ticked extras | \`hidden_fees\`, \`dark_patterns\`, \`fake_discounts\` |
@@ -422,9 +422,9 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 
 None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator, or a customer complaint, does it for you.
 
-Red Flag AI Pro scans your marketing copy against all 29 of these categories across 10 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 10 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
 
-[Scan your course sales page free →](https://www.redflagaipro.com/signup)
+[Check your course sales page free →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -523,7 +523,7 @@ Every piece of AI generated copy should be reviewed by a named human, with a tim
 ### 5. Update Your Client Contracts
 Your agency agreements should now include clauses addressing AI tool usage, disclosure obligations and liability for non compliance. If a client refuses disclosure, treat that as a client relationship conversation, not a reason to hide it.
 
-### 6. Scan Your Existing Copy
+### 6. Check Your Existing Copy
 Before August 2026, audit your existing client campaigns for AI generated content that is not currently disclosed.
 
 ---
@@ -546,9 +546,9 @@ This means a claim arising from undisclosed AI generated content that breaches A
 
 **Your compliance risk is uninsured.**
 
-Red Flag AI Pro now scans marketing copy for EU AI Act Article 50 compliance, alongside 15 other risk categories covering FTC, CMA, ASA, GDPR, ACCC and CASL regulations. Sentinel, the agency tier, creates a signed, timestamped audit trail for every piece of copy reviewed before publication, exactly the documentation your agency needs when the law comes into force.
+Red Flag AI Pro now checks marketing copy for EU AI Act Article 50 compliance, alongside 29 other risk categories covering FTC, CMA, ASA, GDPR, ACCC and CASL regulations. Sentinel, the agency tier, creates a signed, timestamped audit trail for every piece of copy reviewed before publication, exactly the documentation your agency needs when the law comes into force.
 
-[Scan your copy free →](https://www.redflagaipro.com/signup)
+[Check your copy free →](https://www.redflagaipro.com/signup)
 
 ---
 
@@ -561,7 +561,7 @@ Red Flag AI Pro now scans marketing copy for EU AI Act Article 50 compliance, al
 | Implement disclosure language | Before 2 Aug 2026 |
 | Document human review process | Before 2 Aug 2026 |
 | Update client contracts | Before 2 Aug 2026 |
-| Scan existing campaigns | Before 2 Aug 2026 |
+| Check existing campaigns | Before 2 Aug 2026 |
 
 The EU AI Act is not optional. It is not a guideline. It is law. Enforcement begins in weeks.
 
@@ -659,13 +659,13 @@ The FTC's enforcement has accelerated significantly since 2023 and shows no sign
 
 ---
 
-## Scan Your Copy Before the FTC Does
+## Check Your Copy Before the FTC Does
 
-Red Flag AI Pro scans your marketing copy for FTC earnings claim violations, alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations simultaneously.
+Red Flag AI Pro checks your marketing copy for FTC earnings claim violations, alongside 29 other risk categories covering UK, EU, Australian and Canadian regulations simultaneously.
 
 Catch the violations before regulators do.
 
-[Scan your copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Check your copy free, no credit card required →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -756,11 +756,11 @@ Here are the 7 most common CAP Code violations UK marketers make, and how to fix
 
 ## How Red Flag AI Pro Helps UK Marketers
 
-Red Flag AI Pro scans your marketing copy against the full ASA CAP Code, alongside FTC (US), GDPR (EU), ACCC (Australia) and CASL (Canada) regulations simultaneously.
+Red Flag AI Pro checks your marketing copy against the full ASA CAP Code, alongside FTC (US), GDPR (EU), ACCC (Australia) and CASL (Canada) regulations simultaneously.
 
 In 60 seconds you get a compliance risk score, every flag explained in plain English, and an exact rewrite suggestion for every violation found.
 
-[Scan your UK marketing copy free →](https://www.redflagaipro.com/signup)
+[Check your UK marketing copy free →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -862,11 +862,11 @@ Key requirements:
 
 ---
 
-## Scan Your Email Copy for GDPR Compliance
+## Check Your Email Copy for GDPR Compliance
 
-Red Flag AI Pro scans your email marketing copy for GDPR, CASL, PECR and CAN SPAM compliance issues, alongside 13 other risk categories including ASA, FTC and ACCC regulations.
+Red Flag AI Pro checks your email marketing copy for GDPR, CASL, PECR and CAN SPAM compliance issues, as part of its 30 risk categories including ASA, FTC and ACCC regulations.
 
-[Scan your email copy free →](https://www.redflagaipro.com/signup)
+[Check your email copy free →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -963,14 +963,14 @@ Before you launch your next campaign, run through this checklist.
 
 Checking all 16 points manually takes time, and it's easy to miss something.
 
-Red Flag AI Pro scans your marketing copy against all 30 risk categories across 10 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 10 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
 
 ✅ A 0 100 compliance risk score
 ✅ Every violation explained in plain English
 ✅ Exact rewrite suggestions for every issue
 ✅ Coverage across FTC, CMA, ASA, GDPR, EU AI Act, ACCC and CASL
 
-[Scan your copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Check your copy free, no credit card required →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -1052,8 +1052,8 @@ The best defence against both regulatory liability and PI claims is documented h
 
 Keep records of: who reviewed each piece of AI generated content, what changes were made, and the date of review.
 
-### 4. Implement Compliance Scanning Before Delivery
-Scan every piece of AI assisted marketing copy for compliance issues before it goes to the client. This demonstrates professional diligence, the standard that PI cover is designed to protect.
+### 4. Implement Compliance Checking Before Delivery
+Check every piece of AI assisted marketing copy for compliance issues before it goes to the client. This demonstrates professional diligence, the standard that PI cover is designed to protect.
 
 ### 5. Update Your Client Contracts
 Add clauses to your agency agreements that address AI tool usage, disclosure responsibilities, and liability allocation between your agency and the client. Your lawyer can advise on appropriate language.
@@ -1077,13 +1077,13 @@ This is not a theoretical risk. It is the realistic outcome of the insurance mar
 
 ## Red Flag AI Pro: Your Compliance Paper Trail
 
-Red Flag AI Pro scans AI generated and human written marketing copy against 30 risk categories across 10 jurisdictions, including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
+Red Flag AI Pro checks AI generated and human written marketing copy against 30 risk categories across 10 jurisdictions, including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
 
-Every scan produces a timestamped compliance report. That report is your documented evidence of professional diligence, exactly what your broker, your client and any claims handler would need to see.
+Every check produces a timestamped compliance report. That report is your documented evidence of professional diligence, exactly what your broker, your client and any claims handler would need to see.
 
 It takes 60 seconds. It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
 
-[Scan your first piece of copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Check your first piece of copy free, no credit card required →](https://www.redflagaipro.com/signup)
 
 ---
 
@@ -1182,7 +1182,7 @@ Most buyers never claim the refund they are legally entitled to. Sellers rely on
 
 A seller who includes "all sales final" in their terms knows that most buyers will assume they have no recourse. For every buyer who fights back, dozens walk away without the refund they were owed.
 
-This is why Red Flag AI Pro includes a scan for contract contradictions, checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
+This is why Red Flag AI Pro includes a check for contract contradictions, checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
 
 Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you in 60 seconds whether their refund policy is legal, and what your rights actually are.
 
@@ -1272,9 +1272,9 @@ The result: a large proportion of online recommendations you encounter are paid.
 
 ## Before You Buy: Check the Sales Page
 
-Red Flag AI Pro scans sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials, alongside income claims, fake urgency, hidden fees and 12 other risk categories.
+Red Flag AI Pro checks sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials, alongside income claims, fake urgency, hidden fees and the rest of its 30 risk categories.
 
-Paste any sales page, course landing page or promotional email into the scanner before you buy. Free. No account needed.
+Paste any sales page, course landing page or promotional email into the checker before you buy. Free. No account needed.
 
 [Check any ad or sales page for free, 60 seconds →](https://www.redflagaipro.com)
     `,
@@ -1289,7 +1289,7 @@ Paste any sales page, course landing page or promotional email into the scanner 
     content: `
 ## How the FTC Identifies Targets
 
-The Federal Trade Commission does not wait for consumer complaints to find violators. It actively monitors online advertising, using both staff review and increasingly, automated scanning, to identify marketing copy that contains high risk language patterns.
+The Federal Trade Commission does not wait for consumer complaints to find violators. It actively monitors online advertising, using both staff review and increasingly, automated review, to identify marketing copy that contains high risk language patterns.
 
 If your copy contains certain phrases, it is statistically more likely to be flagged for review. Some of these phrases are obvious. Many are not.
 
@@ -1381,13 +1381,13 @@ If you apply these three tests to every claim in your copy before you publish, y
 
 ---
 
-## Scan Your Copy Before You Publish
+## Check Your Copy Before You Publish
 
-Red Flag AI Pro scans your marketing copy for FTC trigger phrases and high risk language patterns, alongside 15 other risk categories covering UK, EU, Australian and Canadian regulations.
+Red Flag AI Pro checks your marketing copy for FTC trigger phrases and high risk language patterns, alongside 29 other risk categories covering UK, EU, Australian and Canadian regulations.
 
 Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions in 60 seconds.
 
-[Scan your copy free, no account needed →](https://www.redflagaipro.com)
+[Check your copy free, no account needed →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -1429,7 +1429,7 @@ Many sellers have a "60 day money back guarantee" in their marketing copy and "a
 
 These two statements are in direct contradiction. Under ASA CAP Code Rule 3.1 and FTC Section 5, marketing claims must be truthful and consistent with actual terms. A guarantee advertised in the copy that is contradicted by the terms is a misrepresentation.
 
-Red Flag AI Pro specifically scans for contract contradictions, this is one of the most common violations we identify in sales page copy.
+Red Flag AI Pro specifically checks for contract contradictions, this is one of the most common violations we identify in sales page copy.
 
 ---
 
@@ -1491,7 +1491,7 @@ A clear, easy guarantee process that results in more refunds can actually be bet
 
 ---
 
-## Scan Your Copy for Guarantee Violations
+## Check Your Copy for Guarantee Violations
 
 Red Flag AI Pro checks your marketing copy for:
 
@@ -1501,7 +1501,7 @@ Red Flag AI Pro checks your marketing copy for:
 
 Paste your sales page or email sequence and get a plain English explanation of any issues found, plus exact rewrite suggestions.
 
-[Scan your copy free, no account or card needed →](https://www.redflagaipro.com)
+[Check your copy free, no account or card needed →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -1582,9 +1582,9 @@ Audit your client list. Which clients operate in financial services? Which campa
 
 Build a process where every piece of copy containing financial claims is approved in writing by your client's compliance team before publication. Get this approval in writing and keep the record.
 
-### 3. Scan Every Financial Promotion Before Submission
+### 3. Check Every Financial Promotion Before Submission
 
-Red Flag AI Pro includes FCA financial promotion scanning as part of the Sentinel plan. Every scan checks for financial promotion language, missing risk warnings and claims that require FCA approval, before the copy leaves your agency.
+Red Flag AI Pro includes FCA financial promotion checking as part of the Sentinel plan. Every check covers financial promotion language, missing risk warnings and claims that require FCA approval, before the copy leaves your agency.
 
 ### 4. Update Your Agency Contracts
 
@@ -1601,7 +1601,7 @@ Writing an unapproved financial promotion is a criminal offence. It doesn't matt
 
 The protection is a documented approval process, and it starts with identifying which of your copy contains financial promotions before it leaves your desk.
 
-[Scan your financial client copy for FCA compliance →](https://www.redflagaipro.com/sentinel)
+[Check your financial client copy for FCA compliance →](https://www.redflagaipro.com/sentinel)
     `,
   },
   {
@@ -1673,9 +1673,9 @@ Any product claiming to be plastic free must contain no plastic in any component
 
 The CMA has already required multiple major UK brands to remove or amend green claims following investigation. The EU Commission has identified greenwashing in over 40% of all environmental claims reviewed. The FTC has issued guidance letters and opened investigations into green claims in sectors including textiles, cleaning products and food packaging.
 
-Red Flag AI Pro includes greenwashing scanning in the Sentinel plan, checking copy against the CMA Green Claims Code, EU Green Claims Directive standards and FTC Green Guides.
+Red Flag AI Pro includes greenwashing checks in the Sentinel plan, checking copy against the CMA Green Claims Code, EU Green Claims Directive standards and FTC Green Guides.
 
-[Scan your environmental claims for greenwashing risks →](https://www.redflagaipro.com/sentinel)
+[Check your environmental claims for greenwashing risks →](https://www.redflagaipro.com/sentinel)
     `,
   },
   {
@@ -1746,13 +1746,13 @@ Standard FTC/ASA format: *"Results are not typical. Individual results will vary
 
 ---
 
-## Scan Your VSL Script Before You Film
+## Check Your VSL Script Before You Film
 
-Red Flag AI Pro can scan your VSL script for all 24 compliance risk categories, paste the script or upload the audio file and Whisper transcribes it automatically.
+Red Flag AI Pro can check your VSL script for all 30 compliance risk categories. Paste the script or upload the audio file and Whisper transcribes it automatically.
 
 Catch compliance issues before you spend money on production and traffic.
 
-[Scan your VSL script →](https://www.redflagaipro.com/scans/new)
+[Check your VSL script →](https://www.redflagaipro.com/scans/new)
     `,
   },
   {
@@ -1843,9 +1843,9 @@ Red Flag AI Pro runs compliance checks against 30 risk categories across 10 juri
 
 On the Sentinel plan, agencies can:
 
-- Run unlimited compliance scans on client copy
-- Organise scans by client workspace
-- Generate signed PDF compliance certificates showing the scan was run, when, and what was found
+- Run unlimited compliance checks on client copy
+- Organise checks by client workspace
+- Generate signed PDF compliance certificates showing the check was run, when, and what was found
 - Monitor live client URLs weekly for changes that introduce new compliance risks
 - White label PDF reports under the agency's own branding
 
@@ -1970,13 +1970,13 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 ---
 
-## Scan Your SaaS Marketing Copy
+## Check Your SaaS Marketing Copy
 
 Red Flag AI Pro checks subscription trap language, data privacy violations, earnings claims, email marketing consent and 17 other compliance categories simultaneously.
 
 Paste your pricing page, onboarding emails or sales copy and get a compliance score and plain English fixes in 60 seconds.
 
-[Scan your SaaS copy free →](https://www.redflagaipro.com/signup)
+[Check your SaaS copy free →](https://www.redflagaipro.com/signup)
     `,
   },
   {
@@ -2056,7 +2056,7 @@ If you have been financially harmed by an illegal ad, contact your bank about a 
 
 ---
 
-## Scan Any Ad Right Now
+## Check Any Ad Right Now
 
 Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup. 60 seconds.
 
@@ -2128,7 +2128,7 @@ The single best protection against an ASA complaint affecting your agency is a d
 - What was checked
 - What changes were made as a result
 
-This is exactly what Red Flag AI Pro creates automatically. Every scan produces a timestamped compliance report. If the ASA or a client asks "can you prove you reviewed this before it went live?", the answer is yes, with a signed PDF certificate showing exactly what was checked and when.
+This is exactly what Red Flag AI Pro creates automatically. Every check produces a timestamped compliance report. If the ASA or a client asks "can you prove you reviewed this before it went live?", the answer is yes, with a signed PDF certificate showing exactly what was checked and when.
 
 ---
 
@@ -2143,9 +2143,9 @@ This is exactly what Red Flag AI Pro creates automatically. Every scan produces 
 
 ## Start Before the Complaint Arrives
 
-Red Flag AI Pro scans client copy against the full ASA CAP Code before it publishes, alongside FTC, GDPR, FCA, ACCC and CASL simultaneously.
+Red Flag AI Pro checks client copy against the full ASA CAP Code before it publishes, alongside FTC, GDPR, FCA, ACCC and CASL simultaneously.
 
-Every scan produces a signed PDF certificate. Sentinel plan includes team seats, client workspaces and weekly monitoring of live pages.
+Every check produces a signed PDF certificate. Sentinel plan includes team seats, client workspaces and weekly monitoring of live pages.
 
 [See Sentinel for agencies →](https://www.redflagaipro.com/sentinel)
     `,
@@ -2221,11 +2221,11 @@ The disclaimer accompanies a substantiated claim, it does not replace substantia
 
 ---
 
-## Scan Your Income Claims
+## Check Your Income Claims
 
 Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 10 jurisdictions simultaneously, with AI powered specific rewrites for every violation found.
 
-[Scan your copy free →](https://www.redflagaipro.com)
+[Check your copy free →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -2256,7 +2256,7 @@ This is the honest comparison.
 
 **What they cost**: £2,000 to £10,000 per month. Minimum contract terms. Weeks of onboarding.
 
-**The gap**: Not designed for agencies or digital marketers. Not real time. Requires compliance staff to operate. No multi jurisdiction scanning.
+**The gap**: Not designed for agencies or digital marketers. Not real time. Requires compliance staff to operate. No multi jurisdiction checking.
 
 ---
 
@@ -2286,7 +2286,7 @@ This is the honest comparison.
 
 ### Red Flag AI Pro
 
-**What it does**: Scans any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 24 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
+**What it does**: Checks any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 30 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
 
 **Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
 
@@ -2294,7 +2294,7 @@ This is the honest comparison.
 
 **What makes it different**:
 - Real time, results in 60 seconds, not 48 72 hours
-- Multi jurisdiction, all five major markets in one scan
+- Multi jurisdiction, all five major markets in one check
 - Covers all formats, text, URL, VSL transcript, audio, whole website
 - Produces signed PDF certificates as audit evidence
 - Sentinel includes team seats, client workspaces, weekly monitoring, white label reports, API and webhooks
@@ -2304,7 +2304,7 @@ This is the honest comparison.
 
 ## What Still Requires a Human
 
-Red Flag AI Pro is a compliance scanning tool, not a lawyer. For high stakes decisions, FCA regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
+Red Flag AI Pro is a compliance checking tool, not a lawyer. For high stakes decisions, FCA regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
 
 What Red Flag AI Pro does is catch the 90% of compliance issues that are detectable through language pattern analysis: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
 
@@ -2316,7 +2316,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
 
 | Need | Best option |
 |------|-------------|
-| Quick check before publishing | Red Flag AI Pro free scan |
+| Quick check before publishing | Red Flag AI Pro free check |
 | Agency compliance infrastructure | Red Flag AI Pro Sentinel |
 | FCA regulated financial promotions | Red Flag AI Pro Sentinel + FCA authorised approver |
 | Enterprise workflow management | Red Marker / Blee |
@@ -2406,11 +2406,11 @@ Neither regulator is waiting for complaints. Both are proactively monitoring.
 
 ## How to Check Your Own Copy
 
-Red Flag AI Pro scans your marketing copy for fake urgency language, artificial scarcity claims and dark patterns, alongside 18 other compliance risk categories.
+Red Flag AI Pro checks your marketing copy for fake urgency language, artificial scarcity claims and dark patterns, as part of its 30 compliance risk categories.
 
 Paste your sales page or email sequence and see exactly which claims are at risk.
 
-[Scan your copy free, no signup →](https://www.redflagaipro.com)
+[Check your copy free, no signup →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -2453,7 +2453,7 @@ That means:
 ### What's required
 - Use Instagram's built in "Paid partnership with [Brand]" label **and** include a written disclosure in the caption itself (the label alone is not always considered sufficient by the FTC)
 - For affiliate links (where you earn commission but there's no formal brand partnership), disclose this explicitly, e.g., "This post contains affiliate links. I may earn a commission if you purchase through them, at no extra cost to you."
-- Place the disclosure **at the start of the caption**, not the end. Audiences scanning quickly often won't see text below the fold.
+- Place the disclosure **at the start of the caption**, not the end. Audiences skimming quickly often won't see text below the fold.
 
 ### What to avoid
 - "#ad" alone, especially buried mid hashtag block
@@ -2530,13 +2530,13 @@ If you'd rather not write the disclosure from scratch, use our free **[Affiliate
 
 ---
 
-## Scan Before You Post
+## Check Before You Post
 
-Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language, alongside 15 other compliance risk categories covering FTC, ASA, GDPR and more.
+Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language, alongside 29 other compliance risk categories covering FTC, ASA, GDPR and more.
 
 Paste your caption or video script and get a compliance score with specific rewrite suggestions in 60 seconds.
 
-[Scan your copy free, no account needed →](https://www.redflagaipro.com)
+[Check your copy free, no account needed →](https://www.redflagaipro.com)
     `,
   },
   {

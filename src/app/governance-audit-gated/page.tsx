@@ -315,7 +315,7 @@ export default function GovernanceAuditGatedPage() {
             color: 'rgba(255,255,255,0.5)',
             lineHeight: 1.7
           }}>
-            The same team that built the world's only multi jurisdiction AI compliance scanner. Trusted by 10,000+ users. Zero data breaches. Zero compromises on privacy.
+            The same team that built the world's only multi jurisdiction AI compliance checker. Zero data breaches. Zero compromises on privacy.
           </p>
         </div>
       </section>

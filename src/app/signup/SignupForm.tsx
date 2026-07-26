@@ -13,7 +13,8 @@ function SignupFormInner() {
   const plan = searchParams.get("plan");
   const region = searchParams.get("region");
   const trackParam = searchParams.get("track");
-  const trackQuery = trackParam ? `&track=${encodeURIComponent(trackParam)}` : "";
+  const refCode = searchParams.get("ref");
+  const redirect = searchParams.get("redirect");
   const prefillEmail = searchParams.get("email") ?? "";
   const fromDemo = !!prefillEmail;
   const planLabel = plan === "scanner" ? "Pro" : plan === "enterprise" ? "Growth" : null;
@@ -26,6 +27,21 @@ function SignupFormInner() {
   const supabase = createClient();
   const [googleLoading, setGoogleLoading] = useState(false);
 
+  // Where the user should land once their account exists. An explicit
+  // redirect (e.g. resuming the £179 audit checkout) wins over the plan
+  // checkout path, which wins over the dashboard.
+  const destination = redirect
+    ? redirect
+    : plan
+      ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}`
+      : "/dashboard?welcome=1";
+
+  // The nested destination is encoded as a single `next` value so its own
+  // query string (plan, region) survives the auth callback round trip.
+  const callbackParams = `next=${encodeURIComponent(destination)}${
+    trackParam ? `&track=${encodeURIComponent(trackParam)}` : ""
+  }${refCode ? `&ref=${encodeURIComponent(refCode)}` : ""}`;
+
   async function handleGoogleSignup() {
     setGoogleLoading(true);
     setError(null);
@@ -34,7 +50,7 @@ function SignupFormInner() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}${trackQuery}`,
+        redirectTo: `${appUrl}/api/auth/callback?${callbackParams}`,
       },
     });
     if (error) {
@@ -56,7 +72,7 @@ function SignupFormInner() {
       password,
       options: {
         data: { full_name: name },
-        emailRedirectTo: `${appUrl}/api/auth/callback?next=${plan ? `/billing?plan=${plan}${region ? `&region=${region}` : ""}` : "/dashboard?welcome=1"}${trackQuery}`,
+        emailRedirectTo: `${appUrl}/api/auth/callback?${callbackParams}`,
       },
     });
 
@@ -76,22 +92,35 @@ function SignupFormInner() {
       return;
     }
 
-    router.push("/dashboard?welcome=1");
+    // Session path skips the auth callback entirely, so the side effects that
+    // normally run there (Loops contact, referral attribution, demo carry
+    // over) happen via this endpoint instead. Best effort — never block the
+    // user on it.
+    try {
+      await fetch("/api/signup-init", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ track: trackParam, ref: refCode }),
+      });
+    } catch {
+      // non fatal
+    }
+
+    router.push(destination);
     router.refresh();
   }
 
   if (success) {
     return (
       <div className="text-center">
-        <p className="text-4xl"></p>
-        <h2 className="mt-4 text-xl font-bold text-gray-900">Check your email</h2>
-        <p className="mt-2 text-sm text-gray-600">
-          We sent a confirmation link to <strong>{email}</strong>. Click it to
-          activate your account.
+        <h2 className="mt-4 text-xl font-bold text-[#F4F1EA]">Check your email</h2>
+        <p className="mt-2 text-sm text-[rgba(244,241,234,0.7)]">
+          We sent a confirmation link to <strong className="text-[#F4F1EA]">{email}</strong>. Click it to
+          activate your account{planLabel ? ` and continue to ${planLabel} checkout` : ""}.
         </p>
         <Link
           href="/login"
-          className="mt-6 block text-sm font-medium text-red-600 hover:underline"
+          className="mt-6 block text-sm font-medium text-[#E5484D] hover:underline"
         >
           Back to login
         </Link>
@@ -103,16 +132,20 @@ function SignupFormInner() {
     <form onSubmit={handleSubmit} className="space-y-4">
       {fromDemo && (
         <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-          Picking up where you left off. Create your account to unlock your full scan results and the compliant rewrites.
+          Picking up where you left off. Create your account to unlock your full check results and the compliant rewrites.
         </div>
       )}
-      {planLabel ? (
+      {redirect ? (
+        <div className="rounded-lg bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-gray-300">
+          Next: you will go straight back to complete your order, no charge until you confirm there.
+        </div>
+      ) : planLabel ? (
         <div className="rounded-lg bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-gray-300">
           Next: you will land on a checkout page for {planLabel}, no charge until you confirm there.
         </div>
       ) : (
         <div className="rounded-lg bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-gray-300">
-          Next: you will land on your dashboard, where you can paste your first piece of copy to scan, or start your free governance assessment.
+          Next: you will land on your dashboard, where you can paste your first piece of copy to check, or start your free governance assessment.
         </div>
       )}
       {error && (
@@ -143,10 +176,11 @@ function SignupFormInner() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label htmlFor="signup-name" className="block text-sm font-medium text-[rgba(244,241,234,0.85)]">
           Full name
         </label>
         <input
+          id="signup-name"
           type="text"
           required
           autoComplete="name"
@@ -157,10 +191,11 @@ function SignupFormInner() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label htmlFor="signup-email" className="block text-sm font-medium text-[rgba(244,241,234,0.85)]">
           Email
         </label>
         <input
+          id="signup-email"
           type="email"
           required
           autoComplete="email"
@@ -171,10 +206,11 @@ function SignupFormInner() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label htmlFor="signup-password" className="block text-sm font-medium text-[rgba(244,241,234,0.85)]">
           Password
         </label>
         <input
+          id="signup-password"
           type="password"
           required
           autoComplete="new-password"

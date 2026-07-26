@@ -95,13 +95,46 @@ const FAQS = [
   },
 ];
 
-export default function AuditPage() {
+export default async function AuditPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ success?: string; canceled?: string }>;
+}) {
+  const params = await searchParams;
+  const paid = params.success === "1";
+  const canceled = params.canceled === "1";
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Suspense>
         <PurchaseConversion />
       </Suspense>
       <Navbar />
+
+      {paid && (
+        <div style={{
+          maxWidth: "720px", margin: "1.5rem auto 0", padding: "1.25rem 1.5rem",
+          background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.4)",
+          borderRadius: "10px",
+        }}>
+          <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "#4ade80", marginBottom: "0.4rem" }}>
+            Payment received. Your audit is underway.
+          </p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
+            You will get a confirmation from Stripe by email. James starts on your audit within hours and your full report, video walkthrough and badge arrive within 48 hours. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly.
+          </p>
+        </div>
+      )}
+      {canceled && (
+        <div style={{
+          maxWidth: "720px", margin: "1.5rem auto 0", padding: "1rem 1.5rem",
+          background: "rgba(244,241,234,0.05)", border: "1px solid rgba(244,241,234,0.15)",
+          borderRadius: "10px",
+        }}>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
+            Checkout was cancelled, nothing was charged. If something felt off or you have a question first, email support@redflagaipro.com and you will get a straight answer.
+          </p>
+        </div>
+      )}
 
       {/* ── HERO ── */}
       <section style={{

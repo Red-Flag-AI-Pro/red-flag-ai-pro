@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: Props) {
             height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
           <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Scan Your Copy for Free
+            Check Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
             Red Flag AI Pro checks your marketing copy against 30 risk categories across 10 jurisdictions in 60 seconds.

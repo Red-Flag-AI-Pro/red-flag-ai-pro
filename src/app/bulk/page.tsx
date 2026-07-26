@@ -7,8 +7,8 @@ import { BulkScanner } from "@/components/bulk/BulkScanner";
 import type { Plan } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Site Audit — Scan Every Page of a Website for Compliance",
-  description: "Enter a domain and Red Flag AI Pro scans every page from the sitemap for compliance risks. Up to 50 pages on Sentinel. Fastest way to audit a new client on day one.",
+  title: "Site Audit: Check Every Page of a Website for Compliance",
+  description: "Enter a domain and Red Flag AI Pro checks every page from the sitemap for compliance risks. Up to 50 pages on Sentinel. Fastest way to audit a new client on day one.",
 };
 
 export default async function BulkPage() {
@@ -30,14 +30,14 @@ export default async function BulkPage() {
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold text-[#F4F1EA]">Site Audit</h1>
-          <p className="text-sm text-[rgba(244,241,234,0.5)]">Scan every page of a website at once</p>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Check every page of a website at once</p>
         </div>
         <Card>
           <div className="text-center py-8">
             <p className="text-4xl mb-4"></p>
             <h2 className="text-lg font-bold text-[#F4F1EA] mb-2">Growth plan required</h2>
             <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6 max-w-sm mx-auto">
-              Site Audit scans your client&apos;s entire website in one go. Enter a domain, we find the sitemap and scan up to 50 pages for compliance issues.
+              Site Audit checks your client&apos;s entire website in one go. Enter a domain, we find the sitemap and check up to 50 pages for compliance issues.
             </p>
             <Link
               href="/billing"
@@ -57,8 +57,8 @@ export default async function BulkPage() {
         <h1 className="text-2xl font-bold text-[#F4F1EA]">Site Audit</h1>
         <p className="text-sm text-[rgba(244,241,234,0.5)]">
           {plan === "sentinel"
-            ? "Scan up to 50 pages per audit — Sentinel plan"
-            : "Scan up to 10 pages per audit — upgrade to Sentinel for 50"}
+            ? "Check up to 50 pages per audit, Sentinel plan"
+            : "Check up to 10 pages per audit, upgrade to Sentinel for 50"}
         </p>
       </div>
       <BulkScanner plan={plan} />

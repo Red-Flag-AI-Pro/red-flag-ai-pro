@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "API Documentation: Red Flag AI Pro",
-  description: "REST API for scanning marketing copy programmatically. Sentinel plan required.",
+  description: "REST API for checking marketing copy programmatically. Sentinel plan required.",
 };
 
 function Code({ children }: { children: string }) {
@@ -35,12 +35,12 @@ export default function DocsPage() {
           <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">Developer Docs</p>
           <h1 className="text-4xl font-extrabold mb-3" style={{ background: "linear-gradient(160deg, #F4F1EA 0%, #F4F1EA 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Red Flag AI Pro API</h1>
           <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
-            Scan marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Available on the Sentinel plan.
+            Check marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Available on the Sentinel plan.
           </p>
           <div className="mt-6 rounded-xl border border-gray-800 bg-gray-900/50 p-6 max-w-2xl">
             <p className="text-sm font-semibold text-white mb-2">Why agencies use the API</p>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Instead of your team manually pasting copy into the dashboard, the API lets you plug compliance scanning directly into the tools you already use. Your CMS can scan a page the moment it is published. Your project management tool can flag a task when copy fails. Your client portal can show a live compliance score without anyone lifting a finger. If it can make an HTTP request, it can use this API.
+              Instead of your team manually pasting copy into the dashboard, the API lets you plug compliance checking directly into the tools you already use. Your CMS can check a page the moment it is published. Your project management tool can flag a task when copy fails. Your client portal can show a live compliance score without anyone lifting a finger. If it can make an HTTP request, it can use this API.
             </p>
           </div>
           <div className="mt-4 flex gap-3">
@@ -73,7 +73,7 @@ export default function DocsPage() {
             <Tag method="POST" />
             <h2 className="text-xl font-bold text-white">/v1/scan</h2>
           </div>
-          <p className="text-gray-400 text-sm">Scan marketing copy for compliance risks. Returns a score, risk level, and all flags with suggested fixes.</p>
+          <p className="text-gray-400 text-sm">Check marketing copy for compliance risks. Returns a score, risk level, and all flags with suggested fixes.</p>
 
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Request body</p>
@@ -122,7 +122,7 @@ export default function DocsPage() {
             <Tag method="GET" />
             <h2 className="text-xl font-bold text-white">/v1/scans</h2>
           </div>
-          <p className="text-gray-400 text-sm">List your recent scans. Supports pagination.</p>
+          <p className="text-gray-400 text-sm">List your recent checks. Supports pagination.</p>
 
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Query parameters</p>
@@ -159,7 +159,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Webhooks</h2>
           <p className="text-gray-400 text-sm">
-            Set a webhook URL in Settings and we POST scan results there every time a scan completes - whether from the dashboard, URL scan, VSL scan, or API. Use with Zapier, Make, or your own backend.
+            Set a webhook URL in Settings and we POST check results there every time a check completes, whether from the dashboard, URL check, VSL check, or API. Use with Zapier, Make, or your own backend.
           </p>
 
           <div>
@@ -187,7 +187,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
               <li>Create a new Zap with trigger: Webhooks by Zapier → Catch Hook</li>
               <li>Copy the webhook URL Zapier gives you</li>
               <li>Paste it into Settings → Webhook URL in Red Flag AI Pro</li>
-              <li>Run a scan to test the connection</li>
+              <li>Run a check to test the connection</li>
               <li>Add your action (Slack message, Google Sheet row, email, etc.)</li>
             </ol>
           </div>
@@ -196,7 +196,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         {/* Risk categories */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Risk categories</h2>
-          <p className="text-gray-400 text-sm">Every paid plan (Pro, Growth, Sentinel) scans all 30 categories. The free plan scans 16.</p>
+          <p className="text-gray-400 text-sm">Every paid plan (Pro, Growth, Sentinel) checks all 30 categories. The free plan checks 16.</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               "income_claim", "urgency", "scarcity", "testimonial", "guarantee",
@@ -217,7 +217,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         {/* Rate limits */}
         <div>
           <h2 className="text-xl font-bold text-white mb-2">Rate limits</h2>
-          <p className="text-gray-400 text-sm">Sentinel plan: unlimited scans via dashboard. API calls are subject to fair use. If you need higher throughput, contact us.</p>
+          <p className="text-gray-400 text-sm">Sentinel plan: unlimited checks via dashboard. API calls are subject to fair use. If you need higher throughput, contact us.</p>
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center">

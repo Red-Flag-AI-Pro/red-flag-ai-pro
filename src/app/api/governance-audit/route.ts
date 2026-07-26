@@ -12,6 +12,7 @@ import {
   type GovernanceQuizResponse,
 } from '@/lib/governance-audit';
 import { enhanceGovernanceReport } from '@/lib/governance-enhance';
+import { sendGovernanceSummaryEmail } from '@/lib/governance-email';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
@@ -135,6 +136,23 @@ export async function POST(request: Request) {
         });
       } catch (notifyError) {
         console.error('Governance lead notification error:', notifyError);
+      }
+
+      // Send the respondent their summary straight away — the FAQ promises a
+      // summary in their inbox, and it doubles as the first warm touch.
+      try {
+        const topGaps = redFlags
+          .slice(0, 3)
+          .map((f: { title?: string; dimension?: string }) => f.title ?? f.dimension ?? '')
+          .filter(Boolean);
+        await sendGovernanceSummaryEmail({
+          email: trimmedEmail.toLowerCase(),
+          score: overallScore,
+          riskLevel,
+          topGaps,
+        });
+      } catch (summaryError) {
+        console.error('Governance summary email error:', summaryError);
       }
     }
 

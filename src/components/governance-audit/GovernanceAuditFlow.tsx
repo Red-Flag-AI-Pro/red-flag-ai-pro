@@ -46,7 +46,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
       if (!response.ok) {
         if (response.status === 409) {
           setError(
-            "You've already completed this assessment. Check your email for your report."
+            "You've already completed this assessment with this email. Your results were shown on screen at the time. If you want a fresh run or a deeper look, email support@redflagaipro.com."
           );
           return;
         }
@@ -125,7 +125,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
     window.location.href = '/pricing';
   };
   const handleUnlock = () => {
-    window.location.href = '/pricing';
+    window.location.href = '/signup?plan=enterprise&track=governance';
   };
 
   // ── Full results (email was already captured before the quiz started) ─────
@@ -200,7 +200,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
         </ul>
 
         <p style={{ ...syne, fontSize: '12px', color: 'rgba(244,241,234,0.45)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-          This is a quick signal, not a full audit. Growth and Sentinel customers complete a deeper, 24 point assessment built around their specific setup.
+          This is a quick signal, not a full audit. Growth and Sentinel customers complete a deeper assessment built around their specific setup.
         </p>
 
         <form onSubmit={handleStartSubmit}>

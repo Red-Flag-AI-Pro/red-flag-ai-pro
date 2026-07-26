@@ -227,7 +227,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             fontWeight: 700
           }}>
-            We're the only place that covers <span style={{color: "#ef4444"}}>all</span> of you. 100%.
+            One check covers <span style={{color: "#ef4444"}}>all</span> 10 jurisdictions at once.
           </p>
         </div>
 
@@ -248,7 +248,7 @@ export function DemoScanner() {
               Private & Secure
             </p>
             <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.5}}>
-              Your copy is checked in your browser only. We never store, sell, or see your data.
+              Your copy is checked securely and never shared or sold. We keep your email to send your results and one follow up, nothing else.
             </p>
           </div>
         </div>

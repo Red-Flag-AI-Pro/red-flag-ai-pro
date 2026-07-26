@@ -26,7 +26,7 @@ export default function ToolsPage() {
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>Your compliance toolkit. A free gift for signing up.</h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
-            Create a free account and these 9 compliance tools unlock instantly in your dashboard: risk calculators, disclaimer generator, testimonial checker, email compliance, refund rights checker and more. No scan credits used. Always free.
+            Create a free account and these 9 compliance tools unlock instantly in your dashboard: risk calculators, disclaimer generator, testimonial checker, email compliance, refund rights checker and more. No check credits used. Always free.
           </p>
           <div style={{display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center", marginBottom: "2.5rem"}}>
             {["Risk Calculator", "Disclaimer Generator", "Testimonial Checker", "Email Compliance", "Urgency Validator", "Health Claim Rater", "Red Flag Checklist", "Refund Rights", "Influencer Disclosure"].map((t) => (
@@ -76,7 +76,7 @@ export default function ToolsPage() {
             </Link>
             <Link href="/tools/url-exposure-checker" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>URL Exposure Checker</h2>
-              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Paste any live URL and we scan the actual page text for compliance red flags. No copy and paste needed.</p>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Paste any live URL and we check the actual page text for compliance red flags. No copy and paste needed.</p>
             </Link>
             <Link href="/tools/ai-visibility-checker" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>AI Visibility Checker</h2>

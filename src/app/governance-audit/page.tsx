@@ -51,7 +51,7 @@ export default async function GovernanceAuditPage({
             maxWidth: '820px',
             margin: '0 auto',
           }}>
-            Your <span style={{ fontStyle: 'italic', color: '#E5484D' }}>Governance Maturity Index</span>, scored across 6 dimensions, with audit ready evidence, in 5 minutes.
+            Your <span style={{ fontStyle: 'italic', color: '#E5484D' }}>Governance Maturity Index</span>, scored across 6 dimensions, with audit ready evidence, in 2 minutes.
           </h1>
 
           <p style={{
@@ -63,7 +63,7 @@ export default async function GovernanceAuditPage({
             margin: '0 auto',
             fontWeight: 500,
           }}>
-            Rest assured. Validated. Ready.
+            Find your biggest governance gap before an auditor does. Free, 12 questions, under 2 minutes.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default async function GovernanceAuditPage({
               fontWeight: 700,
               color: 'white',
             }}>
-              23 Questions
+              12 Questions
             </h3>
             <p style={{
               fontSize: '0.875rem',
@@ -110,7 +110,7 @@ export default async function GovernanceAuditPage({
               fontWeight: 700,
               color: 'white',
             }}>
-              5 Minutes
+              2 Minutes
             </h3>
             <p style={{
               fontSize: '0.875rem',
