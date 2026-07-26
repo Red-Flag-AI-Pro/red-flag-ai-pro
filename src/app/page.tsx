@@ -45,30 +45,25 @@ export default function LandingPage() {
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Photo, graded to a navy duotone so it reads as premium texture
-            rather than a literal stock image. Low opacity + a navy wash +
-            an edge vignette keep the headline crisp and the picture quiet. */}
+        {/* Photo comes through strongly — the stress of the moment is the
+            point. Brought well forward; only a top-weighted gradient keeps
+            the headline legible, and the bottom fades into the next section. */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           backgroundImage: "url(/images/hero-compliance.jpg)",
-          backgroundSize: "cover", backgroundPosition: "center 28%",
-          opacity: 0.34
+          backgroundSize: "cover", backgroundPosition: "center 25%",
+          opacity: 0.9
         }} />
-        {/* Navy colour wash over the photo (duotone feel) */}
+        {/* Legibility scrim: dark behind the headline at the top, clears
+            through the middle so the photo reads, blends to navy at the base. */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(150deg, rgba(13,27,46,0.55) 0%, rgba(10,22,40,0.35) 45%, rgba(13,27,46,0.6) 100%)",
-          mixBlendMode: "multiply"
+          background: "linear-gradient(180deg, rgba(10,22,40,0.86) 0%, rgba(10,22,40,0.5) 38%, rgba(10,22,40,0.32) 62%, rgba(10,22,40,0.75) 88%, #0A1628 100%)"
         }} />
-        {/* Vertical legibility gradient: darker top and bottom, image peeks mid */}
+        {/* Soft edge vignette to keep it feeling intentional, not a raw stock photo */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(180deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.55) 48%, #0A1628 100%)"
-        }} />
-        {/* Edge vignette for a graded, intentional look */}
-        <div aria-hidden style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          background: "radial-gradient(120% 90% at 50% 38%, transparent 55%, rgba(10,22,40,0.55) 100%)"
+          background: "radial-gradient(130% 100% at 50% 42%, transparent 60%, rgba(10,22,40,0.4) 100%)"
         }} />
         <div style={{
           position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
@@ -81,11 +76,11 @@ export default function LandingPage() {
             <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Two halves. One platform. Updated as the law changes.</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
-          <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA" }}>
+          <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA", textShadow: "0 2px 30px rgba(6,14,26,0.85), 0 1px 6px rgba(6,14,26,0.7)" }}>
             Catch what you said.<br />
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>Prove what you did.</span>
           </h1>
-          <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.74)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem" }}>
+          <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.86)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem", textShadow: "0 1px 12px rgba(6,14,26,0.85)" }}>
             Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. Pick the side you need, or run both.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
