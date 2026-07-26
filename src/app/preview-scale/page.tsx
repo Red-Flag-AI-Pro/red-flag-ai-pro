@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { ScaleMark } from "@/components/marketing/ScaleMark";
 
 // Internal WIP preview, never meant to be public or indexed.
+// The scale animation work is parked. The previous version of this page
+// (git history, ca7e7f6) imported the uncommitted ScaleMark component,
+// which broke production builds. This stub keeps the route buildable
+// until that work resumes.
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
@@ -15,9 +18,12 @@ export default function PreviewScalePage() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        color: "rgba(255,255,255,0.35)",
+        fontFamily: "'Syne', system-ui, sans-serif",
+        fontSize: "14px",
       }}
     >
-      <ScaleMark size={420} />
+      Internal preview parked. The scale mark work resumes on request.
     </div>
   );
 }
