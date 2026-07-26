@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { parse } from "node-html-parser";
+import { assertSafePublicUrl } from "@/lib/safe-fetch";
 
 interface A11yFlag {
   severity: "high" | "medium" | "low";
@@ -12,19 +13,11 @@ const SEVERITY_DEDUCTIONS = { high: 15, medium: 8, low: 3 };
 
 export async function POST(request: Request) {
   const body = await request.json();
-  let url: string = (body.url ?? "").trim();
-
-  if (!url) {
-    return NextResponse.json({ error: "A URL is required." }, { status: 400 });
+  const safe = await assertSafePublicUrl(body.url ?? "");
+  if (!safe.ok) {
+    return NextResponse.json({ error: safe.error }, { status: 400 });
   }
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
-    url = `https://${url}`;
-  }
-  try {
-    new URL(url);
-  } catch {
-    return NextResponse.json({ error: "Please enter a valid URL." }, { status: 400 });
-  }
+  const url = safe.url;
 
   let html: string;
   try {
