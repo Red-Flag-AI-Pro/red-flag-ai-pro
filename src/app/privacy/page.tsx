@@ -133,7 +133,8 @@ export default function PrivacyPage() {
                 ["Supabase", "Database and authentication (data stored in EU region)"],
                 ["Stripe", "Payment processing (PCI DSS compliant)"],
                 ["Vercel", "Website hosting"],
-                ["OpenAI / Anthropic", "AI processing of check requests"],
+                ["OpenAI / Anthropic", "AI processing of check requests and the site assistant"],
+                ["DigiCert / freeTSA", "For Sentinel customers only: the cryptographic hash of certain governance records is sent to an independent time stamping authority to seal them with a verifiable timestamp. The record's content itself is never sent, only its hash."],
                 ["Loops", "Email marketing and transactional emails (your email address and plan tier are shared to send relevant communications). You can unsubscribe at any time."],
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
@@ -143,6 +144,9 @@ export default function PrivacyPage() {
               ))}
             </ul>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>All third parties are bound by appropriate data processing agreements.</p>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>
+              Sharing a report by link is optional and off by default. If you choose to share one, its score and flags become visible to anyone with the link until you turn sharing off again.
+            </p>
           </div>
 
           {/* 6 */}

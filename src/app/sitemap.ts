@@ -24,6 +24,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      // The homepage's primary CTA and highest traffic marketing page — was
+      // missing from the sitemap entirely.
+      url: `${baseUrl}/compliance-assessment`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/sentinel`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
