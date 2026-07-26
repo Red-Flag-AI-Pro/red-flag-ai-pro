@@ -12,9 +12,35 @@ import {
 } from "@/lib/constants";
 import Link from "next/link";
 
-function ShareButton({ scanId }: { scanId: string }) {
+function ShareButton({
+  scanId,
+  isPublic,
+  onToggle,
+}: {
+  scanId: string;
+  isPublic: boolean;
+  onToggle: (next: boolean) => void;
+}) {
   const [copied, setCopied] = useState(false);
+  const [busy, setBusy] = useState(false);
   const shareUrl = `${typeof window !== "undefined" ? window.location.origin : "https://redflagaipro.com"}/share/${scanId}`;
+
+  async function setShared(next: boolean) {
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/scans/${scanId}/share`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isPublic: next }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        onToggle(data.isPublic === true);
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
 
   function copy() {
     navigator.clipboard.writeText(shareUrl);
@@ -22,17 +48,46 @@ function ShareButton({ scanId }: { scanId: string }) {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  // Not yet shared: one click to make the report viewable by link.
+  if (!isPublic) {
+    return (
+      <button
+        onClick={() => setShared(true)}
+        disabled={busy}
+        className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors disabled:opacity-60"
+      >
+        {busy ? "Enabling…" : "Share report"}
+      </button>
+    );
+  }
+
+  // Shared: show the live link, copy, and a way to make it private again.
   return (
-    <button
-      onClick={copy}
-      className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#102943] px-4 py-2 text-sm font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
-    >
-      {copied ? "✓ Link copied" : " Share"}
-    </button>
+    <div className="w-full rounded-xl border border-[rgba(34,197,94,0.25)] bg-[#0A1628] p-4 space-y-2">
+      <p className="text-xs font-semibold text-green-300">This report is shareable by link</p>
+      <div className="flex gap-2">
+        <code className="flex-1 rounded-lg border border-white/10 bg-[#102943] px-3 py-2 text-xs text-[rgba(244,241,234,0.7)] break-all font-mono">
+          {shareUrl}
+        </code>
+        <button
+          onClick={copy}
+          className="shrink-0 rounded-lg border border-white/15 px-3 py-2 text-xs font-medium text-[rgba(244,241,234,0.8)] hover:bg-white/5 transition-colors"
+        >
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
+      <button
+        onClick={() => setShared(false)}
+        disabled={busy}
+        className="text-xs text-[rgba(244,241,234,0.5)] hover:text-[rgba(244,241,234,0.8)] transition-colors disabled:opacity-60"
+      >
+        {busy ? "Updating…" : "Make private again"}
+      </button>
+    </div>
   );
 }
 
-function BadgeButton({ scanId }: { scanId: string }) {
+function BadgeButton({ scanId, isPublic }: { scanId: string; isPublic: boolean }) {
   const [open, setOpen] = useState(false);
   const badgeUrl = `${typeof window !== "undefined" ? window.location.origin : "https://redflagaipro.com"}/api/badge/${scanId}`;
   const embedCode = `<a href="https://redflagaipro.com" target="_blank" rel="noopener"><img src="${badgeUrl}" alt="Compliance verified by Red Flag AI Pro" style="height:60px;border:none;"/></a>`;
@@ -52,7 +107,12 @@ function BadgeButton({ scanId }: { scanId: string }) {
       >
          Embed badge
       </button>
-      {open && (
+      {open && !isPublic && (
+        <div className="w-full mt-1 rounded-xl border border-white/10 bg-[#0A1628] p-4">
+          <p className="text-xs text-[rgba(244,241,234,0.7)]">Turn on <span className="font-semibold">Share report</span> first. The badge only works on reports you have made shareable, so it never exposes a private one.</p>
+        </div>
+      )}
+      {open && isPublic && (
         <div className="w-full mt-1 rounded-xl border border-white/10 bg-[#0A1628] p-4 space-y-3">
           <div>
             <p className="text-xs font-semibold text-[rgba(244,241,234,0.8)] mb-2">Preview</p>
@@ -151,6 +211,7 @@ export function ScanResultCard({ scan, flags, plan, print = false }: ScanResultC
   const highCount = flags.filter((f) => f.severity === "high").length;
   const medCount = flags.filter((f) => f.severity === "medium").length;
   const lowCount = flags.filter((f) => f.severity === "low").length;
+  const [isPublic, setIsPublic] = useState<boolean>(scan.is_public === true);
 
   return (
     <div className="rounded-xl border border-white/10 bg-[#102943] p-6">
@@ -256,8 +317,8 @@ export function ScanResultCard({ scan, flags, plan, print = false }: ScanResultC
               >
                 New scan
               </Link>
-              <ShareButton scanId={scan.id} />
-              <BadgeButton scanId={scan.id} />
+              <ShareButton scanId={scan.id} isPublic={isPublic} onToggle={setIsPublic} />
+              <BadgeButton scanId={scan.id} isPublic={isPublic} />
               <VideoButton scanId={scan.id} />
             </div>
           )}

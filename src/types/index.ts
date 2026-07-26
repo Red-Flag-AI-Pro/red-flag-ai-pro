@@ -19,6 +19,9 @@ export interface Scan {
   score: number;
   status: ScanStatus;
   created_at: string;
+  // Opt-in public sharing. Private by default; set true only when the owner
+  // shares the report. Gates the public share page and badge.
+  is_public?: boolean;
 }
 
 export type Disposition = "resolved" | "accepted_risk" | "not_applicable";

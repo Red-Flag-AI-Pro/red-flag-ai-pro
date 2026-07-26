@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/server";
 
 export const revalidate = 3600; // cache badge for 1 hour
 
@@ -21,13 +21,16 @@ export async function GET(
 ) {
   const { scanId } = await params;
 
-  // Public read - use server client, RLS allows scan owner to read
-  // We make this publicly readable by querying without user filter
-  const supabase = await createClient();
+  // Public read via the service-role client, gated on is_public. The badge is
+  // only ever rendered for a report the owner deliberately shared; a private
+  // or unknown id returns not found. Only the three fields the badge needs are
+  // selected, never user_id or content.
+  const supabase = await createServiceClient();
   const { data: scan } = await supabase
     .from("scans")
     .select("score, title, created_at")
     .eq("id", scanId)
+    .eq("is_public", true)
     .single();
 
   if (!scan) {

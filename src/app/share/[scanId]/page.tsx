@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/server";
 import { FlagList } from "@/components/scans/FlagList";
 import { ScoreGauge } from "@/components/ui/ScoreGauge";
 import { Badge } from "@/components/ui/Badge";
@@ -13,13 +13,17 @@ export default async function SharePage({
   params: Promise<{ scanId: string }>;
 }) {
   const { scanId } = await params;
-  const supabase = await createClient();
+  const supabase = await createServiceClient();
 
-  // Public read — no user_id filter, scan ID is the access token
+  // Public read via the service-role client, gated on is_public. A report is
+  // private by default and only shows here once its owner deliberately shared
+  // it. A private or unknown id returns not found, so nothing is exposed that
+  // the owner did not choose to publish.
   const { data: scan } = await supabase
     .from("scans")
     .select("id, title, score, created_at, status, user_id")
     .eq("id", scanId)
+    .eq("is_public", true)
     .single();
 
   if (!scan) notFound();
