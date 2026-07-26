@@ -3,6 +3,7 @@ import { Inter, Syne, DM_Mono, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
+import { SiteAssistant } from "@/components/marketing/SiteAssistant";
 import { ConsentScripts } from "@/components/ConsentScripts";
 import "./globals.css";
 
@@ -144,6 +145,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <CookieBanner />
+        <SiteAssistant />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
