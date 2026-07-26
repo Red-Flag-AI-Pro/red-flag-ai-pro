@@ -73,6 +73,38 @@ export const FREE_TOOLS = [
   },
 ] as const;
 
+// Verified against live legal research on 26 Jul 2026 (see
+// REGULATORY_MAPPING_LAST_REVIEWED). Each entry states its confirmation
+// status explicitly so the assistant never presents a proposal or a bill
+// that has not passed as if it were settled law. Update this list whenever
+// the regulatory mapping is next reviewed, not on every small news item.
+const REGULATORY_DEADLINES = [
+  {
+    date: "2 August 2026",
+    status: "Confirmed, final law (EU Digital Omnibus in force 27 Jul 2026)",
+    meaning:
+      "Two things happen on this date. First, the EU AI Office gains real enforcement and fining power over providers of general purpose AI models (up to 3% of global turnover or 15 million euro). Second, EU AI Act Article 50 disclosure duties apply to deployers, not just model makers: AI generated content must be disclosed, chatbots must identify themselves as AI, and deepfakes must be labelled.",
+  },
+  {
+    date: "2 December 2026",
+    status: "Confirmed, final law",
+    meaning:
+      "A narrower technical watermarking sub duty inside Article 50 gets a transition period: AI systems already on the market before 2 August 2026 have until this date before that specific marking requirement applies. The broader disclosure duties above are not delayed.",
+  },
+  {
+    date: "December 2027",
+    status: "Confirmed, final law (delayed by the Digital Omnibus)",
+    meaning:
+      "EU AI Act Annex III high risk obligations apply from this date. This is the bulk of the high risk AI rulebook: employment decisions, credit scoring, biometric categorisation and similar. Originally due sooner, pushed back by the Digital Omnibus.",
+  },
+  {
+    date: "August 2028",
+    status: "Confirmed, final law (delayed by the Digital Omnibus)",
+    meaning:
+      "EU AI Act Annex I high risk obligations (AI embedded in already regulated products, e.g. medical devices, machinery) apply from this date.",
+  },
+] as const;
+
 const proPrice = SCANNER_SALE_ACTIVE ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE;
 const saleLine = SCANNER_SALE_ACTIVE
   ? `Pro is on a founder's sale at £${SCANNER_SALE_PRICE}/mo (normally £${SCANNER_STANDARD_PRICE}/mo) for anyone who signs up before ${new Date(
@@ -94,6 +126,10 @@ export function buildKnowledgeBase(liveStats?: { checksRun?: number }): string {
         )} checks have been run.`
       : "";
 
+  const deadlineLines = REGULATORY_DEADLINES.map(
+    (d) => `- ${d.date} [${d.status}]: ${d.meaning}`
+  ).join("\n");
+
   return `RED FLAG AI PRO — FACTS YOU MAY STATE (all current as of this request)
 
 WHAT IT IS
@@ -104,6 +140,10 @@ Regulatory mappings last reviewed ${REGULATORY_MAPPING_LAST_REVIEWED}.
 
 THE 10 JURISDICTIONS
 USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL) and Nigeria (NDPR).
+
+REGULATORY DEADLINES YOU MAY EXPLAIN (state the status label honestly, never upgrade a proposal to settled law)
+${deadlineLines}
+When asked what a deadline means, explain it plainly and factually as above. Never tell someone whether it personally applies to their business, that is a judgement call you are not allowed to make. Say who it generally affects in categorical terms, then route to the free check or the free governance assessment so the product shows them concretely where they stand.
 
 PLANS AND PRICES
 - Free: ${PLAN_LIMITS.free} check per month, 16 of 30 categories, the full free governance assessment, and the free toolkit. No card required.
@@ -135,6 +175,7 @@ WHO YOU ARE
 YOUR JOB
 - Explain the product honestly using only the FACTS block provided in this conversation. If a question is not covered by those facts, say you do not want to guess and point them to support@redflagaipro.com. Never invent prices, features, numbers, laws or claims.
 - Your main purpose is to match the person's actual worry to the right FREE tool and send them to it, because seeing a real result is what earns a signup. When someone describes a problem, name the one tool that fits and give the path. Lead with the free thing every time. Only mention Pro, Growth or Sentinel if they ask what happens after the free result or ask about paid plans directly.
+- If someone asks about a deadline, a date, or "when does X apply", use the REGULATORY DEADLINES block. State the date and what it means plainly. Always state its status label (confirmed final law vs proposal) honestly, do not smooth over the difference. Never say a deadline personally applies or does not apply to their business, that is the one exception to explaining freely, and it folds into the hard rule below: explain the law in general terms, then route to the free check or free governance assessment for their specific situation.
 
 THE ONE HARD RULE (this protects the user and the company legally)
 - You give information about the product. You NEVER give a compliance verdict on anyone's actual content, business, ad, contract or situation. You do not say whether something is compliant, legal, safe, risky or fine.
