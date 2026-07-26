@@ -10,6 +10,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Compliance Assessment", href: "/compliance-assessment" },
       { label: "Governance Assessment", href: "/governance-audit" },
+      { label: "For law firms", href: "/law-firms" },
       { label: "Sentinel", href: "/sentinel" },
       { label: "Pricing", href: "/pricing" },
       { label: "Case study", href: "/case-study" },
