@@ -6,6 +6,66 @@ import { Resend } from "resend";
 import type Stripe from "stripe";
 
 const NOTIFY_TO = "support@redflagaipro.com";
+const REPORT_STORAGE_BUCKET = "reports";
+const REPORT_STORAGE_PATH = "the-mystery-of-ai-governance.pdf";
+const REPORT_SIGNED_URL_TTL_SECONDS = 60 * 60 * 24 * 14; // 14 days
+
+// A paid report is instant, self-serve delivery — no 48 hour promise, no
+// human in the loop. Never throws: a mail failure must not fail the webhook
+// or Stripe retries the whole event.
+async function deliverReportPurchase(
+  supabase: ReturnType<typeof getAdminClient>,
+  session: Stripe.Checkout.Session
+) {
+  const email = session.customer_email ?? session.customer_details?.email ?? null;
+  const name = session.customer_details?.name ?? "";
+  try {
+    const { data: signed, error: signError } = await supabase.storage
+      .from(REPORT_STORAGE_BUCKET)
+      .createSignedUrl(REPORT_STORAGE_PATH, REPORT_SIGNED_URL_TTL_SECONDS);
+
+    if (signError || !signed?.signedUrl) {
+      console.error("report signed URL failed:", signError);
+      if (process.env.RESEND_API_KEY) {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        await resend.emails.send({
+          from: "Red Flag AI Pro <reports@redflagaipro.com>",
+          to: NOTIFY_TO,
+          subject: `URGENT: report delivery failed for ${email ?? "unknown buyer"}`,
+          html: `<p>Signed URL generation failed for a paid report purchase (session ${session.id}). Deliver manually to ${email ?? "unknown"}.</p>`,
+        });
+      }
+      return;
+    }
+
+    if (email && process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { error } = await resend.emails.send({
+        from: "Red Flag AI Pro <reports@redflagaipro.com>",
+        to: email,
+        replyTo: "support@redflagaipro.com",
+        subject: "Your copy of The Mystery of AI Governance",
+        html: `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.6;color:#1A2333">
+          <p>${name ? `Hi ${name},` : "Hi,"}</p>
+          <p>Thanks for buying <strong>The Mystery of AI Governance</strong>. Here is your copy:</p>
+          <p><a href="${signed.signedUrl}" style="color:#B8393D;font-weight:bold;">Download the report (PDF)</a></p>
+          <p>This link stays valid for 14 days. If it expires before you get to it, just reply to this email and we will send a fresh one.</p>
+          <p>If you find a factual error anywhere in it, tell us, we correct publicly.</p>
+          <p>James Stokes<br/>Founder, Red Flag AI Pro</p>
+        </div>`,
+      });
+      if (error) console.error("report delivery email failed:", error);
+    } else if (!email) {
+      console.error("report paid but no customer email on session:", session.id);
+    }
+
+    if (email) {
+      await sendLoopsEvent({ email, eventName: "report_purchased", properties: { amount: "4.99", report: "mystery-of-ai-governance" } });
+    }
+  } catch (err) {
+    console.error("report delivery error:", err);
+  }
+}
 
 // A paid £179 audit starts a 48 hour delivery promise — the founder must
 // know the moment it happens, not whenever Stripe is next checked. Never
@@ -128,6 +188,21 @@ export async function POST(request: Request) {
       const plan = session.metadata?.plan;
 
       if (!userId || !plan) break;
+
+      // One-time report purchase — record in report_orders, deliver instantly
+      if (plan === "report") {
+        await supabase.from("report_orders").insert({
+          user_id: userId,
+          email: session.customer_email ?? session.customer_details?.email ?? "",
+          stripe_session_id: session.id,
+          stripe_payment_intent: (session.payment_intent as string) ?? null,
+          amount_gbp: session.amount_total ? session.amount_total / 100 : 4.99,
+          report_slug: "mystery-of-ai-governance",
+          status: "delivered",
+        });
+        await deliverReportPurchase(supabase, session);
+        break;
+      }
 
       // One-time audit purchase — record in audit_orders
       if (plan === "audit") {

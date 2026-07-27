@@ -50,6 +50,15 @@ export const AUDIT_PRICE = {
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
 
+// One-time report purchase, same inline price_data pattern as AUDIT_PRICE —
+// no Stripe dashboard Product/Price needed, the displayed and charged amount
+// share this single source of truth.
+export const REPORT_PRICE = {
+  amount: 4.99,
+  label: "The Mystery of AI Governance (report)",
+  slug: "mystery-of-ai-governance",
+};
+
 // Founder's birthday sale: Pro at £149/mo for anyone who signs up before
 // 1 Aug 2026. Existing-subscriber-grandfathering policy applies, same as any
 // other price change, so sale signups keep £149/mo for as long as they stay
