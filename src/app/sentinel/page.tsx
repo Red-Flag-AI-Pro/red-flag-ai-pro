@@ -103,81 +103,77 @@ export default function SentinelPage() {
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
-      {/* Sentinel teaser — slim */}
-      <section style={{
-        background: "linear-gradient(180deg, #0D1B2E 0%, #0C1A2C 50%, #0D1B2E 100%)",
-        padding: "6rem 1.5rem",
-        textAlign: "center",
-        borderTop: "1px solid rgba(255,255,255,0.05)"
-      }}>
-        <div style={{maxWidth: "600px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Sentinel: managed governance &amp; compliance</p>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", marginBottom: "1rem"}}>Built for agencies and regulated businesses.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem"}}>Human review logs, legal timestamps, PDF reports, FCA financial promotions, greenwashing checks, governance evidence and a cryptographically sealed audit trail you can verify on demand.</p>
-          <div style={{display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap"}}>
-            <Link href="/signup?track=both" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>Get started free</Link>
-            <a href="#request" style={{display: "inline-flex", alignItems: "center", fontFamily: "'Syne', sans-serif", fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)", padding: "12px 28px", borderRadius: "9999px", textDecoration: "none"}}>Get in touch</a>
-          </div>
-          <Link href="/verify" style={{display: "block", marginTop: "1.5rem", fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(229,72,77,0.85)", textDecoration: "underline"}}>
-            Don&apos;t take our word for it — verify a real audit record yourself →
-          </Link>
-        </div>
-      </section>
+      {/* Gold sheen for the Sentinel wordmark, page local so globals stay untouched */}
+      <style>{`
+        @keyframes sentinelSheen {
+          0% { background-position: 200% center; }
+          55%, 100% { background-position: -200% center; }
+        }
+        .sentinel-gold {
+          background: linear-gradient(110deg, #C9A66B 25%, #F7EDD8 42%, #E8D5AC 48%, #C9A66B 62%);
+          background-size: 250% auto;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: #C9A66B;
+          animation: sentinelSheen 6s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .sentinel-gold { animation: none; }
+        }
+      `}</style>
 
-      {/* ── HERO ── */}
+      {/* ── HERO ── photo graded to navy, same system as /law-firms */}
       <section style={{
         position: "relative", overflow: "hidden",
-        padding: "10rem 1.5rem 8rem",
+        padding: "clamp(6rem, 14vw, 10rem) 1.5rem clamp(5rem, 10vw, 7rem)",
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
-        {/* Red glow */}
-        <div style={{
-          position: "absolute", top: "-150px", left: "50%", transform: "translateX(-50%)",
-          width: "1000px", height: "700px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 60%)"
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          backgroundImage: "url(/images/sentinel/tower.jpg)",
+          backgroundSize: "cover", backgroundPosition: "center 35%",
+          filter: "saturate(0.55) contrast(1.05) brightness(0.9)"
         }} />
-        {/* Grid */}
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.025,
-          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply"
+        }} />
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(180deg, rgba(10,22,40,0.7) 0%, rgba(10,22,40,0.35) 40%, rgba(10,22,40,0.55) 75%, #0A1628 100%)"
         }} />
 
         <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "2.5rem" }}>
-            <span className="flag-wave" style={{ display: "inline-block" }}>
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="1" x2="2" y2="15" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
-              </svg>
-            </span>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>
-              Stay compliant. Stay protected. Stay ahead.
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "2rem" }}>
+            <span style={{ width: "28px", height: "1px", background: "rgba(201,166,107,0.6)" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.65)" }}>
+              Managed governance and compliance
             </p>
+            <span style={{ width: "28px", height: "1px", background: "rgba(201,166,107,0.6)" }} />
           </div>
 
-          <h1 style={{
+          <h1 className="sentinel-gold" style={{
             ...syne,
-            fontSize: "clamp(3rem, 8vw, 6rem)",
+            fontSize: "clamp(3rem, 9vw, 6.5rem)",
             fontWeight: 800,
             lineHeight: 1.0,
-            letterSpacing: "-0.04em",
-            color: "#F4F1EA",
-            marginBottom: "2.5rem"
+            letterSpacing: "-0.03em",
+            marginBottom: "1.75rem"
           }}>
             Sentinel
           </h1>
 
-          <p style={{ ...syne, fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)", fontWeight: 600, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, maxWidth: "600px", margin: "0 auto 1rem" }}>
-            Compliance infrastructure for agencies, legal teams and regulated businesses.
+          <p className="font-display" style={{ fontSize: "clamp(1.3rem, 3.2vw, 1.9rem)", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.4, maxWidth: "680px", margin: "0 auto 1.25rem", textShadow: "0 2px 30px rgba(6,14,26,0.95), 0 2px 8px rgba(6,14,26,0.9)" }}>
+            When the question comes, <span style={{ fontStyle: "italic", color: "#E5484D" }}>the record answers.</span>
           </p>
 
-          <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.35)", lineHeight: 1.8, maxWidth: "520px", margin: "0 auto 3.5rem" }}>
-            All 30 risk categories, legally mapped across 10 jurisdictions. Human review logs. Legal timestamps. Tamper resistant audit trail. Built for the teams where a compliance failure is a regulatory event.
+          <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.85)", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 3rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
+            Compliance infrastructure for agencies, legal teams and regulated businesses. All 30 risk categories across 10 jurisdictions, human review logs, independent timestamps and a tamper evident audit trail. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
             <a href="#request" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               background: "#E5484D", color: "white",
@@ -190,8 +186,8 @@ export default function SentinelPage() {
             </a>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "rgba(255,255,255,0.55)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "rgba(255,255,255,0.75)",
               ...syne, fontSize: "0.9rem", fontWeight: 600,
               padding: "14px 32px", borderRadius: "9999px",
               textDecoration: "none"
@@ -199,6 +195,9 @@ export default function SentinelPage() {
               View pricing
             </Link>
           </div>
+          <Link href="/verify" style={{ display: "inline-block", ...syne, fontSize: "12px", fontWeight: 600, color: "rgba(229,72,77,0.9)", textDecoration: "underline", textShadow: "0 1px 3px rgba(6,14,26,0.95)" }}>
+            Don&apos;t take our word for it — verify a real audit record yourself →
+          </Link>
         </div>
       </section>
 
@@ -287,6 +286,67 @@ export default function SentinelPage() {
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8 }}>{b.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── THE SIGNED RECORD ── photo panel + copy, same pattern as /law-firms evidence section */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "linear-gradient(180deg, #0A1628 0%, #0C1929 100%)" }}>
+        <div style={{
+          maxWidth: "1050px", margin: "0 auto",
+          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "3rem", alignItems: "center"
+        }}>
+          {/* Photo panel: signature, graded to navy */}
+          <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", minHeight: "420px" }}>
+            <div aria-hidden style={{
+              position: "absolute", inset: 0,
+              backgroundImage: "url(/images/sentinel/signature.jpg)",
+              backgroundSize: "cover", backgroundPosition: "center",
+              filter: "saturate(0.5) contrast(1.08) brightness(0.85)"
+            }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.5)", mixBlendMode: "multiply" }} />
+            <div aria-hidden style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)"
+            }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.75rem" }}>
+              <p style={{ ...mono, fontSize: "clamp(14px, 2.4vw, 17px)", fontWeight: 500, color: "rgba(244,241,234,0.95)", letterSpacing: "0.08em", lineHeight: 1.7, textShadow: "0 1px 8px rgba(6,14,26,0.9)" }}>
+                reviewed by named signatory · role recorded
+                <br />
+                sealed into the chain · independent timestamp
+              </p>
+            </div>
+          </div>
+
+          {/* Copy panel */}
+          <div>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
+              A name on every decision
+            </p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2rem" }}>
+              &ldquo;Someone reviewed it&rdquo;
+              <br />
+              is not a defence. A record is.
+            </h2>
+
+            <div style={{ display: "grid", gap: "1.5rem" }}>
+              {[
+                { h: "Every review signed, the moment it happens.", b: "Each check and each sign off carries the reviewer's name and role, written into a SHA-256 hash chain. Edit, delete or backdate any record and the break is provable." },
+                { h: "Independent timestamps a court can weigh.", b: "High value records are sealed with an RFC 3161 trusted timestamp from an independent authority, verifiable with standard tools, without trusting our database or yours." },
+                { h: "Verify a record yourself, right now.", b: "We publish a live verification page. Open a real audit record, check the chain, confirm nothing was altered. No account, no sales call." },
+                { h: "A report you can hand to anyone.", b: "Every check produces a PDF with the score, the flags, the reviewer and the timestamp. Built for an insurer, a client file or a regulator, without a covering explanation." },
+              ].map((e) => (
+                <div key={e.h} style={{ borderLeft: "2px solid rgba(229,72,77,0.4)", paddingLeft: "1.25rem" }}>
+                  <h3 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.4rem" }}>{e.h}</h3>
+                  <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.42)", lineHeight: 1.7 }}>{e.b}</p>
+                </div>
+              ))}
+            </div>
+
+            <Link href="/verify" style={{ display: "inline-block", marginTop: "2rem", ...syne, fontSize: "13px", fontWeight: 700, color: "#E5484D", textDecoration: "underline" }}>
+              Verify a real audit record yourself, no account needed →
+            </Link>
           </div>
         </div>
       </section>
@@ -496,6 +556,36 @@ export default function SentinelPage() {
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "1.5rem" }}>
             Competitor pricing based on publicly available information and industry estimates.
           </p>
+        </div>
+      </section>
+
+      {/* ── SKYLINE BAND ── one statement over the night city, same pattern as the /law-firms library band */}
+      <section style={{
+        position: "relative", overflow: "hidden",
+        padding: "9rem 1.5rem",
+        borderBottom: "1px solid rgba(255,255,255,0.05)"
+      }}>
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          backgroundImage: "url(/images/sentinel/skyline.jpg)",
+          backgroundSize: "cover", backgroundPosition: "center 55%",
+          filter: "saturate(0.6) contrast(1.05) brightness(0.85)"
+        }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.3) 30%, rgba(10,22,40,0.4) 70%, #0A1628 100%)"
+        }} />
+        <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <h2 className="font-display" style={{
+            fontSize: "clamp(1.9rem, 4.5vw, 3rem)", fontWeight: 500,
+            letterSpacing: "-0.02em", lineHeight: 1.2, color: "#F4F1EA",
+            textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)"
+          }}>
+            Everyone else has gone home.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>The record is still on duty.</span>
+          </h2>
         </div>
       </section>
 
