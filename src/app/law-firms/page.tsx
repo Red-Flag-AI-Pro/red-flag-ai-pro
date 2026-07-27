@@ -78,6 +78,34 @@ const EVIDENCE = [
   },
 ];
 
+const RULES = [
+  {
+    rule: "SRA Transparency Rules",
+    demands: "Price and service information for specified practice areas, complaints signposting and regulatory information must be published on your website, accurately.",
+    checks: "Pricing transparency, missing disclosures and required information checks across your published pages.",
+  },
+  {
+    rule: "LASPO s.56 referral fee ban",
+    demands: "Paid referral arrangements in personal injury work are banned, and acquisition marketing must not disguise them.",
+    checks: "Undisclosed paid promotion and acquisition claims flagged in marketing copy before it publishes.",
+  },
+  {
+    rule: "DMCC Act 2024",
+    demands: "The CMA now fines unfair commercial practices directly, up to 10% of global turnover. Fake reviews, false urgency and misleading price claims are explicitly in scope.",
+    checks: "Fake discount patterns, manufactured urgency, testimonial and review claims, and misleading statements, the core of our 30 risk categories.",
+  },
+  {
+    rule: "UK GDPR and PECR",
+    demands: "Marketing emails need a lawful basis, honest sender identification and a working opt out.",
+    checks: "Email compliance checks on your outbound marketing copy.",
+  },
+  {
+    rule: "EU AI Act Article 50",
+    demands: "From 2 August 2026, AI generated content requires transparency. Firms using AI for client facing content carry the obligation.",
+    checks: "AI disclosure checks, plus the governance record proving human review, sealed and timestamped.",
+  },
+];
+
 const WHO = [
   {
     label: "Managing partners",
@@ -331,7 +359,7 @@ export default function LawFirmsPage() {
               }}
             />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.75rem" }}>
-              <p style={{ ...mono, fontSize: "10px", color: "rgba(244,241,234,0.75)", letterSpacing: "0.12em", lineHeight: 1.8 }}>
+              <p style={{ ...mono, fontSize: "clamp(14px, 2.4vw, 17px)", fontWeight: 500, color: "rgba(244,241,234,0.95)", letterSpacing: "0.08em", lineHeight: 1.7, textShadow: "0 1px 8px rgba(6,14,26,0.9)" }}>
                 record #4,182 · sealed 26 Jul 2026 14:03:11 UTC
                 <br />
                 sha256 9f2c…b417 · chain intact · RFC 3161 verified
@@ -374,6 +402,54 @@ export default function LawFirmsPage() {
               Verify a real audit record yourself, no account needed →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── THE RULES WE CHECK AGAINST ── */}
+      <section style={{ padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "linear-gradient(180deg, #0A1628 0%, #0C1929 100%)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
+              Specific, not vague
+            </p>
+            <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.05 }}>
+              The rules we check
+              <br />
+              law firm marketing against.
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gap: "2px" }}>
+            {RULES.map((r, i) => (
+              <div
+                key={r.rule}
+                style={{
+                  background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                  border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
+                  padding: "1.75rem 2rem",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "1.25rem",
+                  alignItems: "start",
+                }}
+              >
+                <div>
+                  <h3 style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.4rem" }}>{r.rule}</h3>
+                  <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{r.demands}</p>
+                </div>
+                <div style={{ borderLeft: "2px solid rgba(229,72,77,0.4)", paddingLeft: "1.25rem" }}>
+                  <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.4rem" }}>What we check</p>
+                  <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>{r.checks}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.35)", textAlign: "center", marginTop: "2.5rem", lineHeight: 1.8, maxWidth: "640px", marginLeft: "auto", marginRight: "auto" }}>
+            And the honest scope line: we are not your AML officer, your accounts auditor or your PI broker.
+            We cover the published word and the AI governance record, the two places where the evidence
+            either exists or it does not.
+          </p>
         </div>
       </section>
 
