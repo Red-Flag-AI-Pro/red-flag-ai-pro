@@ -45,20 +45,21 @@ export default function LandingPage() {
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Photo is the hero. Shown at full strength so the person and the
-            stress of the moment are unmistakable. */}
+        {/* Real photo, graded to navy: same duotone recipe as /law-firms so
+            every page reads as one system. */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "url(/images/hero-compliance.jpg)",
-          backgroundSize: "cover", backgroundPosition: "center 22%",
-          opacity: 1
+          backgroundImage: "url(/images/law/scales.jpg)",
+          backgroundSize: "cover", backgroundPosition: "center 30%",
+          filter: "saturate(0.5) contrast(1.08) brightness(0.85)"
         }} />
-        {/* Light scrim only where the text sits: a touch at the very top and
-            a fade to navy at the base to blend into the next section. The
-            middle is left clear so the image reads at full strength. */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(180deg, rgba(10,22,40,0.6) 0%, rgba(10,22,40,0.18) 30%, rgba(10,22,40,0.05) 55%, rgba(10,22,40,0.55) 90%, #0A1628 100%)"
+          background: "rgba(10,22,40,0.5)", mixBlendMode: "multiply"
+        }} />
+        <div aria-hidden style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(180deg, rgba(10,22,40,0.72) 0%, rgba(10,22,40,0.35) 40%, rgba(10,22,40,0.55) 75%, #0A1628 100%)"
         }} />
         <div style={{
           position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
