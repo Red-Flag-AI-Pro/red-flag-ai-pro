@@ -78,11 +78,38 @@ const FAQS = [
 export default async function MysteryOfAIGovernancePage({
   searchParams,
 }: {
-  searchParams: Promise<{ success?: string; canceled?: string }>;
+  searchParams: Promise<{ success?: string; canceled?: string; session_id?: string }>;
 }) {
   const params = await searchParams;
   const paid = params.success === "1";
   const canceled = params.canceled === "1";
+
+  // Instant delivery on the success page: verify the Stripe session
+  // server-side, then hand over a signed download link directly. The
+  // unguessable session id acts as the bearer of proof-of-purchase, so no
+  // email leg is required for the customer to get their copy.
+  let downloadUrl: string | null = null;
+  if (paid && params.session_id?.startsWith("cs_")) {
+    try {
+      const { stripe } = await import("@/lib/stripe");
+      const session = await stripe.checkout.sessions.retrieve(params.session_id);
+      const settled = session.payment_status === "paid" || session.payment_status === "no_payment_required";
+      if (settled && session.metadata?.plan === "report") {
+        const { createClient: createAdminClient } = await import("@supabase/supabase-js");
+        const admin = createAdminClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
+        const { data: signed } = await admin.storage
+          .from("reports")
+          .createSignedUrl("the-mystery-of-ai-governance.pdf", 60 * 60 * 24 * 7);
+        downloadUrl = signed?.signedUrl ?? null;
+      }
+    } catch (err) {
+      console.error("report success-page delivery failed:", err);
+    }
+  }
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Suspense>
@@ -90,17 +117,41 @@ export default async function MysteryOfAIGovernancePage({
       </Suspense>
       <Navbar />
 
-      {paid && (
+      {paid && downloadUrl && (
+        <div style={{
+          maxWidth: "720px", margin: "1.5rem auto 0", padding: "1.5rem 1.5rem",
+          background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.4)",
+          borderRadius: "10px", textAlign: "center",
+        }}>
+          <p style={{ ...syne, fontSize: "16px", fontWeight: 700, color: "#4ade80", marginBottom: "0.75rem" }}>
+            Payment received. Your copy is ready.
+          </p>
+          <a href={downloadUrl} style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            background: "#E5484D", color: "white",
+            ...syne, fontSize: "0.95rem", fontWeight: 700,
+            padding: "13px 30px", borderRadius: "9999px",
+            textDecoration: "none", letterSpacing: "0.02em",
+            boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
+          }}>
+            Download the report (PDF)
+          </a>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.6)", lineHeight: 1.6, marginTop: "0.85rem" }}>
+            This download link works for 7 days. Save the file somewhere safe. If anything goes wrong, email support@redflagaipro.com and we will sort it.
+          </p>
+        </div>
+      )}
+      {paid && !downloadUrl && (
         <div style={{
           maxWidth: "720px", margin: "1.5rem auto 0", padding: "1.25rem 1.5rem",
           background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.4)",
           borderRadius: "10px",
         }}>
           <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "#4ade80", marginBottom: "0.4rem" }}>
-            Payment received. Check your email.
+            Payment received.
           </p>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
-            Your copy of The Mystery of AI Governance is on its way to your inbox now. If it hasn&apos;t arrived in a few minutes, check spam, then email support@redflagaipro.com.
+            We could not prepare your download automatically just now. Email support@redflagaipro.com with your receipt and your copy will be sent straight over.
           </p>
         </div>
       )}
