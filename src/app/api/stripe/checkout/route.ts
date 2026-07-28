@@ -10,20 +10,25 @@ export async function POST(request: Request) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const body = await request.json();
   const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit" | "report";
   const region = body.region as string | undefined;
   const toltReferral = body.tolt_referral as string | undefined;
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("stripe_customer_id, full_name")
-    .eq("user_id", user.id)
-    .single();
+  // The report is a guest-checkout product: a £4.99 PDF should never demand
+  // account creation first. Delivery is handled by session id on the success
+  // page, so no user record is needed. Everything else still requires auth.
+  if (!user && plan !== "report") {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { data: profile } = user
+    ? await supabase
+        .from("profiles")
+        .select("stripe_customer_id, full_name")
+        .eq("user_id", user.id)
+        .single()
+    : { data: null };
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
@@ -33,6 +38,9 @@ export async function POST(request: Request) {
   // prices are immutable, so referencing it would undercharge against the
   // advertised £179.
   if (plan === "audit") {
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
@@ -67,7 +75,7 @@ export async function POST(request: Request) {
       // checkout exposes this — subscriptions and the audit do not.
       allow_promotion_codes: true,
       customer: profile?.stripe_customer_id ?? undefined,
-      customer_email: profile?.stripe_customer_id ? undefined : user.email,
+      customer_email: profile?.stripe_customer_id ? undefined : user?.email,
       line_items: [
         {
           price_data: {
@@ -78,7 +86,7 @@ export async function POST(request: Request) {
           quantity: 1,
         },
       ],
-      metadata: { user_id: user.id, plan: "report", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
+      metadata: { ...(user ? { user_id: user.id } : {}), plan: "report", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
       success_url: `${appUrl}/reports/${REPORT_PRICE.slug}?success=1&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/reports/${REPORT_PRICE.slug}?canceled=1`,
     });
@@ -88,6 +96,9 @@ export async function POST(request: Request) {
   // Subscription plans
   if (!PLAN_PRICES[plan as keyof typeof PLAN_PRICES]) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+  }
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const ngnPriceMap: Partial<Record<string, string>> = {

@@ -67,11 +67,11 @@ const FAQS = [
   },
   {
     q: "What format do I get?",
-    a: "A PDF, delivered to your email within seconds of payment. No account, no dashboard, no waiting.",
+    a: "A PDF. The download link appears the moment your payment completes. No account, no dashboard, no waiting.",
   },
   {
     q: "How do I pay?",
-    a: "Card, securely, on the spot. The report lands in your inbox the moment the payment clears.",
+    a: "Card, securely, on the spot, no account needed. The download appears the moment the payment clears.",
   },
 ];
 
@@ -235,7 +235,7 @@ export default async function MysteryOfAIGovernancePage({
           </div>
 
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.02em" }}>
-            Instant PDF delivery · No account required after checkout · Check everything, we invite it
+            Instant download on payment · No account needed · Check everything, we invite it
           </p>
         </div>
       </section>

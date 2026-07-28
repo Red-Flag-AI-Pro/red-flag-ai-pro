@@ -187,12 +187,13 @@ export async function POST(request: Request) {
       const userId = session.metadata?.user_id;
       const plan = session.metadata?.plan;
 
-      if (!userId || !plan) break;
+      if (!plan) break;
 
-      // One-time report purchase — record in report_orders, deliver instantly
+      // One-time report purchase — record in report_orders, deliver instantly.
+      // Guest checkout means user_id may legitimately be absent here.
       if (plan === "report") {
         await supabase.from("report_orders").insert({
-          user_id: userId,
+          user_id: userId ?? null,
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: (session.payment_intent as string) ?? null,
@@ -203,6 +204,10 @@ export async function POST(request: Request) {
         await deliverReportPurchase(supabase, session);
         break;
       }
+
+      // Everything below (audit, subscriptions) requires an authenticated
+      // purchaser, matching the checkout route's auth guard.
+      if (!userId) break;
 
       // One-time audit purchase — record in audit_orders
       if (plan === "audit") {
