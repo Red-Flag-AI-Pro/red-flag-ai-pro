@@ -8,7 +8,7 @@ import React, { Suspense } from "react";
 export const metadata: Metadata = {
   title: "The Mystery of AI Governance: Red Flag AI Pro",
   description:
-    "Why you're confused about AI governance, and who benefits from it. A 38 page report, every fine and ruling real and cited, written by the founder of a governance and compliance company that is not exempting itself from the argument.",
+    "Why you're confused about AI governance, and who benefits from it. A 39 page report, every fine and ruling real and cited, written by the founder of a governance and compliance company that is not exempting itself from the argument.",
   alternates: { canonical: "https://www.redflagaipro.com/reports/mystery-of-ai-governance" },
 };
 
@@ -55,7 +55,7 @@ const CONTENTS = [
 const FAQS = [
   {
     q: "Is this a sales pitch with extra steps?",
-    a: "Partly, and it says so in print. Red Flag AI Pro operates inside the governance and compliance industry itself, and the report includes a page stating exactly what we sell, what nobody can do, and a dare to every vendor claiming otherwise. The other 35 pages don't mention us.",
+    a: "Partly, and it says so in print. Red Flag AI Pro operates inside the governance and compliance industry itself, and the report includes a page stating exactly what we sell, what nobody can do, and a dare to every vendor claiming otherwise. The rest of the report doesn't mention us.",
   },
   {
     q: "Why £4.99 and not free?",
@@ -157,7 +157,7 @@ export default async function MysteryOfAIGovernancePage({
           </p>
 
           <p style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, maxWidth: "540px", margin: "0 auto 2.25rem" }}>
-            An entire industry meets daily to discuss something no one in it can prove exists, and stays vague about it on purpose, because the vagueness is profitable. 38 pages, every fact real, dated, and sourced. Written by someone who operates inside this industry and says so in print.
+            An entire industry meets daily to discuss something no one in it can prove exists, and stays vague about it on purpose, because the vagueness is profitable. 39 pages, every fact real, dated, and sourced. Written by someone who operates inside this industry and says so in print.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
@@ -233,7 +233,7 @@ export default async function MysteryOfAIGovernancePage({
             What&apos;s inside
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.2rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "2.5rem", color: "#F4F1EA", textAlign: "center" }}>
-            38 pages. Four of them look like this.
+            39 pages. Four of them look like this.
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.75rem" }}>
             {CONTENTS.map((item) => (

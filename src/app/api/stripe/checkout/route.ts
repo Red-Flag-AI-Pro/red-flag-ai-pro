@@ -62,6 +62,10 @@ export async function POST(request: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
+      // Lets giveaway recipients enter a 100%-off code (e.g. for LinkedIn
+      // giveaways) directly on the Stripe checkout page. Only the report
+      // checkout exposes this — subscriptions and the audit do not.
+      allow_promotion_codes: true,
       customer: profile?.stripe_customer_id ?? undefined,
       customer_email: profile?.stripe_customer_id ? undefined : user.email,
       line_items: [
