@@ -30,3 +30,5 @@ remotion/out
 
 # Business brain (Obsidian vault) — local knowledge base, never deploy
 brain/
+
+.env*
