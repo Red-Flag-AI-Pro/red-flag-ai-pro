@@ -60,7 +60,8 @@ async function deliverReportPurchase(
     }
 
     if (email) {
-      await sendLoopsEvent({ email, eventName: "report_purchased", properties: { amount: "4.99", report: "mystery-of-ai-governance" } });
+      const paid = session.amount_total != null ? (session.amount_total / 100).toFixed(2) : "4.99";
+      await sendLoopsEvent({ email, eventName: "report_purchased", properties: { amount: paid, report: "mystery-of-ai-governance" } });
     }
   } catch (err) {
     console.error("report delivery error:", err);
@@ -197,7 +198,10 @@ export async function POST(request: Request) {
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: (session.payment_intent as string) ?? null,
-          amount_gbp: session.amount_total ? session.amount_total / 100 : 4.99,
+          // amount_total is legitimately 0 when a 100%-off promo code (e.g. a
+          // giveaway) is applied — a truthiness check here recorded those free
+          // orders as £4.99 and overstated revenue in report_orders.
+          amount_gbp: session.amount_total != null ? session.amount_total / 100 : 4.99,
           report_slug: "mystery-of-ai-governance",
           status: "delivered",
         });
@@ -218,7 +222,7 @@ export async function POST(request: Request) {
           stripe_payment_intent: session.payment_intent as string ?? null,
           // Record what Stripe actually charged rather than a hardcoded figure
           // (was stuck at the old £149 after the 4 Jul price rise to £179).
-          amount_gbp: session.amount_total ? session.amount_total / 100 : 179,
+          amount_gbp: session.amount_total != null ? session.amount_total / 100 : 179,
           status: "paid",
         });
         await notifyAuditPaid(session);
