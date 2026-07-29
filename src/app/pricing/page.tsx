@@ -591,7 +591,7 @@ export default async function PricingPage() {
             padding: "2rem"
           }}>
             <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", marginBottom: "0.5rem" }}>Ready to know where you stand?</p>
-            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 2 minute governance assessment. One work email, 12 questions, your top gap on screen instantly.</p>
+            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 2 minute governance assessment. One email, 12 questions, your top gap on screen instantly.</p>
             <Link href="/governance-audit" style={{
               display: "inline-block",
               background: "#E5484D",

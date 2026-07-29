@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 26 July 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 July 2026</p>
         </div>
       </section>
 
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. Who We Are</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>. We are committed to protecting your personal data and complying with the UK GDPR, EU GDPR, and applicable data protection laws.
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>. Red Flag AI Pro is a trading name of James Stokes, a sole trader established in the United Kingdom, whose trading address is 17 Mariston Way, Warmley, South Gloucestershire, BS30 8UD. James Stokes is the data controller for the personal data described in this policy. We are committed to protecting your personal data and complying with the UK GDPR, EU GDPR, and applicable data protection laws.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
               For data protection queries, contact us at:{" "}
@@ -69,6 +69,8 @@ export default function PrivacyPage() {
                     ["Copy you submit for checking", "To generate your compliance check results only"],
                     ["Check results and history", "To display your dashboard and check history"],
                     ["AI governance quiz answers and scores", "To generate your governance maturity score, gap report and roadmap. Stored against your email address in our database."],
+                    ["Email addresses entered to use our free tools", "To deliver your result and send occasional relevant updates about compliance and governance. You can unsubscribe at any time."],
+                    ["Business contact details of prospects", "Names, job titles and published business email addresses collected from public sources, used to make a one to one business introduction. See section 4a."],
                     ["Usage data (pages visited, features used)", "To improve our service"],
                     ["IP address", "For security and fraud prevention"],
                   ].map(([data, reason], i) => (
@@ -113,9 +115,9 @@ export default function PrivacyPage() {
             <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Contract", "Processing your account data and checks to deliver the service you signed up for"],
-                ["Legitimate interests", "Improving our service, preventing fraud, ensuring security"],
+                ["Legitimate interests", "Improving our service, preventing fraud, ensuring security, contacting business prospects using published business contact details (see section 4a), and sending occasional relevant updates to people who used our free tools, with an unsubscribe in every email"],
                 ["Legal obligation", "Retaining billing records as required by law"],
-                ["Consent", "Marketing emails, you can unsubscribe at any time"],
+                ["Consent", "Marketing emails where we asked for and you gave consent, you can unsubscribe at any time"],
                 ["Consent", "Sharing conversion data with Google Ads for advertising measurement and Customer Match, you can opt out via Google's Ads Settings"],
               ].map(([label, text]) => (
                 <li key={label as string} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
@@ -123,6 +125,29 @@ export default function PrivacyPage() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* 4a */}
+          <div>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4a. Business Contacts and Prospects</h2>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                This section applies if we have contacted you at your business and you have never used our service. It explains, as required by Article 14 of the UK GDPR, what we hold about you and where it came from.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                <strong style={{ color: "white" }}>What we hold and where it came from.</strong> Your name, job title and published business email address, obtained from public sources such as your company website, your public LinkedIn profile, Companies House filings, and public regulatory registers including published rulings of the Advertising Standards Authority.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                <strong style={{ color: "white" }}>Why, and our lawful basis.</strong> We use these details to make a one to one, business relevant introduction, typically where a public regulatory finding suggests our service may be genuinely useful to your business. Our lawful basis is legitimate interests: our interest in introducing a relevant business service, balanced against the limited intrusion of a single email to a published work address. We do not use these details for any other purpose, and we do not sell or share them.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                <strong style={{ color: "white" }}>How long we keep them.</strong> Prospect records are kept for 12 months from our last contact with you, then deleted. If you ask us not to contact you, we keep the minimum needed to honour that request permanently.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                <strong style={{ color: "white" }}>Your right to object.</strong> You have an absolute right to object to direct marketing. Reply &quot;stop&quot; to any email from us, or write to{" "}
+                <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>, and we will not contact you again.
+              </p>
+            </div>
           </div>
 
           {/* 5 */}
@@ -157,6 +182,8 @@ export default function PrivacyPage() {
                 "Account data: retained while your account is active and for 30 days after deletion",
                 "Billing records: 7 years as required by UK law",
                 "Check history: retained until you delete it or close your account",
+                "Free tool emails: retained until you unsubscribe or ask us to delete them",
+                "Business prospect records: 12 months from last contact, then deleted (see section 4a)",
               ].map((item) => (
                 <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
               ))}

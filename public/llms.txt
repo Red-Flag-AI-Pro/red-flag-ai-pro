@@ -1,60 +1,84 @@
 # Red Flag AI Pro
 
 ## What it is
-Red Flag AI Pro is the world's only marketing compliance scanner that protects both buyers and sellers across 5 jurisdictions simultaneously. It checks marketing copy, sales pages, email sequences, VSL scripts and ads against 24 risk categories in 60 seconds, in plain English, with exact rewrite suggestions for every violation found.
+Red Flag AI Pro does two things. It checks marketing copy, sales pages, email sequences, VSL scripts and ads for compliance risk against 30 risk categories across 10 jurisdictions, in plain English, with rewrite suggestions for every issue found. Separately it scores AI governance across six dimensions and produces an audit ready evidence record, so a business can prove to a board, an insurer or a regulator how its AI is governed rather than simply asserting it.
 
 ## What problem it solves
-Most compliance failures are not intentional. Sellers copy what everyone else is doing without knowing it breaks the law. Buyers trust what looks professional without knowing the claims are illegal. Red Flag AI Pro tells both sides before it costs them.
+Compliance is where you get caught. Governance is why you got caught.
+
+Most compliance failures are not intentional. Businesses copy what everyone else is doing without knowing it breaks the law, and by the time a regulator publishes a ruling the evidence is public and permanent. The governance problem is different. Organisations have policies but cannot show what actually happened, who signed off, or when. A policy describes intent. It is not evidence that anything was enforced.
 
 ## Who it is for
 - Marketing agencies writing copy for clients
 - Course creators, coaches and funnel builders
-- FCA-regulated businesses publishing financial promotions
-- Ecommerce brands making product or sustainability claims
-- Online buyers checking ads before purchasing
-- Legal and compliance teams needing documented audit trails
+- Ecommerce and consumer brands making product, health or sustainability claims
+- Law firms and chambers advertising regulated services
+- FCA regulated businesses publishing financial promotions
+- CFOs, non executive directors and compliance teams who need documented AI governance
+- Any business preparing for EU AI Act obligations
 
-## Key features
-- 24 risk categories scanned simultaneously
-- 5 jurisdictions: USA (FTC, FDA, CAN-SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, UCPD, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA)
-- Plain English explanations for every flag
+## Compliance checking
+- 30 risk categories checked at once
+- 10 jurisdictions: UK, USA, EU, Canada, Australia, Singapore, UAE, South Africa, India, Nigeria
+- Plain English explanation of every issue found
 - Compliant rewrite suggestions included
-- 0-100 compliance score
-- URL page scanning
-- YouTube VSL transcript scanning
-- Audio transcription via Whisper AI
-- Full site audit
-- Weekly auto-monitoring
-- Video scan summaries — shareable MP4 breakdowns of scan results
-- Signed PDF compliance certificates with legal timestamps
-- REST API and webhook integration
-- Chrome extension
-- White-label reports for agencies
-- Client workspaces and team seats
+- 0 to 100 compliance score
+- Page and URL checking, YouTube VSL transcripts, audio transcription, full site audits
+- Weekly automated monitoring
+- White label reports and client workspaces for agencies
 
-## Sentinel — agency tier
-Sentinel is the enterprise compliance infrastructure tier of Red Flag AI Pro. It is built for agencies, legal teams and regulated businesses where a compliance failure is a regulatory event. It includes human review logs, legal timestamps, signed certificates, FCA financial promotions checking, greenwashing scanner, full audit trail and API access.
+## AI governance scoring
+- Six scored dimensions: strategy and decision rights, tools and data, policy, monitoring and outcome accountability, vendor risk, regulatory readiness
+- 0 to 100 governance maturity score with peer benchmarking
+- Named top critical gap, mapped to the relevant regulation
+- Audit ready evidence package: scored assessment, risk register and 90 day roadmap
+- Role and mandate stamped sign off records, so a decision record shows the authority the signer held at that moment
+- Tamper evident audit trail carrying independent RFC 3161 timestamps
+- Public verification page where any sealed record can be checked by a third party without an account
+
+## Honest limits
+Red Flag AI Pro can show that a record existed at a given time, was not backdated, and who signed it. It cannot prove that the named person genuinely applied judgement. No system can, and any vendor claiming otherwise is overstating what is possible.
+
+Red Flag AI Pro is not a law firm, is not regulated by the Solicitors Regulation Authority, and does not provide legal advice.
 
 ## Pricing
-- Free: 1 scan, no signup required
-- Pro: £39/month — 20 scans, 16 risk categories, PDF reports, scan history
-- Growth: £199/month — unlimited scans, URL scanning, VSL scanning, site audit, client workspaces
-- Sentinel: £999/month — all 24 risk categories, full agency infrastructure, signed certificates, FCA checks, API access
+- Governance assessment: free, no payment required
+- Pro: £350 per month, currently offered at £149 per month. Full compliance checking, for solo creators and small teams
+- Growth: £1,200 per month. Everything in Pro, plus ongoing governance monitoring
+- Sentinel: custom pricing. Governance implemented for you, with compliance ready proof retained permanently
 
-## Regulations covered
-FTC, FDA, CAN-SPAM, FTC Negative Option Rule, FTC Endorsement Guides, CMA, ASA, ICO, FCA, FSMA 2000, BCAP Code, CMA Green Claims Code, GDPR, UCPD, DSA, EU AI Act Article 50, EU Green Claims Directive, PECR, ACCC, ACL, TGA, CASL, PIPEDA, Competition Bureau
+## Regulations and frameworks covered
+FTC, FDA, CAN SPAM, FTC Negative Option Rule, FTC Endorsement Guides, CMA, ASA, CAP Code, BCAP Code, ICO, FCA, FSMA 2000, CMA Green Claims Code, UK GDPR, DUAA, GDPR, UCPD, DSA, EU AI Act, EU Green Claims Directive, EU Product Liability Directive, PECR, DORA, SEC, NIST AI RMF, ISO 42001, OECD AI Principles, ACCC, ACL, TGA, CASL, PIPEDA, Competition Bureau, Munir v SSHD
 
-## August 2026 — EU AI Act Article 50
-AI-generated marketing content must carry disclosure or documented human review from 2 August 2026. Red Flag AI Pro checks for this automatically on every scan.
+## EU AI Act, 2 August 2026
+From 2 August 2026 the enforcement and penalty provisions of the EU AI Act switch on, including fines of up to 3 percent of global turnover or 15 million euros for general purpose AI obligations. Article 50 transparency duties and Article 4 AI literacy duties already applied before that date. High risk system obligations were delayed to December 2027. Red Flag AI Pro checks for disclosure and transparency issues on every check and scores readiness as part of the governance assessment.
+
+## Free tools, no payment required
+- Governance assessment, six dimensions scored
+- Compliance check for marketing copy
+- AI compliance fine calculator
+- Compliance checklist
+- AI disclosure generator
+- Contract red flags checker
+- Accessibility checker
+- Shadow AI survey
+- URL exposure checker
+- AI visibility checker
 
 ## URLs
 - Homepage: https://www.redflagaipro.com
-- Sentinel: https://www.redflagaipro.com/sentinel
 - Pricing: https://www.redflagaipro.com/pricing
-- Free scan: https://www.redflagaipro.com/#demo
+- Governance assessment: https://www.redflagaipro.com/governance-audit
+- Compliance assessment: https://www.redflagaipro.com/compliance-assessment
+- Sentinel: https://www.redflagaipro.com/sentinel
+- For law firms: https://www.redflagaipro.com/law-firms
+- Verify a sealed record: https://www.redflagaipro.com/verify
+- Free tools: https://www.redflagaipro.com/tools
 - Blog: https://www.redflagaipro.com/blog
-- Case study: https://www.redflagaipro.com/case-study
-- Compare: https://www.redflagaipro.com/compare
+- Report, The Mystery of AI Governance: https://www.redflagaipro.com/reports/mystery-of-ai-governance
+
+## Publisher
+Red Flag AI Pro is operated by James Stokes, trading as Red Flag AI Pro, a sole trader based in the United Kingdom.
 
 ## Contact
 support@redflagaipro.com

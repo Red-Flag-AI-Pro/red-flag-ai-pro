@@ -31,7 +31,7 @@ export default function TermsPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Terms of Service
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 30 June 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 July 2026</p>
         </div>
       </section>
 
@@ -43,8 +43,18 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance checking tool operated by Red Flag AI Pro. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance checking and AI governance assessment service. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
             </p>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.25rem", marginTop: "1rem" }}>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
+                <strong style={{ color: "white" }}>Who we are.</strong> Red Flag AI Pro is a trading name of James Stokes, a sole trader established in the United Kingdom.
+                <br /><br />
+                <strong style={{ color: "white" }}>Trading address:</strong> 17 Mariston Way, Warmley, South Gloucestershire, BS30 8UD, United Kingdom
+                <br />
+                <strong style={{ color: "white" }}>Contact:</strong>{" "}
+                <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>
+              </p>
+            </div>
           </div>
 
           {/* 2 */}
@@ -56,6 +66,12 @@ export default function TermsPage() {
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
                 Nothing produced by Red Flag AI Pro should be relied upon as a substitute for professional legal counsel. We strongly recommend consulting a qualified solicitor or compliance professional for definitive legal guidance specific to your business. Red Flag AI Pro accepts no liability for decisions made based solely on our check results.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+                Red Flag AI Pro is not a firm of solicitors, is not authorised or regulated by the Solicitors Regulation Authority, and does not carry out reserved legal activities.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+                Our records can show that a record existed at a given time, that it has not been altered since, and who signed it. They cannot prove that the named person applied their own judgement. No system can. We do not claim otherwise and you should not rely on our records as proof that a review was genuinely carried out.
               </p>
             </div>
           </div>
@@ -83,10 +99,10 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Free Plan", "1 check per month at no charge. No credit card required."],
-                ["Pro Plan", "£350/month for most regions (subject to change, existing subscribers grandfathered at their original rate). Pricing may vary by location. Billed monthly via Stripe."],
+                ["Free Plan", "1 check per month at no charge. No credit card required. The governance assessment is also free and requires no payment."],
+                ["Pro Plan", "£350/month standard price, currently offered at £149/month. Promotional pricing applies for as long as the offer is shown at checkout and existing subscribers are grandfathered at their original rate. Pricing may vary by location. Billed monthly via Stripe."],
                 ["Growth Plan", "£1,200/month for most regions. Pricing may vary by location. Billed monthly via Stripe."],
-                ["Sentinel Plan", "From £5,000/month, custom contract for larger engagements."],
+                ["Sentinel Plan", "Custom pricing, agreed in writing before any charge is made. For larger engagements."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],
                 ["Renewal", "Subscriptions renew automatically unless cancelled before the renewal date."],
                 ["Cancellation", "You may cancel your subscription at any time via your billing settings or by contacting support."],
@@ -101,27 +117,39 @@ export default function TermsPage() {
 
           {/* 6 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. Refund Policy</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>6. One Off Purchases, Refunds and Cancellation Rights</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9 }}>One off digital purchases</p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                We want every customer to be satisfied with Red Flag AI Pro. However, because our service delivers immediate digital value upon use, refunds are not automatically granted.
+                As well as subscriptions we sell individual digital products, including written reports and one off audits. These are delivered electronically. Reports are supplied as a PDF via a secure download link that remains valid for 7 days. If your link expires or fails, email{" "}
+                <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
+                and we will reissue it at no charge. No account is required to buy a report.
+              </p>
+
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Your 14 day cancellation right</p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                If you are a consumer, you normally have 14 days from purchase to cancel and receive a full refund under the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013.
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                <strong style={{ color: "white" }}>Refund requests will be considered where there is sufficient and reasonable cause</strong>, such as a significant technical failure that prevented you from using the service, or a billing error on our part.
+                Because digital content is delivered immediately, we ask you at checkout to confirm two things before payment: that you want the content supplied straight away, and that you understand you lose the 14 day cancellation right once the download begins. <strong style={{ color: "white" }}>If you did not give that confirmation, your 14 day cancellation right still applies in full</strong> and we will refund you on request within that period, with no reason needed.
               </p>
-              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>To request a refund, you must:</p>
-              <ul style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                {[
-                  "Contact us within 14 days of the charge in question",
-                  "Email support@redflagaipro.com with your account email, the reason for your request, and any supporting detail",
-                  "Allow up to 5 business days for us to review and respond to your request",
-                ].map((item) => (
-                  <li key={item} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{item}</li>
-                ))}
-              </ul>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                We reserve the right to decline refund requests where the service has been used as intended without technical fault. Approved refunds will be returned to the original payment method within 5 to 10 business days.
+                As a matter of policy we extend the same 14 day right to business customers on one off digital purchases, even though it is not legally required.
               </p>
+
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Subscription refunds</p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                Subscriptions can be cancelled at any time and will run to the end of the paid period. For refunds on subscription charges, contact us within 14 days of the charge at{" "}
+                <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
+                with your account email and the reason. We will respond within 5 business days. We look favourably on billing errors, technical failures that prevented use, and accidental renewals. Approved refunds are returned to the original payment method within 5 to 10 business days.
+              </p>
+
+              <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.25)", borderRadius: "10px", padding: "1.1rem", marginTop: "0.5rem" }}>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.85 }}>
+                  <strong style={{ color: "#E5484D" }}>Your statutory rights.</strong> Nothing in these Terms removes or limits any right you have as a consumer under the Consumer Rights Act 2015 or the Consumer Contracts Regulations 2013. Where anything in this section conflicts with those rights, those rights take precedence.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -146,7 +174,8 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Intellectual Property</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not store or use your submitted copy for any purpose other than generating your check results.
+              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not use your submitted copy for any purpose other than generating and storing your check results. Where you have an account, submitted copy and results are retained so your check history remains available to you. Full detail of what we retain and for how long is in our{" "}
+              <Link href="/privacy" style={{ color: "#E5484D", textDecoration: "none" }}>Privacy Policy</Link>.
             </p>
           </div>
 
@@ -155,6 +184,9 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>9. Limitation of Liability</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
               To the fullest extent permitted by law, Red Flag AI Pro shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our service, including but not limited to regulatory fines, lost revenue, or business interruption. Our total liability to you shall not exceed the amount you paid us in the 3 months preceding the claim.
+            </p>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+              Nothing in these Terms excludes or limits our liability for death or personal injury caused by negligence, for fraud or fraudulent misrepresentation, or for any other liability that cannot lawfully be excluded or limited. If you are a consumer, nothing in these Terms affects your statutory rights, and the limitation above does not apply to the extent it would be unfair under the Consumer Rights Act 2015.
             </p>
           </div>
 

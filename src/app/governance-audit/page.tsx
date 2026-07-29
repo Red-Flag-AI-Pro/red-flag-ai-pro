@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { GovernanceAuditFlow } from '@/components/governance-audit/GovernanceAuditFlow';
 import { TrustBar } from '@/components/marketing/TrustBar';
 import { ProveItWidget } from '@/components/marketing/ProveItWidget';
@@ -15,12 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function GovernanceAuditPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ email?: string }>;
-}) {
-  const { email } = await searchParams;
+export default function GovernanceAuditPage() {
   return (
     <div style={{ background: '#0A1628', minHeight: '100vh' }}>
       <Navbar />
@@ -166,7 +162,9 @@ export default async function GovernanceAuditPage({
         </div>
 
         {/* Quiz Flow Component */}
-        <GovernanceAuditFlow initialEmail={email} />
+        <Suspense fallback={null}>
+          <GovernanceAuditFlow />
+        </Suspense>
       </div>
       </div>
 

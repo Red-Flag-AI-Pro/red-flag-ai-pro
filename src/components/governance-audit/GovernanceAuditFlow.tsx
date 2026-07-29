@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
 import { track } from '@vercel/analytics';
 import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit';
 
@@ -24,7 +25,9 @@ const START_ITEMS = [
 ];
 
 export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } = {}) {
-  const [capturedEmail, setCapturedEmail] = useState(initialEmail ?? '');
+  const searchParams = useSearchParams();
+  const emailFromUrl = searchParams.get('email') ?? '';
+  const [capturedEmail, setCapturedEmail] = useState(initialEmail ?? emailFromUrl);
   const [startEmailInput, setStartEmailInput] = useState('');
   const [startError, setStartError] = useState('');
   const [answers, setAnswers] = useState<Answer[] | null>(null);
@@ -73,7 +76,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
   const handleStartSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!EMAIL_REGEX.test(startEmailInput.trim())) {
-      setStartError('Please enter a valid work email address.');
+      setStartError('Please enter a valid email address.');
       return;
     }
     setStartError('');
@@ -182,7 +185,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
         </div>
 
         <h2 className="font-display" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.1rem)', fontWeight: 500, color: '#F4F1EA', lineHeight: 1.15, marginBottom: '0.85rem' }}>
-          Enter your work email to begin.
+          Enter your email to begin.
         </h2>
         <p style={{ ...syne, fontSize: '0.95rem', color: 'rgba(244,241,234,0.6)', lineHeight: 1.6, marginBottom: '1.75rem' }}>
           12 quick questions, under 2 minutes. You&apos;ll get:
@@ -205,7 +208,7 @@ export function GovernanceAuditFlow({ initialEmail }: { initialEmail?: string } 
 
         <form onSubmit={handleStartSubmit}>
           <label htmlFor="start-email" style={{ ...syne, display: 'block', fontSize: '12px', fontWeight: 600, color: 'rgba(244,241,234,0.6)', marginBottom: '8px' }}>
-            Work email
+            Email
           </label>
           <input
             id="start-email"
