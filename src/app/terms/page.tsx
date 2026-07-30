@@ -92,6 +92,10 @@ export default function TermsPage() {
               <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
               of any unauthorised use of your account.
             </p>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginTop: "0.75rem" }}>
+              Some features, including governance authorization records, let you enter information about people in your organisation, such as the name and role of the person accountable for a decision. You confirm you have a lawful basis to record that information and are responsible for its accuracy. For personal data you enter about your own personnel, you act as controller and we process it only to provide the service, as described in our{" "}
+              <a href="/privacy" style={{ color: "#E5484D", textDecoration: "none" }}>Privacy Policy</a>.
+            </p>
           </div>
 
           {/* 5 */}

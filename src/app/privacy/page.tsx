@@ -69,6 +69,7 @@ export default function PrivacyPage() {
                     ["Copy you submit for checking", "To generate your compliance check results only"],
                     ["Check results and history", "To display your dashboard and check history"],
                     ["AI governance quiz answers and scores", "To generate your governance maturity score, gap report and roadmap. Stored against your email address in our database."],
+                    ["Governance records you create (including names and roles of your personnel)", "Sentinel governance features let you log authorization records naming the person in your business accountable for a decision, their role, the decision itself, its expiry and its conditions. This content is stored solely to provide those features back to you. You remain the controller of personal data you enter about your own personnel and are responsible for having a lawful basis to record it; we process it only on your instructions and delete it with your account."],
                     ["Email addresses entered to use our free tools", "To deliver your result and send occasional relevant updates about compliance and governance. You can unsubscribe at any time."],
                     ["Business contact details of prospects", "Names, job titles and published business email addresses collected from public sources, used to make a one to one business introduction. See section 4a."],
                     ["Usage data (pages visited, features used)", "To improve our service"],
