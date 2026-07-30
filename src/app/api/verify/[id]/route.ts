@@ -11,6 +11,7 @@ const ACTION_LABELS: Record<string, string> = {
   flag_reviewed: "Compliance flag signed off",
   "boundary_record.created": "Boundary authorization recorded",
   "boundary_record.updated": "Boundary authorization updated",
+  "concept.sealed": "Concept authorship sealed",
 };
 
 // No auth required by design — this is meant to be checkable by anyone

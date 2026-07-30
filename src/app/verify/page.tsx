@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -20,12 +20,11 @@ function VerifyForm() {
   const [id, setId] = useState(searchParams.get("id") ?? "");
   const [result, setResult] = useState<Result>({ state: "idle" });
 
-  async function handleVerify(e: React.FormEvent) {
-    e.preventDefault();
-    if (!id.trim()) return;
+  async function runVerify(rawId: string) {
+    if (!rawId.trim()) return;
     setResult({ state: "loading" });
     try {
-      const res = await fetch(`/api/verify/${encodeURIComponent(id.trim())}`);
+      const res = await fetch(`/api/verify/${encodeURIComponent(rawId.trim())}`);
       if (res.status === 404) {
         setResult({ state: "not-found" });
         return;
@@ -41,6 +40,24 @@ function VerifyForm() {
     } catch {
       setResult({ state: "not-found" });
     }
+  }
+
+  // A shared link carrying ?id= verifies itself on arrival — the person
+  // receiving the link should see the verdict, not a form asking them to
+  // press a button they have no context for.
+  const autoRan = useRef(false);
+  useEffect(() => {
+    const linkedId = searchParams.get("id");
+    if (linkedId && !autoRan.current) {
+      autoRan.current = true;
+      runVerify(linkedId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleVerify(e: React.FormEvent) {
+    e.preventDefault();
+    runVerify(id);
   }
 
   return (
