@@ -4,14 +4,62 @@ import { requestTimestamp } from "@/lib/audit-timestamp";
 
 const GENESIS_HASH = "0".repeat(64);
 
+// Postgres returns timestamptz as "+00:00" while JS writes "Z", and jsonb
+// returns object keys in its own storage order rather than insertion order.
+// Hashing must survive that round trip, so both sides reduce to one canonical
+// form: millisecond-precision ISO with Z, and recursively key-sorted JSON.
+function canonicalTimestamp(ts: string): string {
+  const parsed = new Date(ts);
+  return isNaN(parsed.getTime()) ? ts : parsed.toISOString();
+}
+
+function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) {
+    return `[${value.map(canonicalJson).join(",")}]`;
+  }
+  if (value !== null && typeof value === "object") {
+    const keys = Object.keys(value as Record<string, unknown>).sort();
+    const body = keys
+      .filter((k) => (value as Record<string, unknown>)[k] !== undefined)
+      .map((k) => `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`)
+      .join(",");
+    return `{${body}}`;
+  }
+  return JSON.stringify(value) ?? "null";
+}
+
 function computeHash(prevHash: string, entry: {
   user_id: string;
   action: string;
   details: Record<string, unknown>;
   created_at: string;
 }): string {
-  const payload = `${prevHash}|${entry.user_id}|${entry.action}|${JSON.stringify(entry.details)}|${entry.created_at}`;
+  const payload = `${prevHash}|${entry.user_id}|${entry.action}|${canonicalJson(entry.details)}|${canonicalTimestamp(entry.created_at)}`;
   return createHash("sha256").update(payload).digest("hex");
+}
+
+// Entries written before canonicalization were hashed from the raw JS values
+// of their day: Z-form timestamps and insertion-order JSON.stringify. After a
+// database round trip those exact strings may no longer be reproducible, so
+// verification accepts a stored hash if it matches the canonical form or
+// either legacy reconstruction. New writes always use the canonical form.
+function hashMatches(storedHash: string, prevHash: string, entry: {
+  user_id: string;
+  action: string;
+  details: Record<string, unknown>;
+  created_at: string;
+}): boolean {
+  if (computeHash(prevHash, entry) === storedHash) return true;
+
+  const legacyPayloads = [
+    // Raw values exactly as returned by the database (pre-fix repair form).
+    `${prevHash}|${entry.user_id}|${entry.action}|${JSON.stringify(entry.details)}|${entry.created_at}`,
+    // Database key order with the original Z-form write timestamp.
+    `${prevHash}|${entry.user_id}|${entry.action}|${JSON.stringify(entry.details)}|${canonicalTimestamp(entry.created_at)}`,
+  ];
+  return legacyPayloads.some(
+    (p) => createHash("sha256").update(p).digest("hex") === storedHash
+  );
 }
 
 // Writes always go through the service role, bypassing RLS, so a logged-in
@@ -96,14 +144,14 @@ export async function verifyAuditChain(userId: string): Promise<AuditChainVerifi
       return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id };
     }
 
-    const recomputed = computeHash(expectedPrevHash, {
+    const matches = hashMatches(entry.hash, expectedPrevHash, {
       user_id: userId,
       action: entry.action,
       details: entry.details,
       created_at: entry.created_at,
     });
 
-    if (recomputed !== entry.hash) {
+    if (!matches) {
       return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id };
     }
 
@@ -141,7 +189,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     return { found: false, intact: false };
   }
 
-  const recomputed = computeHash(entry.prev_hash ?? GENESIS_HASH, {
+  const intact = hashMatches(entry.hash, entry.prev_hash ?? GENESIS_HASH, {
     user_id: entry.user_id,
     action: entry.action,
     details: entry.details,
@@ -150,7 +198,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
 
   return {
     found: true,
-    intact: recomputed === entry.hash,
+    intact,
     action: entry.action,
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,

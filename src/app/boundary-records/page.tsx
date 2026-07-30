@@ -421,6 +421,43 @@ function RecordCard({ record }: { record: BoundaryAuthorizationRecord }) {
   );
 }
 
+function AuthorityHealth({ records }: { records: BoundaryAuthorizationRecord[] }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const total = records.length;
+  const unbounded = records.filter(
+    (r) => !r.expires_at && (r.expiry_conditions?.length ?? 0) === 0
+  ).length;
+  const expired = records.filter(
+    (r) => r.expires_at && r.expires_at < today
+  ).length;
+
+  const pct = (n: number) => Math.round((n / total) * 100);
+
+  return (
+    <Card>
+      <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.5)] mb-3">Authority health</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <p className="text-2xl font-bold text-[#F4F1EA]">{total}</p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)]">Recorded decisions</p>
+        </div>
+        <div>
+          <p className={`text-2xl font-bold ${unbounded > 0 ? "text-[#E5484D]" : "text-emerald-400"}`}>
+            {unbounded} <span className="text-sm font-semibold">({pct(unbounded)}%)</span>
+          </p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)]">Unbounded grants, no expiry and no voiding conditions. An open ended grant is authority nobody can prove was ever reviewed.</p>
+        </div>
+        <div>
+          <p className={`text-2xl font-bold ${expired > 0 ? "text-amber-400" : "text-emerald-400"}`}>
+            {expired} <span className="text-sm font-semibold">({pct(expired)}%)</span>
+          </p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)]">Running past their own stated expiry. The authority behind these decisions has lapsed and nobody has renewed it.</p>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
 export default function BoundaryRecordsPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -480,6 +517,8 @@ export default function BoundaryRecordsPage() {
       </div>
 
       <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} />
+
+      {records.length > 0 && <AuthorityHealth records={records} />}
 
       <div>
         <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.5)] mb-3">Recorded decisions</p>
