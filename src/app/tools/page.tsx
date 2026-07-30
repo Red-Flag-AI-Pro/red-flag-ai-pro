@@ -45,6 +45,10 @@ export default function ToolsPage() {
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center"}}>Or try these now: free, no account needed</p>
           <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px"}}>
+            <Link href="/witness-test" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>The Witness Test</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Five questions on how your AI governance evidence is produced. Find out whether anything outside the operator ever saw it.</p>
+            </Link>
             <Link href="/governance-audit" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>AI Governance Maturity Assessment</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>5 minutes, 6 dimensions, a real score, and a roadmap mapped to the EU AI Act, SEC and GDPR.</p>

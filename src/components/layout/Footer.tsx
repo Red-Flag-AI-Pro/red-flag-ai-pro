@@ -27,6 +27,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
       { label: "URL Exposure Checker", href: "/tools/url-exposure-checker" },
       { label: "AI Visibility Checker", href: "/tools/ai-visibility-checker" },
+      { label: "The Witness Test", href: "/witness-test" },
+      { label: "Verify a record", href: "/verify" },
       { label: "All tools", href: "/tools" },
     ],
   },
