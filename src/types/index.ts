@@ -55,6 +55,14 @@ export interface BoundaryEvidence {
   label: string;
 }
 
+// A falsifier: the observable condition that voids the grant. "This authority
+// stops being valid if X becomes true." The falsifier IS the expiry condition —
+// no separate revocation mechanism needed, the same written-down test that
+// gates approval also triggers the lapse.
+export interface BoundaryFalsifier {
+  condition: string;
+}
+
 export interface BoundaryAuthorizationRecord {
   id: string;
   user_id: string;
@@ -65,6 +73,11 @@ export interface BoundaryAuthorizationRecord {
   risks_accepted: BoundaryRisk[];
   evidence: BoundaryEvidence[];
   decision_date: string;
+  // The "whether" leg: a grant needs a shelf life stamped on it the same way
+  // a signature needs a name. Null only on records created before this field
+  // existed — new records require it.
+  expires_at: string | null;
+  expiry_conditions: BoundaryFalsifier[];
   created_at: string;
   updated_at: string;
 }

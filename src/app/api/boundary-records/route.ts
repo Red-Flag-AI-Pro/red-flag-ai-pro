@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
-import type { BoundaryOption, BoundaryRisk, BoundaryEvidence } from "@/types";
+import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier } from "@/types";
 
 async function requireSentinelUser() {
   const supabase = await createClient();
@@ -45,6 +45,13 @@ function sanitizeEvidence(value: unknown): BoundaryEvidence[] {
     .filter((v) => v.label.length > 0);
 }
 
+function sanitizeFalsifiers(value: unknown): BoundaryFalsifier[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({ condition: typeof v?.condition === "string" ? v.condition.trim() : "" }))
+    .filter((v) => v.condition.length > 0);
+}
+
 export async function GET() {
   const result = await requireSentinelUser();
   if ("error" in result) return NextResponse.json({ error: result.error }, { status: result.status });
@@ -68,11 +75,18 @@ export async function POST(request: Request) {
   const ownerName: string = (body.owner_name ?? "").trim();
   const ownerRole: string = (body.owner_role ?? "").trim();
   const decisionDate: string = (body.decision_date ?? "").trim();
+  const expiresAt: string = (body.expires_at ?? "").trim();
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (!ownerName) return NextResponse.json({ error: "Owner name is required." }, { status: 400 });
   if (!ownerRole) return NextResponse.json({ error: "Owner role is required." }, { status: 400 });
   if (!decisionDate) return NextResponse.json({ error: "Decision date is required." }, { status: 400 });
+  // An unbounded grant means unbounded ownership: if you never said what would
+  // make this stop being safe, you own everything the system does from here on.
+  // So the expiry is required, not optional — a grant needs a shelf life stamped
+  // on it the same way a signature needs a name.
+  if (!expiresAt) return NextResponse.json({ error: "Authority expiry date is required. An authorization without an expiry never stops being your risk." }, { status: 400 });
+  if (expiresAt <= decisionDate) return NextResponse.json({ error: "Authority expiry must be after the decision date." }, { status: 400 });
 
   const { data, error } = await result.supabase
     .from("boundary_authorization_records")
@@ -85,13 +99,22 @@ export async function POST(request: Request) {
       risks_accepted: sanitizeRisks(body.risks_accepted),
       evidence: sanitizeEvidence(body.evidence),
       decision_date: decisionDate,
+      expires_at: expiresAt,
+      expiry_conditions: sanitizeFalsifiers(body.expiry_conditions),
     })
     .select()
     .single();
 
   if (error) return NextResponse.json({ error: "Failed to create boundary record." }, { status: 500 });
 
-  await logAuditEvent(result.user.id, "boundary_record.created", { id: data.id, decision: data.decision }, { timestamp: true });
+  // The expiry and its falsifiers are part of what gets sealed: the grant's
+  // shelf life must be provably part of the original record, not a later edit.
+  await logAuditEvent(
+    result.user.id,
+    "boundary_record.created",
+    { id: data.id, decision: data.decision, expires_at: data.expires_at, expiry_conditions: data.expiry_conditions },
+    { timestamp: true }
+  );
 
   return NextResponse.json({ record: data });
 }
