@@ -330,7 +330,7 @@ export function DemoScanner() {
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
           <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginTop: "-0.85rem", marginBottom: "1.25rem"}}>
-            We&apos;ll only use this to send your results and one follow up. No spam, unsubscribe anytime.
+            We&apos;ll use this to send your results and occasional relevant updates. Unsubscribe anytime.
           </p>
 
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Paste your copy here</p>

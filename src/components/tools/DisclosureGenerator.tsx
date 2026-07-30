@@ -178,7 +178,7 @@ export function DisclosureGenerator() {
       </div>
 
       {/* Output */}
-      <ResultsGate tool="disclosure-generator" title="Enter your email to see your disclosure wording. Free, no spam.">
+      <ResultsGate tool="disclosure-generator" title="Enter your email to see your disclosure wording. Free, plus occasional updates, unsubscribe anytime.">
       <div style={{ marginTop: "1.5rem" }}>
         <div style={{
           background: "#102943",

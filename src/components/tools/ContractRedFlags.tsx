@@ -82,7 +82,7 @@ export function ContractRedFlags() {
       </div>
 
       {flags !== null && (
-        <ResultsGate tool="contract-red-flags" title="Enter your email to see the flagged clauses. Free, no spam.">
+        <ResultsGate tool="contract-red-flags" title="Enter your email to see the flagged clauses. Free, plus occasional updates, unsubscribe anytime.">
         <div style={{ marginTop: "3rem" }}>
           {flags.length === 0 ? (
             <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: "10px", padding: "2rem", textAlign: "center" }}>

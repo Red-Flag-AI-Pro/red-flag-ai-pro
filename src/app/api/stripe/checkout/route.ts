@@ -14,6 +14,17 @@ export async function POST(request: Request) {
   const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit" | "report";
   const region = body.region as string | undefined;
   const toltReferral = body.tolt_referral as string | undefined;
+  const consent = body.consent as { agreedTerms?: boolean; agreedImmediateDelivery?: boolean; timestamp?: string } | undefined;
+
+  // The report is the only guest checkout, no-account product we sell, so it
+  // is the one place a buyer could otherwise pay with no record of agreeing
+  // to anything. Require the two consent flags the checkout page collects
+  // (terms, and waiver of the 14 day cancellation right for immediate
+  // delivery) before creating a session, and stamp them into the session
+  // metadata so there is a permanent record of what was agreed and when.
+  if (plan === "report" && (!consent?.agreedTerms || !consent?.agreedImmediateDelivery)) {
+    return NextResponse.json({ error: "Consent required" }, { status: 400 });
+  }
 
   // The report is a guest-checkout product: a £4.99 PDF should never demand
   // account creation first. Delivery is handled by session id on the success
@@ -86,7 +97,14 @@ export async function POST(request: Request) {
           quantity: 1,
         },
       ],
-      metadata: { ...(user ? { user_id: user.id } : {}), plan: "report", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
+      metadata: {
+        ...(user ? { user_id: user.id } : {}),
+        plan: "report",
+        consent_terms: "true",
+        consent_immediate_delivery: "true",
+        consent_timestamp: consent?.timestamp ?? new Date().toISOString(),
+        ...(toltReferral ? { tolt_referral: toltReferral } : {}),
+      },
       success_url: `${appUrl}/reports/${REPORT_PRICE.slug}?success=1&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/reports/${REPORT_PRICE.slug}?canceled=1`,
     });

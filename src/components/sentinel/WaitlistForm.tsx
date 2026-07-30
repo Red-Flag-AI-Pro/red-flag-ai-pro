@@ -105,7 +105,7 @@ export function WaitlistForm() {
       </button>
 
       <p className="text-xs text-gray-500 text-center">
-        No spam. Early access pricing locked in for waitlist members.
+        Occasional updates only, unsubscribe anytime. Early access pricing locked in for waitlist members.
       </p>
     </form>
   );

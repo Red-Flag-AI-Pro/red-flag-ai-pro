@@ -274,7 +274,7 @@ export default function GovernanceAuditPage() {
             fontSize: '0.875rem',
             color: 'rgba(255,255,255,0.3)',
           }}>
-            No spam. One governance assessment per email. Results delivered instantly.
+            Occasional updates only, unsubscribe anytime. One governance assessment per email. Results delivered instantly.
           </p>
           <p style={{
             fontSize: '0.875rem',

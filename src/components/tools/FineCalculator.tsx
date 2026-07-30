@@ -197,7 +197,7 @@ export function FineCalculator() {
       </div>
 
       {/* ── Result ── */}
-      <ResultsGate tool="fine-calculator" title="Enter your email to see your maximum regulatory exposure. Free, no spam.">
+      <ResultsGate tool="fine-calculator" title="Enter your email to see your maximum regulatory exposure. Free, plus occasional updates, unsubscribe anytime.">
       <div style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "2rem 2rem 1.75rem" }}>
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: "200px" }}>

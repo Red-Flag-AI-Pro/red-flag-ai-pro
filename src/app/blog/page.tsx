@@ -74,7 +74,7 @@ export default function BlogPage() {
             The 30 Category Marketing Compliance Checklist
           </h2>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: "500px", margin: "0 auto 2.5rem"}}>
-            Every compliance check you need before you launch. Every red flag to look for before you buy. Free. No spam.
+            Every compliance check you need before you launch. Every red flag to look for before you buy. Free, occasional updates only, unsubscribe anytime.
           </p>
           <Link href="/blog/marketing-compliance-checklist-2026" style={{
             display: "inline-flex", alignItems: "center", gap: "10px",

@@ -11,7 +11,7 @@ interface ResultsGateProps {
   children: React.ReactNode;
 }
 
-export function ResultsGate({ tool, title = "Enter your email to see your results — free, no spam.", children }: ResultsGateProps) {
+export function ResultsGate({ tool, title = "Enter your email to see your results — free, plus occasional updates, unsubscribe anytime.", children }: ResultsGateProps) {
   const storageKey = `rfap_tool_lead_${tool}`;
   const [unlocked, setUnlocked] = useState(false);
   const [checkedStorage, setCheckedStorage] = useState(false);

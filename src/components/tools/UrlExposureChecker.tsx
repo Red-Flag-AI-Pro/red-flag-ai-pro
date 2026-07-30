@@ -93,7 +93,7 @@ export function UrlExposureChecker() {
       {error && <p style={{ ...syne, fontSize: "13px", color: "#ef4444", marginTop: "1rem" }}>{error}</p>}
 
       {result && (
-        <ResultsGate tool="url-exposure-checker" title="Enter your email to see your full exposure report — free, no spam.">
+        <ResultsGate tool="url-exposure-checker" title="Enter your email to see your full exposure report — free, plus occasional updates, unsubscribe anytime.">
         <div style={{ marginTop: "3rem" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.5rem" }}>Compliance Exposure Score</p>

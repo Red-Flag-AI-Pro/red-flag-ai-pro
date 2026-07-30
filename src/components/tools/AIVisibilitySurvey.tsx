@@ -34,7 +34,7 @@ export function AIVisibilitySurvey() {
       )}
 
       {result && (
-        <ResultsGate tool="ai-visibility-survey" title="Enter your email to see your AI Visibility Score — free, no spam.">
+        <ResultsGate tool="ai-visibility-survey" title="Enter your email to see your AI Visibility Score — free, plus occasional updates, unsubscribe anytime.">
           <div style={{ marginTop: "3rem" }}>
             <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.5rem" }}>AI Visibility Score</p>
