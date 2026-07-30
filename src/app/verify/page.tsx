@@ -127,7 +127,7 @@ function VerifyForm() {
           {result.timestampedAt && (
             <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,222,128,0.2)" }}>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.7)", lineHeight: 1.6 }}>
-                Independently timestamped by {result.timestampAuthority ?? "a third-party authority"} (RFC 3161) on {new Date(result.timestampedAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. The record existed and was unaltered by that time, provable without trusting us.
+                Independently timestamped by {result.timestampAuthority ?? "an independent authority"} on {new Date(result.timestampedAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. The record existed and was unaltered by that time, provable without trusting us.
               </p>
             </div>
           )}
@@ -146,6 +146,42 @@ function VerifyForm() {
       <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.3)", textAlign: "center", marginTop: "3rem" }}>
         This page checks one record's integrity. It does not expose any other data from the account it belongs to.
       </p>
+
+      <div style={{ marginTop: "4rem", paddingTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <h2 style={{ ...syne, fontSize: "1.3rem", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.75rem", textAlign: "center" }}>
+          How this actually works, in plain English
+        </h2>
+        <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.45)", textAlign: "center", marginBottom: "2rem", maxWidth: "480px", marginLeft: "auto", marginRight: "auto" }}>
+          No jargon, no account, no need to take our word for anything. Here is exactly what happens behind the tick or the cross above.
+        </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <span style={{ ...syne, fontWeight: 800, color: "#E5484D", fontSize: "1.1rem", minWidth: "24px" }}>1</span>
+            <p style={{ ...syne, fontSize: "0.92rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.7 }}>
+              <strong style={{ color: "#F4F1EA" }}>Every record gets sealed the moment it is created.</strong> Think of an old fashioned wax seal on a letter. Once it is pressed, anyone can see if it has been broken. Our seal works the same way, except it is mathematical rather than wax, so it cannot be reproduced by guesswork.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <span style={{ ...syne, fontWeight: 800, color: "#E5484D", fontSize: "1.1rem", minWidth: "24px" }}>2</span>
+            <p style={{ ...syne, fontSize: "0.92rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.7 }}>
+              <strong style={{ color: "#F4F1EA" }}>An outside company stamps the date, not us.</strong> For the records that matter most, we send the seal to an independent timestamping authority, the same kind of service used to prove when a legal document was signed. That company has no reason to help us cheat, and it keeps its own copy of when it saw the seal.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <span style={{ ...syne, fontWeight: 800, color: "#E5484D", fontSize: "1.1rem", minWidth: "24px" }}>3</span>
+            <p style={{ ...syne, fontSize: "0.92rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.7 }}>
+              <strong style={{ color: "#F4F1EA" }}>This page checks it for you, in public.</strong> Paste the ID and we recompute the seal from scratch, from the record as it stands today, and compare it to the seal that was made at the time. You do not need an account, and you do not need to trust us, that is the entire point of doing it this way.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <span style={{ ...syne, fontWeight: 800, color: "#E5484D", fontSize: "1.1rem", minWidth: "24px" }}>4</span>
+            <p style={{ ...syne, fontSize: "0.92rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.7 }}>
+              <strong style={{ color: "#F4F1EA" }}>A green tick means nothing has changed since sealing.</strong> Not one word, not one date. If even a single character had been edited, deleted, or backdated, the seal would no longer match, and this page would show it broken instead.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
