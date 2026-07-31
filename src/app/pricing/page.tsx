@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, PLAN_PRICES } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, GROWTH_SALE_ACTIVE, PLAN_PRICES } from "@/lib/constants";
 import React from "react";
 
 export const dynamic = "force-dynamic";
@@ -220,7 +220,7 @@ export default async function PricingPage() {
                   padding: "5px 14px",
                   borderBottomLeftRadius: "8px",
                 }}>
-                  Founder&apos;s birthday sale → 31 Jul
+                  Enforcement week rate → 7 Aug
                 </div>
               )}
 
@@ -297,14 +297,51 @@ export default async function PricingPage() {
                 textTransform: "uppercase", color: "#0A1628",
                 padding: "4px 12px"
               }}>Recommended</div>
+              {GROWTH_SALE_ACTIVE && (
+                <div style={{
+                  position: "absolute", top: "-1px", right: "-1px",
+                  background: "#C9A66B",
+                  ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
+                  textTransform: "uppercase", color: "#0A1628",
+                  padding: "5px 14px",
+                  borderBottomLeftRadius: "8px",
+                }}>
+                  Enforcement week rate → 7 Aug
+                </div>
+              )}
               <div style={{ minHeight: "7.5rem" }}>
                 <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Everything in Pro, plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
               </div>
               <div style={{ minHeight: "4.6rem" }}>
-                <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                  {isNigeria ? "$449" : "£1,200"}<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                </p>
+                {isNigeria ? (
+                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                    $449<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  </p>
+                ) : GROWTH_SALE_ACTIVE ? (
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
+                    <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
+                      £1,200
+                      <span style={{
+                        position: "absolute", left: "-4%", right: "-4%", top: "50%",
+                        height: "2px", background: "#C9A66B",
+                        transform: "rotate(-8deg)",
+                      }} />
+                    </p>
+                    <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                      £999<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                    </p>
+                  </div>
+                ) : (
+                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
+                    £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                  </p>
+                )}
+                {!isNigeria && GROWTH_SALE_ACTIVE && (
+                  <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
+                    Lock this rate in for as long as you stay subscribed.
+                  </p>
+                )}
               </div>
               <Link href={isNigeria ? "/signup?plan=enterprise&region=ng" : "/signup?plan=enterprise"} style={{
                 display: "block", textAlign: "center",

@@ -254,7 +254,7 @@ export default async function DashboardPage({
             </p>
             <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
               {plan === "free"
-                ? `5 scans/month, all 30 risk categories, PDF reports. ${SCANNER_SALE_ACTIVE ? "£149/mo, founder's birthday sale until 31 Jul." : "£350/mo."}`
+                ? `5 scans/month, all 30 risk categories, PDF reports. ${SCANNER_SALE_ACTIVE ? "£149/mo, enforcement week rate until 7 Aug." : "£350/mo."}`
                 : "Managed implementation, audit logging, drift detection, board reporting, dedicated advisor. £5000+/mo."}
             </p>
           </div>

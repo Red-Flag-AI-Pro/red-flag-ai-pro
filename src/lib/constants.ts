@@ -59,17 +59,24 @@ export const REPORT_PRICE = {
   slug: "mystery-of-ai-governance",
 };
 
-// Founder's birthday sale: Pro at £149/mo for anyone who signs up before
-// 1 Aug 2026. Existing-subscriber-grandfathering policy applies, same as any
-// other price change, so sale signups keep £149/mo for as long as they stay
-// subscribed rather than reverting after the sale window closes.
-export const SCANNER_SALE_ENDS = "2026-08-01T00:00:00+01:00";
+// Enforcement week pricing, extended from the founder's birthday sale:
+// Article 50 transparency obligations bite on 2 Aug 2026 and the PLD lands in
+// December, so both discounted prices hold until 8 Aug 2026. Existing
+// subscriber grandfathering applies, same as any other price change, so sale
+// signups keep their price for as long as they stay subscribed rather than
+// reverting after the window closes.
+export const SCANNER_SALE_ENDS = "2026-08-08T00:00:00+01:00";
 export const SCANNER_SALE_ACTIVE = new Date() < new Date(SCANNER_SALE_ENDS);
 
-// Single source of truth for the Pro price. Upsell copy interpolates these
+export const GROWTH_SALE_ENDS = SCANNER_SALE_ENDS;
+export const GROWTH_SALE_ACTIVE = new Date() < new Date(GROWTH_SALE_ENDS);
+
+// Single source of truth for plan prices. Upsell copy interpolates these
 // so a future price change here cannot silently leave stale figures in the UI.
 export const SCANNER_STANDARD_PRICE = 350;
 export const SCANNER_SALE_PRICE = 149;
+export const GROWTH_STANDARD_PRICE = 1200;
+export const GROWTH_SALE_PRICE = 999;
 
 export const PLAN_PRICES = {
   scanner: {
@@ -80,9 +87,14 @@ export const PLAN_PRICES = {
       : process.env.STRIPE_PRICE_SCANNER_ID!,
   },
   enterprise: {
-    monthly: 1200,
+    monthly: GROWTH_SALE_ACTIVE ? GROWTH_SALE_PRICE : GROWTH_STANDARD_PRICE,
     label: "Growth",
-    priceId: process.env.STRIPE_PRICE_ENTERPRISE_ID!,
+    // Falls back to the standard price id until STRIPE_PRICE_ENTERPRISE_SALE_ID
+    // exists in Vercel, so checkout never breaks; the fallback charges the old
+    // £1,200, which is why the env var must be set before promoting £999.
+    priceId: GROWTH_SALE_ACTIVE && process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
+      ? process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
+      : process.env.STRIPE_PRICE_ENTERPRISE_ID!,
   },
   sentinel: {
     monthly: 5000,

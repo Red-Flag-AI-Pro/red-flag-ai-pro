@@ -65,7 +65,7 @@ export default async function NewScanPage() {
           {plan === "free" && (
             <p className="mt-2 text-sm text-[rgba(244,241,234,0.7)]">
               {SCANNER_SALE_ACTIVE
-                ? `Pro is £${PLAN_PRICES.scanner.monthly}/mo in the founder's birthday sale, normally £${SCANNER_STANDARD_PRICE}. Lock this rate in for as long as you stay subscribed.`
+                ? `Pro is £${PLAN_PRICES.scanner.monthly}/mo in the enforcement week rate, normally £${SCANNER_STANDARD_PRICE}. Lock this rate in for as long as you stay subscribed.`
                 : `Pro is £${PLAN_PRICES.scanner.monthly}/mo.`}
             </p>
           )}
