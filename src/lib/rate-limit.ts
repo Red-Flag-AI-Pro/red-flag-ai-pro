@@ -28,8 +28,11 @@ export async function checkRateLimit(
 
     await supabase.from("rate_limits").insert({ rate_key: key });
     return { allowed: true };
-  } catch {
-    // Rate limiting must never break the request it's guarding.
+  } catch (err) {
+    // Rate limiting must never break the request it's guarding, but a
+    // silent catch here is exactly what made this hard to debug once —
+    // always leave a trace.
+    console.error("checkRateLimit failed open:", err);
     return { allowed: true };
   }
 }
