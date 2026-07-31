@@ -75,7 +75,7 @@ export async function logAuditEvent(
   // from a third-party authority. Off by default so routine, high-frequency
   // logging stays instant.
   options: { timestamp?: boolean } = {}
-): Promise<void> {
+): Promise<string | null> {
   try {
     const supabase = await createServiceClient();
 
@@ -98,19 +98,26 @@ export async function logAuditEvent(
       ts = await requestTimestamp(hash);
     }
 
-    await supabase.from("audit_log").insert({
-      user_id: userId,
-      action,
-      details,
-      created_at: createdAt,
-      prev_hash: prevHash,
-      hash,
-      ts_token: ts?.token ?? null,
-      ts_time: ts?.time ?? null,
-      ts_tsa: ts?.tsa ?? null,
-    });
+    const { data: inserted } = await supabase
+      .from("audit_log")
+      .insert({
+        user_id: userId,
+        action,
+        details,
+        created_at: createdAt,
+        prev_hash: prevHash,
+        hash,
+        ts_token: ts?.token ?? null,
+        ts_time: ts?.time ?? null,
+        ts_tsa: ts?.tsa ?? null,
+      })
+      .select("id")
+      .single();
+
+    return inserted?.id ?? null;
   } catch {
     // Audit logging must never break the action it's logging.
+    return null;
   }
 }
 

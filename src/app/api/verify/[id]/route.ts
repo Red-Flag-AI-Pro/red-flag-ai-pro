@@ -12,6 +12,8 @@ const ACTION_LABELS: Record<string, string> = {
   "boundary_record.created": "Boundary authorization recorded",
   "boundary_record.updated": "Boundary authorization updated",
   "concept.sealed": "Concept authorship sealed",
+  "witness.anchor_received": "Witness anchor received",
+  "witness.anchor_sent": "Witness anchor sent",
 };
 
 // No auth required by design — this is meant to be checkable by anyone
