@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import Image from 'next/image';
 import { GovernanceAuditFlow } from '@/components/governance-audit/GovernanceAuditFlow';
 import { TrustBar } from '@/components/marketing/TrustBar';
 import { ProveItWidget } from '@/components/marketing/ProveItWidget';
@@ -27,12 +28,20 @@ export default function GovernanceAuditPage() {
         padding: 'clamp(5rem, 12vw, 8rem) 1.5rem clamp(4rem, 9vw, 6rem)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}>
-        <div aria-hidden style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          backgroundImage: 'url(/images/governance/boardroom.jpg)',
-          backgroundSize: 'cover', backgroundPosition: 'center 60%',
-          filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
-        }} />
+        <Image
+          src="/images/governance/boardroom.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={65}
+          style={{
+            objectFit: 'cover', objectPosition: 'center 60%',
+            filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
+            pointerEvents: 'none',
+          }}
+        />
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: 'rgba(10,22,40,0.55)', mixBlendMode: 'multiply',
@@ -180,12 +189,18 @@ export default function GovernanceAuditPage() {
         }}>
           {/* Photo panel: red wax seal, graded to navy */}
           <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', minHeight: '380px' }}>
-            <div aria-hidden style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: 'url(/images/governance/seal.jpg)',
-              backgroundSize: 'cover', backgroundPosition: 'center',
-              filter: 'saturate(0.85) contrast(1.05) brightness(0.9)',
-            }} />
+            <Image
+              src="/images/governance/seal.jpg"
+              alt=""
+              aria-hidden
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={65}
+              style={{
+                objectFit: 'cover', objectPosition: 'center',
+                filter: 'saturate(0.85) contrast(1.05) brightness(0.9)',
+              }}
+            />
             <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,46,0.35)', mixBlendMode: 'multiply' }} />
             <div aria-hidden style={{
               position: 'absolute', inset: 0,
@@ -238,12 +253,19 @@ export default function GovernanceAuditPage() {
         borderTop: '1px solid rgba(255,255,255,0.05)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}>
-        <div aria-hidden style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          backgroundImage: 'url(/images/governance/archive.jpg)',
-          backgroundSize: 'cover', backgroundPosition: 'center',
-          filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
-        }} />
+        <Image
+          src="/images/governance/archive.jpg"
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          quality={65}
+          style={{
+            objectFit: 'cover', objectPosition: 'center',
+            filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
+            pointerEvents: 'none',
+          }}
+        />
         <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'rgba(10,22,40,0.55)', mixBlendMode: 'multiply' }} />
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
