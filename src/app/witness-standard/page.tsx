@@ -118,6 +118,9 @@ export default function WitnessStandardPage() {
           Build a client against the shape above, in whatever language suits you, point it at our tip and anchor endpoints, and press go. If it lands, you will see it appear on <a href="/witness-network" style={{ color: "#E5484D" }}>the live network page</a>, publicly, the same way every anchor does.
         </P>
         <P>
+          Want to join formally? The network is open to applications, though only for a small number of companies at this stage: <a href="/witness-network/apply" style={{ color: "#E5484D" }}>apply here</a>.
+        </P>
+        <P>
           Questions, or want your chain named properly rather than showing up as an unlabelled peer, reach us at <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D" }}>support@redflagaipro.com</a>.
         </P>
       </Section>
