@@ -33,6 +33,14 @@ const LANES: Lane[] = [
     source: "https://artificialintelligenceact.eu/article/50/",
   },
   {
+    code: "eu",
+    name: "European Union",
+    law: "Product Liability Directive (2024/2853)",
+    detail: "Strict liability regime applies to AI products",
+    date: "2026-12-09T00:00:00Z",
+    source: "https://eur-lex.europa.eu/eli/dir/2024/2853/oj",
+  },
+  {
     code: "gb",
     name: "United Kingdom",
     law: "Online Safety Act, Under-16 restrictions",
@@ -101,7 +109,7 @@ export function RegulatoryCountdown() {
             Every jurisdiction is running its <span style={{ fontStyle: "italic", color: "#E5484D" }}>own clock.</span>
           </h2>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.6, maxWidth: "620px", margin: "1rem auto 0" }}>
-            5 jurisdictions, real deadlines, ticking right now, in parallel. Miss the one that applies to you and there&apos;s no warning shot. Most compliance tools were built once and left alone. We re-check every one of these against the official text, not a summary someone wrote last year.
+            6 deadlines, real regulatory clocks, ticking right now, in parallel. Miss the one that applies to you and there&apos;s no warning shot. Most compliance tools were built once and left alone. We re-check every one of these against the official text, not a summary someone wrote last year.
           </p>
         </div>
 
