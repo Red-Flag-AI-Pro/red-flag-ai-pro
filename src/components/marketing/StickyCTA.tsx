@@ -8,8 +8,17 @@ export function StickyCTA() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     function onScroll() {
-      setVisible(window.scrollY > 600);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setVisible((prev) => {
+          const next = window.scrollY > 600;
+          return prev === next ? prev : next;
+        });
+        ticking = false;
+      });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -18,7 +27,7 @@ export function StickyCTA() {
   if (!visible || dismissed) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-800 bg-gray-950/95 backdrop-blur-sm px-4 py-3">
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-800 bg-gray-950/98 px-4 py-3">
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-4">
         <div className="hidden sm:block">
           <p className="text-sm font-bold text-white">Catch what you said. Prove what you did.</p>
