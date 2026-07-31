@@ -113,6 +113,9 @@ export default function WitnessNetworkPage() {
           <p style={{ ...syne, fontSize: "0.98rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
             Two independent companies, sealing each other's evidence, live, in public. Not a diagram of the idea. The actual thing happening, checkable by anyone below.
           </p>
+          <p style={{ ...syne, fontSize: "0.85rem", marginTop: "1rem" }}>
+            <a href="/witness-standard" style={{ color: "#E5484D", textDecoration: "underline" }}>Read the open protocol →</a>
+          </p>
         </div>
       </section>
 

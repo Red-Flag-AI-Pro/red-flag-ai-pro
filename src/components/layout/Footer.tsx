@@ -28,6 +28,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "URL Exposure Checker", href: "/tools/url-exposure-checker" },
       { label: "AI Visibility Checker", href: "/tools/ai-visibility-checker" },
       { label: "The Witness Test", href: "/witness-test" },
+      { label: "Witness network", href: "/witness-network" },
+      { label: "Open Witness Standard", href: "/witness-standard" },
       { label: "Verify a record", href: "/verify" },
       { label: "All tools", href: "/tools" },
     ],
