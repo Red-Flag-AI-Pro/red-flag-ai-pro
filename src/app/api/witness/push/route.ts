@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { WITNESS_CHAIN_NAME, WITNESS_CHAIN_USER_ID } from "@/lib/witness";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 const GENESIS_HASH = "0".repeat(64);
 
@@ -12,7 +13,12 @@ const PEER_WITNESS_URL = "https://sebbi.pro/x/witness";
 // pushes it to the peer chain so they can seal it, and — only on a
 // confirmed send — seals our own record that we sent it. A failed push
 // seals nothing, so the log never claims more than actually happened.
-export async function POST() {
+export async function POST(request: Request) {
+  const { allowed } = await checkRateLimit(`witness_push:${clientIp(request)}`, 5, 60);
+  if (!allowed) {
+    return NextResponse.json({ ok: false, error: "Too many attempts. Wait a minute and try again." }, { status: 429 });
+  }
+
   const supabase = await createServiceClient();
 
   const { data: last, count } = await supabase
