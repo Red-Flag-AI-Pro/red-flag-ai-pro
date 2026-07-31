@@ -10,6 +10,86 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "witness-network-open-standard-enforcement-week-pricing",
+    title: "The Witness Network Is Live, the Standard Is Free, and Prices Are Down for Enforcement Week",
+    description: "Two independent companies now seal copies of each other's governance records, live. The protocol behind it is published free. And with EU AI Act Article 50 enforcement starting 2 August 2026, Pro and Growth are both down in price until 7 August.",
+    date: "2026-07-31",
+    readTime: "8 min read",
+    category: "AI Governance",
+    content: `
+## Every Governance Record Has the Same Weakness
+
+Every company that keeps records to prove it governs its AI properly has the same structural problem: it checks its own records.
+
+A sealed audit trail, a timestamped sign off, a hash chained log, all of it is real evidence that a record was not quietly altered after the fact. None of it is evidence that the company producing the record is telling the truth about what it represents. Internal consistency is not proof. It is the same company grading its own homework, just with better paperwork.
+
+We built Red Flag AI Pro's audit trail on exactly that honest limit in mind, and this week we closed the actual gap rather than just naming it.
+
+---
+
+## What Went Live This Week
+
+**The witness network.** Two independent companies, Red Flag AI Pro and a second, unrelated company, now hold sealed copies of the state of each other's governance records, live. Neither of us can quietly rewrite our own history anymore, because the other one would notice. There is a real button on the page. Press it, an anchor fires between the two systems in real time, and you can watch it land and verify it yourself. No account, no email required.
+
+[See the witness network live](https://www.redflagaipro.com/witness-network)
+
+**The Open Witness Standard.** The actual protocol behind the witness network, written down and published free. Five fields in the payload (\`chain\`, \`tip\`, \`count\`, \`ts\`, \`url\`), three jobs any implementation needs to do (expose a tip, receive an anchor, push to a peer), and one rule that makes the whole thing real: internal consistency is not proof, only external anchoring closes the gap. Any company that keeps records worth trusting can read the spec and implement it against our endpoints today.
+
+[Read the Open Witness Standard](https://www.redflagaipro.com/witness-standard)
+
+**A working reference client, public on GitHub.** Zero dependencies, the same seal, tip, anchor, verify and serve commands as the standard describes, tested against the live production endpoints. Anyone can clone it, read it, and run it themselves rather than take our word for how the protocol behaves.
+
+[View the reference client on GitHub](https://github.com/Red-Flag-AI-Pro/witness-protocol)
+
+**An application page for companies who want in properly.** The network is open to applications now, though we are only taking a small number of companies at this stage, and we doubt very much that joining stays free forever. If your business keeps records that matter, the door is open today.
+
+[Apply to join the network](https://www.redflagaipro.com/witness-network/apply)
+
+---
+
+## Why Give the Protocol Away for Free
+
+A standard that only one company uses is not a standard, it is a product with extra steps. The whole point of the witness network is that proof gets stronger every time an independent party joins in, and that only works if the method is genuinely open rather than something we sell access to.
+
+We would rather have rivals implementing this protocol than own the only copy of it. If a competitor reads the spec, builds their own client, and starts witnessing records with us or with someone else entirely, the standard gets more credible, not less. That is the opposite of how most companies in this space think about their evidence layer, and it is deliberate.
+
+---
+
+## The Deadline This Sits Next To
+
+None of this was built in a vacuum. EU AI Act Article 50 transparency obligations become legally binding on **2 August 2026**. Chatbot disclosure, AI generated content labelling, deepfake marking, all of it stops being a best practice conversation and becomes an enforceable requirement, regardless of the wider Digital Omnibus timeline adjustments that pushed some high risk classification deadlines back to December 2027. Article 50 was never part of that delay.
+
+A lot of boardrooms currently believe otherwise. That misunderstanding is exactly the kind of gap that turns into an expensive week once enforcement actually starts, emergency legal calls, consultants charging panic rates, and fines that can reach 3% of global annual turnover for the companies who get it wrong.
+
+---
+
+## Prices Are Down, Not Up, for Enforcement Week
+
+The instinct in this industry, when demand spikes because a deadline is finally real, is to raise prices. We are doing the opposite.
+
+Until **7 August 2026**, both paid tiers are reduced, and whoever signs up during this window keeps that price for as long as they stay subscribed, not a short term introductory rate that reverts later.
+
+| Plan | Standard price | Enforcement week price | What it includes |
+|------|----------------|------------------------|-------------------|
+| Pro | £350/mo | £149/mo | Marketing copy checked against 30 risk categories across 10 jurisdictions, before a regulator does it for you |
+| Growth | £1,200/mo | £999/mo | Everything in Pro, plus ongoing AI governance monitoring, sealed records that prove oversight happened, and team seats |
+
+We said when we built this business that everything the law actually requires should not cost what this industry charges for it. Enforcement week is the moment that sentence either means something or it never did.
+
+[See the full pricing](https://www.redflagaipro.com/pricing)
+
+---
+
+## Where This Goes Next
+
+The witness network and the Open Witness Standard are both genuinely early. Two companies is not two hundred, and we have never claimed internal consistency was proof, that is the exact problem this exists to fix. What exists today is real and running, which is more than most governance tooling in this space can say about anything it claims.
+
+If you want to see the mechanism directly rather than take our word for any of it, the button is live, the standard is documented, and the code is public. Press it yourself.
+
+[Check your own compliance and governance posture free →](https://www.redflagaipro.com/governance-audit)
+`,
+  },
+  {
     slug: "ai-compliance-vs-ai-governance",
     title: "AI Compliance vs AI Governance: What Is the Difference and Why Does It Matter?",
     description: "Most organisations can pass an AI compliance check. Very few can prove they governed their AI decisions. This is the difference, why it matters, who is supposed to own it, and what regulators are now asking for.",
