@@ -37,6 +37,20 @@ export default function LandingPage() {
       <ExitIntent />
       <Navbar />
 
+      {/* ANNOUNCEMENT: witness network */}
+      <Link
+        href="/witness-network"
+        style={{
+          display: "block", textDecoration: "none", background: "#0D1B2E",
+          borderBottom: "1px solid rgba(229,72,77,0.25)", padding: "0.6rem 1.5rem", textAlign: "center",
+        }}
+      >
+        <span style={{ ...syne, fontSize: "0.82rem", color: "rgba(244,241,234,0.75)" }}>
+          <span style={{ color: "#E5484D", fontWeight: 700 }}>New:</span> two independent companies sealing each other's evidence, live.{" "}
+          <span style={{ color: "#F4F1EA", fontWeight: 700, textDecoration: "underline" }}>See the witness network →</span>
+        </span>
+      </Link>
+
       {/* HERO */}
       <section style={{
         padding: "clamp(5rem, 12vw, 8rem) 1.5rem clamp(4rem, 10vw, 6rem)",
