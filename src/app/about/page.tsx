@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "About Red Flag AI Pro: AI Governance Scoring and Compliance Platform",
   description:
-    "Red Flag AI Pro was built to solve the gap between AI compliance and AI governance. Immutable audit trails, named human sign-off, and compliance checking across 10 jurisdictions. Built by James Stokes for CFOs, legal and risk teams.",
+    "Red Flag AI Pro was built to solve the gap between AI compliance and AI governance. Immutable audit trails, named human sign-off, and compliance checking across 11 jurisdictions. Built by James Stokes for CFOs, legal and risk teams.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
 };
 
@@ -265,7 +265,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Catch It Before It Ships",
-                desc: "Real time check on marketing copy against 30 risk categories across 10 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
+                desc: "Real time check on marketing copy against 30 risk categories across 11 jurisdictions in under 60 seconds. The original problem we solved, still running every day.",
               },
               {
                 icon: "",

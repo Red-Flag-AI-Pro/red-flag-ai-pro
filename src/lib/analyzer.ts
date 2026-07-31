@@ -1,7 +1,7 @@
 import type { AnalysisResult, Severity } from "@/types";
 import { SEVERITY_DEDUCTIONS } from "./constants";
 
-export type JurisdictionCode = "us" | "gb" | "eu" | "au" | "ca" | "br" | "in" | "sg" | "ae" | "ng";
+export type JurisdictionCode = "us" | "gb" | "eu" | "au" | "ca" | "br" | "in" | "sg" | "ae" | "ng" | "cn";
 
 interface Rule {
   category: string;
@@ -53,8 +53,9 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "UCPD (EU)",
       "FCCPC (NG)",
+      "PRC Advertising Law Arts 24-25 + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── FAKE URGENCY ─────────────────────────────────────────────────────────────
@@ -92,8 +93,9 @@ const RULES: Rule[] = [
       "DSA (EU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "Anti-Unfair Competition Law Art 8 + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── FAKE SCARCITY ────────────────────────────────────────────────────────────
@@ -129,8 +131,9 @@ const RULES: Rule[] = [
       "DSA (EU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "Anti-Unfair Competition Law Art 8 + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
@@ -163,8 +166,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "PRC Advertising Law Art 38 — endorser liability (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── GUARANTEES ───────────────────────────────────────────────────────────────
@@ -195,8 +199,9 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "Consumer Rights Directive (EU)",
       "FCCPC (NG)",
+      "PRC Consumer Protection Law — 7 day no reason returns (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── HEALTH CLAIMS ────────────────────────────────────────────────────────────
@@ -238,8 +243,9 @@ const RULES: Rule[] = [
       "Health Canada + Competition Bureau (CA)",
       "EMA + UCPD (EU)",
       "NAFDAC + FCCPC (NG)",
+      "PRC Advertising Law Arts 16-19 + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── LEGAL DISCLAIMER ─────────────────────────────────────────────────────────
@@ -269,8 +275,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "PRC Advertising Law Art 8 + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── CONTRACT CONTRADICTION ───────────────────────────────────────────────────
@@ -290,7 +297,7 @@ const RULES: Rule[] = [
     flag_description:
       "Possible contradiction between sales copy guarantees and this no-refund clause. Statutory consumer rights in the UK, EU, Australia, and Canada cannot be contracted out of.",
     suggestion:
-      "Audit all guarantee language against your TOS. Statutory rights override contract terms across all 10 jurisdictions — UK (14 days), EU (14 days), Australia (ACL guarantees), Canada (provincial rights), Brazil (LGPD/CDC), India (DPDP Act), Singapore (PDPA), UAE (Consumer Protection Law). A 'no refunds' clause does not override these rights.",
+      "Audit all guarantee language against your TOS. Statutory rights override contract terms across all 11 jurisdictions — UK (14 days), EU (14 days), Australia (ACL guarantees), Canada (provincial rights), Brazil (LGPD/CDC), India (DPDP Act), Singapore (PDPA), UAE (Consumer Protection Law), China (7 day no reason online returns). A 'no refunds' clause does not override these rights.",
     regulations: [
       "FTC (US)",
       "Consumer Rights Act 2015 (UK)",
@@ -298,8 +305,9 @@ const RULES: Rule[] = [
       "Consumer Protection Act (CA)",
       "Consumer Rights Directive (EU)",
       "FCCPC (NG)",
+      "PRC Consumer Protection Law + SAMR (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── GDPR / ICO / DATA PRIVACY ────────────────────────────────────────────────
@@ -333,8 +341,9 @@ const RULES: Rule[] = [
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
       "NDPR 2019 + NITDA (NG)",
+      "PIPL 2021 + CAC (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae", "ng", "cn"],
   },
 
   // ─── DRIP PRICING / HIDDEN FEES ───────────────────────────────────────────────
@@ -372,8 +381,9 @@ const RULES: Rule[] = [
       "LGPD (Brazil)",
       "PDPA (Singapore)",
       "FCCPC (NG)",
+      "PRC Price Law + SAMR pricing regulations (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "sg", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "sg", "ng", "cn"],
   },
 
   // ─── FAKE REVIEWS ─────────────────────────────────────────────────────────────
@@ -406,8 +416,9 @@ const RULES: Rule[] = [
       "Competition Bureau (CA)",
       "PDPA (Singapore)",
       "FCCPC (NG)",
+      "Anti-Unfair Competition Law Art 8 + SAMR Internet Advertising Measures (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "sg", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "sg", "ng", "cn"],
   },
 
   // ─── COMPARATIVE ADVERTISING ──────────────────────────────────────────────────
@@ -442,8 +453,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "PRC Advertising Law Arts 9 and 13 — absolute terms banned (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── CASL / EMAIL MARKETING ───────────────────────────────────────────────────
@@ -476,8 +488,9 @@ const RULES: Rule[] = [
       "PDPA (Singapore)",
       "UAE PDPL 2022 (UAE)",
       "NDPR 2019 + NITDA (NG)",
+      "PIPL consent rules + Internet Email Services Measures (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "in", "sg", "ae", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "in", "sg", "ae", "ng", "cn"],
   },
 
   // ─── EU AI ACT / AI CONTENT DISCLOSURE ───────────────────────────────────────
@@ -510,8 +523,9 @@ const RULES: Rule[] = [
       "FTC AI Endorsement Guidelines (US)",
       "ACCC AI Guidelines (AU)",
       "NITDA AI Policy Framework (NG)",
+      "CAC AI Content Labeling Measures — in force Sep 2025 (CN)",
     ],
-    jurisdictions: ["eu", "gb", "us", "au", "ng"],
+    jurisdictions: ["eu", "gb", "us", "au", "ng", "cn"],
   },
 
   // ─── FTC AI ENDORSEMENTS ──────────────────────────────────────────────────────
@@ -543,8 +557,9 @@ const RULES: Rule[] = [
       "UCPD (EU)",
       "ACCC (AU)",
       "NITDA AI Policy Framework (NG)",
+      "CAC Deep Synthesis Provisions 2023 (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ng", "cn"],
   },
 
   // ─── AUTOMATED DECISION MAKING ────────────────────────────────────────────────
@@ -577,8 +592,9 @@ const RULES: Rule[] = [
       "Privacy Act (AU)",
       "PIPEDA (CA)",
       "NDPR 2019 + NITDA (NG)",
+      "PIPL Article 24 — automated decision rules (CN)",
     ],
-    jurisdictions: ["eu", "gb", "us", "au", "ca", "ng"],
+    jurisdictions: ["eu", "gb", "us", "au", "ca", "ng", "cn"],
   },
 
   // ─── DARK PATTERNS / MANIPULATIVE DESIGN ─────────────────────────────────────
@@ -609,8 +625,9 @@ const RULES: Rule[] = [
       "CMA (UK)",
       "FTC (US)",
       "FCCPC (NG)",
+      "Consumer Protection Law Implementing Regulations 2024 (CN)",
     ],
-    jurisdictions: ["eu", "au", "gb", "us", "ng"],
+    jurisdictions: ["eu", "au", "gb", "us", "ng", "cn"],
   },
 
   // ─── FCA FINANCIAL PROMOTIONS ─────────────────────────────────────────────────
@@ -653,8 +670,9 @@ const RULES: Rule[] = [
       "OSC + CSA (CA)",
       "ESMA (EU)",
       "SEC Nigeria + CBN (NG)",
+      "PRC Advertising Law Art 25 — no promised returns (CN)",
     ],
-    jurisdictions: ["gb", "us", "au", "ca", "eu", "ng"],
+    jurisdictions: ["gb", "us", "au", "ca", "eu", "ng", "cn"],
   },
 
   // ─── GREENWASHING / EU GREEN CLAIMS DIRECTIVE ─────────────────────────────────
@@ -744,8 +762,9 @@ const RULES: Rule[] = [
       "LGPD (Brazil)",
       "DPDP Act 2023 (India)",
       "FCCPC (NG)",
+      "Consumer Protection Law Implementing Regulations 2024 — auto renewal notice (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "br", "in", "ng", "cn"],
   },
 
   // ─── INFLUENCER / PAID PROMOTION NON-DISCLOSURE ───────────────────────────────
@@ -780,8 +799,9 @@ const RULES: Rule[] = [
       "ACCC (AU)",
       "Competition Bureau (CA)",
       "FCCPC (NG)",
+      "SAMR Internet Advertising Measures 2023 — mandatory ad labeling (CN)",
     ],
-    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng"],
+    jurisdictions: ["us", "gb", "eu", "au", "ca", "ng", "cn"],
   },
 
   // ─── SMS / TEXT MARKETING ─────────────────────────────────────────────────────
@@ -823,8 +843,9 @@ const RULES: Rule[] = [
       "DPDP Act 2023 (India)",
       "UAE PDPL 2022 (UAE)",
       "NCC + NDPR 2019 (NG)",
+      "PIPL consent + MIIT rules (CN)",
     ],
-    jurisdictions: ["us", "gb", "ca", "eu", "sg", "in", "ae", "ng"],
+    jurisdictions: ["us", "gb", "ca", "eu", "sg", "in", "ae", "ng", "cn"],
   },
 
   // ─── ONLINE SAFETY / HARMFUL CONTENT ─────────────────────────────────────────
@@ -863,8 +884,9 @@ const RULES: Rule[] = [
       "Digital Services Act (EU)",
       "GDPR (EU)",
       "Section 230 (US — limited protections for UGC platforms)",
+      "Regulations on Protection of Minors in Cyberspace 2024 (CN)",
     ],
-    jurisdictions: ["gb", "eu", "us"],
+    jurisdictions: ["gb", "eu", "us", "cn"],
   },
 
   // ─── FAKE / REFERENCE PRICING ────────────────────────────────────────────────
@@ -898,8 +920,9 @@ const RULES: Rule[] = [
       "FTC Guides Against Deceptive Pricing (US)",
       "Australian Consumer Law — Section 29 (AU)",
       "FCCPC (NG)",
+      "PRC Price Law — fictitious original prices banned + SAMR (CN)",
     ],
-    jurisdictions: ["gb", "eu", "us", "au", "ng"],
+    jurisdictions: ["gb", "eu", "us", "au", "ng", "cn"],
   },
 
   // ─── COOKIE CONSENT / TRACKING ────────────────────────────────────────────────
@@ -961,8 +984,9 @@ const RULES: Rule[] = [
       "Markets in Crypto-Assets Regulation / MiCA (EU)",
       "SEC Securities Act of 1933 (US)",
       "ASA CAP Code (UK)",
+      "PBOC 2021 Notice — crypto promotion banned outright (CN)",
     ],
-    jurisdictions: ["gb", "eu", "us"],
+    jurisdictions: ["gb", "eu", "us", "cn"],
   },
 
   // ─── WEB ACCESSIBILITY ────────────────────────────────────────────────────────
@@ -1032,8 +1056,9 @@ const RULES: Rule[] = [
       "Digital Services Act — Minor Protection (EU)",
       "Children's Online Privacy Protection Act / COPPA (US)",
       "UK Age Appropriate Design Code (UK)",
+      "PRC Advertising Law Art 40 + Minors Cyberspace Regulations (CN)",
     ],
-    jurisdictions: ["gb", "au", "eu", "us"],
+    jurisdictions: ["gb", "au", "eu", "us", "cn"],
   },
 
   // ─── COUNTRY OF ORIGIN / 'MADE IN' CLAIMS ────────────────────────────────────
@@ -1075,7 +1100,7 @@ const RULES: Rule[] = [
 export const CATEGORY_JURISDICTIONS: Record<string, JurisdictionCode[]> = (() => {
   const map: Record<string, JurisdictionCode[]> = {};
   for (const rule of RULES) map[rule.category] = rule.jurisdictions;
-  map["claims_policy_mismatch"] = ["us", "gb", "eu", "au", "ca"];
+  map["claims_policy_mismatch"] = ["us", "gb", "eu", "au", "ca", "cn"];
   return map;
 })();
 
@@ -1224,6 +1249,7 @@ export function analyzeContent(
                 if (j === "sg") return lower.includes("pdpa") || lower.includes("singapore");
                 if (j === "ae") return lower.includes("pdpl") || lower.includes("uae");
                 if (j === "ng") return lower.includes("(ng") || lower.includes("ndpr") || lower.includes("nitda") || lower.includes("fccpc") || lower.includes("nigeria") || lower.includes("ncc");
+                if (j === "cn") return lower.includes("(cn") || lower.includes("samr") || lower.includes("pipl") || lower.includes("china") || lower.includes("cac ") || lower.includes("pboc") || lower.includes("prc ");
                 return false;
               });
             })

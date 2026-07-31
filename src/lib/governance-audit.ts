@@ -736,6 +736,11 @@ export const REGULATORY_QUESTIONS = [
         isSubQuestion: true,
       },
       {
+        text: 'China (PIPL, CAC generative AI and labeling measures)',
+        riskPoints: 0,
+        isSubQuestion: true,
+      },
+      {
         text: 'Industry-specific (healthcare, finance, insurance)',
         riskPoints: 0,
         isSubQuestion: true,

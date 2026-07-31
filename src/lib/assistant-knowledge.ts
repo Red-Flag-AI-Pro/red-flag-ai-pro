@@ -134,12 +134,12 @@ export function buildKnowledgeBase(liveStats?: { checksRun?: number }): string {
 
 WHAT IT IS
 Two things in one platform:
-1. Compliance checking of marketing copy, ads, funnels, emails and live pages against 30 risk categories across 10 jurisdictions. The free plan sees 16 of the 30 categories.
+1. Compliance checking of marketing copy, ads, funnels, emails and live pages against 30 risk categories across 11 jurisdictions. The free plan sees 16 of the 30 categories.
 2. AI governance scoring: the Governance Maturity Index, a free assessment scoring an organisation across 6 dimensions (strategy, tools and data, policy, monitoring, vendor risk, regulatory readiness).
 Regulatory mappings last reviewed ${REGULATORY_MAPPING_LAST_REVIEWED}.
 
 THE 10 JURISDICTIONS
-USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL) and Nigeria (NDPR).
+USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL), Nigeria (NDPR) and China (SAMR, PIPL, CAC).
 
 REGULATORY DEADLINES YOU MAY EXPLAIN (state the status label honestly, never upgrade a proposal to settled law)
 ${deadlineLines}

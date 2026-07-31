@@ -71,7 +71,7 @@ Until **7 August 2026**, both paid tiers are reduced, and whoever signs up durin
 
 | Plan | Standard price | Enforcement week price | What it includes |
 |------|----------------|------------------------|-------------------|
-| Pro | £350/mo | £149/mo | Marketing copy checked against 30 risk categories across 10 jurisdictions, before a regulator does it for you |
+| Pro | £350/mo | £149/mo | Marketing copy checked against 30 risk categories across 11 jurisdictions, before a regulator does it for you |
 | Growth | £1,200/mo | £999/mo | Everything in Pro, plus ongoing AI governance monitoring, sealed records that prove oversight happened, and team seats |
 
 We said when we built this business that everything the law actually requires should not cost what this industry charges for it. Enforcement week is the moment that sentence either means something or it never did.
@@ -109,7 +109,7 @@ Can you prove it?
 
 Not "do you have a policy that says you govern AI responsibly." Not "did you tick the box in the audit." The question is whether you can produce a documented, time stamped, named chain of evidence that shows what your AI systems did, who reviewed the output, what decision was made, and when.
 
-That is the difference between compliance and governance. And in 2026, with the EU AI Act enforcement clock running and regulators across ten jurisdictions sharpening their focus on AI decision making, it is the most important distinction in the room.
+That is the difference between compliance and governance. And in 2026, with the EU AI Act enforcement clock running and regulators across eleven jurisdictions sharpening their focus on AI decision making, it is the most important distinction in the room.
 
 ---
 
@@ -502,7 +502,7 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 
 None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator, or a customer complaint, does it for you.
 
-Red Flag AI Pro checks your marketing copy against all 30 risk categories across 10 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
 
 [Check your course sales page free →](https://www.redflagaipro.com/signup)
     `,
@@ -1043,7 +1043,7 @@ Before you launch your next campaign, run through this checklist.
 
 Checking all 16 points manually takes time, and it's easy to miss something.
 
-Red Flag AI Pro checks your marketing copy against all 30 risk categories across 10 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
 
 ✅ A 0 100 compliance risk score
 ✅ Every violation explained in plain English
@@ -1157,7 +1157,7 @@ This is not a theoretical risk. It is the realistic outcome of the insurance mar
 
 ## Red Flag AI Pro: Your Compliance Paper Trail
 
-Red Flag AI Pro checks AI generated and human written marketing copy against 30 risk categories across 10 jurisdictions, including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
+Red Flag AI Pro checks AI generated and human written marketing copy against 30 risk categories across 11 jurisdictions, including EU AI Act Article 50 compliance, FTC earnings claims, ASA CAP Code, GDPR, CASL, UAE PDPL 2022 and India DPDP Act 2023.
 
 Every check produces a timestamped compliance report. That report is your documented evidence of professional diligence, exactly what your broker, your client and any claims handler would need to see.
 
@@ -1919,7 +1919,7 @@ Have your solicitor review these clauses, generic templates are not sufficient f
 
 ## The Compliance Audit Tool Agencies Are Using
 
-Red Flag AI Pro runs compliance checks against 30 risk categories across 10 jurisdictions, including FCA financial promotions, ASA CAP Code, GDPR, EU AI Act, FTC requirements, UAE PDPL 2022, India DPDP Act 2023 and Singapore PDPA.
+Red Flag AI Pro runs compliance checks against 30 risk categories across 11 jurisdictions, including FCA financial promotions, ASA CAP Code, GDPR, EU AI Act, FTC requirements, UAE PDPL 2022, India DPDP Act 2023 and Singapore PDPA.
 
 On the Sentinel plan, agencies can:
 
@@ -2303,7 +2303,7 @@ The disclaimer accompanies a substantiated claim, it does not replace substantia
 
 ## Check Your Income Claims
 
-Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 10 jurisdictions simultaneously, with AI powered specific rewrites for every violation found.
+Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 11 jurisdictions simultaneously, with AI powered specific rewrites for every violation found.
 
 [Check your copy free →](https://www.redflagaipro.com)
     `,

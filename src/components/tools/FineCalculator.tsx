@@ -18,7 +18,7 @@ import { ResultsGate } from "./ResultsGate";
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
 // Approximate FX → GBP (June 2026). Used only to express foreign statutory caps in £.
-const FX = { EUR: 0.85, AUD: 0.52, SGD: 0.58, BRL: 0.15, INR: 0.0095, CAD: 0.58, AED: 0.215, USD: 0.79 };
+const FX = { EUR: 0.85, AUD: 0.52, SGD: 0.58, BRL: 0.15, INR: 0.0095, CAD: 0.58, AED: 0.215, USD: 0.79, CNY: 0.11, NGN: 0.0005 };
 
 type Kind = "higher" | "capped" | "fixed" | "perViolation";
 
@@ -56,6 +56,8 @@ const JURISDICTIONS: Jur[] = [
   { id: "ae", name: "United Arab Emirates", law: "PDPL", kind: "fixed", floorGBP: Math.round(5_000_000 * FX.AED), note: "Fixed range up to AED 5M" },
   { id: "us", name: "United States", law: "FTC Act §5", kind: "perViolation", perViolationGBP: Math.round(53_088 * FX.USD), note: "Per violation, multiplies fast (per consumer / per day)" },
   { id: "ca", name: "Canada", law: "PIPEDA", kind: "fixed", floorGBP: Math.round(100_000 * FX.CAD), note: "Low today; tougher reform (C$25M/5%) proposed, not yet law" },
+  { id: "cn", name: "China", law: "PIPL 2021", kind: "higher", pct: 0.05, floorGBP: Math.round(50_000_000 * FX.CNY), note: "Up to ¥50M or 5% of prior-year turnover, plus SAMR advertising fines" },
+  { id: "ng", name: "Nigeria", law: "NDPA 2023", kind: "higher", pct: 0.02, floorGBP: Math.round(10_000_000 * FX.NGN), note: "Higher of ₦10M or 2% of annual gross revenue" },
 ];
 
 const DEFAULT_MARKETS = ["uk", "eu", "us"];

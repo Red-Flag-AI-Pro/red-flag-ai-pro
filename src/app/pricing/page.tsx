@@ -18,7 +18,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const SCANNER_FEATURES = [
-  "10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.",
+  "11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.",
   "5 checks per month",
   "PDF reports",
   "Check history",
@@ -26,7 +26,7 @@ const SCANNER_FEATURES = [
 ];
 
 const GROWTH_FEATURES = [
-  "10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
+  "11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
   "Full AI governance diagnosis — every gap revealed, not just one (fixes unlock with Sentinel)",
   "1 free fix-it document for your worst-scoring dimension",
   "Vendor AI risk tracking & assessments",
@@ -157,7 +157,7 @@ export default async function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>10 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -446,7 +446,7 @@ export default async function PricingPage() {
                 </thead>
                 <tbody>
                   {[
-                    { need: "10 jurisdictions covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
+                    { need: "11 jurisdictions covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
                     { need: "See every governance gap (the warnings)", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "The fix for every gap (not just a warning)", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },

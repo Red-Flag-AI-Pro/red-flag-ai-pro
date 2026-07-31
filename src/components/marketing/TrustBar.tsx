@@ -32,6 +32,7 @@ const JURISDICTIONS = [
   { name: "S. Africa", svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 4"><path d="M0 0h6v4H0z" fill="#007A4D"/><path d="M0 0l4 2-4 2z" fill="#FFB612"/><path d="M0 0l3.5 2-3.5 2z" fill="#000"/><path d="M0 1.25h3.8l.9.75-.9.75H0z" fill="#fff"/><path d="M0 1.5h3.6l.7.5-.7.5H0z" fill="#DE3831"/><path d="M3.8 2H6V1H3.8l.9 1z" fill="#000" opacity="0"/><rect y="0" width="6" height=".67" fill="#007A4D"/><rect y="3.33" width="6" height=".67" fill="#007A4D"/><rect y=".67" width="6" height=".66" fill="#FFB612"/><rect y="2.67" width="6" height=".66" fill="#FFB612"/><rect y="1.33" width="6" height="1.34" fill="#DE3831"/></svg> },
   { name: "India", svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600"><rect width="900" height="600" fill="#138808"/><rect width="900" height="400" fill="#fff"/><rect width="900" height="200" fill="#FF9933"/><circle cx="450" cy="300" r="60" fill="none" stroke="#000080" strokeWidth="4"/><circle cx="450" cy="300" r="8" fill="#000080"/></svg> },
   { name: "Nigeria", svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect width="1" height="2" fill="#008751"/><rect x="2" width="1" height="2" fill="#008751"/></svg> },
+  { name: "China", svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20"><rect width="30" height="20" fill="#EE1C25"/><g fill="#FFDE00"><g transform="translate(5,5) scale(3)"><polygon points="0,-1 .588,.809 -.951,-.309 .951,-.309 -.588,.809"/></g><g transform="translate(10,2) scale(1)"><polygon points="0,-1 .588,.809 -.951,-.309 .951,-.309 -.588,.809"/></g><g transform="translate(12,4.5) scale(1)"><polygon points="0,-1 .588,.809 -.951,-.309 .951,-.309 -.588,.809"/></g><g transform="translate(12,7.5) scale(1)"><polygon points="0,-1 .588,.809 -.951,-.309 .951,-.309 -.588,.809"/></g><g transform="translate(10,10) scale(1)"><polygon points="0,-1 .588,.809 -.951,-.309 .951,-.309 -.588,.809"/></g></g></svg> },
 ];
 
 const FRAMEWORKS = [
@@ -65,7 +66,7 @@ export async function TrustBar() {
       ? [{ value: checks.toLocaleString("en-GB"), label: "checks run" }]
       : []),
     { value: "30", label: "risk categories" },
-    { value: "10", label: "jurisdictions" },
+    { value: "11", label: "jurisdictions" },
     { value: "6", label: "governance dimensions" },
   ];
 

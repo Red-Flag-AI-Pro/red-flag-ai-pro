@@ -66,6 +66,13 @@ export const REGIME_CEILINGS: Record<JurisdictionCode, RegimeCeiling> = {
     ceiling: "2% of Brazil revenue, capped at R$50M per infraction",
     rankGBP: 7_500_000,
   },
+  cn: {
+    code: "cn",
+    market: "China",
+    law: "PIPL / PRC Advertising Law",
+    ceiling: "up to ¥50M or 5% of prior-year turnover",
+    rankGBP: 5_500_000,
+  },
   ae: {
     code: "ae",
     market: "United Arab Emirates",

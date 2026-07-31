@@ -103,8 +103,8 @@ export function HeroNew() {
                   <path d="M2 2h10l-3 4.5 3 4.5H2" fill="#ef4444"/>
                 </svg>
               </span>
-              <span className="hero-eyebrow-text-full">Marketing Compliance · 10 Jurisdictions · 30 Risk Categories</span>
-              <span className="hero-eyebrow-text-short">10 Jurisdictions · 30 Risk Categories</span>
+              <span className="hero-eyebrow-text-full">Marketing Compliance · 11 Jurisdictions · 30 Risk Categories</span>
+              <span className="hero-eyebrow-text-short">11 Jurisdictions · 30 Risk Categories</span>
             </span>
           </div>
 
@@ -149,7 +149,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>30 risk categories. 10 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>30 risk categories. 11 jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
@@ -242,7 +242,7 @@ export function HeroNew() {
           }}>
             {[
               "30 risk categories",
-              "10 jurisdictions",
+              "11 jurisdictions",
               "URL + VSL + site audit",
               "60 second results",
             ].map((s, i) => (

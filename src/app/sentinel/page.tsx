@@ -170,7 +170,7 @@ export default function SentinelPage() {
           </p>
 
           <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.85)", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 3rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
-            Compliance infrastructure for agencies, legal teams and regulated businesses. All 30 risk categories across 10 jurisdictions, human review logs, independent timestamps and a tamper evident audit trail. Built for the teams where a compliance failure is a regulatory event.
+            Compliance infrastructure for agencies, legal teams and regulated businesses. All 30 risk categories across 11 jurisdictions, human review logs, independent timestamps and a tamper evident audit trail. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>

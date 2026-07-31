@@ -224,7 +224,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             fontWeight: 700
           }}>
-            One check covers <span style={{color: "#E5484D"}}>all</span> 10 jurisdictions at once.
+            One check covers <span style={{color: "#E5484D"}}>all</span> 11 jurisdictions at once.
           </p>
         </div>
 
@@ -410,7 +410,7 @@ export function DemoScanner() {
                   Checking for{" "}
                   <span style={{color: "white", fontWeight: 700}}>
                     {jurisdictions.length === JURISDICTIONS.length
-                      ? "all 10 jurisdictions"
+                      ? "all 11 jurisdictions"
                       : jurisdictions.map(c => JURISDICTIONS.find(j => j.code === c)?.name).join(" + ")}
                   </span>
                 </p>

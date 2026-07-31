@@ -64,6 +64,8 @@ Brazil: LGPD Articles 7/9/46, PROCON consumer protection
 India: DPDP Act 2023, ASCI Advertising Guidelines
 Singapore: PDPA Sections 13/20, ASAS advertising standards
 UAE: PDPL 2022 Articles 5/7, UAE Consumer Protection Law
+Nigeria: NDPR 2019, NITDA guidelines, FCCPC consumer protection, NAFDAC health advertising
+China: PRC Advertising Law (Article 9 absolute-terms ban, Articles 16-19 health/medical ads, Articles 24-25 education and investment ads, Article 38 endorser liability, Article 40 ads to minors), Anti-Unfair Competition Law Article 8, PIPL Articles 13/24, SAMR Internet Advertising Measures 2023 (mandatory ad labeling), CAC AI Content Labeling Measures (in force Sep 2025), PRC Price Law (fictitious original prices), Consumer Protection Law Implementing Regulations 2024 (auto-renewal notices), PBOC 2021 crypto promotion prohibition
 
 A compliance scanner has already identified the following violations in this marketing copy. Your job is to:
 

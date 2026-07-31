@@ -23,7 +23,7 @@ const TICKER_ITEMS = [
   "Reviewed Badge",
   "48 Hour Delivery",
   "30 Risk Categories",
-  "10 Jurisdictions",
+  "11 Jurisdictions",
   "Plain English",
   "Compliant Rewrites",
   "FTC · ASA · GDPR · CMA · ACCC · CASL · LGPD · PDPA · DPDP · NDPR",
@@ -35,7 +35,7 @@ const INCLUDES = [
   {
     num: "01",
     headline: "Full site check",
-    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 30 risk categories, across all 10 jurisdictions.",
+    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 30 risk categories, across all 11 jurisdictions.",
   },
   {
     num: "02",

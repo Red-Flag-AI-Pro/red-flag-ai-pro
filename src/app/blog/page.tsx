@@ -7,7 +7,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "AI Governance & Compliance Blog | Red Flag AI Pro",
-  description: "Plain English guides on AI governance, EU AI Act compliance, audit trails, and regulatory requirements across 10 jurisdictions. Written for compliance, legal and risk teams.",
+  description: "Plain English guides on AI governance, EU AI Act compliance, audit trails, and regulatory requirements across 11 jurisdictions. Written for compliance, legal and risk teams.",
   alternates: { canonical: "https://www.redflagaipro.com/blog" },
 };
 
@@ -171,7 +171,7 @@ export default function BlogPage() {
             Stop reading about compliance.<br />Find out what your own copy would trigger.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            Red Flag AI Pro checks your copy against 30 risk categories across 10 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your copy against 30 risk categories across 11 jurisdictions in 60 seconds.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

@@ -12,7 +12,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
-    "Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across 10 jurisdictions and 30 risk categories, so the confidence is backed by something real.",
+    "Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across 11 jurisdictions and 30 risk categories, so the confidence is backed by something real.",
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -121,7 +121,7 @@ export default function LandingPage() {
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Compliance Assessment</p>
               <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Check your marketing copy</h3>
               <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 10 jurisdictions, with every flag explained so you know exactly what to fix.
+                Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 11 jurisdictions, with every flag explained so you know exactly what to fix.
               </p>
               <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                 Check your copy <span className="arrow">→</span>

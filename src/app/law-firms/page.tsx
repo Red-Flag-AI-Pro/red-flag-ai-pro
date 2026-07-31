@@ -129,7 +129,7 @@ const WHO = [
     label: "Marketing and BD teams",
     title: "Client alerts and websites are regulated advertising.",
     description:
-      "Check any page or client communication against 30 risk categories across 10 jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.",
+      "Check any page or client communication against 30 risk categories across 11 jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.",
   },
 ];
 
@@ -606,7 +606,7 @@ export default function LawFirmsPage() {
           </h2>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
             The governance assessment scores your AI oversight across 6 dimensions and shows the single biggest gap.
-            The compliance check reads any page or document against 30 risk categories across 10 jurisdictions in under
+            The compliance check reads any page or document against 30 risk categories across 11 jurisdictions in under
             60 seconds. Free, no account, results instantly.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>

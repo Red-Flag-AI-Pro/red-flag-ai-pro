@@ -21,6 +21,7 @@ export const JURISDICTIONS: {
   { code: "sg", name: "Singapore", flag: "sg", laws: "PDPA" },
   { code: "ae", name: "UAE",       flag: "ae", laws: "PDPL 2022" },
   { code: "ng", name: "Nigeria",   flag: "ng", laws: "NDPR · FCCPC" },
+  { code: "cn", name: "China",     flag: "cn", laws: "SAMR · PIPL · CAC" },
 ];
 
 interface Props {
@@ -78,8 +79,8 @@ export function JurisdictionPicker({ value, onChange, compact = false }: Props) 
             {value.length === 0
               ? "Select jurisdictions"
               : value.length === JURISDICTIONS.length
-              ? "All 10 jurisdictions"
-              : `${value.length} of 10 selected`}
+              ? `All ${JURISDICTIONS.length} jurisdictions`
+              : `${value.length} of ${JURISDICTIONS.length} selected`}
           </span>
         </div>
 
