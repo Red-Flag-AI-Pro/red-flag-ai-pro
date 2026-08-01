@@ -56,12 +56,11 @@ export default function WitnessStandardPage() {
           fill
           priority
           sizes="100vw"
-          quality={65}
-          style={{ objectFit: "cover", objectPosition: "center 50%", filter: "saturate(0.6) contrast(1.05) brightness(0.9)", pointerEvents: "none" }}
+          quality={70}
+          style={{ objectFit: "cover", objectPosition: "center 60%", filter: "saturate(0.9) contrast(1.02) brightness(1)", pointerEvents: "none" }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.5)", mixBlendMode: "multiply" }} />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.4) 40%, rgba(10,22,40,0.6) 75%, #0A1628 100%)" }} />
-        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.18) 45%, rgba(10,22,40,0.4) 78%, #0A1628 100%)" }} />
+        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 1, textShadow: "0 1px 4px rgba(6,14,26,0.95), 0 2px 22px rgba(6,14,26,0.9)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
             <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
             <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Open standard</p>
@@ -126,8 +125,20 @@ export default function WitnessStandardPage() {
         </P>
       </Section>
 
-      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "4.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", minHeight: "440px" }}>
+        <div aria-hidden className="img-side-blend" style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", width: "58%", aspectRatio: "16 / 9", maxHeight: "100%", pointerEvents: "none" }}>
+          <Image
+            src="/images/witness/rope.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 900px) 100vw, 60vw"
+            quality={70}
+            style={{ objectFit: "cover", objectPosition: "center", filter: "saturate(1) brightness(1)" }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0.45) 24%, rgba(10,22,40,0) 48%, rgba(10,22,40,0) 100%), linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 20%, rgba(10,22,40,0) 80%, #0A1628 100%)" }} />
+        </div>
+        <div style={{ maxWidth: "1120px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: "560px", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 16px rgba(6,14,26,0.85)" }}>
         <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>Join it</p>
         <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>Implement it, anchor to us</h2>
         <P>
@@ -140,17 +151,8 @@ export default function WitnessStandardPage() {
           Questions, or want your chain named properly rather than showing up as an unlabelled peer, reach us at <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D" }}>support@redflagaipro.com</a>.
         </P>
         </div>
-        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
-          <Image
-            src="/images/witness/rope.jpg"
-            alt="A mooring rope holding fast to an iron bollard: anchored to something outside yourself"
-            fill
-            sizes="(max-width: 1024px) 100vw, 980px"
-            quality={70}
-            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
-          />
-          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
         </div>
+        <style>{`@media (max-width: 900px) { .img-side-blend { opacity: 0.35; width: 100% !important; } }`}</style>
       </section>
 
       <Footer />

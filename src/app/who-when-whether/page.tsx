@@ -121,8 +121,20 @@ export default function WhoWhenWhetherPage() {
         <P><strong style={{ color: "#F4F1EA" }}>Honest pricing.</strong> Everything the law actually requires should not cost what this industry charges for it, and we price accordingly. Small businesses and solo operators should be able to afford the same standard of proof as anyone else.</P>
       </Section>
 
-      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "4.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", minHeight: "440px" }}>
+        <div aria-hidden className="img-side-blend" style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", width: "58%", aspectRatio: "16 / 9", maxHeight: "100%", pointerEvents: "none" }}>
+          <Image
+            src="/images/whitepaper/hourglass.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 900px) 100vw, 60vw"
+            quality={70}
+            style={{ objectFit: "cover", objectPosition: "center", filter: "saturate(1) brightness(1)" }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0.45) 24%, rgba(10,22,40,0) 48%, rgba(10,22,40,0) 100%), linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 20%, rgba(10,22,40,0) 80%, #0A1628 100%)" }} />
+        </div>
+        <div style={{ maxWidth: "1120px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: "560px", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 16px rgba(6,14,26,0.85)" }}>
         <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>Where we are heading</p>
         <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>The first dated statement of an argument</h2>
         <P>
@@ -144,21 +156,23 @@ export default function WhoWhenWhetherPage() {
           We built the compliance layer because nobody was checking. We built the governance layer because nobody was proving. This is where it started, and there is a great deal more coming.
         </P>
         </div>
-        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
-          <Image
-            src="/images/whitepaper/hourglass.jpg"
-            alt="An hourglass beside bound documents: authority with an expiry, time running on every grant"
-            fill
-            sizes="(max-width: 1024px) 100vw, 980px"
-            quality={70}
-            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
-          />
-          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
         </div>
       </section>
 
-      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(229,72,77,0.03)" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "4.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(229,72,77,0.03)", minHeight: "440px" }}>
+        <div aria-hidden className="img-side-blend" style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", width: "58%", aspectRatio: "16 / 9", maxHeight: "100%", pointerEvents: "none" }}>
+          <Image
+            src="/images/whitepaper/waxseal.jpg"
+            alt=""
+            fill
+            sizes="(max-width: 900px) 100vw, 60vw"
+            quality={70}
+            style={{ objectFit: "cover", objectPosition: "center", filter: "saturate(1) brightness(1)" }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0.45) 24%, rgba(10,22,40,0) 48%, rgba(10,22,40,0) 100%), linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 20%, rgba(10,22,40,0) 80%, #0A1628 100%)" }} />
+        </div>
+        <div style={{ maxWidth: "1120px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: "560px", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 16px rgba(6,14,26,0.85)" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "0.6rem" }}>Addendum, 31 July 2026</p>
           <p style={{ ...syne, fontSize: "0.82rem", color: "rgba(244,241,234,0.4)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
             Everything above this line was sealed on 30 July 2026, and stays exactly as it was written. Nothing above has been edited to fit what happened next, because a document that claims to be checkable does not get to quietly rewrite itself once things change. This addendum is dated separately, on the record, the same way everything else we build is.
@@ -193,17 +207,8 @@ export default function WhoWhenWhetherPage() {
             This addendum is not yet independently timestamped. If that matters to you, that is the correct instinct, and it is on the list to fix.
           </p>
         </div>
-        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
-          <Image
-            src="/images/whitepaper/waxseal.jpg"
-            alt="A wax seal being pressed onto a document: a moment fixed on the record"
-            fill
-            sizes="(max-width: 1024px) 100vw, 980px"
-            quality={70}
-            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
-          />
-          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
         </div>
+        <style>{`@media (max-width: 900px) { .img-side-blend { opacity: 0.35; width: 100% !important; } }`}</style>
       </section>
 
       <Footer />
