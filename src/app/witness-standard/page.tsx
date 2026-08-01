@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "The Open Witness Standard | Red Flag AI Pro",
+  title: "The Open Witness Standard",
   description:
     "A free, open protocol for independent companies to seal each other's evidence. Five fields, three endpoints, no vendor lock in. Implement it, anchor to us, get listed.",
   alternates: { canonical: "https://www.redflagaipro.com/witness-standard" },
@@ -47,8 +48,20 @@ export default function WitnessStandardPage() {
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
-      <section style={{ padding: "8rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "8rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <Image
+          src="/images/witness/lighthouse.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={65}
+          style={{ objectFit: "cover", objectPosition: "center 50%", filter: "saturate(0.6) contrast(1.05) brightness(0.9)", pointerEvents: "none" }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.5)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.4) 40%, rgba(10,22,40,0.6) 75%, #0A1628 100%)" }} />
+        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
             <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
             <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Open standard</p>
@@ -113,7 +126,10 @@ export default function WitnessStandardPage() {
         </P>
       </Section>
 
-      <Section eyebrow="Join it" title="Implement it, anchor to us">
+      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+        <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>Join it</p>
+        <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>Implement it, anchor to us</h2>
         <P>
           Build a client against the shape above, in whatever language suits you, point it at our tip and anchor endpoints, and press go. If it lands, you will see it appear on <a href="/witness-network" style={{ color: "#E5484D" }}>the live network page</a>, publicly, the same way every anchor does.
         </P>
@@ -123,7 +139,19 @@ export default function WitnessStandardPage() {
         <P>
           Questions, or want your chain named properly rather than showing up as an unlabelled peer, reach us at <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D" }}>support@redflagaipro.com</a>.
         </P>
-      </Section>
+        </div>
+        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
+          <Image
+            src="/images/witness/rope.jpg"
+            alt="A mooring rope holding fast to an iron bollard: anchored to something outside yourself"
+            fill
+            sizes="(max-width: 1024px) 100vw, 980px"
+            quality={70}
+            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
+          />
+          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
+        </div>
+      </section>
 
       <Footer />
     </div>

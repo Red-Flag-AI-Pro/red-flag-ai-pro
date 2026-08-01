@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Who, When, Whether | Red Flag AI Pro",
+  title: "Who, When, Whether",
   description:
     "Why we built this, where we are, and where this is going. The whitepaper behind Red Flag AI Pro's authorisation records and the witness network, sealed and independently timestamped.",
   alternates: { canonical: "https://www.redflagaipro.com/who-when-whether" },
@@ -39,8 +40,20 @@ export default function WhoWhenWhetherPage() {
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
 
-      <section style={{ padding: "8rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <section style={{ position: "relative", overflow: "hidden", padding: "8rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <Image
+          src="/images/whitepaper/signing.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={65}
+          style={{ objectFit: "cover", objectPosition: "center 40%", filter: "saturate(0.6) contrast(1.05) brightness(0.9)", pointerEvents: "none" }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.45) 40%, rgba(10,22,40,0.7) 75%, #0A1628 100%)" }} />
+        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
             <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
             <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Whitepaper</p>
@@ -108,7 +121,10 @@ export default function WhoWhenWhetherPage() {
         <P><strong style={{ color: "#F4F1EA" }}>Honest pricing.</strong> Everything the law actually requires should not cost what this industry charges for it, and we price accordingly. Small businesses and solo operators should be able to afford the same standard of proof as anyone else.</P>
       </Section>
 
-      <Section eyebrow="Where we are heading" title="The first dated statement of an argument">
+      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+        <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>Where we are heading</p>
+        <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>The first dated statement of an argument</h2>
         <P>
           This is the first dated statement of an argument we intend to keep making, in public, with evidence, for a long time.
         </P>
@@ -127,9 +143,21 @@ export default function WhoWhenWhetherPage() {
         <P>
           We built the compliance layer because nobody was checking. We built the governance layer because nobody was proving. This is where it started, and there is a great deal more coming.
         </P>
-      </Section>
+        </div>
+        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
+          <Image
+            src="/images/whitepaper/hourglass.jpg"
+            alt="An hourglass beside bound documents: authority with an expiry, time running on every grant"
+            fill
+            sizes="(max-width: 1024px) 100vw, 980px"
+            quality={70}
+            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
+          />
+          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
+        </div>
+      </section>
 
-      <section style={{ padding: "3.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(229,72,77,0.03)" }}>
+      <section style={{ padding: "3.5rem 1.5rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(229,72,77,0.03)" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "0.6rem" }}>Addendum, 31 July 2026</p>
           <p style={{ ...syne, fontSize: "0.82rem", color: "rgba(244,241,234,0.4)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
@@ -164,6 +192,17 @@ export default function WhoWhenWhetherPage() {
           <p style={{ ...mono, fontSize: "0.78rem", color: "rgba(244,241,234,0.35)", marginTop: "1.5rem", fontStyle: "italic" }}>
             This addendum is not yet independently timestamped. If that matters to you, that is the correct instinct, and it is on the list to fix.
           </p>
+        </div>
+        <div style={{ position: "relative", maxWidth: "980px", margin: "3rem auto 0", aspectRatio: "16 / 9" }}>
+          <Image
+            src="/images/whitepaper/waxseal.jpg"
+            alt="A wax seal being pressed onto a document: a moment fixed on the record"
+            fill
+            sizes="(max-width: 1024px) 100vw, 980px"
+            quality={70}
+            style={{ objectFit: "cover", filter: "saturate(0.85) brightness(0.95)" }}
+          />
+          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0) 22%, rgba(10,22,40,0) 72%, #0A1628 100%), linear-gradient(90deg, #0A1628 0%, rgba(10,22,40,0) 12%, rgba(10,22,40,0) 88%, #0A1628 100%)" }} />
         </div>
       </section>
 
