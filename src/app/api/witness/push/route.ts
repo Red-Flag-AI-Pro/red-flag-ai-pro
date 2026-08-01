@@ -6,8 +6,9 @@ import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 const GENESIS_HASH = "0".repeat(64);
 
-// Justin's AILeash / sebbi.pro receiving endpoint, per aileash_witness.py.
-const PEER_WITNESS_URL = "https://sebbi.pro/x/witness";
+// Justin's AILeash / sebbi.pro receiving endpoint. His own /x/witness/tip
+// response says to hand peers their tip at /observe, not the base path.
+const PEER_WITNESS_URL = "https://sebbi.pro/x/witness/observe";
 
 // Triggered by the button on /witness-network. Reads our own current tip,
 // pushes it to the peer chain so they can seal it, and — only on a
