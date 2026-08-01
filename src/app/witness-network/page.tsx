@@ -111,7 +111,7 @@ export default function WitnessNetworkPage() {
             Chains proving each other, <span style={{ fontStyle: "italic", color: "#E5484D" }}>visibly</span>.
           </h1>
           <p style={{ ...syne, fontSize: "0.98rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
-            Two independent companies, sealing each other's evidence, live, in public. Not a diagram of the idea. The actual thing happening, checkable by anyone below.
+            Built so two independent companies can seal each other's evidence, live, in public. Not a diagram of the idea, the actual mechanism, running below, with the real log of what has and has not landed yet.
           </p>
           <p style={{ ...syne, fontSize: "0.85rem", marginTop: "1rem", display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
             <a href="/witness-standard" style={{ color: "#E5484D", textDecoration: "underline" }}>Read the open protocol →</a>
