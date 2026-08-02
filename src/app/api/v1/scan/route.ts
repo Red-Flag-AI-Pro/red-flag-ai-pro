@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { SEVERITY_DEDUCTIONS } from "@/lib/constants";
@@ -75,20 +75,23 @@ export async function POST(request: Request) {
     .single();
 
   if (profile?.webhook_url && scan) {
-    fetch(profile.webhook_url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        event: "scan.completed",
-        scan_id: scan.id,
-        title,
-        score,
-        flag_count: flags.length,
-        flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
-        scanned_at: new Date().toISOString(),
-      }),
-      signal: AbortSignal.timeout(5000),
-    }).catch(() => {}); // fire and forget
+    const webhookUrl = profile.webhook_url;
+    after(() =>
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "scan.completed",
+          scan_id: scan.id,
+          title,
+          score,
+          flag_count: flags.length,
+          flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
+          scanned_at: new Date().toISOString(),
+        }),
+        signal: AbortSignal.timeout(8000),
+      }).catch(() => {})
+    );
   }
 
   return NextResponse.json({

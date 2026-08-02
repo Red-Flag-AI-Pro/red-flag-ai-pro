@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
@@ -135,20 +135,22 @@ export async function POST(request: Request) {
   // Fire webhook if configured
   const webhookUrl = (profile as { webhook_url?: string | null })?.webhook_url;
   if (webhookUrl) {
-    fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        event: "scan.completed",
-        scan_id: scan.id,
-        title,
-        score,
-        flag_count: flags.length,
-        flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
-        scanned_at: new Date().toISOString(),
-      }),
-      signal: AbortSignal.timeout(5000),
-    }).catch(() => {});
+    after(() =>
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "scan.completed",
+          scan_id: scan.id,
+          title,
+          score,
+          flag_count: flags.length,
+          flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
+          scanned_at: new Date().toISOString(),
+        }),
+        signal: AbortSignal.timeout(8000),
+      }).catch(() => {})
+    );
   }
 
   return NextResponse.json({ id: scan.id });
