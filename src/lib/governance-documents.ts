@@ -332,14 +332,16 @@ a new jurisdiction, or after any material AI incident.
 `;
 }
 
-// Statutory maximum fines, verified 2026-06-20 (same source as the public
-// Fine Calculator tool). These are caps, not predictions — actual fines are
-// at regulator discretion. Kept to the 3 jurisdictions most relevant to a
+// Statutory maximum fines, verified 2026-06-20, EU row corrected 2026-08-02
+// after the Digital Omnibus pushed high-risk (Annex III) obligations to Dec
+// 2027 — the 7% tier now correctly scoped to Article 5 prohibited practices,
+// which were already in force. These are caps, not predictions — actual fines
+// are at regulator discretion. Kept to the 3 jurisdictions most relevant to a
 // governance conversation; the full 9-jurisdiction breakdown lives in the
 // Fine Calculator itself.
 const EXPOSURE_TABLE: { jurisdiction: string; law: string; cap: string }[] = [
   { jurisdiction: "UK", law: "UK GDPR / DPA 2018", cap: "Higher of £17.5M or 4% of global turnover" },
-  { jurisdiction: "EU", law: "EU AI Act (in force from Aug 2026)", cap: "Higher of ~£29.75M (€35M) or 7% of global turnover for prohibited/high-risk AI breaches" },
+  { jurisdiction: "EU", law: "EU AI Act Article 5 (prohibited practices, in force since Feb 2025)", cap: "Higher of ~£29.75M (€35M) or 7% of global turnover. High-risk (Annex III) obligations under this Act now apply from Dec 2027, per the Digital Omnibus" },
   { jurisdiction: "US", law: "FTC Act §5", cap: "~£41,900 per violation — multiplies fast (per consumer, per day)" },
 ];
 
