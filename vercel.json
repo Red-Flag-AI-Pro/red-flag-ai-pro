@@ -21,6 +21,10 @@
   ],
   "crons": [
     {
+      "path": "/api/cron/witness-anchor",
+      "schedule": "11 * * * *"
+    },
+    {
       "path": "/api/cron/scan-monitored",
       "schedule": "0 6 * * 1"
     },
