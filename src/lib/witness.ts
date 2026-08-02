@@ -20,7 +20,10 @@ export function parseWitnessPayload(body: unknown): WitnessPayload | null {
   if (!body || typeof body !== "object") return null;
   const b = body as Record<string, unknown>;
 
-  const chain = typeof b.chain === "string" ? b.chain.trim() : "";
+  // Some peers (AILeash/sebbi.pro's current build) send "peer" instead of
+  // the spec's "chain" — accept either so their deviation doesn't 400 us.
+  const chain = typeof b.chain === "string" ? b.chain.trim()
+    : typeof b.peer === "string" ? b.peer.trim() : "";
   const tip = typeof b.tip === "string" ? b.tip.trim() : "";
   const countRaw = b.count;
   const count = typeof countRaw === "number" ? countRaw : Number(countRaw);
