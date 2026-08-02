@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 July 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 2 August 2026</p>
         </div>
       </section>
 
@@ -161,6 +161,7 @@ export default function PrivacyPage() {
                 ["Vercel", "Website hosting"],
                 ["OpenAI / Anthropic", "AI processing of check requests and the site assistant"],
                 ["DigiCert / freeTSA", "For Sentinel customers only: the cryptographic hash of certain governance records is sent to an independent time stamping authority to seal them with a verifiable timestamp. The record's content itself is never sent, only its hash."],
+                ["Witness Network peers", "Red Flag AI Pro's own company-level audit chain exchanges hourly cryptographic hashes with independent peer companies (currently sebbi.pro / AILeash) under the open, published Witness Network protocol. This exchange is company-level infrastructure only: it shares a hash of our own operational record, never your personal data, account details, or check content. See redflagaipro.com/witness-network."],
                 ["Loops", "Email marketing and transactional emails (your email address and plan tier are shared to send relevant communications). You can unsubscribe at any time."],
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
