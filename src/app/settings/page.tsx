@@ -139,9 +139,9 @@ export default function SettingsPage() {
       {/* Webhook */}
       <Card>
         <h2 className="text-sm font-semibold text-[#F4F1EA] mb-1">Webhook</h2>
-        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make, n8n or your own system.</p>
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with n8n, Make, Zapier or your own system.</p>
         <input type="text" value={webhookUrl} onChange={(e) => setWebhookUrl(e.target.value)}
-          placeholder="https://hooks.zapier.com/hooks/catch/…"
+          placeholder="https://yourname.app.n8n.cloud/webhook/…"
           className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
         <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>
       </Card>

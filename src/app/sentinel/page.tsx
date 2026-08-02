@@ -46,7 +46,7 @@ const BENEFITS = [
   },
   {
     headline: "Compliance in your workflow, not outside it.",
-    body: "Every check fires a webhook to any URL. Paste your Zapier hook into Settings and check results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed checking into your own systems.",
+    body: "Every check fires a webhook to any URL. Paste an n8n, Make or Zapier hook into Settings and check results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed checking into your own systems.",
   },
   {
     headline: "AI copy. August 2026. Your responsibility.",
@@ -537,7 +537,7 @@ export default function SentinelPage() {
                   ["YouTube VSL checking", "✗", "✓ Auto transcript"],
                   ["Full site audit", "✗", "✓ Up to 50 pages"],
                   ["Weekly auto monitoring", "✗", "✓ Unlimited URLs"],
-                  ["REST API + webhooks", "✗", "✓ Zapier ready"],
+                  ["REST API + webhooks", "✗", "✓ n8n/Zapier ready"],
                   ["White label PDF reports", "✗", "✓ Your branding"],
                   ["Video check summaries", "✗", "✓ Shareable MP4"],
                   ["Tamper resistant audit trail", "✗", "✓"],

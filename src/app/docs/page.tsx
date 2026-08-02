@@ -159,7 +159,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Webhooks</h2>
           <p className="text-gray-400 text-sm">
-            Set a webhook URL in Settings and we POST check results there every time a check completes, whether from the dashboard, URL check, VSL check, or API. Use with Zapier, Make, or your own backend.
+            Set a webhook URL in Settings and we POST check results there every time a check completes, whether from the dashboard, URL check, VSL check, or API. Use with n8n, Make, Zapier, or your own backend.
           </p>
 
           <div>
@@ -182,10 +182,23 @@ offset  integer   Number of results to skip (default 0)`}</Code>
           </div>
 
           <div className="rounded-xl border border-gray-800 bg-gray-900 p-5">
-            <p className="text-sm font-semibold text-white mb-1">Zapier setup</p>
+            <p className="text-sm font-semibold text-white mb-1">n8n setup (free)</p>
             <ol className="text-sm text-gray-400 space-y-1 list-decimal list-inside">
-              <li>Create a new Zap with trigger: Webhooks by Zapier → Catch Hook</li>
-              <li>Copy the webhook URL Zapier gives you</li>
+              <li>Create a free account at n8n.io and start a new workflow</li>
+              <li>Add a Webhook node, set its method to POST</li>
+              <li>Copy the Production URL it gives you</li>
+              <li>Paste it into Settings → Webhook URL in Red Flag AI Pro</li>
+              <li>Publish the workflow, then run a check to test the connection</li>
+              <li>Add your action (Slack message, Google Sheet row, email, etc.)</li>
+            </ol>
+          </div>
+
+          <div className="rounded-xl border border-gray-800 bg-gray-900 p-5">
+            <p className="text-sm font-semibold text-white mb-1">Zapier or Make setup</p>
+            <p className="text-xs text-gray-500 mb-2">Note: catching an inbound webhook on Zapier's free plan requires a paid Zapier account (the "Webhooks by Zapier" trigger is Premium-only). n8n above is the free route.</p>
+            <ol className="text-sm text-gray-400 space-y-1 list-decimal list-inside">
+              <li>Create a new Zap/scenario with a Catch Hook / Custom Webhook trigger</li>
+              <li>Copy the webhook URL it gives you</li>
               <li>Paste it into Settings → Webhook URL in Red Flag AI Pro</li>
               <li>Run a check to test the connection</li>
               <li>Add your action (Slack message, Google Sheet row, email, etc.)</li>
