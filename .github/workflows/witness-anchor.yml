@@ -1,0 +1,23 @@
+name: Witness network hourly anchor
+
+# Vercel's Hobby plan only fires cron jobs once per day, so the hourly
+# vercel.json schedule for /api/cron/witness-anchor never actually runs.
+# GitHub Actions has no such limit, so this pings the same push endpoint
+# instead. Offset to :11 past the hour to interleave with sebbi.pro's
+# own hourly sync at :41, so the public log reads as genuinely mutual
+# rather than two things landing at once.
+on:
+  schedule:
+    - cron: "11 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  anchor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fire the witness push
+        run: |
+          curl -sS -X POST https://www.redflagaipro.com/api/witness/push \
+            -H "Content-Type: application/json" \
+            -w "\nHTTP %{http_code}\n" \
+            --max-time 20
