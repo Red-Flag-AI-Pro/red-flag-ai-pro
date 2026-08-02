@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "API Documentation: Red Flag AI Pro",
-  description: "REST API for checking marketing copy programmatically. Sentinel plan required.",
+  description: "REST API for checking marketing copy programmatically. Included on every paid plan.",
 };
 
 function Code({ children }: { children: string }) {
@@ -35,7 +35,7 @@ export default function DocsPage() {
           <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">Developer Docs</p>
           <h1 className="text-4xl font-extrabold mb-3" style={{ color: "#F4F1EA" }}>Red Flag AI Pro API</h1>
           <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
-            Check marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Available on the Sentinel plan.
+            Check marketing copy programmatically. Integrate compliance checking into your CMS, workflow or agency tools. Included on Pro, Growth and Sentinel.
           </p>
           <div className="mt-6 rounded-xl border border-gray-800 bg-gray-900/50 p-6 max-w-2xl">
             <p className="text-sm font-semibold text-white mb-2">Why agencies use the API</p>
@@ -47,8 +47,8 @@ export default function DocsPage() {
             <Link href="/settings" className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors">
               Get API key →
             </Link>
-            <Link href="/sentinel" className="rounded-lg border border-gray-700 px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-800 transition-colors">
-              Sentinel plan
+            <Link href="/pricing" className="rounded-lg border border-gray-700 px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-800 transition-colors">
+              See plans
             </Link>
           </div>
         </div>

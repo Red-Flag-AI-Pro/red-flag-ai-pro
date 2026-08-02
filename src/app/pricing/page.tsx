@@ -22,6 +22,7 @@ const SCANNER_FEATURES = [
   "5 checks per month",
   "PDF reports",
   "Check history",
+  "API & webhook access — connect Zapier, Make, n8n or your own system",
   "Email support",
 ];
 
@@ -33,7 +34,7 @@ const GROWTH_FEATURES = [
   "Policy to practice gap detection",
   "Unlimited PDF reports",
   "Multiple team seats",
-  "API & webhook access",
+  "API & webhook access — connect Zapier, Make, n8n or your own system",
   "White label PDF reports",
   "Priority email support",
   "14 day money back guarantee",

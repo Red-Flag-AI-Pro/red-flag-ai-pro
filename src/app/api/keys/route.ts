@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createHash, randomBytes } from "crypto";
-import type { Plan } from "@/types";
 
 function hashKey(key: string): string {
   return createHash("sha256").update(key).digest("hex");
@@ -25,17 +24,6 @@ export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("plan")
-    .eq("user_id", user.id)
-    .single();
-
-  const plan: Plan = (profile?.plan as Plan) ?? "free";
-  if (plan !== "sentinel") {
-    return NextResponse.json({ error: "API access is available on the Sentinel plan only." }, { status: 403 });
-  }
 
   const { count } = await supabase
     .from("api_keys")

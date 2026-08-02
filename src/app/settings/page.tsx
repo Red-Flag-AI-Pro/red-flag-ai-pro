@@ -138,15 +138,12 @@ export default function SettingsPage() {
 
       {/* Webhook */}
       <Card>
-        <div className="flex items-center justify-between mb-1">
-          <h2 className="text-sm font-semibold text-[#F4F1EA]">Webhook</h2>
-          {!isSentinel && <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel only</span>}
-        </div>
-        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make or your own system.</p>
+        <h2 className="text-sm font-semibold text-[#F4F1EA] mb-1">Webhook</h2>
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">We POST scan results here every time a scan completes. Use with Zapier, Make, n8n or your own system.</p>
         <input type="text" value={webhookUrl} onChange={(e) => setWebhookUrl(e.target.value)}
-          placeholder="https://hooks.zapier.com/hooks/catch/…" disabled={!isSentinel}
-          className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 disabled:bg-[#0A1628] disabled:text-[rgba(244,241,234,0.4)]" />
-        {isSentinel && <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>}
+          placeholder="https://hooks.zapier.com/hooks/catch/…"
+          className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+        <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>
       </Card>
 
       {error && <p className="text-sm text-[#E5484D]">{error}</p>}
@@ -155,17 +152,13 @@ export default function SettingsPage() {
 
       {/* API Keys */}
       <Card>
-        <div className="flex items-center justify-between mb-1">
-          <h2 className="text-sm font-semibold text-[#F4F1EA]">API Keys</h2>
-          {!isSentinel && <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-semibold text-[rgba(244,241,234,0.5)]">Sentinel only</span>}
-        </div>
+        <h2 className="text-sm font-semibold text-[#F4F1EA] mb-1">API Keys</h2>
         <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">
           Use your API key to scan content programmatically.{" "}
           <Link href="/docs" className="text-[#E5484D] hover:underline">View API docs →</Link>
         </p>
 
-        {isSentinel && (
-          <>
+        <>
             {newKeyValue && (
               <div className="mb-4 rounded-lg border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] p-3">
                 <p className="text-xs font-semibold text-green-300 mb-1">Copy your key now — you won&apos;t see it again</p>
@@ -207,11 +200,6 @@ export default function SettingsPage() {
               <p className="text-xs text-[rgba(244,241,234,0.4)]">No API keys yet.</p>
             )}
           </>
-        )}
-
-        {!isSentinel && (
-          <Link href="/sentinel" className="text-xs text-[#E5484D] hover:underline font-medium">Upgrade to Sentinel for API access →</Link>
-        )}
       </Card>
 
       {/* Referral */}
