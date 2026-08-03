@@ -1,0 +1,130 @@
+import type { Metadata } from "next";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import React from "react";
+
+export const metadata: Metadata = {
+  title: "Boundary Authorization Records",
+  description:
+    "What a boundary authorization record actually captures, why each field exists, and what happens the moment one lapses. The record structure behind Red Flag AI Pro's who, when, whether framework.",
+  alternates: { canonical: "https://www.redflagaipro.com/boundary-authorization-records" },
+  openGraph: {
+    title: "Boundary Authorization Records",
+    description: "The record structure behind who, when, whether.",
+    url: "https://www.redflagaipro.com/boundary-authorization-records",
+  },
+};
+
+const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
+const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
+
+function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
+  return (
+    <section style={{ padding: "3.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+        <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>{eyebrow}</p>
+        <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>{title}</h2>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function P({ children }: { children: React.ReactNode }) {
+  return <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.62)", lineHeight: 1.75, marginBottom: "1.1rem" }}>{children}</p>;
+}
+
+function Field({ name, children }: { name: string; children: React.ReactNode }) {
+  return (
+    <div style={{ display: "flex", gap: "1.25rem", marginBottom: "1.25rem", paddingBottom: "1.25rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <p style={{ ...mono, fontSize: "0.82rem", color: "#E5484D", minWidth: "180px", flexShrink: 0, paddingTop: "0.1rem" }}>{name}</p>
+      <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.65)", lineHeight: 1.65 }}>{children}</p>
+    </div>
+  );
+}
+
+export default function BoundaryAuthorizationRecordsPage() {
+  return (
+    <div style={{ background: "#0A1628", minHeight: "100vh" }}>
+      <Navbar />
+
+      <section style={{ padding: "8rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
+            <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Reference</p>
+          </div>
+          <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.015em", lineHeight: 1.12, marginBottom: "1rem" }}>
+            What a boundary authorization <span style={{ fontStyle: "italic", color: "#E5484D" }}>record</span> actually contains.
+          </h1>
+          <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
+            Not the argument for why this matters, that&apos;s in <a href="/who-when-whether" style={{ color: "#E5484D" }}>Who, When, Whether</a>. This is the structure itself: every field, why it exists, and what happens the moment one lapses.
+          </p>
+        </div>
+      </section>
+
+      <Section eyebrow="The three questions" title="Who, when, and whether it still held">
+        <P>
+          Every real authorization answers three questions. Who granted it. When they granted it. And whether their authority still held at the moment it mattered. Most governance products stop at the first two, because the third one is the only one that can catch you out later.
+        </P>
+        <P>
+          A boundary authorization record is a single, sealed answer to all three, for one specific decision to let an AI system do something. Below is exactly what it captures, field by field.
+        </P>
+      </Section>
+
+      <Section eyebrow="The record" title="Every field, and why it exists">
+        <Field name="decision">What was actually approved. Plain text, e.g. &quot;Approved use of Vendor X&apos;s AI copywriting tool for marketing drafts.&quot; Not a category. The specific thing.</Field>
+        <Field name="owner_name / owner_role">Who granted it, and in what capacity. A name without a role is an assertion. A name with a role is a fact someone can be held to.</Field>
+        <Field name="decision_date">When authority was granted. Fixed at creation, sealed, not editable afterwards.</Field>
+        <Field name="expires_at">The shelf life. Required, not optional: an authorization with no expiry is not a strong grant, it&apos;s one nobody was ever forced to think about ending.</Field>
+        <Field name="expiry_conditions">The specific, observable conditions that void the grant early, written at the moment of signing, not added afterwards. &quot;Vendor X appears on a regulator&apos;s enforcement list&quot; is a condition. &quot;If things go wrong&quot; is not.</Field>
+        <Field name="continuity_owner_name / continuity_owner_role">Distinct from the owner above. This is whoever holds the duty to renew the authorization or arrange a successor before it lapses. Added after a sharp public question: a lapse record used to fix only when a mandate went vacant, never who was accountable for it going vacant. This field closes that gap.</Field>
+        <Field name="supersedes_id">If this record replaces an earlier one, because the role holder changed, this links to the record it replaces. The chain of custody for the mandate is provable, not left as separate, disconnected records.</Field>
+        <Field name="options_considered / risks_accepted / evidence">What else was weighed, what risk was knowingly taken and how it was mitigated, and what evidence the decision actually rested on. The difference between a decision and a guess, on the record.</Field>
+      </Section>
+
+      <Section eyebrow="When it lapses" title="A gap in coverage is a fact, not an inference">
+        <P>
+          Most systems check an expiry date lazily, on display, whenever someone happens to look. That means a real gap in coverage, a period where nobody actually held valid authority, is never itself a recorded fact. It&apos;s only something reconstructible later, if anyone thinks to look.
+        </P>
+        <P>
+          A daily check finds every record whose expiry has passed and seals the lapse itself as its own event, the moment it&apos;s detected, before any successor exists. And because the continuity owner is named on the original record, the sealed lapse event names them directly too: not just that the seat went empty, but who was on the hook for it going empty.
+        </P>
+        <P>
+          That sealed lapse event is timestamped by an independent authority and checkable by anyone, with no account, the same way every other claim on this site is.
+        </P>
+      </Section>
+
+      <Section eyebrow="Provable, not just written down" title="Sealed, timestamped, and publicly checkable">
+        <P>
+          Every boundary authorization record is chained cryptographically to the ones before it, and sealed with an independent, third party timestamp. Editing, deleting, or backdating a record after the fact breaks the seal, and that break is detectable by anyone, not just us.
+        </P>
+        <P>
+          Tampering isn&apos;t made impossible. It&apos;s made detectable. Those are different claims, and only one of them is true of any system, including this one. See it demonstrated on the <a href="/witness-network" style={{ color: "#E5484D" }}>Witness Network</a> page, or check any specific record yourself at <a href="/verify" style={{ color: "#E5484D" }}>redflagaipro.com/verify</a>.
+        </P>
+      </Section>
+
+      <section style={{ padding: "4rem 1.5rem 6rem", textAlign: "center" }}>
+        <div style={{ maxWidth: "560px", margin: "0 auto" }}>
+          <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem" }}>
+            This is what Sentinel builds for every AI system you approve.
+          </h2>
+          <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.55)", marginBottom: "1.75rem" }}>
+            The evidence a regulator, insurer, or court asks for when something goes wrong, not a policy document asserting good intentions.
+          </p>
+          <a
+            href="/sentinel"
+            style={{
+              display: "inline-block", ...syne, fontSize: "14px", fontWeight: 700, padding: "13px 28px",
+              borderRadius: "8px", background: "#E5484D", color: "white", textDecoration: "none",
+            }}
+          >
+            Explore Sentinel →
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
