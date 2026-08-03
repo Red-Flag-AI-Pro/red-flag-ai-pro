@@ -155,6 +155,12 @@ export default function WitnessStandardPage() {
         <style>{`@media (max-width: 900px) { .img-side-blend { opacity: 0.35; width: 100% !important; } }`}</style>
       </section>
 
+      <section style={{ padding: "2.5rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", letterSpacing: "0.03em" }}>
+          Authored by James Stokes, Founder, Red Flag AI Pro. Named for the same reason every record on this standard is: the person accountable for a claim should be the person you can name.
+        </p>
+      </section>
+
       <Footer />
     </div>
   );
