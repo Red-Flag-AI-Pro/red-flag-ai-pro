@@ -56,7 +56,8 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     messages = Array.isArray(body.messages) ? body.messages : [];
-  } catch {
+  } catch (err) {
+    console.error("[assistant] failed to parse request body", err);
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
@@ -77,9 +78,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "No message to answer." }, { status: 400 });
   }
 
-  const knowledge = buildKnowledgeBase();
-
   try {
+    const knowledge = buildKnowledgeBase();
     const client = new OpenAI({ apiKey });
     const completion = await client.chat.completions.create({
       model: "gpt-4o-mini",
@@ -97,7 +97,8 @@ export async function POST(request: Request) {
       "Sorry, I did not catch that. Could you say it another way, or email support@redflagaipro.com?";
 
     return NextResponse.json({ reply });
-  } catch {
+  } catch (err) {
+    console.error("[assistant] chat completion failed", err);
     return NextResponse.json(
       {
         reply:

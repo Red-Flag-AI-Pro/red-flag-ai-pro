@@ -70,7 +70,7 @@ export function SiteAssistant() {
       const data = await res.json();
       setMessages((m) => [
         ...m,
-        { role: "assistant", content: data.reply ?? data.error ?? "Sorry, please try again." },
+        { role: "assistant", content: data.reply || data.error || "Sorry, please try again." },
       ]);
     } catch {
       setMessages((m) => [
