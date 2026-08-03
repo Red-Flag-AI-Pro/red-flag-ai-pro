@@ -172,10 +172,42 @@ export interface PublicVerificationResult {
   found: boolean;
   intact: boolean;
   action?: string;
+  // A short, plain English line describing what this specific record was,
+  // not just its category. Only populated for action types where the
+  // underlying details are safe to show publicly — deliberately not a
+  // blanket dump of `details`, since some action types (scans, vendors)
+  // carry business content that shouldn't be exposed just from an id.
+  description?: string;
   createdAt?: string;
   // Present when the entry was sealed with a third-party RFC 3161 timestamp.
   timestampedAt?: string;
   timestampAuthority?: string;
+}
+
+function buildPublicDescription(action: string, details: Record<string, unknown>): string | undefined {
+  const str = (key: string): string | undefined => (typeof details[key] === "string" ? (details[key] as string) : undefined);
+
+  switch (action) {
+    case "concept.sealed": {
+      const title = str("title");
+      return title ? `"${title}"` : undefined;
+    }
+    case "boundary_record.lapsed": {
+      const decision = str("decision");
+      const owner = str("owner_name");
+      return decision ? `Authorization lapsed: ${decision}${owner ? ` (${owner})` : ""}` : undefined;
+    }
+    case "witness.anchor_sent": {
+      const peer = str("peer_chain");
+      return peer ? `Sent our tip to ${peer}` : undefined;
+    }
+    case "witness.anchor_received": {
+      const peer = str("peer_chain");
+      return peer ? `Received and sealed a tip from ${peer}` : undefined;
+    }
+    default:
+      return undefined;
+  }
 }
 
 // Public, unauthenticated check on a single audit log entry by id. Recomputes
@@ -207,6 +239,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     found: true,
     intact,
     action: entry.action,
+    description: buildPublicDescription(entry.action, entry.details ?? {}),
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
     timestampAuthority: (entry as { ts_tsa?: string }).ts_tsa ?? undefined,

@@ -12,7 +12,7 @@ type Result =
   | { state: "idle" }
   | { state: "loading" }
   | { state: "not-found" }
-  | { state: "intact"; actionLabel: string; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
+  | { state: "intact"; actionLabel: string; description: string | null; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
   | { state: "tampered"; actionLabel: string; createdAt: string };
 
 function VerifyForm() {
@@ -33,6 +33,7 @@ function VerifyForm() {
       setResult({
         state: data.intact ? "intact" : "tampered",
         actionLabel: data.actionLabel ?? "Audit record",
+        description: data.description ?? null,
         createdAt: data.createdAt,
         timestampedAt: data.timestampedAt ?? null,
         timestampAuthority: data.timestampAuthority ?? null,
@@ -121,6 +122,11 @@ function VerifyForm() {
       {result.state === "intact" && (
         <div style={{ borderRadius: "10px", border: "1px solid rgba(74,222,128,0.3)", background: "rgba(74,222,128,0.08)", padding: "1.75rem", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "#4ade80", marginBottom: "0.5rem" }}>✓ Verified intact</p>
+          {result.description && (
+            <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#F4F1EA", marginBottom: "0.6rem" }}>
+              {result.description}
+            </p>
+          )}
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)" }}>
             {result.actionLabel}, sealed {new Date(result.createdAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. This record matches its cryptographic seal exactly. It has not been edited, deleted, or backdated since.
           </p>
