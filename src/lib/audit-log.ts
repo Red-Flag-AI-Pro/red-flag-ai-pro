@@ -178,6 +178,11 @@ export interface PublicVerificationResult {
   // blanket dump of `details`, since some action types (scans, vendors)
   // carry business content that shouldn't be exposed just from an id.
   description?: string;
+  // The stored SHA-256 of the original document content, present only for
+  // concept.sealed entries. Lets a visitor hash their own copy of the same
+  // document in their browser and compare it themselves, the same
+  // self-serve check the seal-document route makes possible.
+  contentSha256?: string;
   createdAt?: string;
   // Present when the entry was sealed with a third-party RFC 3161 timestamp.
   timestampedAt?: string;
@@ -235,11 +240,15 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     created_at: entry.created_at,
   });
 
+  const details = entry.details ?? {};
+  const contentSha256 = typeof details["content_sha256"] === "string" ? (details["content_sha256"] as string) : undefined;
+
   return {
     found: true,
     intact,
     action: entry.action,
-    description: buildPublicDescription(entry.action, entry.details ?? {}),
+    description: buildPublicDescription(entry.action, details),
+    contentSha256,
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
     timestampAuthority: (entry as { ts_tsa?: string }).ts_tsa ?? undefined,

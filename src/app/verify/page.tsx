@@ -12,8 +12,85 @@ type Result =
   | { state: "idle" }
   | { state: "loading" }
   | { state: "not-found" }
-  | { state: "intact"; actionLabel: string; description: string | null; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
+  | { state: "intact"; actionLabel: string; description: string | null; contentSha256: string | null; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
   | { state: "tampered"; actionLabel: string; createdAt: string };
+
+async function sha256Hex(text: string): Promise<string> {
+  const bytes = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+type CopyCheck = { state: "idle" } | { state: "checking" } | { state: "match" } | { state: "mismatch" };
+
+function CheckYourCopy({ contentSha256 }: { contentSha256: string }) {
+  const [text, setText] = useState("");
+  const [check, setCheck] = useState<CopyCheck>({ state: "idle" });
+
+  async function handleCheck() {
+    if (!text.trim()) return;
+    setCheck({ state: "checking" });
+    const hash = await sha256Hex(text);
+    setCheck({ state: hash === contentSha256 ? "match" : "mismatch" });
+  }
+
+  return (
+    <div style={{ marginTop: "1.25rem", paddingTop: "1.25rem", borderTop: "1px solid rgba(74,222,128,0.2)", textAlign: "left" }}>
+      <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.4rem" }}>
+        Check your own copy of this document
+      </p>
+      <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+        Paste the exact document text below. It is hashed in your browser and never sent anywhere, then compared to the seal made at the time. Paste it exactly, including line breaks, or the check will fail even if the content reads the same.
+      </p>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={6}
+        placeholder="Paste the document text here…"
+        style={{
+          width: "100%",
+          ...mono,
+          fontSize: "12px",
+          padding: "10px 12px",
+          borderRadius: "8px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.04)",
+          color: "#F4F1EA",
+          resize: "vertical",
+          marginBottom: "0.75rem",
+        }}
+      />
+      <button
+        type="button"
+        onClick={handleCheck}
+        style={{
+          ...syne,
+          fontSize: "13px",
+          fontWeight: 700,
+          padding: "10px 20px",
+          borderRadius: "8px",
+          background: "rgba(255,255,255,0.08)",
+          color: "#F4F1EA",
+          border: "1px solid rgba(255,255,255,0.15)",
+          cursor: "pointer",
+        }}
+      >
+        Check my copy
+      </button>
+
+      {check.state === "match" && (
+        <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#4ade80", marginTop: "0.75rem" }}>
+          ✓ Matches exactly. This is word for word what was sealed.
+        </p>
+      )}
+      {check.state === "mismatch" && (
+        <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#ef4444", marginTop: "0.75rem" }}>
+          ✕ Does not match. Either this isn&apos;t the exact text that was sealed, or something in it has changed.
+        </p>
+      )}
+    </div>
+  );
+}
 
 function VerifyForm() {
   const searchParams = useSearchParams();
@@ -34,6 +111,7 @@ function VerifyForm() {
         state: data.intact ? "intact" : "tampered",
         actionLabel: data.actionLabel ?? "Audit record",
         description: data.description ?? null,
+        contentSha256: data.contentSha256 ?? null,
         createdAt: data.createdAt,
         timestampedAt: data.timestampedAt ?? null,
         timestampAuthority: data.timestampAuthority ?? null,
@@ -137,6 +215,7 @@ function VerifyForm() {
               </p>
             </div>
           )}
+          {result.contentSha256 && <CheckYourCopy contentSha256={result.contentSha256} />}
         </div>
       )}
 

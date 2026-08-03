@@ -32,6 +32,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     intact: result.intact,
     actionLabel: result.action ? ACTION_LABELS[result.action] ?? result.action : null,
     description: result.description ?? null,
+    contentSha256: result.contentSha256 ?? null,
     createdAt: result.createdAt,
     timestampedAt: result.timestampedAt ?? null,
     timestampAuthority: result.timestampAuthority ?? null,
