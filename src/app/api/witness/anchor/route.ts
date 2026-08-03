@@ -52,6 +52,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     sealed: true,
+    id: entryId,
     verify: `https://www.redflagaipro.com/verify?id=${entryId}`,
   });
 }

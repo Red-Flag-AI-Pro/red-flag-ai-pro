@@ -47,7 +47,7 @@ export default function InvestorsPage() {
             Verifiable AI governance for the price bracket <span style={{ fontStyle: "italic", color: "#E5484D" }}>enterprise tools ignore.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
-            Companies have zero way to prove AI governance when a regulator or board asks. EU AI Act Article 50 transparency and Article 4 AI literacy duties bite from 2 August 2026, high risk system deadlines were pushed to Dec 2027 and Aug 2028 under the Digital Omnibus, but the disclosure duty is not delayed. SEC is running 2026 exams testing exactly this. Everyone who already serves this charges £24,000 to £790,000 a year and only sells to enterprise.
+            Companies have zero way to prove AI governance when a regulator or board asks. EU AI Act Article 50 transparency duties bite from 2 August 2026, Article 4 AI literacy duties have applied since Feb 2025, high risk system deadlines were pushed to Dec 2027 and Aug 2028 under the Digital Omnibus, but neither disclosure duty is delayed. SEC is running 2026 exams testing exactly this. Everyone who already serves this charges £24,000 to £790,000 a year and only sells to enterprise.
           </p>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function InvestorsPage() {
       <Section title="Why Now">
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {[
-            ["EU AI Act Article 50 and Article 4 duties begin", "2 August 2026. High risk deadlines moved to Dec 2027 / Aug 2028, transparency and literacy duties did not. Fines up to €35M or 7% of global turnover"],
+            ["EU AI Act Article 50 transparency duties begin", "2 August 2026. Article 4 AI literacy duties have applied since Feb 2025. High risk deadlines moved to Dec 2027 / Aug 2028, transparency and literacy duties did not. Fines up to €15M or 3% of global turnover"],
             ["FTC penalty per violation", "$53,088, already enforced against Cox Media Group (about $1M, May 2026)"],
             ["SEC", "named AI governance a 2026 exam priority, testing for “AI washing”"],
             ["AI usage vs. policy gap", "over half of employees use AI at work; under 40% of companies have a policy covering it"],
