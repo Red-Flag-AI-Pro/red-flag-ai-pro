@@ -76,6 +76,11 @@ export async function POST(request: Request) {
   const ownerRole: string = (body.owner_role ?? "").trim();
   const decisionDate: string = (body.decision_date ?? "").trim();
   const expiresAt: string = (body.expires_at ?? "").trim();
+  // Who is on the hook for renewing this or arranging a successor before it
+  // lapses, not the authority holder themselves. Optional, since not every
+  // record has a distinct continuity duty, but nameable when it does.
+  const continuityOwnerName: string | null = typeof body.continuity_owner_name === "string" && body.continuity_owner_name.trim() ? body.continuity_owner_name.trim() : null;
+  const continuityOwnerRole: string | null = typeof body.continuity_owner_role === "string" && body.continuity_owner_role.trim() ? body.continuity_owner_role.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (!ownerName) return NextResponse.json({ error: "Owner name is required." }, { status: 400 });
@@ -116,6 +121,8 @@ export async function POST(request: Request) {
       expires_at: expiresAt,
       expiry_conditions: sanitizeFalsifiers(body.expiry_conditions),
       supersedes_id: supersedesId,
+      continuity_owner_name: continuityOwnerName,
+      continuity_owner_role: continuityOwnerRole,
     })
     .select()
     .single();
@@ -125,11 +132,21 @@ export async function POST(request: Request) {
   // The expiry and its falsifiers are part of what gets sealed: the grant's
   // shelf life must be provably part of the original record, not a later edit.
   // supersedes_id is sealed too — the chain of custody is part of the record,
-  // not something added after the fact.
+  // not something added after the fact. Same for the continuity owner: who
+  // was on the hook for renewal is fixed at creation, not assigned in hindsight
+  // once a lapse has already happened.
   await logAuditEvent(
     result.user.id,
     "boundary_record.created",
-    { id: data.id, decision: data.decision, expires_at: data.expires_at, expiry_conditions: data.expiry_conditions, supersedes_id: data.supersedes_id },
+    {
+      id: data.id,
+      decision: data.decision,
+      expires_at: data.expires_at,
+      expiry_conditions: data.expiry_conditions,
+      supersedes_id: data.supersedes_id,
+      continuity_owner_name: data.continuity_owner_name,
+      continuity_owner_role: data.continuity_owner_role,
+    },
     { timestamp: true }
   );
 

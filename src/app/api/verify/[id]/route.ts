@@ -33,6 +33,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     actionLabel: result.category ?? (result.action ? ACTION_LABELS[result.action] ?? result.action : null),
     description: result.description ?? null,
     contentSha256: result.contentSha256 ?? null,
+    sealedByName: result.sealedByName ?? null,
+    sealedByOrg: result.sealedByOrg ?? null,
     createdAt: result.createdAt,
     timestampedAt: result.timestampedAt ?? null,
     timestampAuthority: result.timestampAuthority ?? null,

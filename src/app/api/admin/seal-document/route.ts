@@ -3,6 +3,12 @@ import { createHash } from "crypto";
 import { logAuditEvent } from "@/lib/audit-log";
 import { WITNESS_CHAIN_USER_ID } from "@/lib/witness";
 
+// Every seal made through this route is on Red Flag's own company chain, so
+// the signer is always the same — attached directly rather than passed in,
+// so it can never be omitted or mistyped on a given call.
+const SEALED_BY_NAME = "James Stokes";
+const SEALED_BY_ORG = "Red Flag AI Pro";
+
 // Admin-only, not a public endpoint. Seals the hash of an arbitrary piece of
 // content (a spec, a whitepaper, a concept document) into our own chain with
 // an RFC 3161 timestamp — proof this exact content existed no later than a
@@ -50,6 +56,8 @@ export async function POST(request: Request) {
       // everything. Optional — old entries without it keep the generic label.
       category: typeof category === "string" && category.trim() ? category.trim() : null,
       content_sha256: contentHash,
+      sealed_by_name: SEALED_BY_NAME,
+      sealed_by_org: SEALED_BY_ORG,
     },
     { timestamp: true }
   );

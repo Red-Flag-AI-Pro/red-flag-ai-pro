@@ -82,6 +82,13 @@ export interface BoundaryAuthorizationRecord {
   // this points at the record it supersedes, so the chain of custody for the
   // mandate is provable, not just each record standing alone.
   supersedes_id: string | null;
+  // Who holds the duty to renew this authorization or arrange a successor
+  // before it lapses — distinct from owner_name, who holds the authority
+  // itself. A lapse only tells you the seat went empty; this is who the
+  // lapse-check cron names as accountable for it having gone empty. Null on
+  // records created before this field existed, and optional going forward.
+  continuity_owner_name: string | null;
+  continuity_owner_role: string | null;
   created_at: string;
   updated_at: string;
 }

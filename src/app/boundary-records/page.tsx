@@ -54,6 +54,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [decision, setDecision] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [ownerRole, setOwnerRole] = useState("");
+  const [continuityOwnerName, setContinuityOwnerName] = useState("");
+  const [continuityOwnerRole, setContinuityOwnerRole] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -68,6 +70,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setDecision("");
     setOwnerName("");
     setOwnerRole("");
+    setContinuityOwnerName("");
+    setContinuityOwnerRole("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -88,6 +92,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           decision,
           owner_name: ownerName,
           owner_role: ownerRole,
+          continuity_owner_name: continuityOwnerName || null,
+          continuity_owner_role: continuityOwnerRole || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -149,6 +155,30 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             />
           </div>
         </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Continuity owner name (optional)</label>
+            <input
+              value={continuityOwnerName}
+              onChange={(e) => setContinuityOwnerName(e.target.value)}
+              placeholder="Who arranges renewal or cover"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Continuity owner role (optional)</label>
+            <input
+              value={continuityOwnerRole}
+              onChange={(e) => setContinuityOwnerRole(e.target.value)}
+              placeholder="e.g. Line manager, Ops lead"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
+          Distinct from the owner above: this is whoever holds the duty to renew this or arrange a successor before it lapses. A lapse only proves the seat went empty — naming this means the lapse event can say who was on the hook for it going empty, not leave that as an inference.
+        </p>
 
         <div className="grid grid-cols-2 gap-2">
           <div>
@@ -391,7 +421,12 @@ function RecordCard({ record, supersededRecord, lapseSealed }: { record: Boundar
                 {status === "expired" && (
                   <p className="text-xs mt-1">
                     {lapseSealed ? (
-                      <span className="text-emerald-300">✓ Lapse sealed — the gap in coverage is its own recorded fact, not just something reconstructed later.</span>
+                      <span className="text-emerald-300">
+                        ✓ Lapse sealed — the gap in coverage is its own recorded fact, not just something reconstructed later.
+                        {record.continuity_owner_name && (
+                          <> Cover was {record.continuity_owner_name}&apos;s responsibility.</>
+                        )}
+                      </span>
                     ) : (
                       <span className="text-amber-300">Lapse not yet sealed — the daily check hasn't run since this expired.</span>
                     )}
@@ -404,6 +439,15 @@ function RecordCard({ record, supersededRecord, lapseSealed }: { record: Boundar
               </p>
             )}
           </div>
+
+          {record.continuity_owner_name && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Continuity owner</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                {record.continuity_owner_name}{record.continuity_owner_role ? ` (${record.continuity_owner_role})` : ""} — responsible for renewal or arranging cover before this lapses.
+              </p>
+            </div>
+          )}
 
           {supersededRecord && (
             <div>

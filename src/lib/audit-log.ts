@@ -188,6 +188,11 @@ export interface PublicVerificationResult {
   // document in their browser and compare it themselves, the same
   // self-serve check the seal-document route makes possible.
   contentSha256?: string;
+  // Who sealed this specific record and which company they sealed it for.
+  // Present on every concept.sealed entry going forward — a name attached to
+  // the record itself, not just implied by the site it's hosted on.
+  sealedByName?: string;
+  sealedByOrg?: string;
   createdAt?: string;
   // Present when the entry was sealed with a third-party RFC 3161 timestamp.
   timestampedAt?: string;
@@ -205,7 +210,10 @@ function buildPublicDescription(action: string, details: Record<string, unknown>
     case "boundary_record.lapsed": {
       const decision = str("decision");
       const owner = str("owner_name");
-      return decision ? `Authorization lapsed: ${decision}${owner ? ` (${owner})` : ""}` : undefined;
+      const continuityOwner = str("continuity_owner_name");
+      const base = decision ? `Authorization lapsed: ${decision}${owner ? ` (${owner})` : ""}` : undefined;
+      if (!base) return undefined;
+      return continuityOwner ? `${base}. Cover was ${continuityOwner}'s responsibility.` : base;
     }
     case "witness.anchor_sent": {
       const peer = str("peer_chain");
@@ -248,6 +256,8 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
   const details = entry.details ?? {};
   const contentSha256 = typeof details["content_sha256"] === "string" ? (details["content_sha256"] as string) : undefined;
   const category = typeof details["category"] === "string" ? (details["category"] as string) : undefined;
+  const sealedByName = typeof details["sealed_by_name"] === "string" ? (details["sealed_by_name"] as string) : undefined;
+  const sealedByOrg = typeof details["sealed_by_org"] === "string" ? (details["sealed_by_org"] as string) : undefined;
 
   return {
     found: true,
@@ -256,6 +266,8 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     description: buildPublicDescription(entry.action, details),
     category,
     contentSha256,
+    sealedByName,
+    sealedByOrg,
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
     timestampAuthority: (entry as { ts_tsa?: string }).ts_tsa ?? undefined,

@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 
   const { data: expired, error } = await supabase
     .from("boundary_authorization_records")
-    .select("id, user_id, decision, owner_name, owner_role, expires_at")
+    .select("id, user_id, decision, owner_name, owner_role, expires_at, continuity_owner_name, continuity_owner_role")
     .lt("expires_at", today);
 
   if (error) return NextResponse.json({ error: "Failed to read boundary records." }, { status: 500 });
@@ -52,6 +52,11 @@ export async function GET(request: Request) {
         decision: record.decision,
         owner_name: record.owner_name,
         owner_role: record.owner_role,
+        // Naming this directly closes the gap Ivan Roche raised: the lapse
+        // fixes when the mandate went vacant, this fixes who was on the
+        // hook for it going vacant, so it isn't left as an inference.
+        continuity_owner_name: record.continuity_owner_name,
+        continuity_owner_role: record.continuity_owner_role,
         expires_at: record.expires_at,
         detected_at: new Date().toISOString(),
       },

@@ -12,7 +12,7 @@ type Result =
   | { state: "idle" }
   | { state: "loading" }
   | { state: "not-found" }
-  | { state: "intact"; actionLabel: string; description: string | null; contentSha256: string | null; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
+  | { state: "intact"; actionLabel: string; description: string | null; contentSha256: string | null; sealedByName: string | null; sealedByOrg: string | null; createdAt: string; timestampedAt: string | null; timestampAuthority: string | null }
   | { state: "tampered"; actionLabel: string; createdAt: string };
 
 async function sha256Hex(text: string): Promise<string> {
@@ -112,6 +112,8 @@ function VerifyForm() {
         actionLabel: data.actionLabel ?? "Audit record",
         description: data.description ?? null,
         contentSha256: data.contentSha256 ?? null,
+        sealedByName: data.sealedByName ?? null,
+        sealedByOrg: data.sealedByOrg ?? null,
         createdAt: data.createdAt,
         timestampedAt: data.timestampedAt ?? null,
         timestampAuthority: data.timestampAuthority ?? null,
@@ -208,6 +210,11 @@ function VerifyForm() {
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)" }}>
             {result.actionLabel}, sealed {new Date(result.createdAt).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}. This record matches its cryptographic seal exactly. It has not been edited, deleted, or backdated since.
           </p>
+          {(result.sealedByName || result.sealedByOrg) && (
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.5)", marginTop: "0.4rem" }}>
+              Sealed by {[result.sealedByName, result.sealedByOrg].filter(Boolean).join(", ")}.
+            </p>
+          )}
           {result.timestampedAt && (
             <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,222,128,0.2)" }}>
               <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.7)", lineHeight: 1.6 }}>
