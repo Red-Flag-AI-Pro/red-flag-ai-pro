@@ -93,9 +93,12 @@ function buildEmail(userName: string, urls: { url: string; label: string | null;
 </html>`;
 }
 
+// Fail closed: if CRON_SECRET is missing, an absent header would otherwise
+// compare undefined to undefined and let anyone through.
 export async function GET(request: Request) {
+  const expected = process.env.CRON_SECRET;
   const secret = request.headers.get("authorization")?.replace("Bearer ", "");
-  if (secret !== process.env.CRON_SECRET) {
+  if (!expected || !secret || secret !== expected) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
