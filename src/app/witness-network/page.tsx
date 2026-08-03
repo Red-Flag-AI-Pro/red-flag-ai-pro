@@ -28,7 +28,7 @@ interface LogRow {
 type PushState =
   | { state: "idle" }
   | { state: "sending" }
-  | { state: "ok"; verify: string | null }
+  | { state: "ok"; verify: string | null; failedPeers: string[] }
   | { state: "error"; message: string };
 
 function shortHash(hash: string) {
@@ -71,7 +71,10 @@ export default function WitnessNetworkPage() {
       const res = await fetch("/api/witness/push", { method: "POST" });
       const data = await res.json();
       if (data.ok) {
-        setPush({ state: "ok", verify: data.verify });
+        const failedPeers = ((data.results ?? []) as { peer: string; ok: boolean }[])
+          .filter((r) => !r.ok)
+          .map((r) => r.peer);
+        setPush({ state: "ok", verify: data.verify, failedPeers });
         loadState();
       } else {
         setPush({ state: "error", message: data.error ?? "The peer did not accept the anchor." });
@@ -186,6 +189,11 @@ export default function WitnessNetworkPage() {
                 <a href={push.verify} style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.7)", textDecoration: "underline" }}>
                   Check the sealed record →
                 </a>
+              )}
+              {push.failedPeers.length > 0 && (
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginTop: "0.6rem" }}>
+                  Not reached: {push.failedPeers.join(", ")}
+                </p>
               )}
             </div>
           )}

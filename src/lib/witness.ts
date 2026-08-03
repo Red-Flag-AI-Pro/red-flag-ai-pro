@@ -5,6 +5,24 @@ export const WITNESS_CHAIN_USER_ID = "6fb19075-d78b-4395-bdd2-66c8f1aa73ee";
 
 export const WITNESS_CHAIN_NAME = "red-flag-ai-pro";
 
+export interface WitnessPeer {
+  name: string;
+  url: string;
+}
+
+// Every chain we actively push our tip to. This used to be a single
+// hardcoded URL baked into the push logic itself, meaning bringing in a
+// second chain would have meant editing the function, not just adding a
+// line here. Adding a new approved peer is now the entire integration.
+export const APPROVED_PEERS: WitnessPeer[] = [
+  {
+    name: "sebbi.pro / AILeash",
+    // His own /x/witness/tip response says to hand peers their tip at
+    // /observe, not the base path.
+    url: "https://sebbi.pro/x/witness/observe",
+  },
+];
+
 export interface WitnessPayload {
   chain: string;
   tip: string;
