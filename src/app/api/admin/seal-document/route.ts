@@ -22,15 +22,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Body must be JSON." }, { status: 400 });
   }
 
-  const { title, url, content } = (body ?? {}) as {
+  const { title, url, content, category } = (body ?? {}) as {
     title?: unknown;
     url?: unknown;
     content?: unknown;
+    category?: unknown;
   };
 
   if (typeof title !== "string" || !title.trim() || typeof content !== "string" || !content.trim()) {
     return NextResponse.json(
-      { error: "Expected title (string), content (string), url (optional string)." },
+      { error: "Expected title (string), content (string), url (optional string), category (optional string)." },
       { status: 400 }
     );
   }
@@ -43,6 +44,11 @@ export async function POST(request: Request) {
     {
       title,
       url: typeof url === "string" ? url : null,
+      // What kind of thing this actually was (code fix, legal document,
+      // specification, etc), so the public verify page can show a specific
+      // label instead of the same generic "Concept authorship sealed" for
+      // everything. Optional — old entries without it keep the generic label.
+      category: typeof category === "string" && category.trim() ? category.trim() : null,
       content_sha256: contentHash,
     },
     { timestamp: true }

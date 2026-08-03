@@ -178,6 +178,11 @@ export interface PublicVerificationResult {
   // blanket dump of `details`, since some action types (scans, vendors)
   // carry business content that shouldn't be exposed just from an id.
   description?: string;
+  // A specific label for what kind of thing this was (e.g. "Security fix",
+  // "Legal document", "Product decision"), set at seal time. Only present
+  // on concept.sealed entries that supplied one — lets the verify page show
+  // something more useful than the same generic action label for every entry.
+  category?: string;
   // The stored SHA-256 of the original document content, present only for
   // concept.sealed entries. Lets a visitor hash their own copy of the same
   // document in their browser and compare it themselves, the same
@@ -242,12 +247,14 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
 
   const details = entry.details ?? {};
   const contentSha256 = typeof details["content_sha256"] === "string" ? (details["content_sha256"] as string) : undefined;
+  const category = typeof details["category"] === "string" ? (details["category"] as string) : undefined;
 
   return {
     found: true,
     intact,
     action: entry.action,
     description: buildPublicDescription(entry.action, details),
+    category,
     contentSha256,
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
