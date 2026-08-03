@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 
 // A boundary authorization's expiry is currently only checked lazily, in the
@@ -18,7 +18,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const supabase = await createClient();
+  // A cron invocation has no logged-in user, so the RLS-respecting client
+  // (session cookie based) silently sees zero rows for every user's records —
+  // this bug meant the check never actually found a real lapse in production.
+  // The service client bypasses RLS by design, same pattern as every other
+  // cron route and the seal-document route.
+  const supabase = await createServiceClient();
   const today = new Date().toISOString().slice(0, 10);
 
   const { data: expired, error } = await supabase
