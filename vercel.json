@@ -35,6 +35,10 @@
     {
       "path": "/api/cron/boundary-lapse-check",
       "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/cron/witness-anchor",
+      "schedule": "0 * * * *"
     }
   ]
 }
