@@ -32,6 +32,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Open Witness Standard", href: "/witness-standard" },
       { label: "Apply to Join the Network", href: "/witness-network/apply" },
       { label: "Who, When, Whether", href: "/who-when-whether" },
+      { label: "Boundary Authorization Records", href: "/boundary-authorization-records" },
       { label: "Verify a record", href: "/verify" },
       { label: "All tools", href: "/tools" },
     ],
