@@ -88,6 +88,20 @@ export async function POST(request: Request) {
   if (!expiresAt) return NextResponse.json({ error: "Authority expiry date is required. An authorization without an expiry never stops being your risk." }, { status: 400 });
   if (expiresAt <= decisionDate) return NextResponse.json({ error: "Authority expiry must be after the decision date." }, { status: 400 });
 
+  // If this record replaces an earlier one, the record it supersedes must
+  // actually belong to this user — otherwise a chain of custody could be
+  // forged by pointing at someone else's record.
+  const supersedesId: string | null = typeof body.supersedes_id === "string" && body.supersedes_id.trim() ? body.supersedes_id.trim() : null;
+  if (supersedesId) {
+    const { data: priorRecord } = await result.supabase
+      .from("boundary_authorization_records")
+      .select("id")
+      .eq("id", supersedesId)
+      .eq("user_id", result.user.id)
+      .maybeSingle();
+    if (!priorRecord) return NextResponse.json({ error: "The record you're superseding was not found." }, { status: 400 });
+  }
+
   const { data, error } = await result.supabase
     .from("boundary_authorization_records")
     .insert({
@@ -101,6 +115,7 @@ export async function POST(request: Request) {
       decision_date: decisionDate,
       expires_at: expiresAt,
       expiry_conditions: sanitizeFalsifiers(body.expiry_conditions),
+      supersedes_id: supersedesId,
     })
     .select()
     .single();
@@ -109,10 +124,12 @@ export async function POST(request: Request) {
 
   // The expiry and its falsifiers are part of what gets sealed: the grant's
   // shelf life must be provably part of the original record, not a later edit.
+  // supersedes_id is sealed too — the chain of custody is part of the record,
+  // not something added after the fact.
   await logAuditEvent(
     result.user.id,
     "boundary_record.created",
-    { id: data.id, decision: data.decision, expires_at: data.expires_at, expiry_conditions: data.expiry_conditions },
+    { id: data.id, decision: data.decision, expires_at: data.expires_at, expiry_conditions: data.expiry_conditions, supersedes_id: data.supersedes_id },
     { timestamp: true }
   );
 

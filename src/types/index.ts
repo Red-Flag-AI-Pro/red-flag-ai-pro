@@ -78,6 +78,10 @@ export interface BoundaryAuthorizationRecord {
   // existed — new records require it.
   expires_at: string | null;
   expiry_conditions: BoundaryFalsifier[];
+  // If this authorization replaces an earlier one (the role holder changed),
+  // this points at the record it supersedes, so the chain of custody for the
+  // mandate is provable, not just each record standing alone.
+  supersedes_id: string | null;
   created_at: string;
   updated_at: string;
 }

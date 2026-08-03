@@ -50,12 +50,13 @@ const STATUS_CHIP: Record<AuthorityStatus, { label: string; className: string }>
   unbounded: { label: "No expiry set", className: "bg-white/10 text-[rgba(244,241,234,0.5)] border-white/15" },
 };
 
-function NewRecordForm({ onCreated }: { onCreated: (record: BoundaryAuthorizationRecord) => void }) {
+function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: BoundaryAuthorizationRecord) => void; existingRecords: BoundaryAuthorizationRecord[] }) {
   const [decision, setDecision] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [ownerRole, setOwnerRole] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
+  const [supersedesId, setSupersedesId] = useState("");
   const [falsifiers, setFalsifiers] = useState<BoundaryFalsifier[]>([emptyFalsifier()]);
   const [options, setOptions] = useState<BoundaryOption[]>([emptyOption()]);
   const [risks, setRisks] = useState<BoundaryRisk[]>([emptyRisk()]);
@@ -69,6 +70,7 @@ function NewRecordForm({ onCreated }: { onCreated: (record: BoundaryAuthorizatio
     setOwnerRole("");
     setDecisionDate(todayISO());
     setExpiresAt("");
+    setSupersedesId("");
     setFalsifiers([emptyFalsifier()]);
     setOptions([emptyOption()]);
     setRisks([emptyRisk()]);
@@ -92,6 +94,7 @@ function NewRecordForm({ onCreated }: { onCreated: (record: BoundaryAuthorizatio
           options_considered: options,
           risks_accepted: risks,
           evidence,
+          supersedes_id: supersedesId || null,
         }),
       });
       if (!res.ok) {
@@ -171,6 +174,27 @@ function NewRecordForm({ onCreated }: { onCreated: (record: BoundaryAuthorizatio
         <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
           A grant needs a shelf life the same way a signature needs a name. An authorization with no expiry never stops being your risk.
         </p>
+
+        {existingRecords.length > 0 && (
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Supersedes an earlier record (optional)</label>
+            <select
+              value={supersedesId}
+              onChange={(e) => setSupersedesId(e.target.value)}
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] focus:outline-none focus:border-white/25 [color-scheme:dark]"
+            >
+              <option value="">No, this is a new, unrelated authorization</option>
+              {existingRecords.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.decision.slice(0, 60)} — {r.owner_name} ({r.owner_role})
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
+              If the role holder changed and this record replaces one already logged, link it here — the chain of custody for the mandate gets sealed as part of this record, not left implicit.
+            </p>
+          </div>
+        )}
 
         <div>
           <div className="flex items-center justify-between mb-1">
@@ -323,7 +347,7 @@ function NewRecordForm({ onCreated }: { onCreated: (record: BoundaryAuthorizatio
   );
 }
 
-function RecordCard({ record }: { record: BoundaryAuthorizationRecord }) {
+function RecordCard({ record, supersededRecord, lapseSealed }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const status = authorityStatus(record);
   const chip = STATUS_CHIP[status];
@@ -356,19 +380,39 @@ function RecordCard({ record }: { record: BoundaryAuthorizationRecord }) {
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Authority shelf life</p>
             {record.expires_at ? (
-              <p className="text-sm text-[rgba(244,241,234,0.8)]">
-                {status === "expired" ? "Expired " : "Expires "}
-                {new Date(record.expires_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+              <>
+                <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                  {status === "expired" ? "Expired " : "Expires "}
+                  {new Date(record.expires_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                  {status === "expired" && (
+                    <span className="text-red-300"> — this authorization has lapsed. Anything still acting on it is acting without valid authority.</span>
+                  )}
+                </p>
                 {status === "expired" && (
-                  <span className="text-red-300"> — this authorization has lapsed. Anything still acting on it is acting without valid authority.</span>
+                  <p className="text-xs mt-1">
+                    {lapseSealed ? (
+                      <span className="text-emerald-300">✓ Lapse sealed — the gap in coverage is its own recorded fact, not just something reconstructed later.</span>
+                    ) : (
+                      <span className="text-amber-300">Lapse not yet sealed — the daily check hasn't run since this expired.</span>
+                    )}
+                  </p>
                 )}
-              </p>
+              </>
             ) : (
               <p className="text-sm text-[rgba(244,241,234,0.5)]">
                 No expiry recorded — this grant predates expiry capture. An authorization without a stated end never stops being your risk: re-log it with a shelf life.
               </p>
             )}
           </div>
+
+          {supersededRecord && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Supersedes</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                {supersededRecord.decision.slice(0, 80)} — {supersededRecord.owner_name} ({supersededRecord.owner_role})
+              </p>
+            </div>
+          )}
 
           {(record.expiry_conditions ?? []).length > 0 && (
             <div>
@@ -465,6 +509,7 @@ export default function BoundaryRecordsPage() {
   const [loading, setLoading] = useState(true);
   const [plan, setPlan] = useState<Plan>("free");
   const [records, setRecords] = useState<BoundaryAuthorizationRecord[]>([]);
+  const [lapsedRecordIds, setLapsedRecordIds] = useState<Set<string>>(new Set());
 
   const isSentinel = plan === "sentinel";
 
@@ -486,11 +531,28 @@ export default function BoundaryRecordsPage() {
           .select("*")
           .order("decision_date", { ascending: false });
         setRecords(data ?? []);
+
+        // Which expired records already have their lapse sealed as its own
+        // event (see the boundary-lapse-check cron), rather than left as
+        // something only inferable from the expiry date itself.
+        const { data: lapseEvents } = await supabase
+          .from("audit_log")
+          .select("details")
+          .eq("user_id", user.id)
+          .eq("action", "boundary_record.lapsed");
+        const ids = new Set<string>(
+          (lapseEvents ?? [])
+            .map((e) => (e.details as { record_id?: string })?.record_id)
+            .filter((id): id is string => typeof id === "string")
+        );
+        setLapsedRecordIds(ids);
       }
       setLoading(false);
     }
     load();
   }, [supabase, router]);
+
+  const recordsById = new Map(records.map((r) => [r.id, r]));
 
   if (loading) return <div className="text-sm text-[rgba(244,241,234,0.4)] p-6">Loading…</div>;
 
@@ -516,7 +578,7 @@ export default function BoundaryRecordsPage() {
         <p className="text-sm text-[rgba(244,241,234,0.5)]">One record answers three questions: who approved it, when they approved it, and whether their authority was still valid when it mattered. Decision, named owner, evidence, and now a shelf life — the expiry date and the observable conditions that void the grant.</p>
       </div>
 
-      <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} />
+      <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} existingRecords={records} />
 
       {records.length > 0 && <AuthorityHealth records={records} />}
 
@@ -531,7 +593,12 @@ export default function BoundaryRecordsPage() {
         ) : (
           <div className="space-y-3">
             {records.map((r) => (
-              <RecordCard key={r.id} record={r} />
+              <RecordCard
+                key={r.id}
+                record={r}
+                supersededRecord={r.supersedes_id ? recordsById.get(r.supersedes_id) ?? null : null}
+                lapseSealed={lapsedRecordIds.has(r.id)}
+              />
             ))}
           </div>
         )}

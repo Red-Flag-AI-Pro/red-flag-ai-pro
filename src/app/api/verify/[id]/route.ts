@@ -11,6 +11,7 @@ const ACTION_LABELS: Record<string, string> = {
   flag_reviewed: "Compliance flag signed off",
   "boundary_record.created": "Boundary authorization recorded",
   "boundary_record.updated": "Boundary authorization updated",
+  "boundary_record.lapsed": "Boundary authorization lapse detected",
   "concept.sealed": "Concept authorship sealed",
   "witness.anchor_received": "Witness anchor received",
   "witness.anchor_sent": "Witness anchor sent",
