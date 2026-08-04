@@ -118,6 +118,12 @@ export default function FeaturesPage() {
                 href: "/witness-network",
                 linkText: "See the witness network",
               },
+              {
+                title: "Remediation tracking",
+                desc: "A flag being found and disposed of is not the end of the record. Whether it was actually fixed, and when, is a separate, later confirmation, sealed on its own so a judgment call and a genuine fix can never be collapsed into one event.",
+                href: null,
+                linkText: null,
+              },
             ].map((item) => (
               <div key={item.title} style={{ background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2rem" }}>
                 <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
