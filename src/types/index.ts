@@ -26,6 +26,8 @@ export interface Scan {
 
 export type Disposition = "resolved" | "accepted_risk" | "not_applicable";
 
+export type InitialRead = "real_issue" | "unsure" | "not_applicable";
+
 export interface ScanFlag {
   id: string;
   scan_id: string;
@@ -40,6 +42,11 @@ export interface ScanFlag {
   reviewer_note: string | null;
   reviewer_role: string | null;
   reviewer_mandate: string | null;
+  // Commit before reveal: the reviewer's own read, recorded before the AI's
+  // reasoning was shown to them. Null on flags reviewed before this existed.
+  initial_read: InitialRead | null;
+  initial_read_note: string | null;
+  initial_read_at: string | null;
 }
 
 export interface BoundaryOption {
@@ -113,5 +120,5 @@ export interface VideoJob {
 
 export interface AnalysisResult {
   score: number;
-  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note" | "reviewer_role" | "reviewer_mandate">[];
+  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note" | "reviewer_role" | "reviewer_mandate" | "initial_read" | "initial_read_note" | "initial_read_at">[];
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { ScanFlag, Disposition, Plan } from "@/types";
+import type { ScanFlag, Disposition, InitialRead, Plan } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { FLAG_CATEGORY_LABELS } from "@/lib/constants";
 
@@ -24,6 +24,100 @@ const DISPOSITION_COLORS: Record<Disposition, string> = {
   accepted_risk: "bg-amber-900/40 border-amber-500/40 text-amber-300",
   not_applicable: "bg-white/5 border-white/20 text-white/50",
 };
+
+const INITIAL_READ_LABELS: Record<InitialRead, string> = {
+  real_issue: "Looks like a real issue",
+  unsure: "Not sure yet",
+  not_applicable: "Looks not applicable",
+};
+
+// Commit before reveal: the reviewer's own read gets recorded and sealed
+// BEFORE the AI's reasoning is shown. Originally Justin's whitepaper idea
+// (section 8). Prevents the anchoring failure the divergence rate can only
+// measure after the fact: you can't rubber stamp a conclusion you haven't
+// seen yet.
+function InitialReadPanel({
+  flag,
+  scanId,
+  onCommitted,
+}: {
+  flag: ScanFlag;
+  scanId: string;
+  onCommitted: (updated: ScanFlag) => void;
+}) {
+  const [read, setRead] = useState<InitialRead | null>(null);
+  const [note, setNote] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function commit() {
+    if (!read) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/scans/${scanId}/flags/${flag.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ initial_read: read, initial_read_note: note || undefined }),
+      });
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.error ?? "Failed to record");
+      }
+      const { flag: updated } = await res.json();
+      onCommitted(updated);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Something went wrong");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="rounded-xl border border-[rgba(201,166,107,0.35)] bg-[rgba(201,166,107,0.06)] p-4 space-y-3">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-wider text-[#C9A66B]">Your read first</p>
+        <p className="text-xs text-[rgba(244,241,234,0.55)] mt-1">
+          The reasoning and suggested fix reveal after you commit your own read of the flagged text above. Recorded and sealed in that order, so the record proves your judgment came before the machine&apos;s.
+        </p>
+      </div>
+
+      <div className="flex gap-2 flex-wrap">
+        {(Object.keys(INITIAL_READ_LABELS) as InitialRead[]).map((r) => (
+          <button
+            key={r}
+            onClick={() => setRead(r)}
+            className={`text-xs font-semibold rounded-lg px-3 py-1.5 border transition-colors ${
+              read === r
+                ? "bg-[rgba(201,166,107,0.2)] border-[rgba(201,166,107,0.6)] text-[#C9A66B]"
+                : "border-white/10 text-white/40 hover:border-white/25 hover:text-white/70"
+            }`}
+          >
+            {INITIAL_READ_LABELS[r]}
+          </button>
+        ))}
+      </div>
+
+      <textarea
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        placeholder="Why? (optional, sealed with your read)"
+        rows={2}
+        className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 resize-none focus:outline-none focus:border-white/25"
+      />
+
+      {error && <p className="text-xs text-red-400">{error}</p>}
+
+      <button
+        onClick={commit}
+        disabled={saving || !read}
+        className="text-sm font-semibold rounded-lg px-4 py-1.5 bg-[#C9A66B] text-[#0A1628] hover:bg-[#d9b87e] disabled:opacity-40 transition-colors"
+      >
+        {saving ? "Sealing..." : "Commit my read, reveal the reasoning"}
+      </button>
+    </div>
+  );
+}
 
 function dwellLabel(scanCreatedAt: string, reviewedAt: string): string {
   const ms = new Date(reviewedAt).getTime() - new Date(scanCreatedAt).getTime();
@@ -294,15 +388,47 @@ export function FlagList({ flags, score, plan, scanId, scanCreatedAt }: FlagList
           </div>
 
           <div className="px-5 py-4 space-y-3">
-            <p className="text-sm text-[rgba(244,241,234,0.8)]">{flag.flag_description}</p>
+            {/* Commit before reveal: a Sentinel reviewer sees the evidence
+                (category, severity, flagged text) but not the AI's reasoning
+                or fix until their own read is committed and sealed. */}
+            {(() => {
+              const commitPending = isSentinel && !!scanId && !flag.disposition && !flag.initial_read;
 
-            {flag.text_excerpt && (
-              <blockquote className="rounded-md border-l-4 border-amber-400 bg-[rgba(245,158,11,0.1)] px-4 py-2 text-sm italic text-amber-300">
-                {flag.text_excerpt}
-              </blockquote>
-            )}
+              if (commitPending) {
+                return (
+                  <>
+                    {flag.text_excerpt && (
+                      <blockquote className="rounded-md border-l-4 border-amber-400 bg-[rgba(245,158,11,0.1)] px-4 py-2 text-sm italic text-amber-300">
+                        {flag.text_excerpt}
+                      </blockquote>
+                    )}
+                    <InitialReadPanel flag={flag} scanId={scanId} onCommitted={handleUpdate} />
+                  </>
+                );
+              }
 
-            {flag.suggestion && (
+              return (
+                <>
+                  <p className="text-sm text-[rgba(244,241,234,0.8)]">{flag.flag_description}</p>
+
+                  {flag.text_excerpt && (
+                    <blockquote className="rounded-md border-l-4 border-amber-400 bg-[rgba(245,158,11,0.1)] px-4 py-2 text-sm italic text-amber-300">
+                      {flag.text_excerpt}
+                    </blockquote>
+                  )}
+
+                  {flag.initial_read && (
+                    <p className="text-xs text-[#C9A66B]">
+                      Your pre-reveal read: {INITIAL_READ_LABELS[flag.initial_read]}
+                      {flag.initial_read_note ? ` — “${flag.initial_read_note}”` : ""}
+                      <span className="text-[rgba(244,241,234,0.35)]"> · sealed before the reasoning was shown</span>
+                    </p>
+                  )}
+                </>
+              );
+            })()}
+
+            {(!isSentinel || !scanId || flag.disposition || flag.initial_read) && flag.suggestion && (
               <div className="rounded-md bg-[rgba(34,197,94,0.1)] border border-[rgba(34,197,94,0.3)] px-4 py-2">
                 <p className="text-xs font-semibold text-green-300 mb-1">
                   Suggested fix
@@ -327,7 +453,7 @@ export function FlagList({ flags, score, plan, scanId, scanCreatedAt }: FlagList
               </div>
             )}
 
-            {isSentinel && scanId && (
+            {isSentinel && scanId && (flag.initial_read || flag.disposition) && (
               <DispositionPanel flag={flag} scanId={scanId} scanCreatedAt={scanCreatedAt} onUpdate={handleUpdate} />
             )}
 
