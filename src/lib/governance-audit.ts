@@ -261,6 +261,33 @@ export const STRATEGY_QUESTIONS = [
       },
     ],
   },
+  {
+    id: 'strat_6',
+    dimension: 'strategy_ownership' as const,
+    question: 'Has the board explicitly decided which decisions it will never let AI make, regardless of how well the system performs?',
+    options: [
+      {
+        text: 'No, this has never been discussed at board level',
+        riskPoints: 3,
+        context: 'AI dependency is expanding by default, not by decision',
+      },
+      {
+        text: 'Discussed informally, nothing documented',
+        riskPoints: 2,
+        context: 'An opinion exists; a decision does not',
+      },
+      {
+        text: 'Named for one or two specific high-stakes decisions',
+        riskPoints: 1,
+        context: 'Partial coverage; most delegation is still assumed rather than decided',
+      },
+      {
+        text: 'Yes, documented and reviewed periodically',
+        riskPoints: 0,
+        context: 'Strong: even a perfectly compliant AI system does not decide the organisation’s own appetite for it',
+      },
+    ],
+  },
 ];
 
 // ============================================================
@@ -1130,10 +1157,13 @@ export type QuizQuestion = (typeof ALL_QUESTIONS)[number];
 // ============================================================
 // SHORT QUIZ (public, free signal check)
 // ============================================================
-// 2 highest-signal questions per dimension, 12 total. This is the
-// public entry point — fast enough to finish on mobile. The full
-// 24-question ALL_QUESTIONS set becomes the deep assessment unlocked
-// for Growth/Sentinel, asking more detailed, specific follow-up
+// 2 highest-signal questions per dimension, 12 total, deliberately held
+// at 12 regardless of how many questions ALL_QUESTIONS grows to — this is
+// the public entry point, fast enough to finish on mobile, and "12
+// questions" is advertised sitewide. New questions go into the deep
+// assessment (ALL_QUESTIONS) unlocked for Growth/Sentinel by default;
+// only swap one into SHORT_QUESTION_IDS deliberately, and update every
+// "12 questions" reference in copy if that count ever needs to change.
 // questions rather than just showing more of the same answers.
 const SHORT_QUESTION_IDS = [
   'strat_1', 'strat_2',
