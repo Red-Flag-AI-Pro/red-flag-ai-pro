@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PlanBadge } from "@/components/billing/PlanBadge";
 import { ScoreTrend } from "@/components/ui/ScoreTrend";
+import { TenureMarker } from "@/components/dashboard/TenureMarker";
 import { PLAN_LIMITS, SCANNER_SALE_ACTIVE } from "@/lib/constants";
 import type { Plan, Scan } from "@/types";
 
@@ -67,16 +68,36 @@ export default async function DashboardPage({
     .select("id", { count: "exact", head: true })
     .gte("created_at", startOfMonth.toISOString());
 
+  // All-time counts for the tenure marker, deliberately separate from the
+  // "this month" usage stat above, this one is meant to only ever grow.
+  const totalScansQuery = supabase
+    .from("scans")
+    .select("id", { count: "exact", head: true });
+
+  const sealedEventsQuery = supabase
+    .from("audit_log")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id);
+
   if (!hasTeam) {
     recentScansQuery.eq("user_id", user.id);
     trendScansQuery.eq("user_id", user.id);
     monthCountQuery.eq("user_id", user.id);
+    totalScansQuery.eq("user_id", user.id);
   }
 
-  const [{ data: recentScans }, { data: trendScans }, { count: monthCount }] = await Promise.all([
+  const [
+    { data: recentScans },
+    { data: trendScans },
+    { count: monthCount },
+    { count: totalScansCount },
+    { count: sealedEventsCount },
+  ] = await Promise.all([
     recentScansQuery,
     trendScansQuery,
     monthCountQuery,
+    totalScansQuery,
+    sealedEventsQuery,
   ]);
 
   const trendScores = (trendScans ?? []).map((s) => s.score as number);
@@ -113,6 +134,14 @@ export default async function DashboardPage({
           </Link>
         </div>
       </div>
+
+      {profile?.created_at && (
+        <TenureMarker
+          memberSince={profile.created_at}
+          totalChecks={totalScansCount ?? 0}
+          sealedEvents={sealedEventsCount ?? 0}
+        />
+      )}
 
       {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-3">
