@@ -51,6 +51,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               <Link href="/features" className="nav-link px-2.5 py-1.5 text-sm">Features</Link>
               <Link href="/audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">DFY Audit</Link>
               <Link href="/law-firms" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Law Firms</Link>
+              <Link href="/insurance-brokers" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">PI Brokers</Link>
               <Link href="/sentinel" className="nav-link px-2.5 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-2.5 py-1.5 text-sm">Pricing</Link>
 
@@ -166,6 +167,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/features" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
                 <Link href="/audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">DFY Audit</Link>
                 <Link href="/law-firms" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Law firms</Link>
+                <Link href="/insurance-brokers" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">PI brokers</Link>
                 <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: managed governance &amp; compliance</Link>
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
                 <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
