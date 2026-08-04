@@ -100,7 +100,7 @@ export default function LandingPage() {
               Free governance assessment <span className="arrow">→</span>
             </Link>
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)" }}>No credit card · No account required · Results delivered instantly</p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)" }}>No card · No account to create · Just your email, results delivered instantly</p>
         </div>
       </section>
 
@@ -225,6 +225,27 @@ export default function LandingPage() {
             Verify a real record yourself <span className="arrow">→</span>
           </Link>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1rem" }}>No account needed. We don&apos;t ask you to trust us on this.</p>
+
+          {/* The proof pillar: the two pages that explain the record itself.
+              These had no homepage presence at all (nav dropdown + footer
+              only), which matched the zero-usage numbers exactly — nobody
+              creates a record they never learn exists. */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1rem", marginTop: "3rem", textAlign: "left" }}>
+            <Link href="/who-when-whether" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The framework</p>
+              <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>Who, when, whether</h3>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+                Every AI accountability question a regulator or board asks reduces to three: who approved it, when they approved it, and whether their authority still held when it mattered. Read the framework →
+              </p>
+            </Link>
+            <Link href="/boundary-authorization-records" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The record</p>
+              <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>Boundary authorization records</h3>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+                The sealed record that answers all three: a named owner, a decision date, an expiry, and the conditions that void it. Includes a live tamper test you can run yourself →
+              </p>
+            </Link>
+          </div>
         </div>
       </section>
 
