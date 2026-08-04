@@ -27,6 +27,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "DPIA Generator", href: "/tools/dpia-generator" },
       { label: "Incident Reporting Checklist", href: "/tools/incident-reporting-checklist" },
       { label: "Documentation Assistant", href: "/tools/documentation-assistant" },
+      { label: "EU Database Registration", href: "/tools/eu-database-registration-assistant" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
       { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
       { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },

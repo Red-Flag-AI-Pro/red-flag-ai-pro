@@ -23,6 +23,7 @@ const GOVERNANCE_TOOLS: ToolCard[] = [
   { href: "/tools/dpia-generator", title: "DPIA Generator", desc: "Answer a few questions and get a DPIA screening document, following the ICO's own checklist." },
   { href: "/tools/incident-reporting-checklist", title: "Incident Reporting Checklist", desc: "Pick what happened and where. Get the deadline and who to notify, free." },
   { href: "/tools/documentation-assistant", title: "AI System Documentation Assistant", desc: "Answer a few questions and get a documentation draft, structured the way EU AI Act Annex IV expects." },
+  { href: "/tools/eu-database-registration-assistant", title: "EU AI Database Registration Assistant", desc: "Answer a few questions and get a registration draft covering all 13 Annex VIII fields, free." },
   { href: "/tools/fine-calculator", title: "AI Compliance Fine Calculator", desc: "See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in 10 seconds." },
 ];
 
