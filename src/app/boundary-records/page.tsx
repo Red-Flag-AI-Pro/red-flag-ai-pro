@@ -59,6 +59,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
+  const [grantType, setGrantType] = useState<"decision" | "credential">("decision");
+  const [credentialReference, setCredentialReference] = useState("");
   const [falsifiers, setFalsifiers] = useState<BoundaryFalsifier[]>([emptyFalsifier()]);
   const [options, setOptions] = useState<BoundaryOption[]>([emptyOption()]);
   const [risks, setRisks] = useState<BoundaryRisk[]>([emptyRisk()]);
@@ -75,6 +77,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
+    setGrantType("decision");
+    setCredentialReference("");
     setFalsifiers([emptyFalsifier()]);
     setOptions([emptyOption()]);
     setRisks([emptyRisk()]);
@@ -101,6 +105,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           risks_accepted: risks,
           evidence,
           supersedes_id: supersedesId || null,
+          grant_type: grantType,
+          credential_reference: credentialReference || null,
         }),
       });
       if (!res.ok) {
@@ -124,6 +130,40 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
       <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.5)] mb-4">New boundary authorization record</p>
 
       <div className="space-y-4">
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">What is being authorized</label>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setGrantType("decision")}
+              className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${grantType === "decision" ? "border-[#E5484D] bg-[rgba(229,72,77,0.12)] text-[#F4F1EA]" : "border-white/10 bg-white/5 text-[rgba(244,241,234,0.5)]"}`}
+            >
+              An AI system or decision
+            </button>
+            <button
+              type="button"
+              onClick={() => setGrantType("credential")}
+              className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${grantType === "credential" ? "border-[#E5484D] bg-[rgba(229,72,77,0.12)] text-[#F4F1EA]" : "border-white/10 bg-white/5 text-[rgba(244,241,234,0.5)]"}`}
+            >
+              An API key or agent credential
+            </button>
+          </div>
+        </div>
+
+        {grantType === "credential" && (
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Which credential</label>
+            <input
+              value={credentialReference}
+              onChange={(e) => setCredentialReference(e.target.value)}
+              placeholder="A key name or last four characters — never the secret itself"
+              maxLength={60}
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+            <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">A credential is a standing grant of authority the same way a decision is. Record who authorized it and when it expires, never paste the actual key.</p>
+          </div>
+        )}
+
         <div>
           <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Decision</label>
           <textarea
@@ -399,6 +439,14 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { re
           </p>
         </div>
         <div className="shrink-0 flex items-center gap-3">
+          {record.grant_type === "credential" && (
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-sky-500/40 bg-sky-900/30 text-sky-300 px-2 py-0.5"
+              title={record.credential_reference ? `Credential: ${record.credential_reference}` : "API key / agent credential grant"}
+            >
+              Credential
+            </span>
+          )}
           {isIncomplete && (
             <span
               className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/40 bg-amber-900/30 text-amber-300 px-2 py-0.5"

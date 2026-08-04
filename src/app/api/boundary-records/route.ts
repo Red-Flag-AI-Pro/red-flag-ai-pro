@@ -72,6 +72,13 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   const decision: string = (body.decision ?? "").trim();
+  // A credential grant is the same record shape as a decision grant; the
+  // reference names WHICH credential (key name/last four), never the secret.
+  const grantType: "decision" | "credential" = body.grant_type === "credential" ? "credential" : "decision";
+  const credentialReference: string | null =
+    grantType === "credential" && typeof body.credential_reference === "string" && body.credential_reference.trim()
+      ? body.credential_reference.trim()
+      : null;
   const ownerName: string = (body.owner_name ?? "").trim();
   const ownerRole: string = (body.owner_role ?? "").trim();
   const decisionDate: string = (body.decision_date ?? "").trim();
@@ -83,6 +90,13 @@ export async function POST(request: Request) {
   const continuityOwnerRole: string | null = typeof body.continuity_owner_role === "string" && body.continuity_owner_role.trim() ? body.continuity_owner_role.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
+  if (grantType === "credential" && !credentialReference) {
+    return NextResponse.json({ error: "A credential grant needs a reference identifying which credential (a key name or last four characters, never the secret itself)." }, { status: 400 });
+  }
+  // Never let an actual secret get sealed into a permanent record.
+  if (credentialReference && credentialReference.length > 60) {
+    return NextResponse.json({ error: "The credential reference looks like it might be the credential itself. Use a short name or the last four characters, never the full secret." }, { status: 400 });
+  }
   if (!ownerName) return NextResponse.json({ error: "Owner name is required." }, { status: 400 });
   if (!ownerRole) return NextResponse.json({ error: "Owner role is required." }, { status: 400 });
   if (!decisionDate) return NextResponse.json({ error: "Decision date is required." }, { status: 400 });
@@ -123,6 +137,8 @@ export async function POST(request: Request) {
       supersedes_id: supersedesId,
       continuity_owner_name: continuityOwnerName,
       continuity_owner_role: continuityOwnerRole,
+      grant_type: grantType,
+      credential_reference: credentialReference,
     })
     .select()
     .single();
@@ -161,6 +177,8 @@ export async function POST(request: Request) {
       is_complete: isComplete,
       recorded_by_user_id: result.user.id,
       recorded_by_email: result.user.email ?? null,
+      grant_type: data.grant_type,
+      credential_reference: data.credential_reference,
     },
     { timestamp: true }
   );

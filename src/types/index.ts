@@ -89,6 +89,11 @@ export interface BoundaryAuthorizationRecord {
   // records created before this field existed, and optional going forward.
   continuity_owner_name: string | null;
   continuity_owner_role: string | null;
+  // An API key or agent credential is the same kind of grant as a decision:
+  // standing authority for a system to act. credential_reference identifies
+  // which credential (key name or last four characters), never the secret.
+  grant_type: "decision" | "credential";
+  credential_reference: string | null;
   created_at: string;
   updated_at: string;
 }
