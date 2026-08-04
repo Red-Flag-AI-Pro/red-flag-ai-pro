@@ -44,6 +44,13 @@ const PRESSURES = [
     hot: false,
   },
   {
+    label: "The EU named insurance pricing directly",
+    date: "EU AI Act, deadline moved to 2 Dec 2027",
+    description:
+      "Annex III of the EU AI Act classifies AI used for risk assessment and pricing in life and health insurance as high risk, by name, not by inference. The Digital Omnibus agreement pushed the compliance deadline from August 2026 to December 2027. Sixteen extra months is not the same as no obligation. The system named in the regulation is still the system named in the regulation, and a governance record built now is worth more than one built the month the new date arrives.",
+    hot: false,
+  },
+  {
     label: "PI renewal questionnaires",
     date: "Already changing",
     description:
@@ -93,6 +100,11 @@ const RULES = [
     rule: "NAIC AI Model Bulletin",
     demands: "Adopted by more than half of US states. Requires a documented AI governance program with accountable ownership, for firms with a US book.",
     checks: "Same underlying evidence, jurisdiction mapped, so one governance record answers both sides of the Atlantic.",
+  },
+  {
+    rule: "EU AI Act, Annex III",
+    demands: "Names life and health insurance risk assessment and pricing directly as high risk AI. The compliance deadline moved to 2 December 2027, the obligation did not disappear.",
+    checks: "A sealed record naming who owns the pricing or risk model, what it is allowed to do, ready well ahead of the new date rather than the month it arrives.",
   },
   {
     rule: "CAP Code / ASA",
