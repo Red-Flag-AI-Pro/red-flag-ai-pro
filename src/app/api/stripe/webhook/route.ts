@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createClient } from "@supabase/supabase-js";
 import { updateContactPlan, sendLoopsEvent } from "@/lib/loops";
+import { logAuditEvent } from "@/lib/audit-log";
 import { Resend } from "resend";
 import type Stripe from "stripe";
 
@@ -101,6 +102,37 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session) {
     }
   } catch (err) {
     console.error("audit-paid notification error:", err);
+  }
+}
+
+// Sealed the moment Sentinel coverage actually lapses, from the Stripe event
+// itself rather than inferred later from a plan column. Fetches the plan and
+// user_id BEFORE the caller applies the new plan, since this is the only
+// point where "was sentinel a second ago" is still knowable — profiles.plan
+// gets overwritten immediately after this runs.
+async function sealCoverageLapseIfSentinel(
+  supabase: ReturnType<typeof getAdminClient>,
+  customerId: string,
+  toPlan: string,
+  reason: "downgrade" | "cancelled"
+) {
+  try {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("user_id, plan")
+      .eq("stripe_customer_id", customerId)
+      .maybeSingle();
+
+    if (profile?.user_id && profile.plan === "sentinel" && toPlan !== "sentinel") {
+      await logAuditEvent(
+        profile.user_id as string,
+        "account_coverage_lapsed",
+        { from_plan: "sentinel", to_plan: toPlan, reason },
+        { timestamp: true }
+      );
+    }
+  } catch (err) {
+    console.error("coverage lapse seal failed:", err);
   }
 }
 
@@ -268,6 +300,8 @@ export async function POST(request: Request) {
       const priceId = sub.items.data[0]?.price.id;
       const plan = planMap[priceId] ?? "free";
 
+      await sealCoverageLapseIfSentinel(supabase, customerId, plan, "downgrade");
+
       await supabase
         .from("profiles")
         .update({ plan })
@@ -280,6 +314,8 @@ export async function POST(request: Request) {
     case "customer.subscription.deleted": {
       const sub = event.data.object as Stripe.Subscription;
       const customerId = sub.customer as string;
+
+      await sealCoverageLapseIfSentinel(supabase, customerId, "free", "cancelled");
 
       await supabase
         .from("profiles")

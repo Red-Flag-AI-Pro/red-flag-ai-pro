@@ -215,6 +215,14 @@ function buildPublicDescription(action: string, details: Record<string, unknown>
       if (!base) return undefined;
       return continuityOwner ? `${base}. Cover was ${continuityOwner}'s responsibility.` : base;
     }
+    case "account_coverage_lapsed": {
+      const fromPlan = str("from_plan");
+      const reason = str("reason");
+      if (!fromPlan) return undefined;
+      return reason === "cancelled"
+        ? `${fromPlan} coverage ended (subscription cancelled)`
+        : `${fromPlan} coverage ended (plan changed)`;
+    }
     case "witness.anchor_sent": {
       const peer = str("peer_chain");
       return peer ? `Sent our tip to ${peer}` : undefined;
