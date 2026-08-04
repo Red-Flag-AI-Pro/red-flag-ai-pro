@@ -3,22 +3,28 @@ import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import type { BoundaryOption, BoundaryRisk, BoundaryEvidence } from "@/types";
 
-async function requireSentinelUser() {
+async function requireUser() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: "Unauthorized" as const, status: 401 as const };
+  return { supabase, user };
+}
 
-  const { data: profile } = await supabase
+async function requireSentinelUser() {
+  const result = await requireUser();
+  if ("error" in result) return result;
+
+  const { data: profile } = await result.supabase
     .from("profiles")
     .select("plan")
-    .eq("user_id", user.id)
+    .eq("user_id", result.user.id)
     .single();
 
   if (profile?.plan !== "sentinel") {
-    return { error: "Boundary authorization records are available on Sentinel." as const, status: 403 as const };
+    return { error: "Editing boundary authorization records is a Sentinel feature." as const, status: 403 as const };
   }
 
-  return { supabase, user };
+  return result;
 }
 
 function sanitizeOptions(value: unknown): BoundaryOption[] {
@@ -50,7 +56,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const result = await requireSentinelUser();
+  const result = await requireUser();
   if ("error" in result) return NextResponse.json({ error: result.error }, { status: result.status });
 
   const { data, error } = await result.supabase

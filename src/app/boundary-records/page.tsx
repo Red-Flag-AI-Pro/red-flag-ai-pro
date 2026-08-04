@@ -774,28 +774,26 @@ export default function BoundaryRecordsPage() {
         .single();
       setPlan((profile?.plan as Plan) ?? "free");
 
-      if (profile?.plan === "sentinel") {
-        const { data } = await supabase
-          .from("boundary_authorization_records")
-          .select("*")
-          .order("decision_date", { ascending: false });
-        setRecords(data ?? []);
+      const { data } = await supabase
+        .from("boundary_authorization_records")
+        .select("*")
+        .order("decision_date", { ascending: false });
+      setRecords(data ?? []);
 
-        // Which expired records already have their lapse sealed as its own
-        // event (see the boundary-lapse-check cron), rather than left as
-        // something only inferable from the expiry date itself.
-        const { data: lapseEvents } = await supabase
-          .from("audit_log")
-          .select("details")
-          .eq("user_id", user.id)
-          .eq("action", "boundary_record.lapsed");
-        const ids = new Set<string>(
-          (lapseEvents ?? [])
-            .map((e) => (e.details as { record_id?: string })?.record_id)
-            .filter((id): id is string => typeof id === "string")
-        );
-        setLapsedRecordIds(ids);
-      }
+      // Which expired records already have their lapse sealed as its own
+      // event (see the boundary-lapse-check cron), rather than left as
+      // something only inferable from the expiry date itself.
+      const { data: lapseEvents } = await supabase
+        .from("audit_log")
+        .select("details")
+        .eq("user_id", user.id)
+        .eq("action", "boundary_record.lapsed");
+      const ids = new Set<string>(
+        (lapseEvents ?? [])
+          .map((e) => (e.details as { record_id?: string })?.record_id)
+          .filter((id): id is string => typeof id === "string")
+      );
+      setLapsedRecordIds(ids);
       setLoading(false);
     }
     load();
@@ -805,21 +803,6 @@ export default function BoundaryRecordsPage() {
 
   if (loading) return <div className="text-sm text-[rgba(244,241,234,0.4)] p-6">Loading…</div>;
 
-  if (!isSentinel) {
-    return (
-      <div className="max-w-2xl">
-        <h1 className="text-2xl font-bold text-[#F4F1EA] mb-1">Boundary Authorization Records</h1>
-        <p className="text-sm text-[rgba(244,241,234,0.5)] mb-6">A structured decision log for every AI tool or system you approve — the decision, the named owner, the options weighed, the risk knowingly accepted, and the evidence it rests on. The record regulators and boards ask for when something goes wrong.</p>
-        <Card>
-          <p className="text-sm text-[#F4F1EA] mb-3">This is a Sentinel feature.</p>
-          <Link href="/sentinel" className="inline-block rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors">
-            Explore Sentinel →
-          </Link>
-        </Card>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
       <div>
@@ -827,7 +810,16 @@ export default function BoundaryRecordsPage() {
         <p className="text-sm text-[rgba(244,241,234,0.5)]">One record answers three questions: who approved it, when they approved it, and whether their authority was still valid when it mattered. Decision, named owner, evidence, and now a shelf life — the expiry date and the observable conditions that void the grant.</p>
       </div>
 
-      <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} existingRecords={records} />
+      {isSentinel ? (
+        <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} existingRecords={records} />
+      ) : (
+        <Card>
+          <p className="text-sm text-[#F4F1EA] mb-3">Viewing is available on every plan. Creating and editing records is a Sentinel feature.</p>
+          <Link href="/sentinel" className="inline-block rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors">
+            Explore Sentinel →
+          </Link>
+        </Card>
+      )}
 
       {records.length > 0 && <AuthorityHealth records={records} />}
 
