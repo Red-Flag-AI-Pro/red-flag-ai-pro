@@ -47,6 +47,10 @@ export interface ScanFlag {
   initial_read: InitialRead | null;
   initial_read_note: string | null;
   initial_read_at: string | null;
+  // A distinct, later confirmation that the underlying issue was actually
+  // fixed, separate from the disposition made at review time.
+  remediated_at: string | null;
+  remediated_note: string | null;
 }
 
 export interface BoundaryOption {
@@ -128,5 +132,5 @@ export interface VideoJob {
 
 export interface AnalysisResult {
   score: number;
-  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note" | "reviewer_role" | "reviewer_mandate" | "initial_read" | "initial_read_note" | "initial_read_at">[];
+  flags: Omit<ScanFlag, "id" | "scan_id" | "disposition" | "reviewed_by" | "reviewed_at" | "reviewer_note" | "reviewer_role" | "reviewer_mandate" | "initial_read" | "initial_read_note" | "initial_read_at" | "remediated_at" | "remediated_note">[];
 }

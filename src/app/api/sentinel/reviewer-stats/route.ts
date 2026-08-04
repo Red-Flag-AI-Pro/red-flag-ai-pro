@@ -5,6 +5,11 @@ import { createClient } from "@/lib/supabase/server";
 // they actually push back on the flag (not_applicable) rather than just
 // accept it. A reviewer who never diverges is producing exactly the
 // clean-looking, unexamined record the sentence-vs-gate limit warns about.
+//
+// Time to sign off: the gap between committing an initial read (before the
+// AI's reasoning is shown) and the final disposition. Only flags that went
+// through commit-before-reveal carry both timestamps, so this is the actual
+// deliberation time, not just "time since the scan ran."
 export async function GET() {
   const supabase = await createClient();
 
@@ -25,7 +30,7 @@ export async function GET() {
 
   const { data: rows, error } = await supabase
     .from("scan_flags")
-    .select("disposition, scans!inner(user_id)")
+    .select("disposition, initial_read_at, reviewed_at, scans!inner(user_id)")
     .eq("scans.user_id", user.id)
     .not("disposition", "is", null);
 
@@ -37,5 +42,18 @@ export async function GET() {
   const notApplicable = rows?.filter((r) => r.disposition === "not_applicable").length ?? 0;
   const divergenceRate = total > 0 ? Math.round((notApplicable / total) * 100) : null;
 
-  return NextResponse.json({ total, notApplicable, divergenceRate });
+  const timedRows = (rows ?? []).filter((r) => r.initial_read_at && r.reviewed_at);
+  const avgSignoffMinutes =
+    timedRows.length > 0
+      ? Math.round(
+          timedRows.reduce(
+            (sum, r) => sum + (new Date(r.reviewed_at as string).getTime() - new Date(r.initial_read_at as string).getTime()),
+            0
+          ) /
+            timedRows.length /
+            60000
+        )
+      : null;
+
+  return NextResponse.json({ total, notApplicable, divergenceRate, avgSignoffMinutes, timedCount: timedRows.length });
 }
