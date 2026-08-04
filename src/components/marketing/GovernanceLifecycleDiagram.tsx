@@ -4,7 +4,16 @@ import type React from "react";
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
-const STAGES = [
+interface Stage {
+  n: number;
+  title: string;
+  desc: string;
+  mechanism: string;
+  hot: boolean;
+  hotNote?: string;
+}
+
+const STAGES: Stage[] = [
   {
     n: 1,
     title: "Discover",
@@ -25,16 +34,39 @@ const STAGES = [
     desc: "Marketing copy, claims and disclosures checked against the actual rules regulators enforce, across ten jurisdictions and thirty risk categories, before a complaint does the checking for you.",
     mechanism: "Compliance check — 10 jurisdictions, 30 categories",
     hot: true,
+    hotNote: "One of two pillars. Compliance checks what's said, run before the copy goes out, not after a complaint does it for you.",
   },
   {
     n: 4,
-    title: "Check",
-    desc: "Every governance decision is checked and sealed the moment it happens. Each record is chained cryptographically with SHA-256, so editing, deleting or backdating a past entry breaks the chain and is provable, not just unlikely.",
-    mechanism: "Governance check, cryptographically sealed live",
-    hot: false,
+    title: "Governance",
+    desc: "Every governance decision is checked and sealed the moment it happens, chained cryptographically with SHA-256, so editing, deleting or backdating a past entry breaks the chain and is provable, not just unlikely. Compliance checks what's said; governance seals what's decided.",
+    mechanism: "Governance decision, cryptographically sealed live",
+    hot: true,
+    hotNote: "The other pillar. Governance seals what's decided, a distinct check from compliance and just as load-bearing.",
   },
   {
     n: 5,
+    title: "Review",
+    desc: "A named person's honest first read is sealed before the AI's own reasoning is shown, so a sign-off can never be a rubber stamp on what the AI already said. Pushback rate and average time to sign-off are tracked, not just the final answer.",
+    mechanism: "Commit-before-reveal + reviewer signal",
+    hot: false,
+  },
+  {
+    n: 6,
+    title: "Remediate",
+    desc: "Disposing of a flag isn't the same as fixing it. Whether something was actually remediated, and when, is a separate, later confirmation, sealed on its own so a judgment call and a genuine fix can never be collapsed into one event.",
+    mechanism: "Remediation record, sealed separately from disposition",
+    hot: false,
+  },
+  {
+    n: 7,
+    title: "Decay",
+    desc: "Authorization isn't permanent by default. Every grant carries a named condition or date that voids it, and unreviewed, unbounded or overdue grants are surfaced as the live risk they are, not left to quietly expire unnoticed.",
+    mechanism: "Falsifier conditions + authorization decay tracking",
+    hot: false,
+  },
+  {
+    n: 8,
     title: "Prove",
     desc: "High value records carry an independent RFC 3161 trusted timestamp from a third party authority, and are cross sealed inside the Witness Network, so separate companies vouch for each other's evidence. Anyone can verify a record publicly, no account, without trusting our word for it.",
     mechanism: "RFC 3161 timestamp + Witness Network",
@@ -50,14 +82,14 @@ export function GovernanceLifecycleDiagram({ maxWidth = "1100px" }: { maxWidth?:
           The governance lifecycle
         </p>
         <h2 style={{ ...syne, fontSize: "clamp(1.5rem, 4vw, 2.1rem)", fontWeight: 700, letterSpacing: "-0.015em", color: "#F4F1EA", marginBottom: "0.75rem" }}>
-          Every AI decision moves through five stages.
+          Every AI decision moves through eight stages.
         </h2>
         <p style={{ ...syne, fontSize: "0.92rem", color: "rgba(244,241,234,0.5)", lineHeight: 1.65, maxWidth: "560px", margin: "0 auto" }}>
-          Most governance programs stop at stage one, a document describing intent. The record only becomes real evidence once it survives stages two through five.
+          Most governance programs stop at stage one, a document describing intent. The record only becomes real evidence once it survives stages two through eight.
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2px", background: "rgba(255,255,255,0.06)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", background: "rgba(255,255,255,0.06)" }}>
         {STAGES.map((s) => (
           <div
             key={s.n}
@@ -105,9 +137,9 @@ export function GovernanceLifecycleDiagram({ maxWidth = "1100px" }: { maxWidth?:
             >
               {s.mechanism}
             </span>
-            {s.hot && (
+            {s.hot && s.hotNote && (
               <p style={{ ...syne, fontSize: "11.5px", color: "#ff8c89", lineHeight: 1.5, marginTop: "0.85rem" }}>
-                <strong>Where compliance actually lives.</strong> A distinct check from governance, run before the copy goes out, not after a complaint does it for you.
+                {s.hotNote}
               </p>
             )}
           </div>
@@ -117,6 +149,12 @@ export function GovernanceLifecycleDiagram({ maxWidth = "1100px" }: { maxWidth?:
       <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.35)", textAlign: "center", marginTop: "2rem" }}>
         Read the reasoning behind each stage in{" "}
         <Link href="/who-when-whether" style={{ color: "#C9A66B", textDecoration: "none" }}>the whitepaper</Link>.
+      </p>
+
+      <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.3)", lineHeight: 1.7, textAlign: "center", marginTop: "1.25rem", maxWidth: "620px", marginLeft: "auto", marginRight: "auto" }}>
+        This is the accountability layer: proof of who decided, when, and whether it holds up. It isn&apos;t a substitute for a formal conformity assessment or regulatory filing. Screen a DPIA with the{" "}
+        <Link href="/tools/dpia-generator" style={{ color: "#C9A66B", textDecoration: "none" }}>DPIA generator</Link>, and check reporting deadlines with the{" "}
+        <Link href="/tools/incident-reporting-checklist" style={{ color: "#C9A66B", textDecoration: "none" }}>incident reporting checklist</Link>.
       </p>
     </div>
   );
