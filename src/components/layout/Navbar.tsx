@@ -48,6 +48,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
             <>
               <Link href="/compliance-assessment" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Compliance Assessment</Link>
               <Link href="/governance-audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Governance Assessment</Link>
+              <Link href="/features" className="nav-link px-2.5 py-1.5 text-sm">Features</Link>
               <Link href="/audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">DFY Audit</Link>
               <Link href="/law-firms" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Law Firms</Link>
               <Link href="/sentinel" className="nav-link px-2.5 py-1.5 text-sm">Sentinel</Link>
@@ -69,15 +70,23 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                     className="absolute left-0 top-full pt-1 w-44"
                     style={{ zIndex: 50 }}
                   >
+                    {/* Split into what the product is (how it works) and what
+                        there is to read or use. Everything used to sit in one
+                        eleven item list, which meant the proof layer pages read
+                        as filing rather than as capability. */}
                     <div className="rounded-lg border border-white/10 py-1.5" style={{ background: "#0D1B2E" }}>
-                      <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Tools</Link>
+                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">How it works</p>
+                      <Link href="/boundary-authorization-records" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Boundary Authorization Records</Link>
                       <Link href="/witness-network" className="px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>NEW</span></Link>
+                      <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
                       <Link href="/witness-standard" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Open Witness Standard</Link>
                       <Link href="/witness-network/apply" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Apply to Join the Network</Link>
-                      <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
+
+                      <div className="my-1.5 border-t border-white/10" />
+                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Read and use</p>
+                      <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
+                      <Link href="/who-when-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether (whitepaper)</Link>
                       <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
-                      <Link href="/who-when-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
-                      <Link href="/boundary-authorization-records" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Boundary Authorization Records</Link>
                       <Link href="/case-study" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
                       <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
                       <Link href="/about" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
@@ -154,6 +163,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               <>
                 <Link href="/compliance-assessment" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compliance Assessment</Link>
                 <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Governance Assessment</Link>
+                <Link href="/features" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
                 <Link href="/audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">DFY Audit</Link>
                 <Link href="/law-firms" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Law firms</Link>
                 <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: managed governance &amp; compliance</Link>

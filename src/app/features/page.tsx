@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, PLAN_PRICES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Governance and Compliance Checking Features: Red Flag AI Pro",
@@ -64,6 +64,76 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* THE PROOF LAYER — the differentiator, and the part nobody could find */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>The proof layer</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.25rem", color: "white", textAlign: "center" }}>
+            Anyone can write a policy. This proves one was followed.
+          </h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "3rem", maxWidth: "700px", margin: "0 auto 3rem", textAlign: "center" }}>
+            Every governance product will tell you it keeps a record. The question worth asking is whether that record could survive someone checking it. These are the parts built for that.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+            {[
+              {
+                title: "Boundary authorization records",
+                desc: "One sealed record per AI system: what was approved, who approved it, in what role, when it expires, and the specific observable conditions that void it early. Covers API keys and agent credentials too, since a credential is standing authority the same way a decision is.",
+                href: "/boundary-authorization-records",
+                linkText: "Every field, and why it exists",
+              },
+              {
+                title: "The decision authority map",
+                desc: "Across every system you have authorized: how many decisions a human still makes, how many the AI recommends and a human clears, and how many the system now makes outright. Plus the ones where nobody ever said, which is usually the largest group at first.",
+                href: "/boundary-authorization-records",
+                linkText: "How the map works",
+              },
+              {
+                title: "Commit before reveal",
+                desc: "A reviewer records their own read of a flag before the AI's reasoning is shown to them, sealed in that order. You cannot rubber stamp a conclusion you have not seen yet. Enforced in the system, not promised in the interface.",
+                href: null,
+                linkText: null,
+              },
+              {
+                title: "Reviewer signal, not just sign-offs",
+                desc: "How long a reviewer took before signing, and how often their sign-offs actually push back on a flag rather than accepting it. A clean approval history can mean careful judgment, or it can mean nobody looked. These tell them apart.",
+                href: null,
+                linkText: null,
+              },
+              {
+                title: "Sealed lapses and expiry",
+                desc: "When an authorization passes its expiry, the lapse is sealed as its own dated event before any successor exists. A gap in coverage becomes a recorded fact rather than something reconstructed later, if anyone thinks to look.",
+                href: "/boundary-authorization-records",
+                linkText: "What happens when one lapses",
+              },
+              {
+                title: "Independent witnessing",
+                desc: "Records are hash chained and independently timestamped, and separate companies witness each other's chains so the proof does not rest on our word alone. There is a live tamper test you can run yourself.",
+                href: "/witness-network",
+                linkText: "See the witness network",
+              },
+            ].map((item) => (
+              <div key={item.title} style={{ background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2rem" }}>
+                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
+                <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.65, marginBottom: item.href ? "1rem" : 0 }}>{item.desc}</p>
+                {item.href && (
+                  <Link href={item.href} style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", textDecoration: "none" }}>
+                    {item.linkText} →
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.35)", textAlign: "center", marginTop: "2.5rem" }}>
+            The proof layer is part of Sentinel. Read the thinking behind it in{" "}
+            <Link href="/who-when-whether" style={{ color: "#C9A66B", textDecoration: "none" }}>the whitepaper</Link>.
+          </p>
+        </div>
+      </section>
+
       {/* FEATURES BY TIER */}
       <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -110,6 +180,21 @@ export default function FeaturesPage() {
                   title: "Peer Benchmarking",
                   desc: "Compare your score to industry average. See top quartile. Know where you stand relative to peers.",
                 },
+                {
+                  icon: "",
+                  title: "What Passed, Not Just What Failed",
+                  desc: "Every result lists the categories checked that came back clean, not only the ones that flagged. A clean result is evidence too, and it should be stated rather than left as silence.",
+                },
+                {
+                  icon: "",
+                  title: "Change Since Your Last Check",
+                  desc: "Your score against your previous check, shown automatically on every result. Improvement is visible without anyone having to go looking for it.",
+                },
+                {
+                  icon: "",
+                  title: "Ten Free Tools, No Account",
+                  desc: "Fine calculator, contract red flags checker, accessibility scorer, affiliate disclosure generator, shadow AI audit, URL exposure checker and more. Free, and they stay free.",
+                },
               ].map((item) => (
                 <div
                   key={item.title}
@@ -130,7 +215,7 @@ export default function FeaturesPage() {
 
           {/* PRO TIER FEATURES */}
           <div style={{ marginBottom: "4rem", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "4rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>GROWTH Tier (£1,200/mo)</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>GROWTH Tier (£{PLAN_PRICES.enterprise.monthly.toLocaleString("en-GB")}/mo)</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>
               Ongoing Monitoring & Proof
             </h2>
