@@ -109,7 +109,7 @@ export default async function ScanResultPage({
         <h2 className="mb-3 text-lg font-bold text-[#F4F1EA]">
           Compliance Flags
         </h2>
-        <FlagList flags={visibleFlags} score={scan.score} plan={plan} scanId={id} />
+        <FlagList flags={visibleFlags} score={scan.score} plan={plan} scanId={id} scanCreatedAt={scan.created_at} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ScanFlag, Disposition, Plan } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { FLAG_CATEGORY_LABELS } from "@/lib/constants";
@@ -10,6 +10,7 @@ interface FlagListProps {
   score?: number;
   plan?: Plan;
   scanId?: string;
+  scanCreatedAt?: string;
 }
 
 const DISPOSITION_LABELS: Record<Disposition, string> = {
@@ -24,13 +25,25 @@ const DISPOSITION_COLORS: Record<Disposition, string> = {
   not_applicable: "bg-white/5 border-white/20 text-white/50",
 };
 
+function dwellLabel(scanCreatedAt: string, reviewedAt: string): string {
+  const ms = new Date(reviewedAt).getTime() - new Date(scanCreatedAt).getTime();
+  const mins = Math.round(ms / 60000);
+  if (mins < 1) return "reviewed in under a minute";
+  if (mins < 60) return `reviewed ${mins}m after the scan`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `reviewed ${hours}h after the scan`;
+  return `reviewed ${Math.round(hours / 24)}d after the scan`;
+}
+
 function DispositionPanel({
   flag,
   scanId,
+  scanCreatedAt,
   onUpdate,
 }: {
   flag: ScanFlag;
   scanId: string;
+  scanCreatedAt?: string;
   onUpdate: (updated: ScanFlag) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -86,6 +99,9 @@ function DispositionPanel({
           )}
           {flag.reviewed_at && (
             <p className="text-xs opacity-40">{new Date(flag.reviewed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
+          )}
+          {flag.reviewed_at && scanCreatedAt && (
+            <p className="text-xs opacity-40">{dwellLabel(scanCreatedAt, flag.reviewed_at)}</p>
           )}
         </div>
       </div>
@@ -167,7 +183,7 @@ function DispositionPanel({
   );
 }
 
-export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
+export function FlagList({ flags, score, plan, scanId, scanCreatedAt }: FlagListProps) {
   const [localFlags, setLocalFlags] = useState<ScanFlag[]>(flags);
 
   function handleUpdate(updated: ScanFlag) {
@@ -197,6 +213,17 @@ export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
   const reviewedCount = sorted.filter((f) => f.disposition).length;
   const isSentinel = plan === "sentinel";
   const isGrowth = plan === "enterprise";
+
+  const [divergenceRate, setDivergenceRate] = useState<number | null>(null);
+  useEffect(() => {
+    if (!isSentinel) return;
+    fetch("/api/sentinel/reviewer-stats")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data && typeof data.divergenceRate === "number") setDivergenceRate(data.divergenceRate);
+      })
+      .catch(() => {});
+  }, [isSentinel, reviewedCount]);
 
   return (
     <div className="space-y-3">
@@ -236,6 +263,11 @@ export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
           </span>
           {!isSentinel && (
             <span className="text-xs text-[rgba(244,241,234,0.35)]">Sign-off requires Sentinel</span>
+          )}
+          {isSentinel && divergenceRate !== null && (
+            <span className="text-xs text-[rgba(244,241,234,0.35)]" title="Share of your sign-offs marked not applicable, across every flag you've reviewed">
+              {divergenceRate}% of your sign-offs push back on the flag
+            </span>
           )}
         </div>
       )}
@@ -296,7 +328,7 @@ export function FlagList({ flags, score, plan, scanId }: FlagListProps) {
             )}
 
             {isSentinel && scanId && (
-              <DispositionPanel flag={flag} scanId={scanId} onUpdate={handleUpdate} />
+              <DispositionPanel flag={flag} scanId={scanId} scanCreatedAt={scanCreatedAt} onUpdate={handleUpdate} />
             )}
 
             {isGrowth && !flag.disposition && (

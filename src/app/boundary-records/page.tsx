@@ -381,6 +381,10 @@ function RecordCard({ record, supersededRecord, lapseSealed }: { record: Boundar
   const [expanded, setExpanded] = useState(false);
   const status = authorityStatus(record);
   const chip = STATUS_CHIP[status];
+  // Fail-closed on completeness: a record with no continuity owner or no
+  // falsifier conditions still gets created, but it should never look the
+  // same as one that actually has both. Incomplete stays visibly incomplete.
+  const isIncomplete = !record.continuity_owner_name || !record.expiry_conditions || record.expiry_conditions.length === 0;
 
   return (
     <div className="rounded-xl border border-white/10 bg-[#102943] overflow-hidden">
@@ -395,6 +399,14 @@ function RecordCard({ record, supersededRecord, lapseSealed }: { record: Boundar
           </p>
         </div>
         <div className="shrink-0 flex items-center gap-3">
+          {isIncomplete && (
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/40 bg-amber-900/30 text-amber-300 px-2 py-0.5"
+              title="Missing a continuity owner or expiry conditions — the record was sealed as incomplete, not fixed automatically"
+            >
+              Incomplete
+            </span>
+          )}
           <span className={`text-[10px] font-bold uppercase tracking-wider rounded-full border px-2 py-0.5 ${chip.className}`}>
             {chip.label}
           </span>

@@ -135,6 +135,14 @@ export async function POST(request: Request) {
   // not something added after the fact. Same for the continuity owner: who
   // was on the hook for renewal is fixed at creation, not assigned in hindsight
   // once a lapse has already happened.
+  // Fail-closed on completeness, not just on the required fields: a record
+  // with no continuity owner or no falsifier conditions still saves (owners
+  // genuinely differ, and forcing a fake one in would be worse than leaving
+  // it blank), but the seal itself must say so honestly. Silently sealing an
+  // incomplete record as if it were finished is exactly the "clean signature,
+  // nobody actually looked" failure this field exists to prevent.
+  const isComplete = Boolean(continuityOwnerName) && sanitizeFalsifiers(body.expiry_conditions).length > 0;
+
   await logAuditEvent(
     result.user.id,
     "boundary_record.created",
@@ -146,6 +154,7 @@ export async function POST(request: Request) {
       supersedes_id: data.supersedes_id,
       continuity_owner_name: data.continuity_owner_name,
       continuity_owner_role: data.continuity_owner_role,
+      is_complete: isComplete,
     },
     { timestamp: true }
   );
