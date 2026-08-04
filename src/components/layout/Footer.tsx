@@ -10,6 +10,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Compliance Assessment", href: "/compliance-assessment" },
       { label: "Governance Assessment", href: "/governance-audit" },
+      { label: "Boundary Authorization Records", href: "/boundary-authorization-records" },
+      { label: "Who, When, Whether", href: "/who-when-whether" },
       { label: "For law firms", href: "/law-firms" },
       { label: "Sentinel", href: "/sentinel" },
       { label: "Pricing", href: "/pricing" },
@@ -19,24 +21,28 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Free tools",
     links: [
-      { label: "Fine Calculator", href: "/tools/fine-calculator" },
       { label: "Compliance Checklist", href: "/tools/compliance-checklist" },
+      { label: "Fine Calculator", href: "/tools/fine-calculator" },
       { label: "Disclosure Generator", href: "/tools/disclosure-generator" },
       { label: "DPIA Generator", href: "/tools/dpia-generator" },
       { label: "Incident Reporting Checklist", href: "/tools/incident-reporting-checklist" },
+      { label: "Documentation Assistant", href: "/tools/documentation-assistant" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
       { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
       { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
       { label: "URL Exposure Checker", href: "/tools/url-exposure-checker" },
       { label: "AI Visibility Checker", href: "/tools/ai-visibility-checker" },
-      { label: "The Witness Test", href: "/witness-test" },
-      { label: "Witness network", href: "/witness-network" },
-      { label: "Open Witness Standard", href: "/witness-standard" },
-      { label: "Apply to Join the Network", href: "/witness-network/apply" },
-      { label: "Who, When, Whether", href: "/who-when-whether" },
-      { label: "Boundary Authorization Records", href: "/boundary-authorization-records" },
-      { label: "Verify a record", href: "/verify" },
       { label: "All tools", href: "/tools" },
+    ],
+  },
+  {
+    heading: "Witness network",
+    links: [
+      { label: "The Witness Test", href: "/witness-test" },
+      { label: "How it works", href: "/witness-network" },
+      { label: "Open Witness Standard", href: "/witness-standard" },
+      { label: "Apply to join", href: "/witness-network/apply" },
+      { label: "Verify a record", href: "/verify" },
     ],
   },
   {
@@ -63,7 +69,7 @@ export function Footer() {
   return (
     <footer style={{ background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
       <div style={{ maxWidth: "1120px", margin: "0 auto", padding: "4rem 1.5rem 2.5rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr repeat(4, 1fr)", gap: "2.5rem", alignItems: "start" }} className="footer-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(5, 1fr)", gap: "2rem", alignItems: "start" }} className="footer-grid">
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>
@@ -102,6 +108,9 @@ export function Footer() {
 
       <style>{`
         .footer-link:hover { color: #F4F1EA; }
+        @media (max-width: 900px) {
+          .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 2rem !important; }
+        }
         @media (max-width: 760px) {
           .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
         }
