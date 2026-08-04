@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { REGULATORY_MAPPING_LAST_REVIEWED, PLAN_PRICES } from "@/lib/constants";
+import { GovernanceLifecycleDiagram } from "@/components/marketing/GovernanceLifecycleDiagram";
 
 export const metadata: Metadata = {
   title: "Governance and Compliance Checking Features: Red Flag AI Pro",
@@ -74,6 +75,10 @@ export default function FeaturesPage() {
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "3rem", maxWidth: "700px", margin: "0 auto 3rem", textAlign: "center" }}>
             Every governance product will tell you it keeps a record. The question worth asking is whether that record could survive someone checking it. These are the parts built for that.
           </p>
+
+          <div style={{ marginBottom: "4rem" }}>
+            <GovernanceLifecycleDiagram />
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
             {[

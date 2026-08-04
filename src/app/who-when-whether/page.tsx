@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { GovernanceLifecycleDiagram } from "@/components/marketing/GovernanceLifecycleDiagram";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -108,6 +109,10 @@ export default function WhoWhenWhetherPage() {
           We did all of this as one person, building fast, being argued with in public by people who know this space, and treating every good argument as a feature request rather than a threat.
         </P>
       </Section>
+
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "#0D1B2E" }}>
+        <GovernanceLifecycleDiagram maxWidth="1000px" />
+      </section>
 
       <Section eyebrow="Everything we offer today" title="Not a pitch deck concept">
         <P>
