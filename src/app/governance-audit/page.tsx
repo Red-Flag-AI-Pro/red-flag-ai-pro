@@ -88,6 +88,47 @@ export default function GovernanceAuditPage() {
         </div>
       </section>
 
+      {/* THE FRAMEWORK */}
+      <section style={{ background: '#0D1B2E', padding: '6rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E5484D', marginBottom: '1.5rem', textAlign: 'center' }}>The framework</p>
+          <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'white', textAlign: 'center' }}>Three questions. Every record answers all of them.</h2>
+          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: '1rem', color: 'rgba(255,255,255,0.5)', textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem', lineHeight: 1.7 }}>
+            Who, when, whether. The same three questions a board, an insurer or a regulator asks, answered before they have to.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2px' }}>
+            {[
+              {
+                word: 'Who',
+                title: 'Who approved it',
+                detail: 'Named, with the role they held at that exact moment, not just a signature with nothing behind it.',
+              },
+              {
+                word: 'When',
+                title: 'When it was approved, and when it expires',
+                detail: "Authorization isn't permanent by default. Every grant carries a named date or condition that voids it.",
+              },
+              {
+                word: 'Whether',
+                title: 'Whether the conditions still hold',
+                detail: "An approval from six months ago on a system that's since changed isn't authorization anymore. Whether it still applies is checked, not assumed.",
+              },
+            ].map((item) => (
+              <div key={item.word} style={{
+                background: 'rgba(16,41,67,0.8)',
+                border: '1px solid rgba(239,68,68,0.2)',
+                padding: '2.5rem',
+              }}>
+                <p className="font-display" style={{ fontSize: '2rem', fontWeight: 500, color: '#E5484D', marginBottom: '1rem', lineHeight: 1, fontStyle: 'italic' }}>{item.word}</p>
+                <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: '14px', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>{item.title}</p>
+                <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div className="py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
 

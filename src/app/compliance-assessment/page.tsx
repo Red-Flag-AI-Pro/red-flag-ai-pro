@@ -56,6 +56,47 @@ export default function ComplianceAssessmentPage() {
         <DemoScanner />
       </div>
 
+      {/* THE FRAMEWORK */}
+      <section style={{ background: "#0D1B2E", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>The framework</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.5rem", color: "white", textAlign: "center" }}>Three questions. Every flag answers all of them.</h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "600px", margin: "0 auto 4rem", lineHeight: 1.7 }}>
+            What, where, whether. The same three questions a regulator asks, answered before they have to.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
+            {[
+              {
+                word: "What",
+                title: "What was actually claimed",
+                detail: "Not what you meant to say. The checker reads the literal words on the page, the same way a regulator would.",
+              },
+              {
+                word: "Where",
+                title: "Which jurisdiction's rules apply",
+                detail: "The same claim can be fine in one market and prohibited in another. Every flag names the jurisdiction it breaks.",
+              },
+              {
+                word: "Whether",
+                title: "Whether it's substantiated",
+                detail: "An income claim, a health claim, a guarantee: whether it holds up under the standard a regulator actually applies, not just whether it sounds plausible.",
+              },
+            ].map((item) => (
+              <div key={item.word} style={{
+                background: "rgba(16,41,67,0.8)",
+                border: "1px solid rgba(239,68,68,0.2)",
+                padding: "2.5rem",
+              }}>
+                <p className="font-display" style={{ fontSize: "2rem", fontWeight: 500, color: "#E5484D", marginBottom: "1rem", lineHeight: 1, fontStyle: "italic" }}>{item.word}</p>
+                <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PROOF POINTS */}
       <section style={{ background: "#0A1628", padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
