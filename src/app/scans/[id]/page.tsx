@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import { ScanResultCard } from "@/components/scans/ScanResultCard";
 import { FlagList } from "@/components/scans/FlagList";
 import { RegulatoryExposure } from "@/components/scans/RegulatoryExposure";
+import { PassedCategories } from "@/components/scans/PassedCategories";
+import { ScoreDelta } from "@/components/scans/ScoreDelta";
 import { analyzeContent } from "@/lib/analyzer";
 import { FREE_ONLY_EXCLUDED_CATEGORIES } from "@/lib/constants";
 import type { Plan, Scan, ScanFlag } from "@/types";
@@ -39,6 +41,17 @@ export default async function ScanResultPage({
   if (!scan) notFound();
 
   const plan: Plan = (profile?.plan as Plan) ?? "free";
+
+  // Whatever this user ran immediately before this scan, so improvement is
+  // visible without anyone thinking to open the compare page manually.
+  const { data: previousScan } = await supabase
+    .from("scans")
+    .select("id, score")
+    .eq("user_id", user.id)
+    .lt("created_at", scan.created_at)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
 
   // Free users see that a fix exists (blurred, teased in the UI) but the
   // actual fix text must never reach the client, or it's readable from the
@@ -87,7 +100,18 @@ export default async function ScanResultPage({
         plan={plan}
       />
 
+      {previousScan && (
+        <ScoreDelta
+          currentScore={scan.score}
+          currentScanId={id}
+          previousScore={previousScan.score}
+          previousScanId={previousScan.id}
+        />
+      )}
+
       <RegulatoryExposure flags={visibleFlags} />
+
+      <PassedCategories flags={visibleFlags} plan={plan} />
 
       {hiddenCategoryCount > 0 && (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#102943] px-5 py-4">
