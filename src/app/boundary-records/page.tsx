@@ -5,7 +5,22 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { createClient } from "@/lib/supabase/client";
-import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier } from "@/types";
+import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode } from "@/types";
+
+// The authority spectrum, plainly worded. The distinction that matters most
+// is between the second and the third: whether a human clears each instance,
+// or whether the system was given the decision outright.
+const AUTHORITY_MODE_LABELS: Record<AuthorityMode, string> = {
+  human_decides: "A human decides",
+  ai_recommends: "AI recommends, a human approves",
+  ai_decides: "AI decides outright",
+};
+
+const AUTHORITY_MODE_HINTS: Record<AuthorityMode, string> = {
+  human_decides: "The system drafts or assists. Every decision is made by a person.",
+  ai_recommends: "The system proposes. Nothing takes effect until someone clears it.",
+  ai_decides: "The system acts without anyone clearing each instance. Authority was delegated.",
+};
 
 function todayISO(): string {
   return new Date().toISOString().slice(0, 10);
@@ -61,6 +76,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [supersedesId, setSupersedesId] = useState("");
   const [grantType, setGrantType] = useState<"decision" | "credential">("decision");
   const [credentialReference, setCredentialReference] = useState("");
+  const [authorityMode, setAuthorityMode] = useState<AuthorityMode | "">("");
   const [falsifiers, setFalsifiers] = useState<BoundaryFalsifier[]>([emptyFalsifier()]);
   const [options, setOptions] = useState<BoundaryOption[]>([emptyOption()]);
   const [risks, setRisks] = useState<BoundaryRisk[]>([emptyRisk()]);
@@ -79,6 +95,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setSupersedesId("");
     setGrantType("decision");
     setCredentialReference("");
+    setAuthorityMode("");
     setFalsifiers([emptyFalsifier()]);
     setOptions([emptyOption()]);
     setRisks([emptyRisk()]);
@@ -107,6 +124,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           supersedes_id: supersedesId || null,
           grant_type: grantType,
           credential_reference: credentialReference || null,
+          authority_mode: authorityMode || null,
         }),
       });
       if (!res.ok) {
@@ -173,6 +191,32 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             rows={2}
             className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 resize-none focus:outline-none focus:border-white/25"
           />
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Where authority sits</label>
+          <div className="space-y-1.5">
+            {(Object.keys(AUTHORITY_MODE_LABELS) as AuthorityMode[]).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setAuthorityMode(authorityMode === m ? "" : m)}
+                className={`w-full text-left rounded-lg border px-3 py-2 transition-colors ${
+                  authorityMode === m
+                    ? "border-[#E5484D] bg-[rgba(229,72,77,0.12)]"
+                    : "border-white/10 bg-white/5 hover:border-white/25"
+                }`}
+              >
+                <span className={`block text-sm font-semibold ${authorityMode === m ? "text-[#F4F1EA]" : "text-[rgba(244,241,234,0.6)]"}`}>
+                  {AUTHORITY_MODE_LABELS[m]}
+                </span>
+                <span className="block text-xs text-[rgba(244,241,234,0.4)] mt-0.5">{AUTHORITY_MODE_HINTS[m]}</span>
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1.5">
+            Left unstated, this record cannot answer the question a board asks first. Records without it are marked incomplete.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-2">
@@ -424,7 +468,11 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { re
   // Fail-closed on completeness: a record with no continuity owner or no
   // falsifier conditions still gets created, but it should never look the
   // same as one that actually has both. Incomplete stays visibly incomplete.
-  const isIncomplete = !record.continuity_owner_name || !record.expiry_conditions || record.expiry_conditions.length === 0;
+  const isIncomplete =
+    !record.continuity_owner_name ||
+    !record.expiry_conditions ||
+    record.expiry_conditions.length === 0 ||
+    !record.authority_mode;
 
   return (
     <div className="rounded-xl border border-white/10 bg-[#102943] overflow-hidden">
@@ -450,7 +498,7 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { re
           {isIncomplete && (
             <span
               className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/40 bg-amber-900/30 text-amber-300 px-2 py-0.5"
-              title="Missing a continuity owner or expiry conditions — the record was sealed as incomplete, not fixed automatically"
+              title="Missing a continuity owner, expiry conditions, or a stated authority mode — the record was sealed as incomplete, not fixed automatically"
             >
               Incomplete
             </span>
@@ -467,6 +515,20 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { re
 
       {expanded && (
         <div className="border-t border-white/5 px-5 py-4 space-y-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Where authority sits</p>
+            {record.authority_mode ? (
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                {AUTHORITY_MODE_LABELS[record.authority_mode]}
+                <span className="text-[rgba(244,241,234,0.45)]"> — {AUTHORITY_MODE_HINTS[record.authority_mode]}</span>
+              </p>
+            ) : (
+              <p className="text-sm text-[rgba(244,241,234,0.5)]">
+                Never stated. Nobody can tell from this record whether a human was required before this system acted.
+              </p>
+            )}
+          </div>
+
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Authority shelf life</p>
             {record.expires_at ? (
@@ -616,6 +678,77 @@ function AuthorityHealth({ records }: { records: BoundaryAuthorizationRecord[] }
   );
 }
 
+// The decision authority map: one view above the individual records showing
+// where authority actually sits across everything authorized. AuthorityHealth
+// answers "is this grant still valid" (the when/whether legs). This answers
+// the who leg — how much has been handed over, and how much was never stated.
+function DecisionAuthorityMap({ records }: { records: BoundaryAuthorizationRecord[] }) {
+  const total = records.length;
+  const counts: Record<AuthorityMode | "unstated", number> = {
+    human_decides: 0,
+    ai_recommends: 0,
+    ai_decides: 0,
+    unstated: 0,
+  };
+  for (const r of records) {
+    counts[r.authority_mode ?? "unstated"] += 1;
+  }
+
+  const pct = (n: number) => (total === 0 ? 0 : Math.round((n / total) * 100));
+
+  const rows: { key: AuthorityMode | "unstated"; label: string; bar: string; text: string }[] = [
+    { key: "human_decides", label: AUTHORITY_MODE_LABELS.human_decides, bar: "bg-emerald-400", text: "text-emerald-400" },
+    { key: "ai_recommends", label: AUTHORITY_MODE_LABELS.ai_recommends, bar: "bg-[#C9A66B]", text: "text-[#C9A66B]" },
+    { key: "ai_decides", label: AUTHORITY_MODE_LABELS.ai_decides, bar: "bg-[#E5484D]", text: "text-[#E5484D]" },
+    { key: "unstated", label: "Never stated", bar: "bg-white/25", text: "text-[rgba(244,241,234,0.5)]" },
+  ];
+
+  return (
+    <Card>
+      <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.5)] mb-1">Decision authority map</p>
+      <p className="text-xs text-[rgba(244,241,234,0.45)] mb-4">
+        Across every system you have authorized, who actually makes the call.
+      </p>
+
+      <div className="space-y-3">
+        {rows.map((row) => {
+          const n = counts[row.key];
+          return (
+            <div key={row.key}>
+              <div className="flex items-baseline justify-between gap-4 mb-1">
+                <span className="text-sm text-[rgba(244,241,234,0.75)]">{row.label}</span>
+                <span className={`text-sm font-bold shrink-0 ${row.text}`}>
+                  {n} <span className="text-xs font-semibold">({pct(n)}%)</span>
+                </span>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
+                <div className={`h-full ${row.bar}`} style={{ width: `${pct(n)}%` }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {(counts.ai_decides > 0 || counts.unstated > 0) && (
+        <div className="mt-4 border-t border-white/10 pt-3 space-y-1.5">
+          {counts.ai_decides > 0 && (
+            <p className="text-xs text-[rgba(244,241,234,0.6)]">
+              <span className="text-[#E5484D] font-semibold">{counts.ai_decides}</span>{" "}
+              {counts.ai_decides === 1 ? "system has" : "systems have"} the decision outright. That is not a fault, it is a position, and it is the one a board will ask you to justify by name.
+            </p>
+          )}
+          {counts.unstated > 0 && (
+            <p className="text-xs text-[rgba(244,241,234,0.6)]">
+              <span className="font-semibold text-[rgba(244,241,234,0.85)]">{counts.unstated}</span>{" "}
+              {counts.unstated === 1 ? "record does not say" : "records do not say"} where authority sits. Until that is stated, nobody can tell from the record whether a human was ever required.
+            </p>
+          )}
+        </div>
+      )}
+    </Card>
+  );
+}
+
 export default function BoundaryRecordsPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -697,6 +830,8 @@ export default function BoundaryRecordsPage() {
       <NewRecordForm onCreated={(record) => setRecords((prev) => [record, ...prev])} existingRecords={records} />
 
       {records.length > 0 && <AuthorityHealth records={records} />}
+
+      {records.length > 0 && <DecisionAuthorityMap records={records} />}
 
       <div>
         <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.5)] mb-3">Recorded decisions</p>

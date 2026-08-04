@@ -70,6 +70,11 @@ export interface BoundaryFalsifier {
   condition: string;
 }
 
+// The authority spectrum, from a human deciding everything to a system
+// deciding without anyone in the loop for each instance. Same shape as the
+// assistant/operator/orchestrator framing used across the governance field.
+export type AuthorityMode = "human_decides" | "ai_recommends" | "ai_decides";
+
 export interface BoundaryAuthorizationRecord {
   id: string;
   user_id: string;
@@ -101,6 +106,9 @@ export interface BoundaryAuthorizationRecord {
   // which credential (key name or last four characters), never the secret.
   grant_type: "decision" | "credential";
   credential_reference: string | null;
+  // Where authority actually sits for this system. Null means it was never
+  // stated, which is itself the finding the authority map surfaces.
+  authority_mode: AuthorityMode | null;
   created_at: string;
   updated_at: string;
 }

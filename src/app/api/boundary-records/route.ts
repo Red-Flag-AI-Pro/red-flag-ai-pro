@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
-import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier } from "@/types";
+import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode } from "@/types";
+
+const AUTHORITY_MODES: AuthorityMode[] = ["human_decides", "ai_recommends", "ai_decides"];
 
 async function requireSentinelUser() {
   const supabase = await createClient();
@@ -79,6 +81,12 @@ export async function POST(request: Request) {
     grantType === "credential" && typeof body.credential_reference === "string" && body.credential_reference.trim()
       ? body.credential_reference.trim()
       : null;
+  // Where authority actually sits. Optional, but never silently defaulted:
+  // an unstated authority mode is a real gap the map is built to surface,
+  // and inventing an answer nobody gave would hide exactly what matters.
+  const authorityMode: AuthorityMode | null = AUTHORITY_MODES.includes(body.authority_mode)
+    ? body.authority_mode
+    : null;
   const ownerName: string = (body.owner_name ?? "").trim();
   const ownerRole: string = (body.owner_role ?? "").trim();
   const decisionDate: string = (body.decision_date ?? "").trim();
@@ -139,6 +147,7 @@ export async function POST(request: Request) {
       continuity_owner_role: continuityOwnerRole,
       grant_type: grantType,
       credential_reference: credentialReference,
+      authority_mode: authorityMode,
     })
     .select()
     .single();
@@ -157,7 +166,12 @@ export async function POST(request: Request) {
   // it blank), but the seal itself must say so honestly. Silently sealing an
   // incomplete record as if it were finished is exactly the "clean signature,
   // nobody actually looked" failure this field exists to prevent.
-  const isComplete = Boolean(continuityOwnerName) && sanitizeFalsifiers(body.expiry_conditions).length > 0;
+  // Authority mode joins the completeness test: a record that never states
+  // where authority sits cannot answer the question the whole map exists for.
+  const isComplete =
+    Boolean(continuityOwnerName) &&
+    sanitizeFalsifiers(body.expiry_conditions).length > 0 &&
+    Boolean(authorityMode);
 
   // Authorship is provable, not just asserted: owner_name is whatever was
   // typed, but the authenticated account that recorded it is bound into the
@@ -179,6 +193,7 @@ export async function POST(request: Request) {
       recorded_by_email: result.user.email ?? null,
       grant_type: data.grant_type,
       credential_reference: data.credential_reference,
+      authority_mode: data.authority_mode,
     },
     { timestamp: true }
   );
