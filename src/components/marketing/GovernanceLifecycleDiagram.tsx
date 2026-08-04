@@ -4,6 +4,11 @@ import type React from "react";
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
+interface StageTool {
+  label: string;
+  href: string;
+}
+
 interface Stage {
   n: number;
   title: string;
@@ -11,6 +16,7 @@ interface Stage {
   mechanism: string;
   hot: boolean;
   hotNote?: string;
+  tools?: StageTool[];
 }
 
 const STAGES: Stage[] = [
@@ -20,6 +26,10 @@ const STAGES: Stage[] = [
     desc: "Find where AI already makes or shapes decisions, including tools nobody formally approved. The free governance assessment scores six dimensions; the shadow AI audit surfaces the unauthorised tools already touching real decisions.",
     mechanism: "Free governance assessment + Shadow AI audit",
     hot: false,
+    tools: [
+      { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
+      { label: "AI Literacy Log", href: "/tools/ai-literacy-log" },
+    ],
   },
   {
     n: 2,
@@ -27,6 +37,11 @@ const STAGES: Stage[] = [
     desc: "Every system gets a boundary authorization record: who approved it, what role they held, what options were weighed, what risk was knowingly accepted, and the exact date and named condition that voids the grant. A decision, not a policy.",
     mechanism: "Boundary authorization record — who / when / whether",
     hot: false,
+    tools: [
+      { label: "DPIA Generator", href: "/tools/dpia-generator" },
+      { label: "FRIA Assistant", href: "/tools/fria-assistant" },
+      { label: "AI Use Policy Generator", href: "/tools/ai-use-policy-generator" },
+    ],
   },
   {
     n: 3,
@@ -35,6 +50,7 @@ const STAGES: Stage[] = [
     mechanism: "Compliance check — 10 jurisdictions, 30 categories",
     hot: true,
     hotNote: "One of two pillars. Compliance checks what's said, run before the copy goes out, not after a complaint does it for you.",
+    tools: [{ label: "Fine Calculator", href: "/tools/fine-calculator" }],
   },
   {
     n: 4,
@@ -57,6 +73,7 @@ const STAGES: Stage[] = [
     desc: "Disposing of a flag isn't the same as fixing it. Whether something was actually remediated, and when, is a separate, later confirmation, sealed on its own so a judgment call and a genuine fix can never be collapsed into one event.",
     mechanism: "Remediation record, sealed separately from disposition",
     hot: false,
+    tools: [{ label: "Incident Reporting Checklist", href: "/tools/incident-reporting-checklist" }],
   },
   {
     n: 7,
@@ -64,6 +81,7 @@ const STAGES: Stage[] = [
     desc: "Authorization isn't permanent by default. Every grant carries a named condition or date that voids it, and unreviewed, unbounded or overdue grants are surfaced as the live risk they are, not left to quietly expire unnoticed.",
     mechanism: "Falsifier conditions + authorization decay tracking",
     hot: false,
+    tools: [{ label: "Monitoring Plan Generator", href: "/tools/monitoring-plan-generator" }],
   },
   {
     n: 8,
@@ -71,6 +89,10 @@ const STAGES: Stage[] = [
     desc: "High value records carry an independent RFC 3161 trusted timestamp from a third party authority, and are cross sealed inside the Witness Network, so separate companies vouch for each other's evidence. Anyone can verify a record publicly, no account, without trusting our word for it.",
     mechanism: "RFC 3161 timestamp + Witness Network",
     hot: false,
+    tools: [
+      { label: "Documentation Assistant", href: "/tools/documentation-assistant" },
+      { label: "EU Database Registration", href: "/tools/eu-database-registration-assistant" },
+    ],
   },
 ];
 
@@ -142,19 +164,42 @@ export function GovernanceLifecycleDiagram({ maxWidth = "1100px" }: { maxWidth?:
                 {s.hotNote}
               </p>
             )}
+            {s.tools && s.tools.length > 0 && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "0.85rem" }}>
+                {s.tools.map((t) => (
+                  <Link
+                    key={t.href}
+                    href={t.href}
+                    style={{
+                      ...syne,
+                      fontSize: "10.5px",
+                      fontWeight: 700,
+                      color: "#F4F1EA",
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      borderRadius: "9999px",
+                      padding: "4px 10px",
+                      textDecoration: "none",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {t.label} →
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
 
       <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.35)", textAlign: "center", marginTop: "2rem" }}>
         Read the reasoning behind each stage in{" "}
-        <Link href="/who-when-whether" style={{ color: "#C9A66B", textDecoration: "none" }}>the whitepaper</Link>.
+        <Link href="/who-when-whether" style={{ color: "#C9A66B", textDecoration: "none" }}>the whitepaper</Link>, or see{" "}
+        <Link href="/tools" style={{ color: "#C9A66B", textDecoration: "none" }}>every free tool</Link>.
       </p>
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.3)", lineHeight: 1.7, textAlign: "center", marginTop: "1.25rem", maxWidth: "620px", marginLeft: "auto", marginRight: "auto" }}>
-        This is the accountability layer: proof of who decided, when, and whether it holds up. It isn&apos;t a substitute for a formal conformity assessment or regulatory filing. Screen a DPIA with the{" "}
-        <Link href="/tools/dpia-generator" style={{ color: "#C9A66B", textDecoration: "none" }}>DPIA generator</Link>, and check reporting deadlines with the{" "}
-        <Link href="/tools/incident-reporting-checklist" style={{ color: "#C9A66B", textDecoration: "none" }}>incident reporting checklist</Link>.
+        This is the accountability layer: proof of who decided, when, and whether it holds up. It isn&apos;t a substitute for a formal conformity assessment, live model monitoring, or a regulatory filing. The linked tools above prepare real documents; none of them submit or certify anything on your behalf.
       </p>
     </div>
   );
