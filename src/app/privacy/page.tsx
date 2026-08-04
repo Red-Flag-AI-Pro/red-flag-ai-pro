@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 2 August 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 4 August 2026</p>
         </div>
       </section>
 
@@ -71,6 +71,7 @@ export default function PrivacyPage() {
                     ["AI governance quiz answers and scores", "To generate your governance maturity score, gap report and roadmap. Stored against your email address in our database."],
                     ["Governance records you create (including names and roles of your personnel)", "Sentinel governance features let you log authorization records naming the person in your business accountable for a decision, their role, the decision itself, its expiry and its conditions. This content is stored solely to provide those features back to you. You remain the controller of personal data you enter about your own personnel and are responsible for having a lawful basis to record it; we process it only on your instructions and delete it with your account."],
                     ["Email addresses entered to use our free tools", "To deliver your result and send occasional relevant updates about compliance and governance. You can unsubscribe at any time."],
+                    ["Information you type into our guided document tools (DPIA generator, FRIA assistant, documentation assistant, EU database registration assistant, monitoring plan generator, AI use policy generator, AI literacy log)", "Not collected by us. This content is processed entirely in your browser to generate your draft and is never transmitted to our servers. Only your email address, if you choose to unlock the result, is sent to us."],
                     ["Business contact details of prospects", "Names, job titles and published business email addresses collected from public sources, used to make a one to one business introduction. See section 4a."],
                     ["Usage data (pages visited, features used)", "To improve our service"],
                     ["IP address", "For security and fraud prevention"],

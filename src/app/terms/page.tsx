@@ -31,7 +31,7 @@ export default function TermsPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Terms of Service
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 29 July 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 4 August 2026</p>
         </div>
       </section>
 
@@ -178,7 +178,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>8. Intellectual Property</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not use your submitted copy for any purpose other than generating and storing your check results. Where you have an account, submitted copy and results are retained so your check history remains available to you. Full detail of what we retain and for how long is in our{" "}
+              All content, branding, software, and technology on Red Flag AI Pro is the property of Red Flag AI Pro and is protected by applicable intellectual property laws. You retain ownership of any content you submit for checking. We do not use your submitted copy for any purpose other than generating and storing your check results. Where you have an account, submitted copy and results are retained so your check history remains available to you. Our free guided document tools (DPIA generator, FRIA assistant, documentation assistant, and similar) work differently: what you type into them stays in your browser and is never sent to us. Full detail of what we retain and for how long is in our{" "}
               <Link href="/privacy" style={{ color: "#E5484D", textDecoration: "none" }}>Privacy Policy</Link>.
             </p>
           </div>
