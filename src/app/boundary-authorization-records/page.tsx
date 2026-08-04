@@ -76,12 +76,26 @@ export default function BoundaryAuthorizationRecordsPage() {
       <Section eyebrow="The record" title="Every field, and why it exists">
         <Field name="decision">What was actually approved. Plain text, e.g. &quot;Approved use of Vendor X&apos;s AI copywriting tool for marketing drafts.&quot; Not a category. The specific thing.</Field>
         <Field name="owner_name / owner_role">Who granted it, and in what capacity. A name without a role is an assertion. A name with a role is a fact someone can be held to.</Field>
+        <Field name="authority_mode">Where authority actually sits for this system, across three positions: a human decides, AI recommends and a human approves each one, or AI decides outright. It has no default. Quietly assuming the safest sounding answer would manufacture a position nobody took, so a record that never states this is marked incomplete rather than passing silently.</Field>
+        <Field name="grant_type / credential_reference">An API key or agent credential is the same kind of standing authority as a decision, so it gets the same record. The reference names which credential, a key name or the last four characters. Never the secret itself, and the field refuses anything long enough to be one.</Field>
         <Field name="decision_date">When authority was granted. Fixed at creation, sealed, not editable afterwards.</Field>
         <Field name="expires_at">The shelf life. Required, not optional: an authorization with no expiry is not a strong grant, it&apos;s one nobody was ever forced to think about ending.</Field>
         <Field name="expiry_conditions">The specific, observable conditions that void the grant early, written at the moment of signing, not added afterwards. &quot;Vendor X appears on a regulator&apos;s enforcement list&quot; is a condition. &quot;If things go wrong&quot; is not.</Field>
         <Field name="continuity_owner_name / continuity_owner_role">Distinct from the owner above. This is whoever holds the duty to renew the authorization or arrange a successor before it lapses. Added after a sharp public question: a lapse record used to fix only when a mandate went vacant, never who was accountable for it going vacant. This field closes that gap.</Field>
         <Field name="supersedes_id">If this record replaces an earlier one, because the role holder changed, this links to the record it replaces. The chain of custody for the mandate is provable, not left as separate, disconnected records.</Field>
         <Field name="options_considered / risks_accepted / evidence">What else was weighed, what risk was knowingly taken and how it was mitigated, and what evidence the decision actually rested on. The difference between a decision and a guess, on the record.</Field>
+      </Section>
+
+      <Section eyebrow="Across everything you've authorized" title="The decision authority map">
+        <P>
+          One record answers where authority sits for one system. The map answers it for all of them at once: how many decisions a human still makes, how many the AI recommends and a human clears, and how many the system now makes outright.
+        </P>
+        <P>
+          That last number is the one worth knowing before someone else asks for it. It is not a fault, it is a position, and it is the one a board will ask you to justify by name. Most organisations cannot answer it today, not because the answer is bad, but because nobody ever wrote it down in a form you could count.
+        </P>
+        <P>
+          The map counts a fourth group too, and it is usually the largest at first: the systems where nobody ever stated where authority sits. Until that is answered, the record cannot tell you whether a human was ever required before the system acted.
+        </P>
       </Section>
 
       <Section eyebrow="When it lapses" title="A gap in coverage is a fact, not an inference">
