@@ -85,6 +85,14 @@ export default function ToolsPage() {
               <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>AI Visibility Checker</h2>
               <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>7 questions to score how likely AI assistants are to find and recommend your business.</p>
             </Link>
+            <Link href="/tools/dpia-generator" style={{display: "block", background: "#102943", border: "1px solid rgba(239,68,68,0.15)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>DPIA Generator</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Answer a few questions and get a DPIA screening document, following the ICO&apos;s own checklist.</p>
+            </Link>
+            <Link href="/tools/incident-reporting-checklist" style={{display: "block", background: "#0F2138", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textDecoration: "none"}}>
+              <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem"}}>Incident Reporting Checklist</h2>
+              <p style={{fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6}}>Pick what happened and where. Get the deadline and who to notify, free.</p>
+            </Link>
           </div>
         </div>
       </section>

@@ -645,6 +645,33 @@ export const MONITORING_QUESTIONS = [
       },
     ],
   },
+  {
+    id: 'monitor_5',
+    dimension: 'monitoring_accountability' as const,
+    question: 'Is a human able to actually intervene before an AI decision takes effect, not just review it afterwards?',
+    options: [
+      {
+        text: 'No — humans only see AI decisions after they\'ve already gone out',
+        riskPoints: 3,
+        context: 'Oversight is not designed in; EU AI Act Art. 14 requires the capability to intervene, not just visibility',
+      },
+      {
+        text: 'Sometimes — depends on which tool or team, no consistent design',
+        riskPoints: 2,
+        context: 'Ad-hoc oversight; a regulator will ask for the design, not the exception',
+      },
+      {
+        text: 'Yes, for high-risk decisions only — a person can pause or override before it ships',
+        riskPoints: 1,
+        context: 'Partial: oversight capability exists but isn\'t universal',
+      },
+      {
+        text: 'Yes — every AI system has a defined stop/override point a human can use before effect',
+        riskPoints: 0,
+        context: 'Strong: Art. 14-style human oversight designed into the system, not bolted on after',
+      },
+    ],
+  },
 ];
 
 // ============================================================
