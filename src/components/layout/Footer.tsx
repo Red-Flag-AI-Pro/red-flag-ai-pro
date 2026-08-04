@@ -21,19 +21,17 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Free tools",
     links: [
+      // Curated picks only — the full, growing catalog (21+ tools) lives at
+      // /tools, organized into groups. This column stays scannable rather
+      // than becoming the same crowded list it was before 4 Aug.
       { label: "Compliance Checklist", href: "/tools/compliance-checklist" },
       { label: "Fine Calculator", href: "/tools/fine-calculator" },
       { label: "Disclosure Generator", href: "/tools/disclosure-generator" },
       { label: "DPIA Generator", href: "/tools/dpia-generator" },
-      { label: "Incident Reporting Checklist", href: "/tools/incident-reporting-checklist" },
       { label: "Documentation Assistant", href: "/tools/documentation-assistant" },
-      { label: "EU Database Registration", href: "/tools/eu-database-registration-assistant" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
       { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
-      { label: "Shadow AI Audit", href: "/tools/shadow-ai-survey" },
-      { label: "URL Exposure Checker", href: "/tools/url-exposure-checker" },
-      { label: "AI Visibility Checker", href: "/tools/ai-visibility-checker" },
-      { label: "All tools", href: "/tools" },
+      { label: "All tools →", href: "/tools" },
     ],
   },
   {

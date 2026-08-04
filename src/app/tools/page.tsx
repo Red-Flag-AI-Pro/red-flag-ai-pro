@@ -16,15 +16,25 @@ interface ToolCard {
   desc: string;
 }
 
-const GOVERNANCE_TOOLS: ToolCard[] = [
+const ASSESSMENT_TOOLS: ToolCard[] = [
   { href: "/governance-audit", title: "AI Governance Maturity Assessment", desc: "5 minutes, 6 dimensions, a real score, and a roadmap mapped to the EU AI Act, SEC and GDPR." },
   { href: "/witness-test", title: "The Witness Test", desc: "Five questions on how your AI governance evidence is produced. Find out whether anything outside the operator ever saw it." },
   { href: "/tools/shadow-ai-survey", title: "Shadow AI Audit", desc: "7 quick questions to score how much AI usage is happening at your company that IT doesn't know about." },
+  { href: "/tools/fine-calculator", title: "AI Compliance Fine Calculator", desc: "See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in 10 seconds." },
+];
+
+const DOCUMENT_TOOLS: ToolCard[] = [
   { href: "/tools/dpia-generator", title: "DPIA Generator", desc: "Answer a few questions and get a DPIA screening document, following the ICO's own checklist." },
+  { href: "/tools/fria-assistant", title: "Fundamental Rights Impact Assessment", desc: "Answer a few questions and get a FRIA draft covering all 6 elements Article 27 requires." },
   { href: "/tools/incident-reporting-checklist", title: "Incident Reporting Checklist", desc: "Pick what happened and where. Get the deadline and who to notify, free." },
   { href: "/tools/documentation-assistant", title: "AI System Documentation Assistant", desc: "Answer a few questions and get a documentation draft, structured the way EU AI Act Annex IV expects." },
+  { href: "/tools/monitoring-plan-generator", title: "Post-Market Monitoring Plan Generator", desc: "Draft the monitoring plan Article 72 requires: metrics, thresholds, review cadence." },
   { href: "/tools/eu-database-registration-assistant", title: "EU AI Database Registration Assistant", desc: "Answer a few questions and get a registration draft covering all 13 Annex VIII fields, free." },
-  { href: "/tools/fine-calculator", title: "AI Compliance Fine Calculator", desc: "See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in 10 seconds." },
+];
+
+const POLICY_TOOLS: ToolCard[] = [
+  { href: "/tools/ai-use-policy-generator", title: "AI Acceptable Use Policy Generator", desc: "Draft a policy for your own staff using AI tools: approved tools, prohibited uses, data rules." },
+  { href: "/tools/ai-literacy-log", title: "AI Literacy Measures Log", desc: "Record the AI literacy training you've given staff, per Article 4. Applies to every AI deployer." },
 ];
 
 const MARKETING_TOOLS: ToolCard[] = [
@@ -59,6 +69,17 @@ function ToolGrid({ tools }: { tools: ToolCard[] }) {
   );
 }
 
+function ToolSection({ title, tools, first }: { title: string; tools: ToolCard[]; first?: boolean }) {
+  return (
+    <section style={{ background: "#0A1628", padding: first ? "4rem 1.5rem 2rem" : "1rem 1.5rem 2rem" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#F4F1EA", textAlign: "center", marginBottom: "3rem" }}>{title}</h2>
+        <ToolGrid tools={tools} />
+      </div>
+    </section>
+  );
+}
+
 export default function ToolsPage() {
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
@@ -79,14 +100,10 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Free, ungated tools — split into two findable groups, first thing on the page */}
-      <section style={{background: "#0A1628", padding: "4rem 1.5rem 2rem"}}>
-        <div style={{maxWidth: "900px", margin: "0 auto"}}>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#F4F1EA", textAlign: "center", marginBottom: "3rem"}}>Governance and accountability</h2>
-          <ToolGrid tools={GOVERNANCE_TOOLS} />
-        </div>
-      </section>
-
+      {/* Free, ungated tools — four findable groups, first thing on the page */}
+      <ToolSection title="Assessments" tools={ASSESSMENT_TOOLS} first />
+      <ToolSection title="EU AI Act document generators" tools={DOCUMENT_TOOLS} />
+      <ToolSection title="Internal policy and training" tools={POLICY_TOOLS} />
       <section style={{background: "#0A1628", padding: "1rem 1.5rem 5rem"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
           <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#F4F1EA", textAlign: "center", marginBottom: "3rem"}}>Marketing compliance</h2>
