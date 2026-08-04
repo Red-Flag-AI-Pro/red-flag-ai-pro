@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { TryToBreakIt } from "@/components/witness/TryToBreakIt";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -100,8 +101,17 @@ export default function BoundaryAuthorizationRecordsPage() {
           Every boundary authorization record is chained cryptographically to the ones before it, and sealed with an independent, third party timestamp. Editing, deleting, or backdating a record after the fact breaks the seal, and that break is detectable by anyone, not just us.
         </P>
         <P>
-          Tampering isn&apos;t made impossible. It&apos;s made detectable. Those are different claims, and only one of them is true of any system, including this one. See it demonstrated on the <a href="/witness-network" style={{ color: "#E5484D" }}>Witness Network</a> page, or check any specific record yourself at <a href="/verify" style={{ color: "#E5484D" }}>redflagaipro.com/verify</a>.
+          Tampering isn&apos;t made impossible. It&apos;s made detectable. Those are different claims, and only one of them is true of any system, including this one. Try it yourself below, or check any specific record at <a href="/verify" style={{ color: "#E5484D" }}>redflagaipro.com/verify</a>. The same mechanism also runs between independent companies on the <a href="/witness-network" style={{ color: "#E5484D" }}>Witness Network</a>.
         </P>
+        <div style={{ marginTop: "2rem" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>
+            Try to break it
+          </p>
+          <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.62)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
+            Seal the sample record below, then edit anything, one character is enough, and watch the fingerprint stop matching. This runs entirely in your browser. Nothing here is sent anywhere or stored.
+          </p>
+          <TryToBreakIt />
+        </div>
       </Section>
 
       <section style={{ padding: "4rem 1.5rem 6rem", textAlign: "center" }}>
