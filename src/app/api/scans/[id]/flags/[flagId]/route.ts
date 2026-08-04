@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
+import { RULESET_VERSION } from "@/lib/analyzer";
 import type { Disposition } from "@/types";
 
 export async function PATCH(
@@ -69,6 +70,9 @@ export async function PATCH(
     return NextResponse.json({ error: "Failed to update flag." }, { status: 500 });
   }
 
+  // The ruleset version in force at the moment of sign-off is part of the
+  // sealed decision: later reconstruction can say what the rules say NOW,
+  // only this can say what the reviewer was actually judging against THEN.
   await logAuditEvent(user.id, "flag_reviewed", {
     scanId,
     flagId,
@@ -79,6 +83,7 @@ export async function PATCH(
     reviewerNote: reviewerNote ?? null,
     category: updated.category,
     severity: updated.severity,
+    rulesetVersion: RULESET_VERSION,
   }, { timestamp: true });
 
   return NextResponse.json({ flag: updated });

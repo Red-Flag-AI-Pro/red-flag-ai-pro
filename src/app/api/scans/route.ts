@@ -1,6 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { analyzeContent } from "@/lib/analyzer";
+import { analyzeContent, RULESET_VERSION } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
 import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
 import { sendLoopsEvent } from "@/lib/loops";
@@ -110,6 +110,7 @@ export async function POST(request: Request) {
     title,
     score,
     flagCount: flags.length,
+    rulesetVersion: RULESET_VERSION,
   });
 
   if (user.email) {

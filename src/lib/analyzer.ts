@@ -1092,6 +1092,21 @@ const RULES: Rule[] = [
   },
 ];
 
+// Content-derived version of the ruleset in force. Sealed into scan and
+// disposition audit events so a decision is provably tied to the exact rules
+// it was judged against, not whatever the rules say by the time anyone asks.
+// Self-maintaining: any change to a category, keyword, or severity changes
+// the hash, no manual bump to forget.
+export const RULESET_VERSION: string = (() => {
+  const material = RULES.map((r) => `${r.category}|${r.severity}|${r.keywords.join(",")}`).join("\n");
+  let h = 0x811c9dc5;
+  for (let i = 0; i < material.length; i++) {
+    h ^= material.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return `v${RULES.length + 1}-${h.toString(16).padStart(8, "0")}`;
+})();
+
 // Maps each finding category to the jurisdictions whose regimes it engages,
 // built from the rule table above. Consumed by penalty-exposure.ts to show the
 // maximum statutory ceiling attached to the violations a report actually found.

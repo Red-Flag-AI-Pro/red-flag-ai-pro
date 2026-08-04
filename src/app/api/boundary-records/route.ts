@@ -143,6 +143,10 @@ export async function POST(request: Request) {
   // nobody actually looked" failure this field exists to prevent.
   const isComplete = Boolean(continuityOwnerName) && sanitizeFalsifiers(body.expiry_conditions).length > 0;
 
+  // Authorship is provable, not just asserted: owner_name is whatever was
+  // typed, but the authenticated account that recorded it is bound into the
+  // sealed event. A typed name can claim anything; the session identity that
+  // sealed the claim cannot be edited into the record after the fact.
   await logAuditEvent(
     result.user.id,
     "boundary_record.created",
@@ -155,6 +159,8 @@ export async function POST(request: Request) {
       continuity_owner_name: data.continuity_owner_name,
       continuity_owner_role: data.continuity_owner_role,
       is_complete: isComplete,
+      recorded_by_user_id: result.user.id,
+      recorded_by_email: result.user.email ?? null,
     },
     { timestamp: true }
   );

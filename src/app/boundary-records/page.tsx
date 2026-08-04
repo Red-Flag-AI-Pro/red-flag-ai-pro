@@ -377,7 +377,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   );
 }
 
-function RecordCard({ record, supersededRecord, lapseSealed }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean }) {
+function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean; authorEmail: string | null }) {
   const [expanded, setExpanded] = useState(false);
   const status = authorityStatus(record);
   const chip = STATUS_CHIP[status];
@@ -460,6 +460,16 @@ function RecordCard({ record, supersededRecord, lapseSealed }: { record: Boundar
               </p>
             </div>
           )}
+
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Authorship</p>
+            <p className="text-sm text-[rgba(244,241,234,0.8)]">
+              Named owner is asserted: {record.owner_name} ({record.owner_role}).
+              {authorEmail && (
+                <> Recorded under the authenticated account <span className="text-[#C9A66B]">{authorEmail}</span> — the session identity is bound to this record, not just the typed name.</>
+              )}
+            </p>
+          </div>
 
           {supersededRecord && (
             <div>
@@ -566,6 +576,7 @@ export default function BoundaryRecordsPage() {
   const [plan, setPlan] = useState<Plan>("free");
   const [records, setRecords] = useState<BoundaryAuthorizationRecord[]>([]);
   const [lapsedRecordIds, setLapsedRecordIds] = useState<Set<string>>(new Set());
+  const [authorEmail, setAuthorEmail] = useState<string | null>(null);
 
   const isSentinel = plan === "sentinel";
 
@@ -573,6 +584,7 @@ export default function BoundaryRecordsPage() {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.push("/login"); return; }
+      setAuthorEmail(user.email ?? null);
 
       const { data: profile } = await supabase
         .from("profiles")
@@ -654,6 +666,7 @@ export default function BoundaryRecordsPage() {
                 record={r}
                 supersededRecord={r.supersedes_id ? recordsById.get(r.supersedes_id) ?? null : null}
                 lapseSealed={lapsedRecordIds.has(r.id)}
+                authorEmail={authorEmail}
               />
             ))}
           </div>
