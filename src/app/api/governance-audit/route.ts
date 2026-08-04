@@ -84,6 +84,19 @@ export async function POST(request: Request) {
     const roadmap = generateRoadmap(dimensionScores, redFlags);
 
     // ============================================================
+    // ANONYMOUS USAGE LOG — fires on every real completion, email or not.
+    // Decoupled from lead capture on purpose: this is the only way to see
+    // how many people actually used the tool, independent of who left an
+    // email. Never blocks the response if it fails.
+    // ============================================================
+    supabase
+      .from('tool_usage_events')
+      .insert({ tool: 'governance-audit', score: overallScore })
+      .then(({ error: usageError }) => {
+        if (usageError) console.error('tool_usage_events insert error:', usageError);
+      });
+
+    // ============================================================
     // STORE IN SUPABASE (lead capture — only once an email is provided)
     // ============================================================
 
