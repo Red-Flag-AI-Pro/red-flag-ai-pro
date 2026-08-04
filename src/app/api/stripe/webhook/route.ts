@@ -105,37 +105,6 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session) {
   }
 }
 
-// Sealed the moment Sentinel coverage actually lapses, from the Stripe event
-// itself rather than inferred later from a plan column. Fetches the plan and
-// user_id BEFORE the caller applies the new plan, since this is the only
-// point where "was sentinel a second ago" is still knowable — profiles.plan
-// gets overwritten immediately after this runs.
-async function sealCoverageLapseIfSentinel(
-  supabase: ReturnType<typeof getAdminClient>,
-  customerId: string,
-  toPlan: string,
-  reason: "downgrade" | "cancelled"
-) {
-  try {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("user_id, plan")
-      .eq("stripe_customer_id", customerId)
-      .maybeSingle();
-
-    if (profile?.user_id && profile.plan === "sentinel" && toPlan !== "sentinel") {
-      await logAuditEvent(
-        profile.user_id as string,
-        "account_coverage_lapsed",
-        { from_plan: "sentinel", to_plan: toPlan, reason },
-        { timestamp: true }
-      );
-    }
-  } catch (err) {
-    console.error("coverage lapse seal failed:", err);
-  }
-}
-
 function getAdminClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -153,6 +122,87 @@ async function getAccountEmail(
 ): Promise<string | null> {
   const { data } = await supabase.auth.admin.getUserById(userId);
   return data?.user?.email ?? null;
+}
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://www.redflagaipro.com";
+
+// Never blocks or breaks the webhook: a mail failure here must not stop the
+// coverage lapse itself from being sealed. Best-effort only.
+async function sendCoverageLapseEmail(email: string, certificateId: string) {
+  if (!process.env.RESEND_API_KEY) return;
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const url = `${APP_URL}/continuity-certificate/${certificateId}`;
+    await resend.emails.send({
+      from: "Red Flag AI Pro <support@redflagaipro.com>",
+      to: email,
+      replyTo: "support@redflagaipro.com",
+      subject: "Your governance coverage record",
+      html: `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.6;color:#1A2333">
+        <p>Hi,</p>
+        <p>Your Sentinel coverage just ended. Before anything else, here is the record of what it covered: how long it ran and how much of it is sealed and independently verifiable.</p>
+        <p><a href="${url}" style="color:#B8393D;font-weight:bold;">View your continuity certificate</a></p>
+        <p>It grew with every check. It only stayed continuous for as long as the plan did. You can pick it back up any time, and the record continues from where it left off, it does not reset.</p>
+        <p>James Stokes<br/>Founder, Red Flag AI Pro</p>
+      </div>`,
+    });
+  } catch (err) {
+    console.error("coverage lapse email failed:", err);
+  }
+}
+
+// Sealed the moment Sentinel coverage actually lapses, from the Stripe event
+// itself rather than inferred later from a plan column. Fetches the plan and
+// user_id BEFORE the caller applies the new plan, since this is the only
+// point where "was sentinel a second ago" is still knowable — profiles.plan
+// gets overwritten immediately after this runs. The stats (member_since,
+// total_checks, sealed_events) are captured into the sealed record itself
+// rather than computed later on demand, so the certificate always reflects
+// the state at the moment coverage actually ended, not whatever the account
+// looks like whenever someone happens to view it afterward.
+async function sealCoverageLapseIfSentinel(
+  supabase: ReturnType<typeof getAdminClient>,
+  customerId: string,
+  toPlan: string,
+  reason: "downgrade" | "cancelled"
+) {
+  try {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("user_id, plan, created_at")
+      .eq("stripe_customer_id", customerId)
+      .maybeSingle();
+
+    if (!profile?.user_id || profile.plan !== "sentinel" || toPlan === "sentinel") return;
+
+    const userId = profile.user_id as string;
+
+    const [{ count: totalChecks }, { count: sealedEvents }] = await Promise.all([
+      supabase.from("scans").select("id", { count: "exact", head: true }).eq("user_id", userId),
+      supabase.from("audit_log").select("id", { count: "exact", head: true }).eq("user_id", userId),
+    ]);
+
+    const entryId = await logAuditEvent(
+      userId,
+      "account_coverage_lapsed",
+      {
+        from_plan: "sentinel",
+        to_plan: toPlan,
+        reason,
+        member_since: profile.created_at ?? null,
+        total_checks: totalChecks ?? 0,
+        sealed_events: sealedEvents ?? 0,
+      },
+      { timestamp: true }
+    );
+
+    if (entryId) {
+      const email = await getAccountEmail(supabase, userId);
+      if (email) await sendCoverageLapseEmail(email, entryId);
+    }
+  } catch (err) {
+    console.error("coverage lapse seal failed:", err);
+  }
 }
 
 // Keeps the Loops contact's plan property in step with profiles.plan.

@@ -197,6 +197,12 @@ export interface PublicVerificationResult {
   // Present when the entry was sealed with a third-party RFC 3161 timestamp.
   timestampedAt?: string;
   timestampAuthority?: string;
+  // Present only on account_coverage_lapsed entries — the continuity
+  // certificate's underlying numbers, frozen at the moment coverage ended.
+  memberSince?: string;
+  totalChecks?: number;
+  sealedEvents?: number;
+  fromPlan?: string;
 }
 
 function buildPublicDescription(action: string, details: Record<string, unknown>): string | undefined {
@@ -266,6 +272,10 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
   const category = typeof details["category"] === "string" ? (details["category"] as string) : undefined;
   const sealedByName = typeof details["sealed_by_name"] === "string" ? (details["sealed_by_name"] as string) : undefined;
   const sealedByOrg = typeof details["sealed_by_org"] === "string" ? (details["sealed_by_org"] as string) : undefined;
+  const memberSince = typeof details["member_since"] === "string" ? (details["member_since"] as string) : undefined;
+  const totalChecks = typeof details["total_checks"] === "number" ? (details["total_checks"] as number) : undefined;
+  const sealedEvents = typeof details["sealed_events"] === "number" ? (details["sealed_events"] as number) : undefined;
+  const fromPlan = typeof details["from_plan"] === "string" ? (details["from_plan"] as string) : undefined;
 
   return {
     found: true,
@@ -279,5 +289,9 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     createdAt: entry.created_at,
     timestampedAt: (entry as { ts_time?: string }).ts_time ?? undefined,
     timestampAuthority: (entry as { ts_tsa?: string }).ts_tsa ?? undefined,
+    memberSince,
+    totalChecks,
+    sealedEvents,
+    fromPlan,
   };
 }
