@@ -102,6 +102,10 @@ export async function POST(request: Request) {
   // record has a distinct continuity duty, but nameable when it does.
   const continuityOwnerName: string | null = typeof body.continuity_owner_name === "string" && body.continuity_owner_name.trim() ? body.continuity_owner_name.trim() : null;
   const continuityOwnerRole: string | null = typeof body.continuity_owner_role === "string" && body.continuity_owner_role.trim() ? body.continuity_owner_role.trim() : null;
+  // Lets the renewal reminder cron reach the continuity owner directly rather
+  // than only the account holder — optional, since not every continuity
+  // owner has their own inbox worth targeting separately.
+  const continuityOwnerEmail: string | null = typeof body.continuity_owner_email === "string" && body.continuity_owner_email.trim() ? body.continuity_owner_email.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
@@ -151,6 +155,7 @@ export async function POST(request: Request) {
       supersedes_id: supersedesId,
       continuity_owner_name: continuityOwnerName,
       continuity_owner_role: continuityOwnerRole,
+      continuity_owner_email: continuityOwnerEmail,
       grant_type: grantType,
       credential_reference: credentialReference,
       authority_mode: authorityMode,

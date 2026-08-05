@@ -71,6 +71,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [ownerRole, setOwnerRole] = useState("");
   const [continuityOwnerName, setContinuityOwnerName] = useState("");
   const [continuityOwnerRole, setContinuityOwnerRole] = useState("");
+  const [continuityOwnerEmail, setContinuityOwnerEmail] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -90,6 +91,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setOwnerRole("");
     setContinuityOwnerName("");
     setContinuityOwnerRole("");
+    setContinuityOwnerEmail("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -115,6 +117,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           owner_role: ownerRole,
           continuity_owner_name: continuityOwnerName || null,
           continuity_owner_role: continuityOwnerRole || null,
+          continuity_owner_email: continuityOwnerEmail || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -260,8 +263,18 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             />
           </div>
         </div>
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Continuity owner email (optional)</label>
+          <input
+            type="email"
+            value={continuityOwnerEmail}
+            onChange={(e) => setContinuityOwnerEmail(e.target.value)}
+            placeholder="Where the renewal reminder goes, if different from your own login"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+          />
+        </div>
         <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
-          Distinct from the owner above: this is whoever holds the duty to renew this or arrange a successor before it lapses. A lapse only proves the seat went empty — naming this means the lapse event can say who was on the hook for it going empty, not leave that as an inference.
+          Distinct from the owner above: this is whoever holds the duty to renew this or arrange a successor before it lapses. A lapse only proves the seat went empty — naming this means the lapse event can say who was on the hook for it going empty, not leave that as an inference. Red Flag emails a renewal reminder at 30, 14, 7 and 1 day before expiry, to this address if given, otherwise to your account email — so the decision to revisit gets put in front of someone, not left to depend on whether they remembered to ask.
         </p>
 
         <div className="grid grid-cols-2 gap-2">
