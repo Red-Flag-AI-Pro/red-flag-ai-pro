@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
 import { AuditRequestForm } from "@/components/marketing/AuditRequestForm";
+import { AUDIT_PRICE, PROGRAM_PRICE } from "@/lib/constants";
 import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -98,11 +99,12 @@ const FAQS = [
 export default async function AuditPage({
   searchParams,
 }: {
-  searchParams: Promise<{ success?: string; canceled?: string }>;
+  searchParams: Promise<{ success?: string; canceled?: string; plan?: string }>;
 }) {
   const params = await searchParams;
   const paid = params.success === "1";
   const canceled = params.canceled === "1";
+  const paidProgram = paid && params.plan === "program";
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Suspense>
@@ -117,10 +119,12 @@ export default async function AuditPage({
           borderRadius: "10px",
         }}>
           <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "#4ade80", marginBottom: "0.4rem" }}>
-            Payment received. Your audit is underway.
+            Payment received. Your {paidProgram ? "governance program" : "audit"} is underway.
           </p>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
-            You will get a confirmation from Stripe by email. James starts on your audit within hours and your full report, video walkthrough and badge arrive within 48 hours. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly.
+            {paidProgram
+              ? "You will get a confirmation from Stripe by email. James starts within hours. Your audit, video walkthrough and badge arrive first, then the full document set (DPIA, FRIA, AI use policy, incident checklist, monitoring plan and Annex IV documentation) within 5 working days. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly."
+              : "You will get a confirmation from Stripe by email. James starts on your audit within hours and your full report, video walkthrough and badge arrive within 48 hours. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly."}
           </p>
         </div>
       )}
@@ -208,7 +212,7 @@ export default async function AuditPage({
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £179
+              Get my audit: £199
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
@@ -436,7 +440,7 @@ export default async function AuditPage({
                 padding: "3px 10px", borderRadius: "9999px",
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
-              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£179</p>
+              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£199</p>
               <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
               <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
@@ -446,7 +450,7 @@ export default async function AuditPage({
                 boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
                 textDecoration: "none", letterSpacing: "0.02em"
               }}>
-                Pay £179 now
+                Pay £199 now
               </a>
             </div>
           </div>
@@ -456,6 +460,104 @@ export default async function AuditPage({
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "0.35rem" }}>
             Done personally, by the person who built the tool, or <a href="#request" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>request it by email first</a> if you want to talk before you pay.
+          </p>
+        </div>
+      </section>
+
+      {/* ── TWO TIERS ── */}
+      <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Two ways to do this</p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA", marginBottom: "1rem" }}>
+              Find out where you stand,<br />or have the whole thing built.
+            </h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: "620px", margin: "0 auto" }}>
+              Governance runs as a lifecycle: discover, authorise, check, govern, review, remediate, expire, prove. The audit covers where you stand across it. The program builds the documents that carry you through it.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
+            {/* Tier 1 — the audit */}
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
+              <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE AUDIT</p>
+              <h3 style={{ ...syne, fontSize: "1.4rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
+                Where you stand
+              </h3>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
+                <span style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</span>
+                <span style={{ ...mono, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>ONE TIME · 48 HRS</span>
+              </div>
+              {[
+                "Every page checked against 30 compliance risk categories, 11 jurisdictions",
+                "AI use scored across all 6 governance dimensions",
+                "Video walkthrough of every flag, in plain English",
+                "Written report: compliance exposure and governance gaps",
+                "Reviewed badge for your site",
+                "All 18 governance and compliance tools, free",
+              ].map((f) => (
+                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                  <span style={{ color: "#E5484D", marginRight: "10px" }}>✓</span>{f}
+                </p>
+              ))}
+              <a href="/audit/checkout" style={{
+                display: "inline-flex", alignItems: "center", marginTop: "1.5rem",
+                background: "transparent", color: "#F4F1EA",
+                border: "1px solid rgba(255,255,255,0.2)",
+                ...syne, fontSize: "0.85rem", fontWeight: 700,
+                padding: "12px 26px", borderRadius: "9999px",
+                textDecoration: "none",
+              }}>
+                Get the audit: £{AUDIT_PRICE.amount}
+              </a>
+            </div>
+
+            {/* Tier 2 — the program */}
+            <div style={{
+              background: "linear-gradient(135deg, #1a0505 0%, #102943 100%)",
+              border: "1px solid rgba(239,68,68,0.3)",
+              padding: "2.5rem",
+              position: "relative", overflow: "hidden",
+            }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #E5484D, transparent)" }} />
+              <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL PROGRAM</p>
+              <h3 style={{ ...syne, fontSize: "1.4rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
+                The whole lifecycle, built
+              </h3>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
+                <span style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{PROGRAM_PRICE.amount}</span>
+                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · 5 WORKING DAYS</span>
+              </div>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "1rem", fontStyle: "italic" }}>
+                Everything in the audit, plus every document drafted and tailored to your business:
+              </p>
+              {[
+                "DPIA, screened and written against the ICO's checklist",
+                "Fundamental Rights Impact Assessment, all 6 Article 27 elements",
+                "AI acceptable use policy for your staff",
+                "Incident reporting checklist, with your deadlines and regulators",
+                "Post-market monitoring plan per Article 72",
+                "Annex IV technical documentation set",
+              ].map((f) => (
+                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                  <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
+                </p>
+              ))}
+              <a href="/audit/program-checkout" style={{
+                display: "inline-flex", alignItems: "center", marginTop: "1.5rem",
+                background: "#E5484D", color: "white",
+                ...syne, fontSize: "0.85rem", fontWeight: 700,
+                padding: "12px 26px", borderRadius: "9999px",
+                boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
+                textDecoration: "none",
+              }}>
+                Get the full program: £{PROGRAM_PRICE.amount}
+              </a>
+            </div>
+          </div>
+
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "2rem", lineHeight: 1.8 }}>
+            Both are done by hand, personally. Neither is a subscription. A governance consultancy building the same document set starts in the low thousands.
           </p>
         </div>
       </section>
@@ -571,7 +673,7 @@ export default async function AuditPage({
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £179
+              Get my audit: £199
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",

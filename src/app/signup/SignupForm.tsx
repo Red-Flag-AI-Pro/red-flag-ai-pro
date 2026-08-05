@@ -28,7 +28,7 @@ function SignupFormInner() {
   const [googleLoading, setGoogleLoading] = useState(false);
 
   // Where the user should land once their account exists. An explicit
-  // redirect (e.g. resuming the £179 audit checkout) wins over the plan
+  // redirect (e.g. resuming the £199 audit checkout) wins over the plan
   // checkout path, which wins over the dashboard.
   const destination = redirect
     ? redirect

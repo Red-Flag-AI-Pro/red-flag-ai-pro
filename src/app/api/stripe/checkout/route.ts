@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { stripe } from "@/lib/stripe";
-import { PLAN_PRICES, AUDIT_PRICE, REPORT_PRICE } from "@/lib/constants";
+import { PLAN_PRICES, AUDIT_PRICE, PROGRAM_PRICE, REPORT_PRICE } from "@/lib/constants";
 
 export async function POST(request: Request) {
   const supabase = await createClient();
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   const body = await request.json();
-  const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit" | "report";
+  const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit" | "program" | "report";
   const region = body.region as string | undefined;
   const toltReferral = body.tolt_referral as string | undefined;
   const consent = body.consent as { agreedTerms?: boolean; agreedImmediateDelivery?: boolean; timestamp?: string } | undefined;
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
   // charge always matches the price displayed on /audit — the old fixed
   // STRIPE_PRICE_AUDIT_ID object still carries the pre-4-Jul £149 and Stripe
   // prices are immutable, so referencing it would undercharge against the
-  // advertised £179.
+  // advertised £199.
   if (plan === "audit") {
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -69,6 +69,35 @@ export async function POST(request: Request) {
       ],
       metadata: { user_id: user.id, plan: "audit", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
       success_url: `${appUrl}/audit?success=1&plan=audit&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/audit?canceled=1`,
+    });
+    return NextResponse.json({ url: session.url });
+  }
+
+  // One-time Full Governance Program purchase. Same inline price_data pattern
+  // as the audit — the tier above it, covering all eight lifecycle stages with
+  // the documents drafted per client rather than left to the free tools.
+  if (plan === "program") {
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      payment_method_types: ["card"],
+      customer: profile?.stripe_customer_id ?? undefined,
+      customer_email: profile?.stripe_customer_id ? undefined : user.email,
+      line_items: [
+        {
+          price_data: {
+            currency: "gbp",
+            unit_amount: PROGRAM_PRICE.amount * 100,
+            product_data: { name: PROGRAM_PRICE.label },
+          },
+          quantity: 1,
+        },
+      ],
+      metadata: { user_id: user.id, plan: "program", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
+      success_url: `${appUrl}/audit?success=1&plan=program&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/audit?canceled=1`,
     });
     return NextResponse.json({ url: session.url });

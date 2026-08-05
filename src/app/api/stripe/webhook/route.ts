@@ -69,14 +69,16 @@ async function deliverReportPurchase(
   }
 }
 
-// A paid £179 audit starts a 48 hour delivery promise — the founder must
+// A paid £199 audit starts a 48 hour delivery promise — the founder must
 // know the moment it happens, not whenever Stripe is next checked. Never
 // throws: a mail failure must not fail the webhook or Stripe retries the
 // whole event.
-async function notifyAuditPaid(session: Stripe.Checkout.Session) {
+async function notifyAuditPaid(session: Stripe.Checkout.Session, isProgram = false) {
   const email = session.customer_email ?? session.customer_details?.email ?? "unknown";
   const name = session.customer_details?.name ?? "";
-  const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : "179.00";
+  const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : isProgram ? "497.00" : "199.00";
+  const product = isProgram ? "Full Governance Program" : "audit";
+  const window = isProgram ? "5 working day" : "48 hour";
   try {
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
@@ -84,12 +86,13 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session) {
         from: "Red Flag AI Pro <audit@redflagaipro.com>",
         to: NOTIFY_TO,
         ...(email !== "unknown" ? { replyTo: email } : {}),
-        subject: `PAID audit order: £${amount} from ${name || email}`,
+        subject: `PAID ${product} order: £${amount} from ${name || email}`,
         html: `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.6">
-          <p><strong>An audit was just paid for via instant checkout.</strong> The 48 hour delivery window starts now.</p>
+          <p><strong>A ${product} was just paid for via instant checkout.</strong> The ${window} delivery window starts now.</p>
           <p>Buyer: ${name ? `${name}, ` : ""}${email}<br/>
           Amount: £${amount}<br/>
           Stripe session: ${session.id}</p>
+          ${isProgram ? `<p><strong>This is the eight stage program</strong>, so it also needs the DPIA, FRIA, AI use policy, incident reporting checklist, post market monitoring plan and Annex IV documentation drafted and tailored, not just the audit.</p>` : ""}
           <p>Reply straight to this email to reach the buyer and ask for their URL if they haven't sent it.</p>
         </div>`,
       });
@@ -98,7 +101,11 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session) {
       console.error("audit paid but RESEND_API_KEY not set:", { email, amount });
     }
     if (email !== "unknown") {
-      await sendLoopsEvent({ email, eventName: "audit_purchased", properties: { amount } });
+      await sendLoopsEvent({
+        email,
+        eventName: isProgram ? "program_purchased" : "audit_purchased",
+        properties: { amount },
+      });
     }
   } catch (err) {
     console.error("audit-paid notification error:", err);
@@ -295,19 +302,21 @@ export async function POST(request: Request) {
       // purchaser, matching the checkout route's auth guard.
       if (!userId) break;
 
-      // One-time audit purchase — record in audit_orders
-      if (plan === "audit") {
+      // One-time audit or Full Governance Program purchase — both are manually
+      // fulfilled done-for-you work, so both land in audit_orders. The amount
+      // distinguishes them (£199 vs £497) and the notification names which.
+      if (plan === "audit" || plan === "program") {
         await supabase.from("audit_orders").insert({
           user_id: userId,
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: session.payment_intent as string ?? null,
           // Record what Stripe actually charged rather than a hardcoded figure
-          // (was stuck at the old £149 after the 4 Jul price rise to £179).
-          amount_gbp: session.amount_total != null ? session.amount_total / 100 : 179,
+          // (was stuck at the old £149 after the 4 Jul price rise to £199).
+          amount_gbp: session.amount_total != null ? session.amount_total / 100 : 199,
           status: "paid",
         });
-        await notifyAuditPaid(session);
+        await notifyAuditPaid(session, plan === "program");
         break;
       }
 

@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     const html = `
       <div style="font-family:system-ui,-apple-system,sans-serif;max-width:560px;margin:0 auto;color:#111">
         <h2 style="margin:0 0 4px;font-size:18px">New Done-For-You audit request</h2>
-        <p style="margin:0 0 20px;color:#888;font-size:13px">One-time compliance &amp; governance audit &middot; &pound;179</p>
+        <p style="margin:0 0 20px;color:#888;font-size:13px">One-time compliance &amp; governance audit &middot; &pound;199</p>
         <table style="border-collapse:collapse;width:100%">
           ${row("Name", name)}
           ${row("Email", email)}
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
                )}</div>`
             : ""
         }
-        <p style="margin:24px 0 0;color:#999;font-size:12px">Reply straight to this email to reach them. Send a secure payment link (&pound;179, one time) to start the 48 hour delivery.</p>
+        <p style="margin:24px 0 0;color:#999;font-size:12px">Reply straight to this email to reach them. Send a secure payment link (&pound;199, one time) to start the 48 hour delivery.</p>
       </div>`;
 
     if (process.env.RESEND_API_KEY) {

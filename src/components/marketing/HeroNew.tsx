@@ -299,7 +299,7 @@ export function HeroNew() {
           textDecoration: "none",
           letterSpacing: "0.02em"
         }}>
-          Rather have a human do it? Done For You Audit: £179 →
+          Rather have a human do it? Done For You Audit: £199 →
         </Link>
       </div>
 

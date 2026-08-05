@@ -119,7 +119,7 @@ export function AuditRequestForm() {
     >
       <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
         <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>
-          ONE TIME · £179 · COMPLIANCE + GOVERNANCE
+          ONE TIME · £199 · COMPLIANCE + GOVERNANCE
         </p>
         <h3 style={{ ...syne, fontSize: "clamp(1.3rem, 3.5vw, 1.7rem)", fontWeight: 800, color: "#F4F1EA", letterSpacing: "-0.025em", lineHeight: 1.2 }}>
           Request your audit
@@ -187,7 +187,7 @@ export function AuditRequestForm() {
           boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
         }}
       >
-        {status === "sending" ? "Sending…" : "Request my audit — £179"}
+        {status === "sending" ? "Sending…" : "Request my audit — £199"}
       </button>
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>

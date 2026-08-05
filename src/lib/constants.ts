@@ -45,9 +45,20 @@ export function getExcludedCategories(plan: Plan): readonly string[] {
 // The /audit request form remains as the talk-first path. priceId points at
 // the legacy pre-4-Jul £149 Stripe object and is no longer used by checkout.
 export const AUDIT_PRICE = {
-  amount: 179,
+  amount: 199,
   label: "Done-For-You Compliance & Governance Audit",
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
+};
+
+// The upper tier above AUDIT_PRICE. Same inline price_data pattern, so no
+// Stripe dashboard object is needed. Where the £199 audit covers two stages of
+// the governance lifecycle (compliance checking and the six dimension
+// governance score), this covers all eight: the documents themselves are
+// drafted and tailored per client rather than left to the free self-serve
+// tools, which is what justifies the step up in both price and delivery time.
+export const PROGRAM_PRICE = {
+  amount: 497,
+  label: "Full Governance Program (8 stage, done for you)",
 };
 
 // One-time report purchase, same inline price_data pattern as AUDIT_PRICE —
