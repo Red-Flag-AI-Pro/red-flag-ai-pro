@@ -35,9 +35,46 @@ const RISK_WEIGHTS = {
 const POINTS_PER_SAFEGUARD = 7;
 const MAX_SAFEGUARD_OFFSET = 36;
 
+// The six checkboxes above only capture whether a risk category applies —
+// they say nothing about whether oversight actually exists. Before this,
+// an intake that ticked one safeguard box but left every free-text
+// governance answer blank or hollow ("no measures in place", "not tested")
+// still scored A/97, directly contradicting the six documents generated
+// from those same answers. Each of these fields getting a real answer is
+// itself evidence of governance; leaving it blank or trivial is evidence
+// of its absence, and the score now reflects that.
+const HOLLOW_ANSWER_MIN_LENGTH = 15;
+const HOLLOW_PATTERNS = /^(n\/?a|none|no|not (yet|applicable|defined|in place)|tbd|undefined|-)\.?$/i;
+const POINTS_PER_UNADDRESSED_FIELD = 6;
+
+function isHollow(value: string): boolean {
+  const trimmed = value.trim();
+  if (trimmed.length < HOLLOW_ANSWER_MIN_LENGTH) return true;
+  return HOLLOW_PATTERNS.test(trimmed);
+}
+
+const GOVERNANCE_FIELDS: { key: keyof ProgramIntake; label: string }[] = [
+  { key: "oversightMeasures", label: "human oversight measures" },
+  { key: "mitigationMeasures", label: "risk mitigation measures" },
+  { key: "testing", label: "testing and validation" },
+  { key: "correctiveAction", label: "corrective action procedure" },
+  { key: "approvalProcess", label: "approval process for new tools" },
+  { key: "reportingChannel", label: "reporting and escalation channel" },
+];
+
 export function calculateProgramScore(intake: ProgramIntake): ProgramGradeResult {
   const breakdown: { label: string; points: number }[] = [];
   let deductions = 0;
+
+  const unaddressed = GOVERNANCE_FIELDS.filter((f) => isHollow(String(intake[f.key] ?? "")));
+  if (unaddressed.length > 0) {
+    const points = unaddressed.length * POINTS_PER_UNADDRESSED_FIELD;
+    deductions += points;
+    breakdown.push({
+      label: `${unaddressed.length} governance answer${unaddressed.length === 1 ? "" : "s"} left blank or hollow (${unaddressed.map((f) => f.label).join(", ")})`,
+      points: -points,
+    });
+  }
 
   const hasSpecialCategoryData = intake.dataTypes.some((d) =>
     ["special_category", "children", "criminal"].includes(d)
