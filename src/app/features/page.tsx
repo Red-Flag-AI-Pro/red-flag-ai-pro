@@ -158,7 +158,7 @@ export default function FeaturesPage() {
               All Tiers Include
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            <div className="tier-grid">
               {[
                 {
                   icon: "",
@@ -197,13 +197,8 @@ export default function FeaturesPage() {
                 },
                 {
                   icon: "",
-                  title: "What Passed, Not Just What Failed",
-                  desc: "Every result lists the categories checked that came back clean, not only the ones that flagged. A clean result is evidence too, and it should be stated rather than left as silence.",
-                },
-                {
-                  icon: "",
-                  title: "Change Since Your Last Check",
-                  desc: "Your score against your previous check, shown automatically on every result. Improvement is visible without anyone having to go looking for it.",
+                  title: "Your Full History, Not Just Today's Flags",
+                  desc: "Every result lists the categories checked that came back clean, not only the ones that flagged, and shows your score against your previous check automatically. A clean result is evidence too, and improvement is visible without anyone having to go looking for it.",
                 },
                 {
                   icon: "",
@@ -234,7 +229,7 @@ export default function FeaturesPage() {
               Ongoing Monitoring & Proof
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            <div className="tier-grid">
               {[
                 {
                   icon: "",
@@ -290,7 +285,7 @@ export default function FeaturesPage() {
               Managed Governance + Forensic Proof
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
+            <div className="tier-grid">
               {[
                 {
                   icon: "",
@@ -396,6 +391,10 @@ export default function FeaturesPage() {
           </Link>
         </div>
       </section>
+      <style>{`
+        .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+        @media (max-width: 700px) { .tier-grid { grid-template-columns: 1fr; } }
+      `}</style>
       <Footer />
     </div>
   );

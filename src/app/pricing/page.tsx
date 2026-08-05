@@ -81,46 +81,39 @@ export default async function PricingPage() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", marginTop: "2rem" }}>
+          <div className="problem-grid">
             {[
               {
-                icon: "",
                 title: "Munir v SSHD",
                 desc: "Tribunal sanctioned a firm for filing AI hallucinated case citations. Delegating to AI doesn't remove the duty to verify and supervise.",
               },
               {
-                icon: "",
                 title: "EU AI Act (Aug 2, 2026)",
                 desc: "Mandatory disclosure of AI generated content + governance evidence. Weeks away, not years.",
               },
               {
-                icon: "",
                 title: "SEC 2026 Exams",
                 desc: "Financial regulators now testing: Can you prove governance? Can you prove monitoring?",
               },
               {
-                icon: "",
                 title: "FTC Enforcement ($53K per violation)",
                 desc: "Unsubstantiated AI claims in marketing. April 2026 onwards: consent orders, not warnings.",
               },
               {
-                icon: "",
                 title: "Policy vs. Practice Gap",
                 desc: "Your team has written policies. But desk behavior ≠ policy. No one's checking.",
               },
               {
-                icon: "",
                 title: "Ownership Gap",
                 desc: "Who decides about AI? Who owns the output when it drifts? No single answer = no control.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.title} style={{
-                background: "rgba(16,41,67,0.6)",
-                border: "1px solid rgba(239,68,68,0.2)",
-                borderRadius: "12px",
-                padding: "1.5rem",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
+                padding: "1.75rem",
               }}>
-                <div style={{ width: "28px", height: "2px", background: "#E5484D", marginBottom: "1rem" }} />
+                <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "0.85rem" }}>{String(i + 1).padStart(2, "0")}</p>
                 <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
@@ -649,6 +642,8 @@ export default async function PricingPage() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
         }
+        .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 2rem; }
+        @media (max-width: 700px) { .problem-grid { grid-template-columns: 1fr; } }
       `}</style>
       <Footer />
     </div>
