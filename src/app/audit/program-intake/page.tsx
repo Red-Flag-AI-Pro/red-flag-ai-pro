@@ -130,10 +130,10 @@ export default async function ProgramIntakePage({
           Full Governance Program · £{PROGRAM_PRICE.amount}
         </p>
         <h1 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.2rem)", fontWeight: 800, color: "white", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "0.75rem", textAlign: "center" }}>
-          Answer this once. It builds all six documents.
+          Answer this once. Get your whole governance file, sealed.
         </h1>
         <p style={{ ...syne, fontSize: "13.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem", textAlign: "center", maxWidth: "560px", margin: "0 auto 2.5rem" }}>
-          One shared set of answers about your business and your AI system, mapped into your DPIA, FRIA, AI use policy, incident checklist, monitoring plan, and Annex IV documentation. Nothing generates until you submit.
+          One shared set of answers about your business and your AI system, mapped into your DPIA, FRIA, AI use policy, incident checklist, monitoring plan, and Annex IV documentation, plus a financial exposure snapshot, a regulatory framework mapping table, and an A–G governance letter grade — then sealed as dated, verifiable proof. Nothing generates until you submit.
         </p>
       </div>
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 1.5rem 4rem" }}>

@@ -526,10 +526,10 @@ export default async function AuditPage({
               </h3>
               <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
                 <span style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{PROGRAM_PRICE.amount}</span>
-                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · 5 WORKING DAYS</span>
+                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · GENERATED IN MINUTES</span>
               </div>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "1rem", fontStyle: "italic" }}>
-                Everything in the audit, plus every document drafted and tailored to your business:
+                Everything in the audit, plus every document AI tailored to your business, scored, mapped to the regulations that require it, and sealed as dated proof:
               </p>
               {[
                 "DPIA, screened and written against the ICO's checklist",
@@ -538,6 +538,10 @@ export default async function AuditPage({
                 "Incident reporting checklist, with your deadlines and regulators",
                 "Post-market monitoring plan per Article 72",
                 "Annex IV technical documentation set",
+                "Financial exposure snapshot: your actual statutory ceiling, not a generic maximum",
+                "Regulatory framework mapping: which law each document satisfies, and where",
+                "An A–G governance letter grade, the same scoring Sentinel clients get",
+                "Sealed and hash chained the moment it's complete, with a public verify link",
               ].map((f) => (
                 <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
                   <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
@@ -557,7 +561,7 @@ export default async function AuditPage({
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "2rem", lineHeight: 1.8 }}>
-            Both are done by hand, personally. Neither is a subscription. A governance consultancy building the same document set starts in the low thousands.
+            The audit is done by hand, personally. The program is generated automatically from AI tailored analysis, sealed the moment it's complete. Neither is a subscription. A governance consultancy building the same document set starts in the low thousands.
           </p>
         </div>
       </section>
