@@ -34,6 +34,14 @@ export interface WitnessPayload {
 // Accepts the loose shapes real clients send (numbers as strings, etc) and
 // validates only what matters: chain and tip must identify something,
 // count must be a real count. Everything else is stored as given.
+// Generous but bounded — real values here are short identifiers and hex
+// hashes. Caps exist only to stop an abusive peer from stuffing an
+// oversized string into a log row, not because any legitimate value comes
+// close to these lengths.
+const MAX_CHAIN_LENGTH = 200;
+const MAX_TIP_LENGTH = 500;
+const MAX_URL_LENGTH = 2000;
+
 export function parseWitnessPayload(body: unknown): WitnessPayload | null {
   if (!body || typeof body !== "object") return null;
   const b = body as Record<string, unknown>;
@@ -49,6 +57,8 @@ export function parseWitnessPayload(body: unknown): WitnessPayload | null {
   const url = typeof b.url === "string" ? b.url : undefined;
 
   if (!chain || !tip || !Number.isFinite(count) || count < 0) return null;
+  if (chain.length > MAX_CHAIN_LENGTH || tip.length > MAX_TIP_LENGTH) return null;
+  if (url && url.length > MAX_URL_LENGTH) return null;
 
   return { chain, tip, count, ts, url };
 }
