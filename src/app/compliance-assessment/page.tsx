@@ -23,27 +23,44 @@ export default function ComplianceAssessmentPage() {
 
       {/* HERO */}
       <section style={{
-        padding: "6rem 1.5rem 3rem",
-        background: "linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%)",
+        padding: "clamp(6rem, 12vw, 8.5rem) 1.5rem clamp(3.5rem, 7vw, 5rem)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
         position: "relative",
         overflow: "hidden"
       }}>
-        <div style={{
-          position: "absolute", top: "-200px", left: "50%", transform: "translateX(-50%)",
-          width: "800px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.09) 0%, transparent 65%)"
-        }} />
+        {/* Photo, graded toward navy */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage: "url(/images/compliance/press.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 55%",
+            filter: "saturate(0.5) contrast(1.05) brightness(0.85)",
+          }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(180deg, rgba(10,22,40,0.72) 0%, rgba(10,22,40,0.4) 45%, rgba(10,22,40,0.6) 75%, #0A1628 100%)",
+          }}
+        />
         <div style={{ maxWidth: "760px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.5rem" }}>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>The Compliance Assessment</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.65)" }}>The Compliance Assessment</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
-          <h1 className="font-display" style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1.25rem", color: "#F4F1EA" }}>
+          <h1 className="font-display" style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1.25rem", color: "#F4F1EA", textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)" }}>
             30 risk categories. <span style={{ fontStyle: "italic", color: "#E5484D" }}>11 jurisdictions.</span> 60 seconds.
           </h1>
-          <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
             Paste your marketing copy and get a compliance score with every flag explained: which rule it breaks, in which jurisdiction, and how to fix it.
           </p>
         </div>
@@ -141,13 +158,56 @@ export default function ComplianceAssessmentPage() {
       {/* CASE STUDY TEASER */}
       <section style={{ background: "#0D1B2E", padding: "6rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Case study</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "1.25rem", color: "white", textAlign: "center" }}>
-            Six violations. None of them obvious. All happening right now.
-          </h2>
-          <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: "680px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
-            A composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here&apos;s what a compliance checker found that nobody else did.
-          </p>
+          {/* Photo panel + intro, side by side */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2.5rem", alignItems: "center", marginBottom: "3rem" }}>
+            <div
+              style={{
+                position: "relative",
+                borderRadius: "16px",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.08)",
+                minHeight: "360px",
+              }}
+            >
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: "url(/images/compliance/glass.jpg)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "saturate(0.5) contrast(1.08) brightness(0.9)",
+                }}
+              />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.45)", mixBlendMode: "multiply" }} />
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(180deg, rgba(10,22,40,0.1) 0%, rgba(10,22,40,0.75) 100%)",
+                }}
+              />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.5rem" }}>
+                <p style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "clamp(13px, 2.2vw, 15px)", fontWeight: 500, color: "rgba(244,241,234,0.95)", letterSpacing: "0.08em", lineHeight: 1.7, textShadow: "0 1px 8px rgba(6,14,26,0.9)" }}>
+                  excerpt flagged · &ldquo;low risk, high reward&rdquo;
+                  <br />
+                  FSMA 2000 s21 · severity high · fix suggested
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Case study</p>
+              <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "1.25rem", color: "white", lineHeight: 1.1 }}>
+                Six violations. None of them obvious. All happening right now.
+              </h2>
+              <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
+                A composite of real violations found across real agency campaigns. The copy looked professional. It had been reviewed internally. It went live. Here&apos;s what a compliance checker found that nobody else did.
+              </p>
+            </div>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
             {[
@@ -191,6 +251,56 @@ export default function ComplianceAssessmentPage() {
               Read the full case study →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── LETTERPRESS QUOTE BAND ── */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          padding: "9rem 1.5rem",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage: "url(/images/compliance/type.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "saturate(0.5) contrast(1.05) brightness(0.85)",
+          }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply" }} />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.3) 30%, rgba(10,22,40,0.4) 70%, #0A1628 100%)",
+          }}
+        />
+        <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+              textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)",
+            }}
+          >
+            Every claim you publish is a promise.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>We check which ones you can&apos;t keep.</span>
+          </h2>
         </div>
       </section>
 

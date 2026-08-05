@@ -54,26 +54,33 @@ function ToolGrid({ tools }: { tools: ToolCard[] }) {
           key={t.href}
           href={t.href}
           style={{
-            display: "block",
-            background: i % 2 === 0 ? "#102943" : "#0F2138",
-            border: i % 2 === 0 ? "1px solid rgba(239,68,68,0.15)" : "1px solid rgba(255,255,255,0.06)",
+            display: "flex",
+            flexDirection: "column",
+            background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+            border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
             padding: "2rem",
             textDecoration: "none",
           }}
         >
-          <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{t.title}</h3>
-          <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>{t.desc}</p>
+          <p style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>
+          <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "white", marginBottom: "0.5rem", lineHeight: 1.3 }}>{t.title}</h3>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: "1.25rem" }}>{t.desc}</p>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "12px", fontWeight: 700, color: "#E5484D", marginTop: "auto" }}>Use it free →</p>
         </Link>
       ))}
     </div>
   );
 }
 
-function ToolSection({ title, tools, first }: { title: string; tools: ToolCard[]; first?: boolean }) {
+function ToolSection({ kicker, title, tools, first }: { kicker: string; title: string; tools: ToolCard[]; first?: boolean }) {
   return (
-    <section style={{ background: "#0A1628", padding: first ? "4rem 1.5rem 2rem" : "1rem 1.5rem 2rem" }}>
+    <section style={{ background: "#0A1628", padding: first ? "4rem 1.5rem 2.5rem" : "2rem 1.5rem 2.5rem" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#F4F1EA", textAlign: "center", marginBottom: "3rem" }}>{title}</h2>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", marginBottom: "2rem", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "1rem" }}>
+          <span style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "11px", fontWeight: 500, color: "#E5484D", letterSpacing: "0.15em" }}>{kicker}</span>
+          <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.35rem", fontWeight: 700, color: "#F4F1EA", letterSpacing: "-0.01em" }}>{title}</h2>
+          <span style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{tools.length} tools</span>
+        </div>
         <ToolGrid tools={tools} />
       </div>
     </section>
@@ -88,12 +95,16 @@ export default function ToolsPage() {
       {/* Compact header — no upsell blocking the tools below the fold */}
       <section style={{background: "#0C1929", padding: "7.5rem 1.5rem 3rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth: "700px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Free, no account needed</p>
-          <h1 style={{
-            fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700,
-            letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "0.75rem",
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.25rem" }}>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+            <p style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.65)"}}>Free, no account needed</p>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+          </div>
+          <h1 className="font-display" style={{
+            fontSize: "clamp(2rem, 4.5vw, 2.9rem)", fontWeight: 500,
+            letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "0.75rem",
             color: "#F4F1EA",
-          }}>Free tools</h1>
+          }}>Eighteen tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto"}}>
             Pick a tool below and use it now. No signup required.
           </p>
@@ -101,13 +112,37 @@ export default function ToolsPage() {
       </section>
 
       {/* Free, ungated tools — four findable groups, first thing on the page */}
-      <ToolSection title="Assessments" tools={ASSESSMENT_TOOLS} first />
-      <ToolSection title="EU AI Act document generators" tools={DOCUMENT_TOOLS} />
-      <ToolSection title="Internal policy and training" tools={POLICY_TOOLS} />
-      <section style={{background: "#0A1628", padding: "1rem 1.5rem 5rem"}}>
+      <ToolSection kicker="01" title="Assessments" tools={ASSESSMENT_TOOLS} first />
+      <ToolSection kicker="02" title="EU AI Act document generators" tools={DOCUMENT_TOOLS} />
+      <ToolSection kicker="03" title="Internal policy and training" tools={POLICY_TOOLS} />
+      <section style={{background: "#0A1628", padding: "2rem 1.5rem 3rem"}}>
         <div style={{maxWidth: "900px", margin: "0 auto"}}>
-          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#F4F1EA", textAlign: "center", marginBottom: "3rem"}}>Marketing compliance</h2>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", marginBottom: "2rem", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "1rem" }}>
+            <span style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "11px", fontWeight: 500, color: "#E5484D", letterSpacing: "0.15em" }}>04</span>
+            <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "1.35rem", fontWeight: 700, color: "#F4F1EA", letterSpacing: "-0.01em"}}>Marketing compliance</h2>
+            <span style={{ fontFamily: "'DM Mono', 'Courier New', monospace", fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{MARKETING_TOOLS.length} tools</span>
+          </div>
           <ToolGrid tools={MARKETING_TOOLS} />
+        </div>
+      </section>
+
+      {/* ── QUOTE BAND ── */}
+      <section style={{ padding: "6rem 1.5rem", background: "linear-gradient(180deg, #0A1628 0%, #0C1929 100%)", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 2.7rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+            }}
+          >
+            We would rather show you than tell you.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>Pick a tool and see.</span>
+          </h2>
         </div>
       </section>
 

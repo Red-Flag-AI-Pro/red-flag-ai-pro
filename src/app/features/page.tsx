@@ -35,9 +35,13 @@ export default function FeaturesPage() {
         textAlign: "center"
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Compliance Checking + AI Governance, re-checked against the official text every time the law moves</p>
-          <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", color: "#F4F1EA" }}>
-            Every tool you need to catch risk, then prove governance.
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.5rem" }}>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.65)" }}>Features</p>
+            <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
+          </div>
+          <h1 className="font-display" style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1.5rem", color: "#F4F1EA" }}>
+            Every tool you need to catch risk, <span style={{ fontStyle: "italic", color: "#E5484D" }}>then prove governance.</span>
           </h1>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", lineHeight: 1.7 }}>
             From real time copy checking to governance assessment to forensic proof. Infrastructure built for marketers, agencies, CFOs, and compliance teams alike.
@@ -80,7 +84,7 @@ export default function FeaturesPage() {
             <GovernanceLifecycleDiagram />
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
             {[
               {
                 title: "Boundary authorization records",
@@ -124,9 +128,9 @@ export default function FeaturesPage() {
                 href: null,
                 linkText: null,
               },
-            ].map((item) => (
-              <div key={item.title} style={{ background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2rem" }}>
-                <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
+            ].map((item, i) => (
+              <div key={item.title} style={{ background: i % 2 === 0 ? "#0D1B2E" : "#102943", border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`, padding: "2rem" }}>
+                <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>
                 <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.65, marginBottom: item.href ? "1rem" : 0 }}>{item.desc}</p>
                 {item.href && (
@@ -154,7 +158,7 @@ export default function FeaturesPage() {
               All Tiers Include
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
               {[
                 {
                   icon: "",
@@ -206,17 +210,16 @@ export default function FeaturesPage() {
                   title: "18 Free Tools, No Account",
                   desc: "Fine calculator, DPIA generator, FRIA assistant, EU database registration assistant, contract red flags checker, accessibility scorer, shadow AI audit and more. Free, and they stay free.",
                 },
-              ].map((item) => (
+              ].map((item, i) => (
                 <div
                   key={item.title}
                   style={{
-                    background: "rgba(16,41,67,0.6)",
-                    border: "1px solid rgba(239,68,68,0.2)",
-                    borderRadius: "12px",
+                    background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                    border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                     padding: "2rem",
                   }}
                 >
-                  <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
+                  <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>
                   <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{item.desc}</p>
                 </div>
@@ -231,7 +234,7 @@ export default function FeaturesPage() {
               Ongoing Monitoring & Proof
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
               {[
                 {
                   icon: "",
@@ -263,17 +266,16 @@ export default function FeaturesPage() {
                   title: "Quarterly Improvement Roadmaps",
                   desc: "Updated strategic plan every 90 days. Adjust based on progress. New quick wins. Reorder by impact.",
                 },
-              ].map((item) => (
+              ].map((item, i) => (
                 <div
                   key={item.title}
                   style={{
-                    background: "rgba(16,41,67,0.8)",
-                    border: "1px solid rgba(239,68,68,0.3)",
-                    borderRadius: "12px",
+                    background: i % 2 === 0 ? "#102943" : "#0D1B2E",
+                    border: "1px solid rgba(239,68,68,0.18)",
                     padding: "2rem",
                   }}
                 >
-                  <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
+                  <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>
                   <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{item.desc}</p>
                 </div>
@@ -288,7 +290,7 @@ export default function FeaturesPage() {
               Managed Governance + Forensic Proof
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px" }}>
               {[
                 {
                   icon: "",
@@ -335,23 +337,43 @@ export default function FeaturesPage() {
                   title: "Dedicated Governance Advisor",
                   desc: "Quarterly strategy calls. Roadmap updates. Best practice guidance. Regulatory news briefings. Continuous improvement.",
                 },
-              ].map((item) => (
+              ].map((item, i) => (
                 <div
                   key={item.title}
                   style={{
-                    background: "rgba(255, 0, 0, 0.08)",
-                    border: "1px solid rgba(229,72,77,0.3)",
-                    borderRadius: "12px",
+                    background: i % 2 === 0 ? "#102943" : "#0D1B2E",
+                    border: "1px solid rgba(255,255,255,0.05)",
+                    borderLeft: "2px solid rgba(229,72,77,0.5)",
                     padding: "2rem",
                   }}
                 >
-                  <div style={{ width: "32px", height: "2px", background: "#E5484D", marginBottom: "1.25rem" }} />
+                  <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>
                   <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", marginBottom: "0.75rem" }}>{item.title}</p>
                   <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── QUOTE BAND ── */}
+      <section style={{ padding: "7rem 1.5rem", background: "linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%)", borderBottom: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+            }}
+          >
+            The tools find the risk.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>The record proves you dealt with it.</span>
+          </h2>
         </div>
       </section>
 

@@ -139,21 +139,32 @@ export default async function AuditPage({
       {/* ── HERO ── */}
       <section style={{
         position: "relative", overflow: "hidden",
-        padding: "4.5rem 1.5rem 3.5rem",
+        padding: "clamp(5rem, 10vw, 7rem) 1.5rem clamp(3.5rem, 7vw, 5rem)",
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
-        {/* Red glow */}
-        <div style={{
-          position: "absolute", top: "-100px", left: "50%", transform: "translateX(-50%)",
-          width: "900px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 60%)"
-        }} />
-        {/* Grid */}
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.025,
-          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
-        }} />
+        {/* Photo: bespoke tailor's window, graded toward navy */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage: "url(/images/dfy/bespoke.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 30%",
+            filter: "saturate(0.6) contrast(1.05) brightness(0.85)",
+          }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.45) 45%, rgba(10,22,40,0.65) 78%, #0A1628 100%)",
+          }}
+        />
 
         <div style={{ maxWidth: "760px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
 
@@ -178,12 +189,13 @@ export default async function AuditPage({
             lineHeight: 1.1,
             letterSpacing: "-0.035em",
             marginBottom: "1.5rem",
-            color: "#F4F1EA"
+            color: "#F4F1EA",
+            textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)"
           }}>
             I&apos;ll personally go through your site and funnel, and hand you back exactly what to fix.
           </h1>
 
-          <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem" }}>
+          <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(244,241,234,0.8)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
             No dashboard. No learning curve. No guessing what the flags mean. I check your full funnel and your AI use myself, for both compliance and governance risk, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, in 48 hours.
           </p>
 
@@ -240,18 +252,59 @@ export default async function AuditPage({
       </div>
 
       {/* ── THE PROBLEM ── */}
-      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
-            The problem
-          </p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", color: "#F4F1EA" }}>
-            You don&apos;t have time to learn a compliance tool.{" "}
-            <span>You just need to know what&apos;s wrong.</span>
-          </h2>
-          <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.9 }}>
-            You are running ads, building funnels, writing copy. Compliance is the thing you know matters and never quite get round to checking properly. Meanwhile the fines, the takedowns, and the new AI exclusion clauses turning up on insurance renewals are real and moving faster than most people realise. So instead of handing you a tool and a login, I will do it with you. Personally.
-          </p>
+      <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2.5rem", alignItems: "center" }}>
+          {/* Photo panel: work done by hand */}
+          <div
+            style={{
+              position: "relative",
+              borderRadius: "16px",
+              overflow: "hidden",
+              border: "1px solid rgba(255,255,255,0.08)",
+              minHeight: "340px",
+            }}
+          >
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: "url(/images/dfy/carving.jpg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                filter: "saturate(0.55) contrast(1.05) brightness(0.8)",
+              }}
+            />
+            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.5)", mixBlendMode: "multiply" }} />
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)",
+              }}
+            />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.5rem" }}>
+              <p style={{ ...mono, fontSize: "clamp(13px, 2.2vw, 15px)", fontWeight: 500, color: "rgba(244,241,234,0.95)", letterSpacing: "0.08em", lineHeight: 1.7, textShadow: "0 1px 8px rgba(6,14,26,0.9)" }}>
+                every flag reviewed by hand
+                <br />
+                no dashboard · no login · no learning curve
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
+              The problem
+            </p>
+            <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1.25rem", color: "#F4F1EA" }}>
+              You don&apos;t have time to learn a compliance tool.{" "}
+              <span>You just need to know what&apos;s wrong.</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.9 }}>
+              You are running ads, building funnels, writing copy. Compliance is the thing you know matters and never quite get round to checking properly. Meanwhile the fines, the takedowns, and the new AI exclusion clauses turning up on insurance renewals are real and moving faster than most people realise. So instead of handing you a tool and a login, I will do it with you. Personally.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -445,6 +498,56 @@ export default async function AuditPage({
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── TOOL WALL QUOTE BAND ── */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          padding: "9rem 1.5rem",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage: "url(/images/dfy/tools.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+          }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.65)", mixBlendMode: "multiply" }} />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)",
+          }}
+        />
+        <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+              textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)",
+            }}
+          >
+            You don&apos;t need another tool.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>You need it done.</span>
+          </h2>
         </div>
       </section>
 

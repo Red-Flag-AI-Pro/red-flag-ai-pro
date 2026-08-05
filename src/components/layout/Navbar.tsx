@@ -50,8 +50,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               <Link href="/governance-audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Governance Assessment</Link>
               <Link href="/features" className="nav-link px-2.5 py-1.5 text-sm">Features</Link>
               <Link href="/audit" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">DFY Audit</Link>
-              <Link href="/law-firms" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">Law Firms</Link>
-              <Link href="/insurance-brokers" className="nav-link px-2.5 py-1.5 text-sm whitespace-nowrap">PI Brokers</Link>
               <Link href="/sentinel" className="nav-link px-2.5 py-1.5 text-sm">Sentinel</Link>
               <Link href="/pricing" className="nav-link px-2.5 py-1.5 text-sm">Pricing</Link>
 
@@ -77,18 +75,18 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                         as filing rather than as capability. */}
                     <div className="rounded-lg border border-white/10 py-1.5" style={{ background: "#0D1B2E" }}>
                       <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">How it works</p>
-                      <Link href="/boundary-authorization-records" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Boundary Authorization Records</Link>
                       <Link href="/witness-network" className="px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>NEW</span></Link>
                       <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
-                      <Link href="/witness-standard" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Open Witness Standard</Link>
-                      <Link href="/witness-network/apply" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Apply to Join the Network</Link>
+
+                      <div className="my-1.5 border-t border-white/10" />
+                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Who it&apos;s for</p>
+                      <Link href="/law-firms" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Law Firms</Link>
+                      <Link href="/insurance-brokers" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">PI Brokers</Link>
 
                       <div className="my-1.5 border-t border-white/10" />
                       <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Read and use</p>
                       <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
-                      <Link href="/who-when-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether (whitepaper)</Link>
                       <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
-                      <Link href="/case-study" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
                       <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
                       <Link href="/about" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
                     </div>
@@ -172,13 +170,8 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
                 <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
                 <Link href="/witness-network" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>NEW</span></Link>
-                <Link href="/witness-standard" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Open Witness Standard</Link>
-                <Link href="/witness-network/apply" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Apply to Join the Network</Link>
                 <Link href="/verify" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
                 <Link href="/reports/mystery-of-ai-governance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
-                <Link href="/who-when-whether" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
-                <Link href="/boundary-authorization-records" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Boundary Authorization Records</Link>
-                <Link href="/case-study" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Case Study</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
                 <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
                 <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>EARN</span></Link>

@@ -117,26 +117,72 @@ export default function LandingPage() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-            <div style={{ background: "#0F2138", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Compliance Assessment</p>
-              <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Check your marketing copy</h3>
-              <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 11 jurisdictions, with every flag explained so you know exactly what to fix.
-              </p>
-              <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-                Check your copy <span className="arrow">→</span>
-              </Link>
+            {/* Compliance: the published word */}
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: "url(/images/home/newsprint.jpg)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+                }}
+              />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.6)", mixBlendMode: "multiply" }} />
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(180deg, rgba(15,33,56,0.55) 0%, rgba(15,33,56,0.85) 100%)",
+                }}
+              />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>Compliance Assessment</p>
+                <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem", textShadow: "0 1px 12px rgba(6,14,26,0.9)" }}>Check your marketing copy</h3>
+                <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, marginBottom: "1.75rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>
+                  Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 11 jurisdictions, with every flag explained so you know exactly what to fix.
+                </p>
+                <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
+                  Check your copy <span className="arrow">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div style={{ background: "#0F2138", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Governance Assessment</p>
-              <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "white", marginBottom: "1rem" }}>Prove your AI governance</h3>
-              <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-                Find out in 2 minutes whether you could survive an audit tomorrow. 12 questions across 6 dimensions reveal your governance maturity and your single biggest gap, before someone else finds it first.
-              </p>
-              <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-                Start the assessment <span className="arrow">→</span>
-              </Link>
+            {/* Governance: the record */}
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: "url(/images/home/ledger.jpg)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+                }}
+              />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.6)", mixBlendMode: "multiply" }} />
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(180deg, rgba(15,33,56,0.55) 0%, rgba(15,33,56,0.85) 100%)",
+                }}
+              />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>Governance Assessment</p>
+                <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem", textShadow: "0 1px 12px rgba(6,14,26,0.9)" }}>Prove your AI governance</h3>
+                <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, marginBottom: "1.75rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>
+                  Find out in 2 minutes whether you could survive an audit tomorrow. 12 questions across 6 dimensions reveal your governance maturity and your single biggest gap, before someone else finds it first.
+                </p>
+                <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
+                  Start the assessment <span className="arrow">→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -246,6 +292,56 @@ export default function LandingPage() {
               </p>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── VAULT QUOTE BAND ── */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          padding: "9rem 1.5rem",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage: "url(/images/home/vault.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 45%",
+            filter: "saturate(0.45) contrast(1.05) brightness(0.75)",
+          }}
+        />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)",
+          }}
+        />
+        <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+              textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)",
+            }}
+          >
+            Anyone can say they checked.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>We can prove it.</span>
+          </h2>
         </div>
       </section>
 

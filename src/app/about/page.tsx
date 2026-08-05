@@ -68,19 +68,19 @@ export default function AboutPage() {
           </p>
 
           <h1
+            className="font-display"
             style={{
-              ...syne,
-              fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
-              fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)",
+              fontWeight: 500,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
               marginBottom: "1.5rem",
               color: "#F4F1EA",
             }}
           >
-            We started by catching<br />
-            risky copy. We ended up<br />
-            proving governance.
+            We started by catching risky copy.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>We ended up proving governance.</span>
           </h1>
 
           <p
@@ -392,6 +392,26 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
+      {/* ── QUOTE BAND ── */}
+      <section style={{ padding: "7rem 1.5rem", background: "linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%)", borderBottom: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              color: "#F4F1EA",
+            }}
+          >
+            Built by one person who kept showing up.
+            <br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>Checked by anyone who cares to look.</span>
+          </h2>
+        </div>
+      </section>
+
       <section
         style={{
           padding: "6rem 1.5rem",
