@@ -123,7 +123,7 @@ export default async function AuditPage({
           </p>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
             {paidProgram
-              ? "You will get a confirmation from Stripe by email. James starts within hours. Your audit, video walkthrough and badge arrive first, then the full document set (DPIA, FRIA, AI use policy, incident checklist, monitoring plan and Annex IV documentation) within 5 working days. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly."
+              ? "You will get a confirmation from Stripe by email. If checkout did not carry you straight to the intake form, email support@redflagaipro.com with your receipt and the link will be sent over."
               : "You will get a confirmation from Stripe by email. James starts on your audit within hours and your full report, video walkthrough and badge arrive within 48 hours. If you have not sent your site URL yet, reply to the Stripe receipt or email support@redflagaipro.com and it will reach him directly."}
           </p>
         </div>

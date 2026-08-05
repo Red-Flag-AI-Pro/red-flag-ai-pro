@@ -78,7 +78,7 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session, isProgram = fal
   const name = session.customer_details?.name ?? "";
   const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : isProgram ? "497.00" : "199.00";
   const product = isProgram ? "Full Governance Program" : "audit";
-  const window = isProgram ? "5 working day" : "48 hour";
+  const window = isProgram ? "self serve, automated" : "48 hour";
   try {
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
@@ -88,12 +88,11 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session, isProgram = fal
         ...(email !== "unknown" ? { replyTo: email } : {}),
         subject: `PAID ${product} order: £${amount} from ${name || email}`,
         html: `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.6">
-          <p><strong>A ${product} was just paid for via instant checkout.</strong> The ${window} delivery window starts now.</p>
+          <p><strong>A ${product} was just paid for via instant checkout.</strong> Delivery is ${window}.</p>
           <p>Buyer: ${name ? `${name}, ` : ""}${email}<br/>
           Amount: £${amount}<br/>
           Stripe session: ${session.id}</p>
-          ${isProgram ? `<p><strong>This is the eight stage program</strong>, so it also needs the DPIA, FRIA, AI use policy, incident reporting checklist, post market monitoring plan and Annex IV documentation drafted and tailored, not just the audit.</p>` : ""}
-          <p>Reply straight to this email to reach the buyer and ask for their URL if they haven't sent it.</p>
+          ${isProgram ? `<p>This is the six document program (DPIA, FRIA, AI use policy, incident reporting checklist, post market monitoring plan and Annex IV documentation). The customer is taken straight to the intake form after checkout and the documents generate automatically once they submit it — nothing for you to do unless they get in touch.</p>` : `<p>Reply straight to this email to reach the buyer and ask for their URL if they haven't sent it.</p>`}
         </div>`,
       });
       if (error) console.error("audit-paid notify failed:", error);
@@ -302,10 +301,9 @@ export async function POST(request: Request) {
       // purchaser, matching the checkout route's auth guard.
       if (!userId) break;
 
-      // One-time audit or Full Governance Program purchase — both are manually
-      // fulfilled done-for-you work, so both land in audit_orders. The amount
-      // distinguishes them (£199 vs £497) and the notification names which.
-      if (plan === "audit" || plan === "program") {
+      // One-time audit purchase — manually fulfilled done-for-you work, lands
+      // in audit_orders for James to work from.
+      if (plan === "audit") {
         await supabase.from("audit_orders").insert({
           user_id: userId,
           email: session.customer_email ?? session.customer_details?.email ?? "",
@@ -316,7 +314,39 @@ export async function POST(request: Request) {
           amount_gbp: session.amount_total != null ? session.amount_total / 100 : 199,
           status: "paid",
         });
-        await notifyAuditPaid(session, plan === "program");
+        await notifyAuditPaid(session, false);
+        break;
+      }
+
+      // Full Governance Program purchase — unlike the audit, this is
+      // delivered automatically through the intake form and generation
+      // pipeline (src/lib/program-generate.ts), so it lands in its own
+      // program_orders table rather than audit_orders. Idempotent on
+      // stripe_session_id: the program-intake success page
+      // (src/app/audit/program-intake/page.tsx) verifies the Stripe session
+      // directly and may already have created this row before the webhook
+      // ran, same "whichever gets there first" pattern as the report page's
+      // independent verification.
+      if (plan === "program") {
+        const { data: existingOrder } = await supabase
+          .from("program_orders")
+          .select("id")
+          .eq("stripe_session_id", session.id)
+          .maybeSingle();
+
+        if (!existingOrder) {
+          await supabase.from("program_orders").insert({
+            user_id: userId,
+            email: session.customer_email ?? session.customer_details?.email ?? "",
+            stripe_session_id: session.id,
+            stripe_payment_intent: (session.payment_intent as string) ?? null,
+            amount_gbp: session.amount_total != null ? session.amount_total / 100 : 497,
+            status: "pending",
+          });
+        }
+        // Kept cheap and non-blocking: James still hears about every paid
+        // order even though delivery no longer depends on him.
+        await notifyAuditPaid(session, true);
         break;
       }
 

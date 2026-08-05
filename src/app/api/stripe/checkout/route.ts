@@ -97,7 +97,11 @@ export async function POST(request: Request) {
         },
       ],
       metadata: { user_id: user.id, plan: "program", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
-      success_url: `${appUrl}/audit?success=1&plan=program&session_id={CHECKOUT_SESSION_ID}`,
+      // Straight to the intake form rather than back to /audit — the whole
+      // point of automating this tier is that the customer starts the
+      // program the moment payment clears, not after James manually opens
+      // an email thread.
+      success_url: `${appUrl}/audit/program-intake?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/audit?canceled=1`,
     });
     return NextResponse.json({ url: session.url });
