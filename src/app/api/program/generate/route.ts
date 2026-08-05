@@ -3,6 +3,10 @@ import { createClient as createServerClient } from "@/lib/supabase/server";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { runProgramGenerationPipeline } from "@/lib/program-generate";
 
+// Same pipeline as the intake route, same reason: needs headroom past
+// Vercel's short default duration or the seal call routinely loses the race.
+export const maxDuration = 60;
+
 function getAdminClient() {
   return createAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

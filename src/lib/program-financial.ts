@@ -62,8 +62,12 @@ const JURISDICTION_LABELS: Record<ProgramJurisdiction, string> = {
 
 function fmtGBP(n: number): string {
   if (n >= 1_000_000) {
+    // Rounding to a whole number below £100M silently contradicts the
+    // ceiling.note string elsewhere in this file (e.g. UK's exact £17.5M
+    // floor rounding to a headline "£18M") — keep one decimal at this scale
+    // so the headline figure and its own explanation never disagree.
     const m = n / 1_000_000;
-    return "£" + (m >= 10 ? Math.round(m) : Math.round(m * 10) / 10) + "M";
+    return "£" + (m >= 100 ? Math.round(m) : Math.round(m * 10) / 10) + "M";
   }
   if (n >= 1000) return "£" + Math.round(n / 1000) + "k";
   return "£" + Math.round(n);

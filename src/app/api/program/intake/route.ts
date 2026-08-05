@@ -4,6 +4,12 @@ import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { runProgramGenerationPipeline } from "@/lib/program-generate";
 import { PROGRAM_INTAKE_DEFAULTS, type ProgramIntake } from "@/lib/program-intake";
 
+// Without this, the route falls back to Vercel's short default duration.
+// Six documents plus an AI enhancement pass plus the seal call's own
+// external RFC 3161 timestamp round-trip routinely runs past that —
+// sealing was silently losing the race and failing on every real order.
+export const maxDuration = 60;
+
 function getAdminClient() {
   return createAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
