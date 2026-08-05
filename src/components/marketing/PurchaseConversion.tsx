@@ -21,7 +21,7 @@ const PLAN_VALUE_GBP: Record<string, number> = {
   enterprise: 1200,
   sentinel: 5000,
   audit: 199,
-  program: 497,
+  program: 297,
 };
 
 export function PurchaseConversion() {

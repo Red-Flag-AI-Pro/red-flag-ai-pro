@@ -5,6 +5,7 @@ import { updateContactPlan, sendLoopsEvent } from "@/lib/loops";
 import { logAuditEvent } from "@/lib/audit-log";
 import { Resend } from "resend";
 import type Stripe from "stripe";
+import { PROGRAM_PRICE, AUDIT_PRICE } from "@/lib/constants";
 
 const NOTIFY_TO = "support@redflagaipro.com";
 const REPORT_STORAGE_BUCKET = "reports";
@@ -76,7 +77,7 @@ async function deliverReportPurchase(
 async function notifyAuditPaid(session: Stripe.Checkout.Session, isProgram = false) {
   const email = session.customer_email ?? session.customer_details?.email ?? "unknown";
   const name = session.customer_details?.name ?? "";
-  const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : isProgram ? "497.00" : "199.00";
+  const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : isProgram ? PROGRAM_PRICE.amount.toFixed(2) : AUDIT_PRICE.amount.toFixed(2);
   const product = isProgram ? "Full Governance Program" : "audit";
   const window = isProgram ? "self serve, automated" : "48 hour";
   try {
@@ -340,7 +341,7 @@ export async function POST(request: Request) {
             email: session.customer_email ?? session.customer_details?.email ?? "",
             stripe_session_id: session.id,
             stripe_payment_intent: (session.payment_intent as string) ?? null,
-            amount_gbp: session.amount_total != null ? session.amount_total / 100 : 497,
+            amount_gbp: session.amount_total != null ? session.amount_total / 100 : PROGRAM_PRICE.amount,
             status: "pending",
           });
         }

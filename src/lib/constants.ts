@@ -57,7 +57,7 @@ export const AUDIT_PRICE = {
 // drafted and tailored per client rather than left to the free self-serve
 // tools, which is what justifies the step up in both price and delivery time.
 export const PROGRAM_PRICE = {
-  amount: 497,
+  amount: 297,
   label: "Full Governance Program (8 stage, done for you)",
 };
 
