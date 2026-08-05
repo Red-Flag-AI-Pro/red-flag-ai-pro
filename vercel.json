@@ -39,6 +39,10 @@
     {
       "path": "/api/cron/boundary-renewal-reminder",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/cron/completeness-checkpoint",
+      "schedule": "0 4 * * *"
     }
   ]
 }

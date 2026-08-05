@@ -59,43 +59,71 @@ export const CHECKS: Record<string, CheckStatus> = {
       "No account needed, run it yourself.",
   },
   completeness_proof: {
-    supported: false,
-    demonstrable_publicly: false,
-    endpoint: null,
+    supported: true,
+    demonstrable_publicly: true,
+    endpoint: "/api/complete/root",
     note:
-      "Record count committed before export. Not built yet. Reports " +
-      "NOT SUPPORTED rather than a false pass.",
+      "A record-count checkpoint for Red Flag's own public chain is sealed " +
+      "daily, before any export could reference it. Built off the existing " +
+      "hash chain rather than a separate Merkle tree — a sealed count catches " +
+      "tail truncation the same way an inclusion proof would, without needing " +
+      "a tree structure. No account needed, run it yourself.",
   },
   absence_proof: {
-    supported: false,
-    demonstrable_publicly: false,
-    endpoint: null,
-    note: "Not built. Reports NOT SUPPORTED rather than a false pass.",
+    supported: true,
+    demonstrable_publicly: true,
+    endpoint: "/api/complete/prove?value={value}",
+    note:
+      "Given a hash, returns either where it's present, or the two real " +
+      "adjacent chain entries that bracket where it would sort if it existed " +
+      "— proof by adjacency on the existing linear chain, not a Merkle tree. " +
+      "Try a value that isn't there.",
   },
   reconciliation: {
-    supported: false,
+    supported: true,
     demonstrable_publicly: false,
     endpoint: null,
     note:
-      "Sample chosen before data is requested. Not built. Reports NOT " +
-      "SUPPORTED rather than a false pass.",
+      "A sample of a customer's own audit entries is sealed before it's used " +
+      "for anything, so a flattering sample can't be picked after the fact. " +
+      "Built and live, account-gated by nature — a sample needs a real " +
+      "account's real data, so there's no honest way to demonstrate it " +
+      "without one.",
   },
   reproducibility: {
-    supported: false,
-    demonstrable_publicly: false,
-    endpoint: null,
+    supported: true,
+    demonstrable_publicly: true,
+    endpoint: "/api/replay/challenge",
     note:
-      "Deterministic replay of sealed inputs. Not built. Reports NOT " +
-      "SUPPORTED rather than a false pass.",
+      "The scanner's core scoring has no model call and no randomness, so " +
+      "the same input under the same ruleset always produces the same " +
+      "output. Submit content, get a sealed ticket back; resubmit the exact " +
+      "same input to /api/replay/verify later and the ticket must match. " +
+      "Ruleset fingerprint at /api/replay/fingerprint.",
   },
   consistency_proof: {
     supported: false,
     demonstrable_publicly: false,
     endpoint: null,
     note:
-      "Hash chain plus an external RFC 3161 timestamp gives tamper evidence " +
-      "today, but not a formal cryptographic consistency proof between two " +
-      "chain states. Reports NOT SUPPORTED rather than overclaiming.",
+      "Proving the chain only ever grew (nothing was reordered or rewritten " +
+      "in the middle) needs a formal cryptographic consistency proof between " +
+      "two chain states. Not built. Reports NOT SUPPORTED rather than " +
+      "overclaiming — kept separate from external_anchoring below, since " +
+      "they answer different questions.",
+  },
+  external_anchoring: {
+    supported: true,
+    demonstrable_publicly: true,
+    endpoint: "/api/anchor-status",
+    note:
+      "Proves the time itself was fixed somewhere Red Flag doesn't control, " +
+      "answering a different question than consistency_proof above: a chain " +
+      "can be perfectly append-only and still have been built last week. " +
+      "Anchored via RFC 3161, a third-party timestamp authority — a " +
+      "different external mechanism than a peer using OpenTimestamps into " +
+      "Bitcoin, same underlying claim. The spec should name the mechanism " +
+      "rather than mandate one.",
   },
 };
 
