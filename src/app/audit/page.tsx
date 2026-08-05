@@ -156,10 +156,10 @@ export default async function AuditPage({
             backgroundImage: "url(/images/dfy/bespoke.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
-            filter: "saturate(0.6) contrast(1.05) brightness(0.85)",
+            filter: "saturate(0.85) contrast(1.05) brightness(1.05)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
@@ -276,10 +276,10 @@ export default async function AuditPage({
                 backgroundImage: "url(/images/dfy/carving.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "saturate(0.55) contrast(1.05) brightness(0.8)",
+                filter: "saturate(0.82) contrast(1.05) brightness(1.02)",
               }}
             />
-            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.5)", mixBlendMode: "multiply" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.28)", mixBlendMode: "multiply" }} />
             <div
               aria-hidden
               style={{
@@ -621,17 +621,17 @@ export default async function AuditPage({
             backgroundImage: "url(/images/dfy/tools.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+            filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.65)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.12) 30%, rgba(10,22,40,0.2) 70%, #0A1628 100%)",
           }}
         />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>

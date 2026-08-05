@@ -38,13 +38,13 @@ export default function GovernanceAuditPage() {
           quality={65}
           style={{
             objectFit: 'cover', objectPosition: 'center 60%',
-            filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
+            filter: 'saturate(0.8) contrast(1.05) brightness(1.05)',
             pointerEvents: 'none',
           }}
         />
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'rgba(10,22,40,0.55)', mixBlendMode: 'multiply',
+          background: 'rgba(10,22,40,0.3)', mixBlendMode: 'multiply',
         }} />
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
@@ -239,10 +239,10 @@ export default function GovernanceAuditPage() {
               quality={65}
               style={{
                 objectFit: 'cover', objectPosition: 'center',
-                filter: 'saturate(0.85) contrast(1.05) brightness(0.9)',
+                filter: 'saturate(0.85) contrast(1.05) brightness(1.08)',
               }}
             />
-            <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,46,0.35)', mixBlendMode: 'multiply' }} />
+            <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,46,0.26)', mixBlendMode: 'multiply' }} />
             <div aria-hidden style={{
               position: 'absolute', inset: 0,
               background: 'linear-gradient(180deg, rgba(10,22,40,0.1) 0%, rgba(10,22,40,0.7) 100%)',
@@ -303,14 +303,14 @@ export default function GovernanceAuditPage() {
           quality={65}
           style={{
             objectFit: 'cover', objectPosition: 'center',
-            filter: 'saturate(0.5) contrast(1.05) brightness(0.85)',
+            filter: 'saturate(0.8) contrast(1.05) brightness(1.05)',
             pointerEvents: 'none',
           }}
         />
-        <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'rgba(10,22,40,0.55)', mixBlendMode: 'multiply' }} />
+        <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'rgba(10,22,40,0.3)', mixBlendMode: 'multiply' }} />
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)',
+          background: 'linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.12) 30%, rgba(10,22,40,0.2) 70%, #0A1628 100%)',
         }} />
         <div style={{ maxWidth: '720px', margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <h2 className="font-display" style={{

@@ -38,10 +38,10 @@ export default function ComplianceAssessmentPage() {
             backgroundImage: "url(/images/compliance/press.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center 55%",
-            filter: "saturate(0.5) contrast(1.05) brightness(0.85)",
+            filter: "saturate(0.8) contrast(1.05) brightness(1.05)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
@@ -99,10 +99,10 @@ export default function ComplianceAssessmentPage() {
                 title: "Whether it's substantiated",
                 detail: "An income claim, a health claim, a guarantee: whether it holds up under the standard a regulator actually applies, not just whether it sounds plausible.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.word} style={{
-                background: "rgba(16,41,67,0.8)",
-                border: "1px solid rgba(239,68,68,0.2)",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 padding: "2.5rem",
               }}>
                 <p className="font-display" style={{ fontSize: "2rem", fontWeight: 500, color: "#E5484D", marginBottom: "1rem", lineHeight: 1, fontStyle: "italic" }}>{item.word}</p>
@@ -140,10 +140,10 @@ export default function ComplianceAssessmentPage() {
                 title: "Jurisdictions mapped, with sources",
                 detail: "Every regulation cited traces to official text or a government announcement, not a generic 'AI compliance' explainer.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.title} style={{
-                background: "rgba(16,41,67,0.8)",
-                border: "1px solid rgba(239,68,68,0.2)",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 padding: "2.5rem",
               }}>
                 <p className="font-display" style={{ fontSize: "2.5rem", fontWeight: 500, color: "#E5484D", marginBottom: "1rem", lineHeight: 1 }}>{item.stat}</p>
@@ -177,10 +177,10 @@ export default function ComplianceAssessmentPage() {
                   backgroundImage: "url(/images/compliance/glass.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "saturate(0.5) contrast(1.08) brightness(0.9)",
+                  filter: "saturate(0.8) contrast(1.08) brightness(1.08)",
                 }}
               />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.45)", mixBlendMode: "multiply" }} />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.26)", mixBlendMode: "multiply" }} />
               <div
                 aria-hidden
                 style={{
@@ -223,10 +223,10 @@ export default function ComplianceAssessmentPage() {
                 excerpt: "“Every piece of content we create comes from genuine human expertise.”",
                 finding: "Written by ChatGPT, published with a claim that it wasn't. Article 50(4) requires disclosure from 2 August 2026. Fines reach €15M or 3% of global turnover.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.tag} style={{
-                background: "rgba(16,41,67,0.8)",
-                border: "1px solid rgba(239,68,68,0.2)",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 borderRadius: "12px",
                 padding: "2rem",
               }}>
@@ -269,20 +269,20 @@ export default function ComplianceAssessmentPage() {
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            backgroundImage: "url(/images/compliance/type.jpg)",
+            backgroundImage: "url(/images/compliance/newsstack.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "saturate(0.5) contrast(1.05) brightness(0.85)",
+            filter: "saturate(0.8) contrast(1.05) brightness(1.05)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.3)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.3) 30%, rgba(10,22,40,0.4) 70%, #0A1628 100%)",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.1) 30%, rgba(10,22,40,0.18) 70%, #0A1628 100%)",
           }}
         />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>

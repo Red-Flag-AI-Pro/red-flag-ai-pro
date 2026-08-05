@@ -50,9 +50,9 @@ export default function WhoWhenWhetherPage() {
           priority
           sizes="100vw"
           quality={65}
-          style={{ objectFit: "cover", objectPosition: "center 40%", filter: "saturate(0.6) contrast(1.05) brightness(0.9)", pointerEvents: "none" }}
+          style={{ objectFit: "cover", objectPosition: "center 40%", filter: "saturate(0.85) contrast(1.05) brightness(1.08)", pointerEvents: "none" }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.45) 40%, rgba(10,22,40,0.7) 75%, #0A1628 100%)" }} />
         <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>

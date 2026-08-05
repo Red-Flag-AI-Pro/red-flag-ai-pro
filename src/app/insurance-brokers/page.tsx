@@ -168,7 +168,7 @@ export default function InsuranceBrokersPage() {
             backgroundImage: "url(/images/broker/signing.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
-            filter: "saturate(0.55) contrast(1.05) brightness(0.9)",
+            filter: "saturate(0.82) contrast(1.05) brightness(1.08)",
           }}
         />
         <div
@@ -354,10 +354,10 @@ export default function InsuranceBrokersPage() {
                 backgroundImage: "url(/images/broker/archive.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "saturate(0.5) contrast(1.08) brightness(0.85)",
+                filter: "saturate(0.8) contrast(1.08) brightness(1.05)",
               }}
             />
-            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.5)", mixBlendMode: "multiply" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.28)", mixBlendMode: "multiply" }} />
             <div
               aria-hidden
               style={{
@@ -567,17 +567,17 @@ export default function InsuranceBrokersPage() {
             backgroundImage: "url(/images/broker/lobby.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center 55%",
-            filter: "saturate(0.5) contrast(1.05) brightness(0.8)",
+            filter: "saturate(0.8) contrast(1.05) brightness(1.02)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.12) 30%, rgba(10,22,40,0.2) 70%, #0A1628 100%)",
           }}
         />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>

@@ -150,12 +150,12 @@ export default function AboutPage() {
                 title: "Proof doesn't exist",
                 desc: "When regulators ask, 'prove governance happened?' most organizations can't. Munir v SSHD shows courts already sanctioning firms for unverified AI outputs, and the same exposure applies to ungoverned AI use anywhere in the business.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.title}
                 style={{
-                  background: "rgba(16,41,67,0.6)",
-                  border: "1px solid rgba(239,68,68,0.2)",
+                  background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                  border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                   borderRadius: "12px",
                   padding: "2rem",
                 }}
@@ -287,12 +287,12 @@ export default function AboutPage() {
                 title: "Prove It Happened",
                 desc: "Forensic logs. Evidence packages. Regulatory mapping. When auditors ask 'prove it', you have the answer.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.title}
                 style={{
-                  background: "rgba(16,41,67,0.6)",
-                  border: "1px solid rgba(239,68,68,0.2)",
+                  background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                  border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                   borderRadius: "12px",
                   padding: "2rem",
                 }}

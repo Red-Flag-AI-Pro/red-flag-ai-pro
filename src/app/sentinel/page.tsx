@@ -133,11 +133,11 @@ export default function SentinelPage() {
           position: "absolute", inset: 0, pointerEvents: "none",
           backgroundImage: "url(/images/sentinel/tower.jpg)",
           backgroundSize: "cover", backgroundPosition: "center 35%",
-          filter: "saturate(0.55) contrast(1.05) brightness(0.9)"
+          filter: "saturate(0.82) contrast(1.05) brightness(1.08)"
         }} />
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply"
+          background: "rgba(10,22,40,0.3)", mixBlendMode: "multiply"
         }} />
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
@@ -303,9 +303,9 @@ export default function SentinelPage() {
               position: "absolute", inset: 0,
               backgroundImage: "url(/images/sentinel/signature.jpg)",
               backgroundSize: "cover", backgroundPosition: "center",
-              filter: "saturate(0.5) contrast(1.08) brightness(0.85)"
+              filter: "saturate(0.8) contrast(1.08) brightness(1.05)"
             }} />
-            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.5)", mixBlendMode: "multiply" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.28)", mixBlendMode: "multiply" }} />
             <div aria-hidden style={{
               position: "absolute", inset: 0,
               background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)"
@@ -569,12 +569,12 @@ export default function SentinelPage() {
           position: "absolute", inset: 0, pointerEvents: "none",
           backgroundImage: "url(/images/sentinel/skyline.jpg)",
           backgroundSize: "cover", backgroundPosition: "center 55%",
-          filter: "saturate(0.6) contrast(1.05) brightness(0.85)"
+          filter: "saturate(0.85) contrast(1.05) brightness(1.05)"
         }} />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.55)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.3)", mixBlendMode: "multiply" }} />
         <div aria-hidden style={{
           position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.3) 30%, rgba(10,22,40,0.4) 70%, #0A1628 100%)"
+          background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.1) 30%, rgba(10,22,40,0.18) 70%, #0A1628 100%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <h2 className="font-display" style={{

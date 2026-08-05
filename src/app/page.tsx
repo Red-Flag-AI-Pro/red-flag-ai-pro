@@ -127,10 +127,10 @@ export default function LandingPage() {
                   backgroundImage: "url(/images/home/newsprint.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+                  filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
                 }}
               />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.6)", mixBlendMode: "multiply" }} />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.32)", mixBlendMode: "multiply" }} />
               <div
                 aria-hidden
                 style={{
@@ -161,10 +161,10 @@ export default function LandingPage() {
                   backgroundImage: "url(/images/home/ledger.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "saturate(0.45) contrast(1.05) brightness(0.7)",
+                  filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
                 }}
               />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.6)", mixBlendMode: "multiply" }} />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.32)", mixBlendMode: "multiply" }} />
               <div
                 aria-hidden
                 style={{
@@ -220,10 +220,10 @@ export default function LandingPage() {
                 pain: "Are you ready for SEC exams? Can you demonstrate policy to practice alignment?",
                 solution: "Gap assessment + evidence package. Regulatory framework mapping.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.role} style={{
-                background: "rgba(16,41,67,0.6)",
-                border: "1px solid rgba(239,68,68,0.2)",
+                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
+                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 borderRadius: "12px",
                 padding: "2rem"
               }}>
@@ -313,17 +313,17 @@ export default function LandingPage() {
             backgroundImage: "url(/images/home/vault.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center 45%",
-            filter: "saturate(0.45) contrast(1.05) brightness(0.75)",
+            filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
           }}
         />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.6)", mixBlendMode: "multiply" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "rgba(10,22,40,0.32)", mixBlendMode: "multiply" }} />
         <div
           aria-hidden
           style={{
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
-            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.35) 30%, rgba(10,22,40,0.45) 70%, #0A1628 100%)",
+            background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.12) 30%, rgba(10,22,40,0.2) 70%, #0A1628 100%)",
           }}
         />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
