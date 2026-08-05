@@ -69,17 +69,79 @@ export async function POST(request: Request) {
     const riskLevel = getRiskLevel(overallScore);
     const templateFlags = generateRedFlags(dimensionScores, answers);
 
-    // Tailor each finding to the respondent's actual answers before anything
-    // downstream (DB persistence, PDF, on-screen gating) consumes it. Falls
-    // back silently to the template findings if the AI layer is unavailable,
-    // so the assessment always completes.
-    const redFlags = await enhanceGovernanceReport(
-      templateFlags,
+    // ============================================================
+    // CHECK FOR A PAYING (GROWTH OR SENTINEL) ACCOUNT — moved ahead of AI
+    // enhancement on purpose. Since the quiz no longer requires an email to
+    // run, this now needs to be known BEFORE the AI call, not after: a free
+    // or anonymous respondent only ever sees one warning, so only that one
+    // flag needs enhancing. Enhancing all of them first (the old order) meant
+    // paying an AI call for detail that gets thrown away the moment the
+    // response is built, an open-ended cost with no cap tied to it.
+    // ============================================================
+    // The split is warnings vs fixes, not "some flags vs all flags" — Growth
+    // and Sentinel looked nearly identical when Growth got full detail
+    // (including the fix) on half its gaps. Now:
+    //   - Free: ONE warning (what's wrong + why), no fix, no citation.
+    //   - Growth: EVERY warning, with citation — the full diagnosis, scary
+    //     and complete — but the recommendation (the fix) is stripped from
+    //     all of them, and the roadmap (the action plan) stays locked to a
+    //     count. Growth tells you everything that's wrong; Sentinel is the
+    //     only tier that tells you how to fix it.
+    //   - Sentinel: every warning + every fix + the full roadmap, plus the
+    //     managed layer (tracked /governance checklist, all 6 documents,
+    //     financial modeling, board reporting — sold outside code gates).
+
+    let tier: 'free' | 'growth' | 'sentinel' = 'free';
+    let loggedInUser: { id: string; email?: string } | null = null;
+
+    try {
+      const serverSupabase = await createServerClient();
+      const {
+        data: { user },
+      } = await serverSupabase.auth.getUser();
+
+      if (user) {
+        loggedInUser = { id: user.id, email: user.email };
+        const { data: profile } = await serverSupabase
+          .from('profiles')
+          .select('plan')
+          .eq('user_id', user.id)
+          .single();
+
+        if (profile?.plan === 'enterprise' || profile?.plan === 'sentinel') {
+          tier = profile.plan === 'sentinel' ? 'sentinel' : 'growth';
+        }
+      }
+    } catch (linkError) {
+      // Never let account-linking failures break the public assessment flow.
+      console.error('Governance assessment account-link error:', linkError);
+    }
+
+    const fullAccess = tier !== 'free'; // every warning visible (Growth + Sentinel)
+    const managed = tier === 'sentinel'; // fixes unlocked + managed tooling
+
+    const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
+    const sortedTemplateFlags = [...templateFlags].sort(
+      (a, b) => severityRank[a.severity] - severityRank[b.severity]
+    );
+    const warningVisibleCount = fullAccess ? sortedTemplateFlags.length : 1;
+    const toEnhance = sortedTemplateFlags.slice(0, warningVisibleCount);
+    const restUnenhanced = sortedTemplateFlags.slice(warningVisibleCount);
+
+    // Tailor each VISIBLE finding to the respondent's actual answers. Locked
+    // flags stay as template-only — their description/recommendation get
+    // stripped to '' before they ever reach the response anyway, so paying
+    // for AI enhancement on them was always wasted work, not just an
+    // anonymous-user problem. Falls back silently to the template findings
+    // if the AI layer is unavailable, so the assessment always completes.
+    const enhancedVisible = await enhanceGovernanceReport(
+      toEnhance,
       answers,
       dimensionScores,
       overallScore,
       riskLevel
     );
+    const redFlags = [...enhancedVisible, ...restUnenhanced];
 
     const roadmap = generateRoadmap(dimensionScores, redFlags);
 
@@ -170,39 +232,16 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // CHECK FOR A PAYING (GROWTH OR SENTINEL) ACCOUNT
+    // ACCOUNT-LINKED PERSISTENCE — paying tiers only. Auth/tier was already
+    // resolved above (needed before enhancement); this just does the side
+    // effects that depend on it: the tracked assessment row and the
+    // first-use activation event.
     // ============================================================
-    // The split is warnings vs fixes, not "some flags vs all flags" — Growth
-    // and Sentinel looked nearly identical when Growth got full detail
-    // (including the fix) on half its gaps. Now:
-    //   - Free: ONE warning (what's wrong + why), no fix, no citation.
-    //   - Growth: EVERY warning, with citation — the full diagnosis, scary
-    //     and complete — but the recommendation (the fix) is stripped from
-    //     all of them, and the roadmap (the action plan) stays locked to a
-    //     count. Growth tells you everything that's wrong; Sentinel is the
-    //     only tier that tells you how to fix it.
-    //   - Sentinel: every warning + every fix + the full roadmap, plus the
-    //     managed layer (tracked /governance checklist, all 6 documents,
-    //     financial modeling, board reporting — sold outside code gates).
+    if (loggedInUser) {
+      try {
+        const serverSupabase = await createServerClient();
 
-    let tier: 'free' | 'growth' | 'sentinel' = 'free';
-
-    try {
-      const serverSupabase = await createServerClient();
-      const {
-        data: { user },
-      } = await serverSupabase.auth.getUser();
-
-      if (user) {
-        const { data: profile } = await serverSupabase
-          .from('profiles')
-          .select('plan')
-          .eq('user_id', user.id)
-          .single();
-
-        if (profile?.plan === 'enterprise' || profile?.plan === 'sentinel') {
-          tier = profile.plan === 'sentinel' ? 'sentinel' : 'growth';
-
+        if (tier === 'growth' || tier === 'sentinel') {
           // Account-linked, separate from the anonymous lead-gen row above.
           // Persisted for both tiers so Growth's one free document can be
           // generated later — only Sentinel's roadmap is actually tracked
@@ -210,10 +249,10 @@ export async function POST(request: Request) {
           const { count: existingAuditCount } = await serverSupabase
             .from('governance_assessments')
             .select('id', { count: 'exact', head: true })
-            .eq('user_id', user.id);
+            .eq('user_id', loggedInUser.id);
 
           await serverSupabase.from('governance_assessments').insert({
-            user_id: user.id,
+            user_id: loggedInUser.id,
             score: overallScore,
             risk_level: riskLevel,
             dimension_scores: dimensionScores,
@@ -222,52 +261,41 @@ export async function POST(request: Request) {
           });
 
           // First governance audit — lets Loops suppress the activation nudge
-          if ((existingAuditCount ?? 0) === 0 && user.email) {
+          if ((existingAuditCount ?? 0) === 0 && loggedInUser.email) {
             sendLoopsEvent({
-              email: user.email,
+              email: loggedInUser.email,
               eventName: 'first_tool_used',
               properties: { tool: 'governance_audit', score: overallScore, risk_level: riskLevel },
             }).catch(() => {});
           }
-        } else if (user.email) {
-          // Free user completed governance audit — still fire activation event
+        } else if (loggedInUser.email) {
+          // Free logged-in user completed governance audit — still fire activation event
           const { count: existingAuditCount } = await serverSupabase
             .from('governance_audit_emails')
             .select('id', { count: 'exact', head: true })
-            .eq('email', user.email);
+            .eq('email', loggedInUser.email);
 
           if ((existingAuditCount ?? 0) <= 1) {
             sendLoopsEvent({
-              email: user.email,
+              email: loggedInUser.email,
               eventName: 'first_tool_used',
               properties: { tool: 'governance_audit', score: overallScore, risk_level: riskLevel },
             }).catch(() => {});
           }
         }
+      } catch (linkError) {
+        // Never let account-linking failures break the public assessment flow.
+        console.error('Governance assessment account-link error:', linkError);
       }
-    } catch (linkError) {
-      // Never let account-linking failures break the public assessment flow.
-      console.error('Governance assessment account-link error:', linkError);
     }
-
-    const fullAccess = tier !== 'free'; // every warning visible (Growth + Sentinel)
-    const managed = tier === 'sentinel'; // fixes unlocked + managed tooling
 
     // ============================================================
     // BUILD RESPONSE
     // ============================================================
+    // redFlags is already severity-sorted (built from sortedTemplateFlags
+    // above), so no need to re-sort here.
 
-    const severityRank: Record<string, number> = { high: 0, medium: 1, low: 2 };
-    const sortedFlags = [...redFlags].sort(
-      (a, b) => severityRank[a.severity] - severityRank[b.severity]
-    );
-
-    // Free: only the single worst gap is shown at all (everything else is a
-    // bare locked stub). Growth: every gap's warning is visible, but with the
-    // fix stripped. Sentinel: every gap, warning and fix both.
-    const warningVisibleCount = fullAccess ? sortedFlags.length : 1;
-
-    const responseFlags = sortedFlags.map((f, i) => {
+    const responseFlags = redFlags.map((f, i) => {
       if (i >= warningVisibleCount) {
         return {
           severity: f.severity,

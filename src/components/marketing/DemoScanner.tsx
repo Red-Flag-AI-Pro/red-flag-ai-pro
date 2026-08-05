@@ -79,8 +79,9 @@ export function DemoScanner() {
   async function handleScan() {
     if (!content.trim()) return;
 
-    if (!EMAIL_REGEX.test(email.trim())) {
-      setError("Please enter a valid email address. Each address gets one free check.");
+    // Email is optional — free score preview. If given, it must be valid.
+    if (email.trim() && !EMAIL_REGEX.test(email.trim())) {
+      setError("Please enter a valid email address.");
       return;
     }
 
@@ -175,7 +176,7 @@ export function DemoScanner() {
           </p>
 
           <p style={{...syne, fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em"}}>
-            No account. No card. Just your email, one free check per address.
+            No account. No card. No email needed to see your score.
           </p>
         </div>
 
@@ -306,7 +307,7 @@ export function DemoScanner() {
           boxShadow: "0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04)",
           borderRadius: "8px"
         }}>
-          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Your email: one free check per address</p>
+          <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Email — optional, unlocks the AI-rewritten fix for your top flag</p>
           <input
             type="email"
             value={email}
@@ -476,11 +477,11 @@ export function DemoScanner() {
 
           <button
             onClick={handleScan}
-            disabled={loading || !content.trim() || !email.trim() || jurisdictions.length === 0}
+            disabled={loading || !content.trim() || jurisdictions.length === 0}
             style={{
               marginTop: "1rem",
               width: "100%",
-              background: loading || !content.trim() || !email.trim() ? "rgba(229,72,77,0.3)" : "#E5484D",
+              background: loading || !content.trim() ? "rgba(229,72,77,0.3)" : "#E5484D",
               color: "white",
               ...syne,
               fontSize: "0.9rem",
@@ -488,8 +489,8 @@ export function DemoScanner() {
               padding: "14px 24px",
               border: "none",
               borderRadius: "9999px",
-              cursor: loading || !content.trim() || !email.trim() ? "not-allowed" : "pointer",
-              boxShadow: loading || !content.trim() || !email.trim() ? "none" : "0 8px 32px rgba(229,72,77,0.18)",
+              cursor: loading || !content.trim() ? "not-allowed" : "pointer",
+              boxShadow: loading || !content.trim() ? "none" : "0 8px 32px rgba(229,72,77,0.18)",
               transition: "all 0.2s",
               letterSpacing: "0.02em"
             }}
