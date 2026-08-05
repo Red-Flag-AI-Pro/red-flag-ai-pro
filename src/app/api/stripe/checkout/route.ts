@@ -103,6 +103,7 @@ export async function POST(request: Request) {
       // an email thread.
       success_url: `${appUrl}/audit/program-intake?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/audit?canceled=1`,
+      allow_promotion_codes: true,
     });
     return NextResponse.json({ url: session.url });
   }
