@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, GROWTH_SALE_ACTIVE, PLAN_PRICES } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, GROWTH_SALE_ACTIVE, PLAN_PRICES, AUDIT_PRICE, PROGRAM_PRICE } from "@/lib/constants";
 import React from "react";
 
 export const dynamic = "force-dynamic";
@@ -471,6 +471,72 @@ export default async function PricingPage() {
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
           </p>
+        </div>
+      </section>
+
+      {/* DONE FOR YOU */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>Done for you</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
+              Prefer it <span style={{ fontStyle: "italic", color: "#E5484D" }}>done for you?</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", marginTop: "0.75rem", maxWidth: "560px", margin: "0.75rem auto 0" }}>
+              One time purchases, not a subscription. Two ways to get there.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", padding: "2rem" }}>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE AUDIT</p>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
+                <span style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</span>
+                <span style={{ ...mono, fontSize: "11px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em" }}>ONE TIME · DONE BY HAND</span>
+              </div>
+              {[
+                "James personally checks your site and AI use, on video",
+                "Written report: compliance exposure and governance gaps",
+                "Reviewed badge for your site",
+                "All 18 governance and compliance tools, free",
+              ].map((f) => (
+                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                  <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "10px" }}>✓</span>{f}
+                </p>
+              ))}
+            </div>
+
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(229,72,77,0.25)", padding: "2rem" }}>
+              <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL PROGRAM</p>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
+                <span style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{PROGRAM_PRICE.amount}</span>
+                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · GENERATED IN MINUTES</span>
+              </div>
+              {[
+                "Six documents (DPIA, FRIA, AI use policy, incident checklist, monitoring plan, Annex IV) AI tailored to your business",
+                "Financial exposure snapshot, regulatory mapping and an A–G letter grade, compiled from your answers",
+                "Sealed and hash chained with a public verify link — no free tool on this site does that",
+                "Includes a boundary authorization record (who approved it, when it expires) — a Sentinel-only feature elsewhere",
+              ].map((f) => (
+                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                  <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <Link href="/audit" style={{
+              display: "inline-flex", alignItems: "center",
+              background: "#E5484D", color: "white",
+              ...syne, fontSize: "0.85rem", fontWeight: 700,
+              padding: "12px 26px", borderRadius: "9999px",
+              boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
+              textDecoration: "none",
+            }}>
+              See the full comparison →
+            </Link>
+          </div>
         </div>
       </section>
 

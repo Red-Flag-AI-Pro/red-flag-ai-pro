@@ -45,6 +45,12 @@ export interface ProgramIntake {
   purpose: string;
   architecture: ProgramArchitecture;
   primaryJurisdiction: ProgramJurisdiction;
+  // Who is actually approving this system's use — feeds the included boundary
+  // authorization record (task #243), not any of the six documents. Optional:
+  // a customer who leaves this blank still gets the record, named to the
+  // company itself rather than inventing a person nobody gave us.
+  approverName: string;
+  approverRole: string;
   // Annual turnover, used only for the financial exposure snapshot (task
   // #237) — turns the statutory ceiling for primaryJurisdiction into a real
   // number for this business rather than a generic maximum. Optional: a
@@ -91,6 +97,8 @@ export const PROGRAM_INTAKE_DEFAULTS: ProgramIntake = {
   purpose: "",
   architecture: "third_party_api",
   primaryJurisdiction: "uk",
+  approverName: "",
+  approverRole: "",
   annualTurnoverGBP: 0,
   dataTypes: [],
   dataSources: "",

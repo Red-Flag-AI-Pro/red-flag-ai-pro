@@ -166,6 +166,15 @@ export function ProgramIntakeForm({ orderId, initialIntake }: ProgramIntakeFormP
         <Field label="What does it do, and why?">
           <textarea value={intake.purpose} onChange={(e) => set("purpose", e.target.value)} rows={3} placeholder="e.g. Reads incoming support tickets and assigns a priority score to route them to the right team" style={textareaStyle} required />
         </Field>
+        <Field label="Who is approving this system's use? (optional — named to your company if left blank)">
+          <input type="text" value={intake.approverName} onChange={(e) => set("approverName", e.target.value)} placeholder="e.g. Jane Smith" style={inputStyle} />
+        </Field>
+        <Field label="Their role (optional)">
+          <input type="text" value={intake.approverRole} onChange={(e) => set("approverRole", e.target.value)} placeholder="e.g. Operations Director" style={inputStyle} />
+        </Field>
+        <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, margin: "-0.4rem 0 0.6rem" }}>
+          Feeds the sealed boundary authorization record included with this program — a dated, hash-chained proof of who approved this system, distinct from the six documents above.
+        </p>
         <Field label="How is the AI system built?">
           <select value={intake.architecture} onChange={(e) => set("architecture", e.target.value as ProgramIntake["architecture"])} style={{ ...inputStyle, appearance: "none" }}>
             {PROGRAM_ARCHITECTURE_TYPES.map((a) => (

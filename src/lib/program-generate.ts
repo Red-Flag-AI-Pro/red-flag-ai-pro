@@ -16,6 +16,7 @@ import { computeFinancialSnapshot } from "./program-financial";
 import { computeRegulatoryMapping } from "./program-regulatory-mapping";
 import { calculateProgramScore } from "./program-grade";
 import { sealProgramBundle } from "./program-seal";
+import { createProgramBoundaryRecord } from "./program-boundary-record";
 import { PROGRAM_INTAKE_DEFAULTS, type ProgramIntake } from "./program-intake";
 
 export interface ProgramGenerationResult {
@@ -59,6 +60,14 @@ export async function runProgramGenerationPipeline(
     const regulatoryMapping = computeRegulatoryMapping(intake);
     const { score, grade } = calculateProgramScore(intake);
 
+    // Idempotent on retry: a regenerated order must not create a second
+    // authorization record for the same purchase.
+    let boundaryRecordId: string | null = order.boundary_record_id ?? null;
+    if (!boundaryRecordId) {
+      const boundaryRecord = await createProgramBoundaryRecord(supabase, order.user_id, intake);
+      boundaryRecordId = boundaryRecord?.id ?? null;
+    }
+
     const { error: saveError } = await supabase
       .from("program_orders")
       .update({
@@ -72,6 +81,7 @@ export async function runProgramGenerationPipeline(
         regulatory_mapping: regulatoryMapping,
         letter_grade: grade,
         letter_grade_score: score,
+        boundary_record_id: boundaryRecordId,
         status: "delivered",
         delivered_at: new Date().toISOString(),
       })

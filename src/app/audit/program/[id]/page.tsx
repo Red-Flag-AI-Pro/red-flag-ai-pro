@@ -101,6 +101,23 @@ export default async function ProgramDeliveryPage({
               <RegulatoryMappingTable rows={order.regulatory_mapping as RegulatoryMappingRow[]} />
             )}
 
+            {order.boundary_record_id && (
+              <div style={{
+                background: "rgba(201,166,107,0.06)",
+                border: "1px solid rgba(201,166,107,0.25)",
+                padding: "1.5rem 1.75rem",
+                marginBottom: "1.5rem",
+              }}>
+                <p style={labelStyle}>Boundary authorization record</p>
+                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
+                  A dated, hash chained record of who approved this system and when that authority expires — the same mechanism Sentinel clients use, included here as a one-time record rather than an ongoing one.
+                </p>
+                <a href="/boundary-records" style={{ ...syne, fontSize: "12.5px", color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>
+                  View it in your Boundary Authorization Records →
+                </a>
+              </div>
+            )}
+
             <div style={{ marginBottom: "1rem" }}>
               <p style={{ ...syne, fontSize: "1.05rem", fontWeight: 800, color: "white", letterSpacing: "-0.01em", marginBottom: "0.5rem" }}>
                 Your six documents

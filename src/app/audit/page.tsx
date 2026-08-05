@@ -555,8 +555,11 @@ export default async function AuditPage({
                   <span style={{ color: "rgba(201,166,107,0.6)", marginRight: "10px" }}>·</span>{f}
                 </p>
               ))}
-              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: "1.1rem 0 0", fontWeight: 700 }}>
+              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: "1.1rem 0 0.5rem", fontWeight: 700 }}>
                 ✓ Sealed and hash chained the moment it's complete, with a public verify link — nothing free on this site does that.
+              </p>
+              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: 0, fontWeight: 700 }}>
+                ✓ Includes a boundary authorization record — who approved this system and when that authority expires, hash chained the same way. Elsewhere on this site that's a Sentinel-only feature.
               </p>
               <a href="/audit/program-checkout" style={{
                 display: "inline-flex", alignItems: "center", marginTop: "1.5rem",
