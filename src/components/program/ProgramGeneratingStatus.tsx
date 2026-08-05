@@ -27,7 +27,7 @@ export function ProgramGeneratingStatus() {
     <div style={{ textAlign: "center", padding: "5rem 1.5rem" }}>
       <div style={{ width: "40px", height: "40px", border: "3px solid rgba(239,68,68,0.2)", borderTopColor: "#E5484D", borderRadius: "50%", animation: "spin 0.8s linear infinite", margin: "0 auto 1.5rem" }} />
       <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>
-        Generating your six documents…
+        Generating your governance file…
       </p>
       <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
         {seconds < 60 ? "This usually takes under a minute." : "Still working — this page refreshes on its own."}

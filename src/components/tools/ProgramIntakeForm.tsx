@@ -140,10 +140,10 @@ export function ProgramIntakeForm({ orderId, initialIntake }: ProgramIntakeFormP
       <div style={{ textAlign: "center", padding: "5rem 1.5rem" }}>
         <div style={{ width: "40px", height: "40px", border: "3px solid rgba(239,68,68,0.2)", borderTopColor: "#E5484D", borderRadius: "50%", animation: "spin 0.8s linear infinite", margin: "0 auto 1.5rem" }} />
         <p style={{ ...syne, fontSize: "15px", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>
-          Generating your six documents…
+          Generating your governance file…
         </p>
         <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", maxWidth: "420px", margin: "0 auto" }}>
-          This takes under a minute. Do not close this tab — you will be taken straight to your results.
+          Six documents, your financial exposure snapshot, regulatory mapping, and letter grade. This takes under a minute. Do not close this tab — you will be taken straight to your results.
         </p>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
@@ -155,7 +155,7 @@ export function ProgramIntakeForm({ orderId, initialIntake }: ProgramIntakeFormP
       <SectionPanel
         number="01"
         title="Your business and the system itself"
-        intro="This feeds all six documents, so it only needs answering once."
+        intro="This feeds every document below, plus your financial snapshot, regulatory mapping and letter grade, so it only needs answering once."
       >
         <Field label="Company name">
           <input type="text" value={intake.companyName} onChange={(e) => set("companyName", e.target.value)} placeholder="e.g. Acme Ltd" style={inputStyle} required />
@@ -313,7 +313,7 @@ export function ProgramIntakeForm({ orderId, initialIntake }: ProgramIntakeFormP
             boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
           }}
         >
-          Generate my six documents →
+          Generate my governance file →
         </button>
         {!canSubmit && (
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.35)", marginTop: "0.75rem" }}>
