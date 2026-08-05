@@ -128,6 +128,12 @@ export default function FeaturesPage() {
                 href: null,
                 linkText: null,
               },
+              {
+                title: "Authority health, at a glance",
+                desc: "Whether a scope decision still holds should never depend on someone remembering to ask. Every authorization you've recorded shows as a running count, still valid, unbounded, or already lapsed, so a gap in coverage is a visible fact on your dashboard, not something waiting to be discovered.",
+                href: "/boundary-authorization-records",
+                linkText: "See how it's scored",
+              },
             ].map((item, i) => (
               <div key={item.title} style={{ background: i % 2 === 0 ? "#0D1B2E" : "#102943", border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`, padding: "2rem" }}>
                 <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>{String(i + 1).padStart(2, "0")}</p>

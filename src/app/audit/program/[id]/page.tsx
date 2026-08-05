@@ -62,6 +62,16 @@ export default async function ProgramDeliveryPage({
 
   const companyName = (order.intake as { companyName?: string } | null)?.companyName?.trim();
 
+  let boundaryRecord: { expires_at: string; owner_name: string; owner_role: string } | null = null;
+  if (order.boundary_record_id) {
+    const { data } = await supabase
+      .from("boundary_authorization_records")
+      .select("expires_at, owner_name, owner_role")
+      .eq("id", order.boundary_record_id)
+      .single();
+    boundaryRecord = data ?? null;
+  }
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
@@ -108,9 +118,27 @@ export default async function ProgramDeliveryPage({
                 padding: "1.5rem 1.75rem",
                 marginBottom: "1.5rem",
               }}>
-                <p style={labelStyle}>Boundary authorization record</p>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
+                  <p style={{ ...labelStyle, marginBottom: 0 }}>Boundary authorization record</p>
+                  {boundaryRecord && (() => {
+                    const today = new Date().toISOString().slice(0, 10);
+                    const lapsed = boundaryRecord.expires_at < today;
+                    const daysLeft = Math.ceil((new Date(boundaryRecord.expires_at).getTime() - new Date(today).getTime()) / 86_400_000);
+                    return (
+                      <span style={{
+                        ...mono, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
+                        padding: "3px 10px", borderRadius: "9999px",
+                        color: lapsed ? "#f87171" : "#4ade80",
+                        background: lapsed ? "rgba(248,113,113,0.12)" : "rgba(74,222,128,0.12)",
+                        border: `1px solid ${lapsed ? "rgba(248,113,113,0.3)" : "rgba(74,222,128,0.3)"}`,
+                      }}>
+                        {lapsed ? "Lapsed" : `Active · expires in ${daysLeft} days`}
+                      </span>
+                    );
+                  })()}
+                </div>
                 <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
-                  A dated, hash chained record of who approved this system and when that authority expires — the same mechanism Sentinel clients use, included here as a one-time record rather than an ongoing one.
+                  A dated, hash chained record of who approved this system and when that authority expires — the same mechanism Sentinel clients use, included here as a one-time record rather than an ongoing one. This status updates automatically; nothing here depends on remembering to check back.
                 </p>
                 <a href="/boundary-records" style={{ ...syne, fontSize: "12.5px", color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>
                   View it in your Boundary Authorization Records →

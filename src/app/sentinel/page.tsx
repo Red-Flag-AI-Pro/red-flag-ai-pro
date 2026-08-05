@@ -56,6 +56,10 @@ const BENEFITS = [
     headline: "Turn check results into something you can actually show.",
     body: "Every check can be rendered into a short video summary: the score, the flags, the risk breakdown, presented clearly. Send it to a client, drop it in a report, or use it to show a prospect exactly what you found on their site. No screenshots, no explaining a spreadsheet.",
   },
+  {
+    headline: "Whether it still holds shouldn't depend on someone remembering to ask.",
+    body: "That's the gap in most governance and assurance practice: a scope decision is agreed once, and nothing forces anyone to revisit it. Sentinel closes it. Every boundary authorization shows on your dashboard as a live health stat, valid, unbounded, or already lapsed, so a coverage gap is a visible, dated fact, not something reconstructed later if anyone thinks to look.",
+  },
 ];
 
 const WHO = [

@@ -45,6 +45,7 @@ const SENTINEL_FEATURES = [
   "Managed governance implementation (we work it with you)",
   "Cryptographically sealed audit log, verifiable on demand",
   "Sign offs stamped with the signer's role and authority, not just their name",
+  "Authority health dashboard — lapsed and unbounded grants surfaced automatically, not hidden until someone asks",
   "Ongoing governance & vendor monitoring reviews",
   "Financial impact modeling (compliance cost calculator)",
   "Governance enforcement support & guardrail design",
@@ -517,6 +518,7 @@ export default async function PricingPage() {
                 "Financial exposure snapshot, regulatory mapping and an A–G letter grade, compiled from your answers",
                 "Sealed and hash chained with a public verify link — no free tool on this site does that",
                 "Includes a boundary authorization record (who approved it, when it expires) — a Sentinel-only feature elsewhere",
+                "That record shows on your dashboard's authority health stat too, so whether it still holds is never something you have to remember to check",
               ].map((f) => (
                 <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
                   <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
