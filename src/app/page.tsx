@@ -194,45 +194,76 @@ export default function LandingPage() {
         background: "#0A1628",
         borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Built for both halves</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>Creators protecting their copy. CFOs proving their governance.</h2>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Different job. Same moment.</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "3rem", color: "white", textAlign: "center" }}>The moment someone asks you to prove it, and you can&apos;t.</h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
-            {[
+          {(() => {
+            const ROW_ONE = [
               {
-                role: "Creators & Course Sellers",
+                role: "Creators & course sellers",
                 pain: "Is your ad about to get you fined, or flagged by the platform you're paying to run it on?",
                 solution: "Check your copy in under 60 seconds. Catch income claims, fake urgency, and missing disclosures before you publish.",
               },
               {
-                role: "Marketing Agencies",
-                pain: "Are you confident every client account is compliant, across every jurisdiction you serve?",
+                role: "Marketing agencies",
+                pain: "One client's ad gets an ASA ruling. Is your agency's name on the file?",
                 solution: "Run the checker across every client's copy from one dashboard. Catch what slips past human review.",
               },
               {
-                role: "CFOs & Finance Leaders",
-                pain: "Can you prove AI governance to the board? Can you quantify compliance risk?",
+                role: "CFOs & finance leaders",
+                pain: "The board asks who signed off on the AI system. What do you actually have?",
                 solution: "Score governance maturity. Model financial impact. Get board ready reports.",
               },
               {
-                role: "Compliance Officers",
-                pain: "Are you ready for SEC exams? Can you demonstrate policy to practice alignment?",
+                role: "Compliance officers",
+                pain: "The examiner asks for the record, not the policy. Do you have one?",
                 solution: "Gap assessment + evidence package. Regulatory framework mapping.",
               },
-            ].map((item, i) => (
+            ];
+            // Second row is its own independent 3-column grid rather than a
+            // continuation of row one's 4 columns, so three items divide
+            // evenly and center properly instead of leaving an orphan slot.
+            const ROW_TWO = [
+              {
+                role: "Insurance brokers & underwriters",
+                pain: "A claim comes in. Can you tell if the AI system was even authorized to make that call?",
+                solution: "Prove your own AI governance, and any delegate's, with a sealed, timestamped audit trail.",
+              },
+              {
+                role: "Solo founders using AI",
+                pain: "You added an AI chatbot last month. If it gives bad advice tomorrow, who's actually on the hook?",
+                solution: "Get a boundary authorization record in minutes. Know who's accountable before it matters.",
+              },
+              {
+                role: "HR & people teams",
+                pain: "Your AI screens candidates. If someone complains about bias, what would you actually show a tribunal?",
+                solution: "Governance assessment built for hiring AI. Prove the process, not just the policy.",
+              },
+            ];
+            const card = (item: { role: string; pain: string; solution: string }, dark: boolean) => (
               <div key={item.role} style={{
-                background: i % 2 === 0 ? "#0D1B2E" : "#102943",
-                border: `1px solid ${i % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
+                background: dark ? "#0D1B2E" : "#102943",
+                border: `1px solid ${dark ? "rgba(255,255,255,0.05)" : "rgba(239,68,68,0.12)"}`,
                 borderRadius: "12px",
                 padding: "2rem"
               }}>
-                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#E5484D", marginBottom: "0.75rem", textTransform: "uppercase", letterSpacing: "0.04em" }}>{item.role}</p>
-                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginBottom: "1rem", borderLeft: "2px solid rgba(239,68,68,0.3)", paddingLeft: "1rem", fontStyle: "italic" }}>{item.pain}</p>
+                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "#E5484D", marginBottom: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>{item.role}</p>
+                <p className="font-display" style={{ fontSize: "1.15rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem", lineHeight: 1.4, borderLeft: "2px solid #E5484D", paddingLeft: "1rem" }}>{item.pain}</p>
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>✓ {item.solution}</p>
               </div>
-            ))}
-          </div>
+            );
+            return (
+              <>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem" }}>
+                  {ROW_ONE.map((item, i) => card(item, i % 2 === 0))}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 320px))", justifyContent: "center", gap: "2rem", marginTop: "2rem" }}>
+                  {ROW_TWO.map((item, i) => card(item, i % 2 !== 0))}
+                </div>
+              </>
+            );
+          })()}
         </div>
       </section>
 
@@ -277,6 +308,13 @@ export default function LandingPage() {
               only), which matched the zero-usage numbers exactly — nobody
               creates a record they never learn exists. */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1rem", marginTop: "3rem", textAlign: "left" }}>
+            <Link href="/compliance-assessment" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
+              <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The framework</p>
+              <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>What, where, whether</h3>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+                Every compliance flag answers the same three questions a regulator asks: what was actually claimed, which jurisdiction's rules apply, and whether it's substantiated. Read the framework →
+              </p>
+            </Link>
             <Link href="/who-when-whether" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The framework</p>
               <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>Who, when, whether</h3>
@@ -284,6 +322,11 @@ export default function LandingPage() {
                 Every AI accountability question a regulator or board asks reduces to three: who approved it, when they approved it, and whether their authority still held when it mattered. Read the framework →
               </p>
             </Link>
+          </div>
+          {/* Its own centered row rather than a third grid cell, same fix as
+              the who-it's-for section: a lone item in an auto-fit 1fr grid
+              stretches to fill the row instead of sitting sized and centered. */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 400px))", justifyContent: "center", gap: "1rem", marginTop: "1rem", textAlign: "left" }}>
             <Link href="/boundary-authorization-records" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The record</p>
               <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>Boundary authorization records</h3>
