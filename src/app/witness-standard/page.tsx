@@ -148,6 +148,9 @@ export default function WitnessStandardPage() {
           Want to join formally? The network is open to applications, though only for a small number of companies at this stage: <a href="/witness-network/apply" style={{ color: "#E5484D" }}>apply here</a>.
         </P>
         <P>
+          The full terms every peer operates under, the same for everyone, are written down at <a href="/witness-standard/peer-agreement" style={{ color: "#E5484D" }}>the Witness Peer Agreement</a>.
+        </P>
+        <P>
           Questions, or want your chain named properly rather than showing up as an unlabelled peer, reach us at <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D" }}>support@redflagaipro.com</a>.
         </P>
         </div>
