@@ -70,8 +70,12 @@ export interface BoundaryEvidence {
 // stops being valid if X becomes true." The falsifier IS the expiry condition —
 // no separate revocation mechanism needed, the same written-down test that
 // gates approval also triggers the lapse.
+// triggered_at: when someone who noticed this condition become true flagged
+// it. Setting it is what actually pulls expires_at forward — before this
+// field existed, falsifiers were text nobody could act on, display only.
 export interface BoundaryFalsifier {
   condition: string;
+  triggered_at?: string | null;
 }
 
 // The authority spectrum, from a human deciding everything to a system

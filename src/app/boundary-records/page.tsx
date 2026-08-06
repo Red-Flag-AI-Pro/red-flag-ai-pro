@@ -474,8 +474,26 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   );
 }
 
-function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean; authorEmail: string | null }) {
+function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpdated }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean; authorEmail: string | null; onUpdated: (record: BoundaryAuthorizationRecord) => void }) {
   const [expanded, setExpanded] = useState(false);
+  const [triggeringIndex, setTriggeringIndex] = useState<number | null>(null);
+
+  async function triggerFalsifier(index: number) {
+    setTriggeringIndex(index);
+    try {
+      const res = await fetch(`/api/boundary-records/${record.id}/trigger-falsifier`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ index }),
+      });
+      if (res.ok) {
+        const { record: updated } = await res.json();
+        onUpdated(updated);
+      }
+    } finally {
+      setTriggeringIndex(null);
+    }
+  }
   const status = authorityStatus(record);
   const chip = STATUS_CHIP[status];
   // Fail-closed on completeness: a record with no continuity owner or no
@@ -606,9 +624,27 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail }: { re
           {(record.expiry_conditions ?? []).length > 0 && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Stops being valid if</p>
-              <ul className="space-y-1">
+              <ul className="space-y-1.5">
                 {(record.expiry_conditions ?? []).map((f, i) => (
-                  <li key={i} className="text-sm text-[rgba(244,241,234,0.8)]">• {f.condition}</li>
+                  <li key={i} className="text-sm">
+                    {f.triggered_at ? (
+                      <span className="text-amber-300">
+                        • {f.condition} — <span className="font-semibold">observed {new Date(f.triggered_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}, pulled the expiry forward.</span>
+                      </span>
+                    ) : (
+                      <span className="text-[rgba(244,241,234,0.8)] flex items-center gap-2 flex-wrap">
+                        • {f.condition}
+                        <button
+                          onClick={() => triggerFalsifier(i)}
+                          disabled={triggeringIndex === i}
+                          className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/40 bg-amber-900/20 text-amber-300 px-2 py-0.5 hover:bg-amber-900/40 transition-colors disabled:opacity-50"
+                          title="This did not require anyone's approval to set — anyone who has noticed it become true can say so."
+                        >
+                          {triggeringIndex === i ? "Recording…" : "This happened"}
+                        </button>
+                      </span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -855,6 +891,7 @@ export default function BoundaryRecordsPage() {
                 supersededRecord={r.supersedes_id ? recordsById.get(r.supersedes_id) ?? null : null}
                 lapseSealed={lapsedRecordIds.has(r.id)}
                 authorEmail={authorEmail}
+                onUpdated={(updated) => setRecords((prev) => prev.map((rec) => (rec.id === updated.id ? updated : rec)))}
               />
             ))}
           </div>
