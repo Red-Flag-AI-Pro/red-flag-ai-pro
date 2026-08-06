@@ -40,7 +40,6 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "The Witness Test", href: "/witness-test" },
       { label: "How it works", href: "/witness-network" },
       { label: "Open Witness Standard", href: "/witness-standard" },
-      { label: "Apply to join", href: "/witness-network/apply" },
       { label: "Verify a record", href: "/verify" },
     ],
   },
