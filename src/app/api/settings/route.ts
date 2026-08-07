@@ -10,6 +10,7 @@ export async function POST(request: Request) {
   const full_name: string = (body.full_name ?? "").trim();
   const agency_name: string = (body.agency_name ?? "").trim();
   const webhook_url: string = (body.webhook_url ?? "").trim();
+  const decay_webhook_url: string = (body.decay_webhook_url ?? "").trim();
 
   const { error } = await supabase
     .from("profiles")
@@ -17,6 +18,7 @@ export async function POST(request: Request) {
       ...(full_name && { full_name }),
       ...(agency_name !== undefined && { agency_name: agency_name || null }),
       ...(webhook_url !== undefined && { webhook_url: webhook_url || null }),
+      ...(decay_webhook_url !== undefined && { decay_webhook_url: decay_webhook_url || null }),
     })
     .eq("user_id", user.id);
 

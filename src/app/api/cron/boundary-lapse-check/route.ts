@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
+import { sendDecayAlert } from "@/lib/decay-notifications";
 
 // A boundary authorization's expiry is currently only checked lazily, in the
 // browser, as a date-string comparison for display. That means a real lapse
@@ -35,6 +36,7 @@ export async function GET(request: Request) {
   if (!expired || expired.length === 0) return NextResponse.json({ checked: 0, sealed: 0 });
 
   let sealed = 0;
+  const webhookCache = new Map<string, string | null>();
 
   for (const record of expired) {
     // Has this lapse already been sealed? Check once per record, not once
@@ -69,6 +71,20 @@ export async function GET(request: Request) {
     );
 
     if (entryId) sealed++;
+
+    if (!webhookCache.has(record.user_id)) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("decay_webhook_url")
+        .eq("user_id", record.user_id)
+        .maybeSingle();
+      webhookCache.set(record.user_id, (profile as { decay_webhook_url?: string | null } | null)?.decay_webhook_url ?? null);
+    }
+
+    await sendDecayAlert(
+      webhookCache.get(record.user_id),
+      `Boundary authorization lapsed: "${record.decision}" (owner: ${record.owner_name}, ${record.owner_role}) expired ${record.expires_at} with no successor recorded. https://www.redflagaipro.com/boundary-records`
+    );
   }
 
   return NextResponse.json({ checked: expired.length, sealed });

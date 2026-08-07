@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { Resend } from "resend";
+import { sendDecayAlert } from "@/lib/decay-notifications";
 
 export const maxDuration = 300;
 
@@ -181,6 +182,18 @@ export async function GET(request: Request) {
       );
 
       if (entryId) sent++;
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("decay_webhook_url")
+        .eq("user_id", record.user_id)
+        .maybeSingle();
+
+      const when = daysLeft === 1 ? "tomorrow" : `in ${daysLeft} days`;
+      await sendDecayAlert(
+        (profile as { decay_webhook_url?: string | null } | null)?.decay_webhook_url,
+        `Boundary authorization expires ${when}: "${record.decision}" (owner: ${record.owner_name}, ${record.owner_role}). https://www.redflagaipro.com/boundary-records`
+      );
     }
   }
 

@@ -28,6 +28,7 @@ export default function SettingsPage() {
   const [fullName, setFullName] = useState("");
   const [agencyName, setAgencyName] = useState("");
   const [webhookUrl, setWebhookUrl] = useState("");
+  const [decayWebhookUrl, setDecayWebhookUrl] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [plan, setPlan] = useState<Plan>("free");
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
@@ -45,7 +46,7 @@ export default function SettingsPage() {
       if (!user) { router.push("/login"); return; }
 
       const [{ data: profile }, { data: keys }] = await Promise.all([
-        supabase.from("profiles").select("full_name, agency_name, plan, webhook_url, referral_code").eq("user_id", user.id).single(),
+        supabase.from("profiles").select("full_name, agency_name, plan, webhook_url, decay_webhook_url, referral_code").eq("user_id", user.id).single(),
         supabase.from("api_keys").select("id, name, key_prefix, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
       ]);
 
@@ -53,6 +54,7 @@ export default function SettingsPage() {
         setFullName(profile.full_name ?? "");
         setAgencyName((profile as { agency_name?: string }).agency_name ?? "");
         setWebhookUrl((profile as { webhook_url?: string }).webhook_url ?? "");
+        setDecayWebhookUrl((profile as { decay_webhook_url?: string }).decay_webhook_url ?? "");
         setReferralCode((profile as { referral_code?: string }).referral_code ?? "");
         setPlan((profile.plan as Plan) ?? "free");
       }
@@ -69,7 +71,7 @@ export default function SettingsPage() {
     const res = await fetch("/api/settings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ full_name: fullName, agency_name: agencyName, webhook_url: webhookUrl }),
+      body: JSON.stringify({ full_name: fullName, agency_name: agencyName, webhook_url: webhookUrl, decay_webhook_url: decayWebhookUrl }),
     });
     const data = await res.json();
     if (!res.ok) setError(data.error);
@@ -144,6 +146,16 @@ export default function SettingsPage() {
           placeholder="https://yourname.app.n8n.cloud/webhook/…"
           className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
         <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Payload includes: scan_id, score, risk, flags with suggestions, scanned_at.</p>
+      </Card>
+
+      {/* Decay alerts */}
+      <Card>
+        <h2 className="text-sm font-semibold text-[#F4F1EA] mb-1">Decay alerts</h2>
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-3">A Slack or Microsoft Teams incoming webhook. We post a plain text message here the moment a boundary authorization lapses, and again at 30, 14, 7 and 1 day before it expires — the same alerts already emailed to the named owner, pushed to a channel too so they don&apos;t depend on one person&apos;s inbox.</p>
+        <input type="text" value={decayWebhookUrl} onChange={(e) => setDecayWebhookUrl(e.target.value)}
+          placeholder="https://hooks.slack.com/services/… or https://….webhook.office.com/…"
+          className="w-full rounded-lg border border-white/15 bg-[#0A1628] px-3 py-2 text-sm text-[#F4F1EA] placeholder-[rgba(244,241,234,0.4)] font-mono focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500" />
+        <p className="mt-1.5 text-xs text-[rgba(244,241,234,0.4)]">Separate from the scan webhook above — set one, both, or neither.</p>
       </Card>
 
       {error && <p className="text-sm text-[#E5484D]">{error}</p>}
