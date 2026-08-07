@@ -197,6 +197,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/witness-network/hosting`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    },
+    {
       url: `${baseUrl}/witness-test`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
