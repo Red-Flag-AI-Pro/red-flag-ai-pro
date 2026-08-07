@@ -515,6 +515,8 @@ Red Flag AI Pro checks your marketing copy against all 30 risk categories across
     readTime: "8 min read",
     category: "EU AI Act",
     content: `
+*[Diese Seite gibt es auch auf Deutsch: redflagaipro.com/de/eu-ai-act](/de/eu-ai-act)*
+
 ## The Clock Is Ticking
 
 On **2 August 2026**, just weeks away, EU AI Act Article 50(4) comes into force. It requires that AI generated content intended for the public is clearly disclosed to consumers.

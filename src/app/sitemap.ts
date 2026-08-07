@@ -335,6 +335,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/de/eu-ai-act`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.55,
+    },
+    {
       url: `${baseUrl}/tools/shadow-ai-survey`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
