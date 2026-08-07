@@ -1,4 +1,4 @@
-// Creates the boundary authorization record included with the £297 Full
+// Creates the boundary authorization record included with the Full
 // Governance Program (task #243). Everywhere else on the site, creating one
 // of these is Sentinel-only (requireSentinelUser in the boundary-records
 // API); this is the one place a non-Sentinel customer gets one, because the

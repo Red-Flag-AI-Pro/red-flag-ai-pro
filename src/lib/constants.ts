@@ -48,20 +48,32 @@ export function getExcludedCategories(plan: Plan): readonly string[] {
 // displayed price and the charged price share this single source of truth.
 // The /audit request form remains as the talk-first path. priceId points at
 // the legacy pre-4-Jul £149 Stripe object and is no longer used by checkout.
+//
+// Repriced 199 -> 449 on 7 Aug 2026 as part of the Blue Ocean Offer decision:
+// the buyer this is now aimed at (a regulated firm defending the record to a
+// regulator or insurer) reads a sub-£200 price as evidence the instrument
+// isn't serious. See brain project notes on the Blue Ocean Offer for the full
+// reasoning; this was the recommended figure, not a range.
 export const AUDIT_PRICE = {
-  amount: 199,
+  amount: 449,
   label: "Done-For-You Compliance & Governance Audit",
   priceId: process.env.STRIPE_PRICE_AUDIT_ID!,
 };
 
 // The upper tier above AUDIT_PRICE. Same inline price_data pattern, so no
-// Stripe dashboard object is needed. Where the £199 audit covers two stages of
+// Stripe dashboard object is needed. Where the audit covers two stages of
 // the governance lifecycle (compliance checking and the six dimension
 // governance score), this covers all eight: the documents themselves are
 // drafted and tailored per client rather than left to the free self-serve
 // tools, which is what justifies the step up in both price and delivery time.
+//
+// Repriced 297 -> 1200 on 7 Aug 2026, same Blue Ocean Offer decision. The
+// recommendation was a 1,200-1,500 range with no single figure chosen; 1,200
+// was picked as the number to ship because it already creates real
+// separation from the audit tier and a credible step toward Sentinel's
+// roughly 5,000 anchor, and it's easier to raise later than to walk back.
 export const PROGRAM_PRICE = {
-  amount: 297,
+  amount: 1200,
   label: "Full Governance Program (8 stage, done for you)",
 };
 

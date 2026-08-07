@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT, AUDIT_PRICE } from "@/lib/constants";
 
 // Syne is now loaded globally via layout.tsx — no CDN import needed
 
@@ -300,7 +300,7 @@ export function HeroNew() {
           textDecoration: "none",
           letterSpacing: "0.02em"
         }}>
-          Rather have a human do it? Done For You Audit: £199 →
+          Rather have a human do it? Done For You Audit: £{AUDIT_PRICE.amount} →
         </Link>
       </div>
 

@@ -212,7 +212,7 @@ export default async function AuditPage({
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £199
+              Get my audit: £{AUDIT_PRICE.amount}
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
@@ -440,7 +440,7 @@ export default async function AuditPage({
                 padding: "3px 10px", borderRadius: "9999px",
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
-              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£199</p>
+              <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</p>
               <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
               <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
@@ -450,7 +450,7 @@ export default async function AuditPage({
                 boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
                 textDecoration: "none", letterSpacing: "0.02em"
               }}>
-                Pay £199 now
+                Pay £{AUDIT_PRICE.amount} now
               </a>
             </div>
           </div>
@@ -694,7 +694,7 @@ export default async function AuditPage({
               boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
               textDecoration: "none", letterSpacing: "0.02em"
             }}>
-              Get my audit: £199
+              Get my audit: £{AUDIT_PRICE.amount}
             </Link>
             <Link href="/pricing" style={{
               display: "inline-flex", alignItems: "center",
