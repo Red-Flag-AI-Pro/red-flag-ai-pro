@@ -135,16 +135,16 @@ export default function LandingPage() {
                   backgroundImage: "url(/images/home/newsprint.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
+                  filter: "saturate(0.85) contrast(1.05) brightness(1.05)",
                 }}
               />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.32)", mixBlendMode: "multiply" }} />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(10,22,40,0.28)", mixBlendMode: "multiply" }} />
               <div
                 aria-hidden
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(180deg, rgba(15,33,56,0.55) 0%, rgba(15,33,56,0.85) 100%)",
+                  background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)",
                 }}
               />
               <div style={{ position: "relative", zIndex: 1 }}>
@@ -169,16 +169,16 @@ export default function LandingPage() {
                   backgroundImage: "url(/images/home/ledger.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  filter: "saturate(0.78) contrast(1.05) brightness(1.0)",
+                  filter: "saturate(0.85) contrast(1.05) brightness(1.05)",
                 }}
               />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(13,27,46,0.32)", mixBlendMode: "multiply" }} />
+              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(10,22,40,0.28)", mixBlendMode: "multiply" }} />
               <div
                 aria-hidden
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(180deg, rgba(15,33,56,0.55) 0%, rgba(15,33,56,0.85) 100%)",
+                  background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)",
                 }}
               />
               <div style={{ position: "relative", zIndex: 1 }}>
