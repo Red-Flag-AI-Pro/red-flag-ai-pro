@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -17,6 +17,13 @@ interface Member {
   created_at: string;
 }
 
+interface JoinRequest {
+  id: string;
+  user_id: string;
+  full_name: string | null;
+  requested_at: string;
+}
+
 interface Props {
   org: Organisation | null;
   members: Member[];
@@ -31,6 +38,30 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [requests, setRequests] = useState<JoinRequest[]>([]);
+  const [decidingId, setDecidingId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isOwner || !org) return;
+    fetch("/api/team/requests")
+      .then((r) => r.json())
+      .then((data) => setRequests(data.requests ?? []))
+      .catch(() => {});
+  }, [isOwner, org]);
+
+  async function decide(requestId: string, approve: boolean) {
+    setDecidingId(requestId);
+    const res = await fetch("/api/team/requests/decide", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ request_id: requestId, approve }),
+    });
+    if (res.ok) {
+      setRequests((prev) => prev.filter((r) => r.id !== requestId));
+      if (approve) setTimeout(() => window.location.reload(), 800);
+    }
+    setDecidingId(null);
+  }
 
   async function handleCreate() {
     if (!orgName.trim()) return;
@@ -64,8 +95,8 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
     if (!res.ok) {
       setError(data.error);
     } else {
-      setSuccess(`Joined ${data.organisation.name}. Refreshing...`);
-      setTimeout(() => window.location.reload(), 1500);
+      setSuccess(`Request sent to join ${data.organisation.name}. The organisation admin needs to approve it before you get access.`);
+      setInviteCode("");
     }
     setLoading(false);
   }
@@ -115,7 +146,7 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
           {error && <p className="text-xs text-[#E5484D] mb-3">{error}</p>}
           {success && <p className="text-xs text-green-400 mb-3">{success}</p>}
           <Button size="sm" variant="secondary" loading={loading} onClick={handleJoin} disabled={!inviteCode.trim()}>
-            Join team
+            Request to join
           </Button>
         </Card>
       </div>
@@ -141,6 +172,39 @@ export function TeamManager({ org, members, isOwner, userId }: Props) {
               </div>
             </div>
           </div>
+        </Card>
+      )}
+
+      {isOwner && requests.length > 0 && (
+        <Card padding="none">
+          <div className="border-b border-white/5 px-5 py-4">
+            <h2 className="text-sm font-semibold text-[#F4F1EA]">
+              Pending requests ({requests.length})
+            </h2>
+            <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
+              Someone used your invite code. Nothing shares until you approve.
+            </p>
+          </div>
+          <ul className="divide-y divide-white/10">
+            {requests.map((r) => (
+              <li key={r.id} className="flex items-center justify-between px-5 py-3.5 gap-3">
+                <div>
+                  <p className="text-sm font-medium text-[#F4F1EA]">{r.full_name || "Someone"}</p>
+                  <p className="text-xs text-[rgba(244,241,234,0.4)]">
+                    Requested {new Date(r.requested_at).toLocaleDateString("en-GB", { month: "short", day: "numeric", year: "numeric" })}
+                  </p>
+                </div>
+                <div className="flex gap-2 flex-shrink-0">
+                  <Button size="sm" loading={decidingId === r.id} onClick={() => decide(r.id, true)}>
+                    Approve
+                  </Button>
+                  <Button size="sm" variant="secondary" loading={decidingId === r.id} onClick={() => decide(r.id, false)}>
+                    Deny
+                  </Button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </Card>
       )}
 
