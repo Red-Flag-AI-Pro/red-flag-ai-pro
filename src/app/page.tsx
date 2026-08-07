@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
@@ -61,13 +62,19 @@ export default function LandingPage() {
         overflow: "hidden"
       }}>
         {/* Photo is the hero. Shown at full strength so the person and the
-            stress of the moment are unmistakable. */}
-        <div aria-hidden style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "url(/images/hero-compliance.jpg)",
-          backgroundSize: "cover", backgroundPosition: "center 22%",
-          opacity: 1
-        }} />
+            stress of the moment are unmistakable. next/image (not a plain
+            CSS background) so mobile gets a properly sized, sharp variant
+            instead of either a stretched small file or the full desktop one. */}
+        <Image
+          src="/images/hero-compliance.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          style={{ objectFit: "cover", objectPosition: "center 22%", pointerEvents: "none" }}
+        />
         {/* Light scrim only where the text sits: a touch at the very top and
             a fade to navy at the base to blend into the next section. The
             middle is left clear so the image reads at full strength. */}
