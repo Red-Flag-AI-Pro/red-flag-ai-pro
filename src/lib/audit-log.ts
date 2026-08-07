@@ -125,30 +125,54 @@ export interface AuditChainVerification {
   valid: boolean;
   checkedEntries: number;
   brokenAtEntryId: string | null;
+  // Entries whose content was legitimately redacted under GDPR Article 17.
+  // Their stored hash no longer matches a recompute of their (now redacted)
+  // details by design — that mismatch is expected, not tampering, and is
+  // reported here rather than as a broken chain.
+  redactedEntries: string[];
 }
 
 // Re-walks a user's full audit trail in chronological order and recomputes
 // each hash from scratch, confirming it matches the prev_hash of the next
 // entry and the stored hash of its own row. Any edited, deleted, or
 // reordered row breaks the chain from that point forward.
+//
+// The one designed exception is a tombstoned (GDPR Article 17 redacted)
+// entry: tombstoneAuditEntry overwrites `details` in place but freezes the
+// stored `hash` and `prev_hash` at their original values, so the chain
+// LINKAGE (later entries' prev_hash still pointing at this row's unchanged
+// hash) stays intact while a recompute of the current, redacted details no
+// longer matches that frozen hash. That specific, single-row mismatch is
+// treated as an expected redaction rather than a break, and is what makes
+// erasure possible at all on a hash-chained log without destroying the
+// chain for every entry that came after it.
 export async function verifyAuditChain(userId: string): Promise<AuditChainVerification> {
   const supabase = await createServiceClient();
 
   const { data: entries } = await supabase
     .from("audit_log")
-    .select("id, action, details, created_at, prev_hash, hash")
+    .select("id, action, details, created_at, prev_hash, hash, redacted_at")
     .eq("user_id", userId)
     .order("created_at", { ascending: true });
 
   if (!entries || entries.length === 0) {
-    return { valid: true, checkedEntries: 0, brokenAtEntryId: null };
+    return { valid: true, checkedEntries: 0, brokenAtEntryId: null, redactedEntries: [] };
   }
 
   let expectedPrevHash = GENESIS_HASH;
+  const redactedEntries: string[] = [];
 
   for (const entry of entries) {
     if (entry.prev_hash !== expectedPrevHash) {
-      return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id };
+      return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id, redactedEntries };
+    }
+
+    if (entry.redacted_at) {
+      redactedEntries.push(entry.id);
+      // Chain linkage still advances off the frozen, unchanged hash — only
+      // the content-matches-hash check is skipped for this one row.
+      expectedPrevHash = entry.hash;
+      continue;
     }
 
     const matches = hashMatches(entry.hash, expectedPrevHash, {
@@ -159,13 +183,78 @@ export async function verifyAuditChain(userId: string): Promise<AuditChainVerifi
     });
 
     if (!matches) {
-      return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id };
+      return { valid: false, checkedEntries: entries.length, brokenAtEntryId: entry.id, redactedEntries };
     }
 
     expectedPrevHash = entry.hash;
   }
 
-  return { valid: true, checkedEntries: entries.length, brokenAtEntryId: null };
+  return { valid: true, checkedEntries: entries.length, brokenAtEntryId: null, redactedEntries };
+}
+
+export interface TombstoneResult {
+  id: string;
+  action: string;
+  redactedAt: string;
+  certificateEntryId: string | null;
+}
+
+// Erases the personal content of one entry under GDPR Article 17 while
+// keeping the hash chain verifiable. `details` is overwritten with a stub
+// that preserves only what's structurally needed (the original action name)
+// — the stored `hash` and `prev_hash` are left untouched, so later entries'
+// linkage to this row is unaffected. A separate certificate entry is then
+// APPENDED (not mutated) to the same chain, itself fully hash verifiable,
+// documenting which entry was redacted, when, by whom and why — this is
+// what lets an erasure be proved to have happened, not just claimed.
+export async function tombstoneAuditEntry(
+  userId: string,
+  entryId: string,
+  reason: string,
+  redactedBy: string
+): Promise<TombstoneResult | null> {
+  const supabase = await createServiceClient();
+
+  const { data: entry } = await supabase
+    .from("audit_log")
+    .select("id, action, redacted_at")
+    .eq("id", entryId)
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (!entry) return null;
+  if (entry.redacted_at) {
+    return { id: entry.id, action: entry.action, redactedAt: entry.redacted_at, certificateEntryId: null };
+  }
+
+  const redactedAt = new Date().toISOString();
+
+  const { error } = await supabase
+    .from("audit_log")
+    .update({
+      details: { redacted: true, original_action: entry.action },
+      redacted_at: redactedAt,
+      redaction_reason: reason,
+      redacted_by: redactedBy,
+    })
+    .eq("id", entryId);
+
+  if (error) return null;
+
+  const certificateEntryId = await logAuditEvent(
+    userId,
+    "gdpr.erasure_certificate",
+    {
+      redacted_entry_id: entryId,
+      redacted_entry_action: entry.action,
+      redacted_at: redactedAt,
+      reason,
+      redacted_by: redactedBy,
+    },
+    { timestamp: true }
+  );
+
+  return { id: entry.id, action: entry.action, redactedAt, certificateEntryId };
 }
 
 export interface PublicVerificationResult {
@@ -237,6 +326,12 @@ function buildPublicDescription(action: string, details: Record<string, unknown>
       const peer = str("peer_chain");
       return peer ? `Received and sealed a tip from ${peer}` : undefined;
     }
+    case "gdpr.erasure_certificate": {
+      const originalAction = str("redacted_entry_action");
+      return originalAction
+        ? `Certifies that a "${originalAction}" record was redacted under GDPR Article 17`
+        : `Certifies a record was redacted under GDPR Article 17`;
+    }
     default:
       return undefined;
   }
@@ -252,7 +347,7 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
 
   const { data: entry } = await supabase
     .from("audit_log")
-    .select("user_id, action, details, created_at, prev_hash, hash, ts_time, ts_tsa")
+    .select("user_id, action, details, created_at, prev_hash, hash, ts_time, ts_tsa, redacted_at")
     .eq("id", entryId)
     .maybeSingle();
 
@@ -260,12 +355,28 @@ export async function verifyPublicEntry(entryId: string): Promise<PublicVerifica
     return { found: false, intact: false };
   }
 
-  const intact = hashMatches(entry.hash, entry.prev_hash ?? GENESIS_HASH, {
-    user_id: entry.user_id,
-    action: entry.action,
-    details: entry.details,
-    created_at: entry.created_at,
-  });
+  // A redacted entry's stored hash will never again match a recompute of its
+  // (now redacted) details — that is by design, not a broken record. Report
+  // it as intact with a redaction notice rather than as tampered.
+  const isRedacted = Boolean((entry as { redacted_at?: string }).redacted_at);
+  const intact = isRedacted
+    ? true
+    : hashMatches(entry.hash, entry.prev_hash ?? GENESIS_HASH, {
+        user_id: entry.user_id,
+        action: entry.action,
+        details: entry.details,
+        created_at: entry.created_at,
+      });
+
+  if (isRedacted) {
+    return {
+      found: true,
+      intact: true,
+      action: entry.action,
+      description: "This record was redacted under GDPR Article 17. A separate certificate entry on the same chain documents when and why.",
+      createdAt: entry.created_at,
+    };
+  }
 
   const details = entry.details ?? {};
   const contentSha256 = typeof details["content_sha256"] === "string" ? (details["content_sha256"] as string) : undefined;
