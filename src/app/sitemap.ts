@@ -203,6 +203,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     {
+      url: `${baseUrl}/reports/state-of-uk-marketing-compliance`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/witness-test`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
