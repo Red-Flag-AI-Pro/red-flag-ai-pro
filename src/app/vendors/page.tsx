@@ -18,6 +18,8 @@ interface Vendor {
   last_reviewed_at: string | null;
   next_review_due: string | null;
   notes: string | null;
+  substantially_modified: boolean;
+  substantially_modified_notes: string | null;
   created_at: string;
 }
 
@@ -114,6 +116,16 @@ export default function VendorsPage() {
     if (res.ok) setVendors((prev) => prev.map((v) => (v.id === vendor.id ? data.vendor : v)));
   }
 
+  async function handleToggleModified(vendor: Vendor) {
+    const res = await fetch("/api/vendors", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: vendor.id, substantially_modified: !vendor.substantially_modified }),
+    });
+    const data = await res.json();
+    if (res.ok) setVendors((prev) => prev.map((v) => (v.id === vendor.id ? data.vendor : v)));
+  }
+
   if (loading) return <div className="text-sm text-[rgba(244,241,234,0.4)] p-6">Loading…</div>;
 
   if (!isPaid) {
@@ -133,6 +145,7 @@ export default function VendorsPage() {
 
   const highRiskCount = vendors.filter((v) => v.risk_level === "high").length;
   const unreviewedCount = vendors.filter((v) => !v.contract_reviewed).length;
+  const modifiedCount = vendors.filter((v) => v.substantially_modified).length;
 
   return (
     <div className="space-y-6">
@@ -144,7 +157,7 @@ export default function VendorsPage() {
         <Button onClick={() => setShowForm((s) => !s)}>{showForm ? "Cancel" : "+ Add vendor"}</Button>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <p className="text-sm text-[rgba(244,241,234,0.5)]">Vendors tracked</p>
           <p className="mt-1 text-3xl font-bold text-[#F4F1EA]">{vendors.length}</p>
@@ -156,6 +169,10 @@ export default function VendorsPage() {
         <Card>
           <p className="text-sm text-[rgba(244,241,234,0.5)]">Awaiting review</p>
           <p className="mt-1 text-3xl font-bold text-amber-400">{unreviewedCount}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-[rgba(244,241,234,0.5)]">Modified since launch</p>
+          <p className="mt-1 text-3xl font-bold text-amber-400">{modifiedCount}</p>
         </Card>
       </div>
 
@@ -224,11 +241,18 @@ export default function VendorsPage() {
                   {v.next_review_due && (
                     <p className="text-xs text-[rgba(244,241,234,0.35)]">Next review: {new Date(v.next_review_due).toLocaleDateString("en-GB")}</p>
                   )}
+                  {v.substantially_modified && (
+                    <p className="text-xs text-amber-400 font-medium mt-0.5">Substantially modified since launch — re-review due</p>
+                  )}
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
                   <label className="flex items-center gap-1.5 text-xs text-[rgba(244,241,234,0.6)] cursor-pointer">
                     <input type="checkbox" checked={v.contract_reviewed} onChange={() => handleToggleReviewed(v)} className="accent-red-600" />
                     Reviewed
+                  </label>
+                  <label className="flex items-center gap-1.5 text-xs text-[rgba(244,241,234,0.6)] cursor-pointer">
+                    <input type="checkbox" checked={v.substantially_modified} onChange={() => handleToggleModified(v)} className="accent-amber-500" />
+                    Modified
                   </label>
                   <button onClick={() => handleDelete(v.id)} className="text-xs text-red-500 hover:underline">Remove</button>
                 </div>

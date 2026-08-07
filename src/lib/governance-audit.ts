@@ -850,6 +850,33 @@ export const VENDOR_QUESTIONS = [
       },
     ],
   },
+  {
+    id: 'vendor_4',
+    dimension: 'vendor_risk' as const,
+    question: 'When a vendor\'s AI system changes materially after your original assessment (a new model version, a new subprocessor, a new data flow), is that tracked as its own event?',
+    options: [
+      {
+        text: 'No — we only revisit vendors on a fixed schedule, if at all',
+        riskPoints: 3,
+        context: 'Substantial modifications go unnoticed between reviews',
+      },
+      {
+        text: 'Sometimes — if someone happens to notice a vendor announcement',
+        riskPoints: 2,
+        context: 'Relies on chance rather than a process',
+      },
+      {
+        text: 'Yes — vendors are asked to notify us, and we log it when they do',
+        riskPoints: 1,
+        context: 'A process exists but depends on the vendor',
+      },
+      {
+        text: 'Yes — we actively track and flag substantial modifications ourselves',
+        riskPoints: 0,
+        context: 'Modification triggers its own review, not just the calendar',
+      },
+    ],
+  },
 ];
 
 // ============================================================

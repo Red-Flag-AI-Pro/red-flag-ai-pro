@@ -52,6 +52,8 @@ export async function POST(request: Request) {
       last_reviewed_at: body.last_reviewed_at || null,
       next_review_due: body.next_review_due || null,
       notes: (body.notes ?? "").trim() || null,
+      substantially_modified: !!body.substantially_modified,
+      substantially_modified_notes: (body.substantially_modified_notes ?? "").trim() || null,
     })
     .select()
     .single();
@@ -70,7 +72,7 @@ export async function PATCH(request: Request) {
   if (!id) return NextResponse.json({ error: "Vendor id is required." }, { status: 400 });
 
   const updates: Record<string, unknown> = {};
-  for (const key of ["name", "purpose", "data_shared", "risk_level", "contract_reviewed", "last_reviewed_at", "next_review_due", "notes"]) {
+  for (const key of ["name", "purpose", "data_shared", "risk_level", "contract_reviewed", "last_reviewed_at", "next_review_due", "notes", "substantially_modified", "substantially_modified_notes"]) {
     if (key in body) updates[key] = body[key];
   }
 
@@ -85,7 +87,7 @@ export async function PATCH(request: Request) {
   if (error) return NextResponse.json({ error: "Failed to update vendor." }, { status: 500 });
   await logAuditEvent(
     result.user.id,
-    updates.contract_reviewed ? "vendor_reviewed" : "vendor_updated",
+    updates.substantially_modified ? "vendor_substantially_modified" : updates.contract_reviewed ? "vendor_reviewed" : "vendor_updated",
     { vendor_id: data.id, name: data.name }
   );
   return NextResponse.json({ vendor: data });
