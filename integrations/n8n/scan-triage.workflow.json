@@ -1,0 +1,113 @@
+{
+  "name": "Red Flag AI Pro — Scan Triage",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "red-flag-scan-triage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Incoming content",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "red-flag-scan-triage"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.redflagaipro.com/api/v1/scan",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"content\": $json.body.content, \"title\": $json.body.title || \"n8n scan\" } }}",
+        "options": {}
+      },
+      "id": "scan-request",
+      "name": "Scan with Red Flag AI Pro",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "high-risk-check",
+              "leftValue": "={{ $json.risk }}",
+              "rightValue": "high",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "risk-check",
+      "name": "Is high risk?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "high-risk-branch",
+      "name": "Wire your alert here (Slack, email, Teams…)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [900, 200],
+      "notes": "Replace this node with a Slack/Email/Teams node. The scan result (score, risk, flags array) is available on the input item — see /api/v1/scan response shape in src/app/api/v1/scan/route.ts."
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "low-risk-branch",
+      "name": "No action needed",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Return scan result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Incoming content": {
+      "main": [[{ "node": "Scan with Red Flag AI Pro", "type": "main", "index": 0 }]]
+    },
+    "Scan with Red Flag AI Pro": {
+      "main": [[{ "node": "Is high risk?", "type": "main", "index": 0 }]]
+    },
+    "Is high risk?": {
+      "main": [
+        [{ "node": "Wire your alert here (Slack, email, Teams…)", "type": "main", "index": 0 }],
+        [{ "node": "No action needed", "type": "main", "index": 0 }]
+      ]
+    },
+    "Wire your alert here (Slack, email, Teams…)": {
+      "main": [[{ "node": "Return scan result", "type": "main", "index": 0 }]]
+    },
+    "No action needed": {
+      "main": [[{ "node": "Return scan result", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}
