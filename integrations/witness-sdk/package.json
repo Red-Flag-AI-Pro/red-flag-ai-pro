@@ -1,0 +1,8 @@
+{
+  "name": "red-flag-witness-client",
+  "version": "0.1.0",
+  "description": "Thin, dependency-free reference client for the Open Witness Standard",
+  "type": "module",
+  "main": "witness-client.js",
+  "license": "MIT"
+}

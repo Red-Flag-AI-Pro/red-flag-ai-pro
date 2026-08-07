@@ -125,6 +125,21 @@ export default function WitnessStandardPage() {
         </P>
       </Section>
 
+      <Section eyebrow="How often, and what quiet means" title="Cadence and exit">
+        <P>
+          <strong style={{ color: "#F4F1EA" }}>Cadence.</strong> Push your tip at least once every 24 hours, whether or not it changed since the last push. A fixed heartbeat proves your chain was alive during quiet periods, not just when something happened, which matters because an anchor's absence should mean nothing was pushed, not that nothing was checked.
+        </P>
+        <P>
+          A receiving implementation should treat a peer as stale once more than 72 hours (three missed heartbeats) have passed since the last accepted anchor from that chain, and may say so publicly, a chain that has gone quiet for three days is a fact worth showing, not hiding. Stale is a status, not a removal, a chain that resumes pushing after going stale is exactly as valid as one that never stopped.
+        </P>
+        <P>
+          <strong style={{ color: "#F4F1EA" }}>Exit.</strong> There is no exit message, exit form, or account to close, on purpose, the same reason there is no join form for submitting anchors. A peer exits by simply stopping. Three things follow from that, and every implementation should hold all three:
+        </P>
+        <P>
+          First, every record already sealed stays valid and public forever, exiting does not and cannot retroactively unseal or invalidate a past anchor. Second, a receiving implementation may stop actively pushing its own tip to a peer that has been stale for 30 days or more, to avoid indefinite pointless traffic to an address nobody is reading, this is a courtesy for both sides, not a penalty. Third, an exited peer can resume at any time with no re-application, no reset, and no different treatment, it just becomes a chain with a gap in it, the same as it would be for a peer that lost power for a month. A gap is not a lie, it is the honest shape of what happened.
+        </P>
+      </Section>
+
       <section style={{ position: "relative", overflow: "hidden", padding: "4.5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", minHeight: "440px" }}>
         <div aria-hidden className="img-side-blend" style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", width: "58%", aspectRatio: "16 / 9", maxHeight: "100%", pointerEvents: "none" }}>
           <Image
@@ -143,6 +158,9 @@ export default function WitnessStandardPage() {
         <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1.1rem" }}>Implement it, anchor to us</h2>
         <P>
           Build a client against the shape above, in whatever language suits you, point it at our tip and anchor endpoints, and press go. If it lands, you will see it appear on <a href="/witness-network" style={{ color: "#E5484D" }}>the live network page</a>, publicly, the same way every anchor does.
+        </P>
+        <P>
+          Don&apos;t want to write that client from scratch: a thin, dependency free reference implementation (one file, no build step) is at <a href="https://github.com/Red-Flag-AI-Pro/red-flag-ai-pro/tree/master/integrations/witness-sdk" style={{ color: "#E5484D" }}>github.com/Red-Flag-AI-Pro/red-flag-ai-pro/integrations/witness-sdk</a>, MIT licensed, copy it directly into your own codebase.
         </P>
         <P>
           Want to join formally? The network is open to applications, though only for a small number of companies at this stage: <a href="/witness-network/apply" style={{ color: "#E5484D" }}>apply here</a>.

@@ -41,7 +41,8 @@ const CONTRACT_ROWS: [string, string][] = [
   ["Payload", "chain, tip, count, ts, url (optional), same five fields as the published standard"],
   ["Success response", "HTTP 200, sealed: true, a non empty id, a non empty verify link"],
   ["Rate limit", "10 requests a minute per address"],
-  ["Recommended cadence", "A fixed heartbeat regardless of whether the tip changed, not event only submission. Proves the chain was alive during quiet periods too."],
+  ["Recommended cadence", "At least once every 24 hours, whether or not the tip changed. Proves the chain was alive during quiet periods too, not just when something happened."],
+  ["Stale threshold", "72 hours (3 missed heartbeats) with no accepted anchor. A stale chain stays valid, it is a status shown publicly, not a removal."],
 ];
 
 export default async function PeerAgreementPage() {
@@ -105,7 +106,7 @@ export default async function PeerAgreementPage() {
           This is not a partnership, an integration commitment, an endorsement, an exclusivity arrangement, an operational dependency, a licence, or an agency relationship. It does not transfer intellectual property in either direction, and it does not require either side to disclose internal policy, proprietary logic, or confidential material to make witnessing work.
         </P>
         <P>
-          Either side can stop submitting at any time. A peer going quiet does not retroactively change any record already sealed, it just means no new ones get added.
+          Either side can stop submitting at any time. A peer going quiet does not retroactively change any record already sealed, it just means no new ones get added. There is no exit process to complete: nothing to close, cancel, or notify us of. Every record already sealed stays valid and public forever regardless. After 30 days with no accepted anchor from a peer, we may stop actively pushing our own tip to their endpoint, purely to avoid indefinite traffic to an address nobody is reading, not as a penalty. Resuming later needs no re-application: it just becomes a chain with a gap in it, exactly as valid as one that never stopped.
         </P>
       </Section>
 
