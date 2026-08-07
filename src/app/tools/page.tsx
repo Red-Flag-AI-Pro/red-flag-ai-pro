@@ -18,6 +18,7 @@ interface ToolCard {
 }
 
 const ASSESSMENT_TOOLS: ToolCard[] = [
+  { href: "/tools/does-this-apply-to-you", title: "Does This Even Apply to You?", desc: "5 quick questions, no email needed. An honest answer, including if the honest answer is not yet." },
   { href: "/governance-audit", title: "AI Governance Maturity Assessment", desc: "5 minutes, 6 dimensions, a real score, and a roadmap mapped to the EU AI Act, SEC and GDPR." },
   { href: "/witness-test", title: "The Witness Test", desc: "Five questions on how your AI governance evidence is produced. Find out whether anything outside the operator ever saw it." },
   { href: "/tools/shadow-ai-survey", title: "Shadow AI Audit", desc: "7 quick questions to score how much AI usage is happening at your company that IT doesn't know about." },
@@ -105,7 +106,7 @@ export default function ToolsPage() {
             fontSize: "clamp(2rem, 4.5vw, 2.9rem)", fontWeight: 500,
             letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "0.75rem",
             color: "#F4F1EA",
-          }}>Eighteen tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
+          }}>Nineteen tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto"}}>
             Pick a tool below and use it now. No signup required.
           </p>
