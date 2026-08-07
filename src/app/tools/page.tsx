@@ -48,6 +48,11 @@ const MARKETING_TOOLS: ToolCard[] = [
   { href: "/tools/ai-visibility-checker", title: "AI Visibility Checker", desc: "7 questions to score how likely AI assistants are to find and recommend your business." },
 ];
 
+const NOTARY_TOOLS: ToolCard[] = [
+  { href: "/tools/post-notary", title: "Post Notary", desc: "Seal the exact text of a quote or promise before you send it. Independently timestamped, so a later dispute has a real answer." },
+  { href: "/tools/payment-notary", title: "Payment Notary", desc: "Seal a supplier's bank details when you first get them. Check any later change against the seal before you pay." },
+];
+
 function ToolGrid({ tools }: { tools: ToolCard[] }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
@@ -106,7 +111,7 @@ export default function ToolsPage() {
             fontSize: "clamp(2rem, 4.5vw, 2.9rem)", fontWeight: 500,
             letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "0.75rem",
             color: "#F4F1EA",
-          }}>Nineteen tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
+          }}>Twenty one tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto"}}>
             Pick a tool below and use it now. No signup required.
           </p>
@@ -127,6 +132,7 @@ export default function ToolsPage() {
           <ToolGrid tools={MARKETING_TOOLS} />
         </div>
       </section>
+      <ToolSection kicker="05" title="Proof and verification" tools={NOTARY_TOOLS} />
 
       {/* ── QUOTE BAND ── */}
       <section style={{ padding: "6rem 1.5rem", background: "linear-gradient(180deg, #0A1628 0%, #0C1929 100%)", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>

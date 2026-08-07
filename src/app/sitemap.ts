@@ -317,6 +317,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/tools/post-notary`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/tools/payment-notary`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/tools/shadow-ai-survey`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
