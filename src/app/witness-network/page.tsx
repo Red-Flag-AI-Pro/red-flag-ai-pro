@@ -61,6 +61,12 @@ export default function WitnessNetworkPage() {
 
   useEffect(() => {
     loadState();
+    // Genuinely live, not a one-time fetch: the whole point of a public
+    // ledger is that it keeps proving itself without anyone refreshing the
+    // page. Matches the anchor cadence rather than polling faster than
+    // anything could actually change.
+    const interval = setInterval(loadState, 60_000);
+    return () => clearInterval(interval);
   }, []);
 
   const peerCount = 1 + new Set(log.map((r) => r.peerChain).filter(Boolean)).size;
@@ -208,9 +214,12 @@ export default function WitnessNetworkPage() {
 
       <section style={{ padding: "3rem 1.5rem 6rem" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.25rem" }}>
-            Every anchor, in order
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.25rem" }}>
+            <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 0 3px rgba(74,222,128,0.15)" }} />
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D" }}>
+              Every anchor, in order — live
+            </p>
+          </div>
           <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, marginBottom: "1.5rem", paddingLeft: "0.9rem", borderLeft: "2px solid rgba(229,72,77,0.4)" }}>
             Appearing here means another company holds a sealed copy of that record, and that it has not changed since. It is not an endorsement, an audit, or a claim that anything inside that record is true. We do not vet the companies we witness, and we could not honestly claim to. That is the point: a witness with an opinion about you is not much of a witness.
           </p>
