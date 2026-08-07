@@ -117,6 +117,54 @@ export default function DocsPage() {
           </div>
         </div>
 
+        {/* POST /enforce */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Tag method="POST" />
+            <h2 className="text-xl font-bold text-white">/v1/enforce</h2>
+          </div>
+          <p className="text-gray-400 text-sm">
+            Real-Time Gate: a synchronous allow/block decision, meant to be called before content goes live rather than checked after the fact. Purely heuristic scoring, no external API calls, so it stays fast enough to sit in a live path. This is a decision endpoint your own code calls and acts on, not a network proxy — see <a href="/real-time-gate" className="text-red-400 underline">/real-time-gate</a> for what that means in practice.
+          </p>
+
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Request body</p>
+            <Code>{`{
+  "title": "Auto-published blog draft", // optional, string
+  "content": "The text to evaluate...", // required, string, min 20 chars
+  "threshold": 50                       // optional, 0-100, default 50
+}`}</Code>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Example request</p>
+            <Code>{`curl -X POST https://redflagaipro.com/api/v1/enforce \\
+  -H "Authorization: Bearer rfp_your_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "title": "Auto-published blog draft",
+    "content": "Earn six figures from home with our guaranteed system...",
+    "threshold": 50
+  }'`}</Code>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Response</p>
+            <Code>{`{
+  "decision_id": "uuid",
+  "allowed": false,
+  "score": 35,
+  "threshold": 50,
+  "risk": "high",
+  "flag_count": 2,
+  "flags": [ { "category": "income_claim", "severity": "high", "..." } ],
+  "verify_url": "https://redflagaipro.com/verify?id=...",
+  "checked_at": "2026-08-07T11:00:00.000Z"
+}`}</Code>
+            <p className="text-gray-500 text-xs mt-2">A blocked decision (<code className="text-gray-300">allowed: false</code>) is sealed with an independent timestamp and a public verify link. Allowed decisions are stored but not individually sealed, to avoid flooding the chain with routine checks.</p>
+          </div>
+        </div>
+
         {/* GET /scans */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">

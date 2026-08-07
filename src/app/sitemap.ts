@@ -335,6 +335,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/real-time-gate`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    },
+    {
       url: `${baseUrl}/de/eu-ai-act`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
