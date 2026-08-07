@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, SCANNER_SALE_ACTIVE, GROWTH_SALE_ACTIVE, PLAN_PRICES, AUDIT_PRICE, PROGRAM_PRICE } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, isScannerSaleActive, isGrowthSaleActive, PLAN_PRICES, AUDIT_PRICE, PROGRAM_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import React from "react";
 
 export const dynamic = "force-dynamic";
@@ -18,16 +18,17 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
 const SCANNER_FEATURES = [
-  "11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.",
+  `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected.`,
   "5 checks per month",
   "PDF reports",
   "Check history",
   "API & webhook access — connect n8n, Make, Zapier or your own system",
   "Email support",
+  "14 day money back guarantee",
 ];
 
 const GROWTH_FEATURES = [
-  "11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected. 30 checks/month.",
+  `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected. 30 checks/month.`,
   "Full AI governance diagnosis — every gap revealed, not just one (fixes unlock with Sentinel)",
   "1 free fix-it document for your worst-scoring dimension",
   "Vendor AI risk tracking & assessments",
@@ -152,7 +153,7 @@ export default async function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>11 jurisdictions covered across 30 risk categories. Wherever your business operates, you are protected.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>{JURISDICTION_COUNT} jurisdictions covered across {RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -206,7 +207,7 @@ export default async function PricingPage() {
               position: "relative",
               boxShadow: "0 0 40px rgba(239,68,68,0.15)"
             }}>
-              {SCANNER_SALE_ACTIVE && (
+              {isScannerSaleActive() && (
                 <div style={{
                   position: "absolute", top: "-1px", right: "-1px",
                   background: "#C9A66B",
@@ -228,7 +229,7 @@ export default async function PricingPage() {
                   <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
                     $49<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                   </p>
-                ) : SCANNER_SALE_ACTIVE ? (
+                ) : isScannerSaleActive() ? (
                   <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
                     <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
                       £350
@@ -247,7 +248,7 @@ export default async function PricingPage() {
                     £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                   </p>
                 )}
-                {!isNigeria && SCANNER_SALE_ACTIVE && (
+                {!isNigeria && isScannerSaleActive() && (
                   <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
                     Lock this rate in for as long as you stay subscribed.
                   </p>
@@ -292,7 +293,7 @@ export default async function PricingPage() {
                 textTransform: "uppercase", color: "#0A1628",
                 padding: "4px 12px"
               }}>Recommended</div>
-              {GROWTH_SALE_ACTIVE && (
+              {isGrowthSaleActive() && (
                 <div style={{
                   position: "absolute", top: "-1px", right: "-1px",
                   background: "#C9A66B",
@@ -313,7 +314,7 @@ export default async function PricingPage() {
                   <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
                     $449<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                   </p>
-                ) : GROWTH_SALE_ACTIVE ? (
+                ) : isGrowthSaleActive() ? (
                   <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
                     <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
                       £1,200
@@ -332,7 +333,7 @@ export default async function PricingPage() {
                     £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
                   </p>
                 )}
-                {!isNigeria && GROWTH_SALE_ACTIVE && (
+                {!isNigeria && isGrowthSaleActive() && (
                   <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
                     Lock this rate in for as long as you stay subscribed.
                   </p>
@@ -441,7 +442,7 @@ export default async function PricingPage() {
                 </thead>
                 <tbody>
                   {[
-                    { need: "11 jurisdictions covered across 30 risk categories", scanner: "✓", growth: "✓", sentinel: "✓" },
+                    { need: `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories`, scanner: "✓", growth: "✓", sentinel: "✓" },
                     { need: "See every governance gap (the warnings)", scanner: "✗", growth: "✓", sentinel: "✓" },
                     { need: "The fix for every gap (not just a warning)", scanner: "✗", growth: "✗", sentinel: "✓" },
                     { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },
@@ -467,7 +468,7 @@ export default async function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            Growth tier: 14 day money back guarantee. Sentinel: custom contract. All plans include email support.
+            14 day money back guarantee on your first payment, every paid plan, no reason needed. Sentinel: custom contract. All plans include email support.
           </p>
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}

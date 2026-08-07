@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { getBlogPost, BLOG_POSTS } from "@/lib/blog";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -242,7 +243,7 @@ export default async function BlogPostPage({ params }: Props) {
             Check Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-            Red Flag AI Pro checks your marketing copy against 30 risk categories across 11 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your marketing copy against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in 60 seconds.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

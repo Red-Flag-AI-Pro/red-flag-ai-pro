@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { GovernanceLifecycleDiagram } from "@/components/marketing/GovernanceLifecycleDiagram";
 import React from "react";
+import { JURISDICTION_COUNT_WORD, RISK_CATEGORY_COUNT_WORD } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Who, When, Whether",
@@ -91,7 +92,7 @@ export default function WhoWhenWhetherPage() {
 
       <Section eyebrow="Where we are" title="Naming the actual gap">
         <P>
-          We started narrow and honest about it: a tool that checks marketing copy against the actual rules regulators enforce, across ten jurisdictions and thirty risk categories, in under a minute, before a complaint ever gets filed. That product is live, it works, and it stays exactly what it is.
+          We started narrow and honest about it: a tool that checks marketing copy against the actual rules regulators enforce, across {JURISDICTION_COUNT_WORD} jurisdictions and {RISK_CATEGORY_COUNT_WORD} risk categories, in under a minute, before a complaint ever gets filed. That product is live, it works, and it stays exactly what it is.
         </P>
         <P>
           Building it taught us the harder problem sitting underneath. Checking what a business said is only half the job. Nobody was proving what a business did, or who was accountable for letting an AI system do it, or whether that accountability had quietly expired by the time something went wrong.
@@ -118,7 +119,7 @@ export default function WhoWhenWhetherPage() {
         <P>
           None of this is a pitch deck concept. It is a platform, built in the open, with each part answering the same question from a different angle: not trust me, check.
         </P>
-        <P><strong style={{ color: "#F4F1EA" }}>Compliance checking.</strong> Paste marketing copy in and it is checked against the actual rules regulators enforce, across ten jurisdictions and thirty risk categories, in under a minute. The same rules behind real, published rulings, so a business finds the problem before a complainant does, not after.</P>
+        <P><strong style={{ color: "#F4F1EA" }}>Compliance checking.</strong> Paste marketing copy in and it is checked against the actual rules regulators enforce, across {JURISDICTION_COUNT_WORD} jurisdictions and {RISK_CATEGORY_COUNT_WORD} risk categories, in under a minute. The same rules behind real, published rulings, so a business finds the problem before a complainant does, not after.</P>
         <P><strong style={{ color: "#F4F1EA" }}>Governance scoring.</strong> A real, numbered score across six dimensions for how well a business oversees its use of AI, mapped to the EU AI Act, GDPR, NIST, and ISO 42001, not a vague maturity label dressed up as insight.</P>
         <P><strong style={{ color: "#F4F1EA" }}>Authorisation records.</strong> The who, when, whether framework itself, built into the product. Every AI system a business approves gets a record naming who signed off, when, and the expiry and conditions that would void their authority. This is the evidence a regulator, an insurer, or a court actually asks for when something goes wrong, not a policy document asserting good intentions. See the <a href="/boundary-authorization-records" style={{ color: "#E5484D" }}>full record structure</a>, field by field.</P>
         <P><strong style={{ color: "#F4F1EA" }}>Public verification.</strong> Every high value record is sealed and, for the ones that matter most, timestamped by an independent authority. Anyone, with no account and no need to trust us, can check that a record has not been edited, deleted, or backdated since it was made. This document is proof of that, checkable at the link above.</P>

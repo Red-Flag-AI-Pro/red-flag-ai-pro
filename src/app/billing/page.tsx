@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import type { Plan, Profile } from "@/types";
 import { createClient } from "@/lib/supabase/client";
-import { PLAN_LIMITS, SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { PLAN_LIMITS, isScannerSaleActive, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
 
 const PLANS = [
   {
     key: "scanner" as const,
     name: "Pro",
-    price: SCANNER_SALE_ACTIVE ? "£149/mo" : "£350/mo",
-    features: ["5 scans per month", "All 30 risk categories", "PDF reports", "Scan history", "Email support"],
+    price: isScannerSaleActive() ? "£149/mo" : "£350/mo",
+    features: ["5 scans per month", `All ${RISK_CATEGORY_COUNT} risk categories`, "PDF reports", "Scan history", "Email support"],
   },
   {
     key: "enterprise" as const,

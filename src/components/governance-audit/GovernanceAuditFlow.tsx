@@ -5,10 +5,16 @@ import dynamic from 'next/dynamic';
 import { track } from '@vercel/analytics';
 import { type GovernanceQuizResponse, type Answer } from '@/lib/governance-audit';
 
-const GovernanceAuditForm = dynamic(
-  () => import('./GovernanceAuditForm').then((m) => m.GovernanceAuditForm),
-  { ssr: false }
-);
+// The form is the reason anyone lands on this page, so it is imported
+// directly and server rendered. It was previously behind dynamic({ssr:false}),
+// which meant the primary content could not paint until the browser had
+// downloaded the bundle, hydrated, and then fetched a second chunk. Server
+// response was 0.23s and first paint was 3.22s, and that waterfall was the
+// gap. It uses no browser only APIs, so there is nothing to defer.
+import { GovernanceAuditForm } from './GovernanceAuditForm';
+
+// Results genuinely can stay deferred. Nobody sees them until after the form
+// is submitted, so keeping that chunk out of the initial download is free.
 const GovernanceAuditResults = dynamic(
   () => import('./GovernanceAuditResults').then((m) => m.GovernanceAuditResults),
   { ssr: false }

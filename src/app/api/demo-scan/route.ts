@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { analyzeContent } from "@/lib/analyzer";
 import { enhanceWithAI } from "@/lib/ai-enhance";
-import { SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
+import { SEVERITY_DEDUCTIONS, getExcludedCategories, JURISDICTION_COUNT } from "@/lib/constants";
 import { createServiceClient } from "@/lib/supabase/server";
 import { addContactToLoops, sendLoopsEvent } from "@/lib/loops";
 
@@ -153,7 +153,7 @@ export async function POST(request: Request) {
             <p style="font-size:15px;line-height:1.7">Here is the result of your free compliance check.</p>
             <div style="padding:20px 24px;background:#0A1628;border-radius:10px;margin:16px 0">
               <p style="margin:0;color:#F4F1EA;font-size:34px;font-weight:700">${score}/100</p>
-              <p style="margin:6px 0 0;color:rgba(244,241,234,0.7);font-size:14px">${totalFlags} compliance flag${totalFlags === 1 ? "" : "s"} found across 11 jurisdictions</p>
+              <p style="margin:6px 0 0;color:rgba(244,241,234,0.7);font-size:14px">${totalFlags} compliance flag${totalFlags === 1 ? "" : "s"} found across {JURISDICTION_COUNT} jurisdictions</p>
             </div>
             <p style="font-size:14px;line-height:1.7">Your highest severity finding was unlocked on screen. The rest, including the compliant rewrite for each one, unlock with a free account. Your demo check carries over, so you will not have to paste anything again.</p>
             <p style="font-size:14px;line-height:1.7"><a href="${signupUrl}" style="color:#E5484D">Open my full results</a></p>

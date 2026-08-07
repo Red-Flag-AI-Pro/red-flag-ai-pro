@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JURISDICTION_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Free Compliance and AI Governance Tools: Red Flag AI Pro",
@@ -20,7 +21,7 @@ const ASSESSMENT_TOOLS: ToolCard[] = [
   { href: "/governance-audit", title: "AI Governance Maturity Assessment", desc: "5 minutes, 6 dimensions, a real score, and a roadmap mapped to the EU AI Act, SEC and GDPR." },
   { href: "/witness-test", title: "The Witness Test", desc: "Five questions on how your AI governance evidence is produced. Find out whether anything outside the operator ever saw it." },
   { href: "/tools/shadow-ai-survey", title: "Shadow AI Audit", desc: "7 quick questions to score how much AI usage is happening at your company that IT doesn't know about." },
-  { href: "/tools/fine-calculator", title: "AI Compliance Fine Calculator", desc: "See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in 10 seconds." },
+  { href: "/tools/fine-calculator", title: "AI Compliance Fine Calculator", desc: `See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and ${JURISDICTION_COUNT} jurisdictions, in 10 seconds.` },
 ];
 
 const DOCUMENT_TOOLS: ToolCard[] = [

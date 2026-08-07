@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SentinelRequestForm } from "@/components/marketing/SentinelRequestForm";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sentinel: Managed Governance & Compliance for Agencies and Regulated Businesses",
@@ -42,7 +43,7 @@ const BENEFITS = [
   },
   {
     headline: "VSLs checked before they cost you money.",
-    body: "Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Every word goes through all 30 risk categories before a penny is spent on traffic.",
+    body: `Paste the YouTube URL and Sentinel fetches the transcript automatically. Or drop in an audio file and Whisper transcribes it first. Every word goes through all ${RISK_CATEGORY_COUNT} risk categories before a penny is spent on traffic.`,
   },
   {
     headline: "Compliance in your workflow, not outside it.",
@@ -174,7 +175,7 @@ export default function SentinelPage() {
           </p>
 
           <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.85)", lineHeight: 1.8, maxWidth: "560px", margin: "0 auto 3rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
-            Compliance infrastructure for agencies, legal teams and regulated businesses. All 30 risk categories across 11 jurisdictions, human review logs, independent timestamps and a tamper evident audit trail. Built for the teams where a compliance failure is a regulatory event.
+            Compliance infrastructure for agencies, legal teams and regulated businesses. All {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, human review logs, independent timestamps and a tamper evident audit trail. Built for the teams where a compliance failure is a regulatory event.
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>

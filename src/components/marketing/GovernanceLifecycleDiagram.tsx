@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type React from "react";
+import { JURISDICTION_COUNT, JURISDICTION_COUNT_WORD, RISK_CATEGORY_COUNT, RISK_CATEGORY_COUNT_WORD } from "@/lib/constants";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
@@ -46,8 +47,8 @@ const STAGES: Stage[] = [
   {
     n: 3,
     title: "Compliance",
-    desc: "Marketing copy, claims and disclosures checked against the actual rules regulators enforce, across ten jurisdictions and thirty risk categories, before a complaint does the checking for you.",
-    mechanism: "Compliance check — 10 jurisdictions, 30 categories",
+    desc: `Marketing copy, claims and disclosures checked against the actual rules regulators enforce, across ${JURISDICTION_COUNT_WORD} jurisdictions and ${RISK_CATEGORY_COUNT_WORD} risk categories, before a complaint does the checking for you.`,
+    mechanism: `Compliance check — ${JURISDICTION_COUNT} jurisdictions, ${RISK_CATEGORY_COUNT} categories`,
     hot: true,
     hotNote: "One of two pillars. Compliance checks what's said, run before the copy goes out, not after a complaint does it for you.",
     tools: [{ label: "Fine Calculator", href: "/tools/fine-calculator" }],

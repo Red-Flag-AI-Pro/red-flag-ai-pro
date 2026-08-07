@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "FAQ: Red Flag AI Pro",
@@ -20,14 +21,14 @@ const FAQS = [
   { category: "For buyers", q: "What types of ads and offers can I check?", a: "Any text based content: sales pages, landing pages, ads, VSL scripts, email sequences, social media copy. Paste it or give us a URL." },
   { category: "For buyers", q: "Is this just another AI gimmick?", a: "Red Flag AI Pro is trained specifically on FTC enforcement actions, GDPR guidelines, and real compliance cases. Not generic marketing advice." },
   { category: "For sellers", q: "What if my copy is already compliant?", a: "Then you get a green score and launch with total confidence. Either way you win." },
-  { category: "For sellers", q: "Which jurisdictions do you cover?", a: "USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL 2022), Nigeria (NDPR) and China (SAMR, PIPL, CAC). 11 jurisdictions covered in every check." },
+  { category: "For sellers", q: "Which jurisdictions do you cover?", a: `USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL 2022), Nigeria (NDPR) and China (SAMR, PIPL, CAC). ${JURISDICTION_COUNT} jurisdictions covered in every check.` },
   { category: "For sellers", q: "Can I check a live URL instead of pasting copy?", a: "Yes. On Pro and above, paste any URL and we fetch and check the live page. Works on sales pages, landing pages, product pages and full websites." },
-  { category: "For sellers", q: "Can I check YouTube VSLs?", a: "Yes. Paste a YouTube URL and we automatically fetch the transcript. You can also upload audio files for Whisper transcription. Both are then checked against all 30 categories." },
+  { category: "For sellers", q: "Can I check YouTube VSLs?", a: `Yes. Paste a YouTube URL and we automatically fetch the transcript. You can also upload audio files for Whisper transcription. Both are then checked against all ${RISK_CATEGORY_COUNT} categories.` },
   { category: "For agencies", q: "Can I use this for client work?", a: "Absolutely. Growth and Sentinel plans include client workspaces, white label PDF reports, team seats, and weekly monitoring. Manage compliance for every client from one dashboard." },
   { category: "For agencies", q: "Does it integrate with n8n, Zapier or my existing tools?", a: "Yes. Every check fires a webhook to any URL. There is also a REST API with full documentation at /docs. Connect to n8n (free), Make, Zapier, Slack, or any custom system." },
   { category: "Pricing", q: "Why is there a free check?", a: "Because once you see what it finds, whether in your own copy or in an ad you were about to buy from, you will never skip it again." },
-  { category: "Pricing", q: "What is included in the free plan?", a: "One check per month, access to 16 of our 30 risk categories across 11 jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard." },
-  { category: "Pricing", q: "Is there a money back guarantee?", a: "Growth comes with a 14 day money back guarantee, no questions asked. Pro can be cancelled any time and you keep access until the end of the billing period. Sentinel terms are set in your contract." },
+  { category: "Pricing", q: "What is included in the free plan?", a: `One check per month, access to 16 of our ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions, plus the full compliance toolkit (calculators and tools) inside your dashboard.` },
+  { category: "Pricing", q: "Is there a money back guarantee?", a: "Yes, on every paid plan. If you are within 14 days of your first payment, email support@redflagaipro.com from your account address and we refund it in full, no reason needed. After that you can cancel any time and keep access to the end of the billing period. Sentinel terms are set in your contract." },
   { category: "AI governance", q: "What is the Governance Maturity Index?", a: "A free 2 minute assessment, 12 questions, that scores your organisation's AI governance across 6 dimensions: strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness. You get a 0 to 100 score, your top gaps, and a 90 day roadmap." },
   { category: "AI governance", q: "Is the governance assessment a different product from the checker?", a: "Same engine, two entry points. The checker checks your marketing copy for risk in real time. The governance assessment scores your organisation's overall AI governance maturity. Most companies end up using both." },
   { category: "AI governance", q: "Who is the governance assessment for?", a: "CFOs, compliance leads, and risk teams who need to show a regulator or board that AI governance is real, not just a written policy nobody checks." },

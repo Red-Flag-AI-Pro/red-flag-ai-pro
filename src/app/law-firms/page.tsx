@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Governance & Compliance Evidence for Law Firms",
@@ -92,7 +93,7 @@ const RULES = [
   {
     rule: "DMCC Act 2024",
     demands: "The CMA now fines unfair commercial practices directly, up to 10% of global turnover. Fake reviews, false urgency and misleading price claims are explicitly in scope.",
-    checks: "Fake discount patterns, manufactured urgency, testimonial and review claims, and misleading statements, the core of our 30 risk categories.",
+    checks: `Fake discount patterns, manufactured urgency, testimonial and review claims, and misleading statements, the core of our ${RISK_CATEGORY_COUNT} risk categories.`,
   },
   {
     rule: "UK GDPR and PECR",
@@ -103,6 +104,13 @@ const RULES = [
     rule: "EU AI Act Article 50",
     demands: "From 2 August 2026, AI generated content requires transparency. Firms using AI for client facing content carry the obligation.",
     checks: "AI disclosure checks, plus the governance record proving human review, sealed and timestamped.",
+  },
+  {
+    rule: "SRA ethics discussions",
+    demands:
+      "Where a decision turns on a question of professional ethics, the firm is expected to be able to show that the discussion happened, who took part, and what was decided. A file note written afterwards is worth considerably less than a record made at the time.",
+    checks:
+      "Every ethics decision about AI use gets a dated record naming who decided and on what authority, sealed so it cannot be added to later. Records are retained for at least three years, past the point where anyone remembers the conversation.",
   },
 ];
 
@@ -129,7 +137,7 @@ const WHO = [
     label: "Marketing and BD teams",
     title: "Client alerts and websites are regulated advertising.",
     description:
-      "Check any page or client communication against 30 risk categories across 11 jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.",
+      `Check any page or client communication against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.`,
   },
 ];
 
@@ -606,7 +614,7 @@ export default function LawFirmsPage() {
           </h2>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
             The governance assessment scores your AI oversight across 6 dimensions and shows the single biggest gap.
-            The compliance check reads any page or document against 30 risk categories across 11 jurisdictions in under
+            The compliance check reads any page or document against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in under
             60 seconds. Free, no account, results instantly.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, PLAN_PRICES } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, PLAN_PRICES, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import { GovernanceLifecycleDiagram } from "@/components/marketing/GovernanceLifecycleDiagram";
 
 export const metadata: Metadata = {
   title: "Governance and Compliance Checking Features: Red Flag AI Pro",
   description:
-    "Real time compliance checking across 11 jurisdictions and 30 risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.",
+    `Real time compliance checking across ${JURISDICTION_COUNT} jurisdictions and ${RISK_CATEGORY_COUNT} risk categories, plus a six dimension governance assessment, strategic roadmap generation, audit logging, vendor risk tracking, and board ready reporting.`,
   alternates: { canonical: "https://www.redflagaipro.com/features" },
 };
 
@@ -88,7 +88,7 @@ export default function FeaturesPage() {
             {[
               {
                 title: "Boundary authorization records",
-                desc: "One sealed record per AI system: what was approved, who approved it, in what role, when it expires, and the specific observable conditions that void it early. Covers API keys and agent credentials too, since a credential is standing authority the same way a decision is.",
+                desc: "One sealed record per AI system: what was approved, who approved it, in what role, when it expires, and the specific observable conditions that void it early, and anyone who notices one become true can act on it directly, without needing edit rights over the record. Covers API keys and agent credentials too, since a credential is standing authority the same way a decision is.",
                 href: "/boundary-authorization-records",
                 linkText: "Every field, and why it exists",
               },
@@ -169,7 +169,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Real Time Compliance Checking",
-                  desc: "11 jurisdictions, up to 30 risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.",
+                  desc: `${JURISDICTION_COUNT} jurisdictions, up to ${RISK_CATEGORY_COUNT} risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.`,
                 },
                 {
                   icon: "",

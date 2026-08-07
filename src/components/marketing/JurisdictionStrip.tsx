@@ -1,4 +1,5 @@
 import React from "react";
+import { JURISDICTION_COUNT } from "@/lib/constants";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
@@ -28,7 +29,7 @@ export function JurisdictionStrip() {
             <span style={{ width: "24px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h2 className="font-display" style={{ fontSize: "clamp(1.8rem, 4.5vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
-            Mapped across <span style={{ fontStyle: "italic", color: "#E5484D" }}>11 jurisdictions</span>
+            Mapped across <span style={{ fontStyle: "italic", color: "#E5484D" }}>{JURISDICTION_COUNT} jurisdictions</span>
           </h2>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.6, maxWidth: "560px", margin: "1rem auto 0" }}>
             Your assessment is benchmarked against the regulators that examine AI governance in each market you operate in.

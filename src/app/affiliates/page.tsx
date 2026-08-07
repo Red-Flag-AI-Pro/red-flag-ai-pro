@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PromoBox } from "@/components/affiliates/PromoBox";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Affiliate Programme: Red Flag AI Pro",
@@ -176,12 +177,12 @@ export default function AffiliatesPage() {
           <PromoBox
             platform="Facebook Group / Forum"
             label="Helpful, not salesy"
-            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non compliant: fake urgency, income claims, GDPR issues, influencer disclosure, all of it. 30 risk categories across 11 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree check here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it. 15% recurring commission.`}
+            post={`Not sure if this is useful for anyone here but I've been using Red Flag AI Pro to check my copy before running ads.\n\nYou paste your sales page or email, it tells you what's non compliant: fake urgency, income claims, GDPR issues, influencer disclosure, all of it. ${RISK_CATEGORY_COUNT} risk categories across 11 countries.\n\nSaved me from running an ad that had three FTC violations I didn't know about.\n\nFree check here (no account needed): [YOUR AFFILIATE LINK]\n\nThere's also an affiliate programme if you want to share it. 15% recurring commission.`}
           />
           <PromoBox
             platform="Newsletter / Email"
             label="For newsletter writers"
-            post={`Quick one this week: a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy, sales page, ad, email, and it checks it against 30 compliance categories across 11 jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First check is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link. I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
+            post={`Quick one this week: a tool I've been using called Red Flag AI Pro.\n\nYou paste any marketing copy, sales page, ad, email, and it checks it against 30 compliance categories across ${JURISDICTION_COUNT} jurisdictions (FTC, GDPR, ASA, FCA and more). Results in 60 seconds. First check is free.\n\nI ran my own copy through it. Found things I didn't know were issues. Fixed them before the next campaign went out.\n\nIf your audience writes or buys from online ads, it's worth knowing about: [YOUR AFFILIATE LINK]\n\n(Full disclosure: that's my affiliate link. I earn a commission if you sign up for a paid plan. Doesn't change the price for you.)`}
           />
         </div>
       </section>
@@ -190,7 +191,7 @@ export default function AffiliatesPage() {
       <section style={{ background: "#0D1B2E", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem", textAlign: "center" }}>Governance Frameworks Covered</p>
-          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", color: "#F4F1EA" }}>Red Flag covers 11 jurisdictions</h2>
+          <h2 style={{ ...syne, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "4rem", textAlign: "center", color: "#F4F1EA" }}>Red Flag covers {JURISDICTION_COUNT} jurisdictions</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2px" }}>
             {[

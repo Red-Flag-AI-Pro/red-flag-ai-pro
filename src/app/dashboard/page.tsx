@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { PlanBadge } from "@/components/billing/PlanBadge";
 import { ScoreTrend } from "@/components/ui/ScoreTrend";
 import { TenureMarker } from "@/components/dashboard/TenureMarker";
-import { PLAN_LIMITS, SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { PLAN_LIMITS, isScannerSaleActive, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import type { Plan, Scan } from "@/types";
 
 const PLAN_DISPLAY: Record<Plan, string> = {
@@ -283,7 +283,7 @@ export default async function DashboardPage({
             </p>
             <p className="text-xs text-[rgba(244,241,234,0.5)] mt-0.5">
               {plan === "free"
-                ? `5 scans/month, all 30 risk categories, PDF reports. ${SCANNER_SALE_ACTIVE ? "£149/mo, enforcement week rate until 7 Aug." : "£350/mo."}`
+                ? `5 scans/month, all ${RISK_CATEGORY_COUNT} risk categories, PDF reports. ${isScannerSaleActive() ? "£149/mo, enforcement week rate until 7 Aug." : "£350/mo."}`
                 : "Managed implementation, audit logging, drift detection, board reporting, dedicated advisor. £5000+/mo."}
             </p>
           </div>

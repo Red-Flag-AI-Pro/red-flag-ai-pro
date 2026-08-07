@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
 import { AuditRequestForm } from "@/components/marketing/AuditRequestForm";
-import { AUDIT_PRICE, PROGRAM_PRICE } from "@/lib/constants";
+import { AUDIT_PRICE, PROGRAM_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ const INCLUDES = [
   {
     num: "01",
     headline: "Full site check",
-    body: "Every page on your funnel: sales pages, VSLs, email sequences, run through all 30 risk categories, across all 11 jurisdictions.",
+    body: `Every page on your funnel: sales pages, VSLs, email sequences, run through all ${RISK_CATEGORY_COUNT} risk categories, across all ${JURISDICTION_COUNT} jurisdictions.`,
   },
   {
     num: "02",
@@ -489,7 +489,7 @@ export default async function AuditPage({
                 <span style={{ ...mono, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>ONE TIME · 48 HRS</span>
               </div>
               {[
-                "Every page checked against 30 compliance risk categories, 11 jurisdictions",
+                `Every page checked against 30 compliance risk categories, ${JURISDICTION_COUNT} jurisdictions`,
                 "AI use scored across all 6 governance dimensions",
                 "Video walkthrough of every flag, in plain English",
                 "Written report: compliance exposure and governance gaps",

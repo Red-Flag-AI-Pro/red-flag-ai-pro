@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
@@ -264,7 +265,7 @@ const HOW_IT_WORKS = [
 const OFFER_CARDS = [
   {
     title: "Compliance checking",
-    stat: "11 jurisdictions · 30 categories",
+    stat: `${JURISDICTION_COUNT} jurisdictions · ${RISK_CATEGORY_COUNT} categories`,
     body: "Paste your marketing copy in and it is checked against the actual rules regulators enforce, the same ones behind real rulings, in under a minute. Catches the claim before a complaint does.",
     href: "/tools",
     cta: "Try a free check",

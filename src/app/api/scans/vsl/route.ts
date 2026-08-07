@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
-import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories } from "@/lib/constants";
+import { PLAN_LIMITS, SEVERITY_DEDUCTIONS, getExcludedCategories, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import { YoutubeTranscript } from "youtube-transcript";
 import type { Plan } from "@/types";
 
@@ -161,7 +161,7 @@ export async function POST(request: Request) {
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const title = `VSL - youtube.com/watch?v=${videoId}`;
 
-  // Run the analyzer - YouTube mode is Sentinel-only, so sees all 30 categories
+  // Run the analyzer - YouTube mode is Sentinel-only, so sees all {RISK_CATEGORY_COUNT} categories
   const { flags: allFlags } = analyzeContent(title, content);
   const excludedCategories = getExcludedCategories(plan);
   const flags = excludedCategories.length === 0

@@ -2,7 +2,9 @@
  * AI Governance Audit Tool
  * Quiz framework, scoring logic, and governance assessment engine
  *
- * 6 dimensions, 24 total questions
+ * 6 dimensions. The question count is not written here on purpose: it said 24
+ * while the file held 26, which is the same drift that put "ten jurisdictions"
+ * in live copy. Anything user facing should read ALL_QUESTIONS.length instead.
  * Scoring: 0-100 governance maturity score
  * Risk levels: Critical (0-30), Moderate (31-60), Managed (61-80), Mature (81-100)
  */
@@ -288,6 +290,37 @@ export const STRATEGY_QUESTIONS = [
       },
     ],
   },
+  {
+    // Added from the FCA's Mills Review framing of the autonomy spectrum. The
+    // question most organisations cannot answer is not whether AI is used, but
+    // where on that spectrum each system actually sits, because the answer is
+    // usually assumed rather than recorded.
+    id: 'strat_7',
+    dimension: 'strategy_ownership' as const,
+    question: 'For each AI system you run, is it written down whether a human decides, the AI recommends and a human approves each case, or the AI decides on its own?',
+    options: [
+      {
+        text: 'Never recorded, we would have to work it out system by system',
+        riskPoints: 3,
+        context: 'Risky: where authority sits is assumed, and assumptions are not evidence',
+      },
+      {
+        text: 'Broadly understood by the team, but not written down anywhere',
+        riskPoints: 2,
+        context: 'Shared understanding evaporates the moment the person who held it leaves',
+      },
+      {
+        text: 'Recorded for systems we consider high risk only',
+        riskPoints: 1,
+        context: 'Partial: the systems nobody classified as risky are the ones that surprise you',
+      },
+      {
+        text: 'Recorded for every AI system, and stated at the point it was approved',
+        riskPoints: 0,
+        context: 'Strong: the autonomy level is a decision on the record rather than a drift',
+      },
+    ],
+  },
 ];
 
 // ============================================================
@@ -442,6 +475,36 @@ export const TOOL_DATA_QUESTIONS = [
         text: 'Don\'t know',
         riskPoints: 3,
         context: 'No visibility into what data AI agents can actually reach',
+      },
+    ],
+  },
+  {
+    // Memory is a data retention decision that almost nobody treats as one.
+    // An assistant that remembers across sessions is holding personal data
+    // indefinitely, under an authority that was usually never granted.
+    id: 'tool_6',
+    dimension: 'tool_data_governance' as const,
+    question: 'Where your AI tools retain memory between sessions, did someone authorise that retention, and is there a limit on how long it is kept?',
+    options: [
+      {
+        text: 'We have never considered AI memory as data retention',
+        riskPoints: 3,
+        context: 'Risky: an assistant remembering across sessions is holding personal data with no basis and no end date',
+      },
+      {
+        text: 'We know some tools retain memory but nobody approved or bounded it',
+        riskPoints: 2,
+        context: 'Retention is happening by default rather than by decision',
+      },
+      {
+        text: 'Approved for some tools, with retention periods on the ones we reviewed',
+        riskPoints: 1,
+        context: 'Partial: the unreviewed tools are still retaining indefinitely',
+      },
+      {
+        text: 'Every tool that retains memory has a named approver and a retention limit',
+        riskPoints: 0,
+        context: 'Strong: memory is a governed decision with an expiry, not an accident of the product',
       },
     ],
   },
@@ -669,6 +732,36 @@ export const MONITORING_QUESTIONS = [
         text: 'Yes — every AI system has a defined stop/override point a human can use before effect',
         riskPoints: 0,
         context: 'Strong: Art. 14-style human oversight designed into the system, not bolted on after',
+      },
+    ],
+  },
+  {
+    // The quiet failure: a reviewer keeps signing off, but starts agreeing with
+    // the AI every time. Approval rates look healthy right up until someone
+    // asks whether anyone was actually still looking.
+    id: 'monitor_6',
+    dimension: 'monitoring_accountability' as const,
+    question: 'Do you track how often your reviewers actually disagree with the AI, rather than only whether decisions got signed off?',
+    options: [
+      {
+        text: 'We only record that a sign off happened',
+        riskPoints: 3,
+        context: 'Risky: a rubber stamp and genuine scrutiny produce an identical record',
+      },
+      {
+        text: 'We could work it out from the logs, but nobody looks',
+        riskPoints: 2,
+        context: 'The signal exists and nothing is watching it, so drift goes unnoticed',
+      },
+      {
+        text: 'We review approval patterns occasionally, informally',
+        riskPoints: 1,
+        context: 'Partial: drift is usually gradual, and occasional checks miss gradual',
+      },
+      {
+        text: 'Pushback rate and time to sign off are tracked, and a fall in either is flagged',
+        riskPoints: 0,
+        context: 'Strong: you can tell the difference between oversight and habit',
       },
     ],
   },

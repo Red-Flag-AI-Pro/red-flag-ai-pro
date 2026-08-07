@@ -4,13 +4,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DemoScanner } from "@/components/marketing/DemoScanner";
 import { RegulatoryCountdown } from "@/components/marketing/RegulatoryCountdown";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "AI Compliance Assessment: Check Content Against 30 Risk Categories Across 11 Jurisdictions",
   description:
-    "Run a free compliance assessment across US, UK, EU, Australia, Canada, Brazil, India, Singapore, UAE, Nigeria and China. 30 risk categories including EU AI Act Article 50, GDPR, FTC, NDPR and PIPL. Instant results, no account required.",
+    `Run a free compliance assessment across US, UK, EU, Australia, Canada, Brazil, India, Singapore, UAE, Nigeria and China. ${RISK_CATEGORY_COUNT} risk categories including EU AI Act Article 50, GDPR, FTC, NDPR and PIPL. Instant results, no account required.`,
   alternates: { canonical: "https://www.redflagaipro.com/compliance-assessment" },
 };
 
@@ -58,7 +59,7 @@ export default function ComplianceAssessmentPage() {
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1.25rem", color: "#F4F1EA", textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)" }}>
-            30 risk categories. <span style={{ fontStyle: "italic", color: "#E5484D" }}>11 jurisdictions.</span> 60 seconds.
+            {RISK_CATEGORY_COUNT} risk categories. <span style={{ fontStyle: "italic", color: "#E5484D" }}>{JURISDICTION_COUNT} jurisdictions.</span> 60 seconds.
           </h1>
           <p style={{ ...syne, fontSize: "1.05rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
             Paste your marketing copy and get a compliance score with every flag explained: which rule it breaks, in which jurisdiction, and how to fix it.

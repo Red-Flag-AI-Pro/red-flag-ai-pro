@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
@@ -150,7 +151,7 @@ export default function ComplianceChecklistPage() {
           Marketing Compliance Checklist
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "580px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
-          {total} checkpoints across 11 jurisdictions and 30 risk categories. Tick each one off — or find out what needs fixing before you publish.
+          {total} checkpoints across {JURISDICTION_COUNT} jurisdictions and {RISK_CATEGORY_COUNT} risk categories. Tick each one off — or find out what needs fixing before you publish.
         </p>
         <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", maxWidth: "500px", margin: "0 auto" }}>
           Free to use. For a full AI powered check of your actual copy, use the checker below.

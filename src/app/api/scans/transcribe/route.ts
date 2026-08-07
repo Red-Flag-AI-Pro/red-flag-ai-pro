@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeContent } from "@/lib/analyzer";
-import { SEVERITY_DEDUCTIONS } from "@/lib/constants";
+import { SEVERITY_DEDUCTIONS, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import OpenAI from "openai";
 import type { Plan } from "@/types";
 
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
   const cleanTranscript = transcript.trim();
   const scanTitle = `[VSL] ${file.name.replace(/\.[^.]+$/, "")}`;
 
-  // Run compliance scan — Sentinel-only feature, sees all 30 categories
+  // Run compliance scan — Sentinel-only feature, sees all {RISK_CATEGORY_COUNT} categories
   const { flags } = analyzeContent(scanTitle, cleanTranscript);
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
 

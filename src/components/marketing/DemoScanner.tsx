@@ -5,7 +5,7 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { JurisdictionPicker, JURISDICTIONS } from "@/components/ui/JurisdictionPicker";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
-import { SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { isScannerSaleActive, JURISDICTION_COUNT } from "@/lib/constants";
 import type { JurisdictionCode } from "@/lib/analyzer";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" };
@@ -225,7 +225,7 @@ export function DemoScanner() {
             lineHeight: 1.8,
             fontWeight: 700
           }}>
-            One check covers <span style={{color: "#E5484D"}}>all</span> 11 jurisdictions at once.
+            One check covers <span style={{color: "#E5484D"}}>all</span> {JURISDICTION_COUNT} jurisdictions at once.
           </p>
         </div>
 
@@ -411,7 +411,7 @@ export function DemoScanner() {
                   Checking for{" "}
                   <span style={{color: "white", fontWeight: 700}}>
                     {jurisdictions.length === JURISDICTIONS.length
-                      ? "all 11 jurisdictions"
+                      ? `all ${JURISDICTION_COUNT} jurisdictions`
                       : jurisdictions.map(c => JURISDICTIONS.find(j => j.code === c)?.name).join(" + ")}
                   </span>
                 </p>
@@ -689,7 +689,7 @@ export function DemoScanner() {
                   textDecoration: "none",
                   letterSpacing: "0.02em"
                 }}>
-                  Unlock With Pro: {SCANNER_SALE_ACTIVE ? "£149/mo (enforcement week rate)" : "£350/mo"}
+                  Unlock With Pro: {isScannerSaleActive() ? "£149/mo (enforcement week rate)" : "£350/mo"}
                 </Link>
                 <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)", marginTop: "1rem"}}>Cancel anytime. 5 checks a month, every flag fully unlocked.</p>
               </div>

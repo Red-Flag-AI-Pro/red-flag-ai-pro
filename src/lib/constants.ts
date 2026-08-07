@@ -1,4 +1,8 @@
 import type { Plan } from "@/types";
+// Type only import, erased at build time, so this adds no runtime dependency
+// and cannot create a cycle. It exists purely so the jurisdiction list below
+// fails to compile if it drifts from the analyzer's own definition.
+import type { JurisdictionCode } from "@/lib/analyzer";
 
 // Bump this date whenever a risk category, jurisdiction mapping, or regulatory
 // reference is added/updated, so the site can show a real "last reviewed" date
@@ -77,10 +81,20 @@ export const REPORT_PRICE = {
 // signups keep their price for as long as they stay subscribed rather than
 // reverting after the window closes.
 export const SCANNER_SALE_ENDS = "2026-08-08T00:00:00+01:00";
-export const SCANNER_SALE_ACTIVE = new Date() < new Date(SCANNER_SALE_ENDS);
-
 export const GROWTH_SALE_ENDS = SCANNER_SALE_ENDS;
-export const GROWTH_SALE_ACTIVE = new Date() < new Date(GROWTH_SALE_ENDS);
+
+// Evaluated per call, never captured once at module load. A module level
+// `const ... = new Date() < end` is fixed for the whole life of the process,
+// so a serverless instance that cold started before the deadline would carry
+// on selling at the sale price, and quoting it in the UI, until that instance
+// happened to recycle. The window is small but it is silent and it is money,
+// which is exactly the kind of thing nobody notices until reconciliation.
+export function isScannerSaleActive(): boolean {
+  return new Date() < new Date(SCANNER_SALE_ENDS);
+}
+export function isGrowthSaleActive(): boolean {
+  return new Date() < new Date(GROWTH_SALE_ENDS);
+}
 
 // Single source of truth for plan prices. Upsell copy interpolates these
 // so a future price change here cannot silently leave stale figures in the UI.
@@ -89,23 +103,34 @@ export const SCANNER_SALE_PRICE = 149;
 export const GROWTH_STANDARD_PRICE = 1200;
 export const GROWTH_SALE_PRICE = 999;
 
+// Getters, not plain values, so every read re-checks the clock. Call sites are
+// unchanged (PLAN_PRICES.scanner.monthly still works exactly as before), but
+// the sale can no longer be frozen open by a long lived process.
 export const PLAN_PRICES = {
   scanner: {
-    monthly: SCANNER_SALE_ACTIVE ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE,
+    get monthly() {
+      return isScannerSaleActive() ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE;
+    },
     label: "Pro",
-    priceId: SCANNER_SALE_ACTIVE
-      ? process.env.STRIPE_PRICE_SCANNER_SALE_ID!
-      : process.env.STRIPE_PRICE_SCANNER_ID!,
+    get priceId() {
+      return isScannerSaleActive()
+        ? process.env.STRIPE_PRICE_SCANNER_SALE_ID!
+        : process.env.STRIPE_PRICE_SCANNER_ID!;
+    },
   },
   enterprise: {
-    monthly: GROWTH_SALE_ACTIVE ? GROWTH_SALE_PRICE : GROWTH_STANDARD_PRICE,
+    get monthly() {
+      return isGrowthSaleActive() ? GROWTH_SALE_PRICE : GROWTH_STANDARD_PRICE;
+    },
     label: "Growth",
     // Falls back to the standard price id until STRIPE_PRICE_ENTERPRISE_SALE_ID
     // exists in Vercel, so checkout never breaks; the fallback charges the old
     // £1,200, which is why the env var must be set before promoting £999.
-    priceId: GROWTH_SALE_ACTIVE && process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
-      ? process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
-      : process.env.STRIPE_PRICE_ENTERPRISE_ID!,
+    get priceId() {
+      return isGrowthSaleActive() && process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
+        ? process.env.STRIPE_PRICE_ENTERPRISE_SALE_ID
+        : process.env.STRIPE_PRICE_ENTERPRISE_ID!;
+    },
   },
   sentinel: {
     monthly: 5000,
@@ -152,3 +177,65 @@ export const FLAG_CATEGORY_LABELS: Record<string, string> = {
   accessibility: "Web Accessibility Risk",
   age_assurance: "Age Assurance / Under-16 Safety",
 };
+
+// ─── CANONICAL PUBLIC FIGURES ────────────────────────────────────────────────
+// Every number that appears in marketing copy is derived here, once, from the
+// data it actually describes. Before this existed the same facts were retyped
+// page by page and drifted apart: "ten jurisdictions" survived in three places
+// for weeks after China took the real count to eleven, and the LinkedIn profile
+// still said ten after that.
+//
+// That matters more here than at most companies. The whole pitch is "do not
+// take my word for it, check". A prospect who finds our own pages disagreeing
+// about how many jurisdictions we cover has disproved the central claim using
+// nothing but our own marketing. So: import these, never retype them.
+
+// The canonical jurisdiction list.
+export const JURISDICTIONS = [
+  "us", "gb", "eu", "au", "ca", "br", "in", "sg", "ae", "ng", "cn",
+] as const satisfies readonly JurisdictionCode[];
+
+// `satisfies` above only proves every entry IS a valid code. It does not prove
+// the list covers them all, so on its own it would happily let someone add a
+// twelfth jurisdiction to the analyzer and forget this file, which is exactly
+// the drift that produced "ten jurisdictions" in live copy for weeks.
+//
+// This line closes that. If any JurisdictionCode is missing from JURISDICTIONS,
+// MissingJurisdictions resolves to those codes instead of never, and the
+// assignment below fails to compile with the offending codes named in the
+// error. It costs nothing at runtime, it is purely a type level assertion.
+type MissingJurisdictions = Exclude<JurisdictionCode, (typeof JURISDICTIONS)[number]>;
+const _allJurisdictionsListed: [MissingJurisdictions] extends [never]
+  ? true
+  : ["JURISDICTIONS is missing these codes", MissingJurisdictions] = true;
+void _allJurisdictionsListed;
+
+export const JURISDICTION_COUNT = JURISDICTIONS.length;
+
+// Derived from the labels themselves, so adding a risk category updates every
+// piece of copy on the site automatically.
+export const RISK_CATEGORY_COUNT = Object.keys(FLAG_CATEGORY_LABELS).length;
+
+export const GOVERNANCE_DIMENSION_COUNT = 6;
+
+// Spelled out forms, because prose reads better with words mid sentence and
+// figures read better in headlines. Both come from the same number.
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+  "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+];
+export function numberWord(n: number): string {
+  if (n <= 20) return NUMBER_WORDS[n];
+  if (n < 100) {
+    const tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty",
+      "seventy", "eighty", "ninety"][Math.floor(n / 10)];
+    const unit = n % 10;
+    return unit ? `${tens} ${NUMBER_WORDS[unit]}` : tens;
+  }
+  return String(n);
+}
+
+export const JURISDICTION_COUNT_WORD = numberWord(JURISDICTION_COUNT);
+export const RISK_CATEGORY_COUNT_WORD = numberWord(RISK_CATEGORY_COUNT);
+export const GOVERNANCE_DIMENSION_COUNT_WORD = numberWord(GOVERNANCE_DIMENSION_COUNT);

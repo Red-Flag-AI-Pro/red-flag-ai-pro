@@ -4,10 +4,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BLOG_POSTS } from "@/lib/blog";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Governance & Compliance Blog | Red Flag AI Pro",
-  description: "Plain English guides on AI governance, EU AI Act compliance, audit trails, and regulatory requirements across 11 jurisdictions. Written for compliance, legal and risk teams.",
+  description: `Plain English guides on AI governance, EU AI Act compliance, audit trails, and regulatory requirements across ${JURISDICTION_COUNT} jurisdictions. Written for compliance, legal and risk teams.`,
   alternates: { canonical: "https://www.redflagaipro.com/blog" },
 };
 
@@ -171,7 +172,7 @@ export default function BlogPage() {
             Stop reading about compliance.<br />Find out what your own copy would trigger.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            Red Flag AI Pro checks your copy against 30 risk categories across 11 jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your copy against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in 60 seconds.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

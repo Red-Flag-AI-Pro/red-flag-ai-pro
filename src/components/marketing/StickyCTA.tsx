@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export function StickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -31,7 +32,7 @@ export function StickyCTA() {
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-4">
         <div className="hidden sm:block">
           <p className="text-sm font-bold text-white">Catch what you said. Prove what you did.</p>
-          <p className="text-xs text-gray-400">30 risk categories. 11 jurisdictions. Both free, both 5 minutes or less.</p>
+          <p className="text-xs text-gray-400">{RISK_CATEGORY_COUNT} risk categories. {JURISDICTION_COUNT} jurisdictions. Both free, both 5 minutes or less.</p>
         </div>
         <p className="sm:hidden text-sm font-bold text-white">Free check or free assessment, your call.</p>
         <div className="flex items-center gap-3 flex-shrink-0">

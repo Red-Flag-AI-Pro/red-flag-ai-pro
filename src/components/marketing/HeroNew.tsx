@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 // Syne is now loaded globally via layout.tsx — no CDN import needed
 
@@ -149,7 +150,7 @@ export function HeroNew() {
             fontFamily: "'Syne', system-ui, sans-serif",
             letterSpacing: "-0.01em"
           }}>
-            <span style={{color: "rgba(255,255,255,0.8)"}}>30 risk categories. 11 jurisdictions.</span>
+            <span style={{color: "rgba(255,255,255,0.8)"}}>{RISK_CATEGORY_COUNT} risk categories. {JURISDICTION_COUNT} jurisdictions.</span>
             <br />
             <span style={{color: "rgba(255,255,255,0.8)"}}>One paste box.</span>
             <br />
@@ -241,8 +242,8 @@ export function HeroNew() {
             gap: "8px 32px", justifyContent: "center", alignItems: "center"
           }}>
             {[
-              "30 risk categories",
-              "11 jurisdictions",
+              `${RISK_CATEGORY_COUNT} risk categories`,
+              `${JURISDICTION_COUNT} jurisdictions`,
               "URL + VSL + site audit",
               "60 second results",
             ].map((s, i) => (

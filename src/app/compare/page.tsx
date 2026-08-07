@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro vs Competitors: AI Governance and Compliance Platform Comparison",
-  description: "How Red Flag AI Pro compares to other AI governance and compliance tools. 11 jurisdictions, 30 risk categories, immutable audit trail, and human sign-off. Feature comparison and honest assessment.",
+  description: `How Red Flag AI Pro compares to other AI governance and compliance tools. ${JURISDICTION_COUNT} jurisdictions, ${RISK_CATEGORY_COUNT} risk categories, immutable audit trail, and human sign-off. Feature comparison and honest assessment.`,
   alternates: { canonical: "https://www.redflagaipro.com/compare" },
 };
 

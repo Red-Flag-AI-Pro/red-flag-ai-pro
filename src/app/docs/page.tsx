@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "API Documentation: Red Flag AI Pro",
@@ -209,7 +210,7 @@ offset  integer   Number of results to skip (default 0)`}</Code>
         {/* Risk categories */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-white">Risk categories</h2>
-          <p className="text-gray-400 text-sm">Every paid plan (Pro, Growth, Sentinel) checks all 30 categories. The free plan checks 16.</p>
+          <p className="text-gray-400 text-sm">Every paid plan (Pro, Growth, Sentinel) checks all {RISK_CATEGORY_COUNT} categories. The free plan checks 16.</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               "income_claim", "urgency", "scarcity", "testimonial", "guarantee",

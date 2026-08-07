@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import React from "react";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Governance Evidence for PI Brokers and MGAs",
@@ -109,7 +110,7 @@ const RULES = [
   {
     rule: "CAP Code / ASA",
     demands: "Broker and MGA marketing claims, comparison rates and urgency wording are regulated advertising, the same as any other sector.",
-    checks: "Fake discount patterns, manufactured urgency, testimonial and comparison claims, the core of our 30 risk categories.",
+    checks: `Fake discount patterns, manufactured urgency, testimonial and comparison claims, the core of our ${RISK_CATEGORY_COUNT} risk categories.`,
   },
   {
     rule: "UK GDPR and PECR",
@@ -141,7 +142,7 @@ const WHO = [
     label: "Marketing and BD teams",
     title: "Broker websites and client alerts are regulated advertising.",
     description:
-      "Check any page or client communication against 30 risk categories across 11 jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.",
+      `Check any page or client communication against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.`,
   },
 ];
 
@@ -612,7 +613,7 @@ export default function InsuranceBrokersPage() {
           </h2>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
             The governance assessment scores your AI oversight across 6 dimensions and shows the single biggest gap.
-            The compliance check reads any page or document against 30 risk categories across 11 jurisdictions in under
+            The compliance check reads any page or document against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in under
             60 seconds. Free, no account, results instantly.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>

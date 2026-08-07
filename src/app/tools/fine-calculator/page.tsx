@@ -3,16 +3,17 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FineCalculator } from "@/components/tools/FineCalculator";
 import React from "react";
+import { JURISDICTION_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Compliance Fine Calculator | Red Flag AI Pro",
   description:
-    "See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions in 10 seconds. Free, no signup. Built for CFOs, compliance and risk teams by Red Flag AI Pro.",
+    `See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and ${JURISDICTION_COUNT} jurisdictions in 10 seconds. Free, no signup. Built for CFOs, compliance and risk teams by Red Flag AI Pro.`,
   alternates: { canonical: "https://www.redflagaipro.com/tools/fine-calculator" },
   openGraph: {
     title: "What could AI non-compliance cost you? Free Fine Calculator",
     description:
-      "Your maximum statutory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in 10 seconds, free.",
+      `Your maximum statutory exposure across the EU AI Act, GDPR, FTC and ${JURISDICTION_COUNT} jurisdictions, in 10 seconds, free.`,
     url: "https://www.redflagaipro.com/tools/fine-calculator",
   },
 };
@@ -35,7 +36,7 @@ export default function FineCalculatorPage() {
             What could AI non-compliance <span style={{ fontStyle: "italic", color: "#E5484D" }}>actually cost you?</span>
           </h1>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            Set your turnover and markets. See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and 11 jurisdictions, in ten seconds. The numbers are statutory maximums, straight from each law.
+            Set your turnover and markets. See your maximum regulatory exposure across the EU AI Act, GDPR, FTC and {JURISDICTION_COUNT} jurisdictions, in ten seconds. The numbers are statutory maximums, straight from each law.
           </p>
         </div>
       </section>

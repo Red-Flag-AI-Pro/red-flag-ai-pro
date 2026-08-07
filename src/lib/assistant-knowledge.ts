@@ -1,13 +1,4 @@
-import {
-  PLAN_PRICES,
-  PLAN_LIMITS,
-  AUDIT_PRICE,
-  SCANNER_SALE_ACTIVE,
-  SCANNER_SALE_PRICE,
-  SCANNER_STANDARD_PRICE,
-  SCANNER_SALE_ENDS,
-  REGULATORY_MAPPING_LAST_REVIEWED,
-} from "@/lib/constants";
+import { PLAN_PRICES, PLAN_LIMITS, AUDIT_PRICE, isScannerSaleActive, SCANNER_SALE_PRICE, SCANNER_STANDARD_PRICE, SCANNER_SALE_ENDS, REGULATORY_MAPPING_LAST_REVIEWED, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 // The assistant's grounding is BUILT FROM THE SAME CONSTANTS THE SITE USES.
 // That is the whole point: change a price or a plan limit in constants.ts and
@@ -105,16 +96,24 @@ const REGULATORY_DEADLINES = [
   },
 ] as const;
 
-const proPrice = SCANNER_SALE_ACTIVE ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE;
-const saleLine = SCANNER_SALE_ACTIVE
-  ? `Pro is on a founder's sale at £${SCANNER_SALE_PRICE}/mo (normally £${SCANNER_STANDARD_PRICE}/mo) for anyone who signs up before ${new Date(
-      SCANNER_SALE_ENDS
-    ).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. Sale signups keep that price for as long as they stay subscribed.`
-  : `Pro is £${SCANNER_STANDARD_PRICE}/mo.`;
+// Computed per call rather than at module load. These feed the assistant the
+// price it is allowed to quote, so a stale capture here would have it telling
+// visitors £149 after the sale closed, which is a promise the checkout would
+// not honour.
+function currentPricing() {
+  const proPrice = isScannerSaleActive() ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE;
+  const saleLine = isScannerSaleActive()
+    ? `Pro is on a founder's sale at £${SCANNER_SALE_PRICE}/mo (normally £${SCANNER_STANDARD_PRICE}/mo) for anyone who signs up before ${new Date(
+        SCANNER_SALE_ENDS
+      ).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. Sale signups keep that price for as long as they stay subscribed.`
+    : `Pro is £${SCANNER_STANDARD_PRICE}/mo.`;
+  return { proPrice, saleLine };
+}
 
 // Assembled once per request. Kept factual and compact — the model does the
 // conversation, this just fixes the facts it is allowed to state.
 export function buildKnowledgeBase(liveStats?: { checksRun?: number }): string {
+  const { proPrice, saleLine } = currentPricing();
   const toolLines = FREE_TOOLS.map(
     (t) => `- ${t.name} (${t.path}): use when ${t.forWhen}. It gives ${t.gives}`
   ).join("\n");
@@ -134,7 +133,7 @@ export function buildKnowledgeBase(liveStats?: { checksRun?: number }): string {
 
 WHAT IT IS
 Two things in one platform:
-1. Compliance checking of marketing copy, ads, funnels, emails and live pages against 30 risk categories across 11 jurisdictions. The free plan sees 16 of the 30 categories.
+1. Compliance checking of marketing copy, ads, funnels, emails and live pages against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions. The free plan sees 16 of the {RISK_CATEGORY_COUNT} categories.
 2. AI governance scoring: the Governance Maturity Index, a free assessment scoring an organisation across 6 dimensions (strategy, tools and data, policy, monitoring, vendor risk, regulatory readiness).
 Regulatory mappings last reviewed ${REGULATORY_MAPPING_LAST_REVIEWED}.
 
@@ -146,8 +145,8 @@ ${deadlineLines}
 When asked what a deadline means, explain it plainly and factually as above. Never tell someone whether it personally applies to their business, that is a judgement call you are not allowed to make. Say who it generally affects in categorical terms, then route to the free check or the free governance assessment so the product shows them concretely where they stand.
 
 PLANS AND PRICES
-- Free: ${PLAN_LIMITS.free} check per month, 16 of 30 categories, the full free governance assessment, and the free toolkit. No card required.
-- Pro (${PLAN_PRICES.scanner.label}): £${proPrice}/mo, ${PLAN_LIMITS.scanner} checks per month, all 30 categories, live URL checks. ${saleLine}
+- Free: ${PLAN_LIMITS.free} check per month, 16 of {RISK_CATEGORY_COUNT} categories, the full free governance assessment, and the free toolkit. No card required.
+- Pro (${PLAN_PRICES.scanner.label}): £${proPrice}/mo, ${PLAN_LIMITS.scanner} checks per month, all {RISK_CATEGORY_COUNT} categories, live URL checks. ${saleLine}
 - Growth (${PLAN_PRICES.enterprise.label}): £${PLAN_PRICES.enterprise.monthly}/mo, ${PLAN_LIMITS.enterprise} checks per month, unlocks every governance gap with the fix and remediation step, client workspaces, white label reports, weekly monitoring.
 - Sentinel: custom pricing, unlimited, real time monitoring, tamper evident audit trail, named disposition sign off, boundary authorization records.
 - Done For You Audit: a one off £${AUDIT_PRICE.amount}. James personally checks a whole site and AI use, records a video walkthrough, and sends a full report plus a reviewed badge, within 48 hours. No subscription.

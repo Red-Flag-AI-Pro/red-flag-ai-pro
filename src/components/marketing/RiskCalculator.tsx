@@ -2,9 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { SCANNER_SALE_ACTIVE } from "@/lib/constants";
+import { isScannerSaleActive, SCANNER_SALE_PRICE, SCANNER_STANDARD_PRICE } from "@/lib/constants";
 
-const SCANNER_PRICE = SCANNER_SALE_ACTIVE ? 149 : 350;
+// Read at render, not at module load, so the price cannot sit frozen on a
+// client bundle that was hydrated before the sale ended. Also reads the shared
+// constants rather than repeating 149/350 here, which was a second source of
+// truth quietly waiting to disagree with the pricing page.
+function scannerPrice() {
+  return isScannerSaleActive() ? SCANNER_SALE_PRICE : SCANNER_STANDARD_PRICE;
+}
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" };
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" };
@@ -255,8 +261,8 @@ function SellerCalculator() {
 
       {/* Value line */}
       <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)", padding: "12px 14px" }}>
-        <p style={{...mono, fontSize: "1rem", fontWeight: 700, color: "#4ade80"}}>{fmt(Math.round(total / SCANNER_PRICE))}x cheaper than your risk</p>
-        <p style={{...syne, fontSize: "11px", color: "rgba(134,239,172,0.65)", marginTop: "3px"}}>Red Flag AI Pro is £{SCANNER_PRICE}/month{SCANNER_SALE_ACTIVE ? " (enforcement week rate, until 7 Aug)" : ""}. Your exposure is {fmt(total)}.</p>
+        <p style={{...mono, fontSize: "1rem", fontWeight: 700, color: "#4ade80"}}>{fmt(Math.round(total / scannerPrice()))}x cheaper than your risk</p>
+        <p style={{...syne, fontSize: "11px", color: "rgba(134,239,172,0.65)", marginTop: "3px"}}>Red Flag AI Pro is £{scannerPrice()}/month{isScannerSaleActive() ? " (enforcement week rate, until 7 Aug)" : ""}. Your exposure is {fmt(total)}.</p>
       </div>
 
       <ShareButton text={`My marketing compliance exposure is ${fmt(total)}, just calculated it. What's yours?`} />

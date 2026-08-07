@@ -144,9 +144,14 @@ export default function TermsPage() {
 
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Subscription refunds</p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                Subscriptions can be cancelled at any time and will run to the end of the paid period. For refunds on subscription charges, contact us within 14 days of the charge at{" "}
+                Subscriptions can be cancelled at any time and will run to the end of the paid period.{" "}
+                <strong style={{ color: "white" }}>14 day money back guarantee on your first subscription payment.</strong>{" "}
+                If you are within 14 days of your first charge on a plan, email{" "}
                 <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
-                with your account email and the reason. We will respond within 5 business days. We look favourably on billing errors, technical failures that prevented use, and accidental renewals. Approved refunds are returned to the original payment method within 5 to 10 business days.
+                from your account address and we will refund it in full. No reason needed and nothing to justify. This applies to every paid plan, not only some of them.
+              </p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                For refunds on later renewals, contact the same address within 14 days of the charge with your account email and the reason. We will respond within 5 business days. We look favourably on billing errors, technical failures that prevented use, and accidental renewals. Approved refunds are returned to the original payment method within 5 to 10 business days.
               </p>
 
               <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.25)", borderRadius: "10px", padding: "1.1rem", marginTop: "0.5rem" }}>

@@ -6,13 +6,14 @@ import { Footer } from "@/components/layout/Footer";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
+import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
   description:
-    "Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across 11 jurisdictions and 30 risk categories, so the confidence is backed by something real.",
+    `Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across ${JURISDICTION_COUNT} jurisdictions and ${RISK_CATEGORY_COUNT} risk categories, so the confidence is backed by something real.`,
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -143,7 +144,7 @@ export default function LandingPage() {
                 <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>Compliance Assessment</p>
                 <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem", textShadow: "0 1px 12px rgba(6,14,26,0.9)" }}>Check your marketing copy</h3>
                 <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, marginBottom: "1.75rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>
-                  Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against 30 risk categories across 11 jurisdictions, with every flag explained so you know exactly what to fix.
+                  Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, with every flag explained so you know exactly what to fix.
                 </p>
                 <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
                   Check your copy <span className="arrow">→</span>
@@ -258,8 +259,15 @@ export default function LandingPage() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem" }}>
                   {ROW_ONE.map((item, i) => card(item, i % 2 === 0))}
                 </div>
+                {/* Row two continues row one's index rather than restarting it.
+                    On desktop the two rows sit side by side so either start
+                    colour reads as a checkerboard, but on mobile every card
+                    collapses into one vertical column and a restart put two
+                    identical panels back to back at the seam, visibly breaking
+                    the alternation. Counting straight through keeps the
+                    sequence honest at every width. */}
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 320px))", justifyContent: "center", gap: "2rem", marginTop: "2rem" }}>
-                  {ROW_TWO.map((item, i) => card(item, i % 2 !== 0))}
+                  {ROW_TWO.map((item, i) => card(item, (i + ROW_ONE.length) % 2 === 0))}
                 </div>
               </>
             );
