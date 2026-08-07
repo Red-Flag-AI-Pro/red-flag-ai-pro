@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { addContactToLoops } from "@/lib/loops";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 // Where a new Sentinel enquiry lands. Replaces the old Calendly booking flow
 // (unused — nobody booked through it, and the free trial was ending), so
@@ -16,6 +17,11 @@ function escapeHtml(value: string): string {
 }
 
 export async function POST(request: Request) {
+  const { allowed } = await checkRateLimit(`sentinel_request:${clientIp(request)}`, 5, 60);
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many requests. Try again in a minute." }, { status: 429 });
+  }
+
   try {
     const body = (await request.json()) as Record<string, unknown>;
 

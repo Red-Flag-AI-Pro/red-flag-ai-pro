@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { addContactToLoops, sendLoopsEvent } from "@/lib/loops";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Client-readable (not httpOnly) on purpose: ResultsGate needs to read it
@@ -10,6 +11,14 @@ const RECOGNITION_COOKIE = "rfap_known_email";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 
 export async function POST(request: Request) {
+  // Generous limit: this fires automatically on every tool page load for a
+  // recognised visitor, not just on a fresh unlock, so a tight limit would
+  // break normal browsing across several tools in one session.
+  const { allowed } = await checkRateLimit(`tool_leads:${clientIp(request)}`, 30, 60);
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many requests. Try again in a minute." }, { status: 429 });
+  }
+
   const body = await request.json();
   const email: string = (body.email ?? "").trim().toLowerCase();
   const tool: string = (body.tool ?? "").trim();

@@ -4,6 +4,7 @@ import { enhanceWithAI } from "@/lib/ai-enhance";
 import { SEVERITY_DEDUCTIONS, getExcludedCategories, JURISDICTION_COUNT } from "@/lib/constants";
 import { createServiceClient } from "@/lib/supabase/server";
 import { addContactToLoops, sendLoopsEvent } from "@/lib/loops";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 const PREVIEW_COUNT = 1;
 
@@ -14,6 +15,14 @@ const MAX_LOCKED_PREVIEW = 5;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
+  // This calls an LLM per request (enhanceWithAI below), the single most
+  // expensive public unauthenticated endpoint on the site — a script
+  // hammering this runs up a real bill, not just noise in the logs.
+  const { allowed } = await checkRateLimit(`demo_scan:${clientIp(request)}`, 10, 60);
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many requests. Try again in a minute." }, { status: 429 });
+  }
+
   const body = await request.json();
   const content: string = body.content ?? "";
   const rawEmail: string = body.email ?? "";

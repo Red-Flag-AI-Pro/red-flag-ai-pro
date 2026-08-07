@@ -2,8 +2,14 @@ import { NextResponse } from "next/server";
 import { parse } from "node-html-parser";
 import { analyzeContent } from "@/lib/analyzer";
 import { assertSafePublicUrl } from "@/lib/safe-fetch";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const { allowed } = await checkRateLimit(`url_exposure_scan:${clientIp(request)}`, 15, 60);
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many requests. Try again in a minute." }, { status: 429 });
+  }
+
   const body = await request.json();
   const safe = await assertSafePublicUrl(body.url ?? "");
   if (!safe.ok) {

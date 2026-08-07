@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { addContactToLoops } from "@/lib/loops";
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 
 // Where a new Done-For-You audit request lands. Kept as a plain constant so the
 // destination is obvious and easy to change in one place.
@@ -15,6 +16,11 @@ function escapeHtml(value: string): string {
 }
 
 export async function POST(request: Request) {
+  const { allowed } = await checkRateLimit(`audit_request:${clientIp(request)}`, 5, 60);
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many requests. Try again in a minute." }, { status: 429 });
+  }
+
   try {
     const body = (await request.json()) as Record<string, unknown>;
 
