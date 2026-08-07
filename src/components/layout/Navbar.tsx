@@ -79,6 +79,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                       <Link href="/witness-network" className="px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>NEW</span></Link>
                       <Link href="/witness-standard/peer-agreement" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Witness Peer Agreement</Link>
                       <Link href="/witness-standard/founding-chains" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Founding Chain Terms</Link>
+                      <Link href="/witness-standard/proofs" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Proofs</Link>
                       <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
 
                       <div className="my-1.5 border-t border-white/10" />
@@ -176,6 +177,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/witness-network" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>NEW</span></Link>
                 <Link href="/witness-standard/peer-agreement" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Witness Peer Agreement</Link>
                 <Link href="/witness-standard/founding-chains" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Founding Chain Terms</Link>
+                <Link href="/witness-standard/proofs" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Proofs</Link>
                 <Link href="/verify" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
                 <Link href="/reports/mystery-of-ai-governance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
