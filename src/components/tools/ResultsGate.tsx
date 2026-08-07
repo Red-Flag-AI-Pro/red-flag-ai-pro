@@ -5,6 +5,19 @@ import { useEffect, useState } from "react";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 
+// One shared key across every tool, not per-tool. Unlocking any single tool
+// used to leave localStorage scoped to that tool alone, so the same visitor
+// got asked again on the next one — recognition never crossed tools, which
+// defeated the point of remembering them at all.
+const SHARED_STORAGE_KEY = "rfap_known_email";
+const RECOGNITION_COOKIE = "rfap_known_email";
+
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 interface ResultsGateProps {
   tool: string;
   title?: string;
@@ -12,7 +25,6 @@ interface ResultsGateProps {
 }
 
 export function ResultsGate({ tool, title = "Enter your email to see your results — free, plus occasional updates, unsubscribe anytime.", children }: ResultsGateProps) {
-  const storageKey = `rfap_tool_lead_${tool}`;
   const [unlocked, setUnlocked] = useState(false);
   const [checkedStorage, setCheckedStorage] = useState(false);
   const [email, setEmail] = useState("");
@@ -20,11 +32,25 @@ export function ResultsGate({ tool, title = "Enter your email to see your result
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage.getItem(storageKey)) {
+    if (typeof window === "undefined") return;
+    // Cookie first: it survives a localStorage clear and, since ResultsGate
+    // itself now writes it on submit regardless of which tool was unlocked,
+    // it's the one signal shared across every tool on this browser.
+    const known = window.localStorage.getItem(SHARED_STORAGE_KEY) || readCookie(RECOGNITION_COOKIE);
+    if (known) {
       setUnlocked(true);
+      window.localStorage.setItem(SHARED_STORAGE_KEY, known);
+      // A recognised visitor reaching a NEW tool is real cross-tool signal —
+      // report it without asking them anything, so Loops sees the journey
+      // rather than only ever seeing the one tool that first captured them.
+      fetch("/api/tool-leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: known, tool, recognized: true }),
+      }).catch(() => {});
     }
     setCheckedStorage(true);
-  }, [storageKey]);
+  }, [tool]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -43,7 +69,7 @@ export function ResultsGate({ tool, title = "Enter your email to see your result
     } catch {
       // Non-fatal — still unlock even if the lead-capture call fails.
     }
-    window.localStorage.setItem(storageKey, email.trim());
+    window.localStorage.setItem(SHARED_STORAGE_KEY, email.trim());
     setUnlocked(true);
     setSubmitting(false);
   }
