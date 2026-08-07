@@ -51,6 +51,7 @@ const MARKETING_TOOLS: ToolCard[] = [
 const NOTARY_TOOLS: ToolCard[] = [
   { href: "/tools/post-notary", title: "Post Notary", desc: "Seal the exact text of a quote or promise before you send it. Independently timestamped, so a later dispute has a real answer." },
   { href: "/tools/payment-notary", title: "Payment Notary", desc: "Seal a supplier's bank details when you first get them. Check any later change against the seal before you pay." },
+  { href: "/tools/authorization-record-builder", title: "Authorization Record Builder", desc: "Three questions, one real sealed record: who authorized it, what it covers, and what makes it stop being valid." },
 ];
 
 function ToolGrid({ tools }: { tools: ToolCard[] }) {
@@ -111,7 +112,7 @@ export default function ToolsPage() {
             fontSize: "clamp(2rem, 4.5vw, 2.9rem)", fontWeight: 500,
             letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "0.75rem",
             color: "#F4F1EA",
-          }}>Twenty one tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
+          }}>Twenty two tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto"}}>
             Pick a tool below and use it now. No signup required.
           </p>
