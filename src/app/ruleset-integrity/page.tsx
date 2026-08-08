@@ -173,6 +173,12 @@ export default function RulesetIntegrityPage() {
               <strong>{backtest.latest_backtest.sample_size}</strong> real regulator rulings checked against the current category list,
               source: {backtest.latest_backtest.sample_source}.
             </p>
+            <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>
+              Run directly against the plain keyword engine, the same detection layer a demo scan or a signed out
+              request gets. Every paid account also runs a further AI enhancement pass after the keywords, which this
+              test did not exercise. So this is that engine&apos;s miss rate on a path no paying customer is actually
+              on, not the product&apos;s.
+            </p>
             <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, marginBottom: "1rem" }}>
               <span style={{ color: "#4ADE80" }}>{backtest.latest_backtest.catches} caught</span>
               {" · "}
