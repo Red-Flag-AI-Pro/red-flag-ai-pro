@@ -134,6 +134,15 @@ export interface BoundaryAuthorizationRecord {
   // countersignature, but a sealed, named fact instead of an assumption.
   required_by_name: string | null;
   required_by_organisation: string | null;
+  // The real version: not the account holder's own claim about who required
+  // this, but that party's own confirmation, via a link only they act on.
+  // required_by_token is the secret in that link — present once a
+  // confirmation request has been sent, never displayed as a raw value in
+  // the UI after the moment it is first generated.
+  required_by_token: string | null;
+  required_by_confirmed_at: string | null;
+  required_by_confirmed_name: string | null;
+  required_by_confirmed_email: string | null;
   created_at: string;
   updated_at: string;
 }

@@ -65,6 +65,81 @@ const STATUS_CHIP: Record<AuthorityStatus, { label: string; className: string }>
   unbounded: { label: "No expiry set", className: "bg-white/10 text-[rgba(244,241,234,0.5)] border-white/15" },
 };
 
+function RequiredByConfirmation({ record }: { record: BoundaryAuthorizationRecord }) {
+  const [link, setLink] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (record.required_by_confirmed_at) {
+    return (
+      <p className="text-xs text-emerald-300">
+        ✓ Confirmed by {record.required_by_confirmed_name} on{" "}
+        {new Date(record.required_by_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+        {" "}— in their own words, not this account&apos;s claim about them.
+      </p>
+    );
+  }
+
+  async function requestLink() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/boundary-records/${record.id}/request-confirmation`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Could not create the link.");
+        return;
+      }
+      setLink(data.confirm_url);
+    } catch {
+      setError("Could not create the link.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function copy() {
+    if (!link) return;
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard not available — link is selectable regardless
+    }
+  }
+
+  if (link) {
+    return (
+      <div className="mt-1">
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">
+          Send this to {record.required_by_name || "them"} yourself, only they can confirm it:
+        </p>
+        <div className="flex items-center gap-2 flex-wrap">
+          <code className="text-xs bg-black/30 border border-white/10 rounded px-2 py-1 text-[#C9A66B] break-all">{link}</code>
+          <button onClick={copy} className="text-xs px-2 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5">
+            {copied ? "Copied ✓" : "Copy"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-1">
+      <button
+        onClick={requestLink}
+        disabled={loading}
+        className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
+      >
+        {loading ? "Creating link…" : "Get a confirmation link to send them"}
+      </button>
+      {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+    </div>
+  );
+}
+
 function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: BoundaryAuthorizationRecord) => void; existingRecords: BoundaryAuthorizationRecord[] }) {
   const [decision, setDecision] = useState("");
   const [ownerName, setOwnerName] = useState("");
@@ -683,12 +758,15 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Who required this</p>
             {record.required_by_name || record.required_by_organisation ? (
-              <p className="text-sm text-[rgba(244,241,234,0.8)]">
-                {record.required_by_name}
-                {record.required_by_name && record.required_by_organisation ? ", " : ""}
-                {record.required_by_organisation}
-                {" "}— a real condition someone outside is holding this account to.
-              </p>
+              <div>
+                <p className="text-sm text-[rgba(244,241,234,0.8)] mb-1">
+                  {record.required_by_name}
+                  {record.required_by_name && record.required_by_organisation ? ", " : ""}
+                  {record.required_by_organisation}
+                  {" "}— a real condition someone outside is holding this account to.
+                </p>
+                <RequiredByConfirmation record={record} />
+              </div>
             ) : (
               <p className="text-sm text-[rgba(244,241,234,0.5)]">
                 Self imposed — nobody outside required this. A real limit, but a volunteered one, not a condition.
