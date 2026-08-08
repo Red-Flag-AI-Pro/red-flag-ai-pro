@@ -208,7 +208,7 @@ export default function FeaturesPage() {
                 },
                 {
                   icon: "",
-                  title: "18 Free Tools, No Account",
+                  title: "24 Free Tools, No Account",
                   desc: "Fine calculator, DPIA generator, FRIA assistant, EU database registration assistant, contract red flags checker, accessibility scorer, shadow AI audit and more. Free, and they stay free.",
                 },
               ].map((item, i) => (

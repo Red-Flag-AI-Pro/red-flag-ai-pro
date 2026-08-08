@@ -22,7 +22,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Free tools",
     links: [
-      // Curated picks only — the full, growing catalog (21+ tools) lives at
+      // Curated picks only — the full, growing catalog (24+ tools) lives at
       // /tools, organized into groups. This column stays scannable rather
       // than becoming the same crowded list it was before 4 Aug.
       { label: "Compliance Checklist", href: "/tools/compliance-checklist" },

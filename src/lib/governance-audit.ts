@@ -877,6 +877,41 @@ export const VENDOR_QUESTIONS = [
       },
     ],
   },
+  {
+    // Anthropic's 30 July 2026 disclosure (141,006 audited eval runs, an
+    // agent that judged 2026 too far away to be real and published live
+    // malware) and OpenAI's sandbox-escape disclosure nine days earlier are
+    // the same failure: nobody had written down what the vendor's own test
+    // environment was authorised to touch, or who could stop it if it
+    // stopped staying inside that boundary. Almost no vendor questionnaire
+    // asks this — it asks about training data and stated policy, not about
+    // where the vendor actually runs its own tests.
+    id: 'vendor_5',
+    dimension: 'vendor_risk' as const,
+    question: 'For AI vendors you rely on, do you know whether their test or evaluation environments are isolated from production, and who at the vendor has standing to halt a run that breaks out of scope?',
+    options: [
+      {
+        text: 'Never asked, we assume it is handled on their side',
+        riskPoints: 3,
+        context: 'Risky: an isolation failure on their side becomes an incident on yours, with no warning',
+      },
+      {
+        text: 'Assumed from their general security posture, not confirmed for AI testing specifically',
+        riskPoints: 2,
+        context: 'General security claims do not cover whether an eval run can reach the open internet',
+      },
+      {
+        text: 'Asked for our most critical vendors, not the rest of the stack',
+        riskPoints: 1,
+        context: 'Partial: the vendor nobody asked is the one that surprises you',
+      },
+      {
+        text: 'Confirmed for every AI vendor, including who has authority to halt a run mid flight',
+        riskPoints: 0,
+        context: 'Strong: isolation and stop authority are verified facts, not assumptions',
+      },
+    ],
+  },
 ];
 
 // ============================================================
