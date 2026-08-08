@@ -318,6 +318,14 @@ function buildPublicDescription(action: string, details: Record<string, unknown>
         ? `${fromPlan} coverage ended (subscription cancelled)`
         : `${fromPlan} coverage ended (plan changed)`;
     }
+    case "enforcement.blocked": {
+      const title = str("title");
+      const governingDecision = str("governing_record_decision");
+      const governingOwner = str("governing_record_owner_name");
+      const base = title ? `Real Time Gate blocked "${title}"` : `Real Time Gate blocked a submission`;
+      if (!governingDecision) return `${base}. No boundary authorization record currently governs this key.`;
+      return `${base}, under the boundary authorization approved by ${governingOwner ?? "an unnamed owner"}: "${governingDecision}"`;
+    }
     case "witness.anchor_sent": {
       const peer = str("peer_chain");
       return peer ? `Sent our tip to ${peer}` : undefined;

@@ -74,6 +74,9 @@ export default function RealTimeGatePage() {
         <P>
           Every blocked decision is sealed with an independent RFC 3161 timestamp and a public verify link, the same mechanism behind every other sealed record on this site. That means a block cannot quietly be edited or deleted after the fact to look like it never happened, or never existed to look like it did. Allowed decisions are recorded too, for your own review, but are not individually timestamped, to keep routine traffic from flooding the chain.
         </P>
+        <P>
+          The seal also names what governed the decision. If the API key making the call has a boundary authorization record naming who approved it and on what terms, that record is attached to the block itself, not left as a separate trail someone has to go find and match up by hand. Evidence and execution end up on the same chain, not two systems that happen to agree.
+        </P>
       </Section>
 
       <section style={{ padding: "3.5rem 1.5rem", textAlign: "center" }}>

@@ -159,9 +159,10 @@ export default function DocsPage() {
   "flag_count": 2,
   "flags": [ { "category": "income_claim", "severity": "high", "..." } ],
   "verify_url": "https://redflagaipro.com/verify?id=...",
+  "governing_record": { "id": "uuid", "decision": "...", "owner_name": "..." },
   "checked_at": "2026-08-07T11:00:00.000Z"
 }`}</Code>
-            <p className="text-gray-500 text-xs mt-2">A blocked decision (<code className="text-gray-300">allowed: false</code>) is sealed with an independent timestamp and a public verify link. Allowed decisions are stored but not individually sealed, to avoid flooding the chain with routine checks.</p>
+            <p className="text-gray-500 text-xs mt-2">A blocked decision (<code className="text-gray-300">allowed: false</code>) is sealed with an independent timestamp and a public verify link. Allowed decisions are stored but not individually sealed, to avoid flooding the chain with routine checks. <code className="text-gray-300">governing_record</code> is the current boundary authorization record for the API key making this call, if one exists and has not expired — <code className="text-gray-300">null</code> if nothing currently governs this key. Named on the decision itself, not left as a separate record you have to go match up by hand.</p>
           </div>
         </div>
 

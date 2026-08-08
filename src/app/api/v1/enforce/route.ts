@@ -75,6 +75,23 @@ export async function POST(request: Request) {
   const allowedDecision = score >= threshold;
 
   const serviceClient = await createServiceClient();
+
+  // The evidence and the execution are the same chain, not two separate
+  // systems: whichever boundary authorization record last sealed this key's
+  // scope is the record that actually governs this decision, so it gets
+  // named on the decision itself, not just checked for drift afterward.
+  // Only an unexpired record counts as currently governing anything.
+  const nowISO = new Date().toISOString();
+  const { data: governingRecord } = await serviceClient
+    .from("boundary_authorization_records")
+    .select("id, decision, owner_name")
+    .eq("api_key_id", apiKey.id)
+    .eq("grant_type", "credential")
+    .or(`expires_at.is.null,expires_at.gt.${nowISO}`)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
   const { data: decision } = await serviceClient
     .from("enforcement_decisions")
     .insert({
@@ -86,6 +103,9 @@ export async function POST(request: Request) {
       allowed: allowedDecision,
       flag_count: flags.length,
       flags: flags.map((f) => ({ category: f.category, severity: f.severity, suggestion: f.suggestion })),
+      governing_record_id: governingRecord?.id ?? null,
+      governing_record_decision: governingRecord?.decision ?? null,
+      governing_record_owner_name: governingRecord?.owner_name ?? null,
     })
     .select("id, created_at")
     .single();
@@ -105,6 +125,9 @@ export async function POST(request: Request) {
         threshold,
         flag_count: flags.length,
         flag_categories: flags.map((f) => f.category),
+        governing_record_id: governingRecord?.id ?? null,
+        governing_record_decision: governingRecord?.decision ?? null,
+        governing_record_owner_name: governingRecord?.owner_name ?? null,
       },
       { timestamp: true }
     );
@@ -199,6 +222,9 @@ export async function POST(request: Request) {
       suggestion: f.suggestion,
     })),
     verify_url: verifyId ? `https://www.redflagaipro.com/verify?id=${verifyId}` : null,
+    governing_record: governingRecord
+      ? { id: governingRecord.id, decision: governingRecord.decision, owner_name: governingRecord.owner_name }
+      : null,
     checked_at: decision?.created_at ?? new Date().toISOString(),
   });
 }

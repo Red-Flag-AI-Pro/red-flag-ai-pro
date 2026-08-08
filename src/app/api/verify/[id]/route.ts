@@ -15,6 +15,7 @@ const ACTION_LABELS: Record<string, string> = {
   "concept.sealed": "Concept authorship sealed",
   "witness.anchor_received": "Witness anchor received",
   "witness.anchor_sent": "Witness anchor sent",
+  "enforcement.blocked": "Real Time Gate block",
 };
 
 // No auth required by design — this is meant to be checkable by anyone
