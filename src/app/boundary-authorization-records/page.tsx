@@ -110,6 +110,18 @@ export default function BoundaryAuthorizationRecordsPage() {
         </P>
       </Section>
 
+      <Section eyebrow="When it drifts" title="The record checks itself against what is actually live">
+        <P>
+          An expiry catches authority that ran out. Drift is the quieter failure: the authorization is still in date, but the thing it approved has changed underneath it. An API key approved with one set of permissions, running with another. Nobody revoked anything, nobody re approved anything, and every document still says approved.
+        </P>
+        <P>
+          When a credential grant record links the actual API key it approves, a fingerprint of that key&apos;s approved permissions is sealed into the record at the moment of approval. From then on the comparison is mechanical: every live gate call and a daily check both recompute the key&apos;s current fingerprint and compare it against the sealed one. The moment they stop matching, the drift is sealed as its own dated event and an alert goes out, whether or not anyone decided the change was worth reporting.
+        </P>
+        <P>
+          That is the difference between a certification that was true once and one that is still true today. A record that waits for someone to notice a change is a snapshot. A record that flags its own mismatch the day it happens is a living one.
+        </P>
+      </Section>
+
       <Section eyebrow="Provable, not just written down" title="Sealed, timestamped, and publicly checkable">
         <P>
           Every boundary authorization record is chained cryptographically to the ones before it, and sealed with an independent, third party timestamp. Editing, deleting, or backdating a record after the fact breaks the seal, and that break is detectable by anyone, not just us.
