@@ -85,6 +85,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                       <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
                       <Link href="/real-time-gate" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Real-Time Gate</Link>
                       <Link href="/ruleset-integrity" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Ruleset Integrity</Link>
+                      <Link href="/who-when-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
 
                       <div className="my-1.5 border-t border-white/10" />
                       <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Who it&apos;s for</p>
@@ -97,6 +98,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                       <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
                       <Link href="/reports/state-of-uk-marketing-compliance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
                       <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
+                      <Link href="/de/eu-ai-act" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">EU AI Act (Deutsch)</Link>
                       <Link href="/about" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
                     </div>
                   </div>
@@ -188,10 +190,12 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/verify" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
                 <Link href="/real-time-gate" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Real-Time Gate</Link>
                 <Link href="/ruleset-integrity" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Ruleset Integrity</Link>
+                <Link href="/who-when-whether" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
                 <Link href="/reports/mystery-of-ai-governance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
                 <Link href="/reports/state-of-uk-marketing-compliance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
                 <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
+                <Link href="/de/eu-ai-act" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">EU AI Act (Deutsch)</Link>
                 <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>EARN</span></Link>
                 <div className="pt-2 border-t border-white/10">
                   <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Log in</Link>
