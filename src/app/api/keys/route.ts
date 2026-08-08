@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { logAuditEvent } from "@/lib/audit-log";
 import { createHash, randomBytes } from "crypto";
 
 function hashKey(key: string): string {
@@ -13,7 +14,7 @@ export async function GET() {
 
   const { data } = await supabase
     .from("api_keys")
-    .select("id, name, key_prefix, created_at, last_used_at")
+    .select("id, name, key_prefix, approved_threshold, created_at, last_used_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
@@ -51,6 +52,49 @@ export async function POST(request: Request) {
 
   // Return the full key once — never stored
   return NextResponse.json({ ...data, raw_key: rawKey }, { status: 201 });
+}
+
+export async function PATCH(request: Request) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const body = await request.json();
+  const id: string = (body.id ?? "").trim();
+  const approvedThreshold: unknown = body.approved_threshold;
+
+  if (!id) return NextResponse.json({ error: "Key id is required." }, { status: 400 });
+  if (typeof approvedThreshold !== "number" || !Number.isFinite(approvedThreshold) || approvedThreshold < 0 || approvedThreshold > 100) {
+    return NextResponse.json({ error: "approved_threshold must be a number between 0 and 100." }, { status: 400 });
+  }
+
+  const { data, error } = await supabase
+    .from("api_keys")
+    .update({ approved_threshold: Math.round(approvedThreshold) })
+    .eq("id", id)
+    .eq("user_id", user.id)
+    .select("id, name, key_prefix, approved_threshold")
+    .single();
+
+  if (error || !data) return NextResponse.json({ error: "Failed to update key." }, { status: 500 });
+
+  // Changing a key's approved scope is itself a governance event — sealed so
+  // the timeline shows the change happened, whoever did or didn't re-approve
+  // it. If a boundary record's sealed fingerprint no longer matches after
+  // this, the drift check (live on /enforce, daily via cron) surfaces it.
+  await logAuditEvent(
+    user.id,
+    "api_key.scope_changed",
+    {
+      api_key_id: data.id,
+      key_name: data.name,
+      key_prefix: data.key_prefix,
+      approved_threshold: data.approved_threshold,
+    },
+    { timestamp: true }
+  );
+
+  return NextResponse.json(data);
 }
 
 export async function DELETE(request: Request) {

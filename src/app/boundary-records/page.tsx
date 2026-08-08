@@ -77,6 +77,15 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [supersedesId, setSupersedesId] = useState("");
   const [grantType, setGrantType] = useState<"decision" | "credential">("decision");
   const [credentialReference, setCredentialReference] = useState("");
+  const [apiKeyId, setApiKeyId] = useState("");
+  const [apiKeys, setApiKeys] = useState<{ id: string; name: string; key_prefix: string }[]>([]);
+
+  useEffect(() => {
+    fetch("/api/keys")
+      .then((r) => (r.ok ? r.json() : []))
+      .then((keys) => setApiKeys(Array.isArray(keys) ? keys : []))
+      .catch(() => {});
+  }, []);
   const [authorityMode, setAuthorityMode] = useState<AuthorityMode | "">("");
   const [falsifiers, setFalsifiers] = useState<BoundaryFalsifier[]>([emptyFalsifier()]);
   const [options, setOptions] = useState<BoundaryOption[]>([emptyOption()]);
@@ -97,6 +106,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setSupersedesId("");
     setGrantType("decision");
     setCredentialReference("");
+    setApiKeyId("");
     setAuthorityMode("");
     setFalsifiers([emptyFalsifier()]);
     setOptions([emptyOption()]);
@@ -127,6 +137,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           supersedes_id: supersedesId || null,
           grant_type: grantType,
           credential_reference: credentialReference || null,
+          api_key_id: apiKeyId || null,
           authority_mode: authorityMode || null,
         }),
       });
@@ -182,6 +193,27 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
               className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
             />
             <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">A credential is a standing grant of authority the same way a decision is. Record who authorized it and when it expires, never paste the actual key.</p>
+
+            {apiKeys.length > 0 && (
+              <div className="mt-3">
+                <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Link the actual Red Flag API key (optional)</label>
+                <select
+                  value={apiKeyId}
+                  onChange={(e) => setApiKeyId(e.target.value)}
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] focus:outline-none focus:border-white/25"
+                >
+                  <option value="">Not linked — description only</option>
+                  {apiKeys.map((k) => (
+                    <option key={k.id} value={k.id}>
+                      {k.name} ({k.key_prefix})
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
+                  Linking seals a fingerprint of the key&apos;s approved permissions into this record. If the key&apos;s live permissions ever stop matching what was approved here, the record flags itself as drifted automatically — you don&apos;t have to notice.
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -524,6 +556,22 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               title={record.credential_reference ? `Credential: ${record.credential_reference}` : "API key / agent credential grant"}
             >
               Credential
+            </span>
+          )}
+          {record.fingerprint_intact === false && (
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-red-500/40 bg-red-900/30 text-red-300 px-2 py-0.5"
+              title="The linked API key's live permissions no longer match the fingerprint sealed when this was approved. The scope changed and nobody re-approved it."
+            >
+              Drifted
+            </span>
+          )}
+          {record.fingerprint_intact === true && (
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-emerald-500/40 bg-emerald-900/30 text-emerald-300 px-2 py-0.5"
+              title="The linked API key's live permissions still match the fingerprint sealed at approval — checked on every load, not a stored flag."
+            >
+              Scope intact
             </span>
           )}
           {isIncomplete && (

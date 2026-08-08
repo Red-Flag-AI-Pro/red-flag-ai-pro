@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
+import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
 import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode } from "@/types";
 
 const AUTHORITY_MODES: AuthorityMode[] = ["human_decides", "ai_recommends", "ai_decides"];
@@ -70,7 +71,36 @@ export async function GET() {
     .order("decision_date", { ascending: false });
 
   if (error) return NextResponse.json({ error: "Failed to load boundary records." }, { status: 500 });
-  return NextResponse.json({ records: data ?? [] });
+
+  // For credential records with a sealed fingerprint, recompute the linked
+  // key's live fingerprint on every read — drift status is a comparison, not
+  // a stored flag someone could forget to update. fingerprint_intact: null
+  // means not applicable (no linked key), true/false is the live answer.
+  const records = data ?? [];
+  const linkedKeyIds = records
+    .filter((r) => r.api_key_id && r.permission_fingerprint)
+    .map((r) => r.api_key_id as string);
+  const liveFingerprints = new Map<string, string>();
+  if (linkedKeyIds.length > 0) {
+    const { data: keys } = await result.supabase
+      .from("api_keys")
+      .select("id, approved_threshold")
+      .in("id", linkedKeyIds);
+    for (const key of keys ?? []) {
+      liveFingerprints.set(key.id, computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 }));
+    }
+  }
+  const withStatus = records.map((r) => ({
+    ...r,
+    fingerprint_intact:
+      r.api_key_id && r.permission_fingerprint
+        ? liveFingerprints.has(r.api_key_id)
+          ? liveFingerprints.get(r.api_key_id) === r.permission_fingerprint
+          : false // linked key was deleted — that is drift, not silence
+        : null,
+  }));
+
+  return NextResponse.json({ records: withStatus });
 }
 
 export async function POST(request: Request) {
@@ -125,6 +155,38 @@ export async function POST(request: Request) {
   if (!expiresAt) return NextResponse.json({ error: "Authority expiry date is required. An authorization without an expiry never stops being your risk." }, { status: 400 });
   if (expiresAt <= decisionDate) return NextResponse.json({ error: "Authority expiry must be after the decision date." }, { status: 400 });
 
+  // Linking a real key upgrades the free text credential_reference to a
+  // provable claim: the record is about THIS key, and the fingerprint seals
+  // what the key's approved scope actually was at the moment of approval.
+  // If the key has no approved threshold yet, approval stamps the default —
+  // creating the authorization record IS the approval moment, so that is
+  // exactly when the approved scope becomes real rather than implied.
+  const apiKeyId: string | null =
+    grantType === "credential" && typeof body.api_key_id === "string" && body.api_key_id.trim()
+      ? body.api_key_id.trim()
+      : null;
+  let permissionFingerprint: string | null = null;
+  if (apiKeyId) {
+    const { data: linkedKey } = await result.supabase
+      .from("api_keys")
+      .select("id, approved_threshold")
+      .eq("id", apiKeyId)
+      .eq("user_id", result.user.id)
+      .maybeSingle();
+    if (!linkedKey) {
+      return NextResponse.json({ error: "The API key you're linking was not found on this account." }, { status: 400 });
+    }
+    let approvedThreshold: number = linkedKey.approved_threshold ?? 50;
+    if (linkedKey.approved_threshold === null || linkedKey.approved_threshold === undefined) {
+      await result.supabase
+        .from("api_keys")
+        .update({ approved_threshold: approvedThreshold })
+        .eq("id", apiKeyId)
+        .eq("user_id", result.user.id);
+    }
+    permissionFingerprint = computePermissionFingerprint({ approvedThreshold });
+  }
+
   // If this record replaces an earlier one, the record it supersedes must
   // actually belong to this user — otherwise a chain of custody could be
   // forged by pointing at someone else's record.
@@ -158,6 +220,8 @@ export async function POST(request: Request) {
       continuity_owner_email: continuityOwnerEmail,
       grant_type: grantType,
       credential_reference: credentialReference,
+      api_key_id: apiKeyId,
+      permission_fingerprint: permissionFingerprint,
       authority_mode: authorityMode,
     })
     .select()
@@ -204,6 +268,8 @@ export async function POST(request: Request) {
       recorded_by_email: result.user.email ?? null,
       grant_type: data.grant_type,
       credential_reference: data.credential_reference,
+      api_key_id: data.api_key_id,
+      permission_fingerprint: data.permission_fingerprint,
       authority_mode: data.authority_mode,
     },
     { timestamp: true }

@@ -114,6 +114,17 @@ export interface BoundaryAuthorizationRecord {
   // which credential (key name or last four characters), never the secret.
   grant_type: "decision" | "credential";
   credential_reference: string | null;
+  // Real reference to the api_keys row this credential grant approves, and a
+  // content hash of that key's approved scope taken at approval time. If the
+  // key's live scope later stops matching the sealed fingerprint, the drift
+  // is mechanically detectable — the record self-checks instead of staying
+  // "approved" forever on a free text description. Null on decision grants
+  // and on credential records created before this existed.
+  api_key_id: string | null;
+  permission_fingerprint: string | null;
+  // Computed at read time by the API, never stored: does the linked key's
+  // live scope still match the sealed fingerprint? null = not applicable.
+  fingerprint_intact?: boolean | null;
   // Where authority actually sits for this system. Null means it was never
   // stated, which is itself the finding the authority map surfaces.
   authority_mode: AuthorityMode | null;

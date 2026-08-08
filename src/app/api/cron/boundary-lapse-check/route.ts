@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { sendDecayAlert } from "@/lib/decay-notifications";
+import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
 
 // A boundary authorization's expiry is currently only checked lazily, in the
 // browser, as a date-string comparison for display. That means a real lapse
@@ -33,12 +34,13 @@ export async function GET(request: Request) {
     .lt("expires_at", today);
 
   if (error) return NextResponse.json({ error: "Failed to read boundary records." }, { status: 500 });
-  if (!expired || expired.length === 0) return NextResponse.json({ checked: 0, sealed: 0 });
 
   let sealed = 0;
   const webhookCache = new Map<string, string | null>();
 
-  for (const record of expired) {
+  // No early return on zero expired records — the drift sweep below must
+  // still run even on a day when nothing has lapsed.
+  for (const record of expired ?? []) {
     // Has this lapse already been sealed? Check once per record, not once
     // per run — a lapse is a single event, not something to re-seal daily.
     const { data: existing } = await supabase
@@ -87,5 +89,77 @@ export async function GET(request: Request) {
     );
   }
 
-  return NextResponse.json({ checked: expired.length, sealed });
+  // Second sweep, same run: permission drift on credential records. The
+  // live /enforce path catches drift the moment a real call observes it,
+  // but a key whose scope changed and then never got called would drift
+  // silently forever — this daily pass closes that window. Same once-only
+  // seal (per record per observed fingerprint) and same alert path as the
+  // lapse sweep above.
+  const { data: credentialRecords } = await supabase
+    .from("boundary_authorization_records")
+    .select("id, user_id, decision, permission_fingerprint, api_key_id")
+    .eq("grant_type", "credential")
+    .not("api_key_id", "is", null)
+    .not("permission_fingerprint", "is", null);
+
+  let driftSealed = 0;
+  if (credentialRecords && credentialRecords.length > 0) {
+    const keyIds = credentialRecords.map((r) => r.api_key_id as string);
+    const { data: keys } = await supabase
+      .from("api_keys")
+      .select("id, approved_threshold")
+      .in("id", keyIds);
+    const keyMap = new Map((keys ?? []).map((k) => [k.id, k]));
+
+    for (const record of credentialRecords) {
+      const key = keyMap.get(record.api_key_id as string);
+      // A deleted key is drift too: the approved credential no longer
+      // exists, which is a scope change nobody re-approved.
+      const liveFingerprint = key
+        ? computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 })
+        : "pf-key-deleted";
+      if (liveFingerprint === record.permission_fingerprint) continue;
+
+      const { data: existing } = await supabase
+        .from("audit_log")
+        .select("id")
+        .eq("user_id", record.user_id)
+        .eq("action", "boundary_record.drifted")
+        .contains("details", { record_id: record.id, observed_fingerprint: liveFingerprint })
+        .maybeSingle();
+      if (existing) continue;
+
+      const entryId = await logAuditEvent(
+        record.user_id,
+        "boundary_record.drifted",
+        {
+          record_id: record.id,
+          decision: record.decision,
+          api_key_id: record.api_key_id,
+          sealed_fingerprint: record.permission_fingerprint,
+          observed_fingerprint: liveFingerprint,
+          observed_during: "daily_sweep",
+          detected_at: new Date().toISOString(),
+        },
+        { timestamp: true }
+      );
+      if (entryId) driftSealed++;
+
+      if (!webhookCache.has(record.user_id)) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("decay_webhook_url")
+          .eq("user_id", record.user_id)
+          .maybeSingle();
+        webhookCache.set(record.user_id, (profile as { decay_webhook_url?: string | null } | null)?.decay_webhook_url ?? null);
+      }
+
+      await sendDecayAlert(
+        webhookCache.get(record.user_id),
+        `Boundary authorization drifted: "${record.decision}" — the linked API key's live permissions no longer match what was approved and sealed. Nobody re-approved this change. https://www.redflagaipro.com/boundary-records`
+      );
+    }
+  }
+
+  return NextResponse.json({ checked: expired?.length ?? 0, sealed, drift_checked: credentialRecords?.length ?? 0, drift_sealed: driftSealed });
 }

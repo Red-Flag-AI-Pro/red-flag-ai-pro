@@ -4,6 +4,7 @@ import { analyzeContent } from "@/lib/analyzer";
 import { SEVERITY_DEDUCTIONS } from "@/lib/constants";
 import { logAuditEvent } from "@/lib/audit-log";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
 import { createHash } from "crypto";
 
 function hashKey(key: string): string {
@@ -36,7 +37,7 @@ export async function POST(request: Request) {
 
   const { data: apiKey } = await supabase
     .from("api_keys")
-    .select("id, user_id")
+    .select("id, user_id, approved_threshold")
     .eq("key_hash", keyHash)
     .single();
 
@@ -54,7 +55,16 @@ export async function POST(request: Request) {
   const body = await request.json();
   const content: string = (body.content ?? "").trim();
   const title: string = (body.title ?? "Real-Time Gate check").trim();
-  const threshold: number = Number.isFinite(body.threshold) ? Math.min(100, Math.max(0, body.threshold)) : DEFAULT_THRESHOLD;
+  const requestedThreshold: number = Number.isFinite(body.threshold) ? Math.min(100, Math.max(0, body.threshold)) : DEFAULT_THRESHOLD;
+  // A key with an approved threshold has a governed scope: callers may ask
+  // for a STRICTER gate than approved (higher threshold) but never a looser
+  // one — otherwise the caller-supplied parameter silently overrides what
+  // was actually authorized. Keys with no approved threshold keep the
+  // original trust-the-caller behaviour until one is set.
+  const threshold: number =
+    apiKey.approved_threshold !== null && apiKey.approved_threshold !== undefined
+      ? Math.max(requestedThreshold, apiKey.approved_threshold)
+      : requestedThreshold;
 
   if (!content || content.length < 20) {
     return NextResponse.json({ error: "content is required and must be at least 20 characters." }, { status: 400 });
@@ -127,6 +137,52 @@ export async function POST(request: Request) {
       );
     }
   }
+
+  // Drift check: if a boundary authorization record sealed this key's
+  // approved scope and the live scope no longer matches, the mismatch gets
+  // sealed as its own event the moment a real call observes it — not when a
+  // person happens to notice. Runs after the response so the gate stays
+  // fast; sealed once per record per observed fingerprint, same once-only
+  // pattern as the lapse check.
+  after(async () => {
+    const { data: record } = await serviceClient
+      .from("boundary_authorization_records")
+      .select("id, decision, permission_fingerprint")
+      .eq("api_key_id", apiKey.id)
+      .eq("grant_type", "credential")
+      .not("permission_fingerprint", "is", null)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (!record?.permission_fingerprint) return;
+
+    const liveFingerprint = computePermissionFingerprint({ approvedThreshold: apiKey.approved_threshold ?? 50 });
+    if (liveFingerprint === record.permission_fingerprint) return;
+
+    const { data: existing } = await serviceClient
+      .from("audit_log")
+      .select("id")
+      .eq("user_id", apiKey.user_id)
+      .eq("action", "boundary_record.drifted")
+      .contains("details", { record_id: record.id, observed_fingerprint: liveFingerprint })
+      .maybeSingle();
+    if (existing) return;
+
+    await logAuditEvent(
+      apiKey.user_id,
+      "boundary_record.drifted",
+      {
+        record_id: record.id,
+        decision: record.decision,
+        api_key_id: apiKey.id,
+        sealed_fingerprint: record.permission_fingerprint,
+        observed_fingerprint: liveFingerprint,
+        observed_during: "enforce_call",
+        detected_at: new Date().toISOString(),
+      },
+      { timestamp: true }
+    );
+  });
 
   return NextResponse.json({
     decision_id: decision?.id,
