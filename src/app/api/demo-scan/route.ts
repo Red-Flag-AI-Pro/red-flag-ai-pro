@@ -85,7 +85,7 @@ export async function POST(request: Request) {
   // cost. Giving an email is a genuine upgrade at that point: the AI
   // rewrite/suggestion for the one flag shown becomes real, not withheld
   // content that already existed.
-  const allFlags = email ? await enhanceWithAI(content, rawFlags) : rawFlags;
+  const allFlags = email ? await enhanceWithAI(content, rawFlags, selectedJurisdictions) : rawFlags;
 
   // Anonymous usage log — fires on every real scan, email or not. Lets us
   // see actual usage independent of who left an email.

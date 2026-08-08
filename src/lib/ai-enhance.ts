@@ -12,6 +12,7 @@
 
 import OpenAI from "openai";
 import type { AnalysisResult, Severity } from "@/types";
+import type { JurisdictionCode } from "@/lib/analyzer";
 
 type Flag = AnalysisResult["flags"][number];
 
@@ -46,33 +47,54 @@ const VALID_CATEGORIES = [
 
 const VALID_SEVERITIES: Severity[] = ["high", "medium", "low"];
 
-function buildPrompt(content: string, flags: Flag[]): string {
+// One block per jurisdiction, keyed the same way analyzeContent's own
+// jurisdiction filter is. A scan that narrows to one country's law at the
+// keyword layer narrows to the same set here — this is what closes the gap
+// Brad Wolfe flagged, 8 Aug 2026: citing law from countries a scan was never
+// scoped to isn't a second test, it's an unscoped one wearing the first
+// test's flags.
+const JURISDICTION_LAW: Record<JurisdictionCode, string> = {
+  us: "US: FTC Act Section 5, FTC Endorsement Guides, FTC Income Disclosure Rules, TCPA, CAN-SPAM Act, FDA regulations",
+  gb: "UK: ASA CAP Code (Rules 3.1, 3.7, 7.1), CMA Consumer Protection Regulations, FCA Financial Promotions Order, ICO PECR, UK GDPR",
+  eu: "EU: GDPR Articles 5/13/14, EU DSA Articles 9/25/26, EU AI Act Articles 50/52, UCPD Directive, EU Green Claims Directive",
+  au: "Australia: ACCC Australian Consumer Law Sections 18/29/33, TGA Therapeutic Goods Advertising Code",
+  ca: "Canada: CASL Sections 6/7, PIPEDA, CRTC regulations, Quebec Law 25",
+  br: "Brazil: LGPD Articles 7/9/46, PROCON consumer protection",
+  in: "India: DPDP Act 2023, ASCI Advertising Guidelines",
+  sg: "Singapore: PDPA Sections 13/20, ASAS advertising standards",
+  ae: "UAE: PDPL 2022 Articles 5/7, UAE Consumer Protection Law",
+  ng: "Nigeria: NDPR 2019, NITDA guidelines, FCCPC consumer protection, NAFDAC health advertising",
+  cn: "China: PRC Advertising Law (Article 9 absolute-terms ban, Articles 16-19 health/medical ads, Articles 24-25 education and investment ads, Article 38 endorser liability, Article 40 ads to minors), Anti-Unfair Competition Law Article 8, PIPL Articles 13/24, SAMR Internet Advertising Measures 2023 (mandatory ad labeling), CAC AI Content Labeling Measures (in force Sep 2025), PRC Price Law (fictitious original prices), Consumer Protection Law Implementing Regulations 2024 (auto-renewal notices), PBOC 2021 crypto promotion prohibition",
+};
+
+const ALL_JURISDICTIONS = Object.keys(JURISDICTION_LAW) as JurisdictionCode[];
+
+function buildPrompt(content: string, flags: Flag[], jurisdictions: JurisdictionCode[]): string {
   const flagList = flags
     .map((f, i) =>
       `[FLAG ${i}]\nCategory: ${f.category} | Severity: ${f.severity}\nFlagged sentence: "${f.text_excerpt ?? "N/A"}"\nRewrite only this sentence. Your response for index ${i} must contain a specific_suggestion that is a compliant rewrite of exactly: "${f.text_excerpt ?? "N/A"}"`
     )
     .join("\n\n");
 
-  return `You are a senior marketing compliance lawyer with expertise across ALL of these jurisdictions and their specific rules:
+  const scopedJurisdictions = jurisdictions.length > 0 ? jurisdictions : ALL_JURISDICTIONS;
+  const lawBlock = scopedJurisdictions.map((j) => JURISDICTION_LAW[j]).join("\n");
+  const scopeNote =
+    jurisdictions.length > 0
+      ? `This scan is scoped to ${scopedJurisdictions.length} jurisdiction${scopedJurisdictions.length === 1 ? "" : "s"} only. Cite ONLY the laws listed below — never a jurisdiction outside this list, even if a violation would also break a law elsewhere.`
+      : "No jurisdiction scope was set, so all covered jurisdictions apply.";
 
-US: FTC Act Section 5, FTC Endorsement Guides, FTC Income Disclosure Rules, TCPA, CAN-SPAM Act, FDA regulations
-UK: ASA CAP Code (Rules 3.1, 3.7, 7.1), CMA Consumer Protection Regulations, FCA Financial Promotions Order, ICO PECR, UK GDPR
-EU: GDPR Articles 5/13/14, EU DSA Articles 9/25/26, EU AI Act Articles 50/52, UCPD Directive, EU Green Claims Directive
-Australia: ACCC Australian Consumer Law Sections 18/29/33, TGA Therapeutic Goods Advertising Code
-Canada: CASL Sections 6/7, PIPEDA, CRTC regulations, Quebec Law 25
-Brazil: LGPD Articles 7/9/46, PROCON consumer protection
-India: DPDP Act 2023, ASCI Advertising Guidelines
-Singapore: PDPA Sections 13/20, ASAS advertising standards
-UAE: PDPL 2022 Articles 5/7, UAE Consumer Protection Law
-Nigeria: NDPR 2019, NITDA guidelines, FCCPC consumer protection, NAFDAC health advertising
-China: PRC Advertising Law (Article 9 absolute-terms ban, Articles 16-19 health/medical ads, Articles 24-25 education and investment ads, Article 38 endorser liability, Article 40 ads to minors), Anti-Unfair Competition Law Article 8, PIPL Articles 13/24, SAMR Internet Advertising Measures 2023 (mandatory ad labeling), CAC AI Content Labeling Measures (in force Sep 2025), PRC Price Law (fictitious original prices), Consumer Protection Law Implementing Regulations 2024 (auto-renewal notices), PBOC 2021 crypto promotion prohibition
+  return `You are a senior marketing compliance lawyer with expertise across these jurisdictions and their specific rules:
+
+${lawBlock}
+
+${scopeNote}
 
 A compliance scanner has already identified the following violations in this marketing copy. Your job is to:
 
-1. For EACH flagged item: write a specific rewrite of the exact flagged sentence AND cite every applicable law across ALL relevant jurisdictions — not just FTC. If a phrase breaks UK, EU and Australian law too, cite all of them.
+1. For EACH flagged item: write a specific rewrite of the exact flagged sentence AND cite every applicable law from the jurisdictions listed above. If a phrase breaks more than one of them, cite all that apply.
 2. Identify ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, misleading framing — that a regulator would actually act on.
 
-CRITICAL: Every enhanced_description MUST cite laws from multiple jurisdictions where applicable. Do not default to FTC only. A UK user needs ASA citations. An EU user needs GDPR/DSA citations. Cite all that apply.
+CRITICAL: Every enhanced_description MUST cite specific law from the jurisdictions listed above, never one outside that list, and never generic ("local law") when a named statute or code from the list applies.
 
 PRECISION OVER RECALL — false positives destroy trust with exactly the users who can tell the difference (lawyers, compliance officers, regulators). Before adding ANY additional_flag, confirm the sentence contains a concrete, actionable claim a regulator could actually act on — not generic marketing language. Specifically:
 
@@ -142,7 +164,8 @@ function sanitiseAdditional(raw: AdditionalFlag[]): Flag[] {
 
 export async function enhanceWithAI(
   content: string,
-  flags: Flag[]
+  flags: Flag[],
+  jurisdictions: JurisdictionCode[] = []
 ): Promise<Flag[]> {
   const apiKey = process.env.OPENAI_API_KEY;
 
@@ -159,7 +182,7 @@ export async function enhanceWithAI(
       messages: [
         {
           role: "user",
-          content: buildPrompt(content, flags),
+          content: buildPrompt(content, flags, jurisdictions),
         },
       ],
     });

@@ -66,8 +66,10 @@ export async function POST(request: Request) {
     selectedJurisdictions.length > 0 ? selectedJurisdictions : undefined
   );
 
-  // AI enhancement: specific rewrites + catch implied violations
-  const allFlags = await enhanceWithAI(content, rawFlags);
+  // AI enhancement: specific rewrites + catch implied violations, scoped to
+  // the same jurisdictions the keyword pass was scoped to, so the AI layer
+  // never cites law from a country this scan was never checking.
+  const allFlags = await enhanceWithAI(content, rawFlags, selectedJurisdictions);
 
   // Categories shown are gated by plan tier: free/pro see 16, growth sees 20, sentinel sees all 29
   const excludedCategories = getExcludedCategories(plan);
