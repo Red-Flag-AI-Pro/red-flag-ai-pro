@@ -128,6 +128,12 @@ export interface BoundaryAuthorizationRecord {
   // Where authority actually sits for this system. Null means it was never
   // stated, which is itself the finding the authority map surfaces.
   authority_mode: AuthorityMode | null;
+  // Who, if anyone, actually required this boundary to exist — a lender, an
+  // insurer, a board resolution. Null means self imposed: the account holder
+  // wrote their own limit, nobody outside required it. Self reported, not a
+  // countersignature, but a sealed, named fact instead of an assumption.
+  required_by_name: string | null;
+  required_by_organisation: string | null;
   created_at: string;
   updated_at: string;
 }

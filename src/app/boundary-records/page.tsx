@@ -72,6 +72,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [continuityOwnerName, setContinuityOwnerName] = useState("");
   const [continuityOwnerRole, setContinuityOwnerRole] = useState("");
   const [continuityOwnerEmail, setContinuityOwnerEmail] = useState("");
+  const [requiredByName, setRequiredByName] = useState("");
+  const [requiredByOrganisation, setRequiredByOrganisation] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -101,6 +103,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setContinuityOwnerName("");
     setContinuityOwnerRole("");
     setContinuityOwnerEmail("");
+    setRequiredByName("");
+    setRequiredByOrganisation("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -128,6 +132,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           continuity_owner_name: continuityOwnerName || null,
           continuity_owner_role: continuityOwnerRole || null,
           continuity_owner_email: continuityOwnerEmail || null,
+          required_by_name: requiredByName || null,
+          required_by_organisation: requiredByOrganisation || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -307,6 +313,30 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
         </div>
         <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
           Distinct from the owner above: this is whoever holds the duty to renew this or arrange a successor before it lapses. A lapse only proves the seat went empty — naming this means the lapse event can say who was on the hook for it going empty, not leave that as an inference. Red Flag emails a renewal reminder at 30, 14, 7 and 1 day before expiry, to this address if given, otherwise to your account email — so the decision to revisit gets put in front of someone, not left to depend on whether they remembered to ask.
+        </p>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Required by (optional)</label>
+            <input
+              value={requiredByName}
+              onChange={(e) => setRequiredByName(e.target.value)}
+              placeholder="A named person, if anyone outside required this"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Their organisation (optional)</label>
+            <input
+              value={requiredByOrganisation}
+              onChange={(e) => setRequiredByOrganisation(e.target.value)}
+              placeholder="e.g. a lender, an insurer, the board"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
+          Who, if anyone, actually required this boundary to exist, not who wrote it down. Leave blank if this was your own decision, nobody outside required it. A boundary nobody outside required is a real limit, but it is a volunteered one, not a condition somebody else is holding you to.
         </p>
 
         <div className="grid grid-cols-2 gap-2">
@@ -649,6 +679,22 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               </p>
             </div>
           )}
+
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Who required this</p>
+            {record.required_by_name || record.required_by_organisation ? (
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                {record.required_by_name}
+                {record.required_by_name && record.required_by_organisation ? ", " : ""}
+                {record.required_by_organisation}
+                {" "}— a real condition someone outside is holding this account to.
+              </p>
+            ) : (
+              <p className="text-sm text-[rgba(244,241,234,0.5)]">
+                Self imposed — nobody outside required this. A real limit, but a volunteered one, not a condition.
+              </p>
+            )}
+          </div>
 
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Authorship</p>

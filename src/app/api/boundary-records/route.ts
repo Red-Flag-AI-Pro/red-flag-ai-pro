@@ -145,6 +145,12 @@ export async function POST(request: Request) {
   // than only the account holder — optional, since not every continuity
   // owner has their own inbox worth targeting separately.
   const continuityOwnerEmail: string | null = typeof body.continuity_owner_email === "string" && body.continuity_owner_email.trim() ? body.continuity_owner_email.trim() : null;
+  // Who, if anyone, actually required this boundary to exist — a lender, an
+  // insurer, a board resolution. Null means self imposed. Optional and self
+  // reported, not a countersignature, but a named, sealed fact rather than
+  // an unspoken assumption either way.
+  const requiredByName: string | null = typeof body.required_by_name === "string" && body.required_by_name.trim() ? body.required_by_name.trim() : null;
+  const requiredByOrganisation: string | null = typeof body.required_by_organisation === "string" && body.required_by_organisation.trim() ? body.required_by_organisation.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
@@ -232,6 +238,8 @@ export async function POST(request: Request) {
       api_key_id: apiKeyId,
       permission_fingerprint: permissionFingerprint,
       authority_mode: authorityMode,
+      required_by_name: requiredByName,
+      required_by_organisation: requiredByOrganisation,
     })
     .select()
     .single();
@@ -280,6 +288,8 @@ export async function POST(request: Request) {
       api_key_id: data.api_key_id,
       permission_fingerprint: data.permission_fingerprint,
       authority_mode: data.authority_mode,
+      required_by_name: data.required_by_name,
+      required_by_organisation: data.required_by_organisation,
     },
     { timestamp: true }
   );
