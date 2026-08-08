@@ -327,7 +327,7 @@ const RULES: Rule[] = [
     flag_description:
       "Contains data collection or sharing language aimed at the visitor (e.g. near a signup/lead form), without a visible privacy policy link nearby. Data privacy law applies across all major jurisdictions and carries some of the highest fines in marketing compliance.",
     suggestion:
-      "Ensure your Privacy Policy is clearly linked. Key rules: UK GDPR/ICO requires explicit opt-in for email marketing. EU GDPR fines up to 4% of global turnover. CASL (Canada) requires express consent — fines up to $10M CAD. Australian Privacy Act requires transparency on all data use. CCPA/CPRA (California) requires a 'Do Not Sell My Personal Information' link. Brazil LGPD, India DPDP Act 2023, Singapore PDPA, and Quebec Law 25 all require equivalent transparency and consent. UAE PDPL 2022 requires a lawful basis for processing, data subject rights, and a Privacy Policy — Dubai-based businesses must comply even if selling globally. Nigeria NDPR 2019 requires a lawful basis for processing, explicit consent for sensitive data, and a published Privacy Policy — NITDA enforces with fines up to 2% of annual gross revenue. Pre-ticked boxes are illegal in all jurisdictions we cover.",
+      "Ensure your Privacy Policy is clearly linked. Key rules: UK GDPR/ICO requires explicit opt-in for email marketing. EU GDPR fines up to 4% of global turnover. CASL (Canada) requires express consent, fines up to $10M CAD. Australian Privacy Act requires transparency on all data use. In the US, this is no longer a California only question: 20 states now have a comprehensive privacy law in effect (CCPA/CPRA plus Virginia, Colorado, Connecticut, Utah, Iowa, Indiana, Tennessee, Texas, Florida, Montana, Oregon, Delaware, New Hampshire, New Jersey, Kentucky, Nebraska, Rhode Island, Minnesota and Maryland), with Alabama, Louisiana, Oklahoma and Vermont newly passed on top of that. Scope usually turns on where your customers or site visitors live, not where the business is based, whether you sell or share personal information with third parties (including ad platforms), and whether you collect sensitive categories like health, precise location, or financial data. Brazil LGPD, India DPDP Act 2023, Singapore PDPA, and Quebec Law 25 all require equivalent transparency and consent. UAE PDPL 2022 requires a lawful basis for processing, data subject rights, and a Privacy Policy, Dubai based businesses must comply even if selling globally. Nigeria NDPR 2019 requires a lawful basis for processing, explicit consent for sensitive data, and a published Privacy Policy, NITDA enforces with fines up to 2% of annual gross revenue. Pre ticked boxes are illegal in all jurisdictions we cover.",
     regulations: [
       "UK GDPR + ICO (UK)",
       "GDPR (EU)",
@@ -335,7 +335,7 @@ const RULES: Rule[] = [
       "Quebec Law 25 (CA)",
       "Privacy Act + ACCC (AU)",
       "CAN-SPAM + FTC (US)",
-      "CCPA + CPRA (US — California)",
+      "CCPA/CPRA + 20 state privacy law patchwork (US)",
       "LGPD (Brazil)",
       "DPDP Act 2023 (India)",
       "PDPA (Singapore)",
