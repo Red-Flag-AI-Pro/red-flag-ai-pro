@@ -95,26 +95,36 @@ export async function GET(request: Request) {
   // silently forever — this daily pass closes that window. Same once-only
   // seal (per record per observed fingerprint) and same alert path as the
   // lapse sweep above.
+  //
+  // Seam defect, found and fixed 8 Aug 2026 (Brad Wolfe's method: write down
+  // what each side of a handoff believes separately, then compare — see
+  // [[project_brad_wolfe_book_citation]]). The migration's own comment calls
+  // api_key_id going NULL on key deletion "the deleted key counts as drift
+  // too" case, but this query used to filter `.not("api_key_id", "is",
+  // null)` — which excludes exactly that case the moment it happens. A
+  // deleted key, the single most severe drift, was silently un-checkable.
+  // permission_fingerprint not null is the real signal a record needs
+  // checking; api_key_id is allowed to be null, that IS the deleted-key case.
   const { data: credentialRecords } = await supabase
     .from("boundary_authorization_records")
     .select("id, user_id, decision, permission_fingerprint, api_key_id")
     .eq("grant_type", "credential")
-    .not("api_key_id", "is", null)
     .not("permission_fingerprint", "is", null);
 
   let driftSealed = 0;
   if (credentialRecords && credentialRecords.length > 0) {
-    const keyIds = credentialRecords.map((r) => r.api_key_id as string);
-    const { data: keys } = await supabase
-      .from("api_keys")
-      .select("id, approved_threshold")
-      .in("id", keyIds);
+    const keyIds = credentialRecords.map((r) => r.api_key_id).filter((id): id is string => Boolean(id));
+    const { data: keys } = keyIds.length > 0
+      ? await supabase.from("api_keys").select("id, approved_threshold").in("id", keyIds)
+      : { data: [] as { id: string; approved_threshold: number | null }[] };
     const keyMap = new Map((keys ?? []).map((k) => [k.id, k]));
 
     for (const record of credentialRecords) {
-      const key = keyMap.get(record.api_key_id as string);
+      const key = record.api_key_id ? keyMap.get(record.api_key_id) : null;
       // A deleted key is drift too: the approved credential no longer
-      // exists, which is a scope change nobody re-approved.
+      // exists, which is a scope change nobody re-approved. This branch is
+      // the fix — record.api_key_id is null here whenever the key was
+      // deleted, and that is now reachable instead of filtered out above.
       const liveFingerprint = key
         ? computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 })
         : "pf-key-deleted";

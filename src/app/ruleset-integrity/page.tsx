@@ -46,6 +46,7 @@ interface BacktestResponse {
   current_ruleset_version: string;
   latest_backtest: BacktestRecord | null;
   miss_rate: number | null;
+  is_current: boolean | null;
 }
 
 const STALE_LABEL: Record<string, string> = {
@@ -169,8 +170,16 @@ export default function RulesetIntegrityPage() {
           </div>
         ) : (
           <div style={{ border: "1px solid rgba(255,255,255,0.1)", borderRadius: "14px", padding: "2rem", background: "rgba(255,255,255,0.02)" }}>
+            {backtest.is_current === false && (
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.25rem" }}>
+                <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#E5484D", flexShrink: 0 }} />
+                <p style={{ ...syne, fontSize: "13px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#E5484D" }}>
+                  Rules changed since this back-test ran — these numbers are no longer against the current ruleset
+                </p>
+              </div>
+            )}
             <p style={{ ...syne, fontSize: "0.95rem", color: "#F4F1EA", marginBottom: "0.75rem" }}>
-              <strong>{backtest.latest_backtest.sample_size}</strong> real regulator rulings checked against the current category list,
+              <strong>{backtest.latest_backtest.sample_size}</strong> real regulator rulings checked against the category list in force at the time,
               source: {backtest.latest_backtest.sample_source}.
             </p>
             <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>

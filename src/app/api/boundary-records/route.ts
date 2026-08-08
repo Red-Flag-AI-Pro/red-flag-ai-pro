@@ -75,7 +75,17 @@ export async function GET() {
   // For credential records with a sealed fingerprint, recompute the linked
   // key's live fingerprint on every read — drift status is a comparison, not
   // a stored flag someone could forget to update. fingerprint_intact: null
-  // means not applicable (no linked key), true/false is the live answer.
+  // means not applicable (no fingerprint at all — a decision-type record),
+  // true/false is the live answer.
+  //
+  // Seam defect, found and fixed 8 Aug 2026: this used to gate on
+  // `r.api_key_id && r.permission_fingerprint`, so the moment a linked key
+  // was actually deleted (api_key_id goes NULL via the FK's on-delete-set-
+  // null), the whole check short-circuited to null — "not applicable" —
+  // instead of "drifted". The comment below describing the deleted-key case
+  // was unreachable the entire time. permission_fingerprint alone is the
+  // real signal a record needs checking; api_key_id being null IS the
+  // deleted-key case, not an exemption from one.
   const records = data ?? [];
   const linkedKeyIds = records
     .filter((r) => r.api_key_id && r.permission_fingerprint)
@@ -92,12 +102,11 @@ export async function GET() {
   }
   const withStatus = records.map((r) => ({
     ...r,
-    fingerprint_intact:
-      r.api_key_id && r.permission_fingerprint
-        ? liveFingerprints.has(r.api_key_id)
-          ? liveFingerprints.get(r.api_key_id) === r.permission_fingerprint
-          : false // linked key was deleted — that is drift, not silence
-        : null,
+    fingerprint_intact: !r.permission_fingerprint
+      ? null
+      : r.api_key_id && liveFingerprints.has(r.api_key_id)
+        ? liveFingerprints.get(r.api_key_id) === r.permission_fingerprint
+        : false, // no live key found — deleted or otherwise gone — that is drift, not silence
   }));
 
   return NextResponse.json({ records: withStatus });

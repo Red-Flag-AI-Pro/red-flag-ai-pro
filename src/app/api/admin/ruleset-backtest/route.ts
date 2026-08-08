@@ -80,9 +80,21 @@ export async function GET() {
 
   const missRate = latest && latest.sample_size > 0 ? latest.misses / latest.sample_size : null;
 
+  // Seam defect, found and fixed 8 Aug 2026 (same shape as the review route
+  // just above this one, and the same method that found it: write down what
+  // each side hands over separately, then compare). The back-test hands
+  // over "N caught, M missed as of ruleset_version Z". This route used to
+  // hand that straight to the page with no comparison against the live
+  // ruleset, so a category added or changed after the back-test ran left
+  // the published catch/miss numbers looking current forever, with no
+  // signal they'd gone stale — the exact thing ruleset_reviews already
+  // solves for reviews, never applied here.
+  const isCurrent = latest ? latest.ruleset_version === RULESET_VERSION : null;
+
   return NextResponse.json({
     current_ruleset_version: RULESET_VERSION,
     latest_backtest: latest ?? null,
     miss_rate: missRate,
+    is_current: isCurrent,
   });
 }
