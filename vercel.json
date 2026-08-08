@@ -46,7 +46,7 @@
     },
     {
       "path": "/api/cron/seal-deployment",
-      "schedule": "0 * * * *"
+      "schedule": "0 6 * * *"
     }
   ]
 }
