@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createServiceClient } from "@/lib/supabase/server";
 import { createClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
+import { RulesetReviewPanel } from "@/components/admin/RulesetReviewPanel";
 
 const ADMIN_EMAIL = "redflagaipro@gmail.com";
 
@@ -175,6 +176,8 @@ export default async function AdminPage() {
           </div>
 
         </div>
+
+        <RulesetReviewPanel />
 
         {/* Footer */}
         <p className="text-center text-xs text-[rgba(244,241,234,0.6)]">
