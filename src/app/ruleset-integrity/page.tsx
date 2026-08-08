@@ -51,10 +51,10 @@ export default function RulesetIntegrityPage() {
           Ruleset Integrity
         </p>
         <h1 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, color: "white", marginBottom: "1.25rem" }}>
-          A sealed record proves what the scanner checked against. This proves whether anyone has looked at it since.
+          A sealed record proves what a check was judged against. This proves whether anyone has looked at it since.
         </h1>
         <p style={{ ...syne, fontSize: "1rem", color: "rgba(244,241,234,0.75)", lineHeight: 1.75, marginBottom: "2.5rem" }}>
-          Every decision our scanner makes is tied to an exact, hashed version of the rules in force at that moment,
+          Every check we run is tied to an exact, hashed version of the rules in force at that moment,
           so nobody can quietly change the rules and claim they always said this. That proves consistency. It does
           not prove the rules were ever right, or that anyone has checked lately. This page is the answer to that
           second question: who reviewed the current ruleset, and when.
