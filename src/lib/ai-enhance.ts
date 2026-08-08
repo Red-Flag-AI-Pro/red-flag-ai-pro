@@ -28,6 +28,7 @@ interface AdditionalFlag {
   text_excerpt: string;
   flag_description: string;
   suggestion: string;
+  out_of_scope?: boolean;
 }
 
 interface AIResponse {
@@ -76,25 +77,38 @@ function buildPrompt(content: string, flags: Flag[], jurisdictions: Jurisdiction
     )
     .join("\n\n");
 
+  // Full reach always available — the scope narrows what counts as an IN
+  // SCOPE citation, it never removes a jurisdiction from view entirely.
+  // Brad Wolfe, 8 Aug 2026: scoping fixed the measurement problem (comparing
+  // this layer against a back-test scored on one jurisdiction) but a first
+  // pass solved it by suppressing genuine out-of-scope findings, a real
+  // product regression, not the same fix as the measurement one. A UK
+  // advertiser reaching an EU audience has real EU exposure; scoping should
+  // label that, not discard it. "Suppression loses information somebody
+  // paid for. Labelling does not."
   const scopedJurisdictions = jurisdictions.length > 0 ? jurisdictions : ALL_JURISDICTIONS;
-  const lawBlock = scopedJurisdictions.map((j) => JURISDICTION_LAW[j]).join("\n");
+  const scopedLawBlock = scopedJurisdictions.map((j) => JURISDICTION_LAW[j]).join("\n");
+  const outOfScopeJurisdictions = ALL_JURISDICTIONS.filter((j) => !scopedJurisdictions.includes(j));
+  const outOfScopeLawBlock = outOfScopeJurisdictions.map((j) => JURISDICTION_LAW[j]).join("\n");
+
   const scopeNote =
     jurisdictions.length > 0
-      ? `This scan is scoped to ${scopedJurisdictions.length} jurisdiction${scopedJurisdictions.length === 1 ? "" : "s"} only. Cite ONLY the laws listed below — never a jurisdiction outside this list, even if a violation would also break a law elsewhere.`
-      : "No jurisdiction scope was set, so all covered jurisdictions apply.";
+      ? `This scan is scoped to ${scopedJurisdictions.length} jurisdiction${scopedJurisdictions.length === 1 ? "" : "s"}:\n\n${scopedLawBlock}\n\nFor EACH flagged item, cite only from the scoped list above — that comparison has to stay clean.\n\nFor ADDITIONAL violations you identify: if the applicable law is in the scoped list above, report it normally. If a genuine, checkable violation exists but the law that actually applies falls OUTSIDE the scope (listed below), still report it as an additional_flag — never discard a real finding — but set out_of_scope to true and start the flag_description with "Also observed outside the jurisdictions you selected: " before citing the specific out-of-scope law.\n\nOut-of-scope jurisdictions, only cite these when out_of_scope is true and a genuine violation exists there:\n\n${outOfScopeLawBlock}`
+      : `No jurisdiction scope was set, so all of these apply:\n\n${scopedLawBlock}`;
 
   return `You are a senior marketing compliance lawyer with expertise across these jurisdictions and their specific rules:
 
-${lawBlock}
+${scopedLawBlock}
+${outOfScopeJurisdictions.length > 0 ? `\n${outOfScopeLawBlock}` : ""}
 
 ${scopeNote}
 
 A compliance scanner has already identified the following violations in this marketing copy. Your job is to:
 
-1. For EACH flagged item: write a specific rewrite of the exact flagged sentence AND cite every applicable law from the jurisdictions listed above. If a phrase breaks more than one of them, cite all that apply.
-2. Identify ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, misleading framing — that a regulator would actually act on.
+1. For EACH flagged item: write a specific rewrite of the exact flagged sentence AND cite every applicable law from the scoped jurisdictions. If a phrase breaks more than one of them, cite all that apply.
+2. Identify ADDITIONAL violations the keyword scanner missed — implied claims, contextual deception, manufactured urgency, misleading framing — that a regulator would actually act on, in scope or out of it, per the labelling rule above.
 
-CRITICAL: Every enhanced_description MUST cite specific law from the jurisdictions listed above, never one outside that list, and never generic ("local law") when a named statute or code from the list applies.
+CRITICAL: Every enhanced_description for an existing flag MUST cite specific law from the scoped jurisdictions only, never generic ("local law") when a named statute or code applies. Additional flags may cite an out-of-scope law ONLY when out_of_scope is set true and the flag_description is prefixed as instructed above.
 
 PRECISION OVER RECALL — false positives destroy trust with exactly the users who can tell the difference (lawyers, compliance officers, regulators). Before adding ANY additional_flag, confirm the sentence contains a concrete, actionable claim a regulator could actually act on — not generic marketing language. Specifically:
 
@@ -127,8 +141,9 @@ Respond ONLY with valid JSON matching this exact structure. No markdown, no expl
       "category": "one of: income_claim|urgency|scarcity|testimonial|guarantee|health_claim|legal_disclaimer|contract_contradiction|data_privacy|hidden_fees|fake_reviews|comparative_advertising|email_compliance|dark_patterns|ai_disclosure|ai_endorsement|automated_decisions|financial_promotion|greenwashing|subscription_trap|influencer_disclosure|sms_marketing|online_safety|claims_policy_mismatch|fake_discounts|cookie_consent|crypto_promotion|country_of_origin",
       "severity": "high|medium|low",
       "text_excerpt": "The exact sentence or phrase from the copy that is problematic",
-      "flag_description": "This phrase breaks [exact law names] because [specific reason]. A regulator would treat this as [specific enforcement risk].",
-      "suggestion": "The exact rewritten sentence the user should use instead — specific to their actual copy, not generic advice."
+      "flag_description": "In scope: cite [exact law names from the scoped list]. Out of scope (out_of_scope: true): start with 'Also observed outside the jurisdictions you selected: ' then cite the specific out-of-scope law. Either way: [specific reason]. A regulator would treat this as [specific enforcement risk].",
+      "suggestion": "The exact rewritten sentence the user should use instead — specific to their actual copy, not generic advice.",
+      "out_of_scope": "true only if the law that actually applies here is outside the scoped jurisdiction list, false otherwise"
     }
   ]
 }
@@ -143,6 +158,11 @@ function isValidResponse(data: unknown): data is AIResponse {
   return true;
 }
 
+// Enforced in code, not just requested in the prompt — the model's own
+// prefix is a request, this is the guarantee. Never rely on wording alone
+// for something a customer's trust in the scope depends on.
+const OUT_OF_SCOPE_PREFIX = "Also observed outside the jurisdictions you selected: ";
+
 function sanitiseAdditional(raw: AdditionalFlag[]): Flag[] {
   return raw
     .filter(
@@ -153,13 +173,19 @@ function sanitiseAdditional(raw: AdditionalFlag[]): Flag[] {
         VALID_SEVERITIES.includes(f.severity) &&
         VALID_CATEGORIES.includes(f.category as typeof VALID_CATEGORIES[number])
     )
-    .map((f) => ({
-      category: f.category,
-      severity: f.severity,
-      text_excerpt: f.text_excerpt,
-      flag_description: f.flag_description,
-      suggestion: f.suggestion,
-    }));
+    .map((f) => {
+      const alreadyLabelled = f.flag_description.startsWith(OUT_OF_SCOPE_PREFIX);
+      const flag_description = f.out_of_scope && !alreadyLabelled
+        ? `${OUT_OF_SCOPE_PREFIX}${f.flag_description}`
+        : f.flag_description;
+      return {
+        category: f.category,
+        severity: f.severity,
+        text_excerpt: f.text_excerpt,
+        flag_description,
+        suggestion: f.suggestion,
+      };
+    });
 }
 
 export async function enhanceWithAI(
