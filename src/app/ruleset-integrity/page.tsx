@@ -24,6 +24,30 @@ interface StatusResponse {
   stale_reason: "never_reviewed" | "ruleset_changed_since_review" | "review_overdue" | null;
 }
 
+interface MissExample {
+  name: string;
+  ruling_url: string;
+  gap: string;
+}
+
+interface BacktestRecord {
+  id: string;
+  ruleset_version: string;
+  sample_source: string;
+  sample_size: number;
+  catches: number;
+  misses: number;
+  miss_examples: MissExample[];
+  performed_by: string;
+  created_at: string;
+}
+
+interface BacktestResponse {
+  current_ruleset_version: string;
+  latest_backtest: BacktestRecord | null;
+  miss_rate: number | null;
+}
+
 const STALE_LABEL: Record<string, string> = {
   never_reviewed: "This ruleset has never been reviewed",
   ruleset_changed_since_review: "The rules changed after the last review",
@@ -33,6 +57,8 @@ const STALE_LABEL: Record<string, string> = {
 export default function RulesetIntegrityPage() {
   const [status, setStatus] = useState<StatusResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [backtest, setBacktest] = useState<BacktestResponse | null>(null);
+  const [backtestLoading, setBacktestLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/admin/ruleset-review")
@@ -40,6 +66,11 @@ export default function RulesetIntegrityPage() {
       .then(setStatus)
       .catch(() => {})
       .finally(() => setLoading(false));
+    fetch("/api/admin/ruleset-backtest")
+      .then((r) => r.json())
+      .then(setBacktest)
+      .catch(() => {})
+      .finally(() => setBacktestLoading(false));
   }, []);
 
   return (
@@ -118,6 +149,60 @@ export default function RulesetIntegrityPage() {
           </a>{" "}
           for the same idea applied to individual decisions rather than the rule set itself.
         </p>
+
+        <h2 style={{ ...syne, fontSize: "1.5rem", fontWeight: 800, color: "white", marginTop: "3.5rem", marginBottom: "1rem" }}>
+          Firing rate is not the same evidence as miss rate.
+        </h2>
+        <p style={{ ...syne, fontSize: "1rem", color: "rgba(244,241,234,0.75)", lineHeight: 1.75, marginBottom: "2rem" }}>
+          A review above answers whether someone looked at the rules again. It doesn't answer whether the rules were
+          ever the right rules. That can't be tested by writing a condition in the rules' own vocabulary, since a
+          category list can only recognise the cases it already has a category for. The only real test is a
+          back-test: take incidents from a source we don't control, regulator rulings, not our own results, and
+          check how many the current category list would actually have caught.
+        </p>
+
+        {backtestLoading ? (
+          <p style={{ ...syne, color: "rgba(244,241,234,0.5)" }}>Loading…</p>
+        ) : !backtest || !backtest.latest_backtest ? (
+          <div style={{ border: "1px solid rgba(255,255,255,0.1)", borderRadius: "14px", padding: "2rem", background: "rgba(255,255,255,0.02)" }}>
+            <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.6)" }}>No back-test has ever been run against this ruleset.</p>
+          </div>
+        ) : (
+          <div style={{ border: "1px solid rgba(255,255,255,0.1)", borderRadius: "14px", padding: "2rem", background: "rgba(255,255,255,0.02)" }}>
+            <p style={{ ...syne, fontSize: "0.95rem", color: "#F4F1EA", marginBottom: "0.75rem" }}>
+              <strong>{backtest.latest_backtest.sample_size}</strong> real regulator rulings checked against the current category list,
+              source: {backtest.latest_backtest.sample_source}.
+            </p>
+            <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, marginBottom: "1rem" }}>
+              <span style={{ color: "#4ADE80" }}>{backtest.latest_backtest.catches} caught</span>
+              {" · "}
+              <span style={{ color: backtest.latest_backtest.misses > 0 ? "#E5484D" : "#4ADE80" }}>
+                {backtest.latest_backtest.misses} missed
+              </span>
+              {backtest.miss_rate !== null && (
+                <span style={{ color: "rgba(244,241,234,0.5)", fontWeight: 400 }}> — {(backtest.miss_rate * 100).toFixed(1)}% miss rate</span>
+              )}
+            </p>
+            {backtest.latest_backtest.miss_examples.length > 0 && (
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.25rem" }}>
+                <p style={{ ...syne, fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "0.75rem" }}>
+                  What we missed, named honestly
+                </p>
+                {backtest.latest_backtest.miss_examples.map((m, i) => (
+                  <div key={i} style={{ marginBottom: "1rem" }}>
+                    <p style={{ ...syne, fontSize: "0.9rem", color: "#F4F1EA" }}>
+                      <a href={m.ruling_url} style={{ color: "#F4F1EA", textDecoration: "underline" }}>{m.name}</a>
+                    </p>
+                    <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.6)" }}>{m.gap}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            <p style={{ ...syne, fontSize: "0.8rem", color: "rgba(244,241,234,0.4)", marginTop: "1rem" }}>
+              Performed by {backtest.latest_backtest.performed_by} · {new Date(backtest.latest_backtest.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+            </p>
+          </div>
+        )}
       </section>
 
       <Footer />

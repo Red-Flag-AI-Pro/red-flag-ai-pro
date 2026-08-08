@@ -45,9 +45,20 @@ export const RULING_COMPANIES: RulingCompany[] = [
   { name: "HGV Training Services Ltd (t/a HGVT)", domain: "hgvt.co.uk", score: 90, ruling: "https://www.asa.org.uk/rulings/hgvt-ltd-a25-1317888-hgvt-ltd.html", categories: "Testimonial" },
   { name: "Supreme CBD Ltd", domain: "supremecbd.uk", score: 90, ruling: "https://www.asa.org.uk/non-compliant/supreme-cbd-ltd.html", categories: "Fake discounts" },
   { name: "Valterous Ltd (t/a Therapie Clinic UK)", domain: "therapieclinic.com", score: 90, ruling: "https://www.asa.org.uk/rulings/valterous-ltd-g24-1253503-valterous-ltd.html", categories: "Fake discounts" },
+  // Genuine miss, confirmed against the source ruling on 8 Aug 2026 during a
+  // back-test: "200 years combined experience / globally recognised" and an
+  // implied insurer partnership that did not exist. No category in
+  // FLAG_CATEGORY_LABELS covers an unsubstantiated credentials/history/
+  // partnership claim — see RULESET_BACKTESTS in this file.
   { name: "Course Accreditation Ltd", domain: "course-accreditation.com", score: 100, ruling: "https://www.asa.org.uk/rulings/course-accreditation-ltd-a25-1322901-course-accreditation-ltd.html", categories: "Not specified in ruling summary" },
-  { name: "The Professional Development Consortium Ltd (t/a CPD Standards Office)", domain: "cpdstandards.com", score: 100, ruling: "https://www.asa.org.uk/rulings/the-professional-development-consortium-ltd-a25-1322754-the-professional-development-consortium-ltd.html", categories: "Not specified in ruling summary" },
-  { name: "Self Made Girl Boss Ltd", domain: "selfmadegirlboss.co.uk", score: null, ruling: "https://www.asa.org.uk/rulings/self-made-girl-boss-ltd-a25-1293166-self-made-girl-boss-ltd.html", categories: "Not specified in ruling summary" },
+  // Was "not specified" — corrected 8 Aug 2026 after re-checking the source
+  // ruling: an unsubstantiated "UK's leading body" claim, an unproven
+  // implicit competitor comparison. Maps cleanly to comparative_advertising.
+  { name: "The Professional Development Consortium Ltd (t/a CPD Standards Office)", domain: "cpdstandards.com", score: 100, ruling: "https://www.asa.org.uk/rulings/the-professional-development-consortium-ltd-a25-1322754-the-professional-development-consortium-ltd.html", categories: "Comparative advertising" },
+  // Was "not specified" — corrected 8 Aug 2026: misleading "typical" earnings
+  // claims plus a hidden £390 course price behind "free guide" wording.
+  // Maps cleanly to income_claim and hidden_fees.
+  { name: "Self Made Girl Boss Ltd", domain: "selfmadegirlboss.co.uk", score: null, ruling: "https://www.asa.org.uk/rulings/self-made-girl-boss-ltd-a25-1293166-self-made-girl-boss-ltd.html", categories: "Income claim, Hidden fees" },
 ];
 
 export const UNIQUE_RULING_COUNT = RULING_COMPANIES.length;
