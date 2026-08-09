@@ -9,6 +9,7 @@ import { ProgramLetterGrade } from "@/components/program/ProgramLetterGrade";
 import { DOCUMENT_LABELS } from "@/lib/program-documents";
 import type { FinancialSnapshot } from "@/lib/program-financial";
 import type { RegulatoryMappingRow } from "@/lib/program-regulatory-mapping";
+import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-risk-register";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -109,6 +110,10 @@ export default async function ProgramDeliveryPage({
 
             {order.regulatory_mapping && (
               <RegulatoryMappingTable rows={order.regulatory_mapping as RegulatoryMappingRow[]} />
+            )}
+
+            {order.risk_register && (order.risk_register as RiskRegisterRow[]).length > 0 && (
+              <RiskRegisterTable rows={order.risk_register as RiskRegisterRow[]} />
             )}
 
             {order.boundary_record_id && (
@@ -284,6 +289,45 @@ function RegulatoryMappingTable({ rows }: { rows: RegulatoryMappingRow[] }) {
           Status is derived honestly from your own intake answers, never invented: how many of the fields that actually feed each document were left blank when you filled this in.
         </p>
       )}
+    </div>
+  );
+}
+
+const RISK_LEVEL_COLOR: Record<RiskLikelihood | RiskImpact, string> = {
+  low: "#4ade80",
+  medium: "#fbbf24",
+  high: "#f87171",
+};
+
+function RiskRegisterTable({ rows }: { rows: RiskRegisterRow[] }) {
+  return (
+    <div style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.15)", padding: "2rem", marginBottom: "1.5rem", overflowX: "auto" }}>
+      <p style={labelStyle}>Risk register</p>
+      <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "560px" }}>
+        <thead>
+          <tr>
+            {["ID", "Risk", "Likelihood", "Impact", "Mitigation"].map((h) => (
+              <th key={h} style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", textAlign: "left", padding: "0.6rem 0.75rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.id}>
+              <td style={{ ...mono, fontSize: "11.5px", color: "#C9A66B", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.id}</td>
+              <td style={{ ...syne, fontSize: "12.5px", color: "white", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.6 }}>{row.description}</td>
+              <td style={{ ...syne, fontSize: "12px", fontWeight: 700, color: RISK_LEVEL_COLOR[row.likelihood], padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", textTransform: "capitalize" }}>{row.likelihood}</td>
+              <td style={{ ...syne, fontSize: "12px", fontWeight: 700, color: RISK_LEVEL_COLOR[row.impact], padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", textTransform: "capitalize" }}>{row.impact}</td>
+              <td style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.6 }}>{row.mitigation}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "0.75rem", lineHeight: 1.6 }}>
+        Each risk is derived from specific combinations of your own intake answers, not a live scan, and not invented. An empty register above means none of these specific patterns were found, not that nothing could ever go wrong.
+      </p>
     </div>
   );
 }
