@@ -43,7 +43,7 @@ export default function FAQPage() {
       <Navbar />
 
       <section style={{ padding: "10rem 1.5rem 6rem", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Questions</p>
+        <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.5rem" }}>Questions every buyer asks. Straight answers. No marketing language.</p>
         <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "1rem", color: "#F4F1EA" }}>Everything you need to know.</h1>
         <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.4)", maxWidth: "500px", margin: "0 auto" }}>Can't find what you need? <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>Email us</a>.</p>
       </section>
