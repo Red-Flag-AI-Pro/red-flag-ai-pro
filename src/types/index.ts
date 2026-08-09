@@ -28,6 +28,16 @@ export type Disposition = "resolved" | "accepted_risk" | "not_applicable";
 
 export type InitialRead = "real_issue" | "unsure" | "not_applicable";
 
+// Moe Hachem, LinkedIn 9 Aug 2026, on evidence platforms for legal/compliance
+// work: separate confirmed material from inference before anything gets
+// relied on. "keyword" = matched by the deterministic rule engine
+// (analyzer.ts) — the same finding is reproducible by anyone re-running the
+// rules. "ai" = added by the AI enhancement pass (ai-enhance.ts) on its own
+// initiative, not tied to a specific keyword rule. A keyword flag whose
+// wording the AI pass rewrote is still "keyword" — the finding itself came
+// from the deterministic engine, only its phrasing was improved.
+export type FlagSource = "keyword" | "ai";
+
 export interface ScanFlag {
   id: string;
   scan_id: string;
@@ -36,6 +46,7 @@ export interface ScanFlag {
   text_excerpt: string | null;
   flag_description: string;
   suggestion: string | null;
+  source: FlagSource;
   disposition: Disposition | null;
   reviewed_by: string | null;
   reviewed_at: string | null;

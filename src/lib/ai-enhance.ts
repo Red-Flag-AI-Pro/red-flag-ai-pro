@@ -184,6 +184,11 @@ function sanitiseAdditional(raw: AdditionalFlag[]): Flag[] {
         text_excerpt: f.text_excerpt,
         flag_description,
         suggestion: f.suggestion,
+        // Moe Hachem, LinkedIn 9 Aug 2026: separate confirmed material from
+        // inference. This flag has no keyword rule behind it at all, it's
+        // the AI's own addition — the one case in this file that genuinely
+        // is inference, not a rewritten keyword match.
+        source: "ai" as const,
       };
     });
 }

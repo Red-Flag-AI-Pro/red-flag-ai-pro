@@ -1218,6 +1218,7 @@ function detectClaimsPolicyMismatch(
       `Make your refund/cancellation policy match the guarantee you advertise. Either honour the ` +
       `"${claimPhrase}" promise in your T&Cs, or remove/soften the marketing claim so it doesn't ` +
       `overstate what customers will actually get.`,
+    source: "keyword",
   };
 }
 
@@ -1275,6 +1276,7 @@ export function analyzeContent(
           text_excerpt: extractExcerpt(content, idx),
           flag_description: `${rule.flag_description} [Regulations: ${(relevantRegs.length > 0 ? relevantRegs : rule.regulations).join(" · ")}]`,
           suggestion: rule.suggestion,
+          source: "keyword",
         });
         break;
       }

@@ -501,6 +501,9 @@ export function FlagList({ flags, score, plan, scanId, scanCreatedAt }: FlagList
                   {DISPOSITION_LABELS[flag.disposition]}
                 </span>
               )}
+              {flag.source === "ai" && (
+                <Badge variant="info">AI inferred</Badge>
+              )}
               <Badge variant={flag.severity}>
                 {flag.severity.toUpperCase()}
               </Badge>
