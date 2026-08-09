@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { createServiceClient } from "@/lib/supabase/server";
+import { EvidencePipelineVisual } from "@/components/marketing/EvidencePipelineVisual";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -75,6 +76,8 @@ export default async function RealTimeGatePage() {
           </p>
         </div>
       </section>
+
+      <EvidencePipelineVisual />
 
       <Section eyebrow="What this actually is" title="A decision API, called by your code">
         <P>
