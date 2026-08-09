@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
   const { data: apiKey } = await supabase
     .from("api_keys")
-    .select("id, user_id, approved_threshold, model_version")
+    .select("id, user_id, approved_threshold, model_version, hard_enforcement")
     .eq("key_hash", keyHash)
     .single();
 
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
 
   const { flags } = analyzeContent(title, content);
   const score = Math.max(0, 100 - flags.reduce((acc, f) => acc + (SEVERITY_DEDUCTIONS[f.severity] ?? 0), 0));
-  const allowedDecision = score >= threshold;
+  let allowedDecision = score >= threshold;
 
   const serviceClient = await createServiceClient();
 
@@ -94,6 +94,20 @@ export async function POST(request: Request) {
     .limit(1)
     .maybeSingle();
 
+  // Hard enforcement, opt-in per key (api_keys.hard_enforcement, off by
+  // default): not the gate deciding for itself, it's the gate refusing to
+  // keep acting on a permission a human already set an end date for. A key
+  // owner has to choose this explicitly, since a lapsed record otherwise
+  // only shows up as evidence, not as something that blocks a customer's
+  // live traffic they never asked to have gated this way.
+  let blockReason: string | null = null;
+  if (!allowedDecision) {
+    blockReason = "content_score";
+  } else if (apiKey.hard_enforcement && !governingRecord) {
+    allowedDecision = false;
+    blockReason = "no_valid_authorization";
+  }
+
   const { data: decision } = await serviceClient
     .from("enforcement_decisions")
     .insert({
@@ -108,6 +122,7 @@ export async function POST(request: Request) {
       governing_record_id: governingRecord?.id ?? null,
       governing_record_decision: governingRecord?.decision ?? null,
       governing_record_owner_name: governingRecord?.owner_name ?? null,
+      block_reason: blockReason,
     })
     .select("id, created_at")
     .single();
@@ -130,6 +145,7 @@ export async function POST(request: Request) {
         governing_record_id: governingRecord?.id ?? null,
         governing_record_decision: governingRecord?.decision ?? null,
         governing_record_owner_name: governingRecord?.owner_name ?? null,
+        block_reason: blockReason,
       },
       { timestamp: true }
     );
@@ -235,6 +251,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     decision_id: decision?.id,
     allowed: allowedDecision,
+    block_reason: blockReason,
     score,
     threshold,
     risk: score >= 70 ? "low" : score >= 40 ? "medium" : "high",

@@ -15,6 +15,7 @@ interface ApiKey {
   created_at: string;
   last_used_at: string | null;
   model_version?: string | null;
+  hard_enforcement?: boolean;
 }
 
 export default function SettingsPage() {
@@ -50,7 +51,7 @@ export default function SettingsPage() {
 
       const [{ data: profile }, { data: keys }] = await Promise.all([
         supabase.from("profiles").select("full_name, agency_name, plan, webhook_url, decay_webhook_url, referral_code").eq("user_id", user.id).single(),
-        supabase.from("api_keys").select("id, name, key_prefix, model_version, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
+        supabase.from("api_keys").select("id, name, key_prefix, model_version, hard_enforcement, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
       ]);
 
       if (profile) {
@@ -95,7 +96,7 @@ export default function SettingsPage() {
     if (!res.ok) { setError(data.error); }
     else {
       setNewKeyValue(data.raw_key);
-      setApiKeys((prev) => [{ id: data.id, name: data.name, key_prefix: data.key_prefix, created_at: data.created_at, last_used_at: null, model_version: null }, ...prev]);
+      setApiKeys((prev) => [{ id: data.id, name: data.name, key_prefix: data.key_prefix, created_at: data.created_at, last_used_at: null, model_version: null, hard_enforcement: false }, ...prev]);
       setModelVersionDrafts((prev) => ({ ...prev, [data.id]: "" }));
       setNewKeyName("");
     }
@@ -120,6 +121,18 @@ export default function SettingsPage() {
       setApiKeys((prev) => prev.map((k) => (k.id === id ? { ...k, model_version: data.model_version } : k)));
     }
     setSavingModelVersion(null);
+  }
+
+  async function handleToggleHardEnforcement(id: string, next: boolean) {
+    const res = await fetch("/api/keys", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, hard_enforcement: next }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setApiKeys((prev) => prev.map((k) => (k.id === id ? { ...k, hard_enforcement: data.hard_enforcement } : k)));
+    }
   }
 
   const referralLink = typeof window !== "undefined" ? `${window.location.origin}/signup?ref=${referralCode}` : "";
@@ -248,6 +261,17 @@ export default function SettingsPage() {
                     <p className="text-[10px] text-[rgba(244,241,234,0.35)] mt-1">
                       Part of the sealed permission fingerprint — changing this counts as scope drift on any linked boundary record, same as the threshold.
                     </p>
+                    <label className="mt-2 flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={k.hard_enforcement ?? false}
+                        onChange={(e) => handleToggleHardEnforcement(k.id, e.target.checked)}
+                        className="mt-0.5"
+                      />
+                      <span className="text-[10px] text-[rgba(244,241,234,0.5)]">
+                        Hard enforcement: block this key&apos;s calls whenever no current boundary authorization record covers them, not just record it as evidence. Off by default — turning this on can stop live traffic if a record isn&apos;t renewed in time.
+                      </span>
+                    </label>
                   </li>
                 ))}
               </ul>

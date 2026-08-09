@@ -14,7 +14,7 @@ export async function GET() {
 
   const { data } = await supabase
     .from("api_keys")
-    .select("id, name, key_prefix, approved_threshold, model_version, created_at, last_used_at")
+    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement, created_at, last_used_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
@@ -65,10 +65,12 @@ export async function PATCH(request: Request) {
   const approvedThreshold: unknown = body.approved_threshold;
   const modelVersionProvided = Object.prototype.hasOwnProperty.call(body, "model_version");
   const modelVersion: unknown = body.model_version;
+  const hardEnforcementProvided = Object.prototype.hasOwnProperty.call(body, "hard_enforcement");
+  const hardEnforcement: unknown = body.hard_enforcement;
 
   if (!id) return NextResponse.json({ error: "Key id is required." }, { status: 400 });
 
-  const update: { approved_threshold?: number; model_version?: string | null } = {};
+  const update: { approved_threshold?: number; model_version?: string | null; hard_enforcement?: boolean } = {};
 
   if (approvedThreshold !== undefined) {
     if (typeof approvedThreshold !== "number" || !Number.isFinite(approvedThreshold) || approvedThreshold < 0 || approvedThreshold > 100) {
@@ -84,6 +86,13 @@ export async function PATCH(request: Request) {
     update.model_version = typeof modelVersion === "string" && modelVersion.trim() ? modelVersion.trim() : null;
   }
 
+  if (hardEnforcementProvided) {
+    if (typeof hardEnforcement !== "boolean") {
+      return NextResponse.json({ error: "hard_enforcement must be a boolean." }, { status: 400 });
+    }
+    update.hard_enforcement = hardEnforcement;
+  }
+
   if (Object.keys(update).length === 0) {
     return NextResponse.json({ error: "Nothing to update." }, { status: 400 });
   }
@@ -93,7 +102,7 @@ export async function PATCH(request: Request) {
     .update(update)
     .eq("id", id)
     .eq("user_id", user.id)
-    .select("id, name, key_prefix, approved_threshold, model_version")
+    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement")
     .single();
 
   if (error || !data) return NextResponse.json({ error: "Failed to update key." }, { status: 500 });
@@ -113,6 +122,7 @@ export async function PATCH(request: Request) {
       key_prefix: data.key_prefix,
       approved_threshold: data.approved_threshold,
       model_version: data.model_version,
+      hard_enforcement: data.hard_enforcement,
     },
     { timestamp: true }
   );
