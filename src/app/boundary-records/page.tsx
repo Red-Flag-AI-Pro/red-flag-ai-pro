@@ -149,6 +149,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [continuityOwnerEmail, setContinuityOwnerEmail] = useState("");
   const [requiredByName, setRequiredByName] = useState("");
   const [requiredByOrganisation, setRequiredByOrganisation] = useState("");
+  const [completionCondition, setCompletionCondition] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -180,6 +181,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setContinuityOwnerEmail("");
     setRequiredByName("");
     setRequiredByOrganisation("");
+    setCompletionCondition("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -209,6 +211,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           continuity_owner_email: continuityOwnerEmail || null,
           required_by_name: requiredByName || null,
           required_by_organisation: requiredByOrganisation || null,
+          completion_condition: completionCondition || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -459,6 +462,19 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             </p>
           </div>
         )}
+
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">This is complete when… (optional)</label>
+          <input
+            value={completionCondition}
+            onChange={(e) => setCompletionCondition(e.target.value)}
+            placeholder="What success looks like, e.g. the migration finishes and the old system is decommissioned"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+          />
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
+            The conditions below name how this stops. This names what it looks like to actually succeed — a different fact, not the same one stated twice.
+          </p>
+        </div>
 
         <div>
           <div className="flex items-center justify-between mb-1">
@@ -812,6 +828,13 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               <p className="text-sm text-[rgba(244,241,234,0.8)]">
                 {supersededRecord.decision.slice(0, 80)} — {supersededRecord.owner_name} ({supersededRecord.owner_role})
               </p>
+            </div>
+          )}
+
+          {record.completion_condition && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Complete when</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">{record.completion_condition}</p>
             </div>
           )}
 

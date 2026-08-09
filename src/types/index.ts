@@ -155,6 +155,14 @@ export interface BoundaryAuthorizationRecord {
   required_by_confirmed_at: string | null;
   required_by_confirmed_name: string | null;
   required_by_confirmed_email: string | null;
+  // Michael H., "Beyond the AI Register," 9 Aug 2026: his bounded-delegation
+  // test asks what would count as the objective being successfully complete,
+  // not just how it dies. expiry_conditions/falsifiers already model
+  // termination — this is the missing positive half, one observable
+  // statement of what fulfillment looks like. Optional and free text, same
+  // as a falsifier condition, just not tied to expiry: recording it doesn't
+  // change expires_at, it's a fact about intent, not a trigger.
+  completion_condition: string | null;
   created_at: string;
   updated_at: string;
 }

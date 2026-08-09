@@ -193,6 +193,9 @@ export async function POST(request: Request) {
   // an unspoken assumption either way.
   const requiredByName: string | null = typeof body.required_by_name === "string" && body.required_by_name.trim() ? body.required_by_name.trim() : null;
   const requiredByOrganisation: string | null = typeof body.required_by_organisation === "string" && body.required_by_organisation.trim() ? body.required_by_organisation.trim() : null;
+  // What success looks like, not just how this stops. Optional, one
+  // statement — expiry_conditions already cover the plural "how it dies" case.
+  const completionCondition: string | null = typeof body.completion_condition === "string" && body.completion_condition.trim() ? body.completion_condition.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
@@ -282,6 +285,7 @@ export async function POST(request: Request) {
       authority_mode: authorityMode,
       required_by_name: requiredByName,
       required_by_organisation: requiredByOrganisation,
+      completion_condition: completionCondition,
     })
     .select()
     .single();
@@ -332,6 +336,7 @@ export async function POST(request: Request) {
       authority_mode: data.authority_mode,
       required_by_name: data.required_by_name,
       required_by_organisation: data.required_by_organisation,
+      completion_condition: data.completion_condition,
     },
     { timestamp: true }
   );
