@@ -93,10 +93,13 @@ function CheckYourCopy({ contentSha256 }: { contentSha256: string }) {
   );
 }
 
+type Sample = { id: string; title: string; createdAt: string; timestamped: boolean };
+
 function VerifyForm() {
   const searchParams = useSearchParams();
   const [id, setId] = useState(searchParams.get("id") ?? "");
   const [result, setResult] = useState<Result>({ state: "idle" });
+  const [samples, setSamples] = useState<Sample[]>([]);
 
   async function runVerify(rawId: string) {
     if (!rawId.trim()) return;
@@ -137,9 +140,24 @@ function VerifyForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // A first-time visitor has no report of their own with an ID to paste.
+  // Offer a few real, already-public seals to try instead, no account
+  // and nothing to already have.
+  useEffect(() => {
+    fetch("/api/verify/samples")
+      .then((res) => (res.ok ? res.json() : { samples: [] }))
+      .then((data) => setSamples(data.samples ?? []))
+      .catch(() => setSamples([]));
+  }, []);
+
   async function handleVerify(e: React.FormEvent) {
     e.preventDefault();
     runVerify(id);
+  }
+
+  function tryExample(exampleId: string) {
+    setId(exampleId);
+    runVerify(exampleId);
   }
 
   return (
@@ -189,6 +207,40 @@ function VerifyForm() {
           Verify
         </button>
       </form>
+
+      {result.state === "idle" && samples.length > 0 && (
+        <div style={{ marginBottom: "2.5rem", textAlign: "center" }}>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", marginBottom: "0.75rem" }}>
+            Nothing to paste yet? Try a real, already-public seal:
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
+            {samples.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => tryExample(s.id)}
+                title={s.title}
+                style={{
+                  ...mono,
+                  fontSize: "12px",
+                  padding: "8px 14px",
+                  borderRadius: "9999px",
+                  border: "1px solid rgba(229,72,77,0.3)",
+                  background: "rgba(229,72,77,0.06)",
+                  color: "rgba(244,241,234,0.75)",
+                  cursor: "pointer",
+                  maxWidth: "220px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {s.id.slice(0, 8)}… {new Date(s.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {result.state === "loading" && (
         <p style={{ ...syne, fontSize: "14px", color: "rgba(244,241,234,0.5)", textAlign: "center" }}>Checking…</p>
