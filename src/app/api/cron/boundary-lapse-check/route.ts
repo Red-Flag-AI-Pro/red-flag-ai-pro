@@ -116,8 +116,8 @@ export async function GET(request: Request) {
   if (credentialRecords && credentialRecords.length > 0) {
     const keyIds = credentialRecords.map((r) => r.api_key_id).filter((id): id is string => Boolean(id));
     const { data: keys } = keyIds.length > 0
-      ? await supabase.from("api_keys").select("id, approved_threshold").in("id", keyIds)
-      : { data: [] as { id: string; approved_threshold: number | null }[] };
+      ? await supabase.from("api_keys").select("id, approved_threshold, model_version").in("id", keyIds)
+      : { data: [] as { id: string; approved_threshold: number | null; model_version: string | null }[] };
     const keyMap = new Map((keys ?? []).map((k) => [k.id, k]));
 
     for (const record of credentialRecords) {
@@ -127,7 +127,7 @@ export async function GET(request: Request) {
       // the fix — record.api_key_id is null here whenever the key was
       // deleted, and that is now reachable instead of filtered out above.
       const liveFingerprint = key
-        ? computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 })
+        ? computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50, modelVersion: key.model_version })
         : "pf-key-deleted";
       if (liveFingerprint === record.permission_fingerprint) continue;
 

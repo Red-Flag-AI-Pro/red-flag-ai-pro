@@ -14,6 +14,7 @@ interface ApiKey {
   key_prefix: string;
   created_at: string;
   last_used_at: string | null;
+  model_version?: string | null;
 }
 
 export default function SettingsPage() {
@@ -37,6 +38,8 @@ export default function SettingsPage() {
   const [creatingKey, setCreatingKey] = useState(false);
   const [copiedReferral, setCopiedReferral] = useState(false);
   const [copiedKey, setCopiedKey] = useState(false);
+  const [modelVersionDrafts, setModelVersionDrafts] = useState<Record<string, string>>({});
+  const [savingModelVersion, setSavingModelVersion] = useState<string | null>(null);
 
   const isSentinel = plan === "sentinel";
 
@@ -47,7 +50,7 @@ export default function SettingsPage() {
 
       const [{ data: profile }, { data: keys }] = await Promise.all([
         supabase.from("profiles").select("full_name, agency_name, plan, webhook_url, decay_webhook_url, referral_code").eq("user_id", user.id).single(),
-        supabase.from("api_keys").select("id, name, key_prefix, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
+        supabase.from("api_keys").select("id, name, key_prefix, model_version, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
       ]);
 
       if (profile) {
@@ -59,6 +62,7 @@ export default function SettingsPage() {
         setPlan((profile.plan as Plan) ?? "free");
       }
       setApiKeys(keys ?? []);
+      setModelVersionDrafts(Object.fromEntries((keys ?? []).map((k) => [k.id, k.model_version ?? ""])));
       setLoading(false);
     }
     load();
@@ -91,7 +95,8 @@ export default function SettingsPage() {
     if (!res.ok) { setError(data.error); }
     else {
       setNewKeyValue(data.raw_key);
-      setApiKeys((prev) => [{ id: data.id, name: data.name, key_prefix: data.key_prefix, created_at: data.created_at, last_used_at: null }, ...prev]);
+      setApiKeys((prev) => [{ id: data.id, name: data.name, key_prefix: data.key_prefix, created_at: data.created_at, last_used_at: null, model_version: null }, ...prev]);
+      setModelVersionDrafts((prev) => ({ ...prev, [data.id]: "" }));
       setNewKeyName("");
     }
     setCreatingKey(false);
@@ -100,6 +105,21 @@ export default function SettingsPage() {
   async function handleDeleteKey(id: string) {
     await fetch("/api/keys", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
     setApiKeys((prev) => prev.filter((k) => k.id !== id));
+  }
+
+  async function handleSaveModelVersion(id: string) {
+    setSavingModelVersion(id);
+    const modelVersion = (modelVersionDrafts[id] ?? "").trim();
+    const res = await fetch("/api/keys", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, model_version: modelVersion || null }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setApiKeys((prev) => prev.map((k) => (k.id === id ? { ...k, model_version: data.model_version } : k)));
+    }
+    setSavingModelVersion(null);
   }
 
   const referralLink = typeof window !== "undefined" ? `${window.location.origin}/signup?ref=${referralCode}` : "";
@@ -196,15 +216,38 @@ export default function SettingsPage() {
             {apiKeys.length > 0 ? (
               <ul className="divide-y divide-white/10">
                 {apiKeys.map((k) => (
-                  <li key={k.id} className="flex items-center justify-between py-3 gap-4">
-                    <div>
-                      <p className="text-sm font-medium text-[#F4F1EA]">{k.name}</p>
-                      <p className="text-xs text-[rgba(244,241,234,0.4)] font-mono">{k.key_prefix}</p>
-                      <p className="text-xs text-[rgba(244,241,234,0.4)]">
-                        {k.last_used_at ? `Last used ${new Date(k.last_used_at).toLocaleDateString("en-GB")}` : "Never used"}
-                      </p>
+                  <li key={k.id} className="py-3">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-sm font-medium text-[#F4F1EA]">{k.name}</p>
+                        <p className="text-xs text-[rgba(244,241,234,0.4)] font-mono">{k.key_prefix}</p>
+                        <p className="text-xs text-[rgba(244,241,234,0.4)]">
+                          {k.last_used_at ? `Last used ${new Date(k.last_used_at).toLocaleDateString("en-GB")}` : "Never used"}
+                        </p>
+                      </div>
+                      <button onClick={() => handleDeleteKey(k.id)} className="text-xs text-red-500 hover:underline shrink-0">Revoke</button>
                     </div>
-                    <button onClick={() => handleDeleteKey(k.id)} className="text-xs text-red-500 hover:underline">Revoke</button>
+                    <div className="mt-2 flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={modelVersionDrafts[k.id] ?? ""}
+                        onChange={(e) => setModelVersionDrafts((prev) => ({ ...prev, [k.id]: e.target.value }))}
+                        placeholder="Model/vendor version behind this key (optional)"
+                        className="flex-1 rounded-lg border border-white/10 bg-[#0A1628] px-3 py-1.5 text-xs text-[#F4F1EA] placeholder-[rgba(244,241,234,0.3)] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                      />
+                      {(modelVersionDrafts[k.id] ?? "") !== (k.model_version ?? "") && (
+                        <button
+                          onClick={() => handleSaveModelVersion(k.id)}
+                          disabled={savingModelVersion === k.id}
+                          className="text-xs text-[rgba(244,241,234,0.6)] hover:text-[#F4F1EA] shrink-0"
+                        >
+                          {savingModelVersion === k.id ? "Saving…" : "Save"}
+                        </button>
+                      )}
+                    </div>
+                    <p className="text-[10px] text-[rgba(244,241,234,0.35)] mt-1">
+                      Part of the sealed permission fingerprint — changing this counts as scope drift on any linked boundary record, same as the threshold.
+                    </p>
                   </li>
                 ))}
               </ul>

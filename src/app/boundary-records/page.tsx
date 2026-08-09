@@ -773,7 +773,7 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
           {record.fingerprint_intact === false && (
             <span
               className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-red-500/40 bg-red-900/30 text-red-300 px-2 py-0.5"
-              title="The linked API key's live permissions no longer match the fingerprint sealed when this was approved. The scope changed and nobody re-approved it."
+              title="The linked API key's live permissions no longer match the fingerprint sealed when this was approved — either the threshold changed or the model/vendor version behind it did. The scope changed and nobody re-approved it."
             >
               Drifted
             </span>

@@ -94,10 +94,10 @@ export async function GET() {
   if (linkedKeyIds.length > 0) {
     const { data: keys } = await result.supabase
       .from("api_keys")
-      .select("id, approved_threshold")
+      .select("id, approved_threshold, model_version")
       .in("id", linkedKeyIds);
     for (const key of keys ?? []) {
-      liveFingerprints.set(key.id, computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 }));
+      liveFingerprints.set(key.id, computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50, modelVersion: key.model_version }));
     }
   }
   // What a record has actually produced, not just how much time has passed
@@ -274,7 +274,7 @@ export async function POST(request: Request) {
   if (apiKeyId) {
     const { data: linkedKey } = await result.supabase
       .from("api_keys")
-      .select("id, approved_threshold")
+      .select("id, approved_threshold, model_version")
       .eq("id", apiKeyId)
       .eq("user_id", result.user.id)
       .maybeSingle();
@@ -289,7 +289,7 @@ export async function POST(request: Request) {
         .eq("id", apiKeyId)
         .eq("user_id", result.user.id);
     }
-    permissionFingerprint = computePermissionFingerprint({ approvedThreshold });
+    permissionFingerprint = computePermissionFingerprint({ approvedThreshold, modelVersion: linkedKey.model_version });
   }
 
   // If this record replaces an earlier one, the record it supersedes must

@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
   const { data: apiKey } = await supabase
     .from("api_keys")
-    .select("id, user_id, approved_threshold")
+    .select("id, user_id, approved_threshold, model_version")
     .eq("key_hash", keyHash)
     .single();
 
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
       .maybeSingle();
     if (!record?.permission_fingerprint) return;
 
-    const liveFingerprint = computePermissionFingerprint({ approvedThreshold: apiKey.approved_threshold ?? 50 });
+    const liveFingerprint = computePermissionFingerprint({ approvedThreshold: apiKey.approved_threshold ?? 50, modelVersion: apiKey.model_version });
     if (liveFingerprint === record.permission_fingerprint) return;
 
     const { data: existing } = await serviceClient

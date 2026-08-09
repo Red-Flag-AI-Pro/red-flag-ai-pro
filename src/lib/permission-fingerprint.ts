@@ -10,8 +10,8 @@
 // re-approval — the correct behaviour when the definition of "scope" itself
 // widens.
 
-export function computePermissionFingerprint(scope: { approvedThreshold: number }): string {
-  const material = `threshold|${scope.approvedThreshold}`;
+export function computePermissionFingerprint(scope: { approvedThreshold: number; modelVersion?: string | null }): string {
+  const material = `threshold|${scope.approvedThreshold}|model|${scope.modelVersion?.trim() || "unspecified"}`;
   let h = 0x811c9dc5;
   for (let i = 0; i < material.length; i++) {
     h ^= material.charCodeAt(i);
