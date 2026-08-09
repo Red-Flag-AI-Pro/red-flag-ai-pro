@@ -119,7 +119,8 @@ export default function WitnessHostingPage() {
           Authored by James Stokes, Founder, Red Flag AI Pro.
         </p>
         <p style={{ ...mono, fontSize: "11px", color: "rgba(244,241,234,0.3)", marginTop: "1rem" }}>
-          See also <a href="/witness-network" style={{ color: "#C9A66B" }}>the Witness Network</a>,{" "}
+          See also <a href="/installations" style={{ color: "#C9A66B" }}>all installations & custom work</a>,{" "}
+          <a href="/witness-network" style={{ color: "#C9A66B" }}>the Witness Network</a>,{" "}
           <a href="/witness-standard/peer-agreement" style={{ color: "#C9A66B" }}>the peer agreement</a> and{" "}
           <a href="/witness-standard/proofs" style={{ color: "#C9A66B" }}>the proofs</a>.
         </p>

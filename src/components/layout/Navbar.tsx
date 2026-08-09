@@ -81,6 +81,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                       <Link href="/witness-standard/founding-chains" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Founding Chain Terms</Link>
                       <Link href="/witness-standard/proofs" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Proofs</Link>
                       <Link href="/witness-network/badge" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Witness Badge</Link>
+                      <Link href="/installations" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Installations & Custom Work</Link>
                       <Link href="/witness-network/hosting" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Hosted Witnessing</Link>
                       <Link href="/witness-network/install" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Install Your Own Node</Link>
                       <Link href="/verify" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>
@@ -187,6 +188,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/witness-standard/founding-chains" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Founding Chain Terms</Link>
                 <Link href="/witness-standard/proofs" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Proofs</Link>
                 <Link href="/witness-network/badge" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Witness Badge</Link>
+                <Link href="/installations" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Installations & Custom Work</Link>
                 <Link href="/witness-network/hosting" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Hosted Witnessing</Link>
                 <Link href="/witness-network/install" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Install Your Own Node</Link>
                 <Link href="/verify" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Verify a Record</Link>

@@ -703,6 +703,10 @@ export default async function PricingPage() {
               Start assessment
             </Link>
           </div>
+
+          <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.5)", marginTop: "2rem" }}>
+            Need something installed or built for you rather than switched on? See <Link href="/installations" style={{ color: "#E5484D" }}>installations & custom work</Link>.
+          </p>
         </div>
       </section>
 
