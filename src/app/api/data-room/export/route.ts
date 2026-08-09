@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { createHash } from "crypto";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent, verifyAuditChain } from "@/lib/audit-log";
+import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
+import { DOCUMENT_LABELS } from "@/lib/program-documents";
 
 // Sentinel-only, same gate as /api/audit-log/verify. A Data Room export is a
 // board/investor/auditor deliverable, the same "compliance evidence, board
@@ -33,7 +35,7 @@ export async function POST() {
       .eq("user_id", user.id),
     supabase
       .from("program_orders")
-      .select("id, letter_grade, letter_grade_score, delivered_at, seal_id")
+      .select("id, letter_grade, letter_grade_score, delivered_at, seal_id, document_reviews")
       .eq("user_id", user.id)
       .eq("status", "delivered"),
     supabase
@@ -65,11 +67,29 @@ export async function POST() {
     boundary_records_active: activeCount,
     boundary_records_expired: expiredCount,
     program_orders_count: programOrders.length,
-    program_orders: programOrders.map((o) => ({
-      letter_grade: o.letter_grade,
-      delivered_at: o.delivered_at,
-      sealed: Boolean(o.seal_id),
-    })),
+    // Task #281: sealing a document at delivery proves nobody edited it, it
+    // does not stop it going stale. A document past its review date without
+    // a fresh confirmation is excluded from this export by name -- a
+    // visible symptom in the diligence package, rather than a stale
+    // document quietly reaching whoever reads this.
+    program_orders: programOrders.map((o) => {
+      const reviews = o.document_reviews as DocumentReviews | null;
+      const current: string[] = [];
+      const excludedStale: string[] = [];
+      if (o.delivered_at) {
+        for (const doc of DOCUMENT_LABELS) {
+          const status = getDocumentReviewStatus(doc.key, o.delivered_at, reviews);
+          (status.stale ? excludedStale : current).push(doc.label);
+        }
+      }
+      return {
+        letter_grade: o.letter_grade,
+        delivered_at: o.delivered_at,
+        sealed: Boolean(o.seal_id),
+        documents_included: current,
+        documents_excluded_stale: excludedStale,
+      };
+    }),
     governance_assessment: assessmentRes.data
       ? { score: assessmentRes.data.score, risk_level: assessmentRes.data.risk_level, completed_at: assessmentRes.data.created_at }
       : null,

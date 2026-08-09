@@ -11,6 +11,7 @@ import type { FinancialSnapshot } from "@/lib/program-financial";
 import type { RegulatoryMappingRow } from "@/lib/program-regulatory-mapping";
 import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-risk-register";
 import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timeline";
+import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -165,20 +166,30 @@ export default async function ProgramDeliveryPage({
               <p style={{ ...syne, fontSize: "1.05rem", fontWeight: 800, color: "white", letterSpacing: "-0.01em", marginBottom: "0.5rem" }}>
                 Your six documents
               </p>
-              <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+              <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: "0.5rem" }}>
                 Each follows the exact structure of Red Flag&apos;s free tools, tailored to what you told us. None of these are legal advice or a substitute for review by counsel where one is warranted — see each document&apos;s own closing note.
+              </p>
+              <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                Being sealed proves a document hasn&apos;t been edited since delivery, it doesn&apos;t stop it going stale. Each carries a one year review clock — confirm it&apos;s still accurate to reset it, or it drops out of any AI Governance Data Room export you run.
               </p>
             </div>
 
             {DOCUMENT_LABELS.map((doc, i) => {
               const value = (order[doc.key] as { content?: string } | null)?.content;
               if (!value) return null;
+              const review = order.delivered_at
+                ? getDocumentReviewStatus(doc.key, order.delivered_at, order.document_reviews as DocumentReviews | null)
+                : null;
               return (
                 <ProgramDocumentPanel
                   key={doc.key}
                   number={String(i + 1).padStart(2, "0")}
                   title={doc.label}
                   content={value}
+                  orderId={id}
+                  documentKey={doc.key}
+                  dueAt={review?.dueAt}
+                  stale={review?.stale}
                 />
               );
             })}
