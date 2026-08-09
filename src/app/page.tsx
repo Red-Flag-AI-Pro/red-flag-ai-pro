@@ -229,24 +229,25 @@ export default function LandingPage() {
                 solution: "Gap assessment + evidence package. Regulatory framework mapping.",
               },
             ];
-            // Second row is its own independent 3-column grid rather than a
-            // continuation of row one's 4 columns, so three items divide
-            // evenly and center properly instead of leaving an orphan slot.
+            // Task #279, site simplification audit 9 Aug 2026: seven full
+            // cards on first view was real dilution. Row one keeps the four
+            // strongest, most direct-ICP personas as full cards; row two is
+            // visually demoted to a single compact strip below rather than
+            // trimmed away entirely, so an insurance broker or HR lead who
+            // lands here still finds their own language, just without
+            // competing with row one for the first screen.
             const ROW_TWO = [
               {
                 role: "Insurance brokers & underwriters",
                 pain: "A claim comes in. Can you tell if the AI system was even authorized to make that call?",
-                solution: "Prove your own AI governance, and any delegate's, with a sealed, timestamped audit trail.",
               },
               {
                 role: "Solo founders using AI",
                 pain: "You added an AI chatbot last month. If it gives bad advice tomorrow, who's actually on the hook?",
-                solution: "Get a boundary authorization record in minutes. Know who's accountable before it matters.",
               },
               {
                 role: "HR & people teams",
                 pain: "Your AI screens candidates. If someone complains about bias, what would you actually show a tribunal?",
-                solution: "Governance assessment built for hiring AI. Prove the process, not just the policy.",
               },
             ];
             const card = (item: { role: string; pain: string; solution: string }, dark: boolean) => (
@@ -266,15 +267,16 @@ export default function LandingPage() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem" }}>
                   {ROW_ONE.map((item, i) => card(item, i % 2 === 0))}
                 </div>
-                {/* Row two continues row one's index rather than restarting it.
-                    On desktop the two rows sit side by side so either start
-                    colour reads as a checkerboard, but on mobile every card
-                    collapses into one vertical column and a restart put two
-                    identical panels back to back at the seam, visibly breaking
-                    the alternation. Counting straight through keeps the
-                    sequence honest at every width. */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 320px))", justifyContent: "center", gap: "2rem", marginTop: "2rem" }}>
-                  {ROW_TWO.map((item, i) => card(item, (i + ROW_ONE.length) % 2 === 0))}
+                <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, color: "rgba(255,255,255,0.35)", marginBottom: "1.25rem", textTransform: "uppercase", letterSpacing: "0.1em", textAlign: "center" }}>Also built for</p>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem 2rem", maxWidth: "900px", margin: "0 auto" }}>
+                    {ROW_TWO.map((item) => (
+                      <div key={item.role}>
+                        <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.75)", marginBottom: "0.4rem" }}>{item.role}</p>
+                        <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>{item.pain}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </>
             );
