@@ -221,6 +221,8 @@ export default async function ProgramDeliveryPage({
                   exercisable={doc.key === "incident_checklist"}
                   exercisedAt={docReviewEntry?.exercised_at}
                   exerciseNote={docReviewEntry?.exercise_note}
+                  exercisedBy={docReviewEntry?.exercised_by}
+                  exercisedFirstTime={docReviewEntry?.exercised_first_time}
                 />
               );
             })}

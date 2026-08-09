@@ -48,8 +48,23 @@ const REVIEW_PERIOD_MONTHS: Record<keyof ProgramDocumentBundle, number> = {
 // document among the six that's genuinely a standby capability (an incident
 // response plan) rather than a description of context, so it's the one
 // where "reviewed" and "run" can honestly diverge.
+// Brad Wolfe, follow-up 9 Aug 2026: an exercise log captures that something
+// happened, not whether it happened under conditions that resemble the real
+// event. Cheapest proxy is who ran it -- the document's regular author
+// running their own checklist tests their memory, not the document. Someone
+// unfamiliar running it surfaces the actual gaps (the vendor that was
+// acquired, the number that rings nowhere).
 export type DocumentReviews = Partial<
-  Record<keyof ProgramDocumentBundle, { reviewed_at: string; exercised_at?: string; exercise_note?: string }>
+  Record<
+    keyof ProgramDocumentBundle,
+    {
+      reviewed_at: string;
+      exercised_at?: string;
+      exercise_note?: string;
+      exercised_by?: string;
+      exercised_first_time?: boolean;
+    }
+  >
 >;
 
 export interface DocumentReviewStatus {

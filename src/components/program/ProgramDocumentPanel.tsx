@@ -37,6 +37,8 @@ export function ProgramDocumentPanel({
   exercisable,
   exercisedAt,
   exerciseNote,
+  exercisedBy,
+  exercisedFirstTime,
 }: {
   number: string;
   title: string;
@@ -51,14 +53,20 @@ export function ProgramDocumentPanel({
   exercisable?: boolean;
   exercisedAt?: string;
   exerciseNote?: string;
+  // Task #293, Brad Wolfe follow-up: who ran it is the cheapest proxy for
+  // whether the exercise resembled the real event, not just that it happened.
+  exercisedBy?: string;
+  exercisedFirstTime?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [confirmedJustNow, setConfirmedJustNow] = useState(false);
   const [exerciseFormOpen, setExerciseFormOpen] = useState(false);
   const [exerciseDraft, setExerciseDraft] = useState("");
+  const [exercisedByDraft, setExercisedByDraft] = useState("");
+  const [firstTimeDraft, setFirstTimeDraft] = useState<boolean | null>(null);
   const [exercising, setExercising] = useState(false);
-  const [exercisedJustNow, setExercisedJustNow] = useState<{ at: string; note: string } | null>(null);
+  const [exercisedJustNow, setExercisedJustNow] = useState<{ at: string; note: string; by: string; firstTime: boolean } | null>(null);
   const [exerciseError, setExerciseError] = useState<string | null>(null);
 
   async function handleCopy() {
@@ -92,19 +100,29 @@ export function ProgramDocumentPanel({
       setExerciseError("Say briefly what happened when you ran it — that's the finding.");
       return;
     }
+    if (!exercisedByDraft.trim()) {
+      setExerciseError("Name who actually ran it — testing your own memory isn't the same as testing the document.");
+      return;
+    }
+    if (firstTimeDraft === null) {
+      setExerciseError("Say whether this is the first time that person has run it.");
+      return;
+    }
     setExercising(true);
     setExerciseError(null);
     try {
       const res = await fetch(`/api/program/${orderId}/log-exercise`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ documentKey, note: exerciseDraft }),
+        body: JSON.stringify({ documentKey, note: exerciseDraft, exercisedBy: exercisedByDraft, firstTime: firstTimeDraft }),
       });
       const data = await res.json();
       if (res.ok) {
-        setExercisedJustNow({ at: data.exercisedAt, note: exerciseDraft.trim() });
+        setExercisedJustNow({ at: data.exercisedAt, note: exerciseDraft.trim(), by: exercisedByDraft.trim(), firstTime: firstTimeDraft });
         setExerciseFormOpen(false);
         setExerciseDraft("");
+        setExercisedByDraft("");
+        setFirstTimeDraft(null);
       } else {
         setExerciseError(data.error ?? "Could not save that.");
       }
@@ -114,9 +132,9 @@ export function ProgramDocumentPanel({
   }
 
   const lastExercised = exercisedJustNow
-    ? { at: exercisedJustNow.at, note: exercisedJustNow.note }
+    ? { at: exercisedJustNow.at, note: exercisedJustNow.note, by: exercisedJustNow.by, firstTime: exercisedJustNow.firstTime }
     : exercisedAt
-    ? { at: exercisedAt, note: exerciseNote ?? "" }
+    ? { at: exercisedAt, note: exerciseNote ?? "", by: exercisedBy ?? "", firstTime: exercisedFirstTime ?? false }
     : null;
 
   return (
@@ -148,7 +166,7 @@ export function ProgramDocumentPanel({
       {exercisable && (
         <p style={{ ...syne, fontSize: "11.5px", color: lastExercised ? "rgba(74,222,128,0.75)" : "#facc15", marginBottom: "0.9rem", lineHeight: 1.6 }}>
           {lastExercised
-            ? `Last exercised ${new Date(lastExercised.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}${lastExercised.note ? ` — "${lastExercised.note}"` : ""}`
+            ? `Last exercised ${new Date(lastExercised.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} by ${lastExercised.by || "someone unnamed"}${lastExercised.firstTime ? ", their first time running it" : ", who had run it before"}${lastExercised.note ? ` — "${lastExercised.note}"` : ""}`
             : "Never exercised end to end. Reviewed is not the same as run."}
         </p>
       )}
@@ -221,6 +239,28 @@ export function ProgramDocumentPanel({
           <p style={{ ...syne, fontSize: "11.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
             What happened when you actually ran this end to end, not whether it still reads correctly. A finding is the point, if something didn&apos;t work, say so, that&apos;s what makes this different from a review.
           </p>
+          <input
+            type="text"
+            value={exercisedByDraft}
+            onChange={(e) => setExercisedByDraft(e.target.value)}
+            maxLength={200}
+            placeholder="Who ran it? Ideally not whoever wrote the document."
+            style={{
+              width: "100%", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", marginBottom: "0.75rem",
+            }}
+          />
+          <div style={{ display: "flex", gap: "16px", marginBottom: "0.75rem" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer" }}>
+              <input type="radio" name={`firstTime-${documentKey}`} checked={firstTimeDraft === true} onChange={() => setFirstTimeDraft(true)} />
+              <span style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.6)" }}>Their first time running it</span>
+            </label>
+            <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer" }}>
+              <input type="radio" name={`firstTime-${documentKey}`} checked={firstTimeDraft === false} onChange={() => setFirstTimeDraft(false)} />
+              <span style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.6)" }}>They&apos;d run it before</span>
+            </label>
+          </div>
           <textarea
             value={exerciseDraft}
             onChange={(e) => setExerciseDraft(e.target.value)}
