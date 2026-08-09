@@ -334,6 +334,14 @@ function buildPublicDescription(action: string, details: Record<string, unknown>
       const peer = str("peer_chain");
       return peer ? `Received and sealed a tip from ${peer}` : undefined;
     }
+    case "data_room.exported": {
+      const boundaryRecords = details.boundary_records_count;
+      const programOrders = details.program_orders_count;
+      const parts: string[] = [];
+      if (typeof boundaryRecords === "number") parts.push(`${boundaryRecords} boundary authorization record${boundaryRecords === 1 ? "" : "s"}`);
+      if (typeof programOrders === "number" && programOrders > 0) parts.push(`${programOrders} governance program${programOrders === 1 ? "" : "s"}`);
+      return parts.length ? `Data Room snapshot covering ${parts.join(", ")}` : `Data Room snapshot exported`;
+    }
     case "gdpr.erasure_certificate": {
       const originalAction = str("redacted_entry_action");
       return originalAction

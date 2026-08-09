@@ -488,6 +488,7 @@ export default function SentinelPage() {
                   "Timestamped audit log + PDF report on every review",
                   "Weekly monitoring of live pages",
                   "The paper trail your PI insurer needs",
+                  "One sealed Data Room export for board, investor, or insurer review",
                 ].map((b) => (
                   <div key={b} style={{ display: "flex", gap: "8px", marginBottom: "0.75rem" }}>
                     <span style={{ color: "#4ade80", flexShrink: 0 }}>✓</span>

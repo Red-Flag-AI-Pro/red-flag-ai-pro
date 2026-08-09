@@ -16,6 +16,7 @@ const ACTION_LABELS: Record<string, string> = {
   "witness.anchor_received": "Witness anchor received",
   "witness.anchor_sent": "Witness anchor sent",
   "enforcement.blocked": "Real Time Gate block",
+  "data_room.exported": "AI Governance Data Room export",
 };
 
 // No auth required by design — this is meant to be checkable by anyone
