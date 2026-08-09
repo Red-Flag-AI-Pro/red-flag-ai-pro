@@ -207,6 +207,7 @@ export default async function ProgramDeliveryPage({
               const review = order.delivered_at
                 ? getDocumentReviewStatus(doc.key, order.delivered_at, order.document_reviews as DocumentReviews | null)
                 : null;
+              const docReviewEntry = (order.document_reviews as DocumentReviews | null)?.[doc.key];
               return (
                 <ProgramDocumentPanel
                   key={doc.key}
@@ -217,6 +218,9 @@ export default async function ProgramDeliveryPage({
                   documentKey={doc.key}
                   dueAt={review?.dueAt}
                   stale={review?.stale}
+                  exercisable={doc.key === "incident_checklist"}
+                  exercisedAt={docReviewEntry?.exercised_at}
+                  exerciseNote={docReviewEntry?.exercise_note}
                 />
               );
             })}

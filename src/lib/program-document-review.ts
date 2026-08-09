@@ -40,7 +40,17 @@ const REVIEW_PERIOD_MONTHS: Record<keyof ProgramDocumentBundle, number> = {
   incident_checklist: 12,
 };
 
-export type DocumentReviews = Partial<Record<keyof ProgramDocumentBundle, { reviewed_at: string }>>;
+// Brad Wolfe, "standby capacity is not an asset you buy, it's a subscription,"
+// 9 Aug 2026: a review and an exercise are different facts. Confirming a
+// document is still accurate says the paperwork holds up; it says nothing
+// about whether anyone has actually run the plan end to end. Only the
+// incident checklist carries exercised_at/exercise_note -- it's the one
+// document among the six that's genuinely a standby capability (an incident
+// response plan) rather than a description of context, so it's the one
+// where "reviewed" and "run" can honestly diverge.
+export type DocumentReviews = Partial<
+  Record<keyof ProgramDocumentBundle, { reviewed_at: string; exercised_at?: string; exercise_note?: string }>
+>;
 
 export interface DocumentReviewStatus {
   dueAt: string;
