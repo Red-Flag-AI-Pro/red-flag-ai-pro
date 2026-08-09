@@ -31,6 +31,68 @@ const SAFEGUARDS = [
 
 type Safeguard = (typeof SAFEGUARDS)[number]["value"];
 
+// Task #272, idea from a competitor's lead magnet (KairoNull, 9 Aug 2026
+// research): offer a raw, ungated file alongside the gated version. The
+// gate exists to unlock the document generated FROM the user's own
+// answers, so the honest ungated counterpart is a genuinely blank
+// template, not the same personalized output with the email step
+// skipped.
+const BLANK_TEMPLATE = `DATA PROTECTION IMPACT ASSESSMENT — SCREENING
+Blank template, from Red Flag AI Pro
+
+1. SYSTEM / PROCESS
+______________________________________________
+
+2. DESCRIPTION OF PROCESSING
+______________________________________________
+
+3. DATA TYPES PROCESSED (tick all that apply)
+[ ] Health, biometric, genetic, ethnicity, religion or similar special category data
+[ ] Data belonging to children (under 18)
+[ ] Financial or credit information
+[ ] Criminal offence or conviction data
+[ ] Precise location or movement tracking
+[ ] Standard personal data only (name, email, contact details)
+[ ] No personal data — anonymized or aggregated only
+
+4. RISK FACTORS (tick all that apply)
+[ ] Special category, children's, or criminal offence data — Article 9/10 UK GDPR applies
+[ ] Automated decision-making with legal or similarly significant effect — Article 22 UK GDPR applies
+[ ] Systematic monitoring of individuals
+[ ] Processing at large scale
+
+5. NECESSITY & PROPORTIONALITY
+Is there a less intrusive way to achieve the same purpose? [Answer before finalizing — this question has to be answered, not skipped, for the assessment to be genuine rather than a formality.]
+______________________________________________
+
+6. SAFEGUARDS IN PLACE
+[ ] Data encrypted at rest and in transit
+[ ] Role-based access controls in place
+[ ] A human reviews outputs before they take effect
+[ ] Defined retention period, data deleted after
+[ ] Data anonymized or pseudonymized where possible
+[ ] Data processing agreement in place with any vendor
+
+7. SCREENING OUTCOME
+Any risk factor ticked in section 4 means a full DPIA is required under UK GDPR Article 35(3) before this processing begins or continues.
+______________________________________________
+
+8. SIGN-OFF
+Assessed by: ______________________     Date: ______________
+Reviewed by (DPO or equivalent): ______________________     Date: ______________
+
+This is a screening template, not legal advice. It follows the ICO's own DPIA screening checklist structure. If the outcome above says a full DPIA is required, complete one before processing begins.`;
+
+function downloadBlankTemplate() {
+  const blob = new Blob([BLANK_TEMPLATE], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "dpia-screening-blank-template.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export function DPIAGenerator() {
   const [systemName, setSystemName] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -146,6 +208,40 @@ This is a screening document, not legal advice. It follows the ICO's own DPIA sc
 
   return (
     <div>
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: "0.75rem",
+        marginBottom: "1.25rem",
+        padding: "0.9rem 1.25rem",
+        background: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "8px",
+      }}>
+        <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>
+          Prefer a blank paper form instead? No email needed.
+        </p>
+        <button
+          onClick={downloadBlankTemplate}
+          style={{
+            ...syne,
+            fontSize: "12.5px",
+            fontWeight: 700,
+            color: "rgba(255,255,255,0.85)",
+            background: "transparent",
+            border: "1px solid rgba(255,255,255,0.25)",
+            borderRadius: "9999px",
+            padding: "8px 16px",
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Download blank template (.txt) ↓
+        </button>
+      </div>
+
       <div style={{
         background: "#0F2138",
         border: "1px solid rgba(255,255,255,0.15)",
