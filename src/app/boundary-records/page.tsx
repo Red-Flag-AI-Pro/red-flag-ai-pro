@@ -746,6 +746,28 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
             )}
           </div>
 
+          {record.performance && record.performance.total > 0 && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">What this has actually governed</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                Governed {record.performance.total} Real Time Gate decision{record.performance.total === 1 ? "" : "s"} since approval.
+                {" "}{record.performance.blocked} blocked ({Math.round(record.performance.block_rate * 100)}%).
+                {record.performance.trend === "up" && (
+                  <span className="text-amber-300"> Block rate rising over the record&apos;s life — worth a look before renewing on elapsed time alone.</span>
+                )}
+                {record.performance.trend === "down" && (
+                  <span className="text-emerald-300"> Block rate falling over the record&apos;s life.</span>
+                )}
+                {record.performance.trend === "flat" && (
+                  <span> Block rate steady over the record&apos;s life.</span>
+                )}
+                {record.performance.trend === null && (
+                  <span className="text-[rgba(244,241,234,0.5)]"> Not enough decisions yet to show a trend.</span>
+                )}
+              </p>
+            </div>
+          )}
+
           {record.continuity_owner_name && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Continuity owner</p>

@@ -125,6 +125,18 @@ export interface BoundaryAuthorizationRecord {
   // Computed at read time by the API, never stored: does the linked key's
   // live scope still match the sealed fingerprint? null = not applicable.
   fingerprint_intact?: boolean | null;
+  // Computed at read time, never stored: how many Real Time Gate decisions
+  // this record has actually governed (via enforcement_decisions.governing_
+  // record_id), and whether the block rate is trending up, down, or flat
+  // across the record's life. null = no credential link, or zero decisions
+  // governed yet. trend is null until there's enough data (4+ decisions) to
+  // say anything about direction.
+  performance?: {
+    total: number;
+    blocked: number;
+    block_rate: number;
+    trend: "up" | "down" | "flat" | null;
+  } | null;
   // Where authority actually sits for this system. Null means it was never
   // stated, which is itself the finding the authority map surfaces.
   authority_mode: AuthorityMode | null;

@@ -100,6 +100,47 @@ export async function GET() {
       liveFingerprints.set(key.id, computePermissionFingerprint({ approvedThreshold: key.approved_threshold ?? 50 }));
     }
   }
+  // What a record has actually produced, not just how much time has passed
+  // since it was signed. Only credential records ever get a governing_record_id
+  // written to them (see /api/v1/enforce), so only those can have a track
+  // record at all. Split into first half vs second half of the record's own
+  // life so a trend direction is visible, not just a single lifetime number.
+  const performanceMap = new Map<string, { total: number; blocked: number; block_rate: number; trend: "up" | "down" | "flat" | null }>();
+  const trackedRecordIds = records.filter((r) => r.api_key_id).map((r) => r.id);
+  if (trackedRecordIds.length > 0) {
+    const { data: decisions } = await result.supabase
+      .from("enforcement_decisions")
+      .select("governing_record_id, allowed, created_at")
+      .in("governing_record_id", trackedRecordIds)
+      .order("created_at", { ascending: true });
+
+    const byRecord = new Map<string, { allowed: boolean }[]>();
+    for (const d of decisions ?? []) {
+      if (!d.governing_record_id) continue;
+      const list = byRecord.get(d.governing_record_id) ?? [];
+      list.push({ allowed: d.allowed });
+      byRecord.set(d.governing_record_id, list);
+    }
+    for (const [recordId, list] of byRecord) {
+      const total = list.length;
+      const blocked = list.filter((d) => !d.allowed).length;
+      const block_rate = total > 0 ? blocked / total : 0;
+      let trend: "up" | "down" | "flat" | null = null;
+      // Fewer than 4 decisions isn't enough to say anything about direction —
+      // a null trend is honest, a confident one from two data points is not.
+      if (total >= 4) {
+        const mid = Math.floor(total / 2);
+        const firstHalf = list.slice(0, mid);
+        const secondHalf = list.slice(mid);
+        const firstRate = firstHalf.filter((d) => !d.allowed).length / firstHalf.length;
+        const secondRate = secondHalf.filter((d) => !d.allowed).length / secondHalf.length;
+        const delta = secondRate - firstRate;
+        trend = delta > 0.05 ? "up" : delta < -0.05 ? "down" : "flat";
+      }
+      performanceMap.set(recordId, { total, blocked, block_rate, trend });
+    }
+  }
+
   const withStatus = records.map((r) => ({
     ...r,
     fingerprint_intact: !r.permission_fingerprint
@@ -107,6 +148,7 @@ export async function GET() {
       : r.api_key_id && liveFingerprints.has(r.api_key_id)
         ? liveFingerprints.get(r.api_key_id) === r.permission_fingerprint
         : false, // no live key found — deleted or otherwise gone — that is drift, not silence
+    performance: performanceMap.get(r.id) ?? null,
   }));
 
   return NextResponse.json({ records: withStatus });
