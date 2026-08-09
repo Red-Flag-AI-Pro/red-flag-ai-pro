@@ -3,6 +3,7 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { sendDecayAlert } from "@/lib/decay-notifications";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
+import { pulledForwardExpiry } from "@/lib/boundary-expiry";
 
 // A boundary authorization's expiry is currently only checked lazily, in the
 // browser, as a date-string comparison for display. That means a real lapse
@@ -107,7 +108,7 @@ export async function GET(request: Request) {
   // checking; api_key_id is allowed to be null, that IS the deleted-key case.
   const { data: credentialRecords } = await supabase
     .from("boundary_authorization_records")
-    .select("id, user_id, decision, permission_fingerprint, api_key_id")
+    .select("id, user_id, decision, permission_fingerprint, api_key_id, expires_at")
     .eq("grant_type", "credential")
     .not("permission_fingerprint", "is", null);
 
@@ -139,6 +140,22 @@ export async function GET(request: Request) {
         .maybeSingle();
       if (existing) continue;
 
+      // Brad Wolfe, round two of the stop authority thread: system observable
+      // conditions should fire automatically, with no human judgment call
+      // needed, so the human path (the manual falsifier trigger) stays the
+      // rare exception rather than the front door. A scope drift is exactly
+      // that kind of condition, so it now pulls the expiry itself, the same
+      // moment it's detected, using the same only-ever-earlier rule as the
+      // manual route. The alert still fires too, so the owner still finds
+      // out, but the expiry is already pulled by the time they see it.
+      const newExpiresAt = pulledForwardExpiry(record.expires_at, today);
+      if (newExpiresAt !== record.expires_at) {
+        await supabase
+          .from("boundary_authorization_records")
+          .update({ expires_at: newExpiresAt })
+          .eq("id", record.id);
+      }
+
       const entryId = await logAuditEvent(
         record.user_id,
         "boundary_record.drifted",
@@ -150,6 +167,8 @@ export async function GET(request: Request) {
           observed_fingerprint: liveFingerprint,
           observed_during: "daily_sweep",
           detected_at: new Date().toISOString(),
+          previous_expires_at: record.expires_at,
+          new_expires_at: newExpiresAt,
         },
         { timestamp: true }
       );

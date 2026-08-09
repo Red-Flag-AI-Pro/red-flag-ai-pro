@@ -5,6 +5,7 @@ import { SEVERITY_DEDUCTIONS } from "@/lib/constants";
 import { logAuditEvent } from "@/lib/audit-log";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
+import { pulledForwardExpiry } from "@/lib/boundary-expiry";
 import { createHash } from "crypto";
 
 function hashKey(key: string): string {
@@ -170,7 +171,7 @@ export async function POST(request: Request) {
   after(async () => {
     const { data: record } = await serviceClient
       .from("boundary_authorization_records")
-      .select("id, decision, permission_fingerprint")
+      .select("id, decision, permission_fingerprint, expires_at")
       .eq("api_key_id", apiKey.id)
       .eq("grant_type", "credential")
       .not("permission_fingerprint", "is", null)
@@ -191,6 +192,19 @@ export async function POST(request: Request) {
       .maybeSingle();
     if (existing) return;
 
+    // Detected drift pulls the expiry itself — a system observable condition
+    // firing automatically, so the manual falsifier trigger stays the rare
+    // exception, not the front door. Same only-ever-earlier rule as the
+    // manual route and the daily sweep.
+    const driftToday = new Date().toISOString().slice(0, 10);
+    const newExpiresAt = pulledForwardExpiry(record.expires_at, driftToday);
+    if (newExpiresAt !== record.expires_at) {
+      await serviceClient
+        .from("boundary_authorization_records")
+        .update({ expires_at: newExpiresAt })
+        .eq("id", record.id);
+    }
+
     await logAuditEvent(
       apiKey.user_id,
       "boundary_record.drifted",
@@ -202,6 +216,8 @@ export async function POST(request: Request) {
         observed_fingerprint: liveFingerprint,
         observed_during: "enforce_call",
         detected_at: new Date().toISOString(),
+        previous_expires_at: record.expires_at,
+        new_expires_at: newExpiresAt,
       },
       { timestamp: true }
     );

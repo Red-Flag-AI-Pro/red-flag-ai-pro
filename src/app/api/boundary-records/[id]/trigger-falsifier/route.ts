@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
+import { pulledForwardExpiry } from "@/lib/boundary-expiry";
 import type { BoundaryFalsifier } from "@/types";
 
 async function requireUser() {
@@ -56,11 +57,7 @@ export async function POST(
   const nowISO = now.toISOString();
   const today = nowISO.slice(0, 10);
   const previousExpiresAt = record.expires_at;
-  // Only ever pull forward. A record with no expiry, or one further out than
-  // today, gets set to today. A record already expiring sooner than today
-  // (already past, or already tighter than "now") is left alone rather than
-  // pushed later, which a naive overwrite would otherwise risk doing.
-  const newExpiresAt = !previousExpiresAt || previousExpiresAt > today ? today : previousExpiresAt;
+  const newExpiresAt = pulledForwardExpiry(previousExpiresAt, today);
 
   const updatedConditions = conditions.map((c, i) =>
     i === index ? { ...c, triggered_at: nowISO } : c
