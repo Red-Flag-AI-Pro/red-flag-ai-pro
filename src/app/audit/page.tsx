@@ -549,7 +549,7 @@ export default async function AuditPage({
               {[
                 "Financial exposure snapshot: your actual statutory ceiling for your turnover",
                 "Regulatory framework mapping: which law each document satisfies, and where",
-                "An A–G governance letter grade, scored against what you actually told us",
+                "An A–G governance letter grade, scored against what you actually told us and capped honestly if a document goes stale later, not just at delivery",
               ].map((f) => (
                 <p key={f} style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: "0.5rem" }}>
                   <span style={{ color: "rgba(201,166,107,0.6)", marginRight: "10px" }}>·</span>{f}
