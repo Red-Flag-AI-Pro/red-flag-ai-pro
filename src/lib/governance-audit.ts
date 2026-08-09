@@ -1035,6 +1035,37 @@ export const REGULATORY_QUESTIONS = [
       },
     ],
   },
+  {
+    // Sparked by a LinkedIn thread of UK data protection professionals
+    // surprised how many businesses don't know this exists: a separate
+    // statutory obligation from being GDPR compliant, the ICO can fine you
+    // for not paying it even if your actual data handling is sound.
+    id: 'reg_5',
+    dimension: 'regulatory_readiness' as const,
+    question: 'If you process personal data electronically in the UK, are you registered and paying the ICO data protection fee?',
+    options: [
+      {
+        text: 'Yes, registered and fee paid',
+        riskPoints: 0,
+        context: 'Strong: base statutory registration met',
+      },
+      {
+        text: 'We checked and confirmed we are exempt',
+        riskPoints: 0,
+        context: 'Fine as long as the exemption was actually verified against ICO guidance, not assumed',
+      },
+      {
+        text: 'Not sure / never checked',
+        riskPoints: 2,
+        context: 'A commonly missed annual fee (from roughly £52), most organisations processing personal data electronically owe it regardless of how good their wider GDPR practice is',
+      },
+      {
+        text: 'No, and not registered',
+        riskPoints: 3,
+        context: 'The ICO can and does fine for non payment of the fee itself, separately from any wider data protection breach',
+      },
+    ],
+  },
 ];
 
 // ============================================================
