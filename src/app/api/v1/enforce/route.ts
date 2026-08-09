@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
   const { data: apiKey } = await supabase
     .from("api_keys")
-    .select("id, user_id, approved_threshold, model_version, hard_enforcement")
+    .select("id, user_id, approved_threshold, model_version, hard_enforcement, hard_enforcement_accepted_by, hard_enforcement_accepted_at")
     .eq("key_hash", keyHash)
     .single();
 
@@ -123,6 +123,8 @@ export async function POST(request: Request) {
       governing_record_decision: governingRecord?.decision ?? null,
       governing_record_owner_name: governingRecord?.owner_name ?? null,
       block_reason: blockReason,
+      hard_enforcement_accepted_by: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_by : null,
+      hard_enforcement_accepted_at: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_at : null,
     })
     .select("id, created_at")
     .single();
@@ -146,6 +148,8 @@ export async function POST(request: Request) {
         governing_record_decision: governingRecord?.decision ?? null,
         governing_record_owner_name: governingRecord?.owner_name ?? null,
         block_reason: blockReason,
+        hard_enforcement_accepted_by: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_by : null,
+        hard_enforcement_accepted_at: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_at : null,
       },
       { timestamp: true }
     );
@@ -252,6 +256,8 @@ export async function POST(request: Request) {
     decision_id: decision?.id,
     allowed: allowedDecision,
     block_reason: blockReason,
+    hard_enforcement_accepted_by: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_by : undefined,
+    hard_enforcement_accepted_at: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_at : undefined,
     score,
     threshold,
     risk: score >= 70 ? "low" : score >= 40 ? "medium" : "high",

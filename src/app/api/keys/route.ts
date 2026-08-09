@@ -14,7 +14,7 @@ export async function GET() {
 
   const { data } = await supabase
     .from("api_keys")
-    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement, created_at, last_used_at")
+    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement, hard_enforcement_accepted_by, hard_enforcement_accepted_at, created_at, last_used_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
@@ -70,7 +70,13 @@ export async function PATCH(request: Request) {
 
   if (!id) return NextResponse.json({ error: "Key id is required." }, { status: 400 });
 
-  const update: { approved_threshold?: number; model_version?: string | null; hard_enforcement?: boolean } = {};
+  const update: {
+    approved_threshold?: number;
+    model_version?: string | null;
+    hard_enforcement?: boolean;
+    hard_enforcement_accepted_by?: string | null;
+    hard_enforcement_accepted_at?: string | null;
+  } = {};
 
   if (approvedThreshold !== undefined) {
     if (typeof approvedThreshold !== "number" || !Number.isFinite(approvedThreshold) || approvedThreshold < 0 || approvedThreshold > 100) {
@@ -97,12 +103,34 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Nothing to update." }, { status: 400 });
   }
 
+  // Detection, enforcement, and consequence ownership are different
+  // governance functions (Evelyne-Claudia Y., LinkedIn 9 Aug 2026) -- turning
+  // hard enforcement on is the moment someone accepts the risk of a false
+  // positive blocking live traffic. That acceptance gets a name and a date
+  // here, at the moment it's chosen, not reconstructed later from a generic
+  // audit entry. Turning it off clears the acceptance, since nobody is
+  // currently accepting anything.
+  if (hardEnforcementProvided) {
+    if (hardEnforcement) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("full_name")
+        .eq("user_id", user.id)
+        .single();
+      update.hard_enforcement_accepted_by = (profile?.full_name as string | undefined)?.trim() || user.email || "Unnamed account owner";
+      update.hard_enforcement_accepted_at = new Date().toISOString();
+    } else {
+      update.hard_enforcement_accepted_by = null;
+      update.hard_enforcement_accepted_at = null;
+    }
+  }
+
   const { data, error } = await supabase
     .from("api_keys")
     .update(update)
     .eq("id", id)
     .eq("user_id", user.id)
-    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement")
+    .select("id, name, key_prefix, approved_threshold, model_version, hard_enforcement, hard_enforcement_accepted_by, hard_enforcement_accepted_at")
     .single();
 
   if (error || !data) return NextResponse.json({ error: "Failed to update key." }, { status: 500 });
@@ -123,6 +151,8 @@ export async function PATCH(request: Request) {
       approved_threshold: data.approved_threshold,
       model_version: data.model_version,
       hard_enforcement: data.hard_enforcement,
+      hard_enforcement_accepted_by: data.hard_enforcement_accepted_by,
+      hard_enforcement_accepted_at: data.hard_enforcement_accepted_at,
     },
     { timestamp: true }
   );

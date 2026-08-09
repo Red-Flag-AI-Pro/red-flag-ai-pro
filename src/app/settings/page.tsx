@@ -16,6 +16,8 @@ interface ApiKey {
   last_used_at: string | null;
   model_version?: string | null;
   hard_enforcement?: boolean;
+  hard_enforcement_accepted_by?: string | null;
+  hard_enforcement_accepted_at?: string | null;
 }
 
 export default function SettingsPage() {
@@ -51,7 +53,7 @@ export default function SettingsPage() {
 
       const [{ data: profile }, { data: keys }] = await Promise.all([
         supabase.from("profiles").select("full_name, agency_name, plan, webhook_url, decay_webhook_url, referral_code").eq("user_id", user.id).single(),
-        supabase.from("api_keys").select("id, name, key_prefix, model_version, hard_enforcement, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
+        supabase.from("api_keys").select("id, name, key_prefix, model_version, hard_enforcement, hard_enforcement_accepted_by, hard_enforcement_accepted_at, created_at, last_used_at").eq("user_id", user.id).order("created_at", { ascending: false }),
       ]);
 
       if (profile) {
@@ -131,7 +133,7 @@ export default function SettingsPage() {
     });
     if (res.ok) {
       const data = await res.json();
-      setApiKeys((prev) => prev.map((k) => (k.id === id ? { ...k, hard_enforcement: data.hard_enforcement } : k)));
+      setApiKeys((prev) => prev.map((k) => (k.id === id ? { ...k, hard_enforcement: data.hard_enforcement, hard_enforcement_accepted_by: data.hard_enforcement_accepted_by, hard_enforcement_accepted_at: data.hard_enforcement_accepted_at } : k)));
     }
   }
 
@@ -272,6 +274,12 @@ export default function SettingsPage() {
                         Hard enforcement: block this key&apos;s calls whenever no current boundary authorization record covers them, not just record it as evidence. Off by default — turning this on can stop live traffic if a record isn&apos;t renewed in time.
                       </span>
                     </label>
+                    {k.hard_enforcement && k.hard_enforcement_accepted_by && (
+                      <p className="text-[10px] text-[rgba(244,241,234,0.35)] mt-1 pl-6">
+                        Accepted by {k.hard_enforcement_accepted_by}
+                        {k.hard_enforcement_accepted_at ? ` on ${new Date(k.hard_enforcement_accepted_at).toLocaleDateString("en-GB")}` : ""} — named here because a false positive blocking live traffic is a different question from whether the record actually lapsed.
+                      </p>
+                    )}
                   </li>
                 ))}
               </ul>
