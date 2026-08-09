@@ -212,9 +212,12 @@ export async function POST(request: Request) {
   const ownerRole: string = (body.owner_role ?? "").trim();
   const decisionDate: string = (body.decision_date ?? "").trim();
   const expiresAt: string = (body.expires_at ?? "").trim();
-  // Who is on the hook for renewing this or arranging a successor before it
-  // lapses, not the authority holder themselves. Optional, since not every
-  // record has a distinct continuity duty, but nameable when it does.
+  // Who is on the hook for what happens at expiry, not the authority holder
+  // themselves — Brad Wolfe, "the bridge always wins": renewal keeps a
+  // temporary grant alive, but somebody also has to be the one who lets it
+  // die on schedule rather than by default. One field covers both jobs since
+  // they're the same decision point, just opposite outcomes. Optional, since
+  // not every record has a distinct continuity duty, but nameable when it does.
   const continuityOwnerName: string | null = typeof body.continuity_owner_name === "string" && body.continuity_owner_name.trim() ? body.continuity_owner_name.trim() : null;
   const continuityOwnerRole: string | null = typeof body.continuity_owner_role === "string" && body.continuity_owner_role.trim() ? body.continuity_owner_role.trim() : null;
   // Lets the renewal reminder cron reach the continuity owner directly rather

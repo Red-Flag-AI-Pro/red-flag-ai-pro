@@ -380,7 +380,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             <input
               value={continuityOwnerName}
               onChange={(e) => setContinuityOwnerName(e.target.value)}
-              placeholder="Who arranges renewal or cover"
+              placeholder="Who arranges renewal, or lets it lapse on schedule"
               className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
             />
           </div>
@@ -849,7 +849,7 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                       <span className="text-emerald-300">
                         ✓ Lapse sealed — the gap in coverage is its own recorded fact, not just something reconstructed later.
                         {record.continuity_owner_name && (
-                          <> Cover was {record.continuity_owner_name}&apos;s responsibility.</>
+                          <> {record.continuity_owner_name} was responsible for what happened at expiry — renewing this or confirming it should lapse.</>
                         )}
                       </span>
                     ) : (
@@ -901,7 +901,7 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Continuity owner</p>
               <p className="text-sm text-[rgba(244,241,234,0.8)]">
-                {record.continuity_owner_name}{record.continuity_owner_role ? ` (${record.continuity_owner_role})` : ""} — responsible for renewal or arranging cover before this lapses.
+                {record.continuity_owner_name}{record.continuity_owner_role ? ` (${record.continuity_owner_role})` : ""} — responsible for what happens at expiry: renewing this, or letting it lapse on schedule rather than by default.
               </p>
             </div>
           )}

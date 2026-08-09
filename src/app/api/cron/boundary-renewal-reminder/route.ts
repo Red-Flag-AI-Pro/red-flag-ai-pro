@@ -41,7 +41,7 @@ function buildEmail(opts: {
   const color = urgencyColor(opts.daysLeft);
   const dayLabel = opts.daysLeft === 1 ? "tomorrow" : `in ${opts.daysLeft} days`;
   const continuityLine = opts.continuityOwnerName
-    ? `<p style="color:#6b7280;font-size:14px;margin:0 0 20px;">Named as responsible for renewal or arranging cover: <strong style="color:#374151;">${opts.continuityOwnerName}</strong>${opts.continuityOwnerRole ? ` (${opts.continuityOwnerRole})` : ""}.</p>`
+    ? `<p style="color:#6b7280;font-size:14px;margin:0 0 20px;">Named as responsible for what happens next, renewing this or letting it lapse: <strong style="color:#374151;">${opts.continuityOwnerName}</strong>${opts.continuityOwnerRole ? ` (${opts.continuityOwnerRole})` : ""}.</p>`
     : "";
 
   return `<!DOCTYPE html>
