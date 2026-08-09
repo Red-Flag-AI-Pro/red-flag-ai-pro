@@ -141,6 +141,39 @@ export async function GET() {
     }
   }
 
+  // Declining falsifier firing rate across a record's renewal lineage. Brad
+  // Wolfe, 6 Aug 2026, round four: the failure mode that only shows up once
+  // a falsifier actually fires — not refusal to use it, but a threshold
+  // quietly loosened at the next renewal after a few real firings, so it
+  // stops firing and gets described as "tuning out noise." A record that
+  // fired three times in its first year and zero in its second either had a
+  // quieter year or had its condition loosened, and only one of those is
+  // likely. Uses the existing supersedes_id chain, no new data needed —
+  // only ever computed for a record with a predecessor to compare against.
+  function firingRatePerYear(record: { decision_date: string; expires_at: string; expiry_conditions: BoundaryFalsifier[] }): number {
+    const start = new Date(record.decision_date).getTime();
+    const end = new Date(record.expires_at).getTime();
+    const days = Math.max(1, (end - start) / 86400000);
+    const years = days / 365.25;
+    const triggered = (record.expiry_conditions ?? []).filter((c) => c.triggered_at).length;
+    return triggered / years;
+  }
+  const byId = new Map(records.map((r) => [r.id, r]));
+  const firingRateTrendMap = new Map<string, { current_rate: number; previous_rate: number }>();
+  for (const r of records) {
+    if (!r.supersedes_id) continue;
+    const predecessor = byId.get(r.supersedes_id);
+    if (!predecessor) continue;
+    const currentRate = firingRatePerYear(r);
+    const previousRate = firingRatePerYear(predecessor);
+    // Only flag an actual decline from a nonzero base — two quiet records in
+    // a row is not evidence of anything, and a rate that rose or held is not
+    // the pattern being watched for.
+    if (previousRate > 0 && currentRate < previousRate) {
+      firingRateTrendMap.set(r.id, { current_rate: currentRate, previous_rate: previousRate });
+    }
+  }
+
   const withStatus = records.map((r) => ({
     ...r,
     fingerprint_intact: !r.permission_fingerprint
@@ -149,6 +182,7 @@ export async function GET() {
         ? liveFingerprints.get(r.api_key_id) === r.permission_fingerprint
         : false, // no live key found — deleted or otherwise gone — that is drift, not silence
     performance: performanceMap.get(r.id) ?? null,
+    firing_rate_declined: firingRateTrendMap.get(r.id) ?? null,
   }));
 
   return NextResponse.json({ records: withStatus });

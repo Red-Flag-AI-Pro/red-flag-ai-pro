@@ -860,6 +860,16 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
             </div>
           )}
 
+          {record.firing_rate_declined && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-amber-400/70 mb-1.5">Falsifier firing rate declined at renewal</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                {record.firing_rate_declined.previous_rate.toFixed(1)}/yr in the record this superseded, {record.firing_rate_declined.current_rate.toFixed(1)}/yr in this one.
+                <span className="text-amber-300"> Either a genuinely quieter period, or the condition was loosened at renewal. Worth checking which.</span>
+              </p>
+            </div>
+          )}
+
           {record.continuity_owner_name && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Continuity owner</p>

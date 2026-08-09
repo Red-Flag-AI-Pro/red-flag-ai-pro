@@ -137,6 +137,18 @@ export interface BoundaryAuthorizationRecord {
     block_rate: number;
     trend: "up" | "down" | "flat" | null;
   } | null;
+  // Computed at read time, never stored: only set when this record has a
+  // predecessor (via supersedes_id) whose falsifiers fired at a meaningfully
+  // higher rate than this record's own. Brad Wolfe, 6 Aug 2026: the failure
+  // mode that shows up after a falsifier has actually fired a few times —
+  // the threshold gets quietly loosened at the next renewal so it stops
+  // firing, described as "tuning out noise" rather than named as gaming.
+  // Not proof, a prompt to check whether the condition changed for a real
+  // reason or just to make the alerts stop.
+  firing_rate_declined?: {
+    current_rate: number;
+    previous_rate: number;
+  } | null;
   // Where authority actually sits for this system. Null means it was never
   // stated, which is itself the finding the authority map surfaces.
   authority_mode: AuthorityMode | null;
