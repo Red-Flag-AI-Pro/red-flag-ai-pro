@@ -323,7 +323,7 @@ export default function LandingPage() {
               only), which matched the zero-usage numbers exactly — nobody
               creates a record they never learn exists. */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1rem", marginTop: "3rem", textAlign: "left" }}>
-            <Link href="/compliance-assessment" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
+            <Link href="/what-where-whether" style={{ textDecoration: "none", background: "rgba(16,41,67,0.6)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.75rem", display: "block" }}>
               <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>The framework</p>
               <h3 style={{ ...syne, fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: "0.6rem" }}>What, where, whether</h3>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
