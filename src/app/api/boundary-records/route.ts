@@ -299,11 +299,35 @@ export async function POST(request: Request) {
   if (supersedesId) {
     const { data: priorRecord } = await result.supabase
       .from("boundary_authorization_records")
-      .select("id")
+      .select("id, expiry_conditions")
       .eq("id", supersedesId)
       .eq("user_id", result.user.id)
       .maybeSingle();
     if (!priorRecord) return NextResponse.json({ error: "The record you're superseding was not found." }, { status: 400 });
+
+    // Brad Wolfe, round three of the authorship thread: confirming a
+    // condition someone else drafted proves who typed, not who chose. The
+    // only version of that risk a single-session form can actually produce
+    // is a renewal that just retypes the prior record's conditions
+    // verbatim, so at renewal at least one condition must be genuinely
+    // reconsidered, not carried forward unchanged. A first-time record has
+    // nothing to carry forward, so this only applies when superseding.
+    const newConditions = sanitizeFalsifiers(body.expiry_conditions);
+    const priorConditionTexts = new Set(
+      ((priorRecord.expiry_conditions ?? []) as BoundaryFalsifier[]).map((c) => c.condition.trim().toLowerCase())
+    );
+    if (newConditions.length > 0 && priorConditionTexts.size > 0) {
+      const allCarriedForward = newConditions.every((c) => priorConditionTexts.has(c.condition.trim().toLowerCase()));
+      if (allCarriedForward) {
+        return NextResponse.json(
+          {
+            error:
+              "Every falsifier condition here is identical to the record being superseded. A renewal needs at least one condition genuinely reconsidered, not just retyped — confirming what was already there proves you typed it, not that you chose it.",
+          },
+          { status: 400 }
+        );
+      }
+    }
   }
 
   const { data, error } = await result.supabase

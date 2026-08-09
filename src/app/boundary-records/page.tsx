@@ -562,6 +562,21 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
               + Add condition
             </button>
           </div>
+          {supersedesId && (() => {
+            const prior = existingRecords.find((r) => r.id === supersedesId);
+            const priorConditions = (prior?.expiry_conditions ?? []).filter((c) => c.condition.trim());
+            if (priorConditions.length === 0) return null;
+            return (
+              <div className="mb-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">
+                <p className="text-xs text-[rgba(244,241,234,0.4)] mb-1">Conditions on the record this supersedes — at least one below must be genuinely reconsidered, not retyped the same:</p>
+                <ul className="text-xs text-[rgba(244,241,234,0.5)] space-y-0.5">
+                  {priorConditions.map((c, i) => (
+                    <li key={i}>· {c.condition}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })()}
           <div className="space-y-2">
             {falsifiers.map((f, i) => (
               <div key={i} className="flex gap-2">
