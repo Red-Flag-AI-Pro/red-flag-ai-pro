@@ -8,11 +8,38 @@
 
 import type { ProgramIntake } from "./program-intake";
 
+export type GapStatus = "not_started" | "partial" | "in_place";
+
+export const GAP_STATUS_LABELS: Record<GapStatus, string> = {
+  not_started: "Not started",
+  partial: "Partial",
+  in_place: "In place",
+};
+
+// Jabber Khan sample deliverable, 9 Aug 2026: his obligations table has a
+// status column per article (Partial / Not started / In place), alongside
+// what each document satisfies. Ours only ever said what a document was
+// for, never where the customer currently stands on it. This derives status
+// honestly from the customer's own intake answers, never invented: how many
+// of the fields that actually feed a given document were left blank.
+function statusFromFields(values: (string | number | boolean | unknown[])[]): GapStatus {
+  const filled = values.filter((v) => {
+    if (typeof v === "string") return v.trim().length > 0;
+    if (typeof v === "boolean") return v;
+    if (Array.isArray(v)) return v.length > 0;
+    return Boolean(v);
+  }).length;
+  if (filled === 0) return "not_started";
+  if (filled === values.length) return "in_place";
+  return "partial";
+}
+
 export interface RegulatoryMappingRow {
   document: string;
   framework: string;
   article: string;
   whatItSatisfies: string;
+  status: GapStatus;
 }
 
 export function computeRegulatoryMapping(intake: ProgramIntake): RegulatoryMappingRow[] {
@@ -36,36 +63,42 @@ export function computeRegulatoryMapping(intake: ProgramIntake): RegulatoryMappi
       framework: "UK GDPR / GDPR",
       article: "Article 35(3), and Article 9/10 where special category, children's, or criminal offence data is involved",
       whatItSatisfies: "The duty to screen processing for high risk factors before it begins, and to document why a full DPIA is or is not required.",
+      status: statusFromFields([intake.safeguards, intake.oversightMeasures]),
     },
     {
       document: "Fundamental Rights Impact Assessment draft",
       framework: "EU AI Act",
       article: "Article 27",
       whatItSatisfies: "The pre deployment assessment required of public bodies, public service providers, and deployers of specific Annex III high risk systems, covering deployer processes, affected persons, and human oversight.",
+      status: statusFromFields([intake.affectedParties, intake.specificRisks, intake.oversightMeasures, intake.mitigationMeasures]),
     },
     {
       document: "AI Acceptable Use Policy draft",
       framework: "EU AI Act",
       article: "Article 4",
       whatItSatisfies: "The duty to take measures ensuring sufficient AI literacy among staff using AI systems on the company's behalf, and to give staff a written answer on what is and is not an approved use.",
+      status: statusFromFields([intake.prohibitedUses, intake.approvalProcess, intake.reportingChannel]),
     },
     {
       document: "Incident reporting checklist",
       framework: incidentFramework,
       article: incidentArticle,
       whatItSatisfies: "Knowing the deadline, the authority, and who must be told the moment an incident is discovered, so the clock is not being worked out for the first time during an actual incident.",
+      status: statusFromFields([intake.reportingChannel]),
     },
     {
       document: "Post market monitoring plan draft",
       framework: "EU AI Act",
       article: "Article 72",
       whatItSatisfies: "The plan for watching a deployed system's performance over time: metrics, review cadence, escalation thresholds, and corrective action, which becomes part of the Annex IV technical file.",
+      status: statusFromFields([intake.metrics, intake.reviewCadence, intake.thresholds, intake.correctiveAction, intake.recordKeeping]),
     },
     {
       document: "Annex IV technical documentation draft",
       framework: "EU AI Act",
       article: "Annex IV",
       whatItSatisfies: "The structured technical file a provider or deployer needs to hold on the system: purpose, architecture, risk measures, human oversight, testing, and known limitations, the same record a Munir v SSHD style challenge tests when it asks whether genuine human oversight can actually be evidenced.",
+      status: statusFromFields([intake.testing, intake.limitations, intake.mitigationMeasures, intake.oversightMeasures]),
     },
   ];
 }

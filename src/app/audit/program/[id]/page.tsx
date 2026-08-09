@@ -232,14 +232,24 @@ function FinancialSnapshotPanel({ snapshot }: { snapshot: FinancialSnapshot }) {
   );
 }
 
+const GAP_STATUS_CHIP: Record<string, { label: string; color: string; bg: string; border: string }> = {
+  not_started: { label: "Not started", color: "#f87171", bg: "rgba(248,113,113,0.1)", border: "rgba(248,113,113,0.3)" },
+  partial: { label: "Partial", color: "#fbbf24", bg: "rgba(251,191,36,0.1)", border: "rgba(251,191,36,0.3)" },
+  in_place: { label: "In place", color: "#4ade80", bg: "rgba(74,222,128,0.1)", border: "rgba(74,222,128,0.3)" },
+};
+
 function RegulatoryMappingTable({ rows }: { rows: RegulatoryMappingRow[] }) {
+  // Older stored programs (generated before task #278) have no status field —
+  // show the column only when at least one row actually has one, rather than
+  // rendering an empty "—" column for every historical order.
+  const hasStatus = rows.some((r) => r.status);
   return (
     <div style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.15)", padding: "2rem", marginBottom: "1.5rem", overflowX: "auto" }}>
       <p style={labelStyle}>Regulatory framework mapping</p>
       <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "560px" }}>
         <thead>
           <tr>
-            {["Document", "Framework", "Article", "What it satisfies"].map((h) => (
+            {["Document", "Framework", "Article", "What it satisfies", ...(hasStatus ? ["Status"] : [])].map((h) => (
               <th key={h} style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", textAlign: "left", padding: "0.6rem 0.75rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
                 {h}
               </th>
@@ -247,16 +257,33 @@ function RegulatoryMappingTable({ rows }: { rows: RegulatoryMappingRow[] }) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
-              <td style={{ ...syne, fontSize: "12.5px", color: "white", fontWeight: 600, padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.document}</td>
-              <td style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.framework}</td>
-              <td style={{ ...mono, fontSize: "11.5px", color: "#C9A66B", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.article}</td>
-              <td style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.6 }}>{row.whatItSatisfies}</td>
-            </tr>
-          ))}
+          {rows.map((row, i) => {
+            const chip = row.status ? GAP_STATUS_CHIP[row.status] : null;
+            return (
+              <tr key={i}>
+                <td style={{ ...syne, fontSize: "12.5px", color: "white", fontWeight: 600, padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.document}</td>
+                <td style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.framework}</td>
+                <td style={{ ...mono, fontSize: "11.5px", color: "#C9A66B", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>{row.article}</td>
+                <td style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.6 }}>{row.whatItSatisfies}</td>
+                {hasStatus && (
+                  <td style={{ padding: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top" }}>
+                    {chip && (
+                      <span style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.04em", color: chip.color, background: chip.bg, border: `1px solid ${chip.border}`, borderRadius: "9999px", padding: "3px 10px", whiteSpace: "nowrap" }}>
+                        {chip.label}
+                      </span>
+                    )}
+                  </td>
+                )}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
+      {hasStatus && (
+        <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "0.75rem", lineHeight: 1.6 }}>
+          Status is derived honestly from your own intake answers, never invented: how many of the fields that actually feed each document were left blank when you filled this in.
+        </p>
+      )}
     </div>
   );
 }
