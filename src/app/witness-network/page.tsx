@@ -267,6 +267,76 @@ export default function WitnessNetworkPage() {
         </div>
       </section>
 
+      <section style={{ padding: "3rem 1.5rem 6rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.5rem", textAlign: "center" }}>
+            Explore further
+          </p>
+          <h2 className="font-display" style={{ fontSize: "1.6rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "2.5rem", textAlign: "center" }}>
+            Everything this page links out to, in one place
+          </h2>
+
+          {(() => {
+            const GROUPS: { label: string; links: { href: string; title: string; blurb: string }[] }[] = [
+              {
+                label: "The standard",
+                links: [
+                  { href: "/witness-standard/peer-agreement", title: "Peer Agreement", blurb: "The terms two companies agree to before sealing each other's records." },
+                  { href: "/witness-standard/founding-chains", title: "Founding Chain Terms", blurb: "What the first chains on the network get, and what's expected of them." },
+                  { href: "/witness-standard/proofs", title: "Proofs", blurb: "Completeness, absence, reproducibility, reconciliation, worked through." },
+                  { href: "/witness-network/badge", title: "The Witness Badge", blurb: "What it means when you see it, and how to earn one honestly." },
+                  { href: "/verify", title: "Verify a Record", blurb: "Paste a hash, check it against the chain yourself, no login needed." },
+                ],
+              },
+              {
+                label: "Getting witnessed",
+                links: [
+                  { href: "/installations", title: "Installations & Custom Work", blurb: "One time engagements: hosted witnessing, your own node, and other work priced separately from the standing plans." },
+                  { href: "/witness-network/hosting", title: "Hosted Witnessing", blurb: "We install it, host it, hand you a dashboard." },
+                  { href: "/witness-network/install", title: "Install Your Own Node", blurb: "The package runs on your infrastructure, not ours." },
+                ],
+              },
+              {
+                label: "The wider mechanism",
+                links: [
+                  { href: "/real-time-gate", title: "Real Time Gate", blurb: "A synchronous allow or block decision, checked before content goes live." },
+                  { href: "/ruleset-integrity", title: "Ruleset Integrity", blurb: "Proving which version of the rules governed a given decision." },
+                  { href: "/who-when-whether", title: "Who, When, Whether", blurb: "The governance side framework this whole approach is built on." },
+                  { href: "/what-where-whether", title: "What, Where, Whether", blurb: "The compliance side counterpart, for marketing copy and claims." },
+                ],
+              },
+            ];
+            return (
+              <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+                {GROUPS.map((group) => (
+                  <div key={group.label}>
+                    <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.35)", marginBottom: "1rem" }}>
+                      {group.label}
+                    </p>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
+                      {group.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          style={{
+                            display: "block", textDecoration: "none", padding: "1.25rem",
+                            borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)",
+                            background: "rgba(255,255,255,0.02)",
+                          }}
+                        >
+                          <p style={{ ...syne, fontSize: "0.95rem", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.4rem" }}>{link.title} →</p>
+                          <p style={{ ...syne, fontSize: "0.8rem", color: "rgba(244,241,234,0.5)", lineHeight: 1.6 }}>{link.blurb}</p>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

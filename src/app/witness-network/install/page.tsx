@@ -86,8 +86,8 @@ function InstallRequestForm() {
       <div style={{ borderRadius: "12px", border: "1px solid rgba(74,222,128,0.3)", background: "rgba(74,222,128,0.08)", padding: "2rem", textAlign: "center" }}>
         <p style={{ ...syne, fontSize: "1.1rem", fontWeight: 700, color: "#4ade80", marginBottom: "0.6rem" }}>✓ Request received</p>
         <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.65)", lineHeight: 1.7 }}>
-          Thank you. We reply personally to every request, usually within a couple of days. In the meantime the package itself
-          is public — the code, the README, and the exact algorithm your chain would run are all in the repo already.
+          Thank you. We reply personally to every request, usually within a couple of days, with what your setup actually
+          needs and next steps for getting it running correctly on your infrastructure.
         </p>
       </div>
     );
@@ -204,11 +204,15 @@ export default function WitnessInstallPage() {
 
       <Section eyebrow="Who this is for" title="Data sovereignty, not convenience">
         <P>
-          If your team can wire up the raw <span style={mono}>/api/witness/anchor</span> endpoint themselves, you
-          probably don&apos;t need this either — see the <a href="/witness-network" style={{ color: "#E5484D" }}>free public network</a> directly.
+          Wiring the raw <span style={mono}>/api/witness/anchor</span> endpoint is the easy part. Keeping a node correctly
+          configured, monitored, and updated as the standard evolves, without it silently drifting out of spec until an
+          auditor asks the wrong question, is the part most teams underestimate once it's running unattended.
+        </P>
+        <P>
           This is for a team that has already decided it wants the chain itself, not just the sealed proof, to live on
           infrastructure it controls. Regulated data, client records, or an internal policy that nothing sensitive
-          touches a third party&apos;s servers, even hashed. That decision is the whole reason this option exists.
+          touches a third party&apos;s servers, even hashed, backed by someone accountable for it working, not just a
+          README.
         </P>
       </Section>
 
@@ -237,8 +241,8 @@ export default function WitnessInstallPage() {
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.5rem", textAlign: "center" }}>Request installation</h2>
           <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, marginBottom: "1.75rem", textAlign: "center" }}>
-            Tell us about your setup and we&apos;ll reply with next steps, or read the package yourself first — it&apos;s
-            public on GitHub, nothing about it is gated.
+            Tell us about your setup and we&apos;ll reply with what it actually needs and next steps to get it running
+            properly.
           </p>
           <InstallRequestForm />
         </div>

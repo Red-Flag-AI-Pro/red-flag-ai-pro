@@ -51,7 +51,6 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Insights", href: "/blog" },
       { label: "Partners: earn 15%", href: "/affiliates" },
       { label: "Why compliance", href: "/why-compliance" },
-      { label: "EU-KI-Verordnung (Deutsch)", href: "/de/eu-ai-act" },
     ],
   },
   {

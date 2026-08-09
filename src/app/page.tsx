@@ -236,11 +236,23 @@ export default function LandingPage() {
             // trimmed away entirely, so an insurance broker or HR lead who
             // lands here still finds their own language, just without
             // competing with row one for the first screen.
-            const ROW_TWO = [
+            // Task update, 9 Aug 2026: law firms and PI brokers moved back to
+            // full cards of their own, a dedicated regulated-industries row
+            // rather than folded into the general grid or the demoted strip,
+            // so they read as main content the way the requirement asked.
+            const REGULATED_VERTICALS = [
+              {
+                role: "Law firms",
+                pain: "A solicitor was referred to the SRA over unchecked AI output. Could your firm show the review happened, and when?",
+                solution: "Every AI assisted document logged and sealed. Timestamped proof of review, produced on demand.",
+              },
               {
                 role: "Insurance brokers & underwriters",
                 pain: "A claim comes in. Can you tell if the AI system was even authorized to make that call?",
+                solution: "Boundary authorization records show exactly who authorized what, and whether it still holds.",
               },
+            ];
+            const ROW_TWO = [
               {
                 role: "Solo founders using AI",
                 pain: "You added an AI chatbot last month. If it gives bad advice tomorrow, who's actually on the hook?",
@@ -262,11 +274,27 @@ export default function LandingPage() {
                 <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>✓ {item.solution}</p>
               </div>
             );
+            const VERTICAL_HREF: Record<string, string> = {
+              "Law firms": "/law-firms",
+              "Insurance brokers & underwriters": "/insurance-brokers",
+            };
             return (
               <>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem" }}>
                   {ROW_ONE.map((item, i) => card(item, i % 2 === 0))}
                 </div>
+
+                <div style={{ marginTop: "3rem", paddingTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p style={{ ...syne, fontSize: "11px", fontWeight: 700, color: "#E5484D", marginBottom: "1.5rem", textTransform: "uppercase", letterSpacing: "0.14em", textAlign: "center" }}>Built for regulated industries</p>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2rem", maxWidth: "800px", margin: "0 auto" }}>
+                    {REGULATED_VERTICALS.map((item, i) => (
+                      <a key={item.role} href={VERTICAL_HREF[item.role]} style={{ textDecoration: "none", display: "block" }}>
+                        {card(item, i % 2 === 0)}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
                 <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                   <p style={{ ...syne, fontSize: "10px", fontWeight: 700, color: "rgba(255,255,255,0.35)", marginBottom: "1.25rem", textTransform: "uppercase", letterSpacing: "0.1em", textAlign: "center" }}>Also built for</p>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem 2rem", maxWidth: "900px", margin: "0 auto" }}>
