@@ -197,7 +197,7 @@ export default async function ProgramDeliveryPage({
                 Each follows the exact structure of Red Flag&apos;s free tools, tailored to what you told us. None of these are legal advice or a substitute for review by counsel where one is warranted — see each document&apos;s own closing note.
               </p>
               <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
-                Being sealed proves a document hasn&apos;t been edited since delivery, it doesn&apos;t stop it going stale. Each carries a one year review clock — confirm it&apos;s still accurate to reset it, or it drops out of any AI Governance Data Room export you run.
+                Being sealed proves a document hasn&apos;t been edited since delivery, it doesn&apos;t stop it going stale. Each carries its own review clock, six months for the two tied to how the system currently runs, twelve for the rest, confirm it&apos;s still accurate to reset it, or it drops out of any AI Governance Data Room export you run.
               </p>
             </div>
 

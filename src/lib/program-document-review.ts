@@ -14,11 +14,31 @@
 
 import type { ProgramDocumentBundle } from "./program-documents";
 
-// One year is the ordinary review cadence for a compliance document with
-// no faster-moving trigger of its own (unlike a boundary record, which
-// carries its own falsifier conditions). Not tuned per document — all six
-// were generated together from one intake and share one review clock.
-const REVIEW_PERIOD_MONTHS = 12;
+// Rajashri Pattanaik, LinkedIn 9 Aug 2026, "AI Governance Beyond Approval":
+// different governance assumptions decay at different rates -- a document
+// tied to the live system's current behavior goes stale faster than one
+// tied to organizational or legal context that rarely shifts. A single
+// flat clock for all six documents (the previous version of this file)
+// treated a post-market monitoring plan, which describes what the system
+// is doing right now, the same as a DPIA, which describes what data it
+// processes and barely moves month to month.
+//
+// Not an external standard, there isn't one -- a judgment call about what
+// each document actually depends on, same as the flat twelve months it
+// replaces was. The monitoring plan and the Annex IV technical
+// documentation describe the system as it currently runs (the
+// documentation goes stale exactly when the model does, the same thing
+// api_keys.model_version started tracking as detectable drift a few
+// hours earlier tonight). The other four describe legal or organizational
+// context that moves slower.
+const REVIEW_PERIOD_MONTHS: Record<keyof ProgramDocumentBundle, number> = {
+  monitoring_plan: 6,
+  documentation: 6,
+  dpia: 12,
+  fria: 12,
+  ai_use_policy: 12,
+  incident_checklist: 12,
+};
 
 export type DocumentReviews = Partial<Record<keyof ProgramDocumentBundle, { reviewed_at: string }>>;
 
@@ -40,6 +60,6 @@ export function getDocumentReviewStatus(
   documentReviews: DocumentReviews | null | undefined
 ): DocumentReviewStatus {
   const lastReviewedAt = documentReviews?.[documentKey]?.reviewed_at ?? deliveredAt;
-  const dueAt = addMonths(lastReviewedAt, REVIEW_PERIOD_MONTHS);
+  const dueAt = addMonths(lastReviewedAt, REVIEW_PERIOD_MONTHS[documentKey]);
   return { dueAt, stale: new Date(dueAt) < new Date(), lastReviewedAt };
 }
