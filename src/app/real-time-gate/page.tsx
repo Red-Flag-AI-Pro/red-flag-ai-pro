@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { createServiceClient } from "@/lib/supabase/server";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -35,7 +36,27 @@ function P({ children }: { children: React.ReactNode }) {
   return <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.62)", lineHeight: 1.75, marginBottom: "1.1rem" }}>{children}</p>;
 }
 
-export default function RealTimeGatePage() {
+// A single aggregate number across every account, never a per-customer
+// breakdown — the point is proof the mechanism is live, not a league table
+// of who's using it. 30 days rather than all time so the number reflects
+// current activity, not just how long the feature has existed.
+async function getGovernedDecisionCount(): Promise<number | null> {
+  try {
+    const supabase = await createServiceClient();
+    const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const { count } = await supabase
+      .from("enforcement_decisions")
+      .select("id", { count: "exact", head: true })
+      .not("governing_record_id", "is", null)
+      .gte("created_at", since);
+    return count ?? 0;
+  } catch {
+    return null;
+  }
+}
+
+export default async function RealTimeGatePage() {
+  const governedCount = await getGovernedDecisionCount();
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
@@ -77,6 +98,11 @@ export default function RealTimeGatePage() {
         <P>
           The seal also names what governed the decision. If the API key making the call has a boundary authorization record naming who approved it and on what terms, that record is attached to the block itself, not left as a separate trail someone has to go find and match up by hand. Evidence and execution end up on the same chain, not two systems that happen to agree.
         </P>
+        {governedCount !== null && (
+          <P>
+            <span style={{ color: "#E5484D", fontWeight: 700 }}>{governedCount.toLocaleString("en-GB")}</span> Real Time Gate decision{governedCount === 1 ? "" : "s"} tied back to a named authorization record in the last 30 days, across every account. One aggregate number, never a per customer breakdown, just proof the link above is real and live, not a diagram.
+          </P>
+        )}
       </Section>
 
       <section style={{ padding: "3.5rem 1.5rem", textAlign: "center" }}>
