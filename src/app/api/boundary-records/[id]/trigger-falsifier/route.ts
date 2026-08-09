@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { pulledForwardExpiry } from "@/lib/boundary-expiry";
+import { getGovernedPopulationCount } from "@/lib/boundary-population";
 import type { BoundaryFalsifier } from "@/types";
+
+const DISPOSITIONS = ["reprocess", "grandfather", "flag_for_review"] as const;
+type Disposition = (typeof DISPOSITIONS)[number];
 
 async function requireUser() {
   const supabase = await createClient();
@@ -33,10 +37,11 @@ export async function POST(
 
   const body = await request.json().catch(() => ({}));
   const index = typeof body.index === "number" ? body.index : -1;
+  const disposition: Disposition | null = DISPOSITIONS.includes(body.disposition) ? body.disposition : null;
 
   const { data: record, error: fetchError } = await result.supabase
     .from("boundary_authorization_records")
-    .select("id, user_id, decision, owner_name, owner_role, expires_at, expiry_conditions")
+    .select("id, user_id, decision, owner_name, owner_role, expires_at, expiry_conditions, api_key_id")
     .eq("id", id)
     .eq("user_id", result.user.id)
     .single();
@@ -58,6 +63,25 @@ export async function POST(
   const today = nowISO.slice(0, 10);
   const previousExpiresAt = record.expires_at;
   const newExpiresAt = pulledForwardExpiry(previousExpiresAt, today);
+
+  // "A default is not a decision until somebody has counted" — a record with
+  // nothing governed yet needs no disposition (nothing to reprocess,
+  // grandfather, or flag). One that has governed real decisions can't move
+  // until the trigger explicitly says what happens to them; grandfather only
+  // gets to win if it was actually chosen, not because it needed no count.
+  const populationCount = record.api_key_id
+    ? await getGovernedPopulationCount(result.supabase, record.id, nowISO)
+    : 0;
+  if (populationCount > 0 && !disposition) {
+    return NextResponse.json(
+      {
+        error: `This record has governed ${populationCount} decision${populationCount === 1 ? "" : "s"}. Choose a disposition before triggering.`,
+        needs_disposition: true,
+        population_count: populationCount,
+      },
+      { status: 409 }
+    );
+  }
 
   const updatedConditions = conditions.map((c, i) =>
     i === index ? { ...c, triggered_at: nowISO } : c
@@ -87,6 +111,8 @@ export async function POST(
       previous_expires_at: previousExpiresAt,
       new_expires_at: newExpiresAt,
       triggered_at: nowISO,
+      population_count: populationCount,
+      disposition: populationCount > 0 ? disposition : null,
     },
     { timestamp: true }
   );

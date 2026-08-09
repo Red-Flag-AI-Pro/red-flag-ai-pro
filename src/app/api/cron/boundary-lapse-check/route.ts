@@ -4,6 +4,7 @@ import { logAuditEvent } from "@/lib/audit-log";
 import { sendDecayAlert } from "@/lib/decay-notifications";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
 import { pulledForwardExpiry } from "@/lib/boundary-expiry";
+import { getGovernedPopulationCount } from "@/lib/boundary-population";
 
 // A boundary authorization's expiry is currently only checked lazily, in the
 // browser, as a date-string comparison for display. That means a real lapse
@@ -156,6 +157,12 @@ export async function GET(request: Request) {
           .eq("id", record.id);
       }
 
+      // What existed under the terms this drift just superseded, captured at
+      // the moment of change rather than left to reconstruct later. See
+      // src/lib/boundary-population.ts.
+      const detectedAt = new Date().toISOString();
+      const populationCount = await getGovernedPopulationCount(supabase, record.id, detectedAt);
+
       const entryId = await logAuditEvent(
         record.user_id,
         "boundary_record.drifted",
@@ -166,9 +173,10 @@ export async function GET(request: Request) {
           sealed_fingerprint: record.permission_fingerprint,
           observed_fingerprint: liveFingerprint,
           observed_during: "daily_sweep",
-          detected_at: new Date().toISOString(),
+          detected_at: detectedAt,
           previous_expires_at: record.expires_at,
           new_expires_at: newExpiresAt,
+          population_count: populationCount,
         },
         { timestamp: true }
       );

@@ -6,6 +6,7 @@ import { logAuditEvent } from "@/lib/audit-log";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
 import { pulledForwardExpiry } from "@/lib/boundary-expiry";
+import { getGovernedPopulationCount } from "@/lib/boundary-population";
 import { createHash } from "crypto";
 
 function hashKey(key: string): string {
@@ -196,7 +197,8 @@ export async function POST(request: Request) {
     // firing automatically, so the manual falsifier trigger stays the rare
     // exception, not the front door. Same only-ever-earlier rule as the
     // manual route and the daily sweep.
-    const driftToday = new Date().toISOString().slice(0, 10);
+    const detectedAt = new Date().toISOString();
+    const driftToday = detectedAt.slice(0, 10);
     const newExpiresAt = pulledForwardExpiry(record.expires_at, driftToday);
     if (newExpiresAt !== record.expires_at) {
       await serviceClient
@@ -204,6 +206,12 @@ export async function POST(request: Request) {
         .update({ expires_at: newExpiresAt })
         .eq("id", record.id);
     }
+
+    // What existed under the terms this drift just superseded, captured at
+    // the moment of change — includes the very decision that surfaced the
+    // drift, since that decision was itself made under the terms now being
+    // pulled forward. See src/lib/boundary-population.ts.
+    const populationCount = await getGovernedPopulationCount(serviceClient, record.id, detectedAt);
 
     await logAuditEvent(
       apiKey.user_id,
@@ -215,9 +223,10 @@ export async function POST(request: Request) {
         sealed_fingerprint: record.permission_fingerprint,
         observed_fingerprint: liveFingerprint,
         observed_during: "enforce_call",
-        detected_at: new Date().toISOString(),
+        detected_at: detectedAt,
         previous_expires_at: record.expires_at,
         new_expires_at: newExpiresAt,
+        population_count: populationCount,
       },
       { timestamp: true }
     );

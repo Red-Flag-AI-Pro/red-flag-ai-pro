@@ -721,18 +721,30 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
 function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpdated }: { record: BoundaryAuthorizationRecord; supersededRecord: BoundaryAuthorizationRecord | null; lapseSealed: boolean; authorEmail: string | null; onUpdated: (record: BoundaryAuthorizationRecord) => void }) {
   const [expanded, setExpanded] = useState(false);
   const [triggeringIndex, setTriggeringIndex] = useState<number | null>(null);
+  const [needsDisposition, setNeedsDisposition] = useState<{ index: number; populationCount: number } | null>(null);
 
-  async function triggerFalsifier(index: number) {
+  // Brad Wolfe, "a default is not a decision until somebody has counted": the
+  // API refuses to accept a trigger on a record that's governed real
+  // decisions until a disposition is supplied, and returns the count that
+  // makes that refusal legible. This is the one place that count surfaces —
+  // the choice can't be made blind.
+  async function triggerFalsifier(index: number, disposition?: string) {
     setTriggeringIndex(index);
     try {
       const res = await fetch(`/api/boundary-records/${record.id}/trigger-falsifier`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ index }),
+        body: JSON.stringify(disposition ? { index, disposition } : { index }),
       });
       if (res.ok) {
         const { record: updated } = await res.json();
+        setNeedsDisposition(null);
         onUpdated(updated);
+      } else if (res.status === 409) {
+        const data = await res.json().catch(() => null);
+        if (data?.needs_disposition) {
+          setNeedsDisposition({ index, populationCount: data.population_count });
+        }
       }
     } finally {
       setTriggeringIndex(null);
@@ -969,6 +981,23 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                     {f.triggered_at ? (
                       <span className="text-amber-300">
                         • {f.condition} — <span className="font-semibold">observed {new Date(f.triggered_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}, pulled the expiry forward.</span>
+                      </span>
+                    ) : needsDisposition?.index === i ? (
+                      <span className="text-[rgba(244,241,234,0.8)] flex items-center gap-2 flex-wrap">
+                        • {f.condition}
+                        <span className="text-amber-300 text-xs">
+                          Governed {needsDisposition.populationCount} decision{needsDisposition.populationCount === 1 ? "" : "s"} — what happens to them?
+                        </span>
+                        {(["reprocess", "grandfather", "flag_for_review"] as const).map((d) => (
+                          <button
+                            key={d}
+                            onClick={() => triggerFalsifier(i, d)}
+                            disabled={triggeringIndex === i}
+                            className="text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/40 bg-amber-900/20 text-amber-300 px-2 py-0.5 hover:bg-amber-900/40 transition-colors disabled:opacity-50"
+                          >
+                            {d === "flag_for_review" ? "Flag for review" : d.charAt(0).toUpperCase() + d.slice(1)}
+                          </button>
+                        ))}
                       </span>
                     ) : (
                       <span className="text-[rgba(244,241,234,0.8)] flex items-center gap-2 flex-wrap">
