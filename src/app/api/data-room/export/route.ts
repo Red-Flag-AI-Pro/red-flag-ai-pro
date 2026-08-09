@@ -4,6 +4,7 @@ import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent, verifyAuditChain } from "@/lib/audit-log";
 import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
 import { DOCUMENT_LABELS } from "@/lib/program-documents";
+import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
 
 // Sentinel-only, same gate as /api/audit-log/verify. A Data Room export is a
 // board/investor/auditor deliverable, the same "compliance evidence, board
@@ -35,7 +36,7 @@ export async function POST() {
       .eq("user_id", user.id),
     supabase
       .from("program_orders")
-      .select("id, letter_grade, letter_grade_score, delivered_at, seal_id, document_reviews")
+      .select("id, letter_grade, letter_grade_score, letter_grade_capped, letter_grade_not_started_count, delivered_at, seal_id, document_reviews")
       .eq("user_id", user.id)
       .eq("status", "delivered"),
     supabase
@@ -72,6 +73,14 @@ export async function POST() {
     // a fresh confirmation is excluded from this export by name -- a
     // visible symptom in the diligence package, rather than a stale
     // document quietly reaching whoever reads this.
+    //
+    // Task #288 (Evelyne-Claudia Y., LinkedIn 9 Aug 2026): a stale document
+    // used to only drop out of the list above -- the letter_grade sitting
+    // next to it was still whatever was struck at generation, potentially
+    // overstated. applyStalenessCeiling recomputes it live from the same
+    // staleness this export already has to compute for the exclusion list,
+    // so the headline grade in a board/investor deliverable can't outlive
+    // the evidence it was based on.
     program_orders: programOrders.map((o) => {
       const reviews = o.document_reviews as DocumentReviews | null;
       const current: string[] = [];
@@ -82,8 +91,22 @@ export async function POST() {
           (status.stale ? excludedStale : current).push(doc.label);
         }
       }
+      const liveGrade =
+        o.letter_grade && o.letter_grade_score != null
+          ? applyStalenessCeiling(
+              {
+                score: o.letter_grade_score,
+                grade: o.letter_grade as LetterGrade,
+                breakdown: [],
+                capped: Boolean(o.letter_grade_capped),
+                notStartedCount: o.letter_grade_not_started_count ?? 0,
+              },
+              excludedStale.length
+            )
+          : null;
       return {
-        letter_grade: o.letter_grade,
+        letter_grade: liveGrade?.grade ?? o.letter_grade,
+        letter_grade_capped_by_staleness: excludedStale.length > 0 && Boolean(liveGrade?.capped),
         delivered_at: o.delivered_at,
         sealed: Boolean(o.seal_id),
         documents_included: current,

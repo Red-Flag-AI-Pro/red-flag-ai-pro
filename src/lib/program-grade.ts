@@ -163,3 +163,32 @@ export function applyGapCeiling(
   }
   return { ...result, grade: "C", capped: true, notStartedCount };
 }
+
+export interface LiveGradeResult extends GapCeilingResult {
+  staleCount: number;
+}
+
+// Evelyne-Claudia Y., LinkedIn 9 Aug 2026, replying to the gap ceiling
+// above: the ceiling closes composition at the moment the grade is struck,
+// but a document that was fine at generation can go stale afterwards
+// (task #281's one year review clock), and nothing reopened the grade to
+// reflect it -- staleness only ever removed the document from a Data Room
+// export, the grade itself sat there unchanged and now potentially
+// overstated. This recomputes the ceiling live, at read time, from
+// whichever documents are currently stale, not just the gap status
+// captured once at generation. Confirming a document still accurate resets
+// its review clock, which is what lifts this ceiling again -- the same
+// mechanism, applied to a fact that changes after delivery instead of one
+// fixed at it.
+export function applyStalenessCeiling(
+  result: GapCeilingResult,
+  staleCount: number
+): LiveGradeResult {
+  if (staleCount === 0) return { ...result, staleCount: 0 };
+  const currentIndex = GRADE_ORDER.indexOf(result.grade);
+  const ceilingIndex = GRADE_ORDER.indexOf("C");
+  if (currentIndex >= ceilingIndex) {
+    return { ...result, staleCount };
+  }
+  return { ...result, grade: "C", capped: true, staleCount };
+}

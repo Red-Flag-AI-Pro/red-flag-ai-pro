@@ -12,6 +12,7 @@ import type { RegulatoryMappingRow } from "@/lib/program-regulatory-mapping";
 import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-risk-register";
 import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timeline";
 import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
+import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -75,6 +76,31 @@ export default async function ProgramDeliveryPage({
     boundaryRecord = data ?? null;
   }
 
+  // Live, not just the value struck at generation -- see applyStalenessCeiling
+  // for why a document going stale after delivery has to be able to reopen
+  // the grade, the same way a gap at generation already can.
+  const documentReviews = order.document_reviews as DocumentReviews | null;
+  const staleCount = order.delivered_at
+    ? DOCUMENT_LABELS.filter((doc) => {
+        const value = (order[doc.key] as { content?: string } | null)?.content;
+        if (!value) return false;
+        return getDocumentReviewStatus(doc.key, order.delivered_at, documentReviews).stale;
+      }).length
+    : 0;
+  const liveGrade =
+    order.letter_grade && order.letter_grade_score != null
+      ? applyStalenessCeiling(
+          {
+            score: order.letter_grade_score,
+            grade: order.letter_grade as LetterGrade,
+            breakdown: [],
+            capped: Boolean(order.letter_grade_capped),
+            notStartedCount: order.letter_grade_not_started_count ?? 0,
+          },
+          staleCount
+        )
+      : null;
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
@@ -102,12 +128,13 @@ export default async function ProgramDeliveryPage({
 
         {order.status === "delivered" && (
           <>
-            {order.letter_grade && order.letter_grade_score != null && (
+            {liveGrade && (
               <ProgramLetterGrade
-                grade={order.letter_grade}
-                score={order.letter_grade_score}
-                capped={order.letter_grade_capped}
-                notStartedCount={order.letter_grade_not_started_count}
+                grade={liveGrade.grade}
+                score={liveGrade.score}
+                capped={liveGrade.capped}
+                notStartedCount={liveGrade.notStartedCount}
+                staleCount={liveGrade.staleCount}
               />
             )}
 
