@@ -17,7 +17,17 @@ const GRADE_COLORS: Record<string, string> = {
 // energy performance certificate, applied to governance maturity instead of
 // energy efficiency. Score and grade come from calculateProgramScore in
 // src/lib/program-grade.ts.
-export function ProgramLetterGrade({ grade, score }: { grade: string; score: number }) {
+export function ProgramLetterGrade({
+  grade,
+  score,
+  capped,
+  notStartedCount,
+}: {
+  grade: string;
+  score: number;
+  capped?: boolean;
+  notStartedCount?: number;
+}) {
   const color = GRADE_COLORS[grade] ?? "#E5484D";
   const bands: string[] = ["A", "B", "C", "D", "E", "F", "G"];
 
@@ -61,6 +71,11 @@ export function ProgramLetterGrade({ grade, score }: { grade: string; score: num
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>
             Derived from the risk factors and safeguards given in your intake — more safeguards and fewer unmitigated risk factors move this toward A. This is Red Flag&apos;s own scoring model, not a regulator issued rating.
           </p>
+          {capped && (
+            <p style={{ ...syne, fontSize: "12px", color: "#facc15", lineHeight: 1.6, marginTop: "0.6rem" }}>
+              Capped at C: {notStartedCount} of 6 regulatory document{notStartedCount === 1 ? "" : "s"} below show no input at intake. The score above reflects your risk and safeguard answers, but a grade cannot rate higher than C while a document has nothing behind it at all, whatever the rest of the intake scores.
+            </p>
+          )}
         </div>
       </div>
     </div>

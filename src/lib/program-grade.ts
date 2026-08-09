@@ -8,6 +8,7 @@
 // safeguard answers rather than a separate questionnaire.
 
 import type { ProgramIntake } from "./program-intake";
+import type { RegulatoryMappingRow } from "./program-regulatory-mapping";
 
 export type LetterGrade = "A" | "B" | "C" | "D" | "E" | "F" | "G";
 
@@ -120,4 +121,45 @@ export function calculateProgramScore(intake: ProgramIntake): ProgramGradeResult
   else grade = "G";
 
   return { score, grade, breakdown };
+}
+
+const GRADE_ORDER: LetterGrade[] = ["A", "B", "C", "D", "E", "F", "G"];
+
+export interface GapCeilingResult extends ProgramGradeResult {
+  // True only when the ceiling actually changed the grade — a customer
+  // whose score alone would land at C or worse never sees this as true,
+  // since nothing was capped, the score just was what it was.
+  capped: boolean;
+  notStartedCount: number;
+}
+
+// Evelyne-Claudia Y., LinkedIn 9 Aug 2026, replying to the gap status
+// thread: can an unresolved underlying claim "extinguish the relevant
+// permission independently of the headline grade, before the bundled
+// status carries that permission forward" — or does a headline grade stay
+// technically accurate while concealing what's still unaddressed beneath
+// it? Checked honestly: before this, no, the grade never looked at gap
+// status at all. This closes that gap for the one case material enough to
+// matter: a regulatory document with genuinely nothing behind it, not a
+// partial answer, which the scoring above already treats proportionately.
+// A single completely unaddressed document is a categorically different
+// fact from a partially answered one, and a grade of A or B cannot
+// honestly coexist with it, regardless of how strong the rest of the
+// intake scores. The ceiling is C, not the bottom, because most of the
+// program's substance can still be genuinely strong even with one gap.
+export function applyGapCeiling(
+  result: ProgramGradeResult,
+  regulatoryMapping: RegulatoryMappingRow[]
+): GapCeilingResult {
+  const notStartedCount = regulatoryMapping.filter((r) => r.status === "not_started").length;
+  if (notStartedCount === 0) {
+    return { ...result, capped: false, notStartedCount: 0 };
+  }
+  const currentIndex = GRADE_ORDER.indexOf(result.grade);
+  const ceilingIndex = GRADE_ORDER.indexOf("C");
+  if (currentIndex >= ceilingIndex) {
+    // Already C or worse on the score alone — the ceiling isn't binding.
+    return { ...result, capped: false, notStartedCount };
+  }
+  return { ...result, grade: "C", capped: true, notStartedCount };
 }

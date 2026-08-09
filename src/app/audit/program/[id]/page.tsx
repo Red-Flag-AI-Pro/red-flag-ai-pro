@@ -101,7 +101,12 @@ export default async function ProgramDeliveryPage({
         {order.status === "delivered" && (
           <>
             {order.letter_grade && order.letter_grade_score != null && (
-              <ProgramLetterGrade grade={order.letter_grade} score={order.letter_grade_score} />
+              <ProgramLetterGrade
+                grade={order.letter_grade}
+                score={order.letter_grade_score}
+                capped={order.letter_grade_capped}
+                notStartedCount={order.letter_grade_not_started_count}
+              />
             )}
 
             {order.financial_snapshot && (

@@ -15,7 +15,7 @@ import { enhanceProgramDocuments } from "./program-enhance";
 import { computeFinancialSnapshot } from "./program-financial";
 import { computeRegulatoryMapping } from "./program-regulatory-mapping";
 import { computeRiskRegister } from "./program-risk-register";
-import { calculateProgramScore } from "./program-grade";
+import { calculateProgramScore, applyGapCeiling } from "./program-grade";
 import { sealProgramBundle } from "./program-seal";
 import { createProgramBoundaryRecord } from "./program-boundary-record";
 import { PROGRAM_INTAKE_DEFAULTS, type ProgramIntake } from "./program-intake";
@@ -60,7 +60,11 @@ export async function runProgramGenerationPipeline(
     const financialSnapshot = computeFinancialSnapshot(intake);
     const regulatoryMapping = computeRegulatoryMapping(intake);
     const riskRegister = computeRiskRegister(intake);
-    const { score, grade } = calculateProgramScore(intake);
+    const rawScore = calculateProgramScore(intake);
+    // A grade of A or B cannot honestly coexist with a regulatory document
+    // that has nothing behind it at all, regardless of how the rest of the
+    // intake scores — see applyGapCeiling for the full reasoning.
+    const { score, grade, capped, notStartedCount } = applyGapCeiling(rawScore, regulatoryMapping);
 
     // Idempotent on retry: a regenerated order must not create a second
     // authorization record for the same purchase.
@@ -84,6 +88,8 @@ export async function runProgramGenerationPipeline(
         risk_register: riskRegister,
         letter_grade: grade,
         letter_grade_score: score,
+        letter_grade_capped: capped,
+        letter_grade_not_started_count: notStartedCount,
         boundary_record_id: boundaryRecordId,
         status: "delivered",
         delivered_at: new Date().toISOString(),
