@@ -92,6 +92,9 @@ export default function WitnessHostingPage() {
         <P>
           These figures are a real starting point, not a fixed rate card, and haven&apos;t been tested against a real customer yet. If the number that fits your situation is different, say so — that&apos;s exactly what the conversation below is for.
         </P>
+        <P>
+          Want the chain to live on your own infrastructure instead of ours? See <a href="/witness-network/install" style={{ color: "#E5484D" }}>installing your own node</a>.
+        </P>
       </Section>
 
       <section style={{ padding: "3rem 1.5rem", textAlign: "center" }}>

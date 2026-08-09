@@ -26,6 +26,7 @@ export async function POST(request: Request) {
   const email = String(body.email ?? "").trim().toLowerCase();
   const recordsKept = String(body.recordsKept ?? "").trim();
   const whyJoin = String(body.whyJoin ?? "").trim();
+  const inquiryType = body.inquiryType === "install_node" ? "install_node" : "peer_application";
 
   if (!company || company.length > 200) {
     return NextResponse.json({ error: "Company name is required." }, { status: 400 });
@@ -57,6 +58,7 @@ export async function POST(request: Request) {
     email,
     records_kept: recordsKept,
     why_join: whyJoin || null,
+    inquiry_type: inquiryType,
   });
 
   if (error) {
