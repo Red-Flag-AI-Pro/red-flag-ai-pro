@@ -10,6 +10,7 @@ import { DOCUMENT_LABELS } from "@/lib/program-documents";
 import type { FinancialSnapshot } from "@/lib/program-financial";
 import type { RegulatoryMappingRow } from "@/lib/program-regulatory-mapping";
 import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-risk-register";
+import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timeline";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -119,6 +120,10 @@ export default async function ProgramDeliveryPage({
 
             {order.risk_register && (order.risk_register as RiskRegisterRow[]).length > 0 && (
               <RiskRegisterTable rows={order.risk_register as RiskRegisterRow[]} />
+            )}
+
+            {order.timeline && (order.timeline as ProgramTimelineType).phases?.length > 0 && (
+              <ProgramTimelinePanel timeline={order.timeline as ProgramTimelineType} />
             )}
 
             {order.boundary_record_id && (
@@ -332,6 +337,56 @@ function RiskRegisterTable({ rows }: { rows: RiskRegisterRow[] }) {
       </table>
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "0.75rem", lineHeight: 1.6 }}>
         Each risk is derived from specific combinations of your own intake answers, not a live scan, and not invented. An empty register above means none of these specific patterns were found, not that nothing could ever go wrong.
+      </p>
+    </div>
+  );
+}
+
+const PHASE_COLOR: Record<string, string> = {
+  now: "#f87171",
+  next: "#fbbf24",
+  ongoing: "#4ade80",
+};
+
+function ProgramTimelinePanel({ timeline }: { timeline: ProgramTimelineType }) {
+  return (
+    <div style={{ background: "#0F2138", border: "1px solid rgba(255,255,255,0.15)", padding: "2rem", marginBottom: "1.5rem" }}>
+      <p style={labelStyle}>Phased timeline</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        {timeline.phases.map((phase) => (
+          <div key={phase.key} style={{ borderLeft: `3px solid ${PHASE_COLOR[phase.key] ?? "#C9A66B"}`, paddingLeft: "1.1rem" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: "0.6rem", flexWrap: "wrap", marginBottom: "0.35rem" }}>
+              <span style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "white" }}>{phase.label}</span>
+              <span style={{ ...mono, fontSize: "11px", color: PHASE_COLOR[phase.key] ?? "#C9A66B" }}>{phase.window}</span>
+            </div>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "0.6rem" }}>{phase.rationale}</p>
+            <ul style={{ paddingLeft: "1.1rem", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+              {phase.items.map((item) => (
+                <li key={item.document} style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.75)" }}>{item.document}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {timeline.regulatoryDeadlines.length > 0 && (
+        <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "0.75rem" }}>
+            EU AI Act deadlines that apply to you
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            {timeline.regulatoryDeadlines.map((d) => (
+              <div key={d.date}>
+                <p style={{ ...mono, fontSize: "12px", color: "white", fontWeight: 700 }}>{d.date} <span style={{ ...syne, fontWeight: 400, color: "rgba(255,255,255,0.4)", fontSize: "11px" }}>— {d.status}</span></p>
+                <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{d.meaning}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "1.25rem", lineHeight: 1.6 }}>
+        Phases are ordered by the same gap status shown in the regulatory mapping above: what has nothing behind it goes first. No phase length or deadline here is invented.
       </p>
     </div>
   );

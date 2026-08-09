@@ -15,6 +15,7 @@ import { enhanceProgramDocuments } from "./program-enhance";
 import { computeFinancialSnapshot } from "./program-financial";
 import { computeRegulatoryMapping } from "./program-regulatory-mapping";
 import { computeRiskRegister } from "./program-risk-register";
+import { computeProgramTimeline } from "./program-timeline";
 import { calculateProgramScore, applyGapCeiling } from "./program-grade";
 import { sealProgramBundle } from "./program-seal";
 import { createProgramBoundaryRecord } from "./program-boundary-record";
@@ -60,6 +61,7 @@ export async function runProgramGenerationPipeline(
     const financialSnapshot = computeFinancialSnapshot(intake);
     const regulatoryMapping = computeRegulatoryMapping(intake);
     const riskRegister = computeRiskRegister(intake);
+    const timeline = computeProgramTimeline(regulatoryMapping, intake);
     const rawScore = calculateProgramScore(intake);
     // A grade of A or B cannot honestly coexist with a regulatory document
     // that has nothing behind it at all, regardless of how the rest of the
@@ -86,6 +88,7 @@ export async function runProgramGenerationPipeline(
         financial_snapshot: financialSnapshot,
         regulatory_mapping: regulatoryMapping,
         risk_register: riskRegister,
+        timeline: timeline,
         letter_grade: grade,
         letter_grade_score: score,
         letter_grade_capped: capped,

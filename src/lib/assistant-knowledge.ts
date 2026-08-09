@@ -69,7 +69,7 @@ export const FREE_TOOLS = [
 // status explicitly so the assistant never presents a proposal or a bill
 // that has not passed as if it were settled law. Update this list whenever
 // the regulatory mapping is next reviewed, not on every small news item.
-const REGULATORY_DEADLINES = [
+export const REGULATORY_DEADLINES = [
   {
     date: "2 August 2026",
     status: "Confirmed, final law (EU Digital Omnibus in force 27 Jul 2026)",
