@@ -150,6 +150,11 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [requiredByName, setRequiredByName] = useState("");
   const [requiredByOrganisation, setRequiredByOrganisation] = useState("");
   const [completionCondition, setCompletionCondition] = useState("");
+  const [stopAuthorityName, setStopAuthorityName] = useState("");
+  const [stopAuthorityRole, setStopAuthorityRole] = useState("");
+  const [defendAuthorityName, setDefendAuthorityName] = useState("");
+  const [defendAuthorityRole, setDefendAuthorityRole] = useState("");
+  const [escalationCeiling, setEscalationCeiling] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -182,6 +187,11 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setRequiredByName("");
     setRequiredByOrganisation("");
     setCompletionCondition("");
+    setStopAuthorityName("");
+    setStopAuthorityRole("");
+    setDefendAuthorityName("");
+    setDefendAuthorityRole("");
+    setEscalationCeiling("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -212,6 +222,11 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           required_by_name: requiredByName || null,
           required_by_organisation: requiredByOrganisation || null,
           completion_condition: completionCondition || null,
+          stop_authority_name: stopAuthorityName || null,
+          stop_authority_role: stopAuthorityRole || null,
+          defend_authority_name: defendAuthorityName || null,
+          defend_authority_role: defendAuthorityRole || null,
+          escalation_ceiling: escalationCeiling || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -473,6 +488,67 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           />
           <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
             The conditions below name how this stops. This names what it looks like to actually succeed — a different fact, not the same one stated twice.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Stop authority name (optional)</label>
+            <input
+              value={stopAuthorityName}
+              onChange={(e) => setStopAuthorityName(e.target.value)}
+              placeholder="Who can halt this, not the owner"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Stop authority role (optional)</label>
+            <input
+              value={stopAuthorityRole}
+              onChange={(e) => setStopAuthorityRole(e.target.value)}
+              placeholder="e.g. Risk Committee Chair"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
+          Who has standing to halt this before its natural expiry without asking permission from whoever depends on the timeline — distinct from the owner (who approved it) and the continuity owner (whose job is renewal). Often nobody distinct exists to name, which is itself an honest answer, not a gap to fake.
+        </p>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Defend authority name (optional)</label>
+            <input
+              value={defendAuthorityName}
+              onChange={(e) => setDefendAuthorityName(e.target.value)}
+              placeholder="Who must justify this if challenged"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Defend authority role (optional)</label>
+            <input
+              value={defendAuthorityRole}
+              onChange={(e) => setDefendAuthorityRole(e.target.value)}
+              placeholder="e.g. General Counsel"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
+          Who is obligated to justify this decision to a regulator, board, or court if it's disputed — a distinct duty from approving it or halting it.
+        </p>
+
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Escalation ceiling (optional)</label>
+          <input
+            value={escalationCeiling}
+            onChange={(e) => setEscalationCeiling(e.target.value)}
+            placeholder="Where this stops escalating, e.g. the Board"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+          />
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
+            An explicit statement of where the buck stops in a dispute — different from the delegation chain, which shows who delegated to whom, not where it ultimately ends.
           </p>
         </div>
 
@@ -835,6 +911,27 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Complete when</p>
               <p className="text-sm text-[rgba(244,241,234,0.8)]">{record.completion_condition}</p>
+            </div>
+          )}
+
+          {(record.stop_authority_name || record.defend_authority_name || record.escalation_ceiling) && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Stop, defend, escalate</p>
+              <div className="space-y-1">
+                {record.stop_authority_name && (
+                  <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                    Can halt: {record.stop_authority_name}{record.stop_authority_role ? ` (${record.stop_authority_role})` : ""}
+                  </p>
+                )}
+                {record.defend_authority_name && (
+                  <p className="text-sm text-[rgba(244,241,234,0.8)]">
+                    Must defend: {record.defend_authority_name}{record.defend_authority_role ? ` (${record.defend_authority_role})` : ""}
+                  </p>
+                )}
+                {record.escalation_ceiling && (
+                  <p className="text-sm text-[rgba(244,241,234,0.8)]">Escalation ends: {record.escalation_ceiling}</p>
+                )}
+              </div>
             </div>
           )}
 

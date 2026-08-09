@@ -163,6 +163,22 @@ export interface BoundaryAuthorizationRecord {
   // as a falsifier condition, just not tied to expiry: recording it doesn't
   // change expires_at, it's a fact about intent, not a trigger.
   completion_condition: string | null;
+  // Brad Wolfe (5 Aug) and Dr. David Marco, independently, same week: three
+  // distinct roles, none of them the owner (who approved) or the continuity
+  // owner (whose job is renewal). stop_authority is who has standing to halt
+  // this before its natural expiry without asking permission from whoever
+  // depends on the timeline. defend_authority is who is obligated to justify
+  // the decision if it's challenged by a regulator, board, or court.
+  // escalation_ceiling is an explicit statement of where the buck stops —
+  // distinct from the delegation chain, which shows who delegated to whom,
+  // not where a dispute ultimately ends. All optional: for a solo founder or
+  // small business there's often no separate person to name, and an empty
+  // field here is honest, not a gap.
+  stop_authority_name: string | null;
+  stop_authority_role: string | null;
+  defend_authority_name: string | null;
+  defend_authority_role: string | null;
+  escalation_ceiling: string | null;
   created_at: string;
   updated_at: string;
 }

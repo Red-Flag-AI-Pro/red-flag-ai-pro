@@ -196,6 +196,17 @@ export async function POST(request: Request) {
   // What success looks like, not just how this stops. Optional, one
   // statement — expiry_conditions already cover the plural "how it dies" case.
   const completionCondition: string | null = typeof body.completion_condition === "string" && body.completion_condition.trim() ? body.completion_condition.trim() : null;
+  // Three distinct roles Brad Wolfe and Dr. David Marco independently named,
+  // none of them the owner (who approved) or the continuity owner (whose job
+  // is renewal): who has standing to halt this before its natural expiry
+  // without asking permission from whoever depends on the timeline, who is
+  // obligated to defend the decision if it's challenged, and where the
+  // escalation chain ends. Optional — often nobody distinct exists to name.
+  const stopAuthorityName: string | null = typeof body.stop_authority_name === "string" && body.stop_authority_name.trim() ? body.stop_authority_name.trim() : null;
+  const stopAuthorityRole: string | null = typeof body.stop_authority_role === "string" && body.stop_authority_role.trim() ? body.stop_authority_role.trim() : null;
+  const defendAuthorityName: string | null = typeof body.defend_authority_name === "string" && body.defend_authority_name.trim() ? body.defend_authority_name.trim() : null;
+  const defendAuthorityRole: string | null = typeof body.defend_authority_role === "string" && body.defend_authority_role.trim() ? body.defend_authority_role.trim() : null;
+  const escalationCeiling: string | null = typeof body.escalation_ceiling === "string" && body.escalation_ceiling.trim() ? body.escalation_ceiling.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
@@ -286,6 +297,11 @@ export async function POST(request: Request) {
       required_by_name: requiredByName,
       required_by_organisation: requiredByOrganisation,
       completion_condition: completionCondition,
+      stop_authority_name: stopAuthorityName,
+      stop_authority_role: stopAuthorityRole,
+      defend_authority_name: defendAuthorityName,
+      defend_authority_role: defendAuthorityRole,
+      escalation_ceiling: escalationCeiling,
     })
     .select()
     .single();
@@ -337,6 +353,11 @@ export async function POST(request: Request) {
       required_by_name: data.required_by_name,
       required_by_organisation: data.required_by_organisation,
       completion_condition: data.completion_condition,
+      stop_authority_name: data.stop_authority_name,
+      stop_authority_role: data.stop_authority_role,
+      defend_authority_name: data.defend_authority_name,
+      defend_authority_role: data.defend_authority_role,
+      escalation_ceiling: data.escalation_ceiling,
     },
     { timestamp: true }
   );
