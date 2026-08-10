@@ -166,6 +166,54 @@ export default function DocsPage() {
           </div>
         </div>
 
+        {/* GET /enforcement/{id}/signed-bundle */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Tag method="GET" />
+            <h2 className="text-xl font-bold text-white">/enforcement/:id/signed-bundle</h2>
+          </div>
+          <p className="text-gray-400 text-sm">
+            Sentinel only. Exports one Real-Time Gate decision, plus the full authority state that governed it at that moment, as a bundle signed with Red Flag&apos;s Ed25519 key. Hand the file to anyone, a regulator, an insurer, a counterparty, and they can confirm it was signed by Red Flag and has not been altered since, offline, with no account, no API call, and no need to trust our server at the moment they check it. Requires a logged in session, not an API key — call it from your dashboard or a server acting on your behalf.
+          </p>
+
+          <div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Response</p>
+            <Code>{`{
+  "bundle": {
+    "version": 1,
+    "decision_id": "uuid",
+    "checked_at": "2026-08-10T11:00:00.000Z",
+    "title": "Auto-published blog draft",
+    "score": 35,
+    "threshold": 50,
+    "allowed": false,
+    "block_reason": "content_score",
+    "flag_count": 2,
+    "flags": [ { "category": "income_claim", "severity": "high" } ],
+    "governing_record": {
+      "id": "uuid",
+      "decision": "...",
+      "owner_name": "...",
+      "owner_role": "...",
+      "authority_mode": "human_decides",
+      "expires_at": "2026-12-01T00:00:00.000Z",
+      "permission_fingerprint": "pf-a1b2c3d4",
+      "fingerprint_intact_at_export": true
+    },
+    "exported_at": "2026-08-10T11:05:00.000Z",
+    "exported_by": "redflagaipro.com"
+  },
+  "signature": "base64...",
+  "algorithm": "ed25519",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----...",
+  "public_key_url": "https://www.redflagaipro.com/api/verify/signing-key"
+}`}</Code>
+            <p className="text-gray-500 text-xs mt-2">
+              Verify offline with the standalone script at <a href="/verify-decision-bundle.js" className="text-red-400 underline">/verify-decision-bundle.js</a>, no dependencies beyond Node&apos;s built in crypto module: <code className="text-gray-300">node verify-decision-bundle.js bundle.json</code>. Save the public key alongside your bundles rather than re-fetching it each time — the whole point is not having to trust the server again at the moment you check.
+            </p>
+          </div>
+        </div>
+
         {/* GET /scans */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">

@@ -56,6 +56,16 @@ const ITEMS: Item[] = [
     priceNote: "support is optional, not required to keep running",
     href: "/witness-network/install",
   },
+  {
+    name: "Signed Decision Bundles, Your Own Key",
+    tagline: "Prove a decision without trusting us at all",
+    summary:
+      "Sentinel already exports Real-Time Gate decisions signed with Red Flag's own Ed25519 key, offline verifiable, no account or network access needed to check one. This is the same capability built on a key that's yours, not ours, generated for your account, so verifying a bundle never has to trust Red Flag at all, only the math. No monthly fee: once the key exists and the export route works, there is nothing ongoing to host or run.",
+    priceLabel: "Added to Install Your Own Node, or on its own",
+    price: "£500–£750 as an add on, £1,500–£2,000 standalone",
+    priceNote: "one time only, no recurring charge",
+    href: "/real-time-gate",
+  },
 ];
 
 function ItemCard({ item }: { item: Item }) {
