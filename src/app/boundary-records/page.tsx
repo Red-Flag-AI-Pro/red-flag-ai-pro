@@ -1045,9 +1045,9 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               )}
             </p>
             <p className="text-sm text-[rgba(244,241,234,0.8)] mt-1">
-              {record.named_by_name
-                ? <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>
-                : <span className="text-[rgba(244,241,234,0.5)]">Self assigned — no separate party named who put this owner in the seat.</span>}
+              {!record.named_by_name || record.named_by_name === "Self assigned"
+                ? <span className="text-[rgba(244,241,234,0.5)]">Self assigned — no separate party named who put this owner in the seat.</span>
+                : <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>}
             </p>
           </div>
 

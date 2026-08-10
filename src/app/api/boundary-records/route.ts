@@ -250,8 +250,16 @@ export async function POST(request: Request) {
   // solo founder there's often no apex above the owner to name it, and that's
   // an honest answer, not a gap: leaving this blank, or writing "self
   // assigned," says exactly that rather than hiding it behind owner_name alone.
-  const namedByName: string | null = typeof body.named_by_name === "string" && body.named_by_name.trim() ? body.named_by_name.trim() : null;
-  const namedByRole: string | null = typeof body.named_by_role === "string" && body.named_by_role.trim() ? body.named_by_role.trim() : null;
+  // Brad Wolfe, follow-up 10 Aug 2026: blank reads as missing data three
+  // years later, "self assigned" reads as a disclosed fact -- stronger
+  // written than left empty. So a blank field writes the literal fact at
+  // submission time rather than storing null and only inferring it at
+  // render time, same discipline as everything else tonight: the record
+  // states what's true, it doesn't leave a reader to guess why a field is
+  // empty.
+  const namedByNameRaw = typeof body.named_by_name === "string" ? body.named_by_name.trim() : "";
+  const namedByName: string = namedByNameRaw || "Self assigned";
+  const namedByRole: string | null = namedByNameRaw && typeof body.named_by_role === "string" && body.named_by_role.trim() ? body.named_by_role.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
