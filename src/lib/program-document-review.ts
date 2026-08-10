@@ -71,6 +71,15 @@ export interface DocumentReviewStatus {
   dueAt: string;
   stale: boolean;
   lastReviewedAt: string;
+  // Brad Wolfe, LinkedIn 10 Aug 2026: "confirm it still matches" answers
+  // whether the hash held, not whether anyone actually stood behind it since
+  // delivery. Falling back to deliveredAt for lastReviewedAt (above) makes a
+  // document nobody has looked at read identically to one confirmed
+  // yesterday, right up until it goes stale -- his exact "unchecked renders
+  // the same as fine" complaint. everReviewed is what the UI and the Data
+  // Room export use to separate the two before staleness would otherwise
+  // paper over the difference.
+  everReviewed: boolean;
 }
 
 function addMonths(iso: string, months: number): string {
@@ -84,7 +93,8 @@ export function getDocumentReviewStatus(
   deliveredAt: string,
   documentReviews: DocumentReviews | null | undefined
 ): DocumentReviewStatus {
+  const everReviewed = documentReviews?.[documentKey]?.reviewed_at != null;
   const lastReviewedAt = documentReviews?.[documentKey]?.reviewed_at ?? deliveredAt;
   const dueAt = addMonths(lastReviewedAt, REVIEW_PERIOD_MONTHS[documentKey]);
-  return { dueAt, stale: new Date(dueAt) < new Date(), lastReviewedAt };
+  return { dueAt, stale: new Date(dueAt) < new Date(), lastReviewedAt, everReviewed };
 }

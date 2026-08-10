@@ -34,6 +34,8 @@ export function ProgramDocumentPanel({
   documentKey,
   dueAt,
   stale,
+  everReviewed,
+  lastReviewedAt,
   sealedAt,
   currentNote,
   currentUpdatedAt,
@@ -50,6 +52,15 @@ export function ProgramDocumentPanel({
   documentKey?: string;
   dueAt?: string;
   stale?: boolean;
+  // Task #281, second correction, 10 Aug 2026 per Brad Wolfe: "confirm it
+  // still matches" answers whether the hash held, not whether anyone has
+  // actually stood behind it since delivery. Before this, "not stale yet"
+  // looked identical whether someone had confirmed the document yesterday
+  // or nobody had looked at it since the seal -- his "unchecked renders the
+  // same as fine" line, checked against the actual code and found true.
+  // everReviewed + lastReviewedAt let the panel say which one it actually is.
+  everReviewed?: boolean;
+  lastReviewedAt?: string;
   // Task #281, corrected 10 Aug 2026 per Brad Wolfe: the sealed original
   // (this content, frozen since sealedAt) and the current status (matches
   // sealed, or diverged with a note) are two different facts now, not one
@@ -208,12 +219,20 @@ export function ProgramDocumentPanel({
       )}
 
       {dueAt && (
-        <p style={{ ...syne, fontSize: "11.5px", color: (stale && !confirmedJustNow) ? "#facc15" : "rgba(255,255,255,0.4)", marginBottom: "0.9rem", lineHeight: 1.6 }}>
+        <p style={{
+          ...syne,
+          fontSize: "11.5px",
+          color: (stale && !confirmedJustNow) ? "#facc15" : (!everReviewed && !confirmedJustNow) ? "#C9A66B" : "rgba(255,255,255,0.4)",
+          marginBottom: "0.9rem",
+          lineHeight: 1.6,
+        }}>
           {confirmedJustNow
             ? "Confirmed just now — review clock reset."
             : stale
             ? `Past its review date (${new Date(dueAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}). Excluded from Data Room exports until reconfirmed.`
-            : `Next review due ${new Date(dueAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}.`}
+            : everReviewed
+            ? `Confirmed current ${new Date(lastReviewedAt!).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} — next review due ${new Date(dueAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}.`
+            : `Never checked since delivery. Not past due yet — due ${new Date(dueAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}, but nobody has confirmed this since the seal.`}
         </p>
       )}
 

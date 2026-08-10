@@ -236,6 +236,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [defendAuthorityName, setDefendAuthorityName] = useState("");
   const [defendAuthorityRole, setDefendAuthorityRole] = useState("");
   const [escalationCeiling, setEscalationCeiling] = useState("");
+  const [namedByName, setNamedByName] = useState("");
+  const [namedByRole, setNamedByRole] = useState("");
   const [decisionDate, setDecisionDate] = useState(todayISO());
   const [expiresAt, setExpiresAt] = useState("");
   const [supersedesId, setSupersedesId] = useState("");
@@ -273,6 +275,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setDefendAuthorityName("");
     setDefendAuthorityRole("");
     setEscalationCeiling("");
+    setNamedByName("");
+    setNamedByRole("");
     setDecisionDate(todayISO());
     setExpiresAt("");
     setSupersedesId("");
@@ -308,6 +312,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           defend_authority_name: defendAuthorityName || null,
           defend_authority_role: defendAuthorityRole || null,
           escalation_ceiling: escalationCeiling || null,
+          named_by_name: namedByName || null,
+          named_by_role: namedByRole || null,
           decision_date: decisionDate,
           expires_at: expiresAt,
           expiry_conditions: falsifiers,
@@ -632,6 +638,30 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
             An explicit statement of where the buck stops in a dispute — different from the delegation chain, which shows who delegated to whom, not where it ultimately ends.
           </p>
         </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Named by (optional)</label>
+            <input
+              value={namedByName}
+              onChange={(e) => setNamedByName(e.target.value)}
+              placeholder="Who put the owner in this seat — leave blank if self assigned"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">Their role (optional)</label>
+            <input
+              value={namedByRole}
+              onChange={(e) => setNamedByRole(e.target.value)}
+              placeholder="e.g. CEO, Board resolution"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-[rgba(244,241,234,0.35)] -mt-2">
+          owner_name above is who holds the seat. This is who put them in it — a seat that assigns its own accountability is just marking its own homework. Blank is an honest answer for a solo founder, not a gap.
+        </p>
 
         <div>
           <div className="flex items-center justify-between mb-1">
@@ -1013,6 +1043,11 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               {authorEmail && (
                 <> Recorded under the authenticated account <span className="text-[#C9A66B]">{authorEmail}</span> — the session identity is bound to this record, not just the typed name.</>
               )}
+            </p>
+            <p className="text-sm text-[rgba(244,241,234,0.8)] mt-1">
+              {record.named_by_name
+                ? <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>
+                : <span className="text-[rgba(244,241,234,0.5)]">Self assigned — no separate party named who put this owner in the seat.</span>}
             </p>
           </div>
 

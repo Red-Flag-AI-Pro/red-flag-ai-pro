@@ -212,6 +212,13 @@ export interface BoundaryAuthorizationRecord {
   defend_authority_name: string | null;
   defend_authority_role: string | null;
   escalation_ceiling: string | null;
+  // Brad Wolfe, "The CEO's New Job," LinkedIn 10 Aug 2026: owner_name is who
+  // holds the accountable seat, not who named them to it. "A seat that
+  // assigns its own accountability is just marking its own homework." For a
+  // solo founder there's often no apex above the owner to name it -- blank,
+  // or "self assigned," is an honest answer here, not a gap to hide.
+  named_by_name: string | null;
+  named_by_role: string | null;
   created_at: string;
   updated_at: string;
 }

@@ -244,6 +244,14 @@ export async function POST(request: Request) {
   const defendAuthorityName: string | null = typeof body.defend_authority_name === "string" && body.defend_authority_name.trim() ? body.defend_authority_name.trim() : null;
   const defendAuthorityRole: string | null = typeof body.defend_authority_role === "string" && body.defend_authority_role.trim() ? body.defend_authority_role.trim() : null;
   const escalationCeiling: string | null = typeof body.escalation_ceiling === "string" && body.escalation_ceiling.trim() ? body.escalation_ceiling.trim() : null;
+  // Brad Wolfe, "The CEO's New Job," LinkedIn 10 Aug 2026: owner_name is who
+  // holds the seat, not who named them to it. "A seat that assigns its own
+  // accountability is just marking its own homework" -- his exact line. For a
+  // solo founder there's often no apex above the owner to name it, and that's
+  // an honest answer, not a gap: leaving this blank, or writing "self
+  // assigned," says exactly that rather than hiding it behind owner_name alone.
+  const namedByName: string | null = typeof body.named_by_name === "string" && body.named_by_name.trim() ? body.named_by_name.trim() : null;
+  const namedByRole: string | null = typeof body.named_by_role === "string" && body.named_by_role.trim() ? body.named_by_role.trim() : null;
 
   if (!decision) return NextResponse.json({ error: "Decision is required." }, { status: 400 });
   if (grantType === "credential" && !credentialReference) {
@@ -363,6 +371,8 @@ export async function POST(request: Request) {
       defend_authority_name: defendAuthorityName,
       defend_authority_role: defendAuthorityRole,
       escalation_ceiling: escalationCeiling,
+      named_by_name: namedByName,
+      named_by_role: namedByRole,
     })
     .select()
     .single();
@@ -419,6 +429,8 @@ export async function POST(request: Request) {
       defend_authority_name: data.defend_authority_name,
       defend_authority_role: data.defend_authority_role,
       escalation_ceiling: data.escalation_ceiling,
+      named_by_name: data.named_by_name,
+      named_by_role: data.named_by_role,
     },
     { timestamp: true }
   );

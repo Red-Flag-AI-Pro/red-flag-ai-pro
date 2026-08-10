@@ -219,6 +219,8 @@ export default async function ProgramDeliveryPage({
                   documentKey={doc.key}
                   dueAt={review?.dueAt}
                   stale={review?.stale}
+                  everReviewed={review?.everReviewed}
+                  lastReviewedAt={review?.lastReviewedAt}
                   sealedAt={order.sealed_at ?? undefined}
                   currentNote={currentEntry?.note}
                   currentUpdatedAt={currentEntry?.updated_at}

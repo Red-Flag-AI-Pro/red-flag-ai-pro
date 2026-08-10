@@ -85,12 +85,24 @@ export async function POST() {
       const reviews = o.document_reviews as DocumentReviews | null;
       const currentDocs = o.current_documents as Record<string, { note: string; updated_at: string }> | null;
       const current: string[] = [];
+      const neverChecked: string[] = [];
       const excludedStale: string[] = [];
       const diverged: string[] = [];
       if (o.delivered_at) {
         for (const doc of DOCUMENT_LABELS) {
           const status = getDocumentReviewStatus(doc.key, o.delivered_at, reviews);
-          (status.stale ? excludedStale : current).push(doc.label);
+          if (status.stale) {
+            excludedStale.push(doc.label);
+          } else if (status.everReviewed) {
+            current.push(doc.label);
+          } else {
+            // Brad Wolfe, 10 Aug 2026: not yet stale is not the same claim as
+            // confirmed current -- one is a named person standing behind it
+            // on a date, the other is nobody having looked since the seal. A
+            // diligence reader seeing "current" on both would be reading the
+            // second as the first. Reported separately so it can't hide.
+            neverChecked.push(doc.label);
+          }
           // Task #281 correction (Brad Wolfe, 10 Aug 2026): a document marked
           // changed since the sealed original is a different fact from
           // staleness -- it's known to differ, not just unconfirmed. Reported
@@ -117,7 +129,8 @@ export async function POST() {
         letter_grade_capped_by_staleness: excludedStale.length > 0 && Boolean(liveGrade?.capped),
         delivered_at: o.delivered_at,
         sealed: Boolean(o.seal_id),
-        documents_included: current,
+        documents_confirmed_current: current,
+        documents_never_checked_since_delivery: neverChecked,
         documents_excluded_stale: excludedStale,
         documents_diverged: diverged,
       };
