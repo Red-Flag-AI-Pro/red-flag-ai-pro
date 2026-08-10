@@ -186,6 +186,16 @@ export interface BoundaryAuthorizationRecord {
   // as a falsifier condition, just not tied to expiry: recording it doesn't
   // change expires_at, it's a fact about intent, not a trigger.
   completion_condition: string | null;
+  // Michael H., LinkedIn 10 Aug 2026: a self declared completion_condition is
+  // still self attestation, no matter what it's called. Same mechanism as
+  // required_by confirmation, a token gating a link only an independent
+  // confirmer acts on. completion_confirmed_note is required, not optional —
+  // a name and a timestamp with no note is still just a diary entry.
+  completion_token: string | null;
+  completion_confirmed_at: string | null;
+  completion_confirmed_name: string | null;
+  completion_confirmed_email: string | null;
+  completion_confirmed_note: string | null;
   // Brad Wolfe (5 Aug) and Dr. David Marco, independently, same week: three
   // distinct roles, none of them the owner (who approved) or the continuity
   // owner (whose job is renewal). stop_authority is who has standing to halt

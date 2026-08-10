@@ -140,6 +140,87 @@ function RequiredByConfirmation({ record }: { record: BoundaryAuthorizationRecor
   );
 }
 
+// Michael H., LinkedIn 10 Aug 2026: a completion_condition the owner filled
+// in themselves is still self attestation. Same pattern as
+// RequiredByConfirmation above, a link only an independent confirmer acts
+// on, only shown once there's actually a completion_condition to confirm.
+function CompletionConfirmation({ record }: { record: BoundaryAuthorizationRecord }) {
+  const [link, setLink] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (!record.completion_condition) return null;
+
+  if (record.completion_confirmed_at) {
+    return (
+      <p className="text-xs text-emerald-300">
+        ✓ Completion confirmed by {record.completion_confirmed_name} on{" "}
+        {new Date(record.completion_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+        {" "}— an independent assessment, not this account&apos;s own claim.
+      </p>
+    );
+  }
+
+  async function requestLink() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/boundary-records/${record.id}/request-completion-confirmation`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Could not create the link.");
+        return;
+      }
+      setLink(data.confirm_url);
+    } catch {
+      setError("Could not create the link.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function copy() {
+    if (!link) return;
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard not available — link is selectable regardless
+    }
+  }
+
+  if (link) {
+    return (
+      <div className="mt-1">
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">
+          Send this to someone independent of you who can actually judge whether this was met:
+        </p>
+        <div className="flex items-center gap-2 flex-wrap">
+          <code className="text-xs bg-black/30 border border-white/10 rounded px-2 py-1 text-[#C9A66B] break-all">{link}</code>
+          <button onClick={copy} className="text-xs px-2 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5">
+            {copied ? "Copied ✓" : "Copy"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-1">
+      <button
+        onClick={requestLink}
+        disabled={loading}
+        className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
+      >
+        {loading ? "Creating link…" : "Get an independent completion confirmation link"}
+      </button>
+      {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+    </div>
+  );
+}
+
 function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: BoundaryAuthorizationRecord) => void; existingRecords: BoundaryAuthorizationRecord[] }) {
   const [decision, setDecision] = useState("");
   const [ownerName, setOwnerName] = useState("");
@@ -947,7 +1028,8 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
           {record.completion_condition && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Complete when</p>
-              <p className="text-sm text-[rgba(244,241,234,0.8)]">{record.completion_condition}</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)] mb-1.5">{record.completion_condition}</p>
+              <CompletionConfirmation record={record} />
             </div>
           )}
 
