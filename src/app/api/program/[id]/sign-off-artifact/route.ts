@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createHash } from "crypto";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { DOCUMENT_LABELS, type ProgramDocumentBundle } from "@/lib/program-documents";
@@ -13,6 +14,14 @@ import { DOCUMENT_LABELS, type ProgramDocumentBundle } from "@/lib/program-docum
 // certify, not routine activity on every document. His follow-up
 // correction, also kept: accepted_by_name/role are frozen text captured
 // now, never a lookup against a user_id that could read wrong later.
+//
+// Second follow-up, same day: a signoff without a content hash says a person
+// certified A document, not that they certified THIS content -- three years
+// out that's an argument, not an answer. content_sha256 is computed here,
+// server-side, from the actual document content at this exact moment, never
+// supplied by the client. And signoffs are append-only: each document key
+// holds an array of events, never overwritten. A signoff that can silently
+// disappear on a second call isn't evidence, his exact point.
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const supabase = await createClient();
@@ -39,6 +48,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   if (typeof documentKey !== "string" || !validKeys.includes(documentKey as keyof ProgramDocumentBundle)) {
     return NextResponse.json({ error: "Invalid documentKey." }, { status: 400 });
   }
+  const key = documentKey as keyof ProgramDocumentBundle;
 
   const sourceText = typeof source === "string" ? source.trim() : "";
   const acceptedByNameText = typeof acceptedByName === "string" ? acceptedByName.trim() : "";
@@ -66,18 +76,36 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   if (!order) return NextResponse.json({ error: "Order not found." }, { status: 404 });
 
+  // Fetch the document content separately (service client, needs the actual
+  // column) so the hash reflects what's on the row right now, not something
+  // the client could claim.
+  const service = await createServiceClient();
+  const { data: fullOrder } = await service
+    .from("program_orders")
+    .select(key)
+    .eq("id", id)
+    .maybeSingle();
+  const docContent = (fullOrder as Record<string, { content?: string }> | null)?.[key]?.content;
+  if (!docContent) {
+    return NextResponse.json({ error: "This document has no content to certify." }, { status: 400 });
+  }
+  const contentSha256 = createHash("sha256").update(docContent).digest("hex");
+
   const nowIso = new Date().toISOString();
-  const signoffs = { ...(order.artifact_signoffs as Record<string, unknown> ?? {}) };
-  signoffs[documentKey] = {
+  const signoffs = { ...(order.artifact_signoffs as Record<string, unknown[]> ?? {}) };
+  const existing = Array.isArray(signoffs[key]) ? signoffs[key] : [];
+  const event = {
+    type: "signed" as const,
     source: sourceText,
     model_version: modelVersionText || null,
+    content_sha256: contentSha256,
     accepted_by_name: acceptedByNameText,
     accepted_by_role: acceptedByRoleText,
     note: noteText || null,
-    accepted_at: nowIso,
+    at: nowIso,
   };
+  signoffs[key] = [...existing, event];
 
-  const service = await createServiceClient();
   const { error: updateError } = await service
     .from("program_orders")
     .update({ artifact_signoffs: signoffs })
@@ -92,22 +120,14 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   const verifyId = await logAuditEvent(
     user.id,
     "program_document.artifact_signed_off",
-    {
-      program_order_id: id,
-      document_key: documentKey,
-      source: sourceText,
-      model_version: modelVersionText || null,
-      accepted_by_name: acceptedByNameText,
-      accepted_by_role: acceptedByRoleText,
-      note: noteText || null,
-      accepted_at: nowIso,
-    },
+    { program_order_id: id, document_key: key, ...event },
     { timestamp: true }
   );
 
   return NextResponse.json({
     ok: true,
     acceptedAt: nowIso,
+    contentSha256,
     verify_url: verifyId ? `https://www.redflagaipro.com/verify?id=${verifyId}` : null,
   });
 }

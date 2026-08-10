@@ -44,7 +44,7 @@ export function ProgramDocumentPanel({
   exerciseNote,
   exercisedBy,
   exercisedFirstTime,
-  signoff,
+  signoffEvents,
 }: {
   number: string;
   title: string;
@@ -87,14 +87,32 @@ export function ProgramDocumentPanel({
   // shown as a badge on every document -- his own warning kept: it should
   // stay rare, applied only where a customer is actually certifying
   // something, not routine activity.
-  signoff?: {
-    source: string;
-    model_version: string | null;
-    accepted_by_name: string;
-    accepted_by_role: string;
-    note: string | null;
-    accepted_at: string;
-  } | null;
+  // Brad Wolfe, follow-up same day: append-only. Every certification and
+  // every withdrawal is its own event in this array, nothing is ever
+  // overwritten -- a signoff that could silently disappear on a second call
+  // isn't evidence, his exact point. content_sha256 answers a different
+  // objection: name and date alone say a person certified A document, the
+  // hash says which content, computed server-side, never trusted from the
+  // browser.
+  signoffEvents?: (
+    | {
+        type: "signed";
+        source: string;
+        model_version: string | null;
+        content_sha256: string;
+        accepted_by_name: string;
+        accepted_by_role: string;
+        note: string | null;
+        at: string;
+      }
+    | {
+        type: "withdrawn";
+        withdrawn_by_name: string;
+        withdrawn_by_role: string;
+        reason: string;
+        at: string;
+      }
+  )[];
 }) {
   const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
@@ -119,9 +137,15 @@ export function ProgramDocumentPanel({
   const [signoffNote, setSignoffNote] = useState("");
   const [signingOff, setSigningOff] = useState(false);
   const [signoffError, setSignoffError] = useState<string | null>(null);
-  const [signedOffJustNow, setSignedOffJustNow] = useState<{
-    source: string; model_version: string | null; accepted_by_name: string; accepted_by_role: string; note: string | null; accepted_at: string;
-  } | null>(null);
+  const [withdrawFormOpen, setWithdrawFormOpen] = useState(false);
+  const [withdrawName, setWithdrawName] = useState("");
+  const [withdrawRole, setWithdrawRole] = useState("");
+  const [withdrawReason, setWithdrawReason] = useState("");
+  const [withdrawing, setWithdrawing] = useState(false);
+  const [withdrawError, setWithdrawError] = useState<string | null>(null);
+  // Append-only, per Brad Wolfe: events created this session get appended
+  // to whatever the server already had, never replacing it.
+  const [localSignoffEvents, setLocalSignoffEvents] = useState<NonNullable<typeof signoffEvents>>([]);
 
   async function handleCopy() {
     try {
@@ -239,15 +263,18 @@ export function ProgramDocumentPanel({
       });
       const data = await res.json();
       if (res.ok) {
-        setSignedOffJustNow({
+        setLocalSignoffEvents((prev) => [...prev, {
+          type: "signed",
           source: signoffSource.trim(),
           model_version: signoffModelVersion.trim() || null,
+          content_sha256: data.contentSha256,
           accepted_by_name: signoffName.trim(),
           accepted_by_role: signoffRole.trim(),
           note: signoffNote.trim() || null,
-          accepted_at: data.acceptedAt,
-        });
+          at: data.acceptedAt,
+        }]);
         setSignoffFormOpen(false);
+        setSignoffSource(""); setSignoffModelVersion(""); setSignoffName(""); setSignoffRole(""); setSignoffNote("");
       } else {
         setSignoffError(data.error ?? "Could not save that.");
       }
@@ -256,7 +283,52 @@ export function ProgramDocumentPanel({
     }
   }
 
-  const currentSignoff = signedOffJustNow ?? signoff ?? null;
+  async function handleWithdraw() {
+    if (!orderId || !documentKey || withdrawing) return;
+    if (!withdrawName.trim() || !withdrawRole.trim()) {
+      setWithdrawError("Name and role are both required.");
+      return;
+    }
+    if (!withdrawReason.trim()) {
+      setWithdrawError("Say why this is being withdrawn.");
+      return;
+    }
+    setWithdrawing(true);
+    setWithdrawError(null);
+    try {
+      const res = await fetch(`/api/program/${orderId}/withdraw-signoff`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          documentKey,
+          withdrawnByName: withdrawName,
+          withdrawnByRole: withdrawRole,
+          reason: withdrawReason,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setLocalSignoffEvents((prev) => [...prev, {
+          type: "withdrawn",
+          withdrawn_by_name: withdrawName.trim(),
+          withdrawn_by_role: withdrawRole.trim(),
+          reason: withdrawReason.trim(),
+          at: data.withdrawnAt,
+        }]);
+        setWithdrawFormOpen(false);
+        setWithdrawName(""); setWithdrawRole(""); setWithdrawReason("");
+      } else {
+        setWithdrawError(data.error ?? "Could not save that.");
+      }
+    } finally {
+      setWithdrawing(false);
+    }
+  }
+
+  const allSignoffEvents = [...(signoffEvents ?? []), ...localSignoffEvents];
+  const latestSignoffEvent = allSignoffEvents.length ? allSignoffEvents[allSignoffEvents.length - 1] : null;
+  const currentSignoff = latestSignoffEvent?.type === "signed" ? latestSignoffEvent : null;
+  const latestWithdrawal = latestSignoffEvent?.type === "withdrawn" ? latestSignoffEvent : null;
 
   const lastExercised = exercisedJustNow
     ? { at: exercisedJustNow.at, note: exercisedJustNow.note, by: exercisedJustNow.by, firstTime: exercisedJustNow.firstTime }
@@ -319,8 +391,19 @@ export function ProgramDocumentPanel({
       )}
 
       {currentSignoff && (
-        <p style={{ ...syne, fontSize: "11.5px", color: "rgba(74,222,128,0.85)", marginBottom: "0.9rem", lineHeight: 1.6 }}>
-          {`Certified by ${currentSignoff.accepted_by_name} (${currentSignoff.accepted_by_role}) on ${new Date(currentSignoff.accepted_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} as the source for something they signed off on — from "${currentSignoff.source}"${currentSignoff.model_version ? `, ${currentSignoff.model_version}` : ""}${currentSignoff.note ? ` — "${currentSignoff.note}"` : ""}`}
+        <div style={{ marginBottom: "0.9rem" }}>
+          <p style={{ ...syne, fontSize: "11.5px", color: "rgba(74,222,128,0.85)", lineHeight: 1.6 }}>
+            {`Certified by ${currentSignoff.accepted_by_name} (${currentSignoff.accepted_by_role}) on ${new Date(currentSignoff.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} as the source for something they signed off on — from "${currentSignoff.source}"${currentSignoff.model_version ? `, ${currentSignoff.model_version}` : ""}${currentSignoff.note ? ` — "${currentSignoff.note}"` : ""}`}
+          </p>
+          <p style={{ ...mono, fontSize: "10.5px", color: "rgba(74,222,128,0.5)", marginTop: "0.3rem" }}>
+            {`Content hash at certification: ${currentSignoff.content_sha256.slice(0, 16)}…`}
+          </p>
+        </div>
+      )}
+
+      {latestWithdrawal && (
+        <p style={{ ...syne, fontSize: "11.5px", color: "#facc15", marginBottom: "0.9rem", lineHeight: 1.6 }}>
+          {`Certification withdrawn by ${latestWithdrawal.withdrawn_by_name} (${latestWithdrawal.withdrawn_by_role}) on ${new Date(latestWithdrawal.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} — "${latestWithdrawal.reason}". The original certification stays in the record, not deleted.`}
         </p>
       )}
 
@@ -425,7 +508,97 @@ export function ProgramDocumentPanel({
             Certify this as a source I'm signing off on
           </button>
         )}
+
+        {orderId && documentKey && currentSignoff && !withdrawFormOpen && (
+          <button
+            onClick={() => setWithdrawFormOpen(true)}
+            style={{
+              background: "transparent",
+              color: "#facc15",
+              border: "1px solid rgba(250,204,21,0.4)",
+              ...syne,
+              fontSize: "0.85rem",
+              fontWeight: 700,
+              padding: "10px 22px",
+              borderRadius: "9999px",
+              cursor: "pointer",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Withdraw this certification
+          </button>
+        )}
       </div>
+
+      {withdrawFormOpen && (
+        <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(250,204,21,0.25)", background: "rgba(250,204,21,0.04)" }}>
+          <p style={{ ...syne, fontSize: "11.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+            This doesn&apos;t delete the original certification — it adds a new, dated event on top of it. Both stay in the record.
+          </p>
+          <div style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+            <input
+              type="text"
+              value={withdrawName}
+              onChange={(e) => setWithdrawName(e.target.value)}
+              maxLength={200}
+              placeholder="Your name"
+              style={{
+                flex: 1, ...syne, fontSize: "13px", color: "#F4F1EA",
+                background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "8px", padding: "10px 12px",
+              }}
+            />
+            <input
+              type="text"
+              value={withdrawRole}
+              onChange={(e) => setWithdrawRole(e.target.value)}
+              maxLength={200}
+              placeholder="Your role, right now"
+              style={{
+                flex: 1, ...syne, fontSize: "13px", color: "#F4F1EA",
+                background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "8px", padding: "10px 12px",
+              }}
+            />
+          </div>
+          <textarea
+            value={withdrawReason}
+            onChange={(e) => setWithdrawReason(e.target.value)}
+            maxLength={1000}
+            placeholder="Why is this being withdrawn?"
+            style={{
+              width: "100%", minHeight: "60px", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", resize: "vertical", marginBottom: "0.75rem",
+            }}
+          />
+          {withdrawError && (
+            <p style={{ ...syne, fontSize: "11.5px", color: "#ef4444", marginBottom: "0.75rem" }}>{withdrawError}</p>
+          )}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button
+              onClick={handleWithdraw}
+              disabled={withdrawing}
+              style={{
+                background: "#facc15", color: "#0A1628", border: "none", ...syne, fontSize: "0.82rem",
+                fontWeight: 700, padding: "9px 20px", borderRadius: "9999px",
+                cursor: withdrawing ? "default" : "pointer", opacity: withdrawing ? 0.6 : 1,
+              }}
+            >
+              {withdrawing ? "Saving…" : "Withdraw"}
+            </button>
+            <button
+              onClick={() => { setWithdrawFormOpen(false); setWithdrawError(null); }}
+              style={{
+                background: "transparent", color: "rgba(255,255,255,0.5)", border: "none", ...syne,
+                fontSize: "0.82rem", fontWeight: 700, padding: "9px 12px", cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {signoffFormOpen && (
         <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(74,222,128,0.25)", background: "rgba(74,222,128,0.04)" }}>

@@ -6,7 +6,7 @@ import { ProgramDocumentPanel } from "@/components/program/ProgramDocumentPanel"
 import { ProgramGeneratingStatus } from "@/components/program/ProgramGeneratingStatus";
 import { ProgramRetryButton } from "@/components/program/ProgramRetryButton";
 import { ProgramLetterGrade } from "@/components/program/ProgramLetterGrade";
-import { DOCUMENT_LABELS } from "@/lib/program-documents";
+import { DOCUMENT_LABELS, type SignoffEvent } from "@/lib/program-documents";
 import type { FinancialSnapshot } from "@/lib/program-financial";
 import type { RegulatoryMappingRow } from "@/lib/program-regulatory-mapping";
 import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-risk-register";
@@ -209,9 +209,7 @@ export default async function ProgramDeliveryPage({
                 : null;
               const docReviewEntry = (order.document_reviews as DocumentReviews | null)?.[doc.key];
               const currentEntry = (order.current_documents as Record<string, { note: string; updated_at: string }> | null)?.[doc.key];
-              const signoffEntry = (order.artifact_signoffs as Record<string, {
-                source: string; model_version: string | null; accepted_by_name: string; accepted_by_role: string; note: string | null; accepted_at: string;
-              }> | null)?.[doc.key];
+              const signoffEvents = (order.artifact_signoffs as Record<string, SignoffEvent[]> | null)?.[doc.key] ?? [];
               return (
                 <ProgramDocumentPanel
                   key={doc.key}
@@ -232,7 +230,7 @@ export default async function ProgramDeliveryPage({
                   exerciseNote={docReviewEntry?.exercise_note}
                   exercisedBy={docReviewEntry?.exercised_by}
                   exercisedFirstTime={docReviewEntry?.exercised_first_time}
-                  signoff={signoffEntry}
+                  signoffEvents={signoffEvents}
                 />
               );
             })}

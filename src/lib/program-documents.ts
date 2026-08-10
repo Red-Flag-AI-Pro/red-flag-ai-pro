@@ -426,6 +426,31 @@ export const DOCUMENT_LABELS: { key: keyof ProgramDocumentBundle; label: string 
   { key: "documentation", label: "Annex IV technical documentation draft" },
 ];
 
+// Brad Wolfe, 10 Aug 2026: append-only, so a signoff is never overwritten,
+// only ever added to. A "signed" event is the certification itself,
+// including a hash of the document content at that exact moment -- name and
+// date alone invite an argument over what was actually certified, the hash
+// answers it. A "withdrawn" event doesn't remove the signed event it
+// reverses, it's a new, later fact sitting alongside it.
+export type SignoffEvent =
+  | {
+      type: "signed";
+      source: string;
+      model_version: string | null;
+      content_sha256: string;
+      accepted_by_name: string;
+      accepted_by_role: string;
+      note: string | null;
+      at: string;
+    }
+  | {
+      type: "withdrawn";
+      withdrawn_by_name: string;
+      withdrawn_by_role: string;
+      reason: string;
+      at: string;
+    };
+
 export function generateAllProgramDocuments(intake: {
   companyName: string;
   systemName: string;
