@@ -100,6 +100,15 @@ export interface BoundaryAuthorizationRecord {
   decision: string;
   owner_name: string;
   owner_role: string;
+  // Brad Wolfe, "The CEO's New Job" thread, 10 Aug 2026: "the person has to
+  // be told. A seat named in a minute nobody circulated is not
+  // accountability, it is a document that will be produced later at a
+  // worse moment." Same mechanism as required_by and completion
+  // confirmation, a token gating a link only the named owner acts on.
+  owner_confirmed_token: string | null;
+  owner_confirmed_at: string | null;
+  owner_confirmed_name: string | null;
+  owner_confirmed_email: string | null;
   options_considered: BoundaryOption[];
   risks_accepted: BoundaryRisk[];
   evidence: BoundaryEvidence[];

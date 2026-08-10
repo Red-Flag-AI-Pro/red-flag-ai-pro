@@ -221,6 +221,86 @@ function CompletionConfirmation({ record }: { record: BoundaryAuthorizationRecor
   );
 }
 
+// Brad Wolfe, "The CEO's New Job" thread, 10 Aug 2026: "the person has to be
+// told. A seat named in a minute nobody circulated is not accountability,
+// it is a document that will be produced later at a worse moment." Same
+// pattern as RequiredByConfirmation/CompletionConfirmation, a link only the
+// named owner acts on.
+function OwnerConfirmation({ record }: { record: BoundaryAuthorizationRecord }) {
+  const [link, setLink] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (record.owner_confirmed_at) {
+    return (
+      <p className="text-xs text-emerald-300">
+        ✓ Seat confirmed by {record.owner_confirmed_name} on{" "}
+        {new Date(record.owner_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+        {" "}— they know they hold it, not just named in a record they never saw.
+      </p>
+    );
+  }
+
+  async function requestLink() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/boundary-records/${record.id}/request-owner-confirmation`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Could not create the link.");
+        return;
+      }
+      setLink(data.confirm_url);
+    } catch {
+      setError("Could not create the link.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function copy() {
+    if (!link) return;
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard not available — link is selectable regardless
+    }
+  }
+
+  if (link) {
+    return (
+      <div className="mt-1">
+        <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">
+          Send this to {record.owner_name || "them"} yourself, only they can confirm it:
+        </p>
+        <div className="flex items-center gap-2 flex-wrap">
+          <code className="text-xs bg-black/30 border border-white/10 rounded px-2 py-1 text-[#C9A66B] break-all">{link}</code>
+          <button onClick={copy} className="text-xs px-2 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5">
+            {copied ? "Copied ✓" : "Copy"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-1">
+      <button
+        onClick={requestLink}
+        disabled={loading}
+        className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
+      >
+        {loading ? "Creating link…" : "Confirm the named owner actually knows"}
+      </button>
+      {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+    </div>
+  );
+}
+
 function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: BoundaryAuthorizationRecord) => void; existingRecords: BoundaryAuthorizationRecord[] }) {
   const [decision, setDecision] = useState("");
   const [ownerName, setOwnerName] = useState("");
@@ -1049,6 +1129,9 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                 ? <span className="text-[rgba(244,241,234,0.5)]">Self assigned — no separate party named who put this owner in the seat.</span>
                 : <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>}
             </p>
+            <div className="mt-1.5">
+              <OwnerConfirmation record={record} />
+            </div>
           </div>
 
           {supersededRecord && (
