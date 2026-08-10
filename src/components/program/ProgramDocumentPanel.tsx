@@ -44,6 +44,7 @@ export function ProgramDocumentPanel({
   exerciseNote,
   exercisedBy,
   exercisedFirstTime,
+  signoff,
 }: {
   number: string;
   title: string;
@@ -78,6 +79,22 @@ export function ProgramDocumentPanel({
   // whether the exercise resembled the real event, not just that it happened.
   exercisedBy?: string;
   exercisedFirstTime?: boolean;
+  // Brad Wolfe, "How to let finance use AI and still be able to sign," 10 Aug
+  // 2026: a different granularity to everything above. Reviewed/exercised
+  // are about whether the document itself still holds up. This is about
+  // whether a specific named person is certifying THIS document as the
+  // source for a number they're signing off on elsewhere. Deliberately not
+  // shown as a badge on every document -- his own warning kept: it should
+  // stay rare, applied only where a customer is actually certifying
+  // something, not routine activity.
+  signoff?: {
+    source: string;
+    model_version: string | null;
+    accepted_by_name: string;
+    accepted_by_role: string;
+    note: string | null;
+    accepted_at: string;
+  } | null;
 }) {
   const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
@@ -94,6 +111,17 @@ export function ProgramDocumentPanel({
   const [exercising, setExercising] = useState(false);
   const [exercisedJustNow, setExercisedJustNow] = useState<{ at: string; note: string; by: string; firstTime: boolean } | null>(null);
   const [exerciseError, setExerciseError] = useState<string | null>(null);
+  const [signoffFormOpen, setSignoffFormOpen] = useState(false);
+  const [signoffSource, setSignoffSource] = useState("");
+  const [signoffModelVersion, setSignoffModelVersion] = useState("");
+  const [signoffName, setSignoffName] = useState("");
+  const [signoffRole, setSignoffRole] = useState("");
+  const [signoffNote, setSignoffNote] = useState("");
+  const [signingOff, setSigningOff] = useState(false);
+  const [signoffError, setSignoffError] = useState<string | null>(null);
+  const [signedOffJustNow, setSignedOffJustNow] = useState<{
+    source: string; model_version: string | null; accepted_by_name: string; accepted_by_role: string; note: string | null; accepted_at: string;
+  } | null>(null);
 
   async function handleCopy() {
     try {
@@ -184,6 +212,52 @@ export function ProgramDocumentPanel({
     }
   }
 
+  async function handleSignOff() {
+    if (!orderId || !documentKey || signingOff) return;
+    if (!signoffSource.trim()) {
+      setSignoffError("Say what source this came from.");
+      return;
+    }
+    if (!signoffName.trim() || !signoffRole.trim()) {
+      setSignoffError("Name and role are both required — the role is what gets frozen at this moment.");
+      return;
+    }
+    setSigningOff(true);
+    setSignoffError(null);
+    try {
+      const res = await fetch(`/api/program/${orderId}/sign-off-artifact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          documentKey,
+          source: signoffSource,
+          modelVersion: signoffModelVersion,
+          acceptedByName: signoffName,
+          acceptedByRole: signoffRole,
+          note: signoffNote,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSignedOffJustNow({
+          source: signoffSource.trim(),
+          model_version: signoffModelVersion.trim() || null,
+          accepted_by_name: signoffName.trim(),
+          accepted_by_role: signoffRole.trim(),
+          note: signoffNote.trim() || null,
+          accepted_at: data.acceptedAt,
+        });
+        setSignoffFormOpen(false);
+      } else {
+        setSignoffError(data.error ?? "Could not save that.");
+      }
+    } finally {
+      setSigningOff(false);
+    }
+  }
+
+  const currentSignoff = signedOffJustNow ?? signoff ?? null;
+
   const lastExercised = exercisedJustNow
     ? { at: exercisedJustNow.at, note: exercisedJustNow.note, by: exercisedJustNow.by, firstTime: exercisedJustNow.firstTime }
     : exercisedAt
@@ -241,6 +315,12 @@ export function ProgramDocumentPanel({
           {lastExercised
             ? `Last exercised ${new Date(lastExercised.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} by ${lastExercised.by || "someone unnamed"}${lastExercised.firstTime ? ", their first time running it" : ", who had run it before"}${lastExercised.note ? ` — "${lastExercised.note}"` : ""}`
             : "Never exercised end to end. Reviewed is not the same as run."}
+        </p>
+      )}
+
+      {currentSignoff && (
+        <p style={{ ...syne, fontSize: "11.5px", color: "rgba(74,222,128,0.85)", marginBottom: "0.9rem", lineHeight: 1.6 }}>
+          {`Certified by ${currentSignoff.accepted_by_name} (${currentSignoff.accepted_by_role}) on ${new Date(currentSignoff.accepted_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} as the source for something they signed off on — from "${currentSignoff.source}"${currentSignoff.model_version ? `, ${currentSignoff.model_version}` : ""}${currentSignoff.note ? ` — "${currentSignoff.note}"` : ""}`}
         </p>
       )}
 
@@ -325,7 +405,121 @@ export function ProgramDocumentPanel({
             Log an exercise
           </button>
         )}
+
+        {orderId && documentKey && !signoffFormOpen && !currentSignoff && (
+          <button
+            onClick={() => setSignoffFormOpen(true)}
+            style={{
+              background: "transparent",
+              color: "rgba(74,222,128,0.85)",
+              border: "1px solid rgba(74,222,128,0.35)",
+              ...syne,
+              fontSize: "0.85rem",
+              fontWeight: 700,
+              padding: "10px 22px",
+              borderRadius: "9999px",
+              cursor: "pointer",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Certify this as a source I'm signing off on
+          </button>
+        )}
       </div>
+
+      {signoffFormOpen && (
+        <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(74,222,128,0.25)", background: "rgba(74,222,128,0.04)" }}>
+          <p style={{ ...syne, fontSize: "11.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+            Different from the review confirmation above. This is a named person certifying THIS document as the source for a specific number, filing, or decision they&apos;re signing off on elsewhere. Keep this rare — it should only mark the few documents that actually feed something you certify, not routine activity.
+          </p>
+          <input
+            type="text"
+            value={signoffSource}
+            onChange={(e) => setSignoffSource(e.target.value)}
+            maxLength={300}
+            placeholder="What source did this come from? e.g. Q3 board pack, filed accessibility statement"
+            style={{
+              width: "100%", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", marginBottom: "0.75rem",
+            }}
+          />
+          <input
+            type="text"
+            value={signoffModelVersion}
+            onChange={(e) => setSignoffModelVersion(e.target.value)}
+            maxLength={200}
+            placeholder="Which model/version produced it, if AI assisted (optional)"
+            style={{
+              width: "100%", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", marginBottom: "0.75rem",
+            }}
+          />
+          <div style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
+            <input
+              type="text"
+              value={signoffName}
+              onChange={(e) => setSignoffName(e.target.value)}
+              maxLength={200}
+              placeholder="Your name"
+              style={{
+                flex: 1, ...syne, fontSize: "13px", color: "#F4F1EA",
+                background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "8px", padding: "10px 12px",
+              }}
+            />
+            <input
+              type="text"
+              value={signoffRole}
+              onChange={(e) => setSignoffRole(e.target.value)}
+              maxLength={200}
+              placeholder="Your role, right now"
+              style={{
+                flex: 1, ...syne, fontSize: "13px", color: "#F4F1EA",
+                background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: "8px", padding: "10px 12px",
+              }}
+            />
+          </div>
+          <textarea
+            value={signoffNote}
+            onChange={(e) => setSignoffNote(e.target.value)}
+            maxLength={1000}
+            placeholder="What are you accepting, specifically? (optional)"
+            style={{
+              width: "100%", minHeight: "60px", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", resize: "vertical", marginBottom: "0.75rem",
+            }}
+          />
+          {signoffError && (
+            <p style={{ ...syne, fontSize: "11.5px", color: "#ef4444", marginBottom: "0.75rem" }}>{signoffError}</p>
+          )}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button
+              onClick={handleSignOff}
+              disabled={signingOff}
+              style={{
+                background: "rgba(74,222,128,0.85)", color: "#0A1628", border: "none", ...syne, fontSize: "0.82rem",
+                fontWeight: 700, padding: "9px 20px", borderRadius: "9999px",
+                cursor: signingOff ? "default" : "pointer", opacity: signingOff ? 0.6 : 1,
+              }}
+            >
+              {signingOff ? "Saving…" : "Certify"}
+            </button>
+            <button
+              onClick={() => { setSignoffFormOpen(false); setSignoffError(null); }}
+              style={{
+                background: "transparent", color: "rgba(255,255,255,0.5)", border: "none", ...syne,
+                fontSize: "0.82rem", fontWeight: 700, padding: "9px 12px", cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {changeFormOpen && (
         <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(201,166,107,0.25)", background: "rgba(201,166,107,0.04)" }}>

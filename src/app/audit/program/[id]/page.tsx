@@ -209,6 +209,9 @@ export default async function ProgramDeliveryPage({
                 : null;
               const docReviewEntry = (order.document_reviews as DocumentReviews | null)?.[doc.key];
               const currentEntry = (order.current_documents as Record<string, { note: string; updated_at: string }> | null)?.[doc.key];
+              const signoffEntry = (order.artifact_signoffs as Record<string, {
+                source: string; model_version: string | null; accepted_by_name: string; accepted_by_role: string; note: string | null; accepted_at: string;
+              }> | null)?.[doc.key];
               return (
                 <ProgramDocumentPanel
                   key={doc.key}
@@ -229,6 +232,7 @@ export default async function ProgramDeliveryPage({
                   exerciseNote={docReviewEntry?.exercise_note}
                   exercisedBy={docReviewEntry?.exercised_by}
                   exercisedFirstTime={docReviewEntry?.exercised_first_time}
+                  signoff={signoffEntry}
                 />
               );
             })}
