@@ -122,13 +122,66 @@ export default function ComparePage() {
         </div>
       </section>
 
+      {/* NAMED COMPARISONS */}
+      <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem", textAlign: "center" }}>The sensible choice</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem", color: "#F4F1EA", textAlign: "center" }}>
+            Named, factual, checkable against each one
+          </h2>
+          <p style={{ ...syne, fontSize: "13.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "620px", margin: "0 auto 3rem", textAlign: "center" }}>
+            Every claim below is specific enough to be wrong. If one of these is out of date, tell us and we will fix it.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5px" }}>
+            {[
+              {
+                name: "Tipcan / AI Compliance Hub",
+                body: "Tipcan's AI Compliance Hub covers ISO 42001 governance and audit trail at €99/year, and does not check marketing copy for compliance risk.",
+                verdict: "Red Flag AI Pro covers both, scanning across 10 jurisdictions and 30 risk categories plus governance records with independent timestamping, from £149/month.",
+              },
+              {
+                name: "KairoNull",
+                body: "KairoNull sells AI governance evidence infrastructure to financial services and government at $2,000/month to $500,000/year, sales-led only, no self-serve signup.",
+                verdict: "Red Flag AI Pro is self-serve from £149/month, no call required, and checks marketing copy for compliance risk, which KairoNull does not do.",
+              },
+              {
+                name: "Acta AI (Vantages)",
+                body: "Acta AI generates and holds its own governance evidence entirely inside its own infrastructure.",
+                verdict: "Red Flag AI Pro's records are sealed internally and witnessed by an independent, external party, so a copy exists outside our own systems too.",
+              },
+              {
+                name: "EthicVault and Govrnix",
+                body: "EthicVault and Govrnix both work in real time, blocking or checking an AI action as it happens.",
+                verdict: "Red Flag AI Pro proves what was authorized, when, and whether that authorization was still valid after the fact, a different job, and one you can set up today without touching your AI system's live path.",
+              },
+              {
+                name: "SimplyComplai",
+                body: "SimplyComplai offers a free EU AI Act scan that leads to a sales call, covers one jurisdiction, and publishes no pricing beyond the free scan.",
+                verdict: "Red Flag AI Pro publishes its pricing (£149 to £1,200/month, or custom), covers 10 jurisdictions, and needs no call to buy.",
+              },
+            ].map((item) => (
+              <div key={item.name} style={{
+                background: "#102943",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderLeft: "3px solid rgba(255,255,255,0.15)",
+                padding: "1.75rem 2rem",
+              }}>
+                <h3 style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.55)", marginBottom: "0.6rem", letterSpacing: "0.01em" }}>vs {item.name}</h3>
+                <p style={{ ...syne, fontSize: "13.5px", color: "rgba(255,255,255,0.45)", lineHeight: 1.75, marginBottom: "0.75rem" }}>{item.body}</p>
+                <p style={{ ...syne, fontSize: "13.5px", color: "#F4F1EA", lineHeight: 1.75, fontWeight: 600 }}>{item.verdict}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHEAPER */}
       <section style={{ padding: "6rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "3rem", textAlign: "center" }}>Why cheaper</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
-              { title: "Software, not consultants", body: "Enterprise tools charge for account managers, onboarding specialists and support teams. We built software that does the work. No overhead means lower prices." },
+              { title: "Software, not consultants", body: "Enterprise tools like Red Marker charge £2,000 to £10,000 a month for account managers, onboarding specialists and support teams. We built software that does the work instead. No overhead means lower prices." },
               { title: "Built for speed", body: "60 seconds to check, same day to set up. No onboarding calls, no implementation projects, no change management. You log in and it works." },
               { title: "Built from experience", body: "This was built by someone who needed it and couldn't afford the alternative. The pricing reflects that. It always will." },
             ].map((item, i) => (
