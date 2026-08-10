@@ -1416,7 +1416,7 @@ const SHORT_QUESTION_IDS = [
   'strat_1', 'strat_2',
   'tool_1', 'tool_5',
   'policy_1', 'policy_3',
-  'monitor_1', 'monitor_2',
+  'monitor_2', 'monitor_7',
   'vendor_1', 'vendor_3',
   'reg_1', 'reg_3',
 ];
