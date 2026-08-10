@@ -765,6 +765,40 @@ export const MONITORING_QUESTIONS = [
       },
     ],
   },
+  {
+    // Dr M Maruf Hossain, LinkedIn 10 Aug 2026: a maturity score that averages
+    // six dimensions can rise while the one thing that actually takes you out
+    // sits untouched. Checked this quiz against his exact example before
+    // adding this: the only stop-authority question anywhere in it (vendor_5)
+    // asks about a VENDOR's kill switch, never the organisation's own. A
+    // company could score well everywhere here and still have nothing to
+    // interrupt its own AI mid-run.
+    id: 'monitor_7',
+    dimension: 'monitoring_accountability' as const,
+    question: 'If your own AI system needed to be stopped mid run, not just paused before its next decision, could you actually do that, and has it ever been tested?',
+    options: [
+      {
+        text: 'No kill switch, we\'d have to find whoever built it and hope they\'re reachable',
+        riskPoints: 3,
+        context: 'Critical: stop authority exists in theory, not in practice',
+      },
+      {
+        text: 'One exists somewhere but has never actually been tested',
+        riskPoints: 2,
+        context: 'Untested controls fail exactly when they\'re needed',
+      },
+      {
+        text: 'Tested once, when it was first built',
+        riskPoints: 1,
+        context: 'Partial: confirmed once is not confirmed it still works',
+      },
+      {
+        text: 'Tested and drilled on a schedule, confirmed working',
+        riskPoints: 0,
+        context: 'Strong: a real, exercised capability, not an assumption',
+      },
+    ],
+  },
 ];
 
 // ============================================================
