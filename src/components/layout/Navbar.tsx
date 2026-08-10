@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 interface NavbarProps {
   isAuthenticated?: boolean;
@@ -12,11 +11,19 @@ interface NavbarProps {
 
 export function Navbar({ isAuthenticated }: NavbarProps) {
   const router = useRouter();
-  const supabase = createClient();
   const [menuOpen, setMenuOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
 
+  // Loaded on demand, not bundled into every page view: Navbar renders on
+  // every route including anonymous lead-gen pages, where almost nobody is
+  // signed in and this handler never runs. Statically importing the
+  // Supabase client here shipped the whole SDK to every visitor just in
+  // case, found via a real RES investigation, /governance-audit alone
+  // carried a 212KB chunk that was this client, unused by 100% of the
+  // anonymous traffic it was served to.
   async function handleSignOut() {
+    const { createClient } = await import("@/lib/supabase/client");
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/");
     router.refresh();
