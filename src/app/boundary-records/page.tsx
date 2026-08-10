@@ -1099,11 +1099,11 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
 
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Who required this</p>
-            {record.required_by_name || record.required_by_organisation ? (
+            {(record.required_by_name && record.required_by_name !== "Self imposed") || record.required_by_organisation ? (
               <div>
                 <p className="text-sm text-[rgba(244,241,234,0.8)] mb-1">
-                  {record.required_by_name}
-                  {record.required_by_name && record.required_by_organisation ? ", " : ""}
+                  {record.required_by_name !== "Self imposed" ? record.required_by_name : ""}
+                  {record.required_by_name && record.required_by_name !== "Self imposed" && record.required_by_organisation ? ", " : ""}
                   {record.required_by_organisation}
                   {" "}— a real condition someone outside is holding this account to.
                 </p>
