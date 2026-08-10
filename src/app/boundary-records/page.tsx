@@ -1109,9 +1109,17 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                 </p>
                 <RequiredByConfirmation record={record} />
               </div>
-            ) : (
+            ) : record.required_by_name === "Self imposed" ? (
               <p className="text-sm text-[rgba(244,241,234,0.5)]">
                 Self imposed — nobody outside required this. A real limit, but a volunteered one, not a condition.
+              </p>
+            ) : (
+              // Brad Wolfe, 10 Aug 2026: sealed before this field existed. Writing
+              // "Self imposed" here would assert a fact about a moment nothing was
+              // actually captured — a different claim from a genuine disclosure,
+              // and has to read as a different claim.
+              <p className="text-sm text-[rgba(244,241,234,0.4)] italic">
+                Not recorded — sealed before this was captured. Not the same as self imposed.
               </p>
             )}
           </div>
@@ -1125,9 +1133,15 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               )}
             </p>
             <p className="text-sm text-[rgba(244,241,234,0.8)] mt-1">
-              {!record.named_by_name || record.named_by_name === "Self assigned"
+              {record.named_by_name === "Self assigned"
                 ? <span className="text-[rgba(244,241,234,0.5)]">Self assigned — no separate party named who put this owner in the seat.</span>
-                : <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>}
+                : record.named_by_name
+                  ? <>Named to this seat by: {record.named_by_name}{record.named_by_role ? ` (${record.named_by_role})` : ""}.</>
+                  // Brad Wolfe, 10 Aug 2026: sealed before this field existed. A
+                  // genuine "self assigned" disclosure and a gap in what was
+                  // ever captured are different claims and have to read as
+                  // different claims, not the same rendered label.
+                  : <span className="text-[rgba(244,241,234,0.4)] italic">Not recorded — sealed before this was captured. Not the same as self assigned.</span>}
             </p>
             <div className="mt-1.5">
               <OwnerConfirmation record={record} />
