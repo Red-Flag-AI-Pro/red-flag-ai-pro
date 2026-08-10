@@ -34,6 +34,9 @@ export function ProgramDocumentPanel({
   documentKey,
   dueAt,
   stale,
+  sealedAt,
+  currentNote,
+  currentUpdatedAt,
   exercisable,
   exercisedAt,
   exerciseNote,
@@ -47,6 +50,13 @@ export function ProgramDocumentPanel({
   documentKey?: string;
   dueAt?: string;
   stale?: boolean;
+  // Task #281, corrected 10 Aug 2026 per Brad Wolfe: the sealed original
+  // (this content, frozen since sealedAt) and the current status (matches
+  // sealed, or diverged with a note) are two different facts now, not one
+  // flag on one artifact.
+  sealedAt?: string;
+  currentNote?: string;
+  currentUpdatedAt?: string;
   // Task #292, Brad Wolfe "standby capacity" post: reviewed and exercised
   // are different facts. Only the incident checklist gets this, it's the
   // one document that's genuinely a plan meant to be run, not just context.
@@ -61,6 +71,11 @@ export function ProgramDocumentPanel({
   const [copied, setCopied] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [confirmedJustNow, setConfirmedJustNow] = useState(false);
+  const [changeFormOpen, setChangeFormOpen] = useState(false);
+  const [changeDraft, setChangeDraft] = useState("");
+  const [markingChanged, setMarkingChanged] = useState(false);
+  const [changeError, setChangeError] = useState<string | null>(null);
+  const [divergedJustNow, setDivergedJustNow] = useState<{ note: string; at: string } | null>(null);
   const [exerciseFormOpen, setExerciseFormOpen] = useState(false);
   const [exerciseDraft, setExerciseDraft] = useState("");
   const [exercisedByDraft, setExercisedByDraft] = useState("");
@@ -91,6 +106,33 @@ export function ProgramDocumentPanel({
       if (res.ok) setConfirmedJustNow(true);
     } finally {
       setConfirming(false);
+    }
+  }
+
+  async function handleMarkChanged() {
+    if (!orderId || !documentKey || markingChanged) return;
+    if (!changeDraft.trim()) {
+      setChangeError("Say what changed since the sealed original — that's what makes this a real divergence, not a guess.");
+      return;
+    }
+    setMarkingChanged(true);
+    setChangeError(null);
+    try {
+      const res = await fetch(`/api/program/${orderId}/confirm-review`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ documentKey, changed: true, note: changeDraft.trim() }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setDivergedJustNow({ note: changeDraft.trim(), at: data.reviewedAt });
+        setChangeFormOpen(false);
+        setChangeDraft("");
+      } else {
+        setChangeError(data.error ?? "Could not save that.");
+      }
+    } finally {
+      setMarkingChanged(false);
     }
   }
 
@@ -153,6 +195,18 @@ export function ProgramDocumentPanel({
         {content}
       </pre>
 
+      {sealedAt && (
+        <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginBottom: "0.5rem", lineHeight: 1.6 }}>
+          Sealed original — delivered {new Date(sealedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}, hash verified, this text never changes.
+        </p>
+      )}
+
+      {(divergedJustNow || currentNote) && (
+        <p style={{ ...syne, fontSize: "11.5px", color: "#C9A66B", marginBottom: "0.9rem", lineHeight: 1.6 }}>
+          {`Current status: diverged from the sealed original since ${new Date((divergedJustNow ?? { at: currentUpdatedAt! }).at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} — "${(divergedJustNow ?? { note: currentNote! }).note}"`}
+        </p>
+      )}
+
       {dueAt && (
         <p style={{ ...syne, fontSize: "11.5px", color: (stale && !confirmedJustNow) ? "#facc15" : "rgba(255,255,255,0.4)", marginBottom: "0.9rem", lineHeight: 1.6 }}>
           {confirmedJustNow
@@ -209,7 +263,27 @@ export function ProgramDocumentPanel({
               opacity: confirming ? 0.6 : 1,
             }}
           >
-            {confirming ? "Confirming…" : "Confirm still accurate"}
+            {confirming ? "Confirming…" : "Confirm current version matches sealed original"}
+          </button>
+        )}
+
+        {orderId && documentKey && !changeFormOpen && !divergedJustNow && !currentNote && (
+          <button
+            onClick={() => setChangeFormOpen(true)}
+            style={{
+              background: "transparent",
+              color: "#C9A66B",
+              border: "1px solid rgba(201,166,107,0.4)",
+              ...syne,
+              fontSize: "0.85rem",
+              fontWeight: 700,
+              padding: "10px 22px",
+              borderRadius: "9999px",
+              cursor: "pointer",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Mark as changed since delivery
           </button>
         )}
 
@@ -233,6 +307,50 @@ export function ProgramDocumentPanel({
           </button>
         )}
       </div>
+
+      {changeFormOpen && (
+        <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(201,166,107,0.25)", background: "rgba(201,166,107,0.04)" }}>
+          <p style={{ ...syne, fontSize: "11.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+            The sealed original above stays exactly as delivered — it&apos;s proof of what was agreed on the day. This note is separate: what&apos;s actually true now, since something changed.
+          </p>
+          <textarea
+            value={changeDraft}
+            onChange={(e) => setChangeDraft(e.target.value)}
+            maxLength={2000}
+            placeholder="e.g. Escalation contact changed, updated in our own process, sealed document not reissued."
+            style={{
+              width: "100%", minHeight: "80px", ...syne, fontSize: "13px", color: "#F4F1EA",
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "8px", padding: "10px 12px", resize: "vertical", marginBottom: "0.75rem",
+            }}
+          />
+          {changeError && (
+            <p style={{ ...syne, fontSize: "11.5px", color: "#ef4444", marginBottom: "0.75rem" }}>{changeError}</p>
+          )}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button
+              onClick={handleMarkChanged}
+              disabled={markingChanged}
+              style={{
+                background: "#C9A66B", color: "#0A1628", border: "none", ...syne, fontSize: "0.82rem",
+                fontWeight: 700, padding: "9px 20px", borderRadius: "9999px",
+                cursor: markingChanged ? "default" : "pointer", opacity: markingChanged ? 0.6 : 1,
+              }}
+            >
+              {markingChanged ? "Saving…" : "Save current status"}
+            </button>
+            <button
+              onClick={() => { setChangeFormOpen(false); setChangeError(null); }}
+              style={{
+                background: "transparent", color: "rgba(255,255,255,0.5)", border: "none", ...syne,
+                fontSize: "0.82rem", fontWeight: 700, padding: "9px 12px", cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {exerciseFormOpen && (
         <div style={{ marginTop: "1rem", padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(201,166,107,0.25)", background: "rgba(201,166,107,0.04)" }}>

@@ -36,7 +36,7 @@ export async function POST() {
       .eq("user_id", user.id),
     supabase
       .from("program_orders")
-      .select("id, letter_grade, letter_grade_score, letter_grade_capped, letter_grade_not_started_count, delivered_at, seal_id, document_reviews")
+      .select("id, letter_grade, letter_grade_score, letter_grade_capped, letter_grade_not_started_count, delivered_at, seal_id, document_reviews, current_documents")
       .eq("user_id", user.id)
       .eq("status", "delivered"),
     supabase
@@ -83,12 +83,20 @@ export async function POST() {
     // the evidence it was based on.
     program_orders: programOrders.map((o) => {
       const reviews = o.document_reviews as DocumentReviews | null;
+      const currentDocs = o.current_documents as Record<string, { note: string; updated_at: string }> | null;
       const current: string[] = [];
       const excludedStale: string[] = [];
+      const diverged: string[] = [];
       if (o.delivered_at) {
         for (const doc of DOCUMENT_LABELS) {
           const status = getDocumentReviewStatus(doc.key, o.delivered_at, reviews);
           (status.stale ? excludedStale : current).push(doc.label);
+          // Task #281 correction (Brad Wolfe, 10 Aug 2026): a document marked
+          // changed since the sealed original is a different fact from
+          // staleness -- it's known to differ, not just unconfirmed. Reported
+          // by name so a diligence reader sees exactly what moved, not a
+          // silent "current" label sitting on content that's known stale.
+          if (currentDocs?.[doc.key]) diverged.push(doc.label);
         }
       }
       const liveGrade =
@@ -111,6 +119,7 @@ export async function POST() {
         sealed: Boolean(o.seal_id),
         documents_included: current,
         documents_excluded_stale: excludedStale,
+        documents_diverged: diverged,
       };
     }),
     governance_assessment: assessmentRes.data

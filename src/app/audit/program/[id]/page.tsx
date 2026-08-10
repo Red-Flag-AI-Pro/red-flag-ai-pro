@@ -197,7 +197,7 @@ export default async function ProgramDeliveryPage({
                 Each follows the exact structure of Red Flag&apos;s free tools, tailored to what you told us. None of these are legal advice or a substitute for review by counsel where one is warranted — see each document&apos;s own closing note.
               </p>
               <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
-                Being sealed proves a document hasn&apos;t been edited since delivery, it doesn&apos;t stop it going stale. Each carries its own review clock, six months for the two tied to how the system currently runs, twelve for the rest, confirm it&apos;s still accurate to reset it, or it drops out of any AI Governance Data Room export you run.
+                Two separate facts, not one. The text below is the sealed original — proof of what was agreed on delivery, it never changes. Whether it&apos;s still accurate is a different question: each document carries its own review clock (six months for the two tied to how the system currently runs, twelve for the rest), confirm it still matches to reset that clock, or mark it as changed if it doesn&apos;t. An unreviewed document past its date drops out of any AI Governance Data Room export you run.
               </p>
             </div>
 
@@ -208,6 +208,7 @@ export default async function ProgramDeliveryPage({
                 ? getDocumentReviewStatus(doc.key, order.delivered_at, order.document_reviews as DocumentReviews | null)
                 : null;
               const docReviewEntry = (order.document_reviews as DocumentReviews | null)?.[doc.key];
+              const currentEntry = (order.current_documents as Record<string, { note: string; updated_at: string }> | null)?.[doc.key];
               return (
                 <ProgramDocumentPanel
                   key={doc.key}
@@ -218,6 +219,9 @@ export default async function ProgramDeliveryPage({
                   documentKey={doc.key}
                   dueAt={review?.dueAt}
                   stale={review?.stale}
+                  sealedAt={order.sealed_at ?? undefined}
+                  currentNote={currentEntry?.note}
+                  currentUpdatedAt={currentEntry?.updated_at}
                   exercisable={doc.key === "incident_checklist"}
                   exercisedAt={docReviewEntry?.exercised_at}
                   exerciseNote={docReviewEntry?.exercise_note}
