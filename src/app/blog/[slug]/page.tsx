@@ -45,7 +45,7 @@ function renderContent(content: string) {
 
     if (line.startsWith("## ")) {
       elements.push(
-        <h2 key={key++} style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.4rem", fontWeight: 800, color: "white", marginTop: "3rem", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
+        <h2 key={key++} style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.4rem", fontWeight: 800, color: "#E5484D", marginTop: "3rem", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
           {line.replace("## ", "")}
         </h2>
       );
