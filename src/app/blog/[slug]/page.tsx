@@ -210,11 +210,11 @@ export default async function BlogPostPage({ params }: Props) {
             fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 800,
             letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
-            color: "#F4F1EA"
+            color: "#E5484D"
           }}>
             {post.title}
           </h1>
-          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "16px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
+          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "16px", color: "rgba(229,72,77,0.75)", lineHeight: 1.7 }}>
             {post.description}
           </p>
         </div>
