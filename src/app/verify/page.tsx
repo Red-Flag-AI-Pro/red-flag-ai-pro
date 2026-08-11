@@ -312,6 +312,10 @@ const HOW_IT_WORKS = [
     title: "A green tick means nothing has changed since sealing",
     body: "Not one word, not one date. If even a single character had been edited, deleted, or backdated, the seal would no longer match, and this page would show it broken instead.",
   },
+  {
+    title: "What it does not mean: that the decision itself was right",
+    body: "The seal proves the record is exactly as it was written. It does not prove the decision inside it was correct, and on its own it does not prove the person named as owner actually held that authority, that is what the owner's own confirmation link is for, a separate, independent step. Most systems that show you a cryptographic signature let you assume it covers all of that. It does not, here or anywhere.",
+  },
 ];
 
 const OFFER_CARDS = [

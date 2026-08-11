@@ -139,6 +139,9 @@ export default function BoundaryAuthorizationRecordsPage() {
         <P>
           Tampering isn&apos;t made impossible. It&apos;s made detectable. Those are different claims, and only one of them is true of any system, including this one. Try it yourself below, or check any specific record at <a href="/verify" style={{ color: "#E5484D" }}>redflagaipro.com/verify</a>. The same mechanism also runs between independent companies on the <a href="/witness-network" style={{ color: "#E5484D" }}>Witness Network</a>.
         </P>
+        <P>
+          Worth being precise about what the seal covers. It proves this record has not been altered since it was written, and when it was written. It does not, by itself, prove the decision inside it was correct, and it does not prove the person named as owner actually held that authority, that is a separate fact, established by owner_confirmed_at above: their own confirmation, via a link only they can act on, not the account holder&apos;s word for it. A signature that only proves the record wasn&apos;t touched is a narrower claim than it looks. This one is built to be honest about the difference.
+        </P>
         <div style={{ marginTop: "2rem" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.9rem" }}>
             Try to break it
