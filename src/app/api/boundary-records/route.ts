@@ -388,6 +388,15 @@ export async function POST(request: Request) {
     }
   }
 
+  // Brad Wolfe, 11 Aug 2026: computed once here, from the sanitized arrays
+  // about to be inserted, so it reflects what was actually captured at
+  // signing rather than being inferred later from whatever the fields
+  // happen to hold at read time.
+  const sanitizedOptions = sanitizeOptions(body.options_considered);
+  const sanitizedRisks = sanitizeRisks(body.risks_accepted);
+  const sanitizedEvidence = sanitizeEvidence(body.evidence);
+  const reasoningRecorded = sanitizedOptions.length > 0 || sanitizedRisks.length > 0 || sanitizedEvidence.length > 0;
+
   const { data, error } = await result.supabase
     .from("boundary_authorization_records")
     .insert({
@@ -395,11 +404,12 @@ export async function POST(request: Request) {
       decision,
       owner_name: ownerName,
       owner_role: ownerRole,
-      options_considered: sanitizeOptions(body.options_considered),
-      risks_accepted: sanitizeRisks(body.risks_accepted),
+      options_considered: sanitizedOptions,
+      risks_accepted: sanitizedRisks,
+      reasoning_recorded: reasoningRecorded,
       external_dependencies: sanitizeExternalDependencies(body.external_dependencies),
       warnings_overridden: sanitizeWarnings(body.warnings_overridden),
-      evidence: sanitizeEvidence(body.evidence),
+      evidence: sanitizedEvidence,
       decision_date: decisionDate,
       expires_at: expiresAt,
       expiry_conditions: sanitizeFalsifiers(body.expiry_conditions),
@@ -463,6 +473,7 @@ export async function POST(request: Request) {
       continuity_owner_name: data.continuity_owner_name,
       continuity_owner_role: data.continuity_owner_role,
       is_complete: isComplete,
+      reasoning_recorded: reasoningRecorded,
       recorded_by_user_id: result.user.id,
       recorded_by_email: result.user.email ?? null,
       grant_type: data.grant_type,

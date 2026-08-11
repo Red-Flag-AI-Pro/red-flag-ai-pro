@@ -160,6 +160,15 @@ export interface BoundaryAuthorizationRecord {
   owner_reconfirmed_role: string | null;
   options_considered: BoundaryOption[];
   risks_accepted: BoundaryRisk[];
+  // Brad Wolfe, LinkedIn 11 Aug 2026, on why "the AI did it" survives every
+  // policy written against it: an approval with real reasoning behind it and
+  // an approval with none look identical in the stored shape, an empty array
+  // versus a filled one, nothing marks the difference as a fact in its own
+  // right. "The absence is not a gap in the record. It is the record."
+  // Computed once, at creation, from whether options_considered, risks_accepted
+  // or evidence held anything at the moment of signing -- never recomputed
+  // later, so it can't be quietly made true by editing the record afterwards.
+  reasoning_recorded: boolean;
   // Moe Hachem and Midhun K., LinkedIn 10-11 Aug 2026, independently: what
   // this decision depends on outside the account, and whether losing that
   // dependency has a tested fallback rather than an assumed one.

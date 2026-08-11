@@ -1395,6 +1395,25 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               </ul>
             </div>
           )}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Reasoning at signing</p>
+            {record.reasoning_recorded ? (
+              <p className="text-sm text-emerald-300">
+                Recorded — at least one of options considered, risks accepted, or evidence relied on was captured at the moment this was signed.
+              </p>
+            ) : (
+              // Brad Wolfe, 11 Aug 2026: "the absence is not a gap in the record,
+              // it is the record." An empty options/risks/evidence set used to
+              // render as nothing at all, indistinguishable from a record where
+              // real reasoning simply wasn't shown here. Stated as its own fact
+              // instead, the same discipline as "self assigned" and "self imposed"
+              // elsewhere on this page.
+              <p className="text-sm text-amber-300">
+                Not recorded — options considered, risks accepted, and evidence relied on were all empty at the moment this was signed. A name and a date were captured. What was weighed was not.
+              </p>
+            )}
+          </div>
+
           {record.options_considered.length > 0 && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Options considered</p>
