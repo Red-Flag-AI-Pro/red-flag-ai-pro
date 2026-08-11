@@ -19,7 +19,7 @@ export async function GET(
 
   const { data: record } = await service
     .from("boundary_authorization_records")
-    .select("decision, owner_name, owner_role, completion_condition, completion_confirmed_at, completion_confirmed_name")
+    .select("decision, owner_name, owner_role, completion_condition, completion_confirmed_at, completion_confirmed_name, completion_confirmed_role")
     .eq("completion_token", token)
     .maybeSingle();
 
@@ -43,6 +43,7 @@ export async function POST(
   const body = await request.json().catch(() => ({}));
   const confirmedName: string = typeof body.name === "string" ? body.name.trim() : "";
   const confirmedEmail: string = typeof body.email === "string" ? body.email.trim() : "";
+  const confirmedRole: string = typeof body.role === "string" ? body.role.trim() : "";
   const confirmedNote: string = typeof body.note === "string" ? body.note.trim() : "";
 
   if (!confirmedName) {
@@ -78,6 +79,7 @@ export async function POST(
       completion_confirmed_at: nowISO,
       completion_confirmed_name: confirmedName,
       completion_confirmed_email: confirmedEmail || null,
+      completion_confirmed_role: confirmedRole || null,
       completion_confirmed_note: confirmedNote,
     })
     .eq("id", record.id)
@@ -99,6 +101,7 @@ export async function POST(
       completion_condition: record.completion_condition,
       confirmed_name: confirmedName,
       confirmed_email: confirmedEmail || null,
+      confirmed_role: confirmedRole || null,
       confirmed_note: confirmedNote,
       confirmed_at: nowISO,
     },

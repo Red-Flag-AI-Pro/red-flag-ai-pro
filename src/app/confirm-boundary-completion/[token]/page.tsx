@@ -23,6 +23,7 @@ export default function ConfirmBoundaryCompletionPage({ params }: { params: Prom
   const [notFound, setNotFound] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +45,7 @@ export default function ConfirmBoundaryCompletionPage({ params }: { params: Prom
       const res = await fetch(`/api/boundary-records/confirm-completion/${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, note }),
+        body: JSON.stringify({ name, email, role, note }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -107,6 +108,10 @@ export default function ConfirmBoundaryCompletionPage({ params }: { params: Prom
                 <div style={{ marginBottom: "0.75rem" }}>
                   <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your name</label>
                   <input value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} placeholder="Your name" />
+                </div>
+                <div style={{ marginBottom: "0.75rem" }}>
+                  <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your role</label>
+                  <input value={role} onChange={(e) => setRole(e.target.value)} style={inputStyle} placeholder="e.g. Independent auditor, Program manager" />
                 </div>
                 <div style={{ marginBottom: "0.75rem" }}>
                   <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your email (optional)</label>

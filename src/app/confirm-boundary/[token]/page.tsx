@@ -24,6 +24,7 @@ export default function ConfirmBoundaryPage({ params }: { params: Promise<{ toke
   const [notFound, setNotFound] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<{ verify_url: string | null } | null>(null);
@@ -44,7 +45,7 @@ export default function ConfirmBoundaryPage({ params }: { params: Promise<{ toke
       const res = await fetch(`/api/boundary-records/confirm/${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, role }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -109,6 +110,10 @@ export default function ConfirmBoundaryPage({ params }: { params: Promise<{ toke
                 <div style={{ marginBottom: "0.75rem" }}>
                   <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your name</label>
                   <input value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} placeholder="Your name" />
+                </div>
+                <div style={{ marginBottom: "0.75rem" }}>
+                  <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your role</label>
+                  <input value={role} onChange={(e) => setRole(e.target.value)} style={inputStyle} placeholder="e.g. Underwriter, Compliance Lead" />
                 </div>
                 <div style={{ marginBottom: "1.25rem" }}>
                   <label style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "0.4rem", display: "block" }}>Your email (optional)</label>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
-import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode } from "@/types";
+import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning } from "@/types";
 
 const AUTHORITY_MODES: AuthorityMode[] = ["human_decides", "ai_recommends", "ai_decides"];
 
@@ -59,6 +59,41 @@ function sanitizeFalsifiers(value: unknown): BoundaryFalsifier[] {
   return (value as Record<string, unknown>[])
     .map((v) => ({ condition: typeof v?.condition === "string" ? v.condition.trim() : "" }))
     .filter((v) => v.condition.length > 0);
+}
+
+// Moe Hachem and Midhun K., LinkedIn 10-11 Aug 2026: what this decision
+// depends on outside the account, and whether losing it has a tested
+// fallback. added_at is stamped when the entry is added, not editable
+// afterwards — same treatment as expiry_conditions' triggered_at.
+function sanitizeExternalDependencies(value: unknown): ExternalDependency[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({
+      name: typeof v?.name === "string" ? v.name.trim() : "",
+      organisation: typeof v?.organisation === "string" && v.organisation.trim() ? v.organisation.trim() : null,
+      fallback_tested: v?.fallback_tested === true,
+      fallback_note: typeof v?.fallback_note === "string" && v.fallback_note.trim() ? v.fallback_note.trim() : null,
+      added_at: typeof v?.added_at === "string" && v.added_at ? v.added_at : new Date().toISOString(),
+    }))
+    .filter((v) => v.name.length > 0);
+}
+
+// A warning raised by someone other than the owner and overridden anyway —
+// distinct from risks_accepted, the owner's own stated risk. override_reason
+// is required to keep the entry: a warning on record with no stated reason
+// for overriding it is the same silence with an extra field, not a
+// disclosure. Same discipline as completion_confirmed_note being required.
+function sanitizeWarnings(value: unknown): BoundaryWarning[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({
+      source_name: typeof v?.source_name === "string" ? v.source_name.trim() : "",
+      source_role: typeof v?.source_role === "string" && v.source_role.trim() ? v.source_role.trim() : null,
+      warning_text: typeof v?.warning_text === "string" ? v.warning_text.trim() : "",
+      overridden_at: typeof v?.overridden_at === "string" && v.overridden_at ? v.overridden_at : new Date().toISOString(),
+      override_reason: typeof v?.override_reason === "string" ? v.override_reason.trim() : "",
+    }))
+    .filter((v) => v.warning_text.length > 0 && v.override_reason.length > 0);
 }
 
 export async function GET() {
@@ -362,6 +397,8 @@ export async function POST(request: Request) {
       owner_role: ownerRole,
       options_considered: sanitizeOptions(body.options_considered),
       risks_accepted: sanitizeRisks(body.risks_accepted),
+      external_dependencies: sanitizeExternalDependencies(body.external_dependencies),
+      warnings_overridden: sanitizeWarnings(body.warnings_overridden),
       evidence: sanitizeEvidence(body.evidence),
       decision_date: decisionDate,
       expires_at: expiresAt,

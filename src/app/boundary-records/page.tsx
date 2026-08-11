@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { createClient } from "@/lib/supabase/client";
-import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode } from "@/types";
+import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning } from "@/types";
 
 // The authority spectrum, plainly worded. The distinction that matters most
 // is between the second and the third: whether a human clears each instance,
@@ -42,6 +42,14 @@ function emptyFalsifier(): BoundaryFalsifier {
   return { condition: "" };
 }
 
+function emptyExternalDependency(): ExternalDependency {
+  return { name: "", organisation: "", fallback_tested: false, fallback_note: "", added_at: new Date().toISOString() };
+}
+
+function emptyWarning(): BoundaryWarning {
+  return { source_name: "", source_role: "", warning_text: "", overridden_at: new Date().toISOString(), override_reason: "" };
+}
+
 type AuthorityStatus = "active" | "expiring" | "expired" | "unbounded";
 
 // The "whether" leg, derived at read time: is this grant still inside its own
@@ -74,7 +82,7 @@ function RequiredByConfirmation({ record }: { record: BoundaryAuthorizationRecor
   if (record.required_by_confirmed_at) {
     return (
       <p className="text-xs text-emerald-300">
-        ✓ Confirmed by {record.required_by_confirmed_name} on{" "}
+        ✓ Confirmed by {record.required_by_confirmed_name}{record.required_by_confirmed_role ? ` (${record.required_by_confirmed_role})` : ""} on{" "}
         {new Date(record.required_by_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
         {" "}— in their own words, not this account&apos;s claim about them.
       </p>
@@ -155,7 +163,7 @@ function CompletionConfirmation({ record }: { record: BoundaryAuthorizationRecor
   if (record.completion_confirmed_at) {
     return (
       <p className="text-xs text-emerald-300">
-        ✓ Completion confirmed by {record.completion_confirmed_name} on{" "}
+        ✓ Completion confirmed by {record.completion_confirmed_name}{record.completion_confirmed_role ? ` (${record.completion_confirmed_role})` : ""} on{" "}
         {new Date(record.completion_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
         {" "}— an independent assessment, not this account&apos;s own claim.
       </p>
@@ -226,21 +234,18 @@ function CompletionConfirmation({ record }: { record: BoundaryAuthorizationRecor
 // it is a document that will be produced later at a worse moment." Same
 // pattern as RequiredByConfirmation/CompletionConfirmation, a link only the
 // named owner acts on.
+//
+// Also carries reconfirmation: owner_confirmed_at only ever answers "did
+// they once know they held this seat" — nothing re-checks later whether
+// they still do, and roles change. Once confirmed, this component keeps
+// offering a second, distinct action: request a reconfirmation link, whose
+// result lands in owner_reconfirmed_* rather than overwriting the original
+// confirmation.
 function OwnerConfirmation({ record }: { record: BoundaryAuthorizationRecord }) {
   const [link, setLink] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  if (record.owner_confirmed_at) {
-    return (
-      <p className="text-xs text-emerald-300">
-        ✓ Seat confirmed by {record.owner_confirmed_name} on{" "}
-        {new Date(record.owner_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
-        {" "}— they know they hold it, not just named in a record they never saw.
-      </p>
-    );
-  }
 
   async function requestLink() {
     setLoading(true);
@@ -275,7 +280,7 @@ function OwnerConfirmation({ record }: { record: BoundaryAuthorizationRecord }) 
     return (
       <div className="mt-1">
         <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1">
-          Send this to {record.owner_name || "them"} yourself, only they can confirm it:
+          Send this to {record.owner_name || "them"} yourself, only they can {record.owner_confirmed_at ? "reconfirm" : "confirm"} it:
         </p>
         <div className="flex items-center gap-2 flex-wrap">
           <code className="text-xs bg-black/30 border border-white/10 rounded px-2 py-1 text-[#C9A66B] break-all">{link}</code>
@@ -287,16 +292,47 @@ function OwnerConfirmation({ record }: { record: BoundaryAuthorizationRecord }) 
     );
   }
 
+  if (!record.owner_confirmed_at) {
+    return (
+      <div className="mt-1">
+        <button
+          onClick={requestLink}
+          disabled={loading}
+          className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
+        >
+          {loading ? "Creating link…" : "Confirm the named owner actually knows"}
+        </button>
+        {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+      </div>
+    );
+  }
+
   return (
-    <div className="mt-1">
-      <button
-        onClick={requestLink}
-        disabled={loading}
-        className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
-      >
-        {loading ? "Creating link…" : "Confirm the named owner actually knows"}
-      </button>
-      {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+    <div>
+      <p className="text-xs text-emerald-300">
+        ✓ Seat confirmed by {record.owner_confirmed_name}{record.owner_confirmed_role ? ` (${record.owner_confirmed_role})` : ""} on{" "}
+        {new Date(record.owner_confirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+        {" "}— they know they hold it, not just named in a record they never saw.
+      </p>
+      {record.owner_reconfirmed_at ? (
+        <p className="text-xs text-emerald-300 mt-1">
+          ✓ Reconfirmed by {record.owner_reconfirmed_name}{record.owner_reconfirmed_role ? ` (${record.owner_reconfirmed_role})` : ""} on{" "}
+          {new Date(record.owner_reconfirmed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+          {" "}— still in the seat, not just once told they held it.
+        </p>
+      ) : (
+        <div className="mt-1">
+          <button
+            onClick={requestLink}
+            disabled={loading}
+            className="text-xs px-2.5 py-1 rounded border border-white/15 text-[rgba(244,241,234,0.7)] hover:bg-white/5 disabled:opacity-50"
+            title="A confirmation once given never expires on its own — roles change. This asks the named owner to confirm the seat is still theirs today."
+          >
+            {loading ? "Creating link…" : "Ask them to reconfirm they still hold this seat"}
+          </button>
+          {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+        </div>
+      )}
     </div>
   );
 }
@@ -336,6 +372,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [falsifiers, setFalsifiers] = useState<BoundaryFalsifier[]>([emptyFalsifier()]);
   const [options, setOptions] = useState<BoundaryOption[]>([emptyOption()]);
   const [risks, setRisks] = useState<BoundaryRisk[]>([emptyRisk()]);
+  const [externalDependencies, setExternalDependencies] = useState<ExternalDependency[]>([emptyExternalDependency()]);
+  const [warnings, setWarnings] = useState<BoundaryWarning[]>([emptyWarning()]);
   const [evidence, setEvidence] = useState<BoundaryEvidence[]>([emptyEvidence()]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -367,6 +405,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setFalsifiers([emptyFalsifier()]);
     setOptions([emptyOption()]);
     setRisks([emptyRisk()]);
+    setExternalDependencies([emptyExternalDependency()]);
+    setWarnings([emptyWarning()]);
     setEvidence([emptyEvidence()]);
   }
 
@@ -399,6 +439,8 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           expiry_conditions: falsifiers,
           options_considered: options,
           risks_accepted: risks,
+          external_dependencies: externalDependencies,
+          warnings_overridden: warnings,
           evidence,
           supersedes_id: supersedesId || null,
           grant_type: grantType,
@@ -421,7 +463,14 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     }
   }
 
-  const canSubmit = decision.trim() && ownerName.trim() && ownerRole.trim() && decisionDate.trim() && expiresAt.trim();
+  // A warning without a stated reason for overriding it is the same silence
+  // with an extra field, not a disclosure — same discipline as
+  // completion_confirmed_note being required. Rows left entirely blank are
+  // just dropped on save, same as every other repeatable field here.
+  const hasUnreasonedWarning = warnings.some((w) => w.warning_text.trim() && !w.override_reason.trim());
+
+  const canSubmit =
+    decision.trim() && ownerName.trim() && ownerRole.trim() && decisionDate.trim() && expiresAt.trim() && !hasUnreasonedWarning;
 
   return (
     <Card>
@@ -865,6 +914,118 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
 
         <div>
           <div className="flex items-center justify-between mb-1">
+            <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)]">Warnings overridden</label>
+            <button
+              onClick={() => setWarnings([...warnings, emptyWarning()])}
+              className="text-xs text-[rgba(244,241,234,0.5)] hover:text-[#F4F1EA]"
+            >
+              + Add warning
+            </button>
+          </div>
+          <div className="space-y-2">
+            {warnings.map((w, i) => (
+              <div key={i} className="rounded-lg border border-white/10 bg-white/[0.02] p-2.5 space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    value={w.source_name}
+                    onChange={(e) => setWarnings(warnings.map((row, j) => (j === i ? { ...row, source_name: e.target.value } : row)))}
+                    placeholder="Who raised it"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                  <input
+                    value={w.source_role ?? ""}
+                    onChange={(e) => setWarnings(warnings.map((row, j) => (j === i ? { ...row, source_role: e.target.value } : row)))}
+                    placeholder="Their role (optional)"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                </div>
+                <input
+                  value={w.warning_text}
+                  onChange={(e) => setWarnings(warnings.map((row, j) => (j === i ? { ...row, warning_text: e.target.value } : row)))}
+                  placeholder="What they warned"
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                />
+                <input
+                  value={w.override_reason}
+                  onChange={(e) => setWarnings(warnings.map((row, j) => (j === i ? { ...row, override_reason: e.target.value } : row)))}
+                  placeholder="Why it was overridden — required to save this entry"
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                />
+                {warnings.length > 1 && (
+                  <button
+                    onClick={() => setWarnings(warnings.filter((_, j) => j !== i))}
+                    className="text-xs text-[rgba(244,241,234,0.4)] hover:text-red-400"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1.5">
+            Distinct from risks accepted above, which is the owner&apos;s own stated risk. This is a warning someone ELSE raised and it got overridden anyway — a clean risks list can hide this entirely if it has nowhere else to go.
+          </p>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-1">
+            <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)]">External dependencies</label>
+            <button
+              onClick={() => setExternalDependencies([...externalDependencies, emptyExternalDependency()])}
+              className="text-xs text-[rgba(244,241,234,0.5)] hover:text-[#F4F1EA]"
+            >
+              + Add dependency
+            </button>
+          </div>
+          <div className="space-y-2">
+            {externalDependencies.map((d, i) => (
+              <div key={i} className="rounded-lg border border-white/10 bg-white/[0.02] p-2.5 space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    value={d.name}
+                    onChange={(e) => setExternalDependencies(externalDependencies.map((row, j) => (j === i ? { ...row, name: e.target.value } : row)))}
+                    placeholder="What this depends on e.g. Vendor X's API"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                  <input
+                    value={d.organisation ?? ""}
+                    onChange={(e) => setExternalDependencies(externalDependencies.map((row, j) => (j === i ? { ...row, organisation: e.target.value } : row)))}
+                    placeholder="Their organisation (optional)"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                </div>
+                <label className="flex items-center gap-2 text-xs text-[rgba(244,241,234,0.6)]">
+                  <input
+                    type="checkbox"
+                    checked={d.fallback_tested}
+                    onChange={(e) => setExternalDependencies(externalDependencies.map((row, j) => (j === i ? { ...row, fallback_tested: e.target.checked } : row)))}
+                  />
+                  Fallback actually tested, not just assumed
+                </label>
+                <input
+                  value={d.fallback_note ?? ""}
+                  onChange={(e) => setExternalDependencies(externalDependencies.map((row, j) => (j === i ? { ...row, fallback_note: e.target.value } : row)))}
+                  placeholder="What the fallback is, or why there isn't one"
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                />
+                {externalDependencies.length > 1 && (
+                  <button
+                    onClick={() => setExternalDependencies(externalDependencies.filter((_, j) => j !== i))}
+                    className="text-xs text-[rgba(244,241,234,0.4)] hover:text-red-400"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1.5">
+            Moe Hachem and Midhun K., independently: ownership tells you whether the switch could be taken away, not whether anyone has a tested plan for the day it is. What this decision depends on outside the account, and whether losing it was ever rehearsed rather than assumed.
+          </p>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-1">
             <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)]">Evidence relied on</label>
             <button
               onClick={() => setEvidence([...evidence, emptyEvidence()])}
@@ -895,6 +1056,9 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           </div>
         </div>
 
+        {hasUnreasonedWarning && (
+          <p className="text-xs text-amber-300">A warning needs a stated reason it was overridden before this can save — blank rows are dropped, but a warning with no reason is not.</p>
+        )}
         {error && <p className="text-xs text-red-400">{error}</p>}
 
         <button
@@ -1250,6 +1414,41 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                   <li key={i} className="text-sm">
                     <span className="text-amber-300">{r.risk}</span>
                     {r.mitigation && <span className="text-[rgba(244,241,234,0.5)]"> — mitigated by {r.mitigation}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(record.warnings_overridden ?? []).length > 0 && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-amber-400/70 mb-1.5">Warnings overridden</p>
+              <ul className="space-y-1.5">
+                {record.warnings_overridden.map((w, i) => (
+                  <li key={i} className="text-sm">
+                    <span className="text-amber-300">{w.warning_text}</span>
+                    {w.source_name && <span className="text-[rgba(244,241,234,0.5)]"> — raised by {w.source_name}{w.source_role ? ` (${w.source_role})` : ""}</span>}
+                    <br />
+                    <span className="text-[rgba(244,241,234,0.45)] italic">Overridden because: {w.override_reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(record.external_dependencies ?? []).length > 0 && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">External dependencies</p>
+              <ul className="space-y-1.5">
+                {record.external_dependencies.map((d, i) => (
+                  <li key={i} className="text-sm text-[rgba(244,241,234,0.8)]">
+                    • {d.name}{d.organisation ? ` (${d.organisation})` : ""} —{" "}
+                    {d.fallback_tested ? (
+                      <span className="text-emerald-300">fallback tested</span>
+                    ) : (
+                      <span className="text-amber-300">fallback not tested</span>
+                    )}
+                    {d.fallback_note && <span className="text-[rgba(244,241,234,0.5)]">: {d.fallback_note}</span>}
                   </li>
                 ))}
               </ul>

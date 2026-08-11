@@ -77,6 +77,37 @@ export interface BoundaryEvidence {
   label: string;
 }
 
+// Moe Hachem and Midhun K., LinkedIn 10-11 Aug 2026, independently:
+// ownership tells you whether the switch could be taken away, not whether
+// anyone has a tested plan for the day it is. Distinct from required_by
+// (who required the boundary) and stop_authority (who can halt it) --
+// this is what the decision itself depends on outside the account, and
+// whether losing that dependency was ever rehearsed rather than assumed.
+// fallback_note is free text on what the tested (or untested) fallback
+// actually is. added_at is stamped client-side when the entry is added,
+// same as expiry_conditions' triggered_at pattern.
+export interface ExternalDependency {
+  name: string;
+  organisation: string | null;
+  fallback_tested: boolean;
+  fallback_note: string | null;
+  added_at: string;
+}
+
+// Distinct from risks_accepted: risks_accepted is the owner's OWN stated
+// risk, accepted knowingly at signing. This is a warning raised by someone
+// ELSE that got overridden -- a different fact, and one a clean
+// risks_accepted list can hide entirely. override_reason is required, not
+// optional -- a warning on record with no stated reason for overriding it
+// is not a disclosure, it's the same silence with an extra field.
+export interface BoundaryWarning {
+  source_name: string;
+  source_role: string | null;
+  warning_text: string;
+  overridden_at: string;
+  override_reason: string;
+}
+
 // A falsifier: the observable condition that voids the grant. "This authority
 // stops being valid if X becomes true." The falsifier IS the expiry condition —
 // no separate revocation mechanism needed, the same written-down test that
@@ -109,8 +140,33 @@ export interface BoundaryAuthorizationRecord {
   owner_confirmed_at: string | null;
   owner_confirmed_name: string | null;
   owner_confirmed_email: string | null;
+  // scan_flags stamps every sign-off with reviewer_role/reviewer_mandate
+  // (see ScanFlag below); boundary confirmations never had the equivalent --
+  // a name and an email, never the capacity confirmed in. Same treatment
+  // for required_by_confirmed_role and completion_confirmed_role below.
+  owner_confirmed_role: string | null;
+  // owner_confirmed_at only ever answers "did they once know they held this
+  // seat" -- nothing re-checks later whether they still do, and roles
+  // change. Reuses owner_confirmed_token: requesting confirmation again on
+  // an already-confirmed record overwrites it with a fresh token rather
+  // than the original being reusable twice, but the result lands here, not
+  // over owner_confirmed_at/name/email -- the first-confirmed fact stays
+  // permanent, reconfirmation is a separate, later fact. No
+  // owner_reconfirmed_email: the reconfirmation link only asks for name and
+  // role, not a second capture of the same address.
+  owner_reconfirmation_requested_at: string | null;
+  owner_reconfirmed_at: string | null;
+  owner_reconfirmed_name: string | null;
+  owner_reconfirmed_role: string | null;
   options_considered: BoundaryOption[];
   risks_accepted: BoundaryRisk[];
+  // Moe Hachem and Midhun K., LinkedIn 10-11 Aug 2026, independently: what
+  // this decision depends on outside the account, and whether losing that
+  // dependency has a tested fallback rather than an assumed one.
+  external_dependencies: ExternalDependency[];
+  // Distinct from risks_accepted (the owner's own stated risk) -- a
+  // warning raised by someone else that got overridden anyway.
+  warnings_overridden: BoundaryWarning[];
   evidence: BoundaryEvidence[];
   decision_date: string;
   // The "whether" leg: a grant needs a shelf life stamped on it the same way
@@ -187,6 +243,10 @@ export interface BoundaryAuthorizationRecord {
   required_by_confirmed_at: string | null;
   required_by_confirmed_name: string | null;
   required_by_confirmed_email: string | null;
+  // Role and mandate audit stamp, same discipline as scan_flags'
+  // reviewer_role. Captured on the same public confirmation page as name
+  // and email, no separate flow.
+  required_by_confirmed_role: string | null;
   // Michael H., "Beyond the AI Register," 9 Aug 2026: his bounded-delegation
   // test asks what would count as the objective being successfully complete,
   // not just how it dies. expiry_conditions/falsifiers already model
@@ -205,6 +265,9 @@ export interface BoundaryAuthorizationRecord {
   completion_confirmed_name: string | null;
   completion_confirmed_email: string | null;
   completion_confirmed_note: string | null;
+  // Role and mandate audit stamp, same discipline as scan_flags'
+  // reviewer_role.
+  completion_confirmed_role: string | null;
   // Brad Wolfe (5 Aug) and Dr. David Marco, independently, same week: three
   // distinct roles, none of them the owner (who approved) or the continuity
   // owner (whose job is renewal). stop_authority is who has standing to halt

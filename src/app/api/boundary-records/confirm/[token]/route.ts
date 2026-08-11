@@ -22,7 +22,7 @@ export async function GET(
 
   const { data: record } = await service
     .from("boundary_authorization_records")
-    .select("decision, owner_name, owner_role, required_by_name, required_by_organisation, required_by_confirmed_at, required_by_confirmed_name, required_by_confirmed_email")
+    .select("decision, owner_name, owner_role, required_by_name, required_by_organisation, required_by_confirmed_at, required_by_confirmed_name, required_by_confirmed_email, required_by_confirmed_role")
     .eq("required_by_token", token)
     .maybeSingle();
 
@@ -46,6 +46,7 @@ export async function POST(
   const body = await request.json().catch(() => ({}));
   const confirmedName: string = typeof body.name === "string" ? body.name.trim() : "";
   const confirmedEmail: string = typeof body.email === "string" ? body.email.trim() : "";
+  const confirmedRole: string = typeof body.role === "string" ? body.role.trim() : "";
 
   if (!confirmedName) {
     return NextResponse.json({ error: "Your name is required to confirm this." }, { status: 400 });
@@ -74,6 +75,7 @@ export async function POST(
       required_by_confirmed_at: nowISO,
       required_by_confirmed_name: confirmedName,
       required_by_confirmed_email: confirmedEmail || null,
+      required_by_confirmed_role: confirmedRole || null,
     })
     .eq("id", record.id)
     .select()
@@ -99,6 +101,7 @@ export async function POST(
       required_by_organisation: record.required_by_organisation,
       confirmed_name: confirmedName,
       confirmed_email: confirmedEmail || null,
+      confirmed_role: confirmedRole || null,
       confirmed_at: nowISO,
     },
     { timestamp: true }

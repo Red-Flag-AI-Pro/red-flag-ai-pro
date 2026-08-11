@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
-import type { BoundaryOption, BoundaryRisk, BoundaryEvidence } from "@/types";
+import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, ExternalDependency, BoundaryWarning } from "@/types";
 
 async function requireUser() {
   const supabase = await createClient();
@@ -49,6 +49,34 @@ function sanitizeEvidence(value: unknown): BoundaryEvidence[] {
   return (value as Record<string, unknown>[])
     .map((v) => ({ label: typeof v?.label === "string" ? v.label.trim() : "" }))
     .filter((v) => v.label.length > 0);
+}
+
+// Same sanitizers as POST (route.ts) — kept in sync, see there for the
+// reasoning behind added_at/override_reason.
+function sanitizeExternalDependencies(value: unknown): ExternalDependency[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({
+      name: typeof v?.name === "string" ? v.name.trim() : "",
+      organisation: typeof v?.organisation === "string" && v.organisation.trim() ? v.organisation.trim() : null,
+      fallback_tested: v?.fallback_tested === true,
+      fallback_note: typeof v?.fallback_note === "string" && v.fallback_note.trim() ? v.fallback_note.trim() : null,
+      added_at: typeof v?.added_at === "string" && v.added_at ? v.added_at : new Date().toISOString(),
+    }))
+    .filter((v) => v.name.length > 0);
+}
+
+function sanitizeWarnings(value: unknown): BoundaryWarning[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({
+      source_name: typeof v?.source_name === "string" ? v.source_name.trim() : "",
+      source_role: typeof v?.source_role === "string" && v.source_role.trim() ? v.source_role.trim() : null,
+      warning_text: typeof v?.warning_text === "string" ? v.warning_text.trim() : "",
+      overridden_at: typeof v?.overridden_at === "string" && v.overridden_at ? v.overridden_at : new Date().toISOString(),
+      override_reason: typeof v?.override_reason === "string" ? v.override_reason.trim() : "",
+    }))
+    .filter((v) => v.warning_text.length > 0 && v.override_reason.length > 0);
 }
 
 export async function GET(
@@ -103,6 +131,8 @@ export async function PATCH(
   }
   if ("options_considered" in body) updates.options_considered = sanitizeOptions(body.options_considered);
   if ("risks_accepted" in body) updates.risks_accepted = sanitizeRisks(body.risks_accepted);
+  if ("external_dependencies" in body) updates.external_dependencies = sanitizeExternalDependencies(body.external_dependencies);
+  if ("warnings_overridden" in body) updates.warnings_overridden = sanitizeWarnings(body.warnings_overridden);
   if ("evidence" in body) updates.evidence = sanitizeEvidence(body.evidence);
 
   const { data, error } = await result.supabase
