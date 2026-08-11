@@ -10,6 +10,57 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "global-ai-brake-wont-get-pressed",
+    title: "The Global AI Brake Won't Get Pressed. Here's the One That Might.",
+    description: "Over 1,200 AI company employees signed a letter asking governments to build a coordinated slowdown mechanism for frontier AI. Steve Endacott, Chairman of Neural Voice, made the honest case for why no government presses it first. He's right. Here's the brake that doesn't need everyone to agree.",
+    date: "2026-08-11",
+    readTime: "6 min read",
+    category: "AI Governance",
+    content: `
+## The Letter Nobody Expects to Work
+
+In July, over 1,200 people working inside the companies actually building frontier AI, OpenAI, Anthropic, Google DeepMind, Meta, signed something called Pacing the Frontier. It doesn't ask for a halt. It asks governments to build the international infrastructure for a coordinated slowdown, so the capability exists if AI development ever outpaces the ability to keep it safe.
+
+Steve Endacott, Chairman of Neural Voice, wrote a genuinely honest piece about it this week. His read: he'd probably have signed it too if he worked at one of those labs, and he doesn't think it will ever actually get pressed. His reasoning is the uncomfortable kind, the kind that's hard to argue with. Britain pausing while other countries keep investing doesn't produce a safer world, it produces the same AI development happening somewhere else, with Britain's talent, capital and influence gone along with it. As he put it, "no government will take the risk of being remembered for making that decision."
+
+He's right. And the letter itself already knows it, that's the whole reason it asks for a coordinated mechanism rather than a unilateral one. Nobody serious is expecting one country to blink first.
+
+---
+
+## Where That Leaves Everyone Who Isn't a Government
+
+Here's the part that gets skipped once the geopolitics conversation starts. Waiting for a global brake was never the only option on the table, and it was never really available to the businesses actually deploying AI today anyway.
+
+A company using AI to draft customer communications, price a policy, screen an application or write marketing copy doesn't need Washington and Beijing to agree on a pacing mechanism. It needs to be able to prove, right now, who approved what it's doing, when that approval happened, and whether the conditions it was approved under still hold. That's a business decision, not a treaty. It doesn't require coordination with a single other country.
+
+Most companies don't have this today, not because it's technically hard, but because governance still gets treated as a document you write once rather than infrastructure you run continuously. A policy on a shelf and a named owner who could be reached in an emergency are two very different things, and regulators, insurers and increasingly boards have started asking for the second one.
+
+---
+
+## Safer, Not Slower, Only Works If It's Provable
+
+Steve's framing of where this actually lands is the sharper part of his piece: governments will legislate for safer AI, not slower AI, because safer is compatible with growth and slower isn't. Tougher security standards, independent testing, transparency requirements. That prediction is almost certainly correct, and it's already what's happening. The EU AI Act's Article 14 sets exactly this bar, human oversight has to be meaningful, not a rubber stamp, and Article 50 already requires AI generated content to be disclosed.
+
+But safer only means something if a company can show its own proof of it after the fact, not just claim it in a policy document. A rule that says "a human must be able to override the system" is only as real as the record of someone actually doing it, or the record showing a reviewer has approved every single output without ever once disagreeing, which is the opposite of oversight wearing its uniform.
+
+That's the actual test coming, not "did you write a policy that sounds responsible," but "can you produce a dated, named, tamper evident record that the thing your policy promises actually happened." Most companies currently cannot. That gap is where the next round of AI governance enforcement lands, well before anyone gets close to a global pacing mechanism.
+
+---
+
+## The Brake That Doesn't Need Permission
+
+Steve's argument is really a statement about coordination problems at the scale of nations. Fair enough, those are genuinely hard, probably harder than he's even given them credit for.
+
+But the brake that matters to most businesses right now isn't the international one. It's the one sitting inside a single company, a named person who can actually stop a deployed system, a record proving that authority was tested rather than assumed, and evidence that still holds up when someone checks it later rather than a policy nobody can find. None of that waits on an act of parliament, and none of it needs every competitor to agree to slow down at the same time. It's a smaller bet than a global pacing mechanism, and unlike one, it's something you can build and test this week.
+
+[Run a free governance assessment →](https://www.redflagaipro.com/governance-audit)
+
+---
+
+*Further reading: [The Mystery of AI Governance](https://www.redflagaipro.com/reports/mystery-of-ai-governance), Red Flag AI Pro's report on the gap between what companies claim about their AI oversight and what they can actually prove.*
+`,
+  },
+  {
     slug: "witness-network-open-standard-enforcement-week-pricing",
     title: "The Witness Network Is Live, the Standard Is Free, and Prices Are Down for Enforcement Week",
     description: "Two independent companies now seal copies of each other's governance records, live. The protocol behind it is published free. And with EU AI Act Article 50 enforcement starting 2 August 2026, Pro and Growth are both down in price until 7 August.",
