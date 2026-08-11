@@ -72,6 +72,7 @@ export interface GovernanceQuizResponse {
   // one free document as a taste of what Sentinel manages in full.
   managed: boolean;
   roadmapCount: number;
+  questionCoverage: QuestionCoverage;
 }
 
 export interface RedFlag {
@@ -1424,3 +1425,55 @@ const SHORT_QUESTION_IDS = [
 export const SHORT_QUESTIONS = SHORT_QUESTION_IDS.map(
   id => ALL_QUESTIONS.find(q => q.id === id)!
 );
+
+// How much of the real question bank a completed quiz actually covered, per
+// dimension and overall. Derived from the submitted answers against
+// ALL_QUESTIONS.length, not hardcoded — so this stays honest automatically
+// as questions get added, swapped or moved between the free 12 and the full
+// set, instead of drifting the way the "24 vs 26" and "ten jurisdictions"
+// bugs did.
+export interface QuestionCoverage {
+  answered: number;
+  total: number;
+  byDimension: Record<Dimension, { answered: number; total: number }>;
+}
+
+export function getQuestionCoverage(answers: Answer[]): QuestionCoverage {
+  const totalsByDimension: Record<Dimension, number> = {
+    strategy_ownership: 0,
+    tool_data_governance: 0,
+    policy_documentation: 0,
+    monitoring_accountability: 0,
+    vendor_risk: 0,
+    regulatory_readiness: 0,
+  };
+  ALL_QUESTIONS.forEach(q => {
+    totalsByDimension[q.dimension] += 1;
+  });
+
+  const answeredByDimension: Record<Dimension, number> = {
+    strategy_ownership: 0,
+    tool_data_governance: 0,
+    policy_documentation: 0,
+    monitoring_accountability: 0,
+    vendor_risk: 0,
+    regulatory_readiness: 0,
+  };
+  answers.forEach(a => {
+    answeredByDimension[a.dimension] += 1;
+  });
+
+  const byDimension = (Object.keys(totalsByDimension) as Dimension[]).reduce(
+    (acc, dim) => {
+      acc[dim] = { answered: answeredByDimension[dim], total: totalsByDimension[dim] };
+      return acc;
+    },
+    {} as Record<Dimension, { answered: number; total: number }>
+  );
+
+  return {
+    answered: answers.length,
+    total: ALL_QUESTIONS.length,
+    byDimension,
+  };
+}

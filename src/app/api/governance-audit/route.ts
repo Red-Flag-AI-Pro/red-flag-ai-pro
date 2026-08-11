@@ -8,6 +8,7 @@ import {
   generateRedFlags,
   generateRoadmap,
   trackRoadmap,
+  getQuestionCoverage,
   type Answer,
   type GovernanceQuizResponse,
 } from '@/lib/governance-audit';
@@ -325,6 +326,7 @@ export async function POST(request: Request) {
       roadmapCount: roadmap.length,
       fullAccess,
       managed,
+      questionCoverage: getQuestionCoverage(answers),
     };
 
     return Response.json(response);

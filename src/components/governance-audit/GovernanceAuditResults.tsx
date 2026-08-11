@@ -204,6 +204,50 @@ export function GovernanceAuditResults({
       </div>
 
       {/* ============================================================
+          QUESTION COVERAGE — this free score is a fast signal, not the full
+          picture. Real numbers pulled from the actual answers vs the full
+          question bank (see getQuestionCoverage), not a hardcoded claim.
+          ============================================================ */}
+      {response.questionCoverage && response.questionCoverage.total > response.questionCoverage.answered && (
+        <div className="border border-gray-800 rounded-lg p-5 bg-gray-950 space-y-4">
+          <div>
+            <p className="text-sm font-semibold text-white">
+              This score reflects {response.questionCoverage.answered} of {response.questionCoverage.total} governance questions
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              The free assessment samples 2 questions per dimension for a fast, honest signal — not every question in the bank. Here's what wasn't asked:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {(Object.entries(response.questionCoverage.byDimension) as [Dimension, { answered: number; total: number }][])
+              .filter(([, c]) => c.total > c.answered)
+              .map(([dimension, c]) => (
+                <div key={dimension} className="flex items-center justify-between text-xs bg-gray-900 border border-gray-800 rounded px-3 py-2">
+                  <span className="text-gray-300">{GOVERNANCE_DIMENSIONS[dimension].title}</span>
+                  <span className="text-gray-500 font-medium">{c.answered} of {c.total} asked</span>
+                </div>
+              ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-2 pt-1">
+            <button
+              onClick={onExploreFeatures}
+              className="flex-1 text-center text-xs font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors rounded px-4 py-2"
+            >
+              Monitor it continuously — Growth & Sentinel
+            </button>
+            <a
+              href="/audit"
+              className="flex-1 text-center text-xs font-semibold text-[#E5484D] border border-red-900 hover:bg-red-950 transition-colors rounded px-4 py-2"
+            >
+              Have it done properly — DFY Governance Program
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* ============================================================
           DETAILED GAP ANALYSIS, PDF REPORT, CTAs (email already captured to start)
           ============================================================ */}
       {response.redFlags.length > 0 && (
