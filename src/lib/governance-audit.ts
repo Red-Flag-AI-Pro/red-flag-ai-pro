@@ -1101,6 +1101,41 @@ export const REGULATORY_QUESTIONS = [
       },
     ],
   },
+  {
+    // Abdul Rehman, LinkedIn 11 Aug 2026, replying to a Digital Omnibus thread:
+    // does the assessment distinguish a system that generates content straight
+    // to an applicant from one that only informs an internal caseworker who
+    // makes and delivers the decision themselves. Checked the file before
+    // answering him: it did not, this closes that gap. The distinction is
+    // real under the Act itself, not just his framing, Article 50(1) turns on
+    // whether a natural person is interacting with the system, not on the
+    // system's risk classification.
+    id: 'reg_6',
+    dimension: 'regulatory_readiness' as const,
+    question: 'Do the AI systems you use interact directly with the people they affect, or only inform a human who makes and delivers the final decision themselves?',
+    options: [
+      {
+        text: 'Mapped system by system, we know which is which and why',
+        riskPoints: 0,
+        context: 'Strong: the Article 50(1) interaction question is answered per system, not assumed',
+      },
+      {
+        text: 'We know for most systems but have not documented the split',
+        riskPoints: 1,
+        context: 'Partial: the answer likely exists in someone\'s head, not in a record anyone else can check',
+      },
+      {
+        text: 'Some systems blur the line, e.g. drafting content a person then sends largely unchanged',
+        riskPoints: 2,
+        context: 'The genuinely hard case: a human is technically in the loop but not meaningfully changing the output',
+      },
+      {
+        text: 'Never considered the distinction',
+        riskPoints: 3,
+        context: 'Critical: without this, you cannot know which of your systems Article 50(1) disclosure applies to today',
+      },
+    ],
+  },
 ];
 
 // ============================================================
