@@ -214,7 +214,7 @@ export default async function BlogPostPage({ params }: Props) {
           }}>
             {post.title}
           </h1>
-          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "16px", color: "rgba(229,72,77,0.75)", lineHeight: 1.7 }}>
+          <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "16px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
             {post.description}
           </p>
         </div>
