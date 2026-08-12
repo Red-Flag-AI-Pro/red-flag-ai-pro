@@ -14,6 +14,8 @@ import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timel
 import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
 import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
 import { detectGenericReasoning, computeSignerSpecificityRates } from "@/lib/signoff-genericity";
+import { CanaryCheckPanel } from "@/components/program/CanaryCheckPanel";
+import type { CanaryEvent } from "@/lib/canary-check";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -245,6 +247,16 @@ export default async function ProgramDeliveryPage({
                 ))}
               </div>
             )}
+
+            <CanaryCheckPanel
+              orderId={order.id}
+              documents={DOCUMENT_LABELS.map((doc) => ({
+                key: doc.key,
+                label: doc.label,
+                hasContent: Boolean(documentContents[doc.key]),
+              }))}
+              history={(order.canary_checks as CanaryEvent[] | null) ?? []}
+            />
 
             {signerSpecificityRates.length > 0 && (
               <div style={{
