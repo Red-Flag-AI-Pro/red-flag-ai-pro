@@ -13,6 +13,7 @@ import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-
 import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timeline";
 import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
 import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
+import { detectGenericReasoning } from "@/lib/signoff-genericity";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -101,6 +102,10 @@ export default async function ProgramDeliveryPage({
         )
       : null;
 
+  const genericReasoningFindings = detectGenericReasoning(
+    order.artifact_signoffs as Record<string, SignoffEvent[]> | null
+  );
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <Navbar />
@@ -186,6 +191,26 @@ export default async function ProgramDeliveryPage({
                 <a href="/boundary-records" style={{ ...syne, fontSize: "12.5px", color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>
                   View it in your Boundary Authorization Records →
                 </a>
+              </div>
+            )}
+
+            {genericReasoningFindings.length > 0 && (
+              <div style={{
+                background: "rgba(248,113,113,0.06)",
+                borderRadius: "10px",
+                border: "1px solid rgba(248,113,113,0.25)",
+                padding: "1.25rem 1.5rem",
+                marginBottom: "1.5rem",
+              }}>
+                <p style={{ ...labelStyle, color: "#f87171", marginBottom: "0.6rem" }}>Reasoning check</p>
+                <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
+                  Brad Wolfe, 12 Aug 2026: a sign off certifies an instance, but a signer who only ever checked that the process ran will leave the same reasoning behind, no matter which document it&apos;s attached to. This is that check, run automatically, not inferred by a reader: the same reasoning was used to certify more than one of your documents.
+                </p>
+                {genericReasoningFindings.map((finding, i) => (
+                  <p key={i} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, marginBottom: i === genericReasoningFindings.length - 1 ? 0 : "0.6rem" }}>
+                    <strong style={{ color: "white" }}>{finding.signerName}</strong> used identical reasoning to certify {finding.documentKeys.length} documents: &ldquo;{finding.note}&rdquo;
+                  </p>
+                ))}
               </div>
             )}
 
