@@ -13,7 +13,7 @@ import type { RiskRegisterRow, RiskLikelihood, RiskImpact } from "@/lib/program-
 import type { ProgramTimeline as ProgramTimelineType } from "@/lib/program-timeline";
 import { getDocumentReviewStatus, type DocumentReviews } from "@/lib/program-document-review";
 import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
-import { detectGenericReasoning } from "@/lib/signoff-genericity";
+import { detectGenericReasoning, computeSignerSpecificityRates } from "@/lib/signoff-genericity";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -102,9 +102,41 @@ export default async function ProgramDeliveryPage({
         )
       : null;
 
+  const documentContents: Partial<Record<string, string>> = {};
+  for (const doc of DOCUMENT_LABELS) {
+    const content = (order[doc.key] as { content?: string } | null)?.content;
+    if (content) documentContents[doc.key] = content;
+  }
+
   const genericReasoningFindings = detectGenericReasoning(
+    documentContents,
     order.artifact_signoffs as Record<string, SignoffEvent[]> | null
   );
+
+  // Per-tenant rate, never cross-tenant -- see signoff-genericity.ts. Pull
+  // this customer's own other delivered orders (RLS already restricts the
+  // select to user_id, same pattern as the data-room export) so a signer's
+  // rate reflects everything they've certified for this customer, not just
+  // the one order this page happens to be showing.
+  const { data: siblingOrders } = await supabase
+    .from("program_orders")
+    .select("id, artifact_signoffs, dpia, fria, ai_use_policy, incident_checklist, monitoring_plan, documentation")
+    .eq("user_id", user.id)
+    .eq("status", "delivered");
+
+  const signerSpecificityRates = computeSignerSpecificityRates(
+    (siblingOrders ?? []).map((o) => {
+      const docs: Partial<Record<string, string>> = {};
+      for (const doc of DOCUMENT_LABELS) {
+        const content = (o[doc.key] as { content?: string } | null)?.content;
+        if (content) docs[doc.key] = content;
+      }
+      return {
+        documents: docs,
+        signoffsByDocument: o.artifact_signoffs as Record<string, SignoffEvent[]> | null,
+      };
+    })
+  ).filter((r) => r.totalNotes >= 2);
 
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
@@ -204,11 +236,31 @@ export default async function ProgramDeliveryPage({
               }}>
                 <p style={{ ...labelStyle, color: "#f87171", marginBottom: "0.6rem" }}>Reasoning check</p>
                 <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
-                  Brad Wolfe, 12 Aug 2026: a sign off certifies an instance, but a signer who only ever checked that the process ran will leave the same reasoning behind, no matter which document it&apos;s attached to. This is that check, run automatically, not inferred by a reader: the same reasoning was used to certify more than one of your documents.
+                  Brad Wolfe, 12 Aug 2026: a sign off certifies an instance, but a signer who only ever checked that the process ran will leave the same reasoning behind regardless of what&apos;s actually in the document. This checks each note for anything specific to the document it certifies, a figure, a citation, a detail that traces back to your own answers rather than the template. A note with nothing specific in it is flagged below, whether or not it repeats another note word for word.
                 </p>
                 {genericReasoningFindings.map((finding, i) => (
                   <p key={i} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, marginBottom: i === genericReasoningFindings.length - 1 ? 0 : "0.6rem" }}>
-                    <strong style={{ color: "white" }}>{finding.signerName}</strong> used identical reasoning to certify {finding.documentKeys.length} documents: &ldquo;{finding.note}&rdquo;
+                    <strong style={{ color: "white" }}>{finding.signerName}</strong> certified the {DOCUMENT_LABELS.find((d) => d.key === finding.documentKey)?.label ?? finding.documentKey} with nothing specific to that document in the note: &ldquo;{finding.note}&rdquo;
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {signerSpecificityRates.length > 0 && (
+              <div style={{
+                background: "rgba(255,255,255,0.02)",
+                borderRadius: "10px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                padding: "1.25rem 1.5rem",
+                marginBottom: "1.5rem",
+              }}>
+                <p style={{ ...labelStyle, marginBottom: "0.6rem" }}>Signer track record</p>
+                <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
+                  Scoped to your own orders only, never compared against other customers. What share of each signer&apos;s notes, across everything they&apos;ve certified for you, contain nothing specific to the document.
+                </p>
+                {signerSpecificityRates.map((rate, i) => (
+                  <p key={i} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, marginBottom: i === signerSpecificityRates.length - 1 ? 0 : "0.5rem" }}>
+                    <strong style={{ color: "white" }}>{rate.signerName}</strong>: {rate.genericNotes} of {rate.totalNotes} notes ({Math.round(rate.rate * 100)}%) carry nothing specific to the document they certify.
                   </p>
                 ))}
               </div>
