@@ -1,7 +1,15 @@
 import { createClient } from "@supabase/supabase-js";
 import { PEER_BENCHMARK } from "@/lib/governance-audit";
 
-export const revalidate = 3600; // recompute at most once an hour
+// Brad Wolfe, 12 Aug 2026: a floor protects one reading of the page, not two.
+// Anyone who reads this aggregate before and after a known event can get
+// that event's contribution by subtraction, and at this population size an
+// hour is plenty of time to isolate one assessment's effect on the average.
+// Freezing the figure on a week-long period, not recomputing on each
+// request, means two reads inside the same window return the same number
+// regardless of what happened in between -- the fix costs nothing in
+// usefulness while the sample stays this small.
+export const revalidate = 604800; // recompute at most once a week
 
 // Below this many real completed assessments, the percentile math is too
 // noisy/identifying to show — fall back to the static estimate instead.

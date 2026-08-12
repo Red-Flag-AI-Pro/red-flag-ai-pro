@@ -6,6 +6,16 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { EvidencePipelineVisual } from "@/components/marketing/EvidencePipelineVisual";
 import React from "react";
 
+// Brad Wolfe, 12 Aug 2026: the MIN_GOVERNED_COUNT floor below protects one
+// reading of this page. It does nothing against two readings -- a live
+// count read before and after a known event lets anyone recover that
+// event's contribution by subtraction, and at this population size the
+// before and after are days apart, not years. Freezing the count on a
+// week-long period rather than computing it fresh on each request closes
+// that gap: two reads inside the same window return the same number
+// regardless of what happened in between.
+export const revalidate = 604800; // recompute at most once a week
+
 export const metadata: Metadata = {
   title: "Real-Time Gate: Block Before It Publishes",
   description:
