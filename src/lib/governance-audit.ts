@@ -1402,6 +1402,14 @@ export function generateRoadmap(
 // quartiles from governance_audit_emails once enough assessments exist
 // (see MIN_SAMPLE_SIZE there). This stays as the fallback shown until then.
 
+// No byIndustry breakdown here on purpose. An earlier version of this file
+// had one -- six invented per-industry averages with no real sample behind
+// any of them. Nothing ever rendered it, but it sat here as exactly the kind
+// of number Brad Wolfe flagged on 12 Aug 2026: a per-segment figure is
+// unsafe to show without a per-segment count backing it, and this had none
+// at all. If a real per-industry breakdown is ever wanted, it needs its own
+// per-segment MIN_SAMPLE_SIZE check in the benchmark route, the same way the
+// overall figure already has one -- not a hardcoded guess.
 export const PEER_BENCHMARK = {
   overall: {
     average: 35,
@@ -1411,14 +1419,6 @@ export const PEER_BENCHMARK = {
       q3: 55,
       q4: 78,
     },
-  },
-  byIndustry: {
-    technology: { average: 42, percentileHigher: 35 },
-    finance: { average: 48, percentileHigher: 28 },
-    healthcare: { average: 45, percentileHigher: 32 },
-    manufacturing: { average: 38, percentileHigher: 45 },
-    retail: { average: 32, percentileHigher: 58 },
-    other: { average: 33, percentileHigher: 60 },
   },
 };
 

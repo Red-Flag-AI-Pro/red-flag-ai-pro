@@ -41,6 +41,15 @@ function P({ children }: { children: React.ReactNode }) {
 // breakdown — the point is proof the mechanism is live, not a league table
 // of who's using it. 30 days rather than all time so the number reflects
 // current activity, not just how long the feature has existed.
+//
+// Brad Wolfe, 12 Aug 2026 (on a different benchmark, but the principle
+// applies here too): a single aggregate is still identifying at low counts —
+// "1 decision across every account" narrows straight to whichever one
+// customer used it that month. Below the floor, this returns null and the
+// section below it just doesn't render, same pattern as TrustBar's
+// STAT_FLOOR, rather than showing a number small enough to name someone.
+const MIN_GOVERNED_COUNT = 5;
+
 async function getGovernedDecisionCount(): Promise<number | null> {
   try {
     const supabase = await createServiceClient();
@@ -50,7 +59,7 @@ async function getGovernedDecisionCount(): Promise<number | null> {
       .select("id", { count: "exact", head: true })
       .not("governing_record_id", "is", null)
       .gte("created_at", since);
-    return count ?? 0;
+    return count != null && count >= MIN_GOVERNED_COUNT ? count : null;
   } catch {
     return null;
   }

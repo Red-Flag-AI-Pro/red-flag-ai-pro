@@ -102,12 +102,22 @@ export function GovernanceAuditResults({
       });
   }, []);
 
+  // Brad Wolfe, 12 Aug 2026 (on a different, not-yet-built benchmark, but the
+  // principle applies here too, already shipped): this population is
+  // self-selected free-quiz visitors, not "the industry" -- calling it that
+  // would let an honest number read as an accusation instead of what it
+  // actually is, a comparison against people curious enough to check.
   const compareLine =
     response.overallScore >= benchmark.quartile.q4
       ? `Top tier. Above the top quartile benchmark of ${benchmark.quartile.q4}/100.`
       : response.overallScore >= benchmark.average
-        ? `Above the industry average of ${benchmark.average}/100.`
-        : `Below the industry average of ${benchmark.average}/100. ${benchmark.average - response.overallScore} points to close.`;
+        ? `Above the average score here of ${benchmark.average}/100.`
+        : `Below the average score here of ${benchmark.average}/100. ${benchmark.average - response.overallScore} points to close.`;
+
+  const benchmarkPopulationLine =
+    benchmark.source === 'real'
+      ? `Based on ${benchmark.sampleSize.toLocaleString()} businesses who've run this free check, not a survey of your industry as a whole. Scoring below it isn't the same as scoring below your actual peers.`
+      : `Estimate, not yet backed by enough completed checks to show a real figure.`;
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 py-8">
@@ -144,11 +154,11 @@ export function GovernanceAuditResults({
           <p className={`text-sm font-medium ${colors.text}`}>
             {compareLine}
           </p>
+          <p className="text-xs text-gray-400">
+            Average here: {benchmark.average}/100 | Top performers: {benchmark.quartile.q4}/100
+          </p>
           <p className="text-xs text-gray-500">
-            Industry average: {benchmark.average}/100 | Top performers: {benchmark.quartile.q4}/100
-            {benchmark.source === 'real' && (
-              <> · based on {benchmark.sampleSize.toLocaleString()} real Red Flag assessments</>
-            )}
+            {benchmarkPopulationLine}
           </p>
         </div>
       </div>

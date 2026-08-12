@@ -199,7 +199,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Peer Benchmarking",
-                  desc: "Compare your score to industry average. See top quartile. Know where you stand relative to peers.",
+                  desc: "Compare your score to the average among businesses who've run this free check, and see the top quartile, labeled honestly as a comparison against fellow checkers, not a survey of your industry.",
                 },
                 {
                   icon: "",
