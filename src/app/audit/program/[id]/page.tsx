@@ -16,6 +16,8 @@ import { applyStalenessCeiling, type LetterGrade } from "@/lib/program-grade";
 import { detectGenericReasoning, computeSignerSpecificityRates } from "@/lib/signoff-genericity";
 import { CanaryCheckPanel } from "@/components/program/CanaryCheckPanel";
 import type { CanaryEvent } from "@/lib/canary-check";
+import { ExceptionPanel } from "@/components/program/ExceptionPanel";
+import { computeExceptionStats, type DocumentException } from "@/lib/document-exceptions";
 import React from "react";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
@@ -122,7 +124,7 @@ export default async function ProgramDeliveryPage({
   // the one order this page happens to be showing.
   const { data: siblingOrders } = await supabase
     .from("program_orders")
-    .select("id, artifact_signoffs, dpia, fria, ai_use_policy, incident_checklist, monitoring_plan, documentation")
+    .select("id, artifact_signoffs, document_exceptions, dpia, fria, ai_use_policy, incident_checklist, monitoring_plan, documentation")
     .eq("user_id", user.id)
     .eq("status", "delivered");
 
@@ -139,6 +141,17 @@ export default async function ProgramDeliveryPage({
       };
     })
   ).filter((r) => r.totalNotes >= 2);
+
+  // Per-tenant, same boundary as the specificity rate. Brad Wolfe, 13 Aug:
+  // zero exceptions is only readable as clean when somebody whose own
+  // results move with the answer was in a position to object -- otherwise
+  // zero is the expected result, and the display below says so instead of
+  // wearing it as a badge.
+  const exceptionStats = computeExceptionStats(
+    (siblingOrders ?? []).map((o) => ({
+      exceptions: o.document_exceptions as DocumentException[] | null,
+    }))
+  );
 
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
@@ -258,6 +271,16 @@ export default async function ProgramDeliveryPage({
               history={(order.canary_checks as CanaryEvent[] | null) ?? []}
             />
 
+            <ExceptionPanel
+              orderId={order.id}
+              documents={DOCUMENT_LABELS.map((doc) => ({
+                key: doc.key,
+                label: doc.label,
+                hasContent: Boolean(documentContents[doc.key]),
+              }))}
+              exceptions={(order.document_exceptions as DocumentException[] | null) ?? []}
+            />
+
             {signerSpecificityRates.length > 0 && (
               <div style={{
                 background: "rgba(255,255,255,0.02)",
@@ -270,11 +293,22 @@ export default async function ProgramDeliveryPage({
                 <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "0.75rem" }}>
                   Scoped to your own orders only, never compared against other customers. What share of each signer&apos;s notes, across everything they&apos;ve certified for you, contain nothing specific to the document.
                 </p>
-                {signerSpecificityRates.map((rate, i) => (
-                  <p key={i} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, marginBottom: i === signerSpecificityRates.length - 1 ? 0 : "0.5rem" }}>
-                    <strong style={{ color: "white" }}>{rate.signerName}</strong>: {rate.genericNotes} of {rate.totalNotes} notes ({Math.round(rate.rate * 100)}%) carry nothing specific to the document they certify.
+                {signerSpecificityRates.map((rate, i) => {
+                  const raised = exceptionStats.byRaiser.find(
+                    (r) => r.raiserName.toLowerCase() === rate.signerName.toLowerCase()
+                  );
+                  return (
+                    <p key={i} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, marginBottom: "0.5rem" }}>
+                      <strong style={{ color: "white" }}>{rate.signerName}</strong>: {rate.genericNotes} of {rate.totalNotes} notes ({Math.round(rate.rate * 100)}%) carry nothing specific to the document they certify.
+                      {" "}Exceptions raised: {raised ? `${raised.raised} (${raised.corrected} led to a correction)` : "0"}.
+                    </p>
+                  );
+                })}
+                {exceptionStats.total === 0 && (
+                  <p style={{ ...syne, fontSize: "12.5px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginTop: "0.5rem", marginBottom: 0 }}>
+                    Zero exceptions on record. That number is not evidence of clean review on its own — with nobody whose own results move with the answer recorded as objecting to anything, zero is the expected result, not a finding.
                   </p>
-                ))}
+                )}
               </div>
             )}
 
