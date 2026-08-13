@@ -31,6 +31,30 @@ type PushState =
   | { state: "ok"; verify: string | null; failedPeers: string[] }
   | { state: "error"; message: string };
 
+// Shape of /api/witness/network-status — the honest strength read. Added 13
+// Aug 2026 after Michael Ross audited this page before agreeing to peer with
+// it and asked the two questions it couldn't answer: what N is the network
+// targeting, and how does a third party confirm the threshold was met rather
+// than take the page's word.
+interface NetworkStatus {
+  configuredPeerCount: number;
+  livePeerCount: number;
+  staleThresholdHours: number;
+  weakBelow: number;
+  strength: "live" | "weak";
+  peers: {
+    name: string;
+    live: boolean;
+    lastAcceptedAnchorAt: string | null;
+    hoursSinceLastAccepted: number | null;
+    lastSentTip: string | null;
+    lastPeerResponse: string | null;
+    lastAnchorVerify: string | null;
+  }[];
+  selfDeclaredInboundCount: number;
+  selfDeclaredInboundChains: string[];
+}
+
 function shortHash(hash: string) {
   return `${hash.slice(0, 10)}…${hash.slice(-6)}`;
 }
@@ -48,15 +72,18 @@ function relativeTime(iso: string) {
 export default function WitnessNetworkPage() {
   const [tip, setTip] = useState<TipInfo | null>(null);
   const [log, setLog] = useState<LogRow[]>([]);
+  const [status, setStatus] = useState<NetworkStatus | null>(null);
   const [push, setPush] = useState<PushState>({ state: "idle" });
 
   async function loadState() {
-    const [tipRes, logRes] = await Promise.all([
+    const [tipRes, logRes, statusRes] = await Promise.all([
       fetch("/api/witness/tip").then((r) => r.json()),
       fetch("/api/witness/log").then((r) => r.json()),
+      fetch("/api/witness/network-status").then((r) => r.json()),
     ]);
     setTip(tipRes);
     setLog(logRes.entries ?? []);
+    setStatus(statusRes);
   }
 
   useEffect(() => {
@@ -69,7 +96,12 @@ export default function WitnessNetworkPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const peerCount = 1 + new Set(log.map((r) => r.peerChain).filter(Boolean)).size;
+  // Previously computed as 1 + distinct peer names in the last 25 log rows,
+  // which counted self-declared inbound claims as witnessing chains and
+  // silently shrank as the window rolled. Replaced 13 Aug 2026 with the
+  // server-computed live count: peers this chain successfully pushed to,
+  // and who accepted, inside the published 72 hour stale threshold.
+  const livePeerCount = status?.livePeerCount ?? null;
 
   async function handlePush() {
     setPush({ state: "sending" });
@@ -137,14 +169,66 @@ export default function WitnessNetworkPage() {
               <p style={{ ...syne, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)" }}>Entries sealed</p>
             </div>
             <div style={{ background: "#0D1B2E", padding: "1.5rem 1rem", textAlign: "center" }}>
-              <p style={{ ...syne, fontSize: "1.7rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.3rem" }}>{peerCount}</p>
-              <p style={{ ...syne, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)" }}>Chains witnessing</p>
+              <p style={{ ...syne, fontSize: "1.7rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.3rem" }}>{livePeerCount ?? "—"}</p>
+              <p style={{ ...syne, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)" }}>Live peers (72h)</p>
             </div>
             <div style={{ background: "#0D1B2E", padding: "1.5rem 1rem", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "1.7rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.3rem" }}>{log.length > 0 ? relativeTime(log[0].createdAt) : "—"}</p>
               <p style={{ ...syne, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)" }}>Last anchor</p>
             </div>
           </div>
+
+          {status && (
+            <div style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${status.strength === "live" ? "rgba(74,222,128,0.3)" : "rgba(251,191,36,0.35)"}`, borderRadius: "12px", padding: "1.5rem 1.75rem", marginBottom: "1.5rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>
+                  Network strength
+                </p>
+                <span style={{
+                  ...syne, fontSize: "11px", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase",
+                  color: status.strength === "live" ? "#4ade80" : "#fbbf24",
+                  border: `1px solid ${status.strength === "live" ? "rgba(74,222,128,0.4)" : "rgba(251,191,36,0.4)"}`,
+                  borderRadius: "4px", padding: "2px 8px",
+                }}>
+                  {status.strength === "live" ? "Live" : "Weak"}
+                </span>
+              </div>
+              <p style={{ ...syne, fontSize: "0.85rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, marginBottom: "0.9rem" }}>
+                {status.livePeerCount} of {status.configuredPeerCount} configured peer{status.configuredPeerCount === 1 ? "" : "s"} accepted an anchor inside the published {status.staleThresholdHours} hour stale threshold. Below {status.weakBelow} live peers this network labels itself weak: the mechanism is running, but collusion resistance scales with independent peers, and a small N is stated here rather than implied away. What one peer proves is that the mechanism works. What {status.weakBelow}+ prove is that rewriting history needs everyone to move together.
+              </p>
+              {status.peers.map((p) => (
+                <div key={p.name} style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "0.75rem", marginBottom: "0.5rem" }}>
+                  <p style={{ ...syne, fontSize: "0.85rem", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.2rem" }}>
+                    {p.name} — <span style={{ color: p.live ? "#4ade80" : "#fbbf24" }}>{p.live ? "live" : "stale"}</span>
+                    {p.hoursSinceLastAccepted !== null ? ` · last accepted anchor ${p.hoursSinceLastAccepted}h ago` : " · no accepted anchor yet"}
+                  </p>
+                  {p.lastSentTip && (
+                    <p style={{ ...mono, fontSize: "0.72rem", color: "rgba(244,241,234,0.45)", marginBottom: "0.2rem" }}>
+                      tip sent: {shortHash(p.lastSentTip)}
+                    </p>
+                  )}
+                  {p.lastPeerResponse && (
+                    <p style={{ ...mono, fontSize: "0.72rem", color: "rgba(244,241,234,0.45)", whiteSpace: "pre-wrap", overflowWrap: "anywhere", marginBottom: "0.2rem" }}>
+                      their receipt: {p.lastPeerResponse.slice(0, 220)}
+                    </p>
+                  )}
+                  {p.lastAnchorVerify && (
+                    <a href={p.lastAnchorVerify} style={{ ...syne, fontSize: "0.75rem", color: "#E5484D", fontWeight: 700, textDecoration: "none" }}>
+                      Sealed record of this exchange →
+                    </a>
+                  )}
+                </div>
+              ))}
+              {status.selfDeclaredInboundCount > 0 && (
+                <p style={{ ...syne, fontSize: "0.78rem", color: "rgba(244,241,234,0.45)", lineHeight: 1.6, marginTop: "0.5rem" }}>
+                  Inbound anchors received in the same window: {status.selfDeclaredInboundCount} chain{status.selfDeclaredInboundCount === 1 ? "" : "s"} ({status.selfDeclaredInboundChains.join(", ")}). Counted separately because the receiving endpoint is open by design, so these names are self declared by the sender, not verified identities.
+                </p>
+              )}
+              <p style={{ ...syne, fontSize: "0.78rem", color: "rgba(244,241,234,0.45)", lineHeight: 1.6, marginTop: "0.75rem", paddingLeft: "0.9rem", borderLeft: "2px solid rgba(255,255,255,0.15)" }}>
+                Check this yourself, without trusting this page: fetch our current tip from /api/witness/tip, compare it to the tip in the sealed exchange record above, then check the peer&apos;s own public chain for their sealed copy. Every number in this panel is computed from records you can open.
+              </p>
+            </div>
+          )}
 
           <div style={{ background: "linear-gradient(145deg, #102943, #0D1F35)", border: "1px solid rgba(229,72,77,0.25)", borderRadius: "12px", padding: "1.75rem", marginBottom: "1.5rem", boxShadow: "0 12px 40px -12px rgba(229,72,77,0.15)" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>
