@@ -21,6 +21,10 @@ export const APPROVED_PEERS: WitnessPeer[] = [
     // /observe, not the base path.
     url: "https://sebbi.pro/x/witness/observe",
   },
+  {
+    name: "NexusTrinity",
+    url: "https://nexustrinity.io/api/witness/anchor",
+  },
 ];
 
 export interface WitnessPayload {
