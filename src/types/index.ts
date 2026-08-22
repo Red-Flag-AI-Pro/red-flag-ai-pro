@@ -108,6 +108,24 @@ export interface BoundaryWarning {
   override_reason: string;
 }
 
+// Brad Wolfe, LinkedIn 22 Aug 2026: the aggregate clock (headcount, cost per
+// unit, output) sits inside every management report already, because a
+// company controls when it captures productivity and reports on that timeline
+// by default. The clock for whoever is actually downstream of the decision --
+// the person whose skills or role don't land on the aggregate's schedule --
+// has no line anywhere it would go if someone tried to record it. Distinct
+// from risks_accepted (the owner's own stated risk to the business) and
+// warnings_overridden (a risk someone else raised about the business) -- this
+// is who bears the consequence of the decision, not what the business risks
+// by making it. added_at is stamped when the entry is added, not editable
+// afterwards, same treatment as external dependencies.
+export interface BoundaryImpact {
+  affected_description: string;
+  stated_by_name: string;
+  stated_by_role: string | null;
+  added_at: string;
+}
+
 // A falsifier: the observable condition that voids the grant. "This authority
 // stops being valid if X becomes true." The falsifier IS the expiry condition —
 // no separate revocation mechanism needed, the same written-down test that
@@ -176,6 +194,16 @@ export interface BoundaryAuthorizationRecord {
   // Distinct from risks_accepted (the owner's own stated risk) -- a
   // warning raised by someone else that got overridden anyway.
   warnings_overridden: BoundaryWarning[];
+  // Who is downstream of this decision and what it costs them -- the clock
+  // Brad Wolfe named that has no line to go in anywhere else. Self reported,
+  // same as risks_accepted, not independently confirmed -- the point is
+  // giving it somewhere to exist at all, not verifying it yet.
+  affected_parties: BoundaryImpact[];
+  // Computed once at creation from whether affected_parties held anything,
+  // same treatment as reasoning_recorded -- never recomputed later, so an
+  // empty list stays a stated fact about what was disclosed at signing, not
+  // something that could be made true by editing the record afterwards.
+  impact_disclosed: boolean;
   evidence: BoundaryEvidence[];
   decision_date: string;
   // The "whether" leg: a grant needs a shelf life stamped on it the same way

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { createClient } from "@/lib/supabase/client";
-import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning } from "@/types";
+import type { Plan, BoundaryAuthorizationRecord, BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning, BoundaryImpact } from "@/types";
 
 // The authority spectrum, plainly worded. The distinction that matters most
 // is between the second and the third: whether a human clears each instance,
@@ -48,6 +48,10 @@ function emptyExternalDependency(): ExternalDependency {
 
 function emptyWarning(): BoundaryWarning {
   return { source_name: "", source_role: "", warning_text: "", overridden_at: new Date().toISOString(), override_reason: "" };
+}
+
+function emptyAffectedParty(): BoundaryImpact {
+  return { affected_description: "", stated_by_name: "", stated_by_role: "", added_at: new Date().toISOString() };
 }
 
 type AuthorityStatus = "active" | "expiring" | "expired" | "unbounded";
@@ -374,6 +378,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [risks, setRisks] = useState<BoundaryRisk[]>([emptyRisk()]);
   const [externalDependencies, setExternalDependencies] = useState<ExternalDependency[]>([emptyExternalDependency()]);
   const [warnings, setWarnings] = useState<BoundaryWarning[]>([emptyWarning()]);
+  const [affectedParties, setAffectedParties] = useState<BoundaryImpact[]>([emptyAffectedParty()]);
   const [evidence, setEvidence] = useState<BoundaryEvidence[]>([emptyEvidence()]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -407,6 +412,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setRisks([emptyRisk()]);
     setExternalDependencies([emptyExternalDependency()]);
     setWarnings([emptyWarning()]);
+    setAffectedParties([emptyAffectedParty()]);
     setEvidence([emptyEvidence()]);
   }
 
@@ -441,6 +447,7 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           risks_accepted: risks,
           external_dependencies: externalDependencies,
           warnings_overridden: warnings,
+          affected_parties: affectedParties,
           evidence,
           supersedes_id: supersedesId || null,
           grant_type: grantType,
@@ -1026,6 +1033,55 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
 
         <div>
           <div className="flex items-center justify-between mb-1">
+            <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)]">Who this affects downstream</label>
+            <button
+              onClick={() => setAffectedParties([...affectedParties, emptyAffectedParty()])}
+              className="text-xs text-[rgba(244,241,234,0.5)] hover:text-[#F4F1EA]"
+            >
+              + Add affected party
+            </button>
+          </div>
+          <div className="space-y-2">
+            {affectedParties.map((a, i) => (
+              <div key={i} className="rounded-lg border border-white/10 bg-white/[0.02] p-2.5 space-y-2">
+                <input
+                  value={a.affected_description}
+                  onChange={(e) => setAffectedParties(affectedParties.map((row, j) => (j === i ? { ...row, affected_description: e.target.value } : row)))}
+                  placeholder="Who is downstream of this and what it costs them e.g. 12 support staff whose queue this automates away"
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                />
+                <div className="grid grid-cols-2 gap-2">
+                  <input
+                    value={a.stated_by_name}
+                    onChange={(e) => setAffectedParties(affectedParties.map((row, j) => (j === i ? { ...row, stated_by_name: e.target.value } : row)))}
+                    placeholder="Who is stating this"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                  <input
+                    value={a.stated_by_role ?? ""}
+                    onChange={(e) => setAffectedParties(affectedParties.map((row, j) => (j === i ? { ...row, stated_by_role: e.target.value } : row)))}
+                    placeholder="Their role (optional)"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+                  />
+                </div>
+                {affectedParties.length > 1 && (
+                  <button
+                    onClick={() => setAffectedParties(affectedParties.filter((_, j) => j !== i))}
+                    className="text-xs text-[rgba(244,241,234,0.4)] hover:text-red-400"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1.5">
+            Brad Wolfe, LinkedIn 22 Aug 2026: the aggregate clock this decision moves has a number attached in every management report. The clock for whoever is actually downstream of it does not, because nothing anywhere gives it a line to go in. This is that line, self reported, not independently confirmed — the point is giving it somewhere to exist.
+          </p>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-1">
             <label className="text-xs font-semibold text-[rgba(244,241,234,0.5)]">Evidence relied on</label>
             <button
               onClick={() => setEvidence([...evidence, emptyEvidence()])}
@@ -1414,6 +1470,25 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
             )}
           </div>
 
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Downstream impact</p>
+            {record.impact_disclosed ? (
+              <p className="text-sm text-emerald-300">
+                Disclosed — at least one party downstream of this decision was named at the moment this was signed.
+              </p>
+            ) : (
+              // Brad Wolfe, LinkedIn 22 Aug 2026: the aggregate clock a decision
+              // moves has a number attached in every report by default. The
+              // clock for whoever is downstream of it does not, because nothing
+              // gives it a line to go in unless someone deliberately adds one.
+              // Same discipline as reasoning_recorded above: the empty case is
+              // stated as its own fact, not left to read as simply absent.
+              <p className="text-sm text-amber-300">
+                Not disclosed — nobody downstream of this decision was named at the moment this was signed. That is not unusual. It is the default this field exists to make visible.
+              </p>
+            )}
+          </div>
+
           {record.options_considered.length > 0 && (
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Options considered</p>
@@ -1449,6 +1524,20 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
                     {w.source_name && <span className="text-[rgba(244,241,234,0.5)]"> — raised by {w.source_name}{w.source_role ? ` (${w.source_role})` : ""}</span>}
                     <br />
                     <span className="text-[rgba(244,241,234,0.45)] italic">Overridden because: {w.override_reason}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(record.affected_parties ?? []).length > 0 && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Who this affects downstream</p>
+              <ul className="space-y-1.5">
+                {record.affected_parties.map((a, i) => (
+                  <li key={i} className="text-sm text-[rgba(244,241,234,0.8)]">
+                    • {a.affected_description}
+                    {a.stated_by_name && <span className="text-[rgba(244,241,234,0.5)]"> — stated by {a.stated_by_name}{a.stated_by_role ? ` (${a.stated_by_role})` : ""}</span>}
                   </li>
                 ))}
               </ul>

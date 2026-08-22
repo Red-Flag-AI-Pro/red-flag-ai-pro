@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { computePermissionFingerprint } from "@/lib/permission-fingerprint";
-import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning } from "@/types";
+import type { BoundaryOption, BoundaryRisk, BoundaryEvidence, BoundaryFalsifier, AuthorityMode, ExternalDependency, BoundaryWarning, BoundaryImpact } from "@/types";
 
 const AUTHORITY_MODES: AuthorityMode[] = ["human_decides", "ai_recommends", "ai_decides"];
 
@@ -94,6 +94,23 @@ function sanitizeWarnings(value: unknown): BoundaryWarning[] {
       override_reason: typeof v?.override_reason === "string" ? v.override_reason.trim() : "",
     }))
     .filter((v) => v.warning_text.length > 0 && v.override_reason.length > 0);
+}
+
+// Brad Wolfe, LinkedIn 22 Aug 2026: who is downstream of this decision and
+// what it costs them, distinct from risks_accepted (the business's own risk)
+// and warnings_overridden (someone else's warning about the business).
+// added_at is stamped when the entry is added, not editable afterwards, same
+// treatment as external dependencies.
+function sanitizeAffectedParties(value: unknown): BoundaryImpact[] {
+  if (!Array.isArray(value)) return [];
+  return (value as Record<string, unknown>[])
+    .map((v) => ({
+      affected_description: typeof v?.affected_description === "string" ? v.affected_description.trim() : "",
+      stated_by_name: typeof v?.stated_by_name === "string" ? v.stated_by_name.trim() : "",
+      stated_by_role: typeof v?.stated_by_role === "string" && v.stated_by_role.trim() ? v.stated_by_role.trim() : null,
+      added_at: typeof v?.added_at === "string" && v.added_at ? v.added_at : new Date().toISOString(),
+    }))
+    .filter((v) => v.affected_description.length > 0);
 }
 
 export async function GET() {
@@ -396,6 +413,8 @@ export async function POST(request: Request) {
   const sanitizedRisks = sanitizeRisks(body.risks_accepted);
   const sanitizedEvidence = sanitizeEvidence(body.evidence);
   const reasoningRecorded = sanitizedOptions.length > 0 || sanitizedRisks.length > 0 || sanitizedEvidence.length > 0;
+  const sanitizedAffectedParties = sanitizeAffectedParties(body.affected_parties);
+  const impactDisclosed = sanitizedAffectedParties.length > 0;
 
   const { data, error } = await result.supabase
     .from("boundary_authorization_records")
@@ -409,6 +428,8 @@ export async function POST(request: Request) {
       reasoning_recorded: reasoningRecorded,
       external_dependencies: sanitizeExternalDependencies(body.external_dependencies),
       warnings_overridden: sanitizeWarnings(body.warnings_overridden),
+      affected_parties: sanitizedAffectedParties,
+      impact_disclosed: impactDisclosed,
       evidence: sanitizedEvidence,
       decision_date: decisionDate,
       expires_at: expiresAt,
@@ -474,6 +495,7 @@ export async function POST(request: Request) {
       continuity_owner_role: data.continuity_owner_role,
       is_complete: isComplete,
       reasoning_recorded: reasoningRecorded,
+      impact_disclosed: impactDisclosed,
       recorded_by_user_id: result.user.id,
       recorded_by_email: result.user.email ?? null,
       grant_type: data.grant_type,
