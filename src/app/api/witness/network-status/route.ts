@@ -2,7 +2,14 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { WITNESS_CHAIN_USER_ID, APPROVED_PEERS } from "@/lib/witness";
 
-export const revalidate = 300;
+// Was `revalidate = 300`, but Next.js propagates a route's revalidate window
+// onto its own outbound fetch calls (including the ones supabase-js makes
+// under the hood), so the underlying query itself got cached -- meaning a
+// peer that just went live could keep reading as not-live for up to 5
+// minutes after the cache last happened to populate, not 5 minutes after
+// the anchor was actually sent. Defeats the point of a page that exists so
+// a peer's live status is independently checkable. Always read fresh.
+export const dynamic = "force-dynamic";
 
 // Built 13 Aug 2026 after Michael Ross (NexusTrinity) audited the public
 // page before agreeing to peer with it, and found the exact gap an honest
