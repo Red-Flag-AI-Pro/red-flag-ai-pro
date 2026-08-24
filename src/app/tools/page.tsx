@@ -33,6 +33,7 @@ const DOCUMENT_TOOLS: ToolCard[] = [
   { href: "/tools/monitoring-plan-generator", title: "Post-Market Monitoring Plan Generator", desc: "Draft the monitoring plan Article 72 requires: metrics, thresholds, review cadence." },
   { href: "/tools/eu-database-registration-assistant", title: "EU AI Database Registration Assistant", desc: "Answer a few questions and get a registration draft covering all 13 Annex VIII fields, free." },
   { href: "/tools/vendor-test-boundary-checklist", title: "AI Vendor Test Boundary Checklist", desc: "Name a vendor, get the questions almost no questionnaire asks: is their test environment isolated, and who can actually stop a run." },
+  { href: "/tools/ai-system-inventory", title: "AI System Inventory Generator", desc: "List every AI tool in use, name an owner for each, get a derived risk tier, including the shadow AI nobody deliberately adopted." },
 ];
 
 const POLICY_TOOLS: ToolCard[] = [
