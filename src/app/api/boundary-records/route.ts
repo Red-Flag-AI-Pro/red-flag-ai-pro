@@ -289,6 +289,13 @@ export async function POST(request: Request) {
   // What success looks like, not just how this stops. Optional, one
   // statement — expiry_conditions already cover the plural "how it dies" case.
   const completionCondition: string | null = typeof body.completion_condition === "string" && body.completion_condition.trim() ? body.completion_condition.trim() : null;
+  // Brad Wolfe, LinkedIn 24 Aug 2026: what usage, dependency, or elapsed time
+  // converts this from a pilot into a system that needs an owner, and who is
+  // obliged to notice. Optional, one statement — distinct from
+  // expiry_conditions, marking this observed never touches expires_at.
+  const graduationCondition: string | null = typeof body.graduation_condition === "string" && body.graduation_condition.trim() ? body.graduation_condition.trim() : null;
+  const graduationOwnerName: string | null = typeof body.graduation_owner_name === "string" && body.graduation_owner_name.trim() ? body.graduation_owner_name.trim() : null;
+  const graduationOwnerRole: string | null = typeof body.graduation_owner_role === "string" && body.graduation_owner_role.trim() ? body.graduation_owner_role.trim() : null;
   // Three distinct roles Brad Wolfe and Dr. David Marco independently named,
   // none of them the owner (who approved) or the continuity owner (whose job
   // is renewal): who has standing to halt this before its natural expiry
@@ -446,6 +453,9 @@ export async function POST(request: Request) {
       required_by_name: requiredByName || null,
       required_by_organisation: requiredByOrganisation,
       completion_condition: completionCondition,
+      graduation_condition: graduationCondition,
+      graduation_owner_name: graduationOwnerName,
+      graduation_owner_role: graduationOwnerRole,
       stop_authority_name: stopAuthorityName,
       stop_authority_role: stopAuthorityRole,
       defend_authority_name: defendAuthorityName,
@@ -506,6 +516,9 @@ export async function POST(request: Request) {
       required_by_name: data.required_by_name,
       required_by_organisation: data.required_by_organisation,
       completion_condition: data.completion_condition,
+      graduation_condition: data.graduation_condition,
+      graduation_owner_name: data.graduation_owner_name,
+      graduation_owner_role: data.graduation_owner_role,
       stop_authority_name: data.stop_authority_name,
       stop_authority_role: data.stop_authority_role,
       defend_authority_name: data.defend_authority_name,

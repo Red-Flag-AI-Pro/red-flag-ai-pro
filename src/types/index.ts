@@ -305,6 +305,29 @@ export interface BoundaryAuthorizationRecord {
   // Role and mandate audit stamp, same discipline as scan_flags'
   // reviewer_role.
   completion_confirmed_role: string | null;
+  // Brad Wolfe, LinkedIn 24 Aug 2026: a pilot is approved as small,
+  // reversible, and time boxed. It grows past all three quietly -- a second
+  // team starts relying on it, a process gets redesigned around it -- and no
+  // single step was ever unreasonable, so nothing looks like a governance
+  // failure. The thing that never happened was a decision, and decisions
+  // that never happen leave no record to audit. Distinct from
+  // expiry_conditions: a falsifier voids the grant, this does not. Gating
+  // the start of every experiment is how companies stop experimenting, so
+  // this names the threshold that converts a pilot into something needing a
+  // fresh, properly scoped decision, without killing it the moment that
+  // threshold is crossed.
+  graduation_condition: string | null;
+  // Who is obliged to notice the condition above became true. Same
+  // treatment as continuity_owner: naming the seat, not just the condition,
+  // is what stops "somebody should have caught that" from being everyone's
+  // answer and no one's job.
+  graduation_owner_name: string | null;
+  graduation_owner_role: string | null;
+  // Set only when someone actually marks the condition observed -- mirrors
+  // a falsifier's triggered_at, but marking this never changes expires_at.
+  // A pilot that has outgrown its approval is a fact worth surfacing, not a
+  // reason to shut it off mid observation.
+  graduation_triggered_at: string | null;
   // Brad Wolfe (5 Aug) and Dr. David Marco, independently, same week: three
   // distinct roles, none of them the owner (who approved) or the continuity
   // owner (whose job is renewal). stop_authority is who has standing to halt

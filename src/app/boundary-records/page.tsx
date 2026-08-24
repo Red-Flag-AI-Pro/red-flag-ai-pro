@@ -233,6 +233,61 @@ function CompletionConfirmation({ record }: { record: BoundaryAuthorizationRecor
   );
 }
 
+// Brad Wolfe, LinkedIn 24 Aug 2026: a pilot outgrows its approval quietly,
+// with no single unreasonable step and no decision anyone can point to.
+// Marking this observed never voids the grant, same discipline as
+// trigger-falsifier's open-to-anyone-on-the-account access, but the
+// opposite direction: this puts a dated fact on record rather than
+// shortening one.
+function GraduationTrigger({ record, onUpdated }: { record: BoundaryAuthorizationRecord; onUpdated: (record: BoundaryAuthorizationRecord) => void }) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (!record.graduation_condition) return null;
+
+  if (record.graduation_triggered_at) {
+    return (
+      <p className="text-xs text-amber-300">
+        ⚑ Marked observed on{" "}
+        {new Date(record.graduation_triggered_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+        {record.graduation_owner_name ? ` — ${record.graduation_owner_name}${record.graduation_owner_role ? ` (${record.graduation_owner_role})` : ""} is on the hook to act on it` : ""}.
+      </p>
+    );
+  }
+
+  async function trigger() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/boundary-records/${record.id}/trigger-graduation`, { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Could not mark this observed.");
+        return;
+      }
+      onUpdated(data.record);
+    } catch {
+      setError("Could not mark this observed.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="mt-1">
+      <button
+        onClick={trigger}
+        disabled={loading}
+        className="text-xs px-2.5 py-1 rounded border border-amber-500/40 bg-amber-900/20 text-amber-300 hover:bg-amber-900/40 disabled:opacity-50"
+        title="Anyone on this account who has noticed the condition became true can say so, without needing edit rights over the record."
+      >
+        {loading ? "Marking…" : "This happened — mark observed"}
+      </button>
+      {error && <p className="text-xs text-red-300 mt-1">{error}</p>}
+    </div>
+  );
+}
+
 // Brad Wolfe, "The CEO's New Job" thread, 10 Aug 2026: "the person has to be
 // told. A seat named in a minute nobody circulated is not accountability,
 // it is a document that will be produced later at a worse moment." Same
@@ -351,6 +406,9 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
   const [requiredByName, setRequiredByName] = useState("");
   const [requiredByOrganisation, setRequiredByOrganisation] = useState("");
   const [completionCondition, setCompletionCondition] = useState("");
+  const [graduationCondition, setGraduationCondition] = useState("");
+  const [graduationOwnerName, setGraduationOwnerName] = useState("");
+  const [graduationOwnerRole, setGraduationOwnerRole] = useState("");
   const [stopAuthorityName, setStopAuthorityName] = useState("");
   const [stopAuthorityRole, setStopAuthorityRole] = useState("");
   const [defendAuthorityName, setDefendAuthorityName] = useState("");
@@ -393,6 +451,9 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
     setRequiredByName("");
     setRequiredByOrganisation("");
     setCompletionCondition("");
+    setGraduationCondition("");
+    setGraduationOwnerName("");
+    setGraduationOwnerRole("");
     setStopAuthorityName("");
     setStopAuthorityRole("");
     setDefendAuthorityName("");
@@ -433,6 +494,9 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           required_by_name: requiredByName || null,
           required_by_organisation: requiredByOrganisation || null,
           completion_condition: completionCondition || null,
+          graduation_condition: graduationCondition || null,
+          graduation_owner_name: graduationOwnerName || null,
+          graduation_owner_role: graduationOwnerRole || null,
           stop_authority_name: stopAuthorityName || null,
           stop_authority_role: stopAuthorityRole || null,
           defend_authority_name: defendAuthorityName || null,
@@ -711,6 +775,33 @@ function NewRecordForm({ onCreated, existingRecords }: { onCreated: (record: Bou
           />
           <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
             The conditions below name how this stops. This names what it looks like to actually succeed — a different fact, not the same one stated twice.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-[rgba(244,241,234,0.5)] mb-1">This stops being a pilot when… (optional)</label>
+          <input
+            value={graduationCondition}
+            onChange={(e) => setGraduationCondition(e.target.value)}
+            placeholder="What usage, dependency, or elapsed time converts this into production, e.g. a second team relies on it, or it handles customer data"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+          />
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            <input
+              value={graduationOwnerName}
+              onChange={(e) => setGraduationOwnerName(e.target.value)}
+              placeholder="Who's obliged to notice (optional)"
+              className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+            <input
+              value={graduationOwnerRole}
+              onChange={(e) => setGraduationOwnerRole(e.target.value)}
+              placeholder="Their role (optional)"
+              className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-[#F4F1EA] placeholder-white/25 focus:outline-none focus:border-white/25"
+            />
+          </div>
+          <p className="text-xs text-[rgba(244,241,234,0.35)] mt-1">
+            Distinct from the conditions below: this never voids the grant. A pilot is approved as small, reversible, and time boxed, and it can outgrow all three without anyone deciding it should — this names the threshold that means it has, without switching it off.
           </p>
         </div>
 
@@ -1382,6 +1473,19 @@ function RecordCard({ record, supersededRecord, lapseSealed, authorEmail, onUpda
               <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Complete when</p>
               <p className="text-sm text-[rgba(244,241,234,0.8)] mb-1.5">{record.completion_condition}</p>
               <CompletionConfirmation record={record} />
+            </div>
+          )}
+
+          {record.graduation_condition && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[rgba(244,241,234,0.4)] mb-1.5">Stops being a pilot when</p>
+              <p className="text-sm text-[rgba(244,241,234,0.8)] mb-1.5">{record.graduation_condition}</p>
+              {record.graduation_owner_name && (
+                <p className="text-xs text-[rgba(244,241,234,0.5)] mb-1.5">
+                  {record.graduation_owner_name} is obliged to notice{record.graduation_owner_role ? ` (${record.graduation_owner_role})` : ""}.
+                </p>
+              )}
+              <GraduationTrigger record={record} onUpdated={onUpdated} />
             </div>
           )}
 
