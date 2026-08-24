@@ -15,6 +15,16 @@ function hashKey(key: string): string {
 
 const DEFAULT_THRESHOLD = 50;
 
+// Evelyne-Claudia Yantony, LinkedIn 24 Aug 2026: an ALLOW is stateless and
+// answers "is this specific action allowed right now" -- nothing stops a
+// caller checking once, then fanning out several actions asynchronously off
+// the back of that one answer. A falsifier fired a second later does not
+// follow those actions or recall them. Her rule: an ALLOW must not outlive
+// the consequence it authorizes. This is the field that makes that rule
+// checkable rather than just advised -- callers can see exactly when their
+// answer goes stale, instead of assuming a single check holds indefinitely.
+const ALLOW_VALIDITY_SECONDS = 60;
+
 // Real-Time Gate: a synchronous allow/block decision, called before content
 // goes live rather than checked after the fact. This is deliberately NOT a
 // network proxy or transparent gateway — it is a decision API your own code
@@ -86,7 +96,7 @@ export async function POST(request: Request) {
   const nowISO = new Date().toISOString();
   const { data: governingRecord } = await serviceClient
     .from("boundary_authorization_records")
-    .select("id, decision, owner_name")
+    .select("id, decision, owner_name, expires_at")
     .eq("api_key_id", apiKey.id)
     .eq("grant_type", "credential")
     .or(`expires_at.is.null,expires_at.gt.${nowISO}`)
@@ -252,9 +262,22 @@ export async function POST(request: Request) {
     );
   });
 
+  // Bound to whichever is sooner: the fixed dispatch window, or the
+  // governing record's own expiry. An ALLOW checked seconds before a record
+  // lapses should not read as good for a full minute -- the record's own
+  // horizon is the harder ceiling whenever it is the closer one.
+  const dispatchCeiling = new Date(Date.now() + ALLOW_VALIDITY_SECONDS * 1000);
+  const validUntil =
+    allowedDecision && governingRecord?.expires_at && new Date(governingRecord.expires_at) < dispatchCeiling
+      ? governingRecord.expires_at
+      : allowedDecision
+      ? dispatchCeiling.toISOString()
+      : null;
+
   return NextResponse.json({
     decision_id: decision?.id,
     allowed: allowedDecision,
+    valid_until: validUntil,
     block_reason: blockReason,
     hard_enforcement_accepted_by: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_by : undefined,
     hard_enforcement_accepted_at: blockReason === "no_valid_authorization" ? apiKey.hard_enforcement_accepted_at : undefined,

@@ -153,6 +153,7 @@ export default function DocsPage() {
             <Code>{`{
   "decision_id": "uuid",
   "allowed": false,
+  "valid_until": "2026-08-24T11:01:00.000Z",
   "score": 35,
   "threshold": 50,
   "risk": "high",
@@ -163,6 +164,7 @@ export default function DocsPage() {
   "checked_at": "2026-08-07T11:00:00.000Z"
 }`}</Code>
             <p className="text-gray-500 text-xs mt-2">A blocked decision (<code className="text-gray-300">allowed: false</code>) is sealed with an independent timestamp and a public verify link. Allowed decisions are stored but not individually sealed, to avoid flooding the chain with routine checks. <code className="text-gray-300">governing_record</code> is the current boundary authorization record for the API key making this call, if one exists and has not expired — <code className="text-gray-300">null</code> if nothing currently governs this key. Named on the decision itself, not left as a separate record you have to go match up by hand.</p>
+            <p className="text-gray-500 text-xs mt-2"><code className="text-gray-300">valid_until</code> is how long this specific answer can be relied on, not how long the key is authorized in general. An ALLOW is a stateless answer to one question asked at one moment. Nothing stops a caller checking once and then dispatching several actions off the back of that single answer, and a falsifier that fires a second later cannot reach back and recall anything already launched under it. Set to 60 seconds from the check, or the governing record's own expiry if that comes sooner, whichever is closer. Treat an ALLOW past this timestamp as stale and check again rather than assuming it still holds. <code className="text-gray-300">null</code> when the decision is blocked, since a block has nothing to expire.</p>
           </div>
         </div>
 
