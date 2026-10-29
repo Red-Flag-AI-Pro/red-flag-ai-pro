@@ -1,0 +1,25 @@
+name: Monthly keep alive
+
+# GitHub switches off scheduled workflows after 60 days with no commits.
+# That is what stopped the Witness network hourly anchor on 22 Oct 2026.
+# This makes one empty commit on the 1st of every month so the repo always
+# counts as active. The skip ci tag stops Vercel redeploying for it.
+on:
+  schedule:
+    - cron: "17 3 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make an empty commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "Monthly keep alive so scheduled workflows stay on [skip ci]"
+          git push
