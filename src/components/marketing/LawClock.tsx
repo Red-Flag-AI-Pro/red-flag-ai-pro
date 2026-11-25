@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
 import { splitLawTimeline, daysUntil, formatLawDate, type LawEvent } from "@/lib/law-timeline";
-import { LawAlertSignup } from "@/components/marketing/LawAlertSignup";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
@@ -105,8 +104,6 @@ export function LawClock() {
             })}
           </div>
         </div>
-
-        <LawAlertSignup />
 
         <div style={{ marginTop: "2.25rem", display: "flex", flexWrap: "wrap", gap: "14px 28px", justifyContent: "center", alignItems: "center" }}>
           <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
