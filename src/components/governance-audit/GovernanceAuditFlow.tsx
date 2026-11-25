@@ -185,15 +185,15 @@ export function GovernanceAuditFlow() {
             }}>
               {captureDone ? (
                 <p style={{ ...syne, fontSize: '0.9rem', color: 'rgba(244,241,234,0.75)', textAlign: 'center' }}>
-                  Sent. Check your inbox for a copy of this result.
+                  Got it. We will be in touch about your biggest gap.
                 </p>
               ) : (
                 <>
                   <p style={{ ...syne, fontSize: '0.9rem', fontWeight: 700, color: '#F4F1EA', marginBottom: '0.5rem' }}>
-                    Want this emailed to you?
+                    Want a follow up on this?
                   </p>
                   <p style={{ ...syne, fontSize: '0.85rem', color: 'rgba(244,241,234,0.5)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                    Not required, your score above is already yours. Leave an email and we&apos;ll send a copy, plus occasional relevant updates. Unsubscribe anytime.
+                    Not required, your score above is already yours. Leave an email and we&apos;ll get in touch about your biggest gap, plus occasional relevant updates. Unsubscribe anytime.
                   </p>
                   <form onSubmit={handleCaptureEmail} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <input
@@ -209,7 +209,7 @@ export function GovernanceAuditFlow() {
                       }}
                     />
                     <button type="submit" disabled={captureSubmitting} className="btn-primary" style={{ padding: '12px 22px', fontSize: '0.85rem' }}>
-                      {captureSubmitting ? 'Sending…' : 'Email it to me'}
+                      {captureSubmitting ? 'Saving…' : 'Follow up with me'}
                     </button>
                   </form>
                   {captureError && (

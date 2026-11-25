@@ -32,7 +32,7 @@ const FAQS = [
   { category: "AI governance", q: "What is the Governance Maturity Index?", a: "A free 2 minute assessment, 12 questions, that scores your organisation's AI governance across 6 dimensions: strategy, tools and data, policy, monitoring, vendor risk, and regulatory readiness. You get a 0 to 100 score, your top gaps, and a 90 day roadmap." },
   { category: "AI governance", q: "Is the governance assessment a different product from the checker?", a: "Same engine, two entry points. The checker checks your marketing copy for risk in real time. The governance assessment scores your organisation's overall AI governance maturity. Most companies end up using both." },
   { category: "AI governance", q: "Who is the governance assessment for?", a: "CFOs, compliance leads, and risk teams who need to show a regulator or board that AI governance is real, not just a written policy nobody checks." },
-  { category: "AI governance", q: "Is the governance assessment free?", a: "Yes. One assessment per email, no credit card required. Your score, top gaps and roadmap appear on screen instantly, with a summary sent to your inbox." },
+  { category: "AI governance", q: "Is the governance assessment free?", a: "Yes. One assessment per email, no credit card required. Your score, top gaps and roadmap appear on screen instantly." },
 ];
 
 const categories = [...new Set(FAQS.map((f) => f.category))];

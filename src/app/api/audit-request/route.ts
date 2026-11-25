@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
+import { createServiceClient } from "@/lib/supabase/server";
 import { Resend } from "resend";
 import { addContactToLoops } from "@/lib/loops";
 import { checkRateLimit, clientIp } from "@/lib/rate-limit";
+import { AUDIT_PRICE } from "@/lib/constants";
 
 // Where a new Done-For-You audit request lands. Kept as a plain constant so the
 // destination is obvious and easy to change in one place.
@@ -48,7 +50,7 @@ export async function POST(request: Request) {
     const html = `
       <div style="font-family:system-ui,-apple-system,sans-serif;max-width:560px;margin:0 auto;color:#111">
         <h2 style="margin:0 0 4px;font-size:18px">New Done-For-You audit request</h2>
-        <p style="margin:0 0 20px;color:#888;font-size:13px">One-time compliance &amp; governance audit &middot; &pound;199</p>
+        <p style="margin:0 0 20px;color:#888;font-size:13px">One-time compliance &amp; governance audit &middot; &pound;${AUDIT_PRICE.amount}</p>
         <table style="border-collapse:collapse;width:100%">
           ${row("Name", name)}
           ${row("Email", email)}
@@ -64,7 +66,7 @@ export async function POST(request: Request) {
                )}</div>`
             : ""
         }
-        <p style="margin:24px 0 0;color:#999;font-size:12px">Reply straight to this email to reach them. Send a secure payment link (&pound;199, one time) to start the 48 hour delivery.</p>
+        <p style="margin:24px 0 0;color:#999;font-size:12px">Reply straight to this email to reach them. Send a secure payment link (&pound;${AUDIT_PRICE.amount}, one time) to start the 48 hour delivery.</p>
       </div>`;
 
     if (process.env.RESEND_API_KEY) {
@@ -87,6 +89,20 @@ export async function POST(request: Request) {
     } else {
       // No mail provider configured — still log so the lead is visible in server logs.
       console.error("audit-request received but RESEND_API_KEY not set:", { name, email, phone, company, website });
+    }
+
+    // Always keep a copy of the request in our own database. The email above
+    // and the Loops capture below are both best effort, and on 25 Nov 2026
+    // both were found to be failing at once, which meant a paid enquiry was
+    // shown "thanks" and then vanished. This row is what the daily lead check
+    // reads. tool_leads only holds the address and the kind of request, so the
+    // rest of the form is in the email when email works.
+    try {
+      const leadStore = await createServiceClient();
+      const { error: leadError } = await leadStore.from("tool_leads").insert({ email: email.toLowerCase(), tool: "audit-request" });
+      if (leadError) console.error("audit-request lead save failed:", leadError.message);
+    } catch (leadErr) {
+      console.error("audit-request lead save threw:", leadErr);
     }
 
     // Best-effort: also drop the lead into Loops so it is captured and nurturable

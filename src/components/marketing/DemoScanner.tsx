@@ -246,7 +246,7 @@ export function DemoScanner() {
               Private & Secure
             </p>
             <p style={{...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.5}}>
-              Your copy is checked securely and never shared or sold. We keep your email to send your results and one follow up, nothing else.
+              Your copy is checked securely and never shared or sold. We keep your email to follow up on your results, nothing else.
             </p>
           </div>
         </div>
@@ -331,7 +331,7 @@ export function DemoScanner() {
             onBlur={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.18)"; e.target.style.boxShadow = "none"; }}
           />
           <p style={{...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginTop: "-0.85rem", marginBottom: "1.25rem"}}>
-            We&apos;ll use this to send your results and occasional relevant updates. Unsubscribe anytime.
+            We&apos;ll use this to follow up on your results and send occasional relevant updates. Unsubscribe anytime.
           </p>
 
           <p style={{...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "0.75rem"}}>Paste your copy here</p>
