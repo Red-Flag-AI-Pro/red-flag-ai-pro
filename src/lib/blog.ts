@@ -10,6 +10,81 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "what-changed-in-ai-law-since-august-2026",
+    title: "While You Were Watching the AI Hype, the Law Moved",
+    description: "EU AI Act transparency rules went live on 2 August 2026. The high risk delay became law. The CMA has fined firms more than £12 million. Three more dates land before Christmas. Everything that changed for a business using AI, in plain English, checked against the official texts.",
+    date: "2026-11-25",
+    readTime: "6 min read",
+    category: "AI Governance",
+    content: `
+## Four Months Is a Long Time
+
+Since the start of August, the people selling AI have shipped a new model, a new agent or a new promise most weeks. While everyone watched that, the rules for the businesses actually using AI changed underneath them. Quietly, on fixed dates, in official journals almost nobody reads.
+
+We read them. Here is everything that matters if you run a business that uses AI, with every date checked against the official text on 25 November 2026.
+
+---
+
+## What Is Already in Force
+
+**2 August 2026. The EU AI Act's transparency rules.** Article 50 is live. If your chatbot talks to people in the EU, it must say it is AI. If you publish a deepfake, meaning AI made images, audio or video that look real, you must label it. AI written text published to inform the public on matters of public interest must be disclosed, unless a human reviewed it and someone holds editorial responsibility for it. Fines run up to €15 million or 3% of worldwide annual turnover.
+
+Read that exemption again. A human reviewed it, and somebody takes responsibility. That only helps you if you can show it happened. A review nobody recorded is a review that never took place.
+
+As of late November we are not aware of any publicly announced fine under Article 50. That is how every one of these regimes starts. Keep reading.
+
+**27 July 2026. The delay everybody heard about.** Regulation (EU) 2026/1744 moved the high risk rules to 2 December 2027 for uses like hiring, credit scoring and insurance pricing, and to 2 August 2028 for AI built into regulated products. A lot of people heard "the AI Act got delayed" and stopped listening. The transparency rules were not delayed. The AI literacy duty was softened, not removed: you still have to take measures to support the AI literacy of your staff.
+
+**5 February 2026. UK rules on automated decisions.** The reformed rules in Articles 22A to 22D of the UK GDPR are in force. Where software makes significant decisions about people, they must be told, be able to challenge the decision and be able to reach a human. The UK regulator, legally the Information Commission since 30 September and still known as the ICO, is required to write a statutory code of practice on AI and automated decisions. It has not been published yet. Its call for evidence on AI agents closed on 20 November.
+
+**The CMA is fining directly.** Since April 2025 the Competition and Markets Authority has not needed a court to fine a business for misleading consumers. The ceiling is 10% of global turnover. Its first penalty for a consumer law breach came in April 2026: £4.2 million, over a £3 booking fee that was left out of the headline price and shown at checkout. The CMA says it has now imposed more than £12 million in fines under these powers. Its five investigations into fake and misleading reviews, opened in March, are still running.
+
+**The ASA is using AI to watch your ads.** On 16 September 2026 the Advertising Standards Authority upheld a ruling against betting brand Midnite over a TikTok ad featuring an AI generated character who appeared to be under 25. Nobody complained. The regulator's own AI monitoring found it.
+
+---
+
+## What Lands Next
+
+**2 December 2026.** The grace period ends for generative AI tools that were already on the EU market before August. From this date their output must be marked in a machine readable way. New bans on AI that generates intimate images of real people without their consent start the same day.
+
+**9 December 2026.** The deadline for EU countries to apply the new Product Liability Directive. It covers products placed on the market after that date, and its definition of a product expressly includes software, which takes in AI. Defects carry strict liability, and a court can order you to disclose your evidence.
+
+**10 December 2026.** Australian privacy policies must disclose the use of computer programs to make, or substantially help make, decisions that could significantly affect a person.
+
+**1 January 2027.** Colorado's rewritten AI law starts to bite: notice, explanations for adverse outcomes, data correction and human review wherever automated tools are used in decisions about jobs, housing, lending, insurance and health care. A court challenge is pending, so watch that date.
+
+We keep [a live version of this list on our homepage](https://www.redflagaipro.com). It counts down by itself and moves each rule across the day it starts.
+
+---
+
+## Every One of These Is the Same Two Questions
+
+Strip the legal language away and every item above asks one of two things.
+
+**What did you say?** The ad, the price, the review, the claim, the label you left off. That is compliance, and it is judged on what the public saw.
+
+**What can you prove you did?** Who reviewed it, who approved it, when, and whether the record would survive somebody checking it. That is governance, and it is judged on evidence, not on your policy document.
+
+Most businesses have a view on the first and nothing for the second. The regulators have noticed. So have the insurers.
+
+---
+
+## We Never Stopped
+
+On 2 August 2026, the day Article 50 went live, we began sending the fingerprint of our own sealed records every hour to independent chains we do not control. We have not missed a day since. You do not have to take our word for that, which is the entire point. [Check the live record yourself](https://www.redflagaipro.com/witness-network).
+
+Catch what you said. Prove what you did. Both are free to start.
+
+[Check your marketing copy free →](https://www.redflagaipro.com/compliance-assessment)
+
+[Run a free governance assessment →](https://www.redflagaipro.com/governance-audit)
+
+---
+
+*This is a plain English summary, not legal advice. Further reading: [The Mystery of AI Governance](https://www.redflagaipro.com/reports/mystery-of-ai-governance), our report on the gap between what companies claim about their AI oversight and what they can actually prove.*
+`,
+  },
+  {
     slug: "global-ai-brake-wont-get-pressed",
     title: "The Global AI Brake Won't Get Pressed. Here's the One That Might.",
     description: "Over 1,200 AI company employees signed a letter asking governments to build a coordinated slowdown mechanism for frontier AI. Steve Endacott, Chairman of Neural Voice, made the honest case for why no government presses it first. He's right. Here's the brake that doesn't need everyone to agree.",

@@ -64,32 +64,58 @@ export const FREE_TOOLS = [
   },
 ] as const;
 
-// Verified against live legal research on 26 Jul 2026 (see
+// Verified against the official texts on 25 Nov 2026 (see
 // REGULATORY_MAPPING_LAST_REVIEWED). Each entry states its confirmation
 // status explicitly so the assistant never presents a proposal or a bill
 // that has not passed as if it were settled law. Update this list whenever
 // the regulatory mapping is next reviewed, not on every small news item.
+// The homepage timeline in law-timeline.ts covers the same dates in shorter
+// form, so change both together.
 export const REGULATORY_DEADLINES = [
   {
-    date: "2 August 2026",
-    status: "Confirmed, final law (EU Digital Omnibus in force 27 Jul 2026)",
+    date: "5 February 2026",
+    status: "Confirmed, in force (UK)",
     meaning:
-      "Two things happen on this date. First, the EU AI Office gains real enforcement and fining power over providers of general purpose AI models (up to 3% of global turnover or 15 million euro). Second, EU AI Act Article 50 disclosure duties apply to deployers, not just model makers: AI generated content must be disclosed, chatbots must identify themselves as AI, and deepfakes must be labelled.",
+      "The UK's reformed automated decision making rules apply (Articles 22A to 22D UK GDPR, inserted by the Data (Use and Access) Act 2025). Where significant decisions about people are made by automated means, they must be told, be able to make representations, get human intervention and contest the decision. The UK regulator is also required to prepare a statutory code of practice on AI and automated decision making, which has not yet been published.",
+  },
+  {
+    date: "2 August 2026",
+    status: "Confirmed, in force (EU Digital Omnibus, Regulation (EU) 2026/1744, in force 27 Jul 2026)",
+    meaning:
+      "Two things happened on this date. First, the EU AI Office gained real enforcement and fining power over providers of general purpose AI models. Second, EU AI Act Article 50 transparency duties began to apply: chatbots must identify themselves as AI, deepfakes must be labelled, and AI generated text published to inform the public on matters of public interest must be disclosed unless a human reviewed it and someone holds editorial responsibility. Fines for Article 50 breaches run up to 15 million euro or 3% of worldwide annual turnover. As of late November 2026 we are not aware of any publicly announced fine under Article 50.",
   },
   {
     date: "2 December 2026",
     status: "Confirmed, final law",
     meaning:
-      "A narrower technical watermarking sub duty inside Article 50 gets a transition period: AI systems already on the market before 2 August 2026 have until this date before that specific marking requirement applies. The broader disclosure duties above are not delayed.",
+      "Two things. First, the transition period for the machine readable marking duty in Article 50(2) ends: generative AI systems placed on the market before 2 August 2026 must comply from this date. Second, new prohibitions apply to AI systems that generate sexually explicit or intimate images of identifiable people without their consent, and AI systems that generate child sexual abuse material.",
   },
   {
-    date: "December 2027",
+    date: "9 December 2026",
+    status: "Confirmed, final law (EU directive, applied through each member state's own law)",
+    meaning:
+      "Deadline for EU member states to apply the new Product Liability Directive (EU) 2024/2853. It covers products placed on the market or put into service after this date, and its definition of product expressly includes software, which takes in AI systems.",
+  },
+  {
+    date: "10 December 2026",
+    status: "Confirmed, final law (Australia)",
+    meaning:
+      "Australian privacy policies must disclose the use of computer programs to make, or substantially help make, decisions that could significantly affect an individual's rights or interests.",
+  },
+  {
+    date: "1 January 2027",
+    status: "Confirmed, signed law (Colorado, US). A pending court challenge could move the date",
+    meaning:
+      "Colorado SB 26-189, signed 14 May 2026, replaced the 2024 Colorado AI Act. From this date it requires notice, adverse outcome explanations, data correction and human review where automated decision making technology is used in consequential decisions such as employment, housing, lending, insurance and health care.",
+  },
+  {
+    date: "2 December 2027",
     status: "Confirmed, final law (delayed by the Digital Omnibus)",
     meaning:
-      "EU AI Act Annex III high risk obligations apply from this date. This is the bulk of the high risk AI rulebook: employment decisions, credit scoring, biometric categorisation and similar. Originally due sooner, pushed back by the Digital Omnibus.",
+      "EU AI Act Annex III high risk obligations apply from this date. This is the bulk of the high risk AI rulebook: employment decisions, credit scoring, biometric categorisation and similar. Originally due 2 August 2026.",
   },
   {
-    date: "August 2028",
+    date: "2 August 2028",
     status: "Confirmed, final law (delayed by the Digital Omnibus)",
     meaning:
       "EU AI Act Annex I high risk obligations (AI embedded in already regulated products, e.g. medical devices, machinery) apply from this date.",
@@ -133,11 +159,11 @@ export function buildKnowledgeBase(liveStats?: { checksRun?: number }): string {
 
 WHAT IT IS
 Two things in one platform:
-1. Compliance checking of marketing copy, ads, funnels, emails and live pages against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions. The free plan sees 16 of the {RISK_CATEGORY_COUNT} categories.
+1. Compliance checking of marketing copy, ads, funnels, emails and live pages against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions. The free plan sees 16 of the ${RISK_CATEGORY_COUNT} categories.
 2. AI governance scoring: the Governance Maturity Index, a free assessment scoring an organisation across 6 dimensions (strategy, tools and data, policy, monitoring, vendor risk, regulatory readiness).
 Regulatory mappings last reviewed ${REGULATORY_MAPPING_LAST_REVIEWED}.
 
-THE 10 JURISDICTIONS
+THE ${JURISDICTION_COUNT} JURISDICTIONS
 USA (FTC, FDA, CAN SPAM), UK (CMA, ASA, FCA, ICO), EU (GDPR, EU AI Act, DSA), Australia (ACCC, TGA), Canada (CASL, PIPEDA), Brazil (LGPD), India (DPDP Act), Singapore (PDPA), UAE (PDPL), Nigeria (NDPR) and China (SAMR, PIPL, CAC).
 
 REGULATORY DEADLINES YOU MAY EXPLAIN (state the status label honestly, never upgrade a proposal to settled law)
@@ -145,8 +171,8 @@ ${deadlineLines}
 When asked what a deadline means, explain it plainly and factually as above. Never tell someone whether it personally applies to their business, that is a judgement call you are not allowed to make. Say who it generally affects in categorical terms, then route to the free check or the free governance assessment so the product shows them concretely where they stand.
 
 PLANS AND PRICES
-- Free: ${PLAN_LIMITS.free} check per month, 16 of {RISK_CATEGORY_COUNT} categories, the full free governance assessment, and the free toolkit. No card required.
-- Pro (${PLAN_PRICES.scanner.label}): £${proPrice}/mo, ${PLAN_LIMITS.scanner} checks per month, all {RISK_CATEGORY_COUNT} categories, live URL checks. ${saleLine}
+- Free: ${PLAN_LIMITS.free} check per month, 16 of ${RISK_CATEGORY_COUNT} categories, the full free governance assessment, and the free toolkit. No card required.
+- Pro (${PLAN_PRICES.scanner.label}): £${proPrice}/mo, ${PLAN_LIMITS.scanner} checks per month, all ${RISK_CATEGORY_COUNT} categories, live URL checks. ${saleLine}
 - Growth (${PLAN_PRICES.enterprise.label}): £${PLAN_PRICES.enterprise.monthly}/mo, ${PLAN_LIMITS.enterprise} checks per month, unlocks every governance gap with the fix and remediation step, client workspaces, white label reports, weekly monitoring.
 - Sentinel: custom pricing, unlimited, real time monitoring, tamper evident audit trail, named disposition sign off, boundary authorization records.
 - Done For You Audit: a one off £${AUDIT_PRICE.amount}. James personally checks a whole site and AI use, records a video walkthrough, and sends a full report plus a reviewed badge, within 48 hours. No subscription.

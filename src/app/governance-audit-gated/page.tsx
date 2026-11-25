@@ -259,12 +259,12 @@ export default function GovernanceAuditGatedPage() {
           }}>
             {[
               {
-                days: '30 days',
-                deadline: 'August 2, 2026',
-                desc: 'EU AI Act Article 50 transparency duties begin. AI generated content must be disclosed. High risk system rules were delayed to Dec 2027. Article 4 AI literacy duties have applied since Feb 2025.'
+                days: 'In force',
+                deadline: 'EU AI Act, since 2 August 2026',
+                desc: 'Article 50 transparency duties apply now. AI generated content must be disclosed or backed by a documented human review. High risk system rules were delayed to Dec 2027, not cancelled.'
               },
               {
-                days: '6+ months',
+                days: 'Under way',
                 deadline: '2026 SEC Exams',
                 desc: 'Financial regulators test: Can you prove governance? Can you monitor?'
               },

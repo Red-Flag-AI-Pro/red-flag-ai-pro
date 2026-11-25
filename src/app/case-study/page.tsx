@@ -45,14 +45,14 @@ const FLAGS = [
     regulations: ["CMA + DMCC Act 2024 (UK)", "ACCC (Australia)", "FTC (US)", "UCPD (EU)"],
   },
   {
-    category: "EU AI Act Article 50: Undisclosed AI Copy, August 2026",
+    category: "EU AI Act Article 50: Undisclosed AI Copy",
     severity: "HIGH",
     context: "A content agency used ChatGPT to write blog posts, email sequences and ad copy for twelve clients. The content was edited and published without any disclosure that AI was used in its creation.",
     excerpt: "Our team of experts has crafted this guide to help you navigate the landscape. We believe in putting people first, which is why every piece of content we create comes from genuine human expertise.",
-    description: "EU AI Act Article 50(4) comes into force on 2 August 2026. It requires that AI generated content intended for public audiences is clearly disclosed. This copy was written by ChatGPT, edited by a human, and then published with the claim that it comes from 'genuine human expertise.' That is not disclosure, it is the opposite. The agency is producing this content for twelve clients across the EU market. Every piece of undisclosed AI content published after 2 August 2026 is a violation. Fines reach €15 million or 3% of global annual turnover.",
+    description: "EU AI Act Article 50(4) has applied since 2 August 2026. AI generated text published to inform the public must be disclosed, unless a human reviewed it and someone holds editorial responsibility for it. This copy was written by ChatGPT, edited by a human, and then published with the claim that it comes from 'genuine human expertise.' That is not disclosure, it is the opposite, and it is a misleading claim in its own right. The agency is producing this content for twelve clients across the EU market with no record of who reviewed what. Without that record, the human review exemption cannot be shown. Fines reach €15 million or 3% of global annual turnover.",
     fix: "Add disclosure language to all AI assisted content: 'This content was created with the assistance of AI writing tools and reviewed by [Name] on [Date].' Document your human editorial review process. Update all client contracts to include AI tool usage clauses.",
     impact: "Fines up to €15 million or 3% of global annual turnover. ICO investigation. PI insurance exclusions may apply to AI generated content claims.",
-    regulations: ["EU AI Act Article 50(4), effective 2 August 2026", "UK ICO AI Transparency Guidance (UK)", "FTC AI Endorsement Guidelines (US)"],
+    regulations: ["EU AI Act Article 50(4), in force since 2 August 2026", "UK ICO AI Transparency Guidance (UK)", "FTC AI Endorsement Guidelines (US)"],
   },
   {
     category: "Greenwashing: EU Green Claims Directive and CMA Enforcement",

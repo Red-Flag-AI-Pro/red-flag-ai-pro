@@ -76,7 +76,7 @@ export function computeRegulatoryMapping(intake: ProgramIntake): RegulatoryMappi
       document: "AI Acceptable Use Policy draft",
       framework: "EU AI Act",
       article: "Article 4",
-      whatItSatisfies: "The duty to take measures ensuring sufficient AI literacy among staff using AI systems on the company's behalf, and to give staff a written answer on what is and is not an approved use.",
+      whatItSatisfies: "The duty, as amended in July 2026, to take measures supporting the AI literacy of staff using AI systems on the company's behalf, and to give staff a written answer on what is and is not an approved use.",
       status: statusFromFields([intake.prohibitedUses, intake.approvalProcess, intake.reportingChannel]),
     },
     {

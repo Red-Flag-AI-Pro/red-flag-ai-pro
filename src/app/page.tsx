@@ -7,6 +7,8 @@ import { Footer } from "@/components/layout/Footer";
 import { ExitIntent } from "@/components/marketing/ExitIntent";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
+import { LawClock } from "@/components/marketing/LawClock";
+import { getProofStats, formatProofDate } from "@/lib/proof-stats";
 import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const revalidate = 3600;
@@ -27,8 +29,23 @@ const jsonLd = {
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
+const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  // Live figures from the sealed chain. Null when the database cannot be
+  // reached, in which case the page falls back to wording with no numbers.
+  const proof = await getProofStats();
+  const num = (n: number) => n.toLocaleString("en-GB");
+  const proofFigures = proof
+    ? [
+        { value: num(proof.daysRunning), label: "days running" },
+        { value: num(proof.recordsSealed), label: "records sealed" },
+        proof.daysMissed === 0
+          ? { value: "0", label: "days missed" }
+          : { value: num(proof.daysRunning - proof.daysMissed), label: `of ${num(proof.daysRunning)} days sealed` },
+      ]
+    : null;
+
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
       <script
@@ -39,7 +56,7 @@ export default function LandingPage() {
       <ExitIntent />
       <Navbar />
 
-      {/* ANNOUNCEMENT: witness network */}
+      {/* ANNOUNCEMENT: live proof from the sealed chain */}
       <Link
         href="/witness-network"
         style={{
@@ -48,8 +65,17 @@ export default function LandingPage() {
         }}
       >
         <span style={{ ...syne, fontSize: "0.82rem", color: "rgba(244,241,234,0.75)" }}>
-          <span style={{ color: "#E5484D", fontWeight: 700 }}>New:</span> two independent companies sealing each other's evidence, live.{" "}
-          <span style={{ color: "#F4F1EA", fontWeight: 700, textDecoration: "underline" }}>See the witness network →</span>
+          <span style={{ display: "inline-block", width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", marginRight: "8px", verticalAlign: "middle", animation: "pulseRed 2s ease-in-out infinite" }} />
+          {proof ? (
+            <>
+              <span style={{ color: "#F4F1EA", fontWeight: 700 }}>Live:</span> proof sealed every hour for {num(proof.daysRunning)} days. {proof.daysMissed === 0 ? "No day missed." : `${num(proof.daysRunning - proof.daysMissed)} of them sealed.`}{" "}
+            </>
+          ) : (
+            <>
+              <span style={{ color: "#F4F1EA", fontWeight: 700 }}>Live:</span> our own records, sealed every hour and witnessed by independent chains.{" "}
+            </>
+          )}
+          <span style={{ color: "#F4F1EA", fontWeight: 700, textDecoration: "underline" }}>Check it yourself →</span>
         </span>
       </Link>
 
@@ -113,6 +139,8 @@ export default function LandingPage() {
       </section>
 
       <TrustBar />
+
+      <LawClock />
 
       {/* CHOOSE YOUR PATH */}
       <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
@@ -414,6 +442,10 @@ export default function LandingPage() {
             background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.12) 30%, rgba(10,22,40,0.2) 70%, #0A1628 100%)",
           }}
         />
+        {/* Extra shade behind the figures so they read cleanly over the photo. */}
+        {proof && (
+          <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse 85% 62% at 50% 58%, rgba(10,22,40,0.86) 0%, rgba(10,22,40,0.55) 55%, rgba(10,22,40,0) 100%)" }} />
+        )}
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <h2
             className="font-display"
@@ -430,6 +462,30 @@ export default function LandingPage() {
             <br />
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>We can prove it.</span>
           </h2>
+          {proof && proofFigures && (
+            <>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "clamp(0.75rem, 3vw, 2.5rem)", maxWidth: "600px", margin: "3rem auto 0" }}>
+                {proofFigures.map((f) => (
+                  <div key={f.label} style={{ textAlign: "left", paddingLeft: "clamp(10px, 2.5vw, 16px)", borderLeft: "2px solid #E5484D" }}>
+                    <span style={{ ...mono, display: "block", fontSize: "clamp(1.5rem, 6.4vw, 3rem)", fontWeight: 500, lineHeight: 1, letterSpacing: "-0.02em", color: "#F4F1EA", textShadow: "0 2px 24px rgba(6,14,26,0.95)" }}>{f.value}</span>
+                    <span style={{ ...mono, display: "block", marginTop: "10px", fontSize: "10.5px", lineHeight: 1.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.85)", textShadow: "0 1px 8px rgba(6,14,26,0.95)" }}>{f.label}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ ...syne, fontSize: "0.98rem", color: "rgba(244,241,234,0.88)", lineHeight: 1.7, maxWidth: "560px", margin: "2.25rem auto 0", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
+                The EU AI Act&apos;s transparency rules went live on {formatProofDate(proof.since)}. From that day, the fingerprint of our own sealed records has gone out every hour to independent chains we do not control.{proof.daysMissed === 0 ? " We have not missed a day since." : ""}
+              </p>
+              <Link href="/witness-network" style={{
+                ...syne, fontSize: "0.92rem", fontWeight: 700, marginTop: "1.75rem",
+                background: "rgba(10,22,40,0.55)", color: "#F4F1EA",
+                border: "1px solid rgba(244,241,234,0.35)",
+                padding: "12px 28px", borderRadius: "9999px",
+                textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px"
+              }}>
+                See the live record <span className="arrow">→</span>
+              </Link>
+            </>
+          )}
         </div>
       </section>
 

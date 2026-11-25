@@ -7,7 +7,7 @@ import type { JurisdictionCode } from "@/lib/analyzer";
 // Bump this date whenever a risk category, jurisdiction mapping, or regulatory
 // reference is added/updated, so the site can show a real "last reviewed" date
 // instead of an unbacked "always up to date" claim.
-export const REGULATORY_MAPPING_LAST_REVIEWED = "26 July 2026";
+export const REGULATORY_MAPPING_LAST_REVIEWED = "25 November 2026";
 
 export const PLAN_LIMITS: Record<Plan, number> = {
   free: 1,

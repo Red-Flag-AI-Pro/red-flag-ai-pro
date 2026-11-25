@@ -34,9 +34,9 @@ export function HeroNew() {
       <div className="urgency-bar" style={{background: "#b91c1c", borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
         <p className="py-2.5 px-4 text-center text-xs font-medium text-white/90 tracking-wide">
           <span className="urgency-text-full">
-            EU AI Act Article 50 enforcement begins August 2026. AI generated marketing copy must be disclosed.{" "}
+            EU AI Act Article 50 has been enforceable since 2 August 2026. AI content must be disclosed or backed by a documented human review.{" "}
           </span>
-          <span className="urgency-text-short">EU AI Act enforcement begins Aug 2026.{" "}</span>
+          <span className="urgency-text-short">EU AI Act Article 50 is live.{" "}</span>
           <Link href="/blog/eu-ai-act-article-50-marketing-agencies" className="font-bold underline underline-offset-2 hover:no-underline">
             Learn more
           </Link>

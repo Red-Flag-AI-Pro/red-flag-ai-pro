@@ -50,8 +50,8 @@ const BENEFITS = [
     body: "Every check fires a webhook to any URL. Paste an n8n, Make or Zapier hook into Settings and check results flow directly into Slack, your CRM or Google Sheets. The REST API lets you embed checking into your own systems.",
   },
   {
-    headline: "AI copy. August 2026. Your responsibility.",
-    body: "The EU AI Act requires disclosure on AI assisted content from August 2026. If you use AI to write copy for clients, the obligation to disclose sits with you. Sentinel records what was checked, when, and by whom.",
+    headline: "AI copy. In force now. Your responsibility.",
+    body: "EU AI Act transparency rules have applied since 2 August 2026. If you use AI to produce content for clients, you either disclose it or you hold the record showing a human reviewed it and took responsibility. Sentinel records what was checked, when, and by whom.",
   },
   {
     headline: "Turn check results into something you can actually show.",
@@ -87,7 +87,7 @@ const WHO = [
 ];
 
 const LAWS = [
-  { law: "EU AI Act", date: "Enforceable August 2026", description: "If you use AI to write copy for clients, you must disclose it and prove it was reviewed before publication. The obligation sits with the creator, not just the brand.", hot: true },
+  { law: "EU AI Act", date: "In force since 2 August 2026", description: "If you use AI to produce content for clients, you must disclose it or be able to prove a human reviewed it before publication. The obligation sits with the creator, not just the brand.", hot: true },
   { law: "FCA Financial Promotions", date: "Active now", description: "Any copy touching investments, returns, crypto or financial products must be pre approved by an FCA authorised person. One unapproved ad triggers an investigation.", hot: false },
   { law: "EU Green Claims Directive", date: "Enforcement ramping 2026", description: "Sustainability claims like carbon neutral, eco friendly or net zero require substantiated evidence. Writing them without proof is now a regulatory offence across the EU.", hot: false },
   { law: "ASA CAP Code", date: "Active now", description: "UK advertising rules cover every ad your agency produces. Income claims, guarantees, testimonials and urgency tactics are all regulated. Agencies are routinely named in upheld complaints.", hot: false },
@@ -215,7 +215,7 @@ export default function SentinelPage() {
       }}>
         <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", flexShrink: 0, animation: "pulseRed 2s ease-in-out infinite" }} />
         <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.05em" }}>
-          EU AI Act Article 50 enforcement begins <span style={{ color: "#E5484D" }}>2 August 2026</span>. AI generated marketing copy must be disclosed or documented. Agencies are in the frame.
+          EU AI Act Article 50 has been enforceable since <span style={{ color: "#E5484D" }}>2 August 2026</span>. AI generated content must be disclosed or documented. Agencies are in the frame.
         </p>
       </div>
 

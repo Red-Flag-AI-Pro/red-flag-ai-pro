@@ -46,9 +46,9 @@ const PRESSURES = [
   },
   {
     label: "EU AI Act Article 50",
-    date: "Enforceable 2 August 2026",
+    date: "In force since 2 August 2026",
     description:
-      "Transparency obligations for AI generated content take effect. Firms producing client facing content and marketing with AI assistance need to be able to disclose and document that use, not just their clients.",
+      "Transparency obligations for AI generated content are in effect. Firms producing client facing content and marketing with AI assistance need to be able to disclose and document that use, not just their clients.",
     hot: false,
   },
   {
@@ -102,7 +102,7 @@ const RULES = [
   },
   {
     rule: "EU AI Act Article 50",
-    demands: "From 2 August 2026, AI generated content requires transparency. Firms using AI for client facing content carry the obligation.",
+    demands: "Since 2 August 2026, AI generated content requires transparency. Firms using AI for client facing content carry the obligation.",
     checks: "AI disclosure checks, plus the governance record proving human review, sealed and timestamped.",
   },
   {

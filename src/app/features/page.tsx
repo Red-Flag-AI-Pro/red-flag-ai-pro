@@ -16,9 +16,13 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 const RECENT_REGULATORY_UPDATES = [
+  { date: "Dec 2026", text: "Three dates in nine days. 2 December: the grace period for machine readable marking of AI output ends in the EU. 9 December: the EU deadline for product liability rules that treat software, AI included, as a product. 10 December: Australian privacy policies must disclose automated decisions." },
+  { date: "Oct 2026", text: "The CMA says it has now imposed more than £12 million in fines under its direct consumer enforcement powers, including for misleading sales tactics. Its five fake review investigations, opened in March, are still running." },
+  { date: "Sep 2026", text: "The ASA upheld a ruling against betting brand Midnite over a TikTok ad featuring an AI generated character who appeared to be under 25. No one complained. The ASA's own AI monitoring found it." },
+  { date: "Aug 2026", text: "EU AI Act Article 50 transparency duties became enforceable on 2 August: chatbots must identify themselves, deepfakes must be labelled, fines up to €15M or 3% of worldwide turnover. As of late November 2026 we are not aware of any publicly announced fine under Article 50." },
+  { date: "Jul 2026", text: "The EU AI Act delay became law. Regulation (EU) 2026/1744 entered into force on 27 July: high risk duties now apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I). The AI literacy duty in Article 4 was softened, not removed." },
   { date: "May 2026", text: "FTC settled with Cox Media Group and two other firms for ~$1M over deceptive claims about an AI powered marketing service. First major \"AI washing\" settlement of the year." },
-  { date: "May 2026", text: "EU AI Act timeline revised: high risk system deadlines pushed to Dec 2027 (Annex III) and Aug 2028 (Annex I), but prohibited practice and GPAI rules are already enforceable now, with fines up to €35M / 7% of turnover." },
-  { date: "Jan 2026", text: "SEC named AI governance a cross cutting 2026 exam priority. Examiners will test whether firms' AI disclosures and controls match what their systems actually do, and scrutinise \"AI washing\" claims directly." },
+    { date: "Jan 2026", text: "SEC named AI governance a cross cutting 2026 exam priority. Examiners will test whether firms' AI disclosures and controls match what their systems actually do, and scrutinise \"AI washing\" claims directly." },
 ];
 
 export default function FeaturesPage() {
