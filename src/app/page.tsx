@@ -128,7 +128,7 @@ export default async function LandingPage() {
             <span style={{ fontStyle: "italic", color: "#E5484D" }}>We&apos;ll find it for you.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.92)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
-            Give us your website. We check what it says and how you use AI, and show you the one problem most likely to cost you. Free, and you don&apos;t lift a finger.
+            Give us your website. We check both halves: what you say in public, and how you use AI. Then we show you the one problem most likely to cost you. Free, and you don&apos;t lift a finger.
           </p>
           <div id="red-flag" style={{ maxWidth: "720px", margin: "0 auto 1.1rem", scrollMarginTop: "110px" }}>
             <SiteCheckRequestForm variant="compact" />
@@ -141,6 +141,61 @@ export default async function LandingPage() {
       </section>
 
       <TrustBar />
+
+      {/* TWO HALVES: compliance and AI governance given equal weight, with
+          governance made concrete for small businesses (26 Nov 2026). Most
+          owners do not know they "do" AI governance until they see the four
+          everyday examples on the right. */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1040px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What we check</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.12, color: "#F4F1EA", marginBottom: "1rem" }}>
+              Two halves. <span style={{ fontStyle: "italic", color: "#E5484D" }}>One check.</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "15.5px", color: "rgba(244,241,234,0.7)", lineHeight: 1.75, maxWidth: "620px", margin: "0 auto" }}>
+              Most businesses only think about the first half. The second one is where the new rules are landing.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+            {[
+              {
+                tag: "Compliance · What you said",
+                title: "Your website, ads and offers.",
+                items: ["Prices, offers and deadlines", "Reviews and testimonials", "Claims about results, health or income", "Privacy notices and the legal details your site must show"],
+                ask: "Is everything you say in public allowed?",
+                accent: "#E5484D",
+              },
+              {
+                tag: "AI governance · What you did",
+                title: "How your business uses AI.",
+                items: ["The chat or booking assistant on your website", "Pages, posts and replies written by AI", "Staff pasting client details into ChatGPT", "Software that helps decide who gets an appointment, a job or a refund"],
+                ask: "Who approved it, and could you prove it?",
+                accent: "#C9A66B",
+              },
+            ].map((h) => (
+              <div key={h.tag} style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderTop: `3px solid ${h.accent}`, borderRadius: "12px", padding: "2rem" }}>
+                <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: h.accent, marginBottom: "0.9rem" }}>{h.tag}</p>
+                <p className="font-display" style={{ fontSize: "1.55rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.25, marginBottom: "1.1rem" }}>{h.title}</p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.4rem", display: "grid", gap: "0.6rem" }}>
+                  {h.items.map((t) => (
+                    <li key={t} style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.78)", lineHeight: 1.5, display: "flex", gap: "10px" }}>
+                      <span style={{ color: h.accent, flexShrink: 0 }}>●</span>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-display" style={{ fontSize: "1.15rem", fontStyle: "italic", color: h.accent, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1rem" }}>{h.ask}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.75)", lineHeight: 1.75, textAlign: "center", maxWidth: "680px", margin: "2.5rem auto 0" }}>
+            If you use any of the four on the right, you are already doing AI governance, whether or not anyone has called it that. <strong style={{ color: "#F4F1EA" }}>We check both halves for you.</strong>
+          </p>
+        </div>
+      </section>
 
       <GetChecked />
 
@@ -159,9 +214,9 @@ export default async function LandingPage() {
           {(() => {
             const ROW_ONE = [
               {
-                role: "Creators & course sellers",
-                pain: "Is your ad about to get you fined, or flagged by the platform you're paying to run it on?",
-                solution: "We check your copy for you. Income claims, fake urgency and missing disclosures, caught before you publish.",
+                role: "Clinics & local businesses",
+                pain: "Your website chat is AI. If it gives a patient the wrong answer, who signed it off?",
+                solution: "We check what your site says and how your AI is used, and show you the gaps.",
               },
               {
                 role: "Marketing agencies",
@@ -278,14 +333,14 @@ export default async function LandingPage() {
         }} />
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1.25rem" }}>
-            Cryptographically sealed. Not just stored.
+            Sealed and witnessed. Not just stored.
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem", color: "white" }}>
             Never be the person who cannot explain a decision<br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>when the board asks.</span>
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>when someone asks.</span>
           </h2>
           <p style={{ ...syne, fontSize: "1.02rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "640px", margin: "0 auto 2rem" }}>
-            Every check and every governance action is sealed the moment it happens, chained to the one before it with SHA-256. Edit, delete, or backdate any record and the break is provable, not something you have to take our word for.
+            Every check we do is dated and sealed the moment it happens, and witnessed by independent parties we do not control. Change or backdate a record and it shows. So when a regulator, an insurer or a customer asks what you checked and when, you can prove it.
           </p>
           <Link href="/verify" style={{
             ...syne, fontSize: "0.95rem", fontWeight: 700,
