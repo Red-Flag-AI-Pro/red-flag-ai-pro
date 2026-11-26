@@ -13,6 +13,7 @@ import {
   emailMessage,
   emailSubject,
   linkedinMessage,
+  replyMessage,
   ukDate,
   type Activity,
   type CheckpointAnswers,
@@ -167,6 +168,7 @@ function ProspectForm({ draft, setDraft }: { draft: Partial<Prospect>; setDraft:
         <Field name="The exact words on their site" value={draft.red_flag_quote ?? ""} onChange={set("red_flag_quote")} text />
         <Field name="Why it is a problem" value={draft.red_flag_problem ?? ""} onChange={set("red_flag_problem")} text />
         <Field name="The rule it breaks" value={draft.red_flag_rule ?? ""} onChange={set("red_flag_rule")} text />
+        <Field name="How serious the rest are (for the reply: never say what or where)" value={draft.reply_summary ?? ""} onChange={set("reply_summary")} text />
       </div>
       <Field name="Notes" value={draft.notes ?? ""} onChange={set("notes")} text />
     </div>
@@ -197,7 +199,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [callOutcome, setCallOutcome] = useState<string>(CALL_OUTCOMES[0]);
   const [note, setNote] = useState("");
   const [copied, setCopied] = useState(false);
-  const [tab, setTab] = useState<"message" | "email" | "script" | "checkpoints" | "letter">("message");
+  const [tab, setTab] = useState<"message" | "email" | "reply" | "script" | "checkpoints" | "letter">("message");
   const [answers, setAnswers] = useState<CheckpointAnswers>({});
   const [heardCopied, setHeardCopied] = useState(false);
   // A short confirmation after something is logged, so it is obvious it worked.
@@ -366,6 +368,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const merged = selected ? ({ ...(selected as Prospect), ...(draft as Prospect) } as Prospect) : null;
   const message = merged ? linkedinMessage(merged) : "";
   const mail = merged ? emailMessage(merged) : "";
+  const reply = merged ? replyMessage(merged) : "";
   const subject = merged ? emailSubject(merged) : "";
   // Which copy button was last pressed, so each shows its own "Copied".
   const [copiedWhat, setCopiedWhat] = useState("");
@@ -655,6 +658,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                       {([
                         ["message", "LinkedIn message"],
                         ["email", "Email"],
+                        ["reply", "When they reply"],
                         ["script", "Call script"],
                         ["checkpoints", `Checkpoints ${covered}/${CHECKPOINTS.length}`],
                         ["letter", "Letter"],
@@ -710,6 +714,24 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                         <p style={{ ...syne, fontSize: "12.5px", color: C.dim, lineHeight: 1.6, marginTop: "10px" }}>
                           Check the address on their own contact page before sending. Then press &ldquo;Email sent&rdquo; below.
                         </p>
+                      </>
+                    )}
+
+                    {tab === "reply" && (
+                      <>
+                        <p style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.6, marginBottom: "10px" }}>
+                          Send this when they answer. It says how serious the rest are, never what or where: that is what they pay for. Press &ldquo;They replied&rdquo; below as well.
+                        </p>
+                        <p style={label}>Reply, ready to paste</p>
+                        <textarea readOnly value={reply} rows={16} style={{ ...input, resize: "vertical", lineHeight: 1.55, fontSize: "13.5px" }} />
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "10px" }}>
+                          <Btn kind="gold" onClick={() => copyText(reply, "reply")}>{copiedWhat === "reply" ? "Copied" : "Copy reply"}</Btn>
+                        </div>
+                        {reply.includes("[paste your") && (
+                          <p style={{ ...syne, fontSize: "12.5px", color: "#fca5a5", lineHeight: 1.6, marginTop: "10px" }}>
+                            Replace the bracket with your £449 Stripe payment link before sending.
+                          </p>
+                        )}
                       </>
                     )}
 

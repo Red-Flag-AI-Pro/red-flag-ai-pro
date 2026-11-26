@@ -11,6 +11,9 @@ export const CONTACT = {
   business: "Red Flag AI Pro",
   email: "support@redflagaipro.com",
   website: "redflagaipro.com",
+  // James's Stripe Payment Link for the £449 audit. Empty until he creates it;
+  // the reply then shows a placeholder for him to paste it in.
+  auditPaymentLink: "",
 };
 
 export const STAGES = ["new", "contacted", "replied", "flag_sent", "audit_sold", "lost"] as const;
@@ -65,6 +68,8 @@ export interface Prospect {
   /** Also worth going back to for RecoverROI, and what was noticed. */
   recoverroi_fit: boolean;
   recoverroi_note: string | null;
+  /** How serious the rest of their flags are, for the reply. Never what or where. */
+  reply_summary: string | null;
 }
 
 export interface Activity {
@@ -111,6 +116,7 @@ export const EDITABLE_FIELDS = [
   "notes",
   "recoverroi_fit",
   "recoverroi_note",
+  "reply_summary",
 ] as const;
 
 /** Today in the UK as YYYY-MM-DD, optionally shifted by a number of days. */
@@ -256,6 +262,34 @@ export function emailMessage(p: Prospect): string {
     CONTACT.website,
     "",
     "If you would rather not hear from me again, just reply \"no thanks\" and I will not contact you again.",
+  ].join("\n");
+}
+
+/**
+ * The reply once they answer: how serious the rest are, never what or where
+ * (that is what the audit sells), then the audit, the price, the guarantee and
+ * the payment link.
+ */
+export function replyMessage(p: Prospect): string {
+  const rest = p.more_count && p.more_count > 0 ? p.more_count : null;
+  const summary = (p.reply_summary ?? "").trim() ||
+    (rest ? `There ${rest === 1 ? "is" : "are"} ${rest} more, and some of them are as serious as the first one.` : "There is more on the site worth looking at.");
+  const link = CONTACT.auditPaymentLink || "[paste your £449 payment link here]";
+  return [
+    `Hello ${greetName(p)},`,
+    "",
+    "Thanks for coming back to me.",
+    "",
+    summary,
+    "",
+    "The full audit lists every one: where it is on your site, why it matters, and the exact wording to fix it. You get it on video and in writing within 48 hours, with a reviewed badge for your site. It's £449, and if I find nothing worth fixing, you get your money back.",
+    "",
+    `Here's the link to book it: ${link}`,
+    "",
+    "Happy to talk it through on a quick call first if you'd prefer.",
+    "",
+    CONTACT.name,
+    CONTACT.website,
   ].join("\n");
 }
 
