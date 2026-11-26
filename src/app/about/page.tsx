@@ -444,9 +444,9 @@ export default function AboutPage() {
               color: "#F4F1EA",
             }}
           >
-            Built by one person who kept showing up.
+            We do the checking.
             <br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>Checked by anyone who cares to look.</span>
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>So you don&apos;t have to.</span>
           </h2>
         </div>
       </section>
