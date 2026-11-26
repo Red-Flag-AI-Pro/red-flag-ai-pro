@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createServiceClient } from "@/lib/supabase/server";
+import { saveLeadRequest } from "@/lib/lead-requests";
 import { Resend } from "resend";
 import { addContactToLoops } from "@/lib/loops";
 import { checkRateLimit, clientIp } from "@/lib/rate-limit";
@@ -85,19 +85,11 @@ export async function POST(request: Request) {
       console.error("sentinel-request received but RESEND_API_KEY not set:", { name, email, phone, company, teamSize });
     }
 
-    // Always keep a copy of the request in our own database. The email above
-    // and the Loops capture below are both best effort, and on 25 Nov 2026
-    // both were found to be failing at once, which meant a paid enquiry was
-    // shown "thanks" and then vanished. This row is what the daily lead check
-    // reads. tool_leads only holds the address and the kind of request, so the
-    // rest of the form is in the email when email works.
-    try {
-      const leadStore = await createServiceClient();
-      const { error: leadError } = await leadStore.from("tool_leads").insert({ email: email.toLowerCase(), tool: "sentinel-request" });
-      if (leadError) console.error("sentinel-request lead save failed:", leadError.message);
-    } catch (leadErr) {
-      console.error("sentinel-request lead save threw:", leadErr);
-    }
+    // Always keep the full request in our own database. The email above and
+    // the Loops capture below are both best effort, and on 25 Nov 2026 both
+    // were found to be failing at once, which meant a paid enquiry was shown
+    // "thanks" and then vanished. This row is what the daily lead check reads.
+    await saveLeadRequest({ kind: "sentinel", email, name, phone, company, message: [teamSize ? `Team size: ${teamSize}` : "", message].filter(Boolean).join("\n") });
 
     try {
       await addContactToLoops({ email, name, plan: "free", source: "sentinel-request", track: "both" });

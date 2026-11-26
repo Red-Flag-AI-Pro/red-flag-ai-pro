@@ -3,61 +3,19 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { REGULATORY_MAPPING_LAST_REVIEWED, isScannerSaleActive, isGrowthSaleActive, PLAN_PRICES, AUDIT_PRICE, PROGRAM_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
+import { REGULATORY_MAPPING_LAST_REVIEWED, AUDIT_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import React from "react";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Pricing: Compliance Checking and Governance Proof | Red Flag AI Pro",
-  description: "Free AI governance assessment. Pro for full compliance checking, Growth for ongoing governance monitoring and teams, Sentinel for managed governance, compliance evidence, and board readiness. CFO + compliance teams.",
+  title: "Pricing: Done For You Compliance and AI Governance",
+  description: "Three ways to work with us. A free first finding on your website, a fixed price done for you audit, and Sentinel for firms that want compliance and AI governance handled every month.",
   alternates: { canonical: "https://www.redflagaipro.com/pricing" },
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
-
-const SCANNER_FEATURES = [
-  `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected.`,
-  "5 checks per month",
-  "PDF reports",
-  "Check history",
-  "API & webhook access — connect n8n, Make, Zapier or your own system",
-  "Email support",
-  "14 day money back guarantee",
-];
-
-const GROWTH_FEATURES = [
-  `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected. 30 checks/month.`,
-  "Full AI governance diagnosis — every gap revealed, not just one (fixes unlock with Sentinel)",
-  "1 free fix-it document for your worst-scoring dimension",
-  "Vendor AI risk tracking & assessments",
-  "Policy to practice gap detection",
-  "Unlimited PDF reports",
-  "Multiple team seats",
-  "API & webhook access — connect n8n, Make, Zapier or your own system",
-  "White label PDF reports",
-  "Priority email support",
-  "14 day money back guarantee",
-];
-
-const SENTINEL_FEATURES = [
-  "Everything in Growth",
-  "Managed governance implementation (we work it with you)",
-  "Cryptographically sealed audit log, verifiable on demand",
-  "Sign offs stamped with the signer's role and authority, not just their name",
-  "Authority health dashboard — lapsed and unbounded grants surfaced automatically, not hidden until someone asks",
-  "Ongoing governance & vendor monitoring reviews",
-  "Financial impact modeling (compliance cost calculator)",
-  "Governance enforcement support & guardrail design",
-  "Board ready reporting, built with your team",
-  "Regulatory readiness review",
-  "Multi team governance workflows",
-  "API access to your check & assessment data",
-  "Dedicated governance advisor (quarterly calls)",
-  "White label reports for client facing",
-  "Priority support",
-];
 
 export default async function PricingPage() {
   const cookieStore = await cookies();
@@ -158,483 +116,93 @@ export default async function PricingPage() {
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Every plan starts with two answers: is your copy safe to publish, and would your governance survive an audit. The free assessment scores you across 6 dimensions and hands you a 90 day roadmap.
+            Three ways to work with us, and no tiers to compare. We find the problem for free, fix all of it for one fixed price, or handle it for you every month.
           </p>
         </div>
       </section>
 
-      {/* FREE ASSESSMENT BANNER */}
-      <section style={{ padding: "0 1.5rem", marginTop: "-2rem", position: "relative", zIndex: 2 }}>
-        <div style={{
-          maxWidth: "900px", margin: "0 auto",
-          background: "rgba(229,72,77,0.08)",
-          border: "1px solid rgba(229,72,77,0.3)",
-          borderRadius: "12px",
-          padding: "2rem",
-          textAlign: "center",
-        }}>
-          <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.75rem" }}>Start here, free</p>
-          <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>
-            Every plan below starts with a free governance assessment.
-          </p>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.25rem" }}>
-            Six dimension breakdown, your top critical gaps, peer benchmarking, and a 90 day to 12 month roadmap, delivered as a board ready PDF. One assessment per email, no credit card required.
-          </p>
-          <Link href="/governance-audit" style={{
-            display: "inline-block",
-            background: "rgba(239,68,68,0.2)",
-            color: "#E5484D",
-            border: "1px solid rgba(239,68,68,0.4)",
-            ...syne, fontSize: "0.875rem", fontWeight: 700,
-            padding: "12px 24px", borderRadius: "9999px",
-            textDecoration: "none",
-          }}>
-            Start free assessment (5 min)
-          </Link>
-        </div>
-      </section>
+      {/* THE THREE OFFERS */}
+      <section style={{ padding: "5rem 1.5rem 6rem" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem", alignItems: "stretch" }}>
 
-      {/* PLANS */}
-      <section style={{ padding: "6rem 1.5rem" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
-
-            {/* SCANNER */}
-            <div style={{
-              background: "#0D1B2E",
-              border: "2px solid rgba(239,68,68,0.5)",
-              padding: "2.5rem",
-              position: "relative",
-              boxShadow: "0 0 40px rgba(239,68,68,0.15)"
-            }}>
-              {isScannerSaleActive() && (
-                <div style={{
-                  position: "absolute", top: "-1px", right: "-1px",
-                  background: "#C9A66B",
-                  ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
-                  textTransform: "uppercase", color: "#0A1628",
-                  padding: "5px 14px",
-                  borderBottomLeftRadius: "8px",
-                }}>
-                  Enforcement week rate → 7 Aug
-                </div>
-              )}
-
-              <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", marginTop: "1rem" }}>Pro</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Full compliance checking, for solo creators and small teams who need it checked, not monitored.</p>
-              </div>
-              <div style={{ minHeight: "4.6rem" }}>
-                {isNigeria ? (
-                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                    $49<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                  </p>
-                ) : isScannerSaleActive() ? (
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
-                    <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
-                      £350
-                      <span style={{
-                        position: "absolute", left: "-4%", right: "-4%", top: "50%",
-                        height: "2px", background: "#C9A66B",
-                        transform: "rotate(-8deg)",
-                      }} />
-                    </p>
-                    <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                      £149<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                    </p>
-                  </div>
-                ) : (
-                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                    £350<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                  </p>
-                )}
-                {!isNigeria && isScannerSaleActive() && (
-                  <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
-                    Lock this rate in for as long as you stay subscribed.
-                  </p>
-                )}
-              </div>
-              <Link href={isNigeria ? "/signup?plan=scanner&region=ng" : "/signup?plan=scanner"} style={{
-                display: "block", textAlign: "center",
-                background: "#E5484D",
-                color: "white",
-                ...syne, fontSize: "0.875rem", fontWeight: 700,
-                padding: "12px 24px", borderRadius: "9999px",
-                textDecoration: "none", marginTop: "1.5rem"
-              }}>
-                Start Pro
-              </Link>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                No call required.
-              </p>
-              <div style={{ borderTop: "1px solid rgba(239,68,68,0.3)", marginTop: "2rem", paddingTop: "2rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
-                {SCANNER_FEATURES.map((f) => (
-                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
-                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* GROWTH */}
-            <div style={{
-              background: "#102943",
-              border: "2px solid rgba(201,166,107,0.6)",
-              padding: "2.5rem",
-              position: "relative",
-              boxShadow: "0 0 40px rgba(201,166,107,0.15)"
-            }}>
-              <div style={{
-                position: "absolute", top: "-1px", left: "2rem",
-                background: "#C9A66B",
-                ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.12em",
-                textTransform: "uppercase", color: "#0A1628",
-                padding: "4px 12px"
-              }}>Recommended</div>
-              {isGrowthSaleActive() && (
-                <div style={{
-                  position: "absolute", top: "-1px", right: "-1px",
-                  background: "#C9A66B",
-                  ...syne, fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
-                  textTransform: "uppercase", color: "#0A1628",
-                  padding: "5px 14px",
-                  borderBottomLeftRadius: "8px",
-                }}>
-                  Enforcement week rate → 7 Aug
-                </div>
-              )}
-              <div style={{ minHeight: "7.5rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem", marginTop: "1rem" }}>Growth</p>
-                <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem", lineHeight: 1.6 }}>Everything in Pro, plus ongoing governance monitoring. Proof that governance is actually happening, plus team seats.</p>
-              </div>
-              <div style={{ minHeight: "4.6rem" }}>
-                {isNigeria ? (
-                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                    $449<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                  </p>
-                ) : isGrowthSaleActive() ? (
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap" }}>
-                    <p style={{ ...syne, fontSize: "1.4rem", color: "rgba(255,255,255,0.35)", position: "relative", lineHeight: 1 }}>
-                      £1,200
-                      <span style={{
-                        position: "absolute", left: "-4%", right: "-4%", top: "50%",
-                        height: "2px", background: "#C9A66B",
-                        transform: "rotate(-8deg)",
-                      }} />
-                    </p>
-                    <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                      £999<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                    </p>
-                  </div>
-                ) : (
-                  <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "white", lineHeight: 1 }}>
-                    £1,200<span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.3)" }}>/mo</span>
-                  </p>
-                )}
-                {!isNigeria && isGrowthSaleActive() && (
-                  <p style={{ ...syne, fontSize: "11px", color: "#C9A66B", marginTop: "0.5rem" }}>
-                    Lock this rate in for as long as you stay subscribed.
-                  </p>
-                )}
-              </div>
-              <Link href={isNigeria ? "/signup?plan=enterprise&region=ng" : "/signup?plan=enterprise"} style={{
-                display: "block", textAlign: "center",
-                background: "transparent",
-                color: "white",
-                border: "1.5px solid #C9A66B",
-                ...syne, fontSize: "0.875rem", fontWeight: 700,
-                padding: "12px 24px", borderRadius: "9999px",
-                textDecoration: "none", marginTop: "1.5rem"
-              }}>
-                Start Growth
-              </Link>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.4)", textAlign: "center", marginTop: "0.75rem" }}>
-                or <Link href="/sentinel#request" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>get in touch</Link> first
-              </p>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: "2rem", paddingTop: "2rem" }}>
-                <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: "1rem" }}>What you get</p>
-                {GROWTH_FEATURES.map((f) => (
-                  <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                    <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
-                    <span style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* SENTINEL */}
-            <div style={{
-              background: "linear-gradient(160deg, #f0f0f8 0%, #d8d8ec 35%, #bfbfd8 65%, #d4d4e8 100%)",
-              padding: "2.5rem",
-              position: "relative",
-              overflow: "hidden",
-              boxShadow: "0 12px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.9)"
-            }}>
-              <div style={{
-                position: "absolute", inset: 0, pointerEvents: "none",
-                background: "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, transparent 50%, rgba(255,255,255,0.25) 100%)",
-                opacity: 0.15
-              }} />
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ minHeight: "7.5rem" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem", marginTop: "1rem" }}>
-                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", animation: "pulseRed 2s ease-in-out infinite" }} />
-                    <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#666" }}>Enterprise</p>
-                  </div>
-                  <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: "#333", marginBottom: "0.75rem" }}>Sentinel</p>
-                  <p style={{ ...syne, fontSize: "13px", color: "#555", marginBottom: "1.5rem", lineHeight: 1.6 }}>We implement governance for you. You get compliance ready proof, forever.</p>
-                </div>
-                <div style={{ minHeight: "4.6rem" }}>
-                  <p className="font-display" style={{ fontSize: "2.2rem", fontWeight: 500, color: "#0F2138", lineHeight: 1 }}>
-                    Custom pricing
-                  </p>
-                  <p style={{ ...syne, fontSize: "11px", color: "#777", marginTop: "0.5rem" }}>Scoped to your team size and governance needs</p>
-                </div>
-                <Link href="/sentinel#request" style={{
-                  display: "block", textAlign: "center",
-                  background: "linear-gradient(135deg, #1a1a2e 0%, #0E1C30 100%)",
-                  color: "#e0e0f0",
-                  ...syne, fontSize: "0.875rem", fontWeight: 700,
-                  padding: "12px 24px", borderRadius: "9999px",
-                  textDecoration: "none", marginTop: "1.5rem"
-                }}>
-                  Talk to sales
-                </Link>
-                <p style={{ ...syne, fontSize: "11px", color: "#555", textAlign: "center", marginTop: "0.75rem", fontWeight: 700 }}>
-                  or email support@redflagaipro.com
-                </p>
-                <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)", marginTop: "2rem", paddingTop: "2rem" }}>
-                  <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "1rem" }}>What you get</p>
-                  {SENTINEL_FEATURES.map((f) => (
-                    <div key={f} style={{ display: "flex", gap: "10px", marginBottom: "0.75rem" }}>
-                      <span style={{ color: "#E5484D", flexShrink: 0, marginTop: "2px" }}>✓</span>
-                      <span style={{ ...syne, fontSize: "12px", color: "rgba(0,0,0,0.65)" }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Comparison table */}
-          <div style={{
-            marginTop: "3rem",
-            background: "#0D1B2E",
-            border: "1px solid rgba(255,255,255,0.05)",
-            borderRadius: "12px",
-            overflow: "hidden"
-          }}>
-            <div style={{ padding: "2rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white" }}>Which is right for you?</p>
-            </div>
-            <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                <thead>
-                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "left", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Need</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Pro</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Growth</th>
-                    <th style={{ ...syne, padding: "1.5rem", textAlign: "center", fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>Sentinel</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { need: `${JURISDICTION_COUNT} jurisdictions covered across ${RISK_CATEGORY_COUNT} risk categories`, scanner: "✓", growth: "✓", sentinel: "✓" },
-                    { need: "See every governance gap (the warnings)", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "The fix for every gap (not just a warning)", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "1 free fix-it document", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Multiple team seats", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "API & webhook access", scanner: "✗", growth: "✓", sentinel: "✓" },
-                    { need: "Tracked governance roadmap (managed checklist)", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "All 6 fix-it documents", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Financial impact modeling", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Board ready reporting", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Managed implementation", scanner: "✗", growth: "✗", sentinel: "✓" },
-                    { need: "Regulatory readiness review", scanner: "✗", growth: "✗", sentinel: "✓" },
-                  ].map((row) => (
-                    <tr key={row.need} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{row.need}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.scanner === "✓" ? "#4ade80" : "rgba(255,255,255,0.3)" }}>{row.scanner}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.growth === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.growth}</td>
-                      <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "center", color: row.sentinel === "✓" ? "#E5484D" : "rgba(255,255,255,0.3)" }}>{row.sentinel}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "2.5rem" }}>
-            14 day money back guarantee on your first payment, every paid plan, no reason needed. Sentinel: custom contract. All plans include email support.
-          </p>
-          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.15)", textAlign: "center", marginTop: "0.5rem" }}>
-            Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
-          </p>
-        </div>
-      </section>
-
-      {/* DONE FOR YOU */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>Done for you</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
-              Prefer it <span style={{ fontStyle: "italic", color: "#E5484D" }}>done for you?</span>
-            </h2>
-            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", marginTop: "0.75rem", maxWidth: "560px", margin: "0.75rem auto 0" }}>
-              One time purchases, not a subscription. Two ways to get there.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
-            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", padding: "2rem" }}>
-              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE AUDIT</p>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
-                <span style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</span>
-                <span style={{ ...mono, fontSize: "11px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em" }}>ONE TIME · DONE BY HAND</span>
-              </div>
-              {[
-                "James personally checks your site and AI use, on video",
-                "Written report: compliance exposure and governance gaps",
-                "Reviewed badge for your site",
-                "All 18 governance and compliance tools, free",
-              ].map((f) => (
-                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
-                  <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "10px" }}>✓</span>{f}
-                </p>
-              ))}
-            </div>
-
-            <div style={{ background: "#0D1B2E", border: "1px solid rgba(229,72,77,0.25)", padding: "2rem" }}>
-              <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL PROGRAM</p>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
-                <span style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{PROGRAM_PRICE.amount}</span>
-                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · GENERATED IN MINUTES</span>
-              </div>
-              {[
-                "Six documents (DPIA, FRIA, AI use policy, incident checklist, monitoring plan, Annex IV) AI tailored to your business",
-                "Financial exposure snapshot, regulatory mapping and an A–G letter grade, compiled from your answers",
-                "Sealed and hash chained with a public verify link — no free tool on this site does that",
-                "Includes a boundary authorization record (who approved it, when it expires) — a Sentinel-only feature elsewhere",
-                "That record shows on your dashboard's authority health stat too, so whether it still holds is never something you have to remember to check",
-              ].map((f) => (
-                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
-                  <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
-                </p>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "2rem" }}>
-            <Link href="/audit" style={{
-              display: "inline-flex", alignItems: "center",
-              background: "#E5484D", color: "white",
-              ...syne, fontSize: "0.85rem", fontWeight: 700,
-              padding: "12px 26px", borderRadius: "9999px",
-              boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
-              textDecoration: "none",
-            }}>
-              See the full comparison →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW WE COMPARE */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>How we compare</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
-              The same outcome,<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>a fraction of the cost.</span>
-            </h2>
-          </div>
-
-          <div style={{ overflowX: "auto", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", background: "#0D1B2E" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                  <th style={{ ...syne, padding: "1.25rem 1.5rem", textAlign: "left", fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Platform</th>
-                  <th style={{ ...syne, padding: "1.25rem 1.5rem", textAlign: "right", fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Typical annual cost</th>
-                </tr>
-              </thead>
-              <tbody>
+            {/* 01 FREE FIRST FINDING */}
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column" }}>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE FIRST FINDING</p>
+              <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>Free</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>We check your site and tell you the worst thing we find.</p>
+              <div style={{ flex: 1 }}>
                 {[
-                  { name: "Legacy enterprise GRC (ServiceNow, AuditBoard, MetricStream)", cost: "£200,000 to £790,000+", highlight: false },
-                  { name: "OneTrust AI Governance / IBM OpenPages", cost: "£40,000 to £160,000", highlight: false },
-                  { name: "Credo AI", cost: "£24,000 to £120,000", highlight: false },
-                  { name: "Red Flag AI Pro (Sentinel)", cost: "£60,000", highlight: true },
-                  { name: "Red Flag AI Pro (Growth)", cost: "£14,400", highlight: true },
-                  { name: "Red Flag AI Pro (Pro)", cost: `£${(PLAN_PRICES.scanner.monthly * 12).toLocaleString("en-GB")}`, highlight: true },
-                  { name: "Red Flag AI Pro (Assessment)", cost: "Free", highlight: true },
-                ].map((row) => (
-                  <tr key={row.name} style={{ borderBottom: "1px solid rgba(255,255,255,0.03)", background: row.highlight ? "rgba(229,72,77,0.06)" : "transparent" }}>
-                    <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", color: row.highlight ? "#F4F1EA" : "rgba(255,255,255,0.55)", fontWeight: row.highlight ? 700 : 400 }}>{row.name}</td>
-                    <td style={{ ...syne, padding: "1rem 1.5rem", fontSize: "13px", textAlign: "right", color: row.highlight ? "#ff9b9e" : "rgba(255,255,255,0.5)", fontWeight: row.highlight ? 700 : 400 }}>{row.cost}</td>
-                  </tr>
+                  "You give us your website, nothing else",
+                  `Checked against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions`,
+                  "The worst finding, the rule it breaks, and how many more there are",
+                  "A personal reply from James",
+                ].map((f) => (
+                  <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                    <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "10px" }}>✓</span>{f}
+                  </p>
                 ))}
-              </tbody>
-            </table>
+              </div>
+              <Link href="/get-checked" className="btn-secondary" style={{ marginTop: "1.75rem", justifyContent: "center", fontSize: "0.9rem", padding: "13px 24px" }}>
+                Check my site <span className="arrow">→</span>
+              </Link>
+            </div>
+
+            {/* 02 THE FULL AUDIT */}
+            <div style={{ background: "#102943", border: "1px solid rgba(229,72,77,0.45)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column", position: "relative" }}>
+              <span style={{ ...mono, position: "absolute", top: "-11px", left: "2.25rem", background: "#E5484D", color: "white", fontSize: "10px", letterSpacing: "0.14em", padding: "4px 10px", borderRadius: "4px" }}>RECOMMENDED</span>
+              <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL AUDIT</p>
+              <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>£{AUDIT_PRICE.amount}<span style={{ ...mono, fontSize: "11px", fontWeight: 400, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em", marginLeft: "10px" }}>ONE TIME</span></p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Every failure and every fix. Compliance and AI governance in one.</p>
+              <div style={{ flex: 1 }}>
+                {[
+                  "James personally checks your site and AI use, on video",
+                  "Written report: compliance exposure and governance gaps",
+                  "What to fix first, in plain English",
+                  "Reviewed badge for your site",
+                  "No subscription, no tool to learn",
+                ].map((f) => (
+                  <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                    <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
+                  </p>
+                ))}
+              </div>
+              <Link href="/audit" className="btn-primary" style={{ marginTop: "1.75rem", justifyContent: "center", fontSize: "0.9rem", padding: "13px 24px" }}>
+                See the full audit <span className="arrow">→</span>
+              </Link>
+            </div>
+
+            {/* 03 SENTINEL */}
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column" }}>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>03 · SENTINEL</p>
+              <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>Talk to us</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Compliance and AI governance handled for you, every month.</p>
+              <div style={{ flex: 1 }}>
+                {[
+                  "Managed governance implementation, worked with you",
+                  "Cryptographically sealed audit log, verifiable on demand",
+                  "Sign offs stamped with the signer's role and authority",
+                  "Board ready reporting, built with your team",
+                  "Dedicated governance advisor",
+                ].map((f) => (
+                  <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
+                    <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "10px" }}>✓</span>{f}
+                  </p>
+                ))}
+              </div>
+              <Link href="/sentinel#request" className="btn-secondary" style={{ marginTop: "1.75rem", justifyContent: "center", fontSize: "0.9rem", padding: "13px 24px" }}>
+                Ask about Sentinel <span className="arrow">→</span>
+              </Link>
+            </div>
           </div>
-          <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1.5rem" }}>
-            Competitor figures from published 2026 market research (Credo AI, OneTrust, legacy GRC vendor pricing reports). Most platforms quote custom enterprise pricing. Figures shown are typical ranges, not list prices.
+
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", marginTop: "2.5rem", lineHeight: 1.7 }}>
+            Prefer to do it yourself? Both tools are free to run on your own:{" "}
+            <Link href="/compliance-assessment" style={{ color: "#E5484D", textDecoration: "none", fontWeight: 700 }}>check your copy</Link>{" "}or{" "}
+            <Link href="/governance-audit" style={{ color: "#E5484D", textDecoration: "none", fontWeight: 700 }}>assess your AI governance</Link>.
           </p>
-        </div>
-      </section>
-
-      {/* BUILD VS BUY */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0C1929", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "1rem" }}>Build vs. Buy</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1.12 }}>
-              Building this in house costs<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>far more than it looks.</span>
-            </h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", overflow: "hidden" }}>
-            <div style={{ background: "#0D1B2E", padding: "2.25rem" }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "1rem" }}>Build it yourself</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "rgba(244,241,234,0.85)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>£350k to £500k<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.4)" }}> /yr</span></p>
-              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", marginBottom: "1.5rem" }}>fully loaded, conservative estimate</p>
-              {[
-                "Engineers to build assessment, evidence & audit log pipelines",
-                "Ongoing rework as the EU AI Act, DORA & SEC rules evolve",
-                "6+ months before your first board ready report",
-                "Your compliance team's time: the scarcest resource you have",
-              ].map((t) => (
-                <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
-                  <span style={{ color: "rgba(244,241,234,0.3)", flexShrink: 0 }}>✕</span>
-                  <span style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", lineHeight: 1.5 }}>{t}</span>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ background: "#102943", padding: "2.25rem", borderLeft: "2px solid #E5484D" }}>
-              <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Red Flag</p>
-              <p className="font-mono-fig" style={{ fontSize: "2rem", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.4rem" }}>From £{PLAN_PRICES.scanner.monthly}<span style={{ fontSize: "0.9rem", color: "rgba(244,241,234,0.45)" }}> /mo</span></p>
-              <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.45)", marginBottom: "1.5rem" }}>free to assess · live this afternoon</p>
-              {[
-                "Audit ready evidence out of the box, nothing to build",
-                "Maintained against regulatory change, automatically",
-                "Your first board ready report in 5 minutes",
-                "No engineering, no maintenance, no internal headcount",
-              ].map((t) => (
-                <div key={t} style={{ display: "flex", gap: "10px", marginBottom: "0.7rem" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0, marginTop: "2px" }}>
-                    <path d="M20 6L9 17l-5-5" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.5 }}>{t}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.45)", textAlign: "center", marginTop: "2rem" }}>
-            Same outcome. A fraction of the cost. Available before your next board meeting.
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: "1rem" }}>
+            Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}
           </p>
         </div>
       </section>
@@ -691,8 +259,8 @@ export default async function PricingPage() {
             padding: "2rem"
           }}>
             <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", marginBottom: "0.5rem" }}>Ready to know where you stand?</p>
-            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Take the free 2 minute governance assessment. One email, 12 questions, your top gap on screen instantly.</p>
-            <Link href="/governance-audit" style={{
+            <p style={{ ...syne, fontSize: "1rem", fontWeight: 700, color: "white", marginBottom: "1rem" }}>Give us your website and we will send you the worst thing we find. Free, and you do none of the work.</p>
+            <Link href="/get-checked" style={{
               display: "inline-block",
               background: "#E5484D",
               color: "white",

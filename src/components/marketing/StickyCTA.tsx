@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export function StickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -32,21 +31,21 @@ export function StickyCTA() {
       <div className="mx-auto max-w-4xl flex items-center justify-between gap-4">
         <div className="hidden sm:block">
           <p className="text-sm font-bold text-white">Catch what you said. Prove what you did.</p>
-          <p className="text-xs text-gray-400">{RISK_CATEGORY_COUNT} risk categories. {JURISDICTION_COUNT} jurisdictions. Both free, both 5 minutes or less.</p>
+          <p className="text-xs text-gray-400">We check your site for you and send the worst thing we find. Free.</p>
         </div>
-        <p className="sm:hidden text-sm font-bold text-white">Free check or free assessment, your call.</p>
+        <p className="sm:hidden text-sm font-bold text-white">We check your site. Free.</p>
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
-            href="/compliance-assessment"
+            href="/get-checked"
             className="rounded-lg bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
-            Free check →
+            Check my site →
           </a>
           <Link
-            href="/governance-audit"
+            href="/audit"
             className="rounded-lg border border-gray-700 px-5 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 transition-colors hidden sm:block"
           >
-            Free assessment
+            Full audit
           </Link>
           <button
             onClick={() => setDismissed(true)}

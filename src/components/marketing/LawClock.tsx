@@ -27,7 +27,7 @@ function SideTag({ side }: { side: LawEvent["side"] }) {
  * edit the homepage, which is exactly how the old "enforcement begins August
  * 2026" line was still on the site in late November.
  */
-export function LawClock() {
+export function LawClock({ cta = true }: { cta?: boolean } = {}) {
   const now = new Date();
   const { inForce, next } = splitLawTimeline(now);
   const today = now.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/London" });
@@ -105,14 +105,16 @@ export function LawClock() {
           </div>
         </div>
 
-        <div style={{ marginTop: "2.25rem", display: "flex", flexWrap: "wrap", gap: "14px 28px", justifyContent: "center", alignItems: "center" }}>
-          <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-            Check what you said <span className="arrow">→</span>
-          </Link>
-          <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-            Prove what you did <span className="arrow">→</span>
-          </Link>
-        </div>
+        {cta && (
+          <div style={{ marginTop: "2.25rem", textAlign: "center" }}>
+            <Link href="/get-checked" className="btn-primary" style={{ fontSize: "0.95rem", padding: "13px 28px" }}>
+              Find out which of these you&apos;re failing <span className="arrow">→</span>
+            </Link>
+            <p style={{ ...syne, fontSize: "12.5px", color: "rgba(244,241,234,0.5)", marginTop: "0.9rem" }}>
+              We check your site for you. Free, and you do none of the work.
+            </p>
+          </div>
+        )}
         <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)", textAlign: "center", marginTop: "1.5rem", lineHeight: 1.6 }}>
           Every date checked against the official text. Last reviewed {REGULATORY_MAPPING_LAST_REVIEWED}. This is a summary, not legal advice.
         </p>
