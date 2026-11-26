@@ -474,6 +474,10 @@ export default async function AuditPage({
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.75 }}>
             If the full audit finds nothing worth fixing on your site or in how you use AI, you get your £{AUDIT_PRICE.amount} back in full, and you keep the clean report and the badge.
           </p>
+          <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, marginTop: "1.25rem" }}>
+            Want it kept clear after that?{" "}
+            <Link href="/sentinel" style={{ color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>Sentinel checks it every month, £199 a month →</Link>
+          </p>
         </div>
       </section>
 
