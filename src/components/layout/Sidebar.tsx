@@ -4,7 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { useState } from "react";
+import { ADMIN_EMAIL } from "@/lib/console-shared";
+import { useEffect, useState } from "react";
+
+// Only shown to the admin login. Hiding the link is a convenience: the
+// console page and its API routes check the login on the server as well.
+const ADMIN_ITEM = { href: "/console", label: "Sales console", icon: "☎" };
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: "▤" },
@@ -30,6 +35,19 @@ export function Sidebar() {
   const router = useRouter();
   const supabase = createClient();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    let live = true;
+    supabase.auth.getUser().then(({ data }) => {
+      if (live) setIsAdmin(data.user?.email === ADMIN_EMAIL);
+    });
+    return () => {
+      live = false;
+    };
+  }, [supabase]);
+
+  const items = isAdmin ? [ADMIN_ITEM, ...NAV_ITEMS] : NAV_ITEMS;
 
   async function handleSignOut() {
     await supabase.auth.signOut();
@@ -39,7 +57,7 @@ export function Sidebar() {
 
   const navLinks = (
     <>
-      {NAV_ITEMS.map((item) => {
+      {items.map((item) => {
         const isActive =
           item.href === "/scans/new"
             ? pathname === item.href
