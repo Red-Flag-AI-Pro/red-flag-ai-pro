@@ -18,7 +18,7 @@ export default function NotFound() {
             href="/get-checked"
             className="rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
-            Try a free check →
+            Show me my red flag →
           </a>
           <Link
             href="/"

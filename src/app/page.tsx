@@ -166,17 +166,17 @@ export default async function LandingPage() {
               {
                 role: "Marketing agencies",
                 pain: "One client's ad gets an ASA ruling. Is your agency's name on the file?",
-                solution: "Run the checker across every client's copy from one dashboard. Catch what slips past human review.",
+                solution: "We check every client's site for you. Catch what slips past human review.",
               },
               {
                 role: "CFOs & finance leaders",
                 pain: "The board asks who signed off on the AI system. What do you actually have?",
-                solution: "Score governance maturity. Model financial impact. Get board ready reports.",
+                solution: "We check how your business uses AI and give you a clear, board ready report.",
               },
               {
                 role: "Compliance officers",
                 pain: "The examiner asks for the record, not the policy. Do you have one?",
-                solution: "Gap assessment + evidence package. Regulatory framework mapping.",
+                solution: "Every gap found and mapped to the rules, with the evidence sealed on the record.",
               },
             ];
             // Task #279, site simplification audit 9 Aug 2026: seven full

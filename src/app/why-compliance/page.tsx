@@ -48,7 +48,7 @@ export default function WhyCompliancePage() {
         </p>
         <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#E5484D", marginBottom: "3rem" }}>$6B+</p>
         <Link href="/get-checked" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
-          Check your copy free
+          Show me my red flag
         </Link>
       </section>
 

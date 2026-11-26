@@ -447,8 +447,8 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}
           >
-            Start with a free assessment. 2 minutes. See your governance
-            maturity, gaps, and roadmap.
+            Give us your website. We check what it says and how you use AI,
+            and show you the one problem most likely to cost you. Free.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link

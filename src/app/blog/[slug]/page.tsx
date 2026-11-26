@@ -240,12 +240,12 @@ export default async function BlogPostPage({ params }: Props) {
             height: "2px", background: "linear-gradient(90deg, #E5484D, transparent)"
           }} />
           <h2 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem", color: "#F4F1EA" }}>
-            Check Your Copy for Free
+            What's your red flag?
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
             Red Flag AI Pro checks your site for you against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, and shows you the one problem most likely to cost you. Free.
           </p>
-          <Link href="/signup" style={{
+          <Link href="/get-checked" style={{
             display: "inline-block",
             background: "#E5484D", color: "white",
             fontFamily: "'Syne', system-ui, sans-serif", fontSize: "0.875rem", fontWeight: 700,
@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: Props) {
             boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
-            Start Free: No Credit Card
+            Show me my red flag, free
           </Link>
         </div>
 

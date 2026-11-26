@@ -189,20 +189,11 @@ A lot of boardrooms currently believe otherwise. That misunderstanding is exactl
 
 ---
 
-## Prices Are Down, Not Up, for Enforcement Week
+## Prices at the Time
 
-The instinct in this industry, when demand spikes because a deadline is finally real, is to raise prices. We are doing the opposite.
+This was written during enforcement week in August 2026, when we cut the price of our self serve plans. That offer has ended, and we have since moved to doing the checking for you: a free first red flag, a full audit, and Sentinel to keep it clear every month.
 
-Until **7 August 2026**, both paid tiers are reduced, and whoever signs up during this window keeps that price for as long as they stay subscribed, not a short term introductory rate that reverts later.
-
-| Plan | Standard price | Enforcement week price | What it includes |
-|------|----------------|------------------------|-------------------|
-| Pro | £350/mo | £149/mo | Marketing copy checked against 30 risk categories across 11 jurisdictions, before a regulator does it for you |
-| Growth | £1,200/mo | £999/mo | Everything in Pro, plus ongoing AI governance monitoring, sealed records that prove oversight happened, and team seats |
-
-We said when we built this business that everything the law actually requires should not cost what this industry charges for it. Enforcement week is the moment that sentence either means something or it never did.
-
-[See the full pricing](https://www.redflagaipro.com/pricing)
+[See what we offer now](https://www.redflagaipro.com/pricing)
 
 ---
 
@@ -516,7 +507,7 @@ This isn't a distant deadline, it's **one week away**. The fix is mostly about p
 
 Check your site's privacy policy, checkout flow and marketing copy now, while there's still time to fix anything that's missing.
 
-[Check your copy free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
 
 ---
 
@@ -630,7 +621,7 @@ None of this requires a lawyer on retainer. It requires checking your sales page
 
 Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions, including the UK CMA and ASA rules covered here.
 
-[Check your course sales page free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -756,7 +747,7 @@ This means a claim arising from undisclosed AI generated content that breaches A
 
 Red Flag AI Pro now checks marketing copy for EU AI Act Article 50 compliance, alongside 29 other risk categories covering FTC, CMA, ASA, GDPR, ACCC and CASL regulations. Sentinel, the agency tier, creates a signed, timestamped audit trail for every piece of copy reviewed before publication, exactly the documentation your agency needs when the law comes into force.
 
-[Check your copy free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
 
 ---
 
@@ -775,7 +766,7 @@ The EU AI Act is not optional. It is not a guideline. It is law. Enforcement beg
 
 The question is not whether AI content needs to be disclosed. It does. The question is whether you have proof that you did it properly.
 
-[Check your AI generated copy for free at Red Flag AI Pro →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -873,7 +864,7 @@ Red Flag AI Pro checks your marketing copy for FTC earnings claim violations, al
 
 Catch the violations before regulators do.
 
-[Check your copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -968,7 +959,7 @@ Red Flag AI Pro checks your marketing copy against the full ASA CAP Code, alongs
 
 You get a compliance risk score, every flag explained in plain English, and an exact rewrite suggestion for every violation found.
 
-[Check your UK marketing copy free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1074,7 +1065,7 @@ Key requirements:
 
 Red Flag AI Pro checks your email marketing copy for GDPR, CASL, PECR and CAN SPAM compliance issues, as part of its 30 risk categories including ASA, FTC and ACCC regulations.
 
-[Check your email copy free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1178,7 +1169,7 @@ Red Flag AI Pro checks your marketing copy against all 30 risk categories across
 ✅ Exact rewrite suggestions for every issue
 ✅ Coverage across FTC, CMA, ASA, GDPR, EU AI Act, ACCC and CASL
 
-[Check your copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1291,7 +1282,7 @@ Every check produces a timestamped compliance report. That report is your docume
 
 It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
 
-[Check your first piece of copy free, no credit card required →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
 
 ---
 
@@ -1394,7 +1385,7 @@ This is why Red Flag AI Pro includes a check for contract contradictions, checki
 
 Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you whether their refund policy is legal, and what your rights actually are.
 
-[Check a seller's copy for free, no signup needed →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1482,9 +1473,9 @@ The result: a large proportion of online recommendations you encounter are paid.
 
 Red Flag AI Pro checks sales pages and marketing copy for fake reviews, undisclosed endorsements and misleading testimonials, alongside income claims, fake urgency, hidden fees and the rest of its 30 risk categories.
 
-Paste any sales page, course landing page or promotional email into the checker before you buy. Free. No account needed.
+Running a business yourself? Give us your website and we check it for you. Your first red flag is free, with no account needed.
 
-[Check any ad or sales page for free →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1593,9 +1584,9 @@ If you apply these three tests to every claim in your copy before you publish, y
 
 Red Flag AI Pro checks your marketing copy for FTC trigger phrases and high risk language patterns, alongside 29 other risk categories covering UK, EU, Australian and Canadian regulations.
 
-Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions.
+Give us your website and we check it for you, and show you the one problem most likely to cost you.
 
-[Check your copy free, no account needed →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -1707,9 +1698,9 @@ Red Flag AI Pro checks your marketing copy for:
 - Guarantee claims that remove or misrepresent statutory consumer rights
 - Refund policy language that creates regulatory risk
 
-Paste your sales page or email sequence and get a plain English explanation of any issues found, plus exact rewrite suggestions.
+Give us your website and we check it for you, with a plain English explanation of anything we find.
 
-[Check your copy free, no account or card needed →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2182,9 +2173,9 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 Red Flag AI Pro checks subscription trap language, data privacy violations, earnings claims, email marketing consent and 17 other compliance categories simultaneously.
 
-Paste your pricing page, onboarding emails or sales copy and get a compliance score and plain English fixes.
+Give us your website and we check it for you, with a plain English explanation of anything we find.
 
-[Check your SaaS copy free →](https://www.redflagaipro.com/signup)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2225,9 +2216,9 @@ An ad is illegal if it:
 
 **If you are a buyer:**
 
-Paste the sales page, ad or email into Red Flag AI Pro. You get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials, walk away. If it comes back clean, buy with confidence.
+Look for income claims, fake urgency and testimonials nobody can verify. If you see them, walk away.
 
-Free. No account needed. [redflagaipro.com](https://www.redflagaipro.com)
+Running a business yourself? Give us your website and we check it for you. [Get your red flag, free →](https://www.redflagaipro.com/get-checked)
 
 **If you are a seller:**
 
@@ -2266,9 +2257,9 @@ If you have been financially harmed by an illegal ad, contact your bank about a 
 
 ## Check Any Ad Right Now
 
-Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup.
+Give us your website and we check it for you. Your first red flag is free, with no account needed.
 
-[Check if it is legal →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2431,9 +2422,9 @@ The disclaimer accompanies a substantiated claim, it does not replace substantia
 
 ## Check Your Income Claims
 
-Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 11 jurisdictions simultaneously, with AI powered specific rewrites for every violation found.
+Red Flag AI Pro flags income claims, guarantee contradictions and missing disclaimers in your copy across all 11 jurisdictions simultaneously, and the full audit shows you how to clear every one.
 
-[Check your copy free →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2494,11 +2485,11 @@ This is the honest comparison.
 
 ### Red Flag AI Pro
 
-**What it does**: Checks any marketing copy, text, URLs, YouTube VSLs, audio files, entire websites, against 30 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL simultaneously.
+**What it does**: Checks what a business says in public and how it uses AI, for the business, against 30 compliance risk categories across FTC, GDPR, ASA, FCA, ACCC and CASL.
 
 **Who it is for**: Marketing agencies, funnel builders, course creators, SaaS founders, coaches and anyone who writes or buys marketing copy.
 
-**What it costs**: Free assessment (lead magnet). Pro £350/month. Growth £1,200/month. Sentinel £5000+/month.
+**What it costs**: First red flag free. Full audit £449. Sentinel from £199 a month.
 
 **What makes it different**:
 - No consultant to book and no project to scope
@@ -2530,7 +2521,7 @@ It is the first line of defence that means fewer problems reach the lawyer's des
 | Enterprise workflow management | Red Marker / Blee |
 | Complex legal advice | Qualified compliance solicitor |
 
-[Try Red Flag AI Pro free →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2616,9 +2607,9 @@ Neither regulator is waiting for complaints. Both are proactively monitoring.
 
 Red Flag AI Pro checks your marketing copy for fake urgency language, artificial scarcity claims and dark patterns, as part of its 30 compliance risk categories.
 
-Paste your sales page or email sequence and see exactly which claims are at risk.
+Give us your website and we show you exactly which claims are at risk.
 
-[Check your copy free, no signup →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
@@ -2742,9 +2733,9 @@ If you'd rather not write the disclosure from scratch, use our free **[Affiliate
 
 Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language, alongside 29 other compliance risk categories covering FTC, ASA, GDPR and more.
 
-Paste your caption or video script and get a compliance score with specific rewrite suggestions.
+Give us your website and we check your captions, scripts and sales pages for you.
 
-[Check your copy free, no account needed →](https://www.redflagaipro.com)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {

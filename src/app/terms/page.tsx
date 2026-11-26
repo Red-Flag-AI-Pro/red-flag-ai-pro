@@ -100,13 +100,13 @@ export default function TermsPage() {
 
           {/* 5 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. Subscription Plans & Billing</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>5. What We Sell & Billing</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
-                ["Free Plan", "1 check per month at no charge. No credit card required. The governance assessment is also free and requires no payment."],
-                ["Pro Plan", "£350/month standard price, currently offered at £149/month. Promotional pricing applies for as long as the offer is shown at checkout and existing subscribers are grandfathered at their original rate. Pricing may vary by location. Billed monthly via Stripe."],
-                ["Growth Plan", "£1,200/month for most regions. Pricing may vary by location. Billed monthly via Stripe."],
-                ["Sentinel Plan", "Custom pricing, agreed in writing before any charge is made. For larger engagements."],
+                ["Your red flag", "Free. You give us your website and we tell you the one problem most likely to cost you, the rule it breaks and how many more we found. No card and no account needed. The governance assessment is also free."],
+                ["Full audit", "£449, paid once, before the work starts. Every finding on your site and in how you use AI, and how to clear it, delivered within 48 hours with a reviewed badge. Covered by the guarantee in section 6."],
+                ["Sentinel", "£199 a month, starting after the full audit. Clients who join at the founding price keep it for as long as their subscription continues without a break. Billed monthly via Stripe. Larger firms, several sites or regulated teams are priced in writing before any charge is made."],
+                ["Earlier plans", "Accounts and subscriptions taken out before 26 November 2026 continue on the terms and price they were taken out on until they end or are cancelled."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],
                 ["Renewal", "Subscriptions renew automatically unless cancelled before the renewal date."],
                 ["Cancellation", "You may cancel your subscription at any time via your billing settings or by contacting support."],

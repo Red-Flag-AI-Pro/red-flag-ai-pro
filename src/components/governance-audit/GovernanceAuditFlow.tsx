@@ -153,7 +153,7 @@ export function GovernanceAuditFlow() {
     window.location.href = '/pricing';
   };
   const handleUnlock = () => {
-    window.location.href = '/signup?plan=enterprise&track=governance';
+    window.location.href = '/audit';
   };
 
   if (isLoading) {

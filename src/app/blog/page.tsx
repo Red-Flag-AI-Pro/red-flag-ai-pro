@@ -169,12 +169,12 @@ export default function BlogPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <h2 style={{ ...syne, fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem", color: "#F4F1EA" }}>
-            Stop reading about compliance.<br />Find out what your own copy would trigger.
+            Stop reading about compliance.<br />Find out what your own site would trigger.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
             Red Flag AI Pro checks your site for you against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, and shows you the one problem most likely to cost you. Free.
           </p>
-          <Link href="/signup" style={{
+          <Link href="/get-checked" style={{
             display: "inline-block",
             background: "#E5484D", color: "white",
             ...syne, fontSize: "0.875rem", fontWeight: 700,
@@ -182,7 +182,7 @@ export default function BlogPage() {
             boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
             textDecoration: "none"
           }}>
-            Check Your Copy Free
+            Show me my red flag
           </Link>
         </div>
       </section>

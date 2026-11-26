@@ -5,8 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Case Study: What Red Flag AI Pro Found on a Real Agency Campaign",
-  description: "Six real compliance violations found on live agency campaigns. FCA criminal liability, CASL, drip pricing, influencer disclosure, EU AI Act and greenwashing. None obvious. All fixable.",
+  title: "Example: What a Check Finds on an Agency Campaign",
+  description: "An illustrative example, built from the kinds of problems we find on real agency campaigns. FCA criminal liability, CASL, drip pricing, influencer disclosure, EU AI Act and greenwashing. None obvious. All fixable.",
   alternates: { canonical: "https://www.redflagaipro.com/case-study" },
 };
 
@@ -268,7 +268,7 @@ export default function CaseStudyPage() {
       <section style={{ padding: "7rem 1.5rem", textAlign: "center" }}>
         <div style={{ maxWidth: "500px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-            Sentinel plan includes unlimited checks, a cryptographically sealed audit trail you can verify on demand, client workspaces and weekly monitoring of live campaigns. If you're a CFO or compliance lead rather than an agency, the same audit trail thinking applies to AI governance.
+            Want your own site checked like this? Your first red flag is free. The full audit lists every one and how to clear it, and Sentinel keeps it clear every month, with every check sealed on the record.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/sentinel" style={{
@@ -281,7 +281,7 @@ export default function CaseStudyPage() {
             }}>
               See Sentinel for agencies
             </Link>
-            <a href="/compliance-assessment" style={{
+            <a href="/get-checked" style={{
               display: "inline-block",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "rgba(255,255,255,0.5)",
@@ -289,7 +289,7 @@ export default function CaseStudyPage() {
               padding: "13px 28px", borderRadius: "9999px",
               textDecoration: "none"
             }}>
-              Try a free check
+              Show me my red flag
             </a>
             <Link href="/governance-audit" style={{
               display: "inline-block",

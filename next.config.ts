@@ -33,6 +33,8 @@ const nextConfig: NextConfig = {
       // Temporary, so they can come back rewritten later.
       { source: "/features", destination: "/pricing", permanent: false },
       { source: "/compare", destination: "/pricing", permanent: false },
+      // Partners page held back until it is rewritten for the £449 audit and £199 Sentinel.
+      { source: "/affiliates", destination: "/pricing", permanent: false },
       {
         source: "/blog/ai-content-disclosure-eu-ai-act-2026",
         destination: "/blog/eu-ai-act-article-50-marketing-agencies",

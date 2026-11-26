@@ -245,13 +245,13 @@ export function GovernanceAuditResults({
               onClick={onExploreFeatures}
               className="flex-1 text-center text-xs font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors rounded px-4 py-2"
             >
-              Monitor it continuously — Growth & Sentinel
+              Kept clear every month: Sentinel
             </button>
             <a
               href="/audit"
               className="flex-1 text-center text-xs font-semibold text-[#E5484D] border border-red-900 hover:bg-red-950 transition-colors rounded px-4 py-2"
             >
-              Have it done properly — DFY Governance Program
+              Have it done for you: full audit, £449
             </a>
           </div>
         </div>
@@ -343,7 +343,7 @@ export function GovernanceAuditResults({
                         onClick={onUnlock}
                         className="w-full text-center text-xs font-semibold text-white bg-[#E5484D] hover:bg-red-600 transition-colors rounded px-4 py-2"
                       >
-                        Unlock all gaps with Growth, from £1,200/mo
+                        See every gap: full audit, £449
                       </button>
                     </div>
                   ) : (
@@ -451,7 +451,7 @@ export function GovernanceAuditResults({
               <div className="text-center">
                 <p className="font-semibold text-sm">Download Diagnosis</p>
                 <p className="text-xs text-gray-300 mt-1">
-                  Every gap — fixes unlock with Sentinel
+                  Every gap, with the full audit
                 </p>
               </div>
             </Button>
@@ -462,9 +462,9 @@ export function GovernanceAuditResults({
               className="h-auto py-4 flex flex-col items-center gap-2"
             >
               <div className="text-center">
-                <p className="font-semibold text-sm">Unlock Full Report</p>
+                <p className="font-semibold text-sm">Get the full audit</p>
                 <p className="text-xs text-gray-300 mt-1">
-                  Every gap + your remediation roadmap
+                  Every gap and how to close it, £449
                 </p>
               </div>
             </Button>
@@ -491,9 +491,9 @@ export function GovernanceAuditResults({
             className="h-auto py-4 flex flex-col items-center gap-2"
           >
             <div className="text-center">
-              <p className="font-semibold text-sm">Explore Growth & Sentinel</p>
+              <p className="font-semibold text-sm">See Sentinel</p>
               <p className="text-xs text-gray-300 mt-1">
-                Governance monitoring & enforcement
+                Kept clear every month, from £199
               </p>
             </div>
           </Button>
@@ -511,10 +511,10 @@ export function GovernanceAuditResults({
           </h4>
           <p className="text-xs text-gray-400">
             {response.managed
-              ? 'Automatically generated audit ready artifacts — all 6 documents included'
+              ? 'Audit ready documents, all 6 included'
               : response.fullAccess
-                ? 'Automatically generated audit ready artifacts — 1 free document with Growth, all 6 with Sentinel'
-                : 'Automatically generated audit ready artifacts (unlocks with Growth)'}
+                ? 'Audit ready documents, prepared for you in the full audit'
+                : 'Audit ready documents, prepared for you in the full audit'}
           </p>
         </div>
 
