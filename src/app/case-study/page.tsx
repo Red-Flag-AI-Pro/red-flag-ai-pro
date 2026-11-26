@@ -252,7 +252,7 @@ export default function CaseStudyPage() {
               The point of this case study
             </h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>
-              None of these violations were caught in internal review. None of them looked wrong to the people who wrote, approved and published them. All of them were found in 60 seconds by a compliance checker.
+              None of these violations were caught in internal review. None of them looked wrong to the people who wrote, approved and published them. All of them were found by an outside check.
             </p>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
               The FCA violation could result in criminal prosecution. The CASL violation had been running for two years building liability on every send. The drip pricing was being amplified by paid ads the agency was managing. The influencer campaign had twenty posts live without a single disclosure.

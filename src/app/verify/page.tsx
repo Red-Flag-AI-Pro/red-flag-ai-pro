@@ -322,9 +322,9 @@ const OFFER_CARDS = [
   {
     title: "Compliance checking",
     stat: `${JURISDICTION_COUNT} jurisdictions · ${RISK_CATEGORY_COUNT} categories`,
-    body: "Paste your marketing copy in and it is checked against the actual rules regulators enforce, the same ones behind real rulings. Catches the claim before a complaint does.",
-    href: "/tools",
-    cta: "Try a free check",
+    body: "Give us your website and we check it against the actual rules regulators enforce, the same ones behind real rulings. Catches the claim before a complaint does.",
+    href: "/get-checked",
+    cta: "Show me my red flag",
   },
   {
     title: "Governance scoring",

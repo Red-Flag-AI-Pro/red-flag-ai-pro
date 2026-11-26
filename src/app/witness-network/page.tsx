@@ -375,9 +375,7 @@ export default function WitnessNetworkPage() {
               {
                 label: "Getting witnessed",
                 links: [
-                  { href: "/installations", title: "Installations & Custom Work", blurb: "One time engagements: hosted witnessing, your own node, and other work priced separately from the standing plans." },
-                  { href: "/witness-network/hosting", title: "Hosted Witnessing", blurb: "We install it, host it, hand you a dashboard." },
-                  { href: "/witness-network/install", title: "Install Your Own Node", blurb: "The package runs on your infrastructure, not ours." },
+                  { href: "/sentinel", title: "Sentinel", blurb: "Your site checked every month, and every check sealed here automatically. Nothing to install." },
                 ],
               },
               {

@@ -1,3 +1,4 @@
+import { sealCurrentDeployment } from "@/lib/seal-deployment";
 import { createServiceClient } from "@/lib/supabase/server";
 import { logAuditEvent } from "@/lib/audit-log";
 import { WITNESS_CHAIN_NAME, WITNESS_CHAIN_USER_ID, APPROVED_PEERS } from "@/lib/witness";
@@ -41,6 +42,17 @@ export type WitnessPushResult = {
 // can never drift apart.
 export async function performWitnessPush(trigger: "manual" | "cron"): Promise<WitnessPushResult> {
   const supabase = await createServiceClient();
+
+  // Seal whatever version of the site is live before sending the tip, so a
+  // change goes on the record within the hour it ships rather than waiting
+  // for the once a day cron (the Hobby plan only runs crons daily; this push
+  // is fired hourly from GitHub Actions). Idempotent per commit, and it must
+  // never stop the witness push itself.
+  try {
+    await sealCurrentDeployment();
+  } catch {
+    // ignored on purpose: the daily cron is still there as a backstop
+  }
 
   const { data: last, count } = await supabase
     .from("audit_log")

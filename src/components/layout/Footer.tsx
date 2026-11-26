@@ -6,41 +6,33 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSPropert
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
-    heading: "Product",
+    // 26 Nov 2026: the three things on sale, in order. Technical and
+    // enterprise pages stay live but are no longer linked from here.
+    heading: "Work with us",
     links: [
-      { label: "Get your site checked", href: "/get-checked" },
-      { label: "Governance Assessment", href: "/governance-audit" },
-      { label: "Boundary Authorization Records", href: "/boundary-authorization-records" },
-      { label: "Who, When, Whether", href: "/who-when-whether" },
-      { label: "For law firms", href: "/law-firms" },
+      { label: "Your red flag, free", href: "/get-checked" },
+      { label: "Full audit", href: "/audit" },
       { label: "Sentinel", href: "/sentinel" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Case study", href: "/case-study" },
-      { label: "How we compare", href: "/compare" },
     ],
   },
   {
     heading: "Free tools",
     links: [
-      // Curated picks only — the full, growing catalog (24+ tools) lives at
-      // /tools, organized into groups. This column stays scannable rather
-      // than becoming the same crowded list it was before 4 Aug.
+      // Curated picks a small business owner would actually use; the full
+      // catalog lives at /tools.
+      { label: "Governance assessment", href: "/governance-audit" },
       { label: "Compliance Checklist", href: "/tools/compliance-checklist" },
       { label: "Fine Calculator", href: "/tools/fine-calculator" },
       { label: "Disclosure Generator", href: "/tools/disclosure-generator" },
-      { label: "DPIA Generator", href: "/tools/dpia-generator" },
-      { label: "Documentation Assistant", href: "/tools/documentation-assistant" },
       { label: "Contract Red Flags", href: "/tools/contract-red-flags" },
-      { label: "Accessibility Checker", href: "/tools/accessibility-checker" },
       { label: "All tools →", href: "/tools" },
     ],
   },
   {
     heading: "Witness network",
     links: [
-      { label: "The Witness Test", href: "/witness-test" },
       { label: "How it works", href: "/witness-network" },
-      { label: "Open Witness Standard", href: "/witness-standard" },
       { label: "Verify a record", href: "/verify" },
     ],
   },
@@ -49,8 +41,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "About", href: "/about" },
       { label: "Insights", href: "/blog" },
-      { label: "Partners: earn 15%", href: "/affiliates" },
-      { label: "Why compliance", href: "/why-compliance" },
+      { label: "What, Where, Whether", href: "/what-where-whether" },
+      { label: "Reports", href: "/reports/state-of-uk-marketing-compliance" },
     ],
   },
   {
@@ -75,7 +67,7 @@ export function Footer() {
               <Image src="/redflag-logo-full.png" alt="Red Flag AI Pro" width={120} height={95} className="object-contain" style={{ height: "auto" }} />
             </Link>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.5)", lineHeight: 1.6, maxWidth: "260px" }}>
-              Catch compliance risk in your marketing copy, and prove your AI governance before regulators ask. For marketers, agencies, CFOs and compliance teams.
+              Compliance and AI governance, done for you. We check what your business says in public and how it uses AI, and keep the proof.
             </p>
           </div>
 

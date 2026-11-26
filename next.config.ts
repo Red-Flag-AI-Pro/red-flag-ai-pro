@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // 26 Nov 2026: both pages sold the old self serve plans (£149 to £1,200).
+      // Temporary, so they can come back rewritten later.
+      { source: "/features", destination: "/pricing", permanent: false },
+      { source: "/compare", destination: "/pricing", permanent: false },
       {
         source: "/blog/ai-content-disclosure-eu-ai-act-2026",
         destination: "/blog/eu-ai-act-article-50-marketing-agencies",

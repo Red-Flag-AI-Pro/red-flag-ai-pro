@@ -160,7 +160,7 @@ export default function BoundaryAuthorizationRecordsPage() {
       <section style={{ padding: "4rem 1.5rem 6rem", textAlign: "center" }}>
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem" }}>
-            This is what Sentinel builds for every AI system you approve.
+            For firms with AI systems to govern, we build records like this.
           </h2>
           <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.55)", marginBottom: "1.75rem" }}>
             The evidence a regulator, insurer, or court asks for when something goes wrong, not a policy document asserting good intentions.

@@ -102,20 +102,20 @@ export default function StateOfUKMarketingCompliancePage() {
           <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
             Free, no card needed, and we do the work.
           </p>
-          <a href="/compliance-assessment" style={{
+          <a href="/get-checked" style={{
             display: "inline-block", background: "#E5484D", color: "white",
             ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "14px 32px",
             borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)",
             textDecoration: "none", letterSpacing: "0.02em",
           }}>
-            Run the free check →
+            Show me my red flag →
           </a>
         </div>
       </section>
 
       <section style={{ padding: "2rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(244,241,234,0.35)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
-          Compiled by Red Flag AI Pro from public ASA rulings. This is a research finding, not an accusation — every claim here is sourced to the regulator&apos;s own published decision, linked above. Businesses listed have already had their case decided by the ASA; nothing here is Red Flag&apos;s own judgment.
+          Compiled by Red Flag AI Pro from public ASA rulings. This is a research finding, not an accusation. Every claim here is sourced to the regulator&apos;s own published decision, linked above. Businesses listed have already had their case decided by the ASA; nothing here is Red Flag&apos;s own judgment.
         </p>
       </section>
 

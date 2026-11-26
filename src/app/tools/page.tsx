@@ -113,7 +113,7 @@ export default function ToolsPage() {
             fontSize: "clamp(2rem, 4.5vw, 2.9rem)", fontWeight: 500,
             letterSpacing: "-0.02em", lineHeight: 1.12, marginBottom: "0.75rem",
             color: "#F4F1EA",
-          }}>Twenty two tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>All free.</span></h1>
+          }}>Free tools. <span style={{ fontStyle: "italic", color: "#E5484D" }}>Use them now.</span></h1>
           <p style={{fontFamily: "'Syne', sans-serif", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto"}}>
             Pick a tool below and use it now. No signup required.
           </p>
@@ -156,27 +156,18 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Signup upsell — moved below the actual tools, a secondary CTA not a gate */}
+      {/* 26 Nov 2026: the old sign up upsell is gone; the next step is the done for you red flag. */}
       <section style={{background: "#0C1929", padding: "5rem 1.5rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)"}}>
-        <div style={{maxWidth: "700px", margin: "0 auto"}}>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Unlocked free the moment you sign up</p>
-          <h2 style={{
-            fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 3.5vw, 2rem)", fontWeight: 700,
-            letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem",
-            color: "#F4F1EA",
-          }}>Nine more tools, free the moment you sign up.</h2>
-          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem"}}>
-            Risk calculators, testimonial checker, email compliance, refund rights checker and more. No check credits used. Always free.
+        <div style={{maxWidth: "640px", margin: "0 auto"}}>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem"}}>Rather we did it for you?</p>
+          <h2 style={{fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 3.5vw, 2rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1rem", color: "#F4F1EA"}}>
+            Get your red flag instead.
+          </h2>
+          <p style={{fontFamily: "'Syne', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: "0 auto 2rem", maxWidth: "500px"}}>
+            Give us your website. We check what it says and how you use AI, and show you the one problem most likely to cost you. Free, no account, and you do none of the work.
           </p>
-          <div style={{display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center", marginBottom: "2.5rem"}}>
-            {["Risk Calculator", "Testimonial Checker", "Email Compliance", "Urgency Validator", "Health Claim Rater", "Red Flag Checklist", "Refund Rights", "Influencer Disclosure"].map((t) => (
-              <span key={t} style={{fontFamily: "'Syne', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.1)", padding: "5px 12px", borderRadius: "9999px"}}>
-                {t}
-              </span>
-            ))}
-          </div>
-          <Link href="/signup" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>
-            Create free account: unlock toolkit →
+          <Link href="/get-checked" style={{display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", fontFamily: "'Syne', sans-serif", fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none"}}>
+            Show me my red flag →
           </Link>
         </div>
       </section>

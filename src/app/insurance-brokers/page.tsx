@@ -604,16 +604,15 @@ export default function InsuranceBrokersPage() {
       <section style={{ padding: "7rem 1.5rem 8rem", textAlign: "center" }}>
         <div style={{ maxWidth: "620px", margin: "0 auto" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>
-            Know where you stand in 5 minutes
+            Know where you stand
           </p>
           <h2 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "white", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.25rem" }}>
-            Two free checks.
+            Your red flag, free.
             <br />
             Both halves of the risk.
           </h2>
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-            The governance assessment scores your AI oversight across 6 dimensions and shows the single biggest gap.
-            The compliance check reads any page or document against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in under
+            Give us your website. We check what it says in public and how you use AI, and show you the one problem most likely to cost you, against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions.
             Free, no account, and you do none of the work.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
@@ -625,8 +624,7 @@ export default function InsuranceBrokersPage() {
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.35)", lineHeight: 1.7 }}>
-            Rolling this out across your delegated authorities, with client workspaces, white label reports and a
-            managed audit trail?{" "}
+            Want it checked every month, with every check sealed on the record?{" "}
             <Link href="/sentinel#request" style={{ color: "#E5484D", textDecoration: "underline" }}>
               Talk to us about Sentinel
             </Link>

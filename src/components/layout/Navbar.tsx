@@ -79,30 +79,18 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                         there is to read or use. Everything used to sit in one
                         eleven item list, which meant the proof layer pages read
                         as filing rather than as capability. */}
+                    {/* 26 Nov 2026: cut to the pages that fit the done for you offer.
+                        Technical and enterprise pages (Real-Time Gate, Ruleset
+                        Integrity, Who When Whether, law firms, PI brokers,
+                        installations) stay live but are no longer in the menu. */}
                     <div className="rounded-lg border border-white/10 py-1.5" style={{ background: "#0D1B2E" }}>
-                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">How it works</p>
-                      <Link href="/witness-network" className="px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-2">Witness Network <span style={{fontSize:"9px", border:"1px solid rgba(229,72,77,0.5)", color:"#E5484D", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>NEW</span></Link>
-                      <Link href="/real-time-gate" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Real-Time Gate</Link>
-                      <Link href="/ruleset-integrity" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Ruleset Integrity</Link>
-                      <Link href="/who-when-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
-                      <Link href="/what-where-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">What, Where, Whether</Link>
-
-                      <div className="my-1.5 border-t border-white/10" />
-                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Who it&apos;s for</p>
-                      <Link href="/law-firms" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Law Firms</Link>
-                      <Link href="/insurance-brokers" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">PI Brokers</Link>
-
-                      <div className="my-1.5 border-t border-white/10" />
-                      <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Read and use</p>
-                      <Link href="/governance-audit" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
-                      <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
-                      <Link href="/features" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
-                      <Link href="/compare" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compare</Link>
-                      <Link href="/affiliates" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Partners</Link>
-                      <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
-                      <Link href="/reports/state-of-uk-marketing-compliance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
-                      <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
                       <Link href="/about" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
+                      <Link href="/what-where-whether" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">What, Where, Whether</Link>
+                      <Link href="/governance-audit" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
+                      <Link href="/reports/state-of-uk-marketing-compliance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
+                      <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
+                      <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
+                      <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
                     </div>
                   </div>
                 )}
@@ -181,32 +169,20 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                     experience for carrying the same content. */}
                 <Link href="/get-checked" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition-colors">Get your site checked</Link>
                 <Link href="/audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Full audit</Link>
-                <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: managed governance &amp; compliance</Link>
+                <Link href="/sentinel" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Sentinel: kept clear every month</Link>
                 <Link href="/witness-network" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Witness network</Link>
                 <Link href="/pricing" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Pricing</Link>
 
-                <p className="px-3 pt-4 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30 border-t border-white/10 mt-2">How it works</p>
-                <Link href="/real-time-gate" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Real-Time Gate</Link>
-                <Link href="/ruleset-integrity" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Ruleset Integrity</Link>
-                <Link href="/who-when-whether" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Who, When, Whether</Link>
-                <Link href="/what-where-whether" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">What, Where, Whether</Link>
-
-                <p className="px-3 pt-4 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30 border-t border-white/10 mt-2">Who it&apos;s for</p>
-                <Link href="/law-firms" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Law firms</Link>
-                <Link href="/insurance-brokers" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">PI brokers</Link>
-
-                <p className="px-3 pt-4 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30 border-t border-white/10 mt-2">Read and use</p>
-                <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
-                <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
-                <Link href="/features" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
-                <Link href="/compare" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compare</Link>
-                <Link href="/reports/mystery-of-ai-governance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
-                <Link href="/reports/state-of-uk-marketing-compliance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
-                <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
+                <p className="px-3 pt-4 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30 border-t border-white/10 mt-2">Resources</p>
                 <Link href="/about" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">About</Link>
+                <Link href="/what-where-whether" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">What, Where, Whether</Link>
+                <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
+                <Link href="/reports/state-of-uk-marketing-compliance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
+                <Link href="/reports/mystery-of-ai-governance" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
+                <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
+                <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
 
                 <div className="pt-2 mt-2 border-t border-white/10">
-                  <Link href="/affiliates" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 transition-colors flex items-center gap-2">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600}}>EARN</span></Link>
                   <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Log in</Link>
                 </div>
               </>

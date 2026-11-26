@@ -126,7 +126,7 @@ export default async function RealTimeGatePage() {
           </P>
         )}
         <P>
-          Sentinel accounts can also export any decision as a bundle signed with Red Flag&apos;s Ed25519 key, the decision plus the authority state that governed it, captured at the moment of export. Hand it to a regulator, an insurer, or a counterparty and they can check it offline, no account, no network call, no need to trust our server at the moment they look. Full shape and a standalone verifier script at <Link href="/docs" style={{ color: "#E5484D" }}>/docs</Link>. Prefer proving it on a key that&apos;s entirely yours, not ours, rather than Red Flag&apos;s own — see <Link href="/installations" style={{ color: "#E5484D" }}>installations</Link>.
+          Sentinel accounts can also export any decision as a bundle signed with Red Flag&apos;s Ed25519 key, the decision plus the authority state that governed it, captured at the moment of export. Hand it to a regulator, an insurer, or a counterparty and they can check it offline, no account, no network call, no need to trust our server at the moment they look. Full shape and a standalone verifier script at <Link href="/docs" style={{ color: "#E5484D" }}>/docs</Link>.
         </P>
       </Section>
 

@@ -129,7 +129,7 @@ export default function WhyCompliancePage() {
               The same question sits behind every fine on this page: can you prove what you checked, and when?
             </p>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem", lineHeight: 1.7 }}>
-              That is the broader AI governance question CFOs and boards are now being asked directly. Take the free 2 minute Governance Maturity Index to see where your organisation stands.
+              That is the broader AI governance question CFOs and boards are now being asked directly. Take the free Governance Maturity Index to see where your organisation stands.
             </p>
             <Link href="/governance-audit" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "1px solid rgba(255,255,255,0.25)", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "12px 28px", borderRadius: "9999px", textDecoration: "none" }}>
               Take the free governance assessment
@@ -148,7 +148,7 @@ export default function WhyCompliancePage() {
               { label: "Compliance lawyer", value: "£400 per hour" },
               { label: "Full funnel audit", value: "£2,400 minimum" },
               { label: "Average buyer loss", value: "£500 to £2,000" },
-              { label: "Red Flag AI Pro", value: "Free. Done for you.", highlight: true },
+              { label: "Red Flag AI Pro full audit", value: "£449. Done for you.", highlight: true },
             ].map((item, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", padding: "1.5rem 0", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                 <p style={{ ...syne, fontSize: "1.1rem", color: item.highlight ? "white" : "rgba(255,255,255,0.6)", fontWeight: item.highlight ? 700 : 500 }}>{item.label}</p>
@@ -156,7 +156,7 @@ export default function WhyCompliancePage() {
               </div>
             ))}
           </div>
-          <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "3rem" }}>If it catches one thing, it has paid for itself a thousand times over.</p>
+          <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "3rem" }}>Your first red flag is free. If the full audit catches one thing, it has paid for itself many times over.</p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/get-checked" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "1rem", fontWeight: 700, padding: "14px 40px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>
               Show me my red flag →
