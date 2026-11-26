@@ -186,12 +186,12 @@ export default async function SentinelPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What you get every month</p>
-            <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.6)", marginBottom: "1rem" }}>Everything you get from the audit, plus:</p>
             <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA" }}>
               We keep watching.
               <br />
               <span style={{ fontStyle: "italic", color: "#C9A66B" }}>You get on with your business.</span>
             </h2>
+            <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.65)", marginTop: "1rem" }}>Everything you got from the audit stays yours, plus every month:</p>
           </div>
           <div style={{ display: "grid", gap: "1rem" }}>
             {MONTHLY.map((m) => (
