@@ -340,3 +340,172 @@ export function callScript(p: Prospect): CallScript {
     ],
   };
 }
+
+// ---------------------------------------------------------------------------
+// Checkpoints: the eight things to find out on a call. Four about what the
+// business says in public, four about how it uses AI. Each answer carries the
+// sentence that goes into the "what I heard" summary, and whether it is a gap
+// worth raising. Eight on purpose: enough to diagnose, short enough that it
+// stays a conversation.
+
+export interface CheckpointOption {
+  label: string;
+  /** How this answer reads back to the prospect. */
+  heard: string;
+  /** True when the answer is a gap the audit would address. */
+  gap?: boolean;
+}
+
+export interface Checkpoint {
+  id: string;
+  half: "said" | "did";
+  question: string;
+  /** More than one answer can be chosen. */
+  multi?: boolean;
+  options: CheckpointOption[];
+}
+
+export const CHECKPOINTS: Checkpoint[] = [
+  {
+    id: "writer",
+    half: "said",
+    question: "Who writes the words on your website and in your ads?",
+    options: [
+      { label: "We do, in house", heard: "You write your own website and ad copy in house." },
+      { label: "An agency", heard: "An agency writes your website and ad copy." },
+      { label: "AI writes it", heard: "AI writes most of your copy.", gap: true },
+      { label: "A mix", heard: "Your copy comes from a mix of people and AI." },
+      { label: "Not sure", heard: "Nobody is quite sure who wrote what is on the site today.", gap: true },
+    ],
+  },
+  {
+    id: "checked",
+    half: "said",
+    question: "Does anyone check them against the rules before they go live?",
+    options: [
+      { label: "Yes, a named person", heard: "A named person checks copy against the rules before it goes live." },
+      { label: "Informally", heard: "Copy gets an informal look before it goes live, with no set check.", gap: true },
+      { label: "No", heard: "Nobody checks copy against the rules before it goes live.", gap: true },
+      { label: "Not sure", heard: "You are not sure whether copy is checked before it goes live.", gap: true },
+    ],
+  },
+  {
+    id: "outside",
+    half: "said",
+    question: "When did someone outside the business last look at the site?",
+    options: [
+      { label: "In the last year", heard: "Someone outside the business has looked at the site in the last year." },
+      { label: "Longer ago", heard: "It has been more than a year since anyone outside the business looked at the site.", gap: true },
+      { label: "Never", heard: "Nobody outside the business has ever looked at the site.", gap: true },
+      { label: "Not sure", heard: "You are not sure when the site was last looked at from outside.", gap: true },
+    ],
+  },
+  {
+    id: "evidence",
+    half: "said",
+    question: "You make claims about results, prices or reviews. If someone asked for the evidence tomorrow, could you show it?",
+    options: [
+      { label: "Yes, on file", heard: "You hold the evidence for the claims you make." },
+      { label: "Some of it", heard: "You could show evidence for some of your claims, but not all.", gap: true },
+      { label: "No", heard: "You could not show evidence for the claims on the site if asked.", gap: true },
+      { label: "We make no claims", heard: "You do not think the site makes claims that need evidence." },
+    ],
+  },
+  {
+    id: "ai_where",
+    half: "did",
+    question: "Where are you using AI right now?",
+    multi: true,
+    options: [
+      { label: "A chatbot", heard: "a chatbot" },
+      { label: "Writing content", heard: "writing content" },
+      { label: "Sorting applications or enquiries", heard: "sorting applications or enquiries" },
+      { label: "Images or video", heard: "images or video" },
+      { label: "Not using AI", heard: "" },
+      { label: "Not sure", heard: "", gap: true },
+    ],
+  },
+  {
+    id: "ai_owner",
+    half: "did",
+    question: "Who decided to use it, and who answers for it if it gets something wrong?",
+    options: [
+      { label: "A named person", heard: "A named person is responsible for how AI is used." },
+      { label: "The supplier, we assume", heard: "You are relying on the supplier to be responsible for the AI.", gap: true },
+      { label: "Nobody in particular", heard: "Nobody in particular is responsible for how AI is used.", gap: true },
+      { label: "Not sure", heard: "You are not sure who is responsible for how AI is used.", gap: true },
+    ],
+  },
+  {
+    id: "ai_told",
+    half: "did",
+    question: "Do your customers know when they are dealing with AI?",
+    options: [
+      { label: "Yes, we tell them", heard: "Customers are told when they are dealing with AI." },
+      { label: "Sometimes", heard: "Customers are told about AI in some places but not others.", gap: true },
+      { label: "No", heard: "Customers are not told when they are dealing with AI.", gap: true },
+      { label: "No AI faces customers", heard: "No AI deals with your customers directly." },
+    ],
+  },
+  {
+    id: "ai_record",
+    half: "did",
+    question: "If a regulator, an insurer or a big client asked how your AI is used and checked, what would you hand them?",
+    options: [
+      { label: "A written record", heard: "You could hand over a written record of how AI is used and checked." },
+      { label: "A policy document", heard: "You have a policy, but no record showing it was followed.", gap: true },
+      { label: "Nothing", heard: "You would have nothing to hand over if asked how AI is used and checked.", gap: true },
+      { label: "Not sure", heard: "You are not sure what you could hand over if asked how AI is used and checked.", gap: true },
+    ],
+  },
+];
+
+/** Answers keyed by checkpoint id. `answer` holds one label, or several joined with " | ". */
+export type CheckpointAnswers = Record<string, { answer?: string; note?: string }>;
+
+const picked = (a: string | undefined) => (a ? a.split(" | ").filter(Boolean) : []);
+
+export function checkpointsCovered(answers: CheckpointAnswers): number {
+  return CHECKPOINTS.filter((c) => picked(answers[c.id]?.answer).length > 0).length;
+}
+
+/**
+ * A short "what I heard" note for a follow up message, built from the answers.
+ * It plays the prospect's own words back and names the gaps, without telling
+ * them they have broken anything.
+ */
+export function checkpointSummary(p: Pick<Prospect, "contact_name">, answers: CheckpointAnswers): string {
+  const heard: string[] = [];
+  let gaps = 0;
+  for (const c of CHECKPOINTS) {
+    const chosen = picked(answers[c.id]?.answer);
+    if (chosen.length === 0) continue;
+    const opts = c.options.filter((o) => chosen.includes(o.label));
+    if (c.id === "ai_where") {
+      const uses = opts.map((o) => o.heard).filter(Boolean);
+      if (chosen.includes("Not using AI") && uses.length === 0) heard.push("You are not using AI at the moment.");
+      else if (uses.length > 0) heard.push(`You use AI for ${uses.length === 1 ? uses[0] : `${uses.slice(0, -1).join(", ")} and ${uses[uses.length - 1]}`}.`);
+      else heard.push("You are not sure where AI is being used in the business.");
+    } else {
+      heard.push(opts[0].heard);
+    }
+    if (opts.some((o) => o.gap)) gaps++;
+    const note = (answers[c.id]?.note ?? "").trim();
+    if (note) heard.push(`(${note})`);
+  }
+  if (heard.length === 0) return "";
+
+  const name = (p.contact_name ?? "").trim().split(/\s+/)[0] || "there";
+  const lines = [`Hi ${name},`, "", "Thanks for your time. So you can see I was listening, here is what I heard:", "", ...heard, ""];
+  if (gaps > 0) {
+    lines.push(
+      gaps === 1
+        ? "One of those is a gap I would want closed. It is exactly the kind of thing the full audit covers, alongside what I found on your site."
+        : `${gaps} of those are gaps I would want closed. They are exactly what the full audit covers, alongside what I found on your site.`
+    );
+  } else {
+    lines.push("That is a better position than most. The full audit would confirm it and give you something to show for it.");
+  }
+  lines.push("", CONTACT.name, CONTACT.website);
+  return lines.join("\n");
+}

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { CALL_OUTCOMES, STAGES, followUp, getAdminUser, type Stage } from "@/lib/console";
 
-const KINDS = ["linkedin", "letter", "call", "email", "note", "stage"];
+const KINDS = ["linkedin", "letter", "call", "email", "note", "stage", "checkpoints"];
 
 // Log something that happened with a prospect. Logging always sets the next
 // step and its date, so nothing is left without a follow up. Admin only.
@@ -21,7 +21,8 @@ export async function POST(request: Request) {
   const prospectId = typeof body.prospect_id === "string" ? body.prospect_id : "";
   const kind = typeof body.kind === "string" ? body.kind : "";
   const outcome = typeof body.outcome === "string" ? body.outcome : null;
-  const detail = typeof body.detail === "string" ? body.detail.trim().slice(0, 2000) : null;
+  // Checkpoint answers are stored as JSON in the detail, so they get more room.
+  const detail = typeof body.detail === "string" ? body.detail.trim().slice(0, kind === "checkpoints" ? 8000 : 2000) : null;
 
   if (!prospectId || !KINDS.includes(kind)) {
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
@@ -60,7 +61,9 @@ export async function POST(request: Request) {
     .insert({ prospect_id: prospectId, kind, outcome, detail: detail || null });
   if (insertError) return NextResponse.json({ error: insertError.message }, { status: 500 });
 
-  if (kind === "note") {
+  // Notes and checkpoint answers are a record, not a step: they do not move
+  // the prospect on or change what happens next.
+  if (kind === "note" || kind === "checkpoints") {
     return NextResponse.json({ ok: true });
   }
 

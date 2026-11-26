@@ -4,12 +4,16 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   CALL_OUTCOMES,
   CALL_OUTCOME_LABEL,
+  CHECKPOINTS,
   STAGES,
   STAGE_LABEL,
   callScript,
+  checkpointSummary,
+  checkpointsCovered,
   linkedinMessage,
   ukDate,
   type Activity,
+  type CheckpointAnswers,
   type LeadRequestRow,
   type Prospect,
   type Stage,
@@ -163,7 +167,9 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [callOutcome, setCallOutcome] = useState<string>(CALL_OUTCOMES[0]);
   const [note, setNote] = useState("");
   const [copied, setCopied] = useState(false);
-  const [tab, setTab] = useState<"message" | "script" | "letter">("message");
+  const [tab, setTab] = useState<"message" | "script" | "checkpoints" | "letter">("message");
+  const [answers, setAnswers] = useState<CheckpointAnswers>({});
+  const [heardCopied, setHeardCopied] = useState(false);
 
   const load = useCallback(async () => {
     if (demo) {
@@ -205,7 +211,21 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const selected = prospects.find((p) => p.id === selectedId) ?? null;
   const history = selected ? activity.filter((a) => a.prospect_id === selected.id) : [];
 
+  // The most recently saved checkpoint answers for a prospect, if any.
+  const savedAnswers = (id: string): CheckpointAnswers => {
+    const row = activity.find((a) => a.prospect_id === id && a.kind === "checkpoints");
+    if (!row?.detail) return {};
+    try {
+      const parsed = JSON.parse(row.detail);
+      return parsed && typeof parsed === "object" ? (parsed as CheckpointAnswers) : {};
+    } catch {
+      return {};
+    }
+  };
+
   const select = (p: Prospect | null) => {
+    setAnswers(p ? savedAnswers(p.id) : {});
+    setHeardCopied(false);
     setSelectedId(p ? p.id : null);
     setDraft(p ? { ...p } : null);
     setAdding(false);
@@ -285,6 +305,28 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
       setSelectedId(null);
       setDraft(null);
     });
+
+  const toggleAnswer = (id: string, labelText: string, multi?: boolean) => {
+    setAnswers((prev) => {
+      const current = (prev[id]?.answer ?? "").split(" | ").filter(Boolean);
+      let next: string[];
+      if (multi) next = current.includes(labelText) ? current.filter((l) => l !== labelText) : [...current, labelText];
+      else next = current.includes(labelText) ? [] : [labelText];
+      return { ...prev, [id]: { ...prev[id], answer: next.join(" | ") } };
+    });
+  };
+  const setAnswerNote = (id: string, noteText: string) => setAnswers((prev) => ({ ...prev, [id]: { ...prev[id], note: noteText } }));
+  const covered = checkpointsCovered(answers);
+  const heard = selected ? checkpointSummary({ contact_name: (draft?.contact_name ?? selected.contact_name) as string | null }, answers) : "";
+  const copyHeard = async () => {
+    try {
+      await navigator.clipboard.writeText(heard);
+      setHeardCopied(true);
+      window.setTimeout(() => setHeardCopied(false), 2000);
+    } catch {
+      setError("Could not copy. Select the text and copy it by hand.");
+    }
+  };
 
   const script = selected ? callScript({ ...(selected as Prospect), ...(draft as Prospect) }) : null;
 
@@ -435,6 +477,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                       {([
                         ["message", "LinkedIn message"],
                         ["script", "Call script"],
+                        ["checkpoints", `Checkpoints ${covered}/${CHECKPOINTS.length}`],
                         ["letter", "Letter"],
                       ] as const).map(([key, text]) => (
                         <button
@@ -503,6 +546,65 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                             <p key={r} style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.6 }}>{i + 1}. {r}</p>
                           ))}
                         </div>
+                      </div>
+                    )}
+
+                    {tab === "checkpoints" && (
+                      <div style={{ display: "grid", gap: "12px" }}>
+                        <p style={{ ...syne, fontSize: "13.5px", color: C.dim, lineHeight: 1.65 }}>
+                          Eight things to find out on the call. Tap what they say as you go. You do not need all eight; most owners cannot answer 2, 6 or 8, and the silence does the work.
+                        </p>
+                        {(["said", "did"] as const).map((half) => (
+                          <div key={half} style={{ display: "grid", gap: "10px" }}>
+                            <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: C.gold, marginTop: "4px" }}>
+                              {half === "said" ? "What they say" : "What they do with AI"}
+                            </p>
+                            {CHECKPOINTS.filter((c) => c.half === half).map((c) => {
+                              const chosen = (answers[c.id]?.answer ?? "").split(" | ").filter(Boolean);
+                              const n = CHECKPOINTS.findIndex((x) => x.id === c.id) + 1;
+                              return (
+                                <div key={c.id} style={{ border: `1px solid ${chosen.length ? "rgba(201,166,107,0.45)" : C.line}`, borderRadius: "10px", padding: "12px 14px" }}>
+                                  <p className="font-display" style={{ fontSize: "1.05rem", color: C.ivory, lineHeight: 1.45, marginBottom: "10px" }}>
+                                    <span style={{ ...mono, fontSize: "12px", color: C.red, marginRight: "8px" }}>{n}</span>
+                                    {c.question}
+                                  </p>
+                                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "8px" }}>
+                                    {c.options.map((o) => {
+                                      const on = chosen.includes(o.label);
+                                      return (
+                                        <button
+                                          key={o.label}
+                                          type="button"
+                                          onClick={() => toggleAnswer(c.id, o.label, c.multi)}
+                                          aria-pressed={on}
+                                          style={{ ...syne, fontSize: "12.5px", fontWeight: 600, padding: "6px 11px", borderRadius: "9999px", cursor: "pointer", background: on ? (o.gap ? "rgba(229,72,77,0.18)" : "rgba(201,166,107,0.16)") : "transparent", color: on ? C.ivory : C.dim, border: `1px solid ${on ? (o.gap ? C.red : C.gold) : "rgba(244,241,234,0.2)"}` }}
+                                        >
+                                          {o.label}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                  <input value={answers[c.id]?.note ?? ""} onChange={(e) => setAnswerNote(c.id, e.target.value)} placeholder="Anything they said, in their words" style={{ ...input, fontSize: "13px", padding: "7px 10px" }} />
+                                </div>
+                              );
+                            })}
+                          </div>
+                        ))}
+
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }}>
+                          <Btn kind="primary" disabled={busy || covered === 0} onClick={() => log("checkpoints", undefined, JSON.stringify(answers))}>Save answers</Btn>
+                          <span style={{ ...mono, fontSize: "11px", letterSpacing: "0.1em", color: C.faint }}>{covered} of {CHECKPOINTS.length} covered</span>
+                        </div>
+
+                        {heard && (
+                          <div>
+                            <p style={label}>What I heard, ready for your follow up</p>
+                            <textarea readOnly value={heard} rows={12} style={{ ...input, resize: "vertical", lineHeight: 1.55, fontSize: "13.5px" }} />
+                            <div style={{ marginTop: "10px" }}>
+                              <Btn kind="gold" onClick={copyHeard}>{heardCopied ? "Copied" : "Copy summary"}</Btn>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -595,8 +697,8 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     history.map((a) => (
                       <p key={a.id} style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.6, padding: "6px 0", borderTop: `1px solid ${C.line}` }}>
                         <span style={{ ...mono, fontSize: "11px", color: C.faint, marginRight: "8px" }}>{new Date(a.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
-                        {a.kind === "stage" ? `${ACTIVITY_LABEL.stage} ${STAGE_LABEL[a.outcome as Stage] ?? a.outcome}` : a.kind === "call" ? `${ACTIVITY_LABEL.call}: ${CALL_OUTCOME_LABEL[a.outcome as keyof typeof CALL_OUTCOME_LABEL] ?? a.outcome}` : ACTIVITY_LABEL[a.kind] ?? a.kind}
-                        {a.detail ? `: ${a.detail}` : ""}
+                        {a.kind === "checkpoints" ? "Checkpoint answers saved" : a.kind === "stage" ? `${ACTIVITY_LABEL.stage} ${STAGE_LABEL[a.outcome as Stage] ?? a.outcome}` : a.kind === "call" ? `${ACTIVITY_LABEL.call}: ${CALL_OUTCOME_LABEL[a.outcome as keyof typeof CALL_OUTCOME_LABEL] ?? a.outcome}` : ACTIVITY_LABEL[a.kind] ?? a.kind}
+                        {a.detail && a.kind !== "checkpoints" ? `: ${a.detail}` : ""}
                       </p>
                     ))
                   )}
