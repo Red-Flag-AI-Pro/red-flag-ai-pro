@@ -176,15 +176,15 @@ export default async function PricingPage() {
             {/* 03 SENTINEL */}
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column" }}>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>03 · SENTINEL</p>
-              <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>Talk to us</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Compliance and AI governance handled for you, every month.</p>
+              <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>£199<span style={{ fontSize: "1rem", fontWeight: 600, color: "rgba(255,255,255,0.55)" }}> a month</span></p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>After the audit: compliance and AI governance kept clear, every month. No contract.</p>
               <div style={{ flex: 1 }}>
                 {[
-                  "Managed governance implementation, worked with you",
-                  "Cryptographically sealed audit log, verifiable on demand",
-                  "Sign offs stamped with the signer's role and authority",
-                  "Board ready reporting, built with your team",
-                  "Dedicated governance advisor",
+                  "Your site checked every month",
+                  "Law changes explained for you",
+                  "Reviewed badge kept live",
+                  "Added to the Witness Network automatically",
+                  "Several sites or a regulated team? Scoped to you",
                 ].map((f) => (
                   <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
                     <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "10px" }}>✓</span>{f}
@@ -192,7 +192,7 @@ export default async function PricingPage() {
                 ))}
               </div>
               <Link href="/sentinel#request" className="btn-secondary" style={{ marginTop: "1.75rem", justifyContent: "center", fontSize: "0.9rem", padding: "13px 24px" }}>
-                Ask about Sentinel <span className="arrow">→</span>
+                See Sentinel <span className="arrow">→</span>
               </Link>
             </div>
           </div>
