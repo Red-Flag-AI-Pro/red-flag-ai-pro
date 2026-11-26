@@ -476,7 +476,7 @@ export default async function AuditPage({
           </p>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, marginTop: "1.25rem" }}>
             Want it kept clear after that?{" "}
-            <Link href="/sentinel" style={{ color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>Sentinel checks it every month, £199 a month →</Link>
+            <Link href="/sentinel" style={{ color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>Sentinel checks it every month and keeps your own record of every check, £199 a month →</Link>
           </p>
         </div>
       </section>

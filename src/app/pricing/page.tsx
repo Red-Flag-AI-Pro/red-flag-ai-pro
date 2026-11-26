@@ -184,6 +184,7 @@ export default async function PricingPage() {
                   "Law changes explained for you",
                   "Reviewed badge kept live",
                   "Added to the Witness Network automatically",
+                  "Your own private record page, ready to show anyone",
                   "Several sites or a regulated team? Scoped to you",
                 ].map((f) => (
                   <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
