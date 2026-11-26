@@ -42,6 +42,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "About", href: "/about" },
       { label: "Insights", href: "/blog" },
       { label: "What, Where, Whether", href: "/what-where-whether" },
+      { label: "Who, When, Whether", href: "/who-when-whether" },
       { label: "Reports", href: "/reports/state-of-uk-marketing-compliance" },
     ],
   },
