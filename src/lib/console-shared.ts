@@ -114,6 +114,17 @@ export const EDITABLE_FIELDS = [
 ] as const;
 
 /** Today in the UK as YYYY-MM-DD, optionally shifted by a number of days. */
+/**
+ * A UK date a number of days ahead, moved to the Monday if it lands on a
+ * weekend, so follow ups never fall on a Saturday or Sunday.
+ */
+export function ukWorkday(offsetDays: number, from: Date = new Date()): string {
+  const iso = ukDate(offsetDays, from);
+  const day = new Date(`${iso}T12:00:00Z`).getUTCDay(); // 0 Sunday, 6 Saturday
+  const shift = day === 6 ? 2 : day === 0 ? 1 : 0;
+  return shift ? ukDate(offsetDays + shift, from) : iso;
+}
+
 export function ukDate(offsetDays = 0, from: Date = new Date()): string {
   const today = from.toLocaleDateString("en-CA", { timeZone: "Europe/London" });
   const t = Date.parse(`${today}T12:00:00Z`) + offsetDays * 86_400_000;
@@ -133,15 +144,15 @@ export function followUp(
   const moveOn = (to: Stage): Stage => (current === "new" ? to : current);
   switch (kind) {
     case "linkedin":
-      return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up or post the letter", nextActionAt: ukDate(3) };
+      return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up or post the letter", nextActionAt: ukWorkday(3) };
     case "email":
-      return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up", nextActionAt: ukDate(3) };
+      return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up", nextActionAt: ukWorkday(3) };
     case "connect":
       // A connection request is not a message: it does not count as contact,
       // it just sets a reminder to send the message once they accept.
-      return { stage: current, nextAction: "If they accepted on LinkedIn, send the message", nextActionAt: ukDate(2) };
+      return { stage: current, nextAction: "If they accepted on LinkedIn, send the message", nextActionAt: ukWorkday(2) };
     case "letter":
-      return { stage: moveOn("contacted"), nextAction: "Ring them about the letter", nextActionAt: ukDate(5) };
+      return { stage: moveOn("contacted"), nextAction: "Ring them about the letter", nextActionAt: ukWorkday(5) };
     case "call":
       switch (outcome) {
         case "spoke_interested":
@@ -149,26 +160,26 @@ export function followUp(
         case "spoke_not_interested":
           return { stage: "lost", nextAction: null, nextActionAt: null };
         case "callback":
-          return { stage: moveOn("contacted"), nextAction: "Call back as agreed", nextActionAt: ukDate(1) };
+          return { stage: moveOn("contacted"), nextAction: "Call back as agreed", nextActionAt: ukWorkday(1) };
         case "gatekeeper":
-          return { stage: moveOn("contacted"), nextAction: "Ring again and ask for them by name", nextActionAt: ukDate(2) };
+          return { stage: moveOn("contacted"), nextAction: "Ring again and ask for them by name", nextActionAt: ukWorkday(2) };
         default:
-          return { stage: moveOn("contacted"), nextAction: "Ring again", nextActionAt: ukDate(2) };
+          return { stage: moveOn("contacted"), nextAction: "Ring again", nextActionAt: ukWorkday(2) };
       }
     case "stage":
       switch (outcome) {
         case "replied":
           return { stage: "replied", nextAction: "Send their red flag", nextActionAt: ukDate(0) };
         case "flag_sent":
-          return { stage: "flag_sent", nextAction: "Ask if they want the full audit", nextActionAt: ukDate(3) };
+          return { stage: "flag_sent", nextAction: "Ask if they want the full audit", nextActionAt: ukWorkday(3) };
         case "audit_sold":
-          return { stage: "audit_sold", nextAction: "Deliver the audit within 48 hours", nextActionAt: ukDate(2) };
+          return { stage: "audit_sold", nextAction: "Deliver the audit within 48 hours", nextActionAt: ukWorkday(2) };
         case "lost":
           return { stage: "lost", nextAction: null, nextActionAt: null };
         case "new":
           return { stage: "new", nextAction: "Send the first message", nextActionAt: ukDate(0) };
         case "contacted":
-          return { stage: "contacted", nextAction: "Follow up", nextActionAt: ukDate(3) };
+          return { stage: "contacted", nextAction: "Follow up", nextActionAt: ukWorkday(3) };
         default:
           return { stage: current, nextAction: null, nextActionAt: null };
       }
