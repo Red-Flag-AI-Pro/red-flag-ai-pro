@@ -212,6 +212,24 @@ export default function WhoWhenWhetherPage() {
           <p style={{ ...mono, fontSize: "0.78rem", color: "rgba(244,241,234,0.35)", marginTop: "1.5rem", fontStyle: "italic" }}>
             This addendum is not yet independently timestamped. If that matters to you, that is the correct instinct, and it is on the list to fix.
           </p>
+
+          <div style={{ marginTop: "3.5rem", paddingTop: "2.5rem", borderTop: "1px solid rgba(244,241,234,0.12)" }}>
+            <p style={{ ...syne, fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.4)", marginBottom: "0.6rem" }}>Addendum, 26 November 2026</p>
+            <h2 className="font-display" style={{ fontSize: "1.3rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem" }}>Who does the work now</h2>
+            <P>
+              Where this paper talks about pasting copy in and checking it yourself, that is how Red Flag worked in July. Business owners told us plainly that they did not want another tool to learn. They wanted someone who knows the rules to look for them.
+            </P>
+            <P>
+              So now we do the checking. A business gives us its website, and we check what it says in public and how it uses AI, against the frameworks set out above. The first finding is free. The <a href="/audit" style={{ color: "#E5484D" }}>full audit</a> lists every one and how to clear it, and <a href="/sentinel" style={{ color: "#E5484D" }}>Sentinel</a> keeps the site clear every month, with every check sealed on the record and witnessed.
+            </P>
+            <P>
+              Nothing above has changed. The questions are the same: who approved it, when, and whether their authority still held. What changed is who does the work.
+            </P>
+            <p style={{ ...syne, fontSize: "0.95rem", color: "#F4F1EA", marginTop: "1.5rem" }}>James Stokes</p>
+            <p style={{ ...mono, fontSize: "0.78rem", color: "rgba(244,241,234,0.35)", marginTop: "1rem", fontStyle: "italic" }}>
+              This addendum is sealed on the record with the release that published it.
+            </p>
+          </div>
         </div>
         </div>
         <style>{`@media (max-width: 900px) { .img-side-blend { opacity: 0.35; width: 100% !important; } }`}</style>
