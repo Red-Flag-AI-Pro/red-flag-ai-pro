@@ -172,7 +172,7 @@ export default function BlogPage() {
             Stop reading about compliance.<br />Find out what your own copy would trigger.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            Red Flag AI Pro checks your copy against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your site for you against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, and shows you the one problem most likely to cost you. Free.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

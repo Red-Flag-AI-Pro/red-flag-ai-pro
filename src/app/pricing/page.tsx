@@ -198,9 +198,8 @@ export default async function PricingPage() {
           </div>
 
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", marginTop: "2.5rem", lineHeight: 1.7 }}>
-            Prefer to do it yourself? Both tools are free to run on your own:{" "}
-            <Link href="/compliance-assessment" style={{ color: "#E5484D", textDecoration: "none", fontWeight: 700 }}>check your copy</Link>{" "}or{" "}
-            <Link href="/governance-audit" style={{ color: "#E5484D", textDecoration: "none", fontWeight: 700 }}>assess your AI governance</Link>.
+            Prefer to start on your own?{" "}
+            <Link href="/governance-audit" style={{ color: "#E5484D", textDecoration: "none", fontWeight: 700 }}>Take the free governance assessment</Link>: twelve questions and your biggest gap on screen.
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: "1rem" }}>
             Regulatory mapping last reviewed: {REGULATORY_MAPPING_LAST_REVIEWED}

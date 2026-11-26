@@ -67,7 +67,7 @@ export default function WhatWhereWhetherPage() {
           </p>
           <div style={{ background: "rgba(229,72,77,0.06)", border: "1px solid rgba(229,72,77,0.25)", borderRadius: "10px", padding: "1.1rem 1.4rem", textAlign: "left" }}>
             <p style={{ ...syne, fontSize: "0.82rem", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 }}>
-              This is the framework behind the compliance checker itself, the same one behind real published rulings. See it applied to your own copy in under a minute.{" "}
+              This is the framework behind the compliance checker itself, the same one behind real published rulings. See it applied to your own site.{" "}
               <a href="/compliance-assessment#scanner" style={{ color: "#E5484D", textDecoration: "underline" }}>Try the checker →</a>
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function WhatWhereWhetherPage() {
           That gap exists because checking copy against real regulatory rules, across every market you sell into, has always been slow, expensive, or both. A solo creator or a small marketing team was never going to commission a compliance review for a landing page. So the copy went out unchecked, and the business found out the hard way what a regulator meant by misleading, unsubstantiated, or undisclosed.
         </P>
         <P>
-          We built a checker to close that gap, not by writing another vague best practices guide, but by asking the same three questions a regulator actually asks, and answering them in under a minute, before a complaint ever gets filed.
+          We built a checker to close that gap, not by writing another vague best practices guide, but by asking the same three questions a regulator actually asks, and answering them before a complaint ever gets filed.
         </P>
       </Section>
 
@@ -128,7 +128,7 @@ export default function WhatWhereWhetherPage() {
         <P>
           None of this is theoretical. Paste your own copy in and the same three questions get answered in front of you.
         </P>
-        <P><strong style={{ color: "#F4F1EA" }}>Compliance checking.</strong> Marketing copy checked against the actual rules regulators enforce, across {JURISDICTION_COUNT_WORD} jurisdictions and {RISK_CATEGORY_COUNT_WORD} risk categories, in under a minute. Try it on the <Link href="/compliance-assessment#scanner" style={{ color: "#E5484D" }}>compliance assessment page</Link>, no account required.</P>
+        <P><strong style={{ color: "#F4F1EA" }}>Compliance checking.</strong> Marketing copy checked against the actual rules regulators enforce, across {JURISDICTION_COUNT_WORD} jurisdictions and {RISK_CATEGORY_COUNT_WORD} risk categories. Try it on the <Link href="/compliance-assessment#scanner" style={{ color: "#E5484D" }}>compliance assessment page</Link>, no account required.</P>
         <P><strong style={{ color: "#F4F1EA" }}>A suite of free tools.</strong> A fine calculator that shows real regulatory exposure, an accessibility checker, an influencer disclosure checker, a shadow AI audit, and more, all free, built to demonstrate the standard rather than gate it behind a sales call.</P>
         <P><strong style={{ color: "#F4F1EA" }}>The other half of the question.</strong> Checking what a business said is only half the job. What a business did, and who was accountable for it, is a different question with its own framework. See <Link href="/who-when-whether" style={{ color: "#E5484D" }}>who, when, whether</Link>, the governance side of the same standard.</P>
         <P><strong style={{ color: "#F4F1EA" }}>Honest pricing.</strong> Checking copy against the law should not cost what this industry charges for it. Small businesses and solo operators should be able to afford the same standard of proof as anyone else.</P>

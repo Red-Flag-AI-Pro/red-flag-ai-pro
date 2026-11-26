@@ -110,7 +110,7 @@ export default async function SharePage({
         {/* CTA */}
         <div className="rounded-xl border border-white/10 bg-[#102943] p-6 text-center">
           <p className="text-sm font-semibold text-[#F4F1EA] mb-1">Want to check your own copy?</p>
-          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">Free check, no signup needed. Results in 60 seconds.</p>
+          <p className="text-xs text-[rgba(244,241,234,0.5)] mb-4">We check your site for you. Free, no signup needed.</p>
           <Link
             href="/compliance-assessment"
             className="inline-block rounded-lg bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"

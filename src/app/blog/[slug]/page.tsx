@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: Props) {
             Check Your Copy for Free
           </h2>
           <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-            Red Flag AI Pro checks your marketing copy against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in 60 seconds.
+            Red Flag AI Pro checks your site for you against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, and shows you the one problem most likely to cost you. Free.
           </p>
           <Link href="/signup" style={{
             display: "inline-block",

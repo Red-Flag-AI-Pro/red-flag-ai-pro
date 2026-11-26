@@ -160,7 +160,7 @@ export default async function LandingPage() {
               {
                 role: "Creators & course sellers",
                 pain: "Is your ad about to get you fined, or flagged by the platform you're paying to run it on?",
-                solution: "Check your copy in under 60 seconds. Catch income claims, fake urgency, and missing disclosures before you publish.",
+                solution: "We check your copy for you. Income claims, fake urgency and missing disclosures, caught before you publish.",
               },
               {
                 role: "Marketing agencies",
@@ -332,85 +332,16 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* DO IT YOURSELF: the two free self serve tools, demoted below the done for you offer */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Prefer to do it yourself?</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "white" }}>
-              Both tools are free to run on your own.
-            </h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-            {/* Compliance: the published word */}
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage: "url(/images/home/newsprint.jpg)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  filter: "saturate(0.85) contrast(1.05) brightness(1.05)",
-                }}
-              />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(10,22,40,0.28)", mixBlendMode: "multiply" }} />
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)",
-                }}
-              />
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>Compliance Assessment</p>
-                <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem", textShadow: "0 1px 12px rgba(6,14,26,0.9)" }}>Check your marketing copy</h3>
-                <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, marginBottom: "1.75rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>
-                  Publish with confidence, not a guess. Paste your copy and know in 60 seconds if it is clean, checked against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions, with every flag explained so you know exactly what to fix.
-                </p>
-                <Link href="/compliance-assessment" className="btn-primary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-                  Check your copy <span className="arrow">→</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Governance: the record */}
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "2.5rem" }}>
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage: "url(/images/home/ledger.jpg)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  filter: "saturate(0.85) contrast(1.05) brightness(1.05)",
-                }}
-              />
-              <div aria-hidden style={{ position: "absolute", inset: 0, background: "rgba(10,22,40,0.28)", mixBlendMode: "multiply" }} />
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.75) 100%)",
-                }}
-              />
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>Governance Assessment</p>
-                <h3 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "1rem", textShadow: "0 1px 12px rgba(6,14,26,0.9)" }}>Prove your AI governance</h3>
-                <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.85)", lineHeight: 1.7, marginBottom: "1.75rem", textShadow: "0 1px 6px rgba(6,14,26,0.9)" }}>
-                  Find out in 2 minutes whether you could survive an audit tomorrow. 12 questions across 6 dimensions reveal your governance maturity and your single biggest gap, before someone else finds it first.
-                </p>
-                <Link href="/governance-audit" className="btn-secondary" style={{ fontSize: "0.9rem", padding: "12px 26px" }}>
-                  Start the assessment <span className="arrow">→</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+      {/* START ON YOUR OWN: the governance assessment is the one self serve route left in public */}
+      <section style={{ padding: "3.5rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", marginBottom: "0.9rem" }}>Prefer to start on your own?</p>
+          <p className="font-display" style={{ fontSize: "1.45rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.35, marginBottom: "0.9rem" }}>
+            Score your own AI governance. Twelve questions, your biggest gap on screen.
+          </p>
+          <Link href="/governance-audit" style={{ ...syne, fontSize: "0.92rem", fontWeight: 700, color: "#E5484D", textDecoration: "none" }}>
+            Take the free governance assessment →
+          </Link>
         </div>
       </section>
 

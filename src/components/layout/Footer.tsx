@@ -8,7 +8,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Product",
     links: [
-      { label: "Compliance Assessment", href: "/compliance-assessment" },
+      { label: "Get your site checked", href: "/get-checked" },
       { label: "Governance Assessment", href: "/governance-audit" },
       { label: "Boundary Authorization Records", href: "/boundary-authorization-records" },
       { label: "Who, When, Whether", href: "/who-when-whether" },

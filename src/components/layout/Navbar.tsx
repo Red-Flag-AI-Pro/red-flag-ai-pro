@@ -95,7 +95,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
 
                       <div className="my-1.5 border-t border-white/10" />
                       <p className="px-4 pt-1 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30">Read and use</p>
-                      <Link href="/compliance-assessment" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Check your own copy, free</Link>
                       <Link href="/governance-audit" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
                       <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
                       <Link href="/features" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
@@ -199,7 +198,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/insurance-brokers" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">PI brokers</Link>
 
                 <p className="px-3 pt-4 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/30 border-t border-white/10 mt-2">Read and use</p>
-                <Link href="/compliance-assessment" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Check your own copy, free</Link>
                 <Link href="/governance-audit" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Governance assessment, free</Link>
                 <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free tools</Link>
                 <Link href="/features" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>

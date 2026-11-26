@@ -15,7 +15,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const FAQS = [
   { category: "Getting started", q: "Can I use this to check something before I buy it?", a: "Yes. Paste any sales page, ad or VSL you are considering. If it flags illegal claims, walk away. If it comes back clean, buy with confidence." },
   { category: "Getting started", q: "Do I need to create an account to use it?", a: "No. The demo checker is completely free and requires only your email address: no account, no credit card, no signup. One free check per email." },
-  { category: "Getting started", q: "How long does a check take?", a: "Under 60 seconds for most copy. URL checks and VSL transcriptions may take slightly longer depending on content length." },
+  { category: "Getting started", q: "How long does it take?", a: "The free red flag usually arrives within one working day, and the full audit within 48 hours. Larger sites and video sales pages may take slightly longer depending on content length." },
   { category: "Getting started", q: "Do I need to know anything about compliance law?", a: "Zero. Every flag is explained in plain English with a suggested fix. No legal degree required." },
   { category: "For buyers", q: "I have been ripped off by misleading marketing before. Would this have caught it?", a: "In most cases yes. Fake scarcity, guaranteed results, income claims without proof: these are exactly what we check for." },
   { category: "For buyers", q: "What types of ads and offers can I check?", a: "Any text based content: sales pages, landing pages, ads, VSL scripts, email sequences, social media copy. Paste it or give us a URL." },

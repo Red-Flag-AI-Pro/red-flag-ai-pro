@@ -266,7 +266,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Catch It Before It Ships",
-                desc: `Real time check on marketing copy against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions in under 60 seconds. The original problem we solved, still running every day.`,
+                desc: `Real time check on marketing copy against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions. The original problem we solved, still running every day.`,
               },
               {
                 icon: "",

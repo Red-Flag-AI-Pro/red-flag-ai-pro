@@ -27,7 +27,7 @@ const BENEFITS = [
   },
   {
     headline: "Compliance that keeps pace with delivery.",
-    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act in under 60 seconds. The compliance review happens before the brief leaves your desk.",
+    body: "Your team ships fast. Compliance cannot be a bottleneck. Sentinel checks copy against FTC, GDPR, ASA, FCA and the EU AI Act. The compliance review happens before the brief leaves your desk.",
   },
   {
     headline: "FCA and financial promotions handled.",

@@ -19,7 +19,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 const COMPARISON = [
   { feature: "Price per month", rfp: "Free to £1,200, custom for enterprise", redmarker: "£2,000 to £10,000", consultant: "£500 to £3,000" },
   { feature: "Setup time", rfp: "Same day", redmarker: "Weeks", consultant: "Days" },
-  { feature: "Check speed", rfp: "60 seconds", redmarker: "Hours to days", consultant: "48 to 72 hours" },
+  { feature: "Who does the work", rfp: "We do", redmarker: "Your team", consultant: "The consultant" },
   { feature: "Free check available", rfp: "✓ No signup", redmarker: "✗", consultant: "✗" },
   { feature: "URL page checking", rfp: "✓ Growth & Sentinel", redmarker: "Limited", consultant: "Manual" },
   { feature: "YouTube VSL checking", rfp: "✓ Sentinel only", redmarker: "✗", consultant: "Manual" },
@@ -182,7 +182,7 @@ export default function ComparePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "2px" }}>
             {[
               { title: "Software, not consultants", body: "Enterprise tools like Red Marker charge £2,000 to £10,000 a month for account managers, onboarding specialists and support teams. We built software that does the work instead. No overhead means lower prices." },
-              { title: "Built for speed", body: "60 seconds to check, same day to set up. No onboarding calls, no implementation projects, no change management. You log in and it works." },
+              { title: "Built to be easy", body: "Nothing to set up, nothing to learn. No onboarding calls, no implementation projects, no change management. You log in and it works." },
               { title: "Built from experience", body: "This was built by someone who needed it and couldn't afford the alternative. The pricing reflects that. It always will." },
             ].map((item, i) => (
               <div key={item.title} style={{
@@ -205,7 +205,7 @@ export default function ComparePage() {
             Try it free. No account needed.
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "1rem" }}>
-            Paste any marketing copy and see what we find. 60 seconds.
+            Give us your website and see what we find. Free.
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginBottom: "2.5rem" }}>
             Comparing us against AI governance platforms like OneTrust or Credo AI instead? See the <Link href="/pricing" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>governance pricing comparison</Link>.

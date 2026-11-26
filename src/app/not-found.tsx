@@ -11,11 +11,11 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="text-gray-400 text-base mb-8 max-w-md mx-auto">
-          The page you are looking for does not exist. But while you are here, find out if your copy would survive a regulator. Free check, 60 seconds.
+          The page you are looking for does not exist. But while you are here, find out what your red flag is. We check your site for you, free.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="/compliance-assessment"
+            href="/get-checked"
             className="rounded-xl bg-red-600 px-8 py-3 text-sm font-bold text-white hover:bg-red-500 transition-colors"
           >
             Try a free check →

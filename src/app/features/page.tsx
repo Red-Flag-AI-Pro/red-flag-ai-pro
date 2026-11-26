@@ -173,7 +173,7 @@ export default function FeaturesPage() {
                 {
                   icon: "",
                   title: "Real Time Compliance Checking",
-                  desc: `${JURISDICTION_COUNT} jurisdictions, up to ${RISK_CATEGORY_COUNT} risk categories. Paste copy or a URL and get a flagged result in under 60 seconds.`,
+                  desc: `${JURISDICTION_COUNT} jurisdictions, up to ${RISK_CATEGORY_COUNT} risk categories. Every flag explained in plain English, with the rule behind it.`,
                 },
                 {
                   icon: "",

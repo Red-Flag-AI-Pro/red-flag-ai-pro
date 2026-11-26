@@ -100,7 +100,7 @@ export default function StateOfUKMarketingCompliancePage() {
         <div style={{ maxWidth: "480px", margin: "0 auto" }}>
           <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.75rem" }}>Check where your own business stands</h2>
           <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
-            Free, under 60 seconds, no card needed.
+            Free, no card needed, and we do the work.
           </p>
           <a href="/compliance-assessment" style={{
             display: "inline-block", background: "#E5484D", color: "white",

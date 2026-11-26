@@ -374,7 +374,7 @@ function BuyerCalculator() {
 
       <div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)", padding: "12px 14px" }}>
         <p style={{...syne, fontSize: "13px", color: "rgba(134,239,172,0.8)", lineHeight: 1.6}}>
-          A free 60 second check before you buy could protect <span style={{ color: "white", fontWeight: 700 }}>{fmt(amount)}</span> right now.
+          A free check before you buy could protect <span style={{ color: "white", fontWeight: 700 }}>{fmt(amount)}</span> right now.
         </p>
         <p style={{...mono, fontSize: "0.85rem", fontWeight: 700, color: "#4ade80", marginTop: "4px"}}>Free. No signup. 60 seconds.</p>
       </div>

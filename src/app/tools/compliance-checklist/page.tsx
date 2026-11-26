@@ -246,7 +246,7 @@ export default function ComplianceChecklistPage() {
             Checklist says you're clean?<br />Let the AI confirm it.
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-            The checklist tells you what to look for. The checker reads your actual copy, every sentence, and flags what you missed. 60 seconds. Free.
+            The checklist tells you what to look for. The checker reads your actual copy, every sentence, and flags what you missed. We do it for you, free.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/compliance-assessment" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.95rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>

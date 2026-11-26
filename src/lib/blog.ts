@@ -628,7 +628,7 @@ Every one of these six areas corresponds to a category Red Flag AI Pro checks au
 
 None of this requires a lawyer on retainer. It requires checking your sales page, checkout flow and ad copy against the rules *before* a regulator, or a customer complaint, does it for you.
 
-Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions, including the UK CMA and ASA rules covered here, in under 60 seconds.
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions, including the UK CMA and ASA rules covered here.
 
 [Check your course sales page free →](https://www.redflagaipro.com/signup)
     `,
@@ -966,7 +966,7 @@ Here are the 7 most common CAP Code violations UK marketers make, and how to fix
 
 Red Flag AI Pro checks your marketing copy against the full ASA CAP Code, alongside FTC (US), GDPR (EU), ACCC (Australia) and CASL (Canada) regulations simultaneously.
 
-In 60 seconds you get a compliance risk score, every flag explained in plain English, and an exact rewrite suggestion for every violation found.
+You get a compliance risk score, every flag explained in plain English, and an exact rewrite suggestion for every violation found.
 
 [Check your UK marketing copy free →](https://www.redflagaipro.com/signup)
     `,
@@ -1167,11 +1167,11 @@ Before you launch your next campaign, run through this checklist.
 
 ---
 
-## Run This Checklist Automatically in 60 Seconds
+## Run This Checklist Automatically
 
 Checking all 16 points manually takes time, and it's easy to miss something.
 
-Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions simultaneously in 60 seconds. Paste in your sales page, ad copy, email sequence or VSL script and get:
+Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions simultaneously. Paste in your sales page, ad copy, email sequence or VSL script and get:
 
 ✅ A 0 100 compliance risk score
 ✅ Every violation explained in plain English
@@ -1289,7 +1289,7 @@ Red Flag AI Pro checks AI generated and human written marketing copy against 30 
 
 Every check produces a timestamped compliance report. That report is your documented evidence of professional diligence, exactly what your broker, your client and any claims handler would need to see.
 
-It takes 60 seconds. It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
+It costs less than a single billable hour. And it may be the most important thing you do before 2 August 2026.
 
 [Check your first piece of copy free, no credit card required →](https://www.redflagaipro.com/signup)
 
@@ -1392,7 +1392,7 @@ A seller who includes "all sales final" in their terms knows that most buyers wi
 
 This is why Red Flag AI Pro includes a check for contract contradictions, checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
 
-Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you in 60 seconds whether their refund policy is legal, and what your rights actually are.
+Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you whether their refund policy is legal, and what your rights actually are.
 
 [Check a seller's copy for free, no signup needed →](https://www.redflagaipro.com)
     `,
@@ -1484,7 +1484,7 @@ Red Flag AI Pro checks sales pages and marketing copy for fake reviews, undisclo
 
 Paste any sales page, course landing page or promotional email into the checker before you buy. Free. No account needed.
 
-[Check any ad or sales page for free, 60 seconds →](https://www.redflagaipro.com)
+[Check any ad or sales page for free →](https://www.redflagaipro.com)
     `,
   },
   {
@@ -1593,7 +1593,7 @@ If you apply these three tests to every claim in your copy before you publish, y
 
 Red Flag AI Pro checks your marketing copy for FTC trigger phrases and high risk language patterns, alongside 29 other risk categories covering UK, EU, Australian and Canadian regulations.
 
-Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions in 60 seconds.
+Paste in your sales page, email sequence or ad copy. Get your compliance risk score and exact rewrite suggestions.
 
 [Check your copy free, no account needed →](https://www.redflagaipro.com)
     `,
@@ -2182,7 +2182,7 @@ SaaS marketing, with its reliance on free trials, recurring billing, and convers
 
 Red Flag AI Pro checks subscription trap language, data privacy violations, earnings claims, email marketing consent and 17 other compliance categories simultaneously.
 
-Paste your pricing page, onboarding emails or sales copy and get a compliance score and plain English fixes in 60 seconds.
+Paste your pricing page, onboarding emails or sales copy and get a compliance score and plain English fixes.
 
 [Check your SaaS copy free →](https://www.redflagaipro.com/signup)
     `,
@@ -2190,7 +2190,7 @@ Paste your pricing page, onboarding emails or sales copy and get a compliance sc
   {
     slug: "how-to-check-if-an-ad-is-legal-uk",
     title: "How to Check If an Ad Is Legal in the UK: A Plain English Guide for Buyers and Sellers",
-    description: "Before you buy from an ad or publish one, here is exactly how to check if it is legal under UK law. No lawyer needed. Takes 60 seconds.",
+    description: "Before you buy from an ad or publish one, here is exactly how to check if it is legal under UK law. No lawyer needed.",
     date: "2026-05-29",
     readTime: "5 min read",
     category: "For Buyers",
@@ -2225,7 +2225,7 @@ An ad is illegal if it:
 
 **If you are a buyer:**
 
-Paste the sales page, ad or email into Red Flag AI Pro. In 60 seconds you get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials, walk away. If it comes back clean, buy with confidence.
+Paste the sales page, ad or email into Red Flag AI Pro. You get a compliance score and a plain English breakdown of every violation found. If it flags income claims, fake urgency or unverified testimonials, walk away. If it comes back clean, buy with confidence.
 
 Free. No account needed. [redflagaipro.com](https://www.redflagaipro.com)
 
@@ -2266,7 +2266,7 @@ If you have been financially harmed by an illegal ad, contact your bank about a 
 
 ## Check Any Ad Right Now
 
-Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup. 60 seconds.
+Paste any UK sales page, ad or email into Red Flag AI Pro. Free. No signup.
 
 [Check if it is legal →](https://www.redflagaipro.com)
     `,
@@ -2501,7 +2501,7 @@ This is the honest comparison.
 **What it costs**: Free assessment (lead magnet). Pro £350/month. Growth £1,200/month. Sentinel £5000+/month.
 
 **What makes it different**:
-- Real time, results in 60 seconds, not 48 72 hours
+- No consultant to book and no project to scope
 - Multi jurisdiction, all five major markets in one check
 - Covers all formats, text, URL, VSL transcript, audio, whole website
 - Produces signed PDF certificates as audit evidence
@@ -2742,7 +2742,7 @@ If you'd rather not write the disclosure from scratch, use our free **[Affiliate
 
 Red Flag AI Pro checks your captions, scripts and sales pages for missing or inadequate disclosure language, alongside 29 other compliance risk categories covering FTC, ASA, GDPR and more.
 
-Paste your caption or video script and get a compliance score with specific rewrite suggestions in 60 seconds.
+Paste your caption or video script and get a compliance score with specific rewrite suggestions.
 
 [Check your copy free, no account needed →](https://www.redflagaipro.com)
     `,

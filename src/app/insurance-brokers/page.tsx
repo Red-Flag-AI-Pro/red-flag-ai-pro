@@ -142,7 +142,7 @@ const WHO = [
     label: "Marketing and BD teams",
     title: "Broker websites and client alerts are regulated advertising.",
     description:
-      `Check any page or client communication against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions in under 60 seconds, with every flag explained in plain English before it publishes.`,
+      `Check any page or client communication against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions, with every flag explained in plain English before it publishes.`,
   },
 ];
 
@@ -614,7 +614,7 @@ export default function InsuranceBrokersPage() {
           <p style={{ ...syne, fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
             The governance assessment scores your AI oversight across 6 dimensions and shows the single biggest gap.
             The compliance check reads any page or document against {RISK_CATEGORY_COUNT} risk categories across {JURISDICTION_COUNT} jurisdictions in under
-            60 seconds. Free, no account, results instantly.
+            Free, no account, and you do none of the work.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
             <Link href="/get-checked" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
