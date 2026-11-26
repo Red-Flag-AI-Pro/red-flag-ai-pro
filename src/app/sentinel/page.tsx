@@ -158,31 +158,8 @@ export default async function SentinelPage() {
         </div>
       </section>
 
-      {/* ── WHY: a site does not stay fixed ── */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>Why one audit is not enough</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.12, color: "#F4F1EA" }}>
-              Your site doesn&apos;t stay fixed.
-              <br />
-              <span style={{ fontStyle: "italic", color: "#E5484D" }}>Nobody&apos;s does.</span>
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem" }}>
-            {DRIFT.map((d) => (
-              <div key={d.tag} style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderTop: "2px solid #E5484D", borderRadius: "10px", padding: "1.75rem" }}>
-                <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.8rem" }}>{d.tag}</p>
-                <p className="font-display" style={{ fontSize: "1.35rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.3, marginBottom: "0.7rem" }}>{d.title}</p>
-                <p style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.62)", lineHeight: 1.7 }}>{d.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── THE LAW EXPECTS PROOF: honest about what is a legal duty ── */}
-      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: "940px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What the law already expects</p>
@@ -210,6 +187,29 @@ export default async function SentinelPage() {
           <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.75)", lineHeight: 1.8, textAlign: "center", maxWidth: "680px", margin: "2rem auto 0" }}>
             Sentinel gives you that evidence every month, dated and held by independent witnesses. Nobody can promise you will never get a complaint. What we can promise is that if one comes, <span style={{ color: "#F4F1EA", fontWeight: 700 }}>the record of what you checked, and when, is already there.</span>
           </p>
+        </div>
+      </section>
+
+      {/* ── WHY: a site does not stay fixed ── */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>Why one audit is not enough</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.12, color: "#F4F1EA" }}>
+              Your site doesn&apos;t stay fixed.
+              <br />
+              <span style={{ fontStyle: "italic", color: "#E5484D" }}>Nobody&apos;s does.</span>
+            </h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem" }}>
+            {DRIFT.map((d) => (
+              <div key={d.tag} style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderTop: "2px solid #E5484D", borderRadius: "10px", padding: "1.75rem" }}>
+                <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.8rem" }}>{d.tag}</p>
+                <p className="font-display" style={{ fontSize: "1.35rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.3, marginBottom: "0.7rem" }}>{d.title}</p>
+                <p style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.62)", lineHeight: 1.7 }}>{d.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
