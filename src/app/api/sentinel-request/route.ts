@@ -7,7 +7,7 @@ import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 // Where a new Sentinel enquiry lands. Replaces the old Calendly booking flow
 // (unused — nobody booked through it, and the free trial was ending), so
 // every Sentinel touchpoint now converges on this one form instead.
-const NOTIFY_TO = "support@redflagaipro.com";
+const NOTIFY_TO = ["redflagaipro@gmail.com", "support@redflagaipro.com"];
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value: string): string {

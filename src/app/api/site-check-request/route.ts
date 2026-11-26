@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 import { normaliseWebsite, saveLeadRequest } from "@/lib/lead-requests";
+import { confirmSiteCheckToVisitor, notifyNewLead } from "@/lib/lead-notify";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -50,6 +51,13 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+
+  // The request is safely stored by this point. These two emails are extras
+  // and are never allowed to fail the request.
+  await Promise.allSettled([
+    notifyNewLead({ kind: "site-check", email, website, message: String(body.aiUse ?? "") }),
+    confirmSiteCheckToVisitor(email, website),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

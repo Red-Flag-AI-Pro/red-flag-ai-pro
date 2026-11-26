@@ -7,7 +7,7 @@ import { AUDIT_PRICE } from "@/lib/constants";
 
 // Where a new Done-For-You audit request lands. Kept as a plain constant so the
 // destination is obvious and easy to change in one place.
-const NOTIFY_TO = "support@redflagaipro.com";
+const NOTIFY_TO = ["redflagaipro@gmail.com", "support@redflagaipro.com"];
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value: string): string {
