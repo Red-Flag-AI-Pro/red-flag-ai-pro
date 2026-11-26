@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { CALL_OUTCOMES, STAGES, followUp, getAdminUser, type Stage } from "@/lib/console";
 
-const KINDS = ["linkedin", "letter", "call", "email", "note", "stage", "checkpoints"];
+const KINDS = ["linkedin", "connect", "letter", "call", "email", "note", "stage", "checkpoints"];
 
 // Log something that happened with a prospect. Logging always sets the next
 // step and its date, so nothing is left without a follow up. Admin only.
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Prospect not found." }, { status: 404 });
   }
 
-  if (prospect.do_not_contact && ["linkedin", "letter", "call", "email"].includes(kind)) {
+  if (prospect.do_not_contact && ["linkedin", "connect", "letter", "call", "email"].includes(kind)) {
     return NextResponse.json({ error: "This prospect asked not to be contacted." }, { status: 400 });
   }
   // A sales call needs the number checked against the TPS and CTPS registers
@@ -65,6 +65,12 @@ export async function POST(request: Request) {
   // the prospect on or change what happens next.
   if (kind === "note" || kind === "checkpoints") {
     return NextResponse.json({ ok: true });
+  }
+  // A connection request only sets a reminder while nothing else is under way;
+  // once a message, email or letter has gone, that step keeps its own follow up.
+  if (kind === "connect" && prospect.stage !== "new") {
+    const { data: same } = await supabase.from("prospects").select("*").eq("id", prospectId).single();
+    return NextResponse.json({ ok: true, prospect: same });
   }
 
   const next = followUp(kind, outcome, prospect.stage as Stage);

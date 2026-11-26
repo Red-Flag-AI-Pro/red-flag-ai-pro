@@ -136,6 +136,10 @@ export function followUp(
       return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up or post the letter", nextActionAt: ukDate(3) };
     case "email":
       return { stage: moveOn("contacted"), nextAction: "No reply yet: follow up", nextActionAt: ukDate(3) };
+    case "connect":
+      // A connection request is not a message: it does not count as contact,
+      // it just sets a reminder to send the message once they accept.
+      return { stage: current, nextAction: "If they accepted on LinkedIn, send the message", nextActionAt: ukDate(2) };
     case "letter":
       return { stage: moveOn("contacted"), nextAction: "Ring them about the letter", nextActionAt: ukDate(5) };
     case "call":
@@ -180,10 +184,17 @@ const others = (n: number | null) => {
   return n === 1 ? "one more" : `${n} more`;
 };
 
-/** The opening LinkedIn message: their own line, the rule, and an offer. */
-export function linkedinMessage(p: Prospect): string {
+/** How to greet them: "Dr Hussain" for a doctor (Dr in their role), otherwise their first name. */
+const greetName = (p: Pick<Prospect, "contact_name" | "contact_role">) => {
+  const parts = (p.contact_name ?? "").trim().split(/\s+/).filter(Boolean);
+  if (parts.length > 1 && /\bDr\b/.test(p.contact_role ?? "")) return `Dr ${parts[parts.length - 1]}`;
+  return parts[0] || "there";
+};
+
+/** The opening message body shared by LinkedIn and email: their own line, the rule, and an offer. */
+function openingLines(p: Prospect): string[] {
   const lines: string[] = [];
-  lines.push(`Hi ${firstName(p)},`);
+  lines.push(`Hello ${greetName(p)},`);
   lines.push("");
   lines.push(`I had a look at the ${p.company} website.`);
   if (p.red_flag_quote) {
@@ -202,11 +213,33 @@ export function linkedinMessage(p: Prospect): string {
       : "Want me to take a proper look at the rest of the site for you?"
   );
   lines.push("");
-  lines.push("I check what businesses say in public and how they use AI, so they hear it from me before a regulator or a competitor.");
-  lines.push("");
-  lines.push(CONTACT.name);
-  lines.push(CONTACT.website);
-  return lines.join("\n");
+  lines.push("I check what businesses say in public and how they use AI, covering compliance and AI governance, so they hear it from me before a regulator or a competitor.");
+  return lines;
+}
+
+/** The opening LinkedIn message. */
+export function linkedinMessage(p: Prospect): string {
+  return [...openingLines(p), "", CONTACT.name, CONTACT.website].join("\n");
+}
+
+/** Subject line for the opening email. */
+export function emailSubject(p: Pick<Prospect, "company">): string {
+  return `Something on the ${p.company} website`;
+}
+
+/**
+ * The opening email: the same words as the LinkedIn message plus the line
+ * that lets them opt out, which UK rules (PECR) expect in a business email.
+ */
+export function emailMessage(p: Prospect): string {
+  return [
+    ...openingLines(p),
+    "",
+    CONTACT.name,
+    CONTACT.website,
+    "",
+    "If you would rather not hear from me again, just reply \"no thanks\" and I will not contact you again.",
+  ].join("\n");
 }
 
 /** The body of the posted letter, one paragraph per entry. */

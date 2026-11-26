@@ -10,6 +10,8 @@ import {
   callScript,
   checkpointSummary,
   checkpointsCovered,
+  emailMessage,
+  emailSubject,
   linkedinMessage,
   ukDate,
   type Activity,
@@ -83,7 +85,7 @@ const ago = (iso: string) => {
 
 const REQUEST_LABEL: Record<string, string> = { "site-check": "Wants their red flag", audit: "Asked about the full audit", sentinel: "Asked about Sentinel" };
 
-const ACTIVITY_LABEL: Record<string, string> = { linkedin: "LinkedIn message sent", letter: "Letter posted", email: "Email sent", call: "Call", note: "Note", stage: "Moved to" };
+const ACTIVITY_LABEL: Record<string, string> = { connect: "LinkedIn connection request sent", linkedin: "LinkedIn message sent", letter: "Letter posted", email: "Email sent", call: "Call", note: "Note", stage: "Moved to" };
 
 // Colour for each stage, used on the list and the detail heading, so it is
 // clear at a glance who still needs contacting and who is under way.
@@ -97,8 +99,8 @@ const STAGE_COLOUR: Record<Stage, string> = {
 };
 
 // Kinds that count as actually getting in touch (not notes or stage moves).
-const TOUCH_KINDS = new Set(["linkedin", "letter", "email", "call"]);
-const ICON: Record<string, string> = { linkedin: "in", letter: "✉", email: "@", call: "☎", note: "✎", stage: "→", checkpoints: "✓" };
+const TOUCH_KINDS = new Set(["connect", "linkedin", "letter", "email", "call"]);
+const ICON: Record<string, string> = { connect: "+", linkedin: "in", letter: "✉", email: "@", call: "☎", note: "✎", stage: "→", checkpoints: "✓" };
 
 const fmtWhen = (iso: string) =>
   new Date(iso).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" });
@@ -195,7 +197,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [callOutcome, setCallOutcome] = useState<string>(CALL_OUTCOMES[0]);
   const [note, setNote] = useState("");
   const [copied, setCopied] = useState(false);
-  const [tab, setTab] = useState<"message" | "script" | "checkpoints" | "letter">("message");
+  const [tab, setTab] = useState<"message" | "email" | "script" | "checkpoints" | "letter">("message");
   const [answers, setAnswers] = useState<CheckpointAnswers>({});
   const [heardCopied, setHeardCopied] = useState(false);
   // A short confirmation after something is logged, so it is obvious it worked.
@@ -352,7 +354,21 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
       }
     });
 
-  const message = selected ? linkedinMessage({ ...(selected as Prospect), ...(draft as Prospect) }) : "";
+  const merged = selected ? ({ ...(selected as Prospect), ...(draft as Prospect) } as Prospect) : null;
+  const message = merged ? linkedinMessage(merged) : "";
+  const mail = merged ? emailMessage(merged) : "";
+  const subject = merged ? emailSubject(merged) : "";
+  // Which copy button was last pressed, so each shows its own "Copied".
+  const [copiedWhat, setCopiedWhat] = useState("");
+  const copyText = async (text: string, what: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedWhat(what);
+      window.setTimeout(() => setCopiedWhat(""), 2000);
+    } catch {
+      setError("Could not copy. Select the text and copy it by hand.");
+    }
+  };
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(message);
@@ -613,6 +629,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
                       {([
                         ["message", "LinkedIn message"],
+                        ["email", "Email"],
                         ["script", "Call script"],
                         ["checkpoints", `Checkpoints ${covered}/${CHECKPOINTS.length}`],
                         ["letter", "Letter"],
@@ -638,6 +655,36 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                             <a href={selected.linkedin_url} target="_blank" rel="noreferrer" style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.ivory, border: "1px solid rgba(244,241,234,0.25)", textDecoration: "none" }}>Open their LinkedIn</a>
                           )}
                         </div>
+                      </>
+                    )}
+
+                    {tab === "email" && (
+                      <>
+                        <p style={label}>Send to</p>
+                        <p style={{ ...syne, fontSize: "14px", color: selected.email ? C.ivory : C.faint, marginBottom: "10px" }}>
+                          {selected.email || "No email saved. Find it on their contact page and add it in the details below."}
+                        </p>
+                        <p style={label}>Subject</p>
+                        <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
+                          <input readOnly value={subject} style={input} />
+                          <Btn onClick={() => copyText(subject, "subject")}>{copiedWhat === "subject" ? "Copied" : "Copy"}</Btn>
+                        </div>
+                        <p style={label}>Message, with the opt out line at the end</p>
+                        <textarea readOnly value={mail} rows={14} style={{ ...input, resize: "vertical", lineHeight: 1.55, fontSize: "13.5px" }} />
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "10px" }}>
+                          <Btn kind="gold" onClick={() => copyText(mail, "mail")}>{copiedWhat === "mail" ? "Copied" : "Copy message"}</Btn>
+                          {selected.email && (
+                            <a
+                              href={`mailto:${selected.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mail)}`}
+                              style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.ivory, border: "1px solid rgba(244,241,234,0.25)", textDecoration: "none" }}
+                            >
+                              Open in my email
+                            </a>
+                          )}
+                        </div>
+                        <p style={{ ...syne, fontSize: "12.5px", color: C.dim, lineHeight: 1.6, marginTop: "10px" }}>
+                          Check the address on their own contact page before sending. Then press &ldquo;Email sent&rdquo; below.
+                        </p>
                       </>
                     )}
 
@@ -751,6 +798,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     <p style={label}>Log what you did</p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                       {([
+                        ["connect", "Connection request sent"],
                         ["linkedin", "LinkedIn sent"],
                         ["letter", "Letter posted"],
                         ["email", "Email sent"],
