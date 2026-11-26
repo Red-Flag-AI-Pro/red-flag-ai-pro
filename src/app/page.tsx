@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SisterBusiness } from "@/components/marketing/SisterBusiness";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -485,6 +486,14 @@ export default async function LandingPage() {
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "1.5rem" }}><Link href="/sentinel" style={{ color: "#E5484D", textDecoration: "none" }}>Need it handled every month? See Sentinel</Link></p>
+        </div>
+      </section>
+
+      {/* WHO RUNS THIS, and the other business he runs. Same panel as the
+          About page, so nobody has to go looking for it. */}
+      <section style={{ padding: "0 1.5rem 5rem", background: "#0D1B2E" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <SisterBusiness />
         </div>
       </section>
       <Footer />
