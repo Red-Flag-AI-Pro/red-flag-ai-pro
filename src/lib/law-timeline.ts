@@ -120,6 +120,20 @@ export function daysUntil(isoDate: string, now: Date = new Date()): number {
   return Math.round((target - today) / DAY_MS);
 }
 
+/**
+ * The instant a date begins in the UK, as a UTC timestamp. Midnight in London
+ * is 00:00 UTC in winter and 23:00 UTC the day before in summer, so this
+ * checks which applies on that date rather than assuming.
+ */
+export function londonMidnightMs(isoDate: string): number {
+  const utcMidnight = Date.parse(`${isoDate}T00:00:00Z`);
+  const londonHour = Number(
+    new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", hour: "2-digit", hour12: false }).format(new Date(utcMidnight))
+  );
+  // If London already reads 01:00 at UTC midnight, its own midnight was an hour earlier.
+  return londonHour === 1 ? utcMidnight - 3_600_000 : utcMidnight;
+}
+
 export function formatLawDate(isoDate: string): string {
   return new Date(`${isoDate}T12:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric",

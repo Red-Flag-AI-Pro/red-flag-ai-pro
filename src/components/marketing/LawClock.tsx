@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { REGULATORY_MAPPING_LAST_REVIEWED } from "@/lib/constants";
-import { splitLawTimeline, daysUntil, formatLawDate, type LawEvent } from "@/lib/law-timeline";
+import { splitLawTimeline, daysUntil, formatLawDate, londonMidnightMs, type LawEvent } from "@/lib/law-timeline";
+import { LiveCountdown } from "@/components/marketing/LiveCountdown";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "var(--font-dm-mono), 'DM Mono', monospace" } as React.CSSProperties;
@@ -83,12 +84,19 @@ export function LawClock({ cta = true }: { cta?: boolean } = {}) {
               const d = daysUntil(e.date, now);
               return (
                 <div key={e.date + e.law} style={{ display: "flex", gap: "1.25rem", paddingTop: i === 0 ? 0 : "1.4rem", marginTop: i === 0 ? 0 : "1.4rem", borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,0.08)" }}>
-                  <div style={{ flexShrink: 0, width: "74px", textAlign: "left" }}>
-                    <span style={{ ...mono, display: "block", fontSize: "2.1rem", fontWeight: 500, lineHeight: 1, color: "#F4F1EA", letterSpacing: "-0.03em" }}>{d}</span>
-                    <span style={{ ...mono, display: "block", marginTop: "6px", fontSize: "10px", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.55)" }}>
-                      {d === 1 ? "day" : "days"}
-                    </span>
-                  </div>
+                  {i === 0 ? (
+                    <LiveCountdown
+                      targetMs={londonMidnightMs(e.date)}
+                      initialDays={Math.max(0, Math.floor((londonMidnightMs(e.date) - now.getTime()) / 86_400_000))}
+                    />
+                  ) : (
+                    <div style={{ flexShrink: 0, width: "108px", textAlign: "left" }}>
+                      <span style={{ ...mono, display: "block", fontSize: "2.1rem", fontWeight: 500, lineHeight: 1, color: "#F4F1EA", letterSpacing: "-0.03em" }}>{d}</span>
+                      <span style={{ ...mono, display: "block", marginTop: "6px", fontSize: "10px", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.55)" }}>
+                        {d === 1 ? "day" : "days"}
+                      </span>
+                    </div>
+                  )}
                   <div style={{ minWidth: 0 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "12px", marginBottom: "0.45rem", flexWrap: "wrap" }}>
                       <span style={{ ...mono, fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(244,241,234,0.55)" }}>

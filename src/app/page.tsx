@@ -9,6 +9,7 @@ import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { LawClock } from "@/components/marketing/LawClock";
 import { GetChecked } from "@/components/marketing/GetChecked";
+import { LiveCount } from "@/components/marketing/LiveCount";
 import { getProofStats, formatProofDate } from "@/lib/proof-stats";
 import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT, AUDIT_PRICE } from "@/lib/constants";
 
@@ -39,11 +40,11 @@ export default async function LandingPage() {
   const num = (n: number) => n.toLocaleString("en-GB");
   const proofFigures = proof
     ? [
-        { value: num(proof.daysRunning), label: "days running" },
-        { value: num(proof.recordsSealed), label: "records sealed" },
+        { value: num(proof.daysRunning), label: "days running", live: proof.daysRunning, pollUrl: undefined as string | undefined },
+        { value: num(proof.recordsSealed), label: "records sealed", live: proof.recordsSealed, pollUrl: "/api/witness/tip" as string | undefined },
         proof.daysMissed === 0
-          ? { value: "0", label: "days missed" }
-          : { value: num(proof.daysRunning - proof.daysMissed), label: `of ${num(proof.daysRunning)} days sealed` },
+          ? { value: "0", label: "days missed", live: undefined as number | undefined, pollUrl: undefined as string | undefined }
+          : { value: num(proof.daysRunning - proof.daysMissed), label: `of ${num(proof.daysRunning)} days sealed`, live: undefined as number | undefined, pollUrl: undefined as string | undefined },
       ]
     : null;
 
@@ -470,7 +471,7 @@ export default async function LandingPage() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "clamp(0.75rem, 3vw, 2.5rem)", maxWidth: "600px", margin: "3rem auto 0" }}>
                 {proofFigures.map((f) => (
                   <div key={f.label} style={{ textAlign: "left", paddingLeft: "clamp(10px, 2.5vw, 16px)", borderLeft: "2px solid #E5484D" }}>
-                    <span style={{ ...mono, display: "block", fontSize: "clamp(1.5rem, 6.4vw, 3rem)", fontWeight: 500, lineHeight: 1, letterSpacing: "-0.02em", color: "#F4F1EA", textShadow: "0 2px 24px rgba(6,14,26,0.95)" }}>{f.value}</span>
+                    <span style={{ ...mono, display: "block", fontSize: "clamp(1.5rem, 6.4vw, 3rem)", fontWeight: 500, lineHeight: 1, letterSpacing: "-0.02em", color: "#F4F1EA", textShadow: "0 2px 24px rgba(6,14,26,0.95)" }}>{typeof f.live === "number" ? <LiveCount value={f.live} pollUrl={f.pollUrl} /> : f.value}</span>
                     <span style={{ ...mono, display: "block", marginTop: "10px", fontSize: "10.5px", lineHeight: 1.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(244,241,234,0.85)", textShadow: "0 1px 8px rgba(6,14,26,0.95)" }}>{f.label}</span>
                   </div>
                 ))}
