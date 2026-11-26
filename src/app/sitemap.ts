@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       // The homepage's primary CTA and highest traffic marketing page — was
       // missing from the sitemap entirely.
-      url: `${baseUrl}/compliance-assessment`,
+      url: `${baseUrl}/get-checked`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.95,
@@ -366,12 +366,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/tools/shadow-ai-survey`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/tools/url-exposure-checker`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.6,

@@ -46,7 +46,6 @@ const MARKETING_TOOLS: ToolCard[] = [
   { href: "/tools/disclosure-generator", title: "Affiliate Disclosure Generator", desc: "Generate an FTC/ASA compliant affiliate or sponsorship disclaimer in seconds." },
   { href: "/tools/contract-red-flags", title: "Contract Red Flags Checker", desc: "Paste any contract or terms of service and flag risky clauses: auto renewal traps, uncapped liability, IP grabs." },
   { href: "/tools/accessibility-checker", title: "Accessibility Score Checker", desc: "Enter a URL and get an instant score on the accessibility issues most commonly cited in ADA demand letters." },
-  { href: "/tools/url-exposure-checker", title: "URL Exposure Checker", desc: "Paste any live URL and we check the actual page text for compliance red flags. No copy and paste needed." },
   { href: "/tools/ai-visibility-checker", title: "AI Visibility Checker", desc: "7 questions to score how likely AI assistants are to find and recommend your business." },
 ];
 
