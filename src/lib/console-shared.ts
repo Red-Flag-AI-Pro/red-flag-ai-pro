@@ -184,6 +184,12 @@ const others = (n: number | null) => {
   return n === 1 ? "one more" : `${n} more`;
 };
 
+/** "the Neo-Derm", but "The Skin Bothy" (never "the The Skin Bothy"). */
+const theCompany = (p: Pick<Prospect, "company">) => {
+  const c = (p.company ?? "").trim();
+  return /^the\s/i.test(c) ? c : `the ${c}`;
+};
+
 /** How to greet them: "Dr Hussain" for a doctor (Dr in their role), otherwise their first name. */
 const greetName = (p: Pick<Prospect, "contact_name" | "contact_role">) => {
   const parts = (p.contact_name ?? "").trim().split(/\s+/).filter(Boolean);
@@ -196,7 +202,7 @@ function openingLines(p: Prospect): string[] {
   const lines: string[] = [];
   lines.push(`Hello ${greetName(p)},`);
   lines.push("");
-  lines.push(`I had a look at the ${p.company} website.`);
+  lines.push(`I had a look at ${theCompany(p)} website.`);
   if (p.red_flag_quote) {
     lines.push("");
     lines.push(`${p.red_flag_where ? `On your ${p.red_flag_where.toLowerCase()} it` : "It"} says: "${p.red_flag_quote}"`);
@@ -224,7 +230,7 @@ export function linkedinMessage(p: Prospect): string {
 
 /** Subject line for the opening email. */
 export function emailSubject(p: Pick<Prospect, "company">): string {
-  return `Something on the ${p.company} website`;
+  return `Something on ${theCompany(p)} website`;
 }
 
 /**
@@ -246,7 +252,7 @@ export function emailMessage(p: Prospect): string {
 export function letterParagraphs(p: Prospect): string[] {
   const out: string[] = [];
   out.push(`I run ${CONTACT.business}. We check what businesses say in public and how they use AI, and tell them what could get them into trouble before a regulator, a competitor or a customer does.`);
-  out.push(`I looked at the ${p.company} website${p.website ? ` (${p.website.replace(/^https?:\/\//, "").replace(/\/$/, "")})` : ""} and found something you will want to know about.`);
+  out.push(`I looked at ${theCompany(p)} website${p.website ? ` (${p.website.replace(/^https?:\/\//, "").replace(/\/$/, "")})` : ""} and found something you will want to know about.`);
   if (p.red_flag_quote) {
     out.push(`${p.red_flag_where ? `On your ${p.red_flag_where.toLowerCase()} it` : "It"} says: "${p.red_flag_quote}"`);
   }
