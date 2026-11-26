@@ -177,7 +177,7 @@ export default async function PricingPage() {
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column" }}>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>03 · SENTINEL</p>
               <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>£199<span style={{ fontSize: "1rem", fontWeight: 600, color: "rgba(255,255,255,0.55)" }}> a month</span></p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>After the audit: compliance and AI governance kept clear, every month. No contract.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Starts after your £449 audit: compliance and AI governance kept clear, every month. No contract.</p>
               <div style={{ flex: 1 }}>
                 {[
                   "Your site checked every month",

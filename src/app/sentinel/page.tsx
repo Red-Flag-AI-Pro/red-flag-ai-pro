@@ -153,7 +153,7 @@ export default async function SentinelPage() {
             </Link>
           </div>
           <p style={{ ...mono, fontSize: "12px", letterSpacing: "0.08em", color: "rgba(244,241,234,0.7)", textShadow: "0 1px 3px rgba(6,14,26,0.95)" }}>
-            £{SENTINEL_MONTHLY} a month · No contract · Stop any time
+            Starts after your £{AUDIT_PRICE.amount} audit · then £{SENTINEL_MONTHLY} a month · No contract
           </p>
         </div>
       </section>
@@ -178,6 +178,38 @@ export default async function SentinelPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── THE LAW EXPECTS PROOF: honest about what is a legal duty ── */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0A1628", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "940px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What the law already expects</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1.2rem" }}>
+              Following the rules is the law.
+              <br />
+              <span style={{ fontStyle: "italic", color: "#E5484D" }}>So is being able to show it.</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "15.5px", color: "rgba(244,241,234,0.72)", lineHeight: 1.8, maxWidth: "660px", margin: "0 auto" }}>
+              Two rules most businesses already sit under expect you to have your evidence ready before anyone asks for it.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.25rem" }}>
+            {[
+              { tag: "UK GDPR · Article 5(2)", title: "You must be able to demonstrate it.", body: "If you hold customer or patient information, it is not enough to follow data protection law. You must be able to show that you do." },
+              { tag: "CAP Code · rule 3.7", title: "Evidence before you publish.", body: "Advertising rules say you must hold the evidence for your claims before an ad goes out, not find it after a complaint arrives." },
+            ].map((r) => (
+              <div key={r.tag} style={{ background: "#0D1B2E", border: "1px solid rgba(201,166,107,0.3)", borderRadius: "12px", padding: "1.75rem" }}>
+                <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "0.8rem" }}>{r.tag}</p>
+                <p className="font-display" style={{ fontSize: "1.35rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.3, marginBottom: "0.6rem" }}>{r.title}</p>
+                <p style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.65)", lineHeight: 1.7 }}>{r.body}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.75)", lineHeight: 1.8, textAlign: "center", maxWidth: "680px", margin: "2rem auto 0" }}>
+            Sentinel gives you that evidence every month, dated and held by independent witnesses. Nobody can promise you will never get a complaint. What we can promise is that if one comes, <span style={{ color: "#F4F1EA", fontWeight: 700 }}>the record of what you checked, and when, is already there.</span>
+          </p>
         </div>
       </section>
 
@@ -311,11 +343,14 @@ export default async function SentinelPage() {
             </div>
 
             <div style={{ background: "#0A1628", border: "1px solid rgba(201,166,107,0.55)", borderRadius: "14px", padding: "2rem", boxShadow: "0 0 0 1px rgba(201,166,107,0.15), 0 20px 50px rgba(0,0,0,0.25)" }}>
-              <p style={{ ...mono, fontSize: "11px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "0.8rem" }}>Step 2 · every month</p>
+              <p style={{ ...mono, fontSize: "11px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "0.8rem" }}>Step 2 · every month after</p>
               <p className="font-display sentinel-gold" style={{ fontSize: "1.6rem", fontWeight: 500, marginBottom: "0.4rem" }}>Sentinel</p>
               <p style={{ marginBottom: "0.8rem" }}>
                 <span className="font-mono-fig" style={{ fontSize: "2.2rem", color: "#F4F1EA" }}>£{SENTINEL_MONTHLY}</span>
                 <span style={{ ...syne, fontSize: "14px", color: "rgba(244,241,234,0.6)" }}> a month</span>
+              </p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)", lineHeight: 1.6, marginTop: "-0.4rem", marginBottom: "0.9rem" }}>
+                Starts once your audit is done, because Sentinel keeps a clear site clear.
               </p>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.6rem" }}>Everything from your audit, plus:</p>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.5rem", display: "grid", gap: "0.5rem" }}>
