@@ -85,6 +85,34 @@ const REQUEST_LABEL: Record<string, string> = { "site-check": "Wants their red f
 
 const ACTIVITY_LABEL: Record<string, string> = { linkedin: "LinkedIn message sent", letter: "Letter posted", email: "Email sent", call: "Call", note: "Note", stage: "Moved to" };
 
+// Colour for each stage, used on the list and the detail heading, so it is
+// clear at a glance who still needs contacting and who is under way.
+const STAGE_COLOUR: Record<Stage, string> = {
+  new: "#E5484D",
+  contacted: "#C9A66B",
+  replied: "#60a5fa",
+  flag_sent: "#a78bfa",
+  audit_sold: "#4ade80",
+  lost: "rgba(244,241,234,0.4)",
+};
+
+// Kinds that count as actually getting in touch (not notes or stage moves).
+const TOUCH_KINDS = new Set(["linkedin", "letter", "email", "call"]);
+const ICON: Record<string, string> = { linkedin: "in", letter: "✉", email: "@", call: "☎", note: "✎", stage: "→", checkpoints: "✓" };
+
+const fmtWhen = (iso: string) =>
+  new Date(iso).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" });
+
+/** One line describing an activity row, as shown in the history. */
+const describe = (a: Activity) =>
+  a.kind === "checkpoints"
+    ? "Checkpoint answers saved"
+    : a.kind === "stage"
+      ? `${ACTIVITY_LABEL.stage} ${STAGE_LABEL[a.outcome as Stage] ?? a.outcome}`
+      : a.kind === "call"
+        ? `${ACTIVITY_LABEL.call}: ${CALL_OUTCOME_LABEL[a.outcome as keyof typeof CALL_OUTCOME_LABEL] ?? a.outcome}`
+        : ACTIVITY_LABEL[a.kind] ?? a.kind;
+
 const EMPTY: Partial<Prospect> = { company: "", website: "", contact_name: "", contact_role: "", linkedin_url: "", email: "", phone: "", postal_address: "", sector: "", source: "outbound", red_flag_where: "", red_flag_quote: "", red_flag_problem: "", red_flag_rule: "", more_count: null, notes: "" };
 
 async function post(path: string, body: unknown) {
@@ -170,6 +198,14 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [tab, setTab] = useState<"message" | "script" | "checkpoints" | "letter">("message");
   const [answers, setAnswers] = useState<CheckpointAnswers>({});
   const [heardCopied, setHeardCopied] = useState(false);
+  // A short confirmation after something is logged, so it is obvious it worked.
+  const [flash, setFlash] = useState("");
+
+  useEffect(() => {
+    if (!flash) return;
+    const t = setTimeout(() => setFlash(""), 8000);
+    return () => clearTimeout(t);
+  }, [flash]);
 
   const load = useCallback(async () => {
     if (demo) {
@@ -200,7 +236,19 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
 
   const today = ukDate(0);
   const open = (p: Prospect) => p.stage !== "audit_sold" && p.stage !== "lost";
-  const due = useMemo(() => prospects.filter((p) => open(p) && p.next_action_at && p.next_action_at <= today && !p.do_not_contact), [prospects, today]);
+  // Today's list keeps anyone contacted today (ticked) as well as anyone due,
+  // so a prospect does not vanish the moment you log a message to them.
+  const contactedToday = useMemo(() => {
+    const s = new Set<string>();
+    for (const a of activity) {
+      if (TOUCH_KINDS.has(a.kind) && new Date(a.created_at).toLocaleDateString("en-CA", { timeZone: "Europe/London" }) === today) s.add(a.prospect_id);
+    }
+    return s;
+  }, [activity, today]);
+  const due = useMemo(
+    () => prospects.filter((p) => !p.do_not_contact && ((open(p) && p.next_action_at && p.next_action_at <= today) || contactedToday.has(p.id))),
+    [prospects, today, contactedToday]
+  );
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const s of STAGES) c[s] = prospects.filter((p) => p.stage === s).length;
@@ -211,6 +259,19 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const list = view === "today" ? due : view === "all" ? prospects : view === "recoverroi" ? recoverroi : prospects.filter((p) => p.stage === view);
   const selected = prospects.find((p) => p.id === selectedId) ?? null;
   const history = selected ? activity.filter((a) => a.prospect_id === selected.id) : [];
+
+  // Last real contact for each prospect (activity is newest first).
+  const lastTouch = useMemo(() => {
+    const m = new Map<string, Activity>();
+    for (const a of activity) if (TOUCH_KINDS.has(a.kind) && !m.has(a.prospect_id)) m.set(a.prospect_id, a);
+    return m;
+  }, [activity]);
+  const touchCount = (id: string) => activity.filter((a) => a.prospect_id === id && TOUCH_KINDS.has(a.kind)).length;
+
+  // The same kind logged in the last 12 hours: almost certainly a double press.
+  const loggedRecently = (kind: string) =>
+    history.some((a) => a.kind === kind && Date.now() - Date.parse(a.created_at) < 12 * 3_600_000);
+  const lastOf = (kind: string) => history.find((a) => a.kind === kind);
 
   // The most recently saved checkpoint answers for a prospect, if any.
   const savedAnswers = (id: string): CheckpointAnswers => {
@@ -233,6 +294,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
     setNote("");
     setCopied(false);
     setError("");
+    setFlash("");
   };
 
   const run = async (fn: () => Promise<void>) => {
@@ -268,6 +330,10 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
       if (!selected) return;
       const data = await post("/api/console/activity", { prospect_id: selected.id, kind, outcome: outcome ?? null, detail: detail ?? null });
       if (data.prospect) setDraft({ ...data.prospect });
+      const what = describe({ id: "", prospect_id: selected.id, kind, outcome: outcome ?? null, detail: null, created_at: "" });
+      const p = data.prospect as Prospect | undefined;
+      const next = p?.next_action ? ` Next: ${p.next_action}${p.next_action_at ? ` on ${fmtDay(p.next_action_at)}` : ""}.` : "";
+      setFlash(kind === "checkpoints" ? "✓ Checkpoint answers saved." : `✓ ${what} logged.${next}`);
     });
 
   const setTps = (checked: boolean, registered: boolean | null) =>
@@ -428,17 +494,26 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
             ) : (
               list.map((p, i) => {
                 const overdue = open(p) && p.next_action_at && p.next_action_at < today;
+                const touch = lastTouch.get(p.id);
+                const n = touch ? touchCount(p.id) : 0;
                 return (
                   <button
                     key={p.id}
                     type="button"
                     onClick={() => select(p)}
-                    style={{ display: "block", width: "100%", textAlign: "left", cursor: "pointer", background: selectedId === p.id ? C.raised : "transparent", border: "none", borderTop: i === 0 ? "none" : `1px solid ${C.line}`, borderRadius: selectedId === p.id ? "8px" : 0, padding: "12px 10px", color: C.ivory }}
+                    style={{ display: "block", width: "100%", textAlign: "left", cursor: "pointer", background: selectedId === p.id ? C.raised : "transparent", border: "none", borderLeft: `3px solid ${STAGE_COLOUR[p.stage]}`, borderTop: i === 0 ? "none" : `1px solid ${C.line}`, borderRadius: selectedId === p.id ? "8px" : 0, padding: "12px 10px 12px 12px", marginBottom: "2px", color: C.ivory }}
                   >
                     <span style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "baseline" }}>
                       <span style={{ ...syne, fontSize: "15px", fontWeight: 700 }}>{p.company}</span>
-                      <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: p.stage === "audit_sold" ? C.green : p.stage === "lost" ? C.faint : C.gold, whiteSpace: "nowrap" }}>{STAGE_LABEL[p.stage]}</span>
+                      <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: STAGE_COLOUR[p.stage], border: `1px solid ${STAGE_COLOUR[p.stage]}`, borderRadius: "4px", padding: "2px 7px", whiteSpace: "nowrap" }}>
+                        {p.stage === "new" ? "" : "✓ "}{STAGE_LABEL[p.stage]}
+                      </span>
                     </span>
+                    {touch && (
+                      <span style={{ ...mono, display: "block", fontSize: "11px", color: C.gold, marginTop: "4px" }}>
+                        ✓ {describe(touch)} {fmtDay(touch.created_at)}{n > 1 ? ` · ${n} contacts` : ""}
+                      </span>
+                    )}
                     <span style={{ ...syne, display: "block", fontSize: "13px", color: C.dim, marginTop: "2px" }}>
                       {[p.contact_name, p.contact_role].filter(Boolean).join(", ") || "No contact yet"}
                       {p.recoverroi_fit ? <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.gold, border: "1px solid rgba(201,166,107,0.5)", borderRadius: "4px", padding: "1px 6px", marginLeft: "8px" }}>RecoverROI</span> : null}
@@ -459,9 +534,22 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
           {(selected || adding) && draft && (
             <div style={{ ...card, display: "grid", gap: "1.25rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px" }}>
-                <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: C.ivory }}>{adding ? "New prospect" : selected?.company}</h2>
+                <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 500, color: C.ivory }}>
+                  {adding ? "New prospect" : selected?.company}
+                  {!adding && selected && (
+                    <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: STAGE_COLOUR[selected.stage], border: `1px solid ${STAGE_COLOUR[selected.stage]}`, borderRadius: "4px", padding: "2px 7px", marginLeft: "10px", verticalAlign: "middle" }}>
+                      {selected.stage === "new" ? "" : "✓ "}{STAGE_LABEL[selected.stage]}
+                    </span>
+                  )}
+                </h2>
                 <Btn onClick={() => { select(null); setAdding(false); setDraft(null); }}>Close</Btn>
               </div>
+
+              {flash && (
+                <div role="status" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#0A1628", background: C.green, borderRadius: "10px", padding: "10px 14px" }}>
+                  {flash}
+                </div>
+              )}
 
               {!adding && selected && (
                 <>
@@ -473,6 +561,52 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                       {selected.next_action_at ? <span style={{ ...mono, fontSize: "12px", fontWeight: 400, color: C.gold, marginLeft: "10px" }}>{fmtDay(selected.next_action_at)}</span> : null}
                     </p>
                   </div>
+
+                  {/* History: every contact and note, newest first */}
+                  {(() => {
+                    const touches = history.filter((a) => TOUCH_KINDS.has(a.kind));
+                    const last = touches[0];
+                    return (
+                      <div style={{ border: `1px solid ${C.line}`, borderRadius: "10px", padding: "1rem" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "10px", flexWrap: "wrap", marginBottom: "10px" }}>
+                          <p style={{ ...label, marginBottom: 0 }}>History</p>
+                          <span style={{ ...mono, fontSize: "11px", color: last ? C.gold : C.faint }}>
+                            {last ? `${touches.length} contact${touches.length === 1 ? "" : "s"} · last ${ago(last.created_at)}` : "Not contacted yet"}
+                          </span>
+                        </div>
+                        <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
+                          <input
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            onKeyDown={(e) => { if (e.key === "Enter" && note.trim() && !busy) { const n = note; setNote(""); log("note", undefined, n); } }}
+                            placeholder="Add a note: what they said, when to try again"
+                            style={input}
+                          />
+                          <Btn disabled={busy || !note.trim()} onClick={() => { const n = note; setNote(""); log("note", undefined, n); }}>Add</Btn>
+                        </div>
+                        {history.length === 0 ? (
+                          <p style={{ ...syne, fontSize: "13px", color: C.faint }}>Nothing logged yet.</p>
+                        ) : (
+                          <div style={{ maxHeight: "260px", overflowY: "auto" }}>
+                            {history.map((a) => (
+                              <div key={a.id} style={{ display: "flex", gap: "10px", alignItems: "flex-start", padding: "8px 0", borderTop: `1px solid ${C.line}` }}>
+                                <span style={{ ...mono, flexShrink: 0, width: "26px", height: "26px", lineHeight: "26px", textAlign: "center", borderRadius: "50%", fontSize: "11px", fontWeight: 700, color: TOUCH_KINDS.has(a.kind) ? C.navy : C.ivory, background: TOUCH_KINDS.has(a.kind) ? C.gold : "rgba(244,241,234,0.12)" }}>
+                                  {ICON[a.kind] ?? "•"}
+                                </span>
+                                <div style={{ minWidth: 0 }}>
+                                  <p style={{ ...syne, fontSize: "13.5px", fontWeight: 700, color: C.ivory, lineHeight: 1.4 }}>{describe(a)}</p>
+                                  <p style={{ ...mono, fontSize: "11px", color: C.faint }}>{fmtWhen(a.created_at)}</p>
+                                  {a.detail && a.kind !== "checkpoints" && (
+                                    <p style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.55, marginTop: "3px", whiteSpace: "pre-wrap" }}>{a.detail}</p>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
 
                   {/* What to say: LinkedIn message, call script or letter */}
                   <div>
@@ -616,10 +750,29 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                   <div>
                     <p style={label}>Log what you did</p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                      <Btn disabled={busy || selected.do_not_contact} onClick={() => log("linkedin")}>LinkedIn sent</Btn>
-                      <Btn disabled={busy || selected.do_not_contact} onClick={() => log("letter")}>Letter posted</Btn>
-                      <Btn disabled={busy || selected.do_not_contact} onClick={() => log("email")}>Email sent</Btn>
+                      {([
+                        ["linkedin", "LinkedIn sent"],
+                        ["letter", "Letter posted"],
+                        ["email", "Email sent"],
+                      ] as const).map(([kind, text]) => {
+                        const prev = lastOf(kind);
+                        const recent = loggedRecently(kind);
+                        return (
+                          <Btn
+                            key={kind}
+                            kind={prev ? "gold" : "ghost"}
+                            disabled={busy || selected.do_not_contact || recent}
+                            title={recent ? "Already logged in the last 12 hours" : ""}
+                            onClick={() => log(kind)}
+                          >
+                            {prev ? `✓ ${text} ${fmtDay(prev.created_at)}` : text}
+                          </Btn>
+                        );
+                      })}
                     </div>
+                    {(lastOf("linkedin") || lastOf("letter") || lastOf("email")) && (
+                      <p style={{ ...syne, fontSize: "12px", color: C.faint, marginTop: "6px" }}>A tick means it has been logged. Press it again only for a genuine second contact.</p>
+                    )}
 
                     <div style={{ marginTop: "14px", padding: "12px", border: `1px solid ${C.line}`, borderRadius: "10px" }}>
                       <p style={{ ...syne, fontSize: "13px", fontWeight: 700, color: C.ivory, marginBottom: "8px" }}>Phone call</p>
@@ -703,27 +856,6 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                 </div>
               </div>
 
-              {/* History */}
-              {!adding && selected && (
-                <div>
-                  <p style={label}>History</p>
-                  <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
-                    <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Add a note" style={input} />
-                    <Btn disabled={busy || !note.trim()} onClick={() => { const n = note; setNote(""); log("note", undefined, n); }}>Add</Btn>
-                  </div>
-                  {history.length === 0 ? (
-                    <p style={{ ...syne, fontSize: "13px", color: C.faint }}>Nothing logged yet.</p>
-                  ) : (
-                    history.map((a) => (
-                      <p key={a.id} style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.6, padding: "6px 0", borderTop: `1px solid ${C.line}` }}>
-                        <span style={{ ...mono, fontSize: "11px", color: C.faint, marginRight: "8px" }}>{new Date(a.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
-                        {a.kind === "checkpoints" ? "Checkpoint answers saved" : a.kind === "stage" ? `${ACTIVITY_LABEL.stage} ${STAGE_LABEL[a.outcome as Stage] ?? a.outcome}` : a.kind === "call" ? `${ACTIVITY_LABEL.call}: ${CALL_OUTCOME_LABEL[a.outcome as keyof typeof CALL_OUTCOME_LABEL] ?? a.outcome}` : ACTIVITY_LABEL[a.kind] ?? a.kind}
-                        {a.detail && a.kind !== "checkpoints" ? `: ${a.detail}` : ""}
-                      </p>
-                    ))
-                  )}
-                </div>
-              )}
             </div>
           )}
         </div>
