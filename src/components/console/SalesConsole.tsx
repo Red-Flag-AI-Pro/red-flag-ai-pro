@@ -262,6 +262,15 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const selected = prospects.find((p) => p.id === selectedId) ?? null;
   const history = selected ? activity.filter((a) => a.prospect_id === selected.id) : [];
 
+  // The next prospect still to contact in the list on screen, after this one,
+  // so working down the day's list never means picking from it by hand.
+  const nextUp = (() => {
+    if (!selected) return null;
+    const todo = (p: Prospect) => p.stage === "new" && !p.do_not_contact && p.id !== selected.id;
+    const i = list.findIndex((p) => p.id === selected.id);
+    return list.slice(i + 1).find(todo) ?? list.find(todo) ?? null;
+  })();
+
   // Last real contact for each prospect (activity is newest first).
   const lastTouch = useMemo(() => {
     const m = new Map<string, Activity>();
@@ -558,12 +567,20 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     </span>
                   )}
                 </h2>
-                <Btn onClick={() => { select(null); setAdding(false); setDraft(null); }}>Close</Btn>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  {!adding && nextUp && <Btn kind="gold" onClick={() => select(nextUp)} title={`Next to contact: ${nextUp.company}`}>Next →</Btn>}
+                  <Btn onClick={() => { select(null); setAdding(false); setDraft(null); }}>Close</Btn>
+                </div>
               </div>
 
               {flash && (
-                <div role="status" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#0A1628", background: C.green, borderRadius: "10px", padding: "10px 14px" }}>
-                  {flash}
+                <div role="status" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#0A1628", background: C.green, borderRadius: "10px", padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                  <span>{flash}</span>
+                  {nextUp && (
+                    <button type="button" onClick={() => select(nextUp)} style={{ ...syne, fontSize: "13px", fontWeight: 700, color: C.ivory, background: C.navy, border: "none", borderRadius: "8px", padding: "7px 12px", cursor: "pointer" }}>
+                      Next: {nextUp.company} →
+                    </button>
+                  )}
                 </div>
               )}
 
@@ -626,6 +643,14 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
 
                   {/* What to say: LinkedIn message, call script or letter */}
                   <div>
+                    {/* Who this is for, in plain sight, so a message is never pasted to the wrong person. */}
+                    <div style={{ ...syne, fontSize: "14px", color: C.ivory, background: "rgba(229,72,77,0.1)", border: "1px solid rgba(229,72,77,0.45)", borderRadius: "10px", padding: "10px 14px", marginBottom: "12px" }}>
+                      <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#fca5a5", marginRight: "8px" }}>For</span>
+                      <strong>{selected.contact_name || "the owner"}</strong>
+                      <span style={{ color: C.dim }}> at </span>
+                      <strong>{selected.company}</strong>
+                      {selected.email ? <span style={{ ...mono, fontSize: "12px", color: C.dim, marginLeft: "8px" }}>{selected.email}</span> : null}
+                    </div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
                       {([
                         ["message", "LinkedIn message"],
