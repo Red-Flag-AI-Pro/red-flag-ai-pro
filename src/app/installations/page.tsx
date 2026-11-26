@@ -5,12 +5,12 @@ import { Footer } from "@/components/layout/Footer";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Installations & Custom Work — Red Flag AI Pro",
+  title: "Installations and Custom Work for Larger Firms",
   description:
     "One time engagements, not subscriptions: hosted witnessing, your own installable witness node, and other work we do once and hand over, priced separately from the Pro, Growth, and Sentinel plans.",
   alternates: { canonical: "https://www.redflagaipro.com/installations" },
   openGraph: {
-    title: "Installations & Custom Work — Red Flag AI Pro",
+    title: "Installations and Custom Work for Larger Firms",
     description: "One time engagements, priced separately from the standing plans.",
     url: "https://www.redflagaipro.com/installations",
   },
@@ -43,7 +43,7 @@ const ITEMS: Item[] = [
       "For a team that knows it needs independent proof but has nobody available to wire up the raw API. We work out what needs witnessing, install the connection, host your dashboard, and hand over a sealed quarterly compilation.",
     priceLabel: "Install once, hosted quarterly",
     price: "£995–£1,495 + £450–£750/quarter",
-    priceNote: "or included at no extra charge inside Sentinel",
+    priceNote: "Sentinel clients: ask about a discount",
     href: "/witness-network/hosting",
   },
   {
@@ -122,7 +122,7 @@ export default function InstallationsPage() {
             Installations & <span style={{ fontStyle: "italic", color: "#E5484D" }}>custom work</span>.
           </h1>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.55)", lineHeight: 1.7, maxWidth: "560px", margin: "0 auto" }}>
-            Everything on the <Link href="/pricing" style={{ color: "#E5484D" }}>pricing page</Link> is a plan you sign up for. This is the other list: real work billed once, sometimes with an optional ongoing piece, for the part of the job that has to be done for you rather than switched on.
+            For larger firms and technical teams. The <Link href="/pricing" style={{ color: "#E5484D" }}>pricing page</Link> covers the free red flag, the full audit and Sentinel. This is the other list: bigger pieces of work, billed once, sometimes with an optional ongoing part.
           </p>
         </div>
       </section>

@@ -86,7 +86,7 @@ export default function WitnessHostingPage() {
           <div style={{ padding: "1.25rem", borderRadius: "10px", border: "1px solid rgba(201,166,107,0.3)", background: "rgba(201,166,107,0.05)" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "0.5rem" }}>Hosting + dashboard, per quarter</p>
             <p style={{ ...syne, fontSize: "1.6rem", fontWeight: 800, color: "#F4F1EA" }}>£450–£750</p>
-            <p style={{ ...syne, fontSize: "11.5px", color: "rgba(244,241,234,0.5)", marginTop: "0.4rem" }}>or included at no extra charge inside <a href="/sentinel" style={{ color: "#C9A66B" }}>Sentinel</a></p>
+            <p style={{ ...syne, fontSize: "11.5px", color: "rgba(244,241,234,0.5)", marginTop: "0.4rem" }}><a href="/sentinel" style={{ color: "#C9A66B" }}>Sentinel</a> clients: ask about a discount</p>
           </div>
         </div>
         <P>

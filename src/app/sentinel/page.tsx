@@ -80,6 +80,10 @@ const FAQ = [
     a: "No. It is monthly and you can stop any time.",
   },
   {
+    q: "What does founding price mean?",
+    a: "Sentinel is new. The first clients pay £199 a month, and that price is locked in for as long as they stay, even when the price for new clients goes up.",
+  },
+  {
     q: "Is this legal advice?",
     a: "No. It is a professional check of what your site says and how you use AI, against the rules regulators apply. Where something needs a lawyer, we will tell you.",
   },
@@ -153,7 +157,7 @@ export default async function SentinelPage() {
             </Link>
           </div>
           <p style={{ ...mono, fontSize: "12px", letterSpacing: "0.08em", color: "rgba(244,241,234,0.7)", textShadow: "0 1px 3px rgba(6,14,26,0.95)" }}>
-            Starts after your £{AUDIT_PRICE.amount} audit · then £{SENTINEL_MONTHLY} a month · No contract
+            Starts after your £{AUDIT_PRICE.amount} audit · then £{SENTINEL_MONTHLY} a month, founding price locked in · No contract
           </p>
         </div>
       </section>
@@ -348,8 +352,12 @@ export default async function SentinelPage() {
               <p style={{ marginBottom: "0.8rem" }}>
                 <span className="font-mono-fig" style={{ fontSize: "2.2rem", color: "#F4F1EA" }}>£{SENTINEL_MONTHLY}</span>
                 <span style={{ ...syne, fontSize: "14px", color: "rgba(244,241,234,0.6)" }}> a month</span>
+                <span style={{ ...mono, display: "inline-block", marginLeft: "10px", verticalAlign: "4px", fontSize: "10.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#0A1628", background: "#C9A66B", borderRadius: "4px", padding: "3px 8px" }}>Founding price</span>
               </p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)", lineHeight: 1.6, marginTop: "-0.4rem", marginBottom: "0.9rem" }}>
+              <p style={{ ...syne, fontSize: "13.5px", fontWeight: 700, color: "#C9A66B", lineHeight: 1.6, marginTop: "-0.4rem", marginBottom: "0.4rem" }}>
+                Locked in for as long as you stay.
+              </p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.6)", lineHeight: 1.6, marginBottom: "0.9rem" }}>
                 Starts once your audit is done, because Sentinel keeps a clear site clear.
               </p>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.6rem" }}>Everything from your audit, plus:</p>
