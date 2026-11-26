@@ -69,3 +69,17 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ prospect: data });
 }
+
+// Remove a prospect and its history for good. Used for mistakes and test
+// entries. Admin only.
+export async function DELETE(request: Request) {
+  if (!(await getAdminUser())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  const id = new URL(request.url).searchParams.get("id");
+  if (!id) return NextResponse.json({ error: "Which prospect?" }, { status: 400 });
+  const supabase = await createServiceClient();
+  const { error } = await supabase.from("prospects").delete().eq("id", id);
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ ok: true });
+}

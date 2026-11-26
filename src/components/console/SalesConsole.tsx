@@ -6,6 +6,7 @@ import {
   CALL_OUTCOME_LABEL,
   STAGES,
   STAGE_LABEL,
+  callScript,
   linkedinMessage,
   ukDate,
   type Activity,
@@ -138,7 +139,17 @@ function ProspectForm({ draft, setDraft }: { draft: Partial<Prospect>; setDraft:
   );
 }
 
-export function SalesConsole() {
+export interface ConsoleData {
+  prospects: Prospect[];
+  activity: Activity[];
+  requests: LeadRequestRow[];
+}
+
+/**
+ * `demo` shows the console with supplied sample data and no connection to the
+ * real database, for looking around. Nothing can be changed in that mode.
+ */
+export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [activity, setActivity] = useState<Activity[]>([]);
   const [requests, setRequests] = useState<LeadRequestRow[]>([]);
@@ -152,8 +163,16 @@ export function SalesConsole() {
   const [callOutcome, setCallOutcome] = useState<string>(CALL_OUTCOMES[0]);
   const [note, setNote] = useState("");
   const [copied, setCopied] = useState(false);
+  const [tab, setTab] = useState<"message" | "script" | "letter">("message");
 
   const load = useCallback(async () => {
+    if (demo) {
+      setProspects(demo.prospects);
+      setActivity(demo.activity);
+      setRequests(demo.requests);
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch("/api/console/data", { cache: "no-store" });
       const data = await res.json().catch(() => ({}));
@@ -167,7 +186,7 @@ export function SalesConsole() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [demo]);
 
   useEffect(() => {
     load();
@@ -196,6 +215,10 @@ export function SalesConsole() {
   };
 
   const run = async (fn: () => Promise<void>) => {
+    if (demo) {
+      setError("This is a preview with sample data, so nothing is saved. Sign in at redflagaipro.com/console to use the real one.");
+      return;
+    }
     setBusy(true);
     setError("");
     try {
@@ -253,6 +276,18 @@ export function SalesConsole() {
     }
   };
 
+  const remove = () =>
+    run(async () => {
+      if (!selected) return;
+      if (!window.confirm(`Delete ${selected.company} and its history for good?`)) return;
+      const res = await fetch(`/api/console/prospect?id=${encodeURIComponent(selected.id)}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Could not delete that prospect.");
+      setSelectedId(null);
+      setDraft(null);
+    });
+
+  const script = selected ? callScript({ ...(selected as Prospect), ...(draft as Prospect) }) : null;
+
   const callBlocked = selected ? !selected.tps_checked_at || selected.tps_registered === true : true;
 
   const pill = (key: "today" | Stage | "all", text: string, n: number) => (
@@ -299,6 +334,11 @@ export function SalesConsole() {
           ))}
         </div>
 
+        {demo && (
+          <p style={{ ...syne, fontSize: "13.5px", color: C.gold, background: "rgba(201,166,107,0.1)", border: "1px solid rgba(201,166,107,0.45)", borderRadius: "8px", padding: "10px 14px", marginBottom: "1rem", lineHeight: 1.6 }}>
+            Preview with made up prospects, for looking around. Click anything. Nothing is saved and none of these businesses are real.
+          </p>
+        )}
         {error && (
           <p role="alert" style={{ ...syne, fontSize: "14px", color: "#fca5a5", background: "rgba(229,72,77,0.1)", border: "1px solid rgba(229,72,77,0.4)", borderRadius: "8px", padding: "10px 14px", marginBottom: "1rem" }}>{error}</p>
         )}
@@ -389,17 +429,82 @@ export function SalesConsole() {
                     </p>
                   </div>
 
-                  {/* The message */}
+                  {/* What to say: LinkedIn message, call script or letter */}
                   <div>
-                    <p style={label}>LinkedIn message, ready to paste</p>
-                    <textarea readOnly value={message} rows={12} style={{ ...input, resize: "vertical", lineHeight: 1.55, fontSize: "13.5px" }} />
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "10px" }}>
-                      <Btn kind="gold" onClick={copy}>{copied ? "Copied" : "Copy message"}</Btn>
-                      {selected.linkedin_url && (
-                        <a href={selected.linkedin_url} target="_blank" rel="noreferrer" style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.ivory, border: "1px solid rgba(244,241,234,0.25)", textDecoration: "none" }}>Open their LinkedIn</a>
-                      )}
-                      <a href={`/console/letter/${selected.id}`} target="_blank" rel="noreferrer" style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.ivory, border: "1px solid rgba(244,241,234,0.25)", textDecoration: "none" }}>Print the letter</a>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+                      {([
+                        ["message", "LinkedIn message"],
+                        ["script", "Call script"],
+                        ["letter", "Letter"],
+                      ] as const).map(([key, text]) => (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => setTab(key)}
+                          style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", cursor: "pointer", background: tab === key ? C.raised : "transparent", color: tab === key ? C.ivory : C.dim, border: `1px solid ${tab === key ? "rgba(201,166,107,0.6)" : "rgba(244,241,234,0.18)"}` }}
+                        >
+                          {text}
+                        </button>
+                      ))}
                     </div>
+
+                    {tab === "message" && (
+                      <>
+                        <p style={label}>Ready to paste</p>
+                        <textarea readOnly value={message} rows={12} style={{ ...input, resize: "vertical", lineHeight: 1.55, fontSize: "13.5px" }} />
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "10px" }}>
+                          <Btn kind="gold" onClick={copy}>{copied ? "Copied" : "Copy message"}</Btn>
+                          {selected.linkedin_url && (
+                            <a href={selected.linkedin_url} target="_blank" rel="noreferrer" style={{ ...syne, fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.ivory, border: "1px solid rgba(244,241,234,0.25)", textDecoration: "none" }}>Open their LinkedIn</a>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {tab === "letter" && (
+                      <>
+                        <p style={{ ...syne, fontSize: "13.5px", color: C.dim, lineHeight: 1.65, marginBottom: "12px" }}>
+                          One page, addressed to {selected.contact_name || "the director"}, with their red flag and the line that lets them opt out. Check the postal address in the details below first. Hand write the name on the envelope and mark it private and confidential.
+                        </p>
+                        <a href={demo ? undefined : `/console/letter/${selected.id}`} target="_blank" rel="noreferrer" style={{ ...syne, display: "inline-block", fontSize: "13px", fontWeight: 700, padding: "8px 14px", borderRadius: "8px", color: C.gold, border: "1px solid rgba(201,166,107,0.5)", background: "rgba(201,166,107,0.12)", textDecoration: "none" }}>Open the letter to print</a>
+                      </>
+                    )}
+
+                    {tab === "script" && script && (
+                      <div style={{ display: "grid", gap: "12px" }}>
+                        {script.steps.map((step, i) => (
+                          <div key={step.title} style={{ border: `1px solid ${C.line}`, borderRadius: "10px", padding: "12px 14px" }}>
+                            <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: C.red, marginBottom: "8px" }}>{i + 1}. {step.title}</p>
+                            {step.say.map((line) => (
+                              <p key={line} className="font-display" style={{ fontSize: "1.02rem", color: C.ivory, lineHeight: 1.5, marginBottom: "6px" }}>{line}</p>
+                            ))}
+                            {step.note && <p style={{ ...syne, fontSize: "12.5px", color: C.gold, lineHeight: 1.5, marginTop: "6px" }}>{step.note}</p>}
+                          </div>
+                        ))}
+
+                        <div>
+                          <p style={{ ...label, marginTop: "6px" }}>If they push back</p>
+                          {script.objections.map((o) => (
+                            <details key={o.they} style={{ borderTop: `1px solid ${C.line}`, padding: "10px 2px" }}>
+                              <summary style={{ ...syne, fontSize: "14px", fontWeight: 700, color: C.ivory, cursor: "pointer" }}>{o.they}</summary>
+                              <p className="font-display" style={{ fontSize: "1.02rem", color: C.ivory, lineHeight: 1.5, marginTop: "8px" }}>{o.you}</p>
+                            </details>
+                          ))}
+                        </div>
+
+                        <div style={{ border: `1px solid ${C.line}`, borderRadius: "10px", padding: "12px 14px" }}>
+                          <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: C.red, marginBottom: "8px" }}>If it goes to voicemail</p>
+                          <p className="font-display" style={{ fontSize: "1.02rem", color: C.ivory, lineHeight: 1.5 }}>{script.voicemail}</p>
+                        </div>
+
+                        <div style={{ background: C.raised, borderRadius: "10px", padding: "12px 14px" }}>
+                          <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: C.gold, marginBottom: "8px" }}>Four rules</p>
+                          {script.rules.map((r, i) => (
+                            <p key={r} style={{ ...syne, fontSize: "13px", color: C.dim, lineHeight: 1.6 }}>{i + 1}. {r}</p>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Log what you did */}
@@ -470,8 +575,9 @@ export function SalesConsole() {
                     They asked not to be contacted again
                   </label>
                 )}
-                <div style={{ marginTop: "14px" }}>
+                <div style={{ marginTop: "14px", display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "space-between" }}>
                   <Btn kind="primary" disabled={busy || !(draft.company ?? "").trim()} onClick={save}>{adding ? "Add prospect" : "Save changes"}</Btn>
+                  {!adding && selected && <Btn kind="danger" disabled={busy} onClick={remove}>Delete this prospect</Btn>}
                 </div>
               </div>
 
