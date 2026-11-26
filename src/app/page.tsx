@@ -423,6 +423,36 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* GET AHEAD, NOT CAUGHT: the reward that follows the red flag.
+          The page opens on the fear (what could cost you). This is the other
+          half: firms that can prove they used AI properly come out stronger. */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "940px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1.1rem" }}>Why it is worth doing properly</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.12, color: "#F4F1EA", marginBottom: "1.4rem" }}>
+              Use AI to get ahead.<br />
+              <span style={{ fontStyle: "italic", color: "#E5484D" }}>Not to get caught.</span>
+            </h2>
+            <p className="font-display" style={{ fontSize: "clamp(1.15rem, 2.6vw, 1.45rem)", fontWeight: 400, color: "rgba(244,241,234,0.85)", lineHeight: 1.5, maxWidth: "720px", margin: "0 auto" }}>
+              Two kinds of business use AI: the ones who can prove they used it properly, and the ones hoping nobody asks.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
+            {[
+              { tag: "The risk", line: "AI should make your business stronger. Unchecked, it makes you easier to fine." },
+              { tag: "What we do", line: "We don\u2019t tell you to slow down. We make sure it holds up." },
+            ].map((q) => (
+              <div key={q.tag} style={{ background: "#0A1628", border: "1px solid rgba(255,255,255,0.08)", borderLeft: "2px solid #E5484D", borderRadius: "10px", padding: "1.75rem" }}>
+                <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5484D", marginBottom: "0.8rem" }}>{q.tag}</p>
+                <p className="font-display" style={{ fontSize: "1.35rem", fontWeight: 500, color: "#F4F1EA", lineHeight: 1.35 }}>{q.line}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section style={{
         padding: "6rem 1.5rem",
