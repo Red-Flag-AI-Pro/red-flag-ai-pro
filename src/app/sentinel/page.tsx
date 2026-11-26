@@ -64,6 +64,11 @@ const MONTHLY = [
     title: "Added to the Witness Network automatically.",
     body: "From your first month, every check is sealed with the date it happened and joins the Witness Network, where independent witnesses we do not control hold its fingerprint. Nothing to install, nothing to set up. If the ASA, a regulator, an insurer or a client ever asks what you checked and when, you can prove it, not just say it.",
   },
+  {
+    n: "05",
+    title: "Your own record, in one place.",
+    body: "A private page of your own with your audit, every monthly note and the seal for every check, each with a link anyone can use to verify it. When someone asks, you send them the page.",
+  },
 ];
 
 const FAQ = [
@@ -362,7 +367,7 @@ export default async function SentinelPage() {
               </p>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.6rem" }}>Everything from your audit, plus:</p>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.5rem", display: "grid", gap: "0.5rem" }}>
-                {["Your site checked every month", "Law changes explained for you", "Reviewed badge kept live", "Added to the Witness Network automatically", "Questions answered within a working day", "No contract, stop any time"].map((t) => (
+                {["Your site checked every month", "Law changes explained for you", "Reviewed badge kept live", "Added to the Witness Network automatically", "Your own private record page", "Questions answered within a working day", "No contract, stop any time"].map((t) => (
                   <li key={t} style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.8)", display: "flex", gap: "10px" }}>
                     <span style={{ color: "#C9A66B" }}>✓</span>
                     {t}

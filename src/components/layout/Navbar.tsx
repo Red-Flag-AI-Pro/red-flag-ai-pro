@@ -43,7 +43,9 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
           />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav. 26 Nov 2026: no public "Log in" link any more; the
+            offer is done for you, so visitors are not asked to sign in.
+            /login still works for James and any earlier account holders. */}
         <nav className="hidden lg:flex items-center gap-0.5">
           {isAuthenticated ? (
             <>
@@ -97,7 +99,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 )}
               </div>
 
-              <Link href="/login" className="nav-link px-2.5 py-1.5 text-sm">Log in</Link>
               <Link href="/get-checked" className="btn-primary !py-2 !px-4 !text-xs ml-2 whitespace-nowrap">Check my site</Link>
             </>
           )}
@@ -184,9 +185,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 <Link href="/tools" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
                 <Link href="/blog" onClick={() => setMenuOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
 
-                <div className="pt-2 mt-2 border-t border-white/10">
-                  <Link href="/login" onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Log in</Link>
-                </div>
               </>
             )}
           </nav>
