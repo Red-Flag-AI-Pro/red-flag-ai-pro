@@ -62,6 +62,9 @@ export interface Prospect {
   tps_registered: boolean | null;
   do_not_contact: boolean;
   notes: string | null;
+  /** Also worth going back to for RecoverROI, and what was noticed. */
+  recoverroi_fit: boolean;
+  recoverroi_note: string | null;
 }
 
 export interface Activity {
@@ -106,6 +109,8 @@ export const EDITABLE_FIELDS = [
   "tps_registered",
   "do_not_contact",
   "notes",
+  "recoverroi_fit",
+  "recoverroi_note",
 ] as const;
 
 /** Today in the UK as YYYY-MM-DD, optionally shifted by a number of days. */

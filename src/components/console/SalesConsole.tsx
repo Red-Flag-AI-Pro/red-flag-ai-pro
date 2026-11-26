@@ -160,7 +160,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const [view, setView] = useState<"today" | Stage | "all">("today");
+  const [view, setView] = useState<"today" | Stage | "all" | "recoverroi">("today");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [draft, setDraft] = useState<Partial<Prospect> | null>(null);
   const [adding, setAdding] = useState(false);
@@ -207,7 +207,8 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
     return c;
   }, [prospects]);
 
-  const list = view === "today" ? due : view === "all" ? prospects : prospects.filter((p) => p.stage === view);
+  const recoverroi = useMemo(() => prospects.filter((p) => p.recoverroi_fit), [prospects]);
+  const list = view === "today" ? due : view === "all" ? prospects : view === "recoverroi" ? recoverroi : prospects.filter((p) => p.stage === view);
   const selected = prospects.find((p) => p.id === selectedId) ?? null;
   const history = selected ? activity.filter((a) => a.prospect_id === selected.id) : [];
 
@@ -332,7 +333,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
 
   const callBlocked = selected ? !selected.tps_checked_at || selected.tps_registered === true : true;
 
-  const pill = (key: "today" | Stage | "all", text: string, n: number) => (
+  const pill = (key: "today" | Stage | "all" | "recoverroi", text: string, n: number) => (
     <button
       key={key}
       type="button"
@@ -415,13 +416,14 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
           {pill("today", "Today", due.length)}
           {STAGES.map((s) => pill(s, STAGE_LABEL[s], counts[s] ?? 0))}
           {pill("all", "Everyone", prospects.length)}
+          {pill("recoverroi", "RecoverROI fit", recoverroi.length)}
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "1.25rem", alignItems: "start" }}>
           <div style={card}>
             {list.length === 0 ? (
               <p style={{ ...syne, fontSize: "14px", color: C.dim, lineHeight: 1.6 }}>
-                {view === "today" ? "Nothing due today. Add prospects, or pick a stage above." : "Nobody here yet."}
+                {view === "today" ? "Nothing due today. Add prospects, or pick a stage above." : view === "recoverroi" ? "Nobody ticked as a fit for RecoverROI yet. Tick the box in a prospect's details when you notice something." : "Nobody here yet."}
               </p>
             ) : (
               list.map((p, i) => {
@@ -439,6 +441,7 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     </span>
                     <span style={{ ...syne, display: "block", fontSize: "13px", color: C.dim, marginTop: "2px" }}>
                       {[p.contact_name, p.contact_role].filter(Boolean).join(", ") || "No contact yet"}
+                      {p.recoverroi_fit ? <span style={{ ...mono, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.gold, border: "1px solid rgba(201,166,107,0.5)", borderRadius: "4px", padding: "1px 6px", marginLeft: "8px" }}>RecoverROI</span> : null}
                     </span>
                     {p.next_action && (
                       <span style={{ ...syne, display: "block", fontSize: "13px", marginTop: "6px", color: overdue ? "#fca5a5" : C.ivory }}>
@@ -676,6 +679,23 @@ export function SalesConsole({ demo }: { demo?: ConsoleData } = {}) {
                     <input type="checkbox" checked={Boolean(draft.do_not_contact)} onChange={(e) => setDraft({ ...draft, do_not_contact: e.target.checked })} />
                     They asked not to be contacted again
                   </label>
+                )}
+                {!adding && selected && (
+                  <div style={{ marginTop: "14px", padding: "12px 14px", border: `1px solid ${draft.recoverroi_fit ? "rgba(201,166,107,0.5)" : C.line}`, borderRadius: "10px" }}>
+                    <label style={{ ...syne, display: "flex", alignItems: "center", gap: "8px", fontSize: "13.5px", fontWeight: 700, color: C.ivory, cursor: "pointer" }}>
+                      <input type="checkbox" checked={Boolean(draft.recoverroi_fit)} onChange={(e) => setDraft({ ...draft, recoverroi_fit: e.target.checked })} />
+                      Also a fit for RecoverROI
+                    </label>
+                    <p style={{ ...syne, fontSize: "12.5px", color: C.dim, lineHeight: 1.6, margin: "6px 0 8px" }}>
+                      Tick it when you notice something that is not compliance: an enquiry form that goes nowhere, nobody answering out of hours, a dated site. Raise it in a conversation you are already having, never as a separate cold call.
+                    </p>
+                    <input value={draft.recoverroi_note ?? ""} onChange={(e) => setDraft({ ...draft, recoverroi_note: e.target.value })} placeholder="What you noticed" style={{ ...input, fontSize: "13px", padding: "7px 10px" }} />
+                    {draft.recoverroi_fit && (
+                      <p className="font-display" style={{ fontSize: "0.98rem", color: C.ivory, lineHeight: 1.5, marginTop: "10px" }}>
+                        &ldquo;One more thing, and it&apos;s nothing to do with compliance. While I was in your site I noticed {(draft.recoverroi_note ?? "").trim() ? (draft.recoverroi_note ?? "").trim().replace(/\.$/, "") : "something else"}. I run a second business that fixes exactly that. Want me to take a look?&rdquo;
+                      </p>
+                    )}
+                  </div>
                 )}
                 <div style={{ marginTop: "14px", display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "space-between" }}>
                   <Btn kind="primary" disabled={busy || !(draft.company ?? "").trim()} onClick={save}>{adding ? "Add prospect" : "Save changes"}</Btn>

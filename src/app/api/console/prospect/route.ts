@@ -12,7 +12,7 @@ function clean(body: Record<string, unknown>): Record<string, unknown> {
     if (key === "more_count") {
       const n = Number(v);
       out[key] = v === null || v === "" || !Number.isFinite(n) ? null : Math.max(0, Math.min(999, Math.round(n)));
-    } else if (key === "tps_registered" || key === "do_not_contact") {
+    } else if (key === "tps_registered" || key === "do_not_contact" || key === "recoverroi_fit") {
       out[key] = key === "tps_registered" && (v === null || v === undefined) ? null : Boolean(v);
     } else if (key === "next_action_at") {
       out[key] = typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
