@@ -447,7 +447,7 @@ export default function AboutPage() {
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link
-              href="/governance-audit"
+              href="/get-checked"
               style={{
                 ...syne,
                 fontSize: "1rem",
@@ -460,10 +460,10 @@ export default function AboutPage() {
                 display: "inline-block",
               }}
             >
-              Start assessment
+              Show me my red flag
             </Link>
             <Link
-              href="/compliance-assessment"
+              href="/audit"
               style={{
                 ...syne,
                 fontSize: "1rem",
@@ -477,7 +477,7 @@ export default function AboutPage() {
                 display: "inline-block",
               }}
             >
-              Try the checker
+              See the full audit
             </Link>
           </div>
         </div>

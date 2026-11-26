@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PurchaseConversion } from "@/components/marketing/PurchaseConversion";
 import { AuditRequestForm } from "@/components/marketing/AuditRequestForm";
-import { AUDIT_PRICE, PROGRAM_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
+import { AUDIT_PRICE, JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -79,12 +79,12 @@ const FAQS = [
     a: "No. That is the entire point. I do the reading, you get the plain English version with exactly what to fix.",
   },
   {
-    q: "Is this the same as the Pro subscription?",
-    a: "No. Pro is the self serve tool, you run your own checks whenever you want. This is a one time, fully done for you service: I run it, explain it, and package it for you.",
+    q: "What is the difference between the free red flag and the full audit?",
+    a: "The free red flag is the single problem most likely to cost you, with how many more there are. The full audit is every one of them, why each is a risk, and exactly what to change, on video and in writing.",
   },
   {
     q: "What if my site comes back clean?",
-    a: "Then you get the full report and badge showing it. Proof you can use with clients, partners, or just for your own peace of mind.",
+    a: "Then you get your money back in full, and you keep the clean report and the badge. That is the guarantee: nothing worth fixing, nothing to pay.",
   },
   {
     q: "Is this legal advice?",
@@ -227,7 +227,7 @@ export default async function AuditPage({
           </div>
 
           <p className="animate-fade-up delay-4" style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.02em" }}>
-            One time payment · No subscription · Delivered within 48 hours
+            One time payment · No subscription · Delivered within 48 hours · Money back if we find nothing worth fixing
           </p>
         </div>
       </section>
@@ -464,121 +464,15 @@ export default async function AuditPage({
         </div>
       </section>
 
-      {/* ── TWO TIERS ── */}
-      <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Two ways to do this</p>
-            <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA", marginBottom: "1rem" }}>
-              Find out where you stand,<br />or have the whole thing built.
-            </h2>
-            <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: "620px", margin: "0 auto" }}>
-              Governance runs as a lifecycle: discover, authorise, check, govern, review, remediate, expire, prove. The audit covers where you stand across it. The program builds the documents that carry you through it.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2px" }}>
-            {/* Tier 1 — the audit */}
-            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem" }}>
-              <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE AUDIT</p>
-              <h3 style={{ ...syne, fontSize: "1.4rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
-                Where you stand
-              </h3>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
-                <span style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</span>
-                <span style={{ ...mono, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>ONE TIME · 48 HRS</span>
-              </div>
-              {[
-                `Every page checked against 30 compliance risk categories, ${JURISDICTION_COUNT} jurisdictions`,
-                "AI use scored across all 6 governance dimensions",
-                "Video walkthrough of every flag, in plain English",
-                "Written report: compliance exposure and governance gaps",
-                "Reviewed badge for your site",
-                "All 18 governance and compliance tools, free",
-              ].map((f) => (
-                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
-                  <span style={{ color: "#E5484D", marginRight: "10px" }}>✓</span>{f}
-                </p>
-              ))}
-              <a href="/audit/checkout" style={{
-                display: "inline-flex", alignItems: "center", marginTop: "1.5rem",
-                background: "transparent", color: "#F4F1EA",
-                border: "1px solid rgba(255,255,255,0.2)",
-                ...syne, fontSize: "0.85rem", fontWeight: 700,
-                padding: "12px 26px", borderRadius: "9999px",
-                textDecoration: "none",
-              }}>
-                Get the audit: £{AUDIT_PRICE.amount}
-              </a>
-            </div>
-
-            {/* Tier 2 — the program */}
-            <div style={{
-              background: "linear-gradient(135deg, #1a0505 0%, #102943 100%)",
-              border: "1px solid rgba(239,68,68,0.3)",
-              padding: "2.5rem",
-              position: "relative", overflow: "hidden",
-            }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #E5484D, transparent)" }} />
-              <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL PROGRAM</p>
-              <h3 style={{ ...syne, fontSize: "1.4rem", fontWeight: 800, color: "#F4F1EA", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
-                The whole lifecycle, built
-              </h3>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "1.5rem" }}>
-                <span style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1 }}>£{PROGRAM_PRICE.amount}</span>
-                <span style={{ ...mono, fontSize: "11px", color: "#E5484D", letterSpacing: "0.1em" }}>ONE TIME · GENERATED IN MINUTES</span>
-              </div>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "1rem", fontStyle: "italic" }}>
-                The only way to get a sealed, independently verifiable governance record without a Sentinel subscription. Answer once, get every document AI tailored to your business:
-              </p>
-              {[
-                "DPIA, screened and written against the ICO's checklist",
-                "Fundamental Rights Impact Assessment, all 6 Article 27 elements",
-                "AI acceptable use policy for your staff",
-                "Incident reporting checklist, with your deadlines and regulators",
-                "Post-market monitoring plan per Article 72",
-                "Annex IV technical documentation set",
-              ].map((f) => (
-                <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
-                  <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}
-                </p>
-              ))}
-              <p style={{ ...syne, fontSize: "11.5px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, margin: "1.1rem 0 0.6rem" }}>
-                Also compiled from your answers, no extra questions:
-              </p>
-              {[
-                "Financial exposure snapshot: your actual statutory ceiling for your turnover",
-                "Regulatory framework mapping: which law each document satisfies, and where",
-                "An A–G governance letter grade, scored against what you actually told us and capped honestly if a document goes stale later, not just at delivery",
-              ].map((f) => (
-                <p key={f} style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: "0.5rem" }}>
-                  <span style={{ color: "rgba(201,166,107,0.6)", marginRight: "10px" }}>·</span>{f}
-                </p>
-              ))}
-              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: "1.1rem 0 0.5rem", fontWeight: 700 }}>
-                ✓ Sealed and hash chained the moment it's complete, with a public verify link — nothing free on this site does that.
-              </p>
-              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: "0 0 0.5rem", fontWeight: 700 }}>
-                ✓ Includes a boundary authorization record — who approved this system and when that authority expires, hash chained the same way. Elsewhere on this site that's a Sentinel-only feature.
-              </p>
-              <p style={{ ...syne, fontSize: "13px", color: "#C9A66B", lineHeight: 1.7, margin: 0, fontWeight: 700 }}>
-                ✓ That record shows on your dashboard's authority health stat, so whether it still holds is never something you have to remember to check.
-              </p>
-              <a href="/audit/program-checkout" style={{
-                display: "inline-flex", alignItems: "center", marginTop: "1.5rem",
-                background: "#E5484D", color: "white",
-                ...syne, fontSize: "0.85rem", fontWeight: 700,
-                padding: "12px 26px", borderRadius: "9999px",
-                boxShadow: "0 4px 20px rgba(229,72,77,0.3)",
-                textDecoration: "none",
-              }}>
-                Get the full program: £{PROGRAM_PRICE.amount}
-              </a>
-            </div>
-          </div>
-
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "2rem", lineHeight: 1.8 }}>
-            The audit is done by hand, personally. The program is generated automatically from AI tailored analysis, sealed the moment it's complete. Neither is a subscription. A governance consultancy building the same document set starts in the low thousands.
+      {/* ── THE GUARANTEE ── */}
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center", border: "1px solid rgba(201,166,107,0.45)", borderRadius: "14px", padding: "2.5rem 2rem", background: "rgba(201,166,107,0.06)" }}>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>The guarantee</p>
+          <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1rem" }}>
+            Nothing worth fixing? You don&apos;t pay.
+          </h2>
+          <p style={{ ...syne, fontSize: "1rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.75 }}>
+            If the full audit finds nothing worth fixing on your site or in how you use AI, you get your £{AUDIT_PRICE.amount} back in full, and you keep the clean report and the badge.
           </p>
         </div>
       </section>
@@ -709,7 +603,7 @@ export default async function AuditPage({
           </div>
 
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>
-            Delivered within 48 hours · One-time payment · No subscription
+            Delivered within 48 hours · One time payment · No subscription · Money back if we find nothing worth fixing
           </p>
         </div>
       </section>

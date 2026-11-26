@@ -391,13 +391,13 @@ export default function FeaturesPage() {
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
             Start with a free assessment. See your score, gaps, and roadmap. Then choose Pro, Growth, or Sentinel.
           </p>
-          <Link href="/governance-audit" style={{
+          <Link href="/get-checked" style={{
             ...syne, fontSize: "1rem", fontWeight: 700,
             background: "#E5484D", color: "white",
             padding: "14px 40px", borderRadius: "9999px",
             textDecoration: "none", display: "inline-block"
           }}>
-            Start assessment
+            Show me my red flag
           </Link>
         </div>
       </section>

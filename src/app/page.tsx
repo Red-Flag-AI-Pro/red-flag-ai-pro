@@ -10,6 +10,7 @@ import { TrustBar } from "@/components/marketing/TrustBar";
 import { LawClock } from "@/components/marketing/LawClock";
 import { GetChecked } from "@/components/marketing/GetChecked";
 import { LiveCount } from "@/components/marketing/LiveCount";
+import { SiteCheckRequestForm } from "@/components/marketing/SiteCheckRequestForm";
 import { getProofStats, formatProofDate } from "@/lib/proof-stats";
 import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT, AUDIT_PRICE } from "@/lib/constants";
 
@@ -118,25 +119,23 @@ export default async function LandingPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "1.75rem" }}>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Compliance and AI governance. Done for you.</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Catch what you said. Prove what you did.</p>
             <span style={{ width: "28px", height: "1px", background: "rgba(229,72,77,0.6)" }} />
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1.75rem", color: "#F4F1EA", textShadow: "0 2px 40px rgba(6,14,26,0.95), 0 2px 10px rgba(6,14,26,0.9)" }}>
-            Catch what you said.<br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>Prove what you did.</span>
+            What&apos;s your red flag?<br />
+            <span style={{ fontStyle: "italic", color: "#E5484D" }}>We&apos;ll find it for you.</span>
           </h1>
           <p style={{ ...syne, fontSize: "clamp(1.02rem, 3vw, 1.2rem)", color: "rgba(244,241,234,0.92)", lineHeight: 1.7, marginBottom: "2.25rem", maxWidth: "640px", margin: "0 auto 2.25rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
-            Give us your website. We check what it says and how you use AI against the rules, and send you the worst thing we find. You don&apos;t lift a finger.
+            Give us your website. We check what it says and how you use AI, and show you the one problem most likely to cost you. Free, and you don&apos;t lift a finger.
           </p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-            <a href="#get-checked" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Get your site checked <span className="arrow">→</span>
-            </a>
-            <Link href="/audit" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              The full audit, £{AUDIT_PRICE.amount} <span className="arrow">→</span>
-            </Link>
+          <div id="red-flag" style={{ maxWidth: "720px", margin: "0 auto 1.1rem", scrollMarginTop: "110px" }}>
+            <SiteCheckRequestForm variant="compact" />
           </div>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)" }}>Free · No card · No account · We do the work, you get the answer</p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.7)", textShadow: "0 1px 3px rgba(6,14,26,0.95)" }}>
+            Free · No card · No account · If we find nothing, we tell you that too ·{" "}
+            <a href="#get-checked" style={{ color: "#F4F1EA", fontWeight: 700, textDecoration: "underline" }}>See what you get ↓</a>
+          </p>
         </div>
       </section>
 
@@ -503,16 +502,16 @@ export default async function LandingPage() {
           <p style={{ ...syne, fontSize: "12px", fontWeight: 700, color: "#E5484D", marginBottom: "1rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>Your move</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1.5rem", color: "white" }}>Find out before someone else does.</h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "2rem", lineHeight: 1.7 }}>
-            Give us your website. We send you the worst thing we find. Free, no card, no account.
+            Give us your website. We show you the one problem most likely to cost you. Free, no card, no account.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#get-checked" style={{
+            <a href="#red-flag" style={{
               ...syne, fontSize: "1rem", fontWeight: 700,
               background: "#E5484D", color: "white",
               padding: "14px 40px", borderRadius: "9999px",
               textDecoration: "none", display: "inline-block"
             }}>
-              Get your site checked
+              Show me my red flag
             </a>
             <Link href="/audit" style={{
               ...syne, fontSize: "1rem", fontWeight: 700,

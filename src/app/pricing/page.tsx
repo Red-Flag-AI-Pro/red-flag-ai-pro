@@ -116,7 +116,7 @@ export default async function PricingPage() {
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Three ways to work with us, and no tiers to compare. We find the problem for free, fix all of it for one fixed price, or handle it for you every month.
+            Three ways to work with us, and no tiers to compare. We find your red flag for free, clear all of them for one fixed price, or handle it for you every month.
           </p>
         </div>
       </section>
@@ -128,14 +128,14 @@ export default async function PricingPage() {
 
             {/* 01 FREE FIRST FINDING */}
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "2.25rem", display: "flex", flexDirection: "column" }}>
-              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · THE FIRST FINDING</p>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", marginBottom: "1rem" }}>01 · YOUR RED FLAG</p>
               <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>Free</p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>We check your site and tell you the worst thing we find.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>We check your site and show you the one problem most likely to cost you.</p>
               <div style={{ flex: 1 }}>
                 {[
                   "You give us your website, nothing else",
                   `Checked against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions`,
-                  "The worst finding, the rule it breaks, and how many more there are",
+                  "Your red flag, the rule it breaks, and how many more there are",
                   "A personal reply from James",
                 ].map((f) => (
                   <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
@@ -144,7 +144,7 @@ export default async function PricingPage() {
                 ))}
               </div>
               <Link href="/get-checked" className="btn-secondary" style={{ marginTop: "1.75rem", justifyContent: "center", fontSize: "0.9rem", padding: "13px 24px" }}>
-                Check my site <span className="arrow">→</span>
+                Show me my red flag <span className="arrow">→</span>
               </Link>
             </div>
 
@@ -153,7 +153,7 @@ export default async function PricingPage() {
               <span style={{ ...mono, position: "absolute", top: "-11px", left: "2.25rem", background: "#E5484D", color: "white", fontSize: "10px", letterSpacing: "0.14em", padding: "4px 10px", borderRadius: "4px" }}>RECOMMENDED</span>
               <p style={{ ...mono, fontSize: "10px", color: "#C9A66B", letterSpacing: "0.15em", marginBottom: "1rem" }}>02 · THE FULL AUDIT</p>
               <p style={{ ...syne, fontSize: "2.4rem", fontWeight: 800, color: "white", lineHeight: 1, marginBottom: "0.5rem" }}>£{AUDIT_PRICE.amount}<span style={{ ...mono, fontSize: "11px", fontWeight: 400, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em", marginLeft: "10px" }}>ONE TIME</span></p>
-              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Every failure and every fix. Compliance and AI governance in one.</p>
+              <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "1.5rem" }}>Every red flag and how to clear it. Compliance and AI governance in one.</p>
               <div style={{ flex: 1 }}>
                 {[
                   "James personally checks your site and AI use, on video",
@@ -161,6 +161,7 @@ export default async function PricingPage() {
                   "What to fix first, in plain English",
                   "Reviewed badge for your site",
                   "No subscription, no tool to learn",
+                  "Money back if we find nothing worth fixing",
                 ].map((f) => (
                   <p key={f} style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "0.6rem" }}>
                     <span style={{ color: "#C9A66B", marginRight: "10px" }}>✓</span>{f}

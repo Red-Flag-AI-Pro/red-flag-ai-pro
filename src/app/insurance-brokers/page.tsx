@@ -236,15 +236,15 @@ export default function InsuranceBrokersPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-            <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Free governance assessment <span className="arrow">→</span>
+            <Link href="/get-checked" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              Show me my red flag <span className="arrow">→</span>
             </Link>
-            <Link href="/compliance-assessment" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Free compliance check <span className="arrow">→</span>
+            <Link href="/audit" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              See the full audit <span className="arrow">→</span>
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.55)" }}>
-            No card · No account to create · Just your email, results delivered instantly
+            Free · No card · No account · We do the work, you get the answer
           </p>
         </div>
       </section>
@@ -617,11 +617,11 @@ export default function InsuranceBrokersPage() {
             60 seconds. Free, no account, results instantly.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" }}>
-            <Link href="/governance-audit" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Start the governance assessment <span className="arrow">→</span>
+            <Link href="/get-checked" className="btn-primary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              Show me my red flag <span className="arrow">→</span>
             </Link>
-            <Link href="/compliance-assessment" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
-              Run the compliance check <span className="arrow">→</span>
+            <Link href="/audit" className="btn-secondary" style={{ fontSize: "0.95rem", padding: "14px 30px" }}>
+              See the full audit <span className="arrow">→</span>
             </Link>
           </div>
           <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.35)", lineHeight: 1.7 }}>

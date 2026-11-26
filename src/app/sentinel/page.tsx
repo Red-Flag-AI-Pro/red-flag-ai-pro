@@ -496,7 +496,7 @@ export default function SentinelPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/signup?track=both" style={{
+              <Link href="/get-checked" style={{
                 display: "block", textAlign: "center",
                 background: "#E5484D", color: "white",
                 ...syne, fontSize: "0.875rem", fontWeight: 700,
@@ -504,7 +504,7 @@ export default function SentinelPage() {
                 boxShadow: "0 8px 24px rgba(229,72,77,0.3)",
                 textDecoration: "none", marginTop: "1.5rem"
               }}>
-                Get legal today
+                Show me my red flag
               </Link>
             </div>
           </div>
@@ -647,7 +647,7 @@ export default function SentinelPage() {
             }}>
               Get in touch
             </a>
-            <Link href="/signup?track=both" style={{
+            <Link href="/get-checked" style={{
               display: "inline-flex", alignItems: "center",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "rgba(255,255,255,0.55)",
@@ -655,7 +655,7 @@ export default function SentinelPage() {
               padding: "14px 32px", borderRadius: "9999px",
               textDecoration: "none"
             }}>
-              Try Red Flag AI Pro free
+              Show me my red flag
             </Link>
           </div>
 

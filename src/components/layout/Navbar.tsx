@@ -100,6 +100,7 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                       <Link href="/tools" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Free Tools</Link>
                       <Link href="/features" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Features</Link>
                       <Link href="/compare" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Compare</Link>
+                      <Link href="/affiliates" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Partners</Link>
                       <Link href="/reports/mystery-of-ai-governance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">The Mystery of AI Governance</Link>
                       <Link href="/reports/state-of-uk-marketing-compliance" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">State of UK Marketing Compliance</Link>
                       <Link href="/blog" className="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors">Insights</Link>
@@ -109,7 +110,6 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                 )}
               </div>
 
-              <Link href="/affiliates" className="nav-link px-2.5 py-1.5 text-sm flex items-center gap-1.5">Partners <span style={{fontSize:"9px", border:"1px solid rgba(201,166,107,0.5)", color:"#C9A66B", borderRadius:"4px", padding:"1px 5px", fontWeight:600, letterSpacing:"0.08em"}}>EARN</span></Link>
               <Link href="/login" className="nav-link px-2.5 py-1.5 text-sm">Log in</Link>
               <Link href="/get-checked" className="btn-primary !py-2 !px-4 !text-xs ml-2 whitespace-nowrap">Check my site</Link>
             </>

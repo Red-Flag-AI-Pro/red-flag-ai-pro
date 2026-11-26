@@ -142,6 +142,11 @@ export default function TermsPage() {
                 As a matter of policy we extend the same 14 day right to business customers on one off digital purchases, even though it is not legally required.
               </p>
 
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Done for you audit guarantee</p>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
+                If the Done For You Audit finds nothing worth fixing on the site and AI use you asked us to review, we refund the full price you paid for it, and you keep the report and the badge. Where the audit does find issues, the price is not refundable once the report has been delivered, without affecting any rights you have in law.
+              </p>
+
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Subscription refunds</p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
                 Subscriptions can be cancelled at any time and will run to the end of the paid period.{" "}

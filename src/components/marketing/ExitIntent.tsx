@@ -33,11 +33,11 @@ export function ExitIntent() {
 
         <p className="text-4xl"></p>
         <h2 className="mt-4 text-2xl font-extrabold text-white">
-          Wait. Is your website actually legal?
+          Wait. What&apos;s your red flag?
         </h2>
         <p className="mt-3 text-gray-400 text-sm leading-relaxed">
-          You don&apos;t have to guess. Give us your website and we&apos;ll send
-          you the worst thing we find. Free, and you do none of the work.
+          Give us your website and we&apos;ll show you the one problem most
+          likely to cost you. Free, and you do none of the work.
         </p>
 
         <Link
@@ -45,7 +45,7 @@ export function ExitIntent() {
           onClick={() => setDismissed(true)}
           className="mt-6 block w-full rounded-xl bg-red-600 py-3.5 text-base font-bold text-white hover:bg-red-500 transition-colors"
         >
-          Check my site for me →
+          Show me my red flag →
         </Link>
 
         <button
