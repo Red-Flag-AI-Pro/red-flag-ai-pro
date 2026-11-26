@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SentinelRequestForm } from "@/components/marketing/SentinelRequestForm";
-import { LawClock } from "@/components/marketing/LawClock";
 import React from "react";
 import { AUDIT_PRICE } from "@/lib/constants";
 import { getProofStats, formatProofDate } from "@/lib/proof-stats";
@@ -187,6 +186,7 @@ export default async function SentinelPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What you get every month</p>
+            <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.6)", marginBottom: "1rem" }}>Everything you get from the audit, plus:</p>
             <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA" }}>
               We keep watching.
               <br />
@@ -210,53 +210,82 @@ export default async function SentinelPage() {
         </div>
       </section>
 
-      {/* ── PROOF: the witness record behind every check ── */}
-      <section style={{ position: "relative", overflow: "hidden", padding: "7rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", backgroundImage: "url(/images/sentinel/signature.jpg)", backgroundSize: "cover", backgroundPosition: "center", filter: "saturate(0.7) brightness(0.9)" }} />
-        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.82) 25%, rgba(10,22,40,0.82) 75%, #0A1628 100%)" }} />
-        <div style={{ maxWidth: "820px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What makes it different</p>
-          <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1.4rem" }}>
-            Anyone can say they checked.
-            <br />
-            <span style={{ fontStyle: "italic", color: "#E5484D" }}>You&apos;ll be able to prove it.</span>
-          </h2>
-          <p style={{ ...syne, fontSize: "15.5px", color: "rgba(244,241,234,0.75)", lineHeight: 1.8, maxWidth: "640px", margin: "0 auto 2.5rem" }}>
-            Every Sentinel client joins the Witness Network automatically. Each check is sealed the moment it happens and chained to the one before it, and the fingerprint of the record goes out every hour to independent witnesses we do not control. Nobody, including us, can change or backdate it without the break showing. Only the fingerprint leaves us; your findings stay private.
-          </p>
-
-          {proof && (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "1rem", maxWidth: "640px", margin: "0 auto 2rem" }}>
-              {[
-                { v: num(proof.daysRunning), l: "days running" },
-                { v: num(proof.recordsSealed), l: "records sealed" },
-                { v: proof.daysMissed === 0 ? "0" : num(proof.daysMissed), l: "days missed" },
-              ].map((s) => (
-                <div key={s.l} style={{ background: "rgba(13,27,46,0.85)", border: "1px solid rgba(201,166,107,0.3)", borderRadius: "10px", padding: "1.25rem" }}>
-                  <p className="font-mono-fig" style={{ fontSize: "2rem", color: "#F4F1EA", lineHeight: 1 }}>{s.v}</p>
-                  <p style={{ ...mono, fontSize: "10.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(244,241,234,0.55)", marginTop: "0.5rem" }}>{s.l}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          {proof && (
-            <p style={{ ...syne, fontSize: "13px", color: "rgba(244,241,234,0.55)", marginBottom: "1.5rem" }}>
-              Running every hour since {formatProofDate(proof.since)}.
+      {/* ── WHAT A MONTH LOOKS LIKE: an example note, clearly marked ── */}
+      <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: "980px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "center" }}>
+          <div>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>What a month looks like</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 4.5vw, 2.8rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1.2rem" }}>
+              One short note.
+              <br />
+              <span style={{ fontStyle: "italic", color: "#C9A66B" }}>Nothing to read twice.</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "15px", color: "rgba(244,241,234,0.68)", lineHeight: 1.75 }}>
+              Each month you get a note like this. Most months it says all clear. When it doesn&apos;t, it tells you exactly what to change, and anything urgent reaches you the day we find it, not at the end of the month.
             </p>
-          )}
-          <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/witness-network" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#C9A66B", textDecoration: "none" }}>
-              How the Witness Network works →
-            </Link>
-            <Link href="/verify" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#C9A66B", textDecoration: "none" }}>
-              Check a real record yourself →
-            </Link>
+          </div>
+
+          <div style={{ background: "#F4F1EA", color: "#0A1628", borderRadius: "14px", padding: "1.75rem", boxShadow: "0 24px 60px rgba(0,0,0,0.35)", position: "relative" }}>
+            <span style={{ ...mono, position: "absolute", top: "-11px", right: "16px", fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", background: "#C9A66B", color: "#0A1628", padding: "4px 9px", borderRadius: "4px" }}>Example · not a real business</span>
+            <p style={{ ...mono, fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(10,22,40,0.55)" }}>Sentinel · monthly note</p>
+            <p className="font-display" style={{ fontSize: "1.5rem", fontWeight: 500, marginTop: "0.3rem", marginBottom: "1.2rem" }}>Harbour Skin Clinic, November</p>
+            {[
+              { mark: "✓", colour: "#15803d", title: "38 pages checked", body: "All clear, including your new winter offers page." },
+              { mark: "⚑", colour: "#D9282E", title: "1 thing to change", body: "Your new loyalty card offers money off an anti wrinkle treatment. Change it to money off the consultation instead. Wording supplied." },
+              { mark: "§", colour: "#0A1628", title: "Law this month", body: "New EU rules on marking AI images start on 2 December. You don't use AI images, so nothing to do." },
+              { mark: "◆", colour: "#C9A66B", title: "Sealed and witnessed", body: "This check is on the record with today's date, and its fingerprint is held by independent witnesses." },
+            ].map((r) => (
+              <div key={r.title} style={{ display: "flex", gap: "12px", padding: "0.75rem 0", borderTop: "1px solid rgba(10,22,40,0.1)" }}>
+                <span style={{ fontSize: "16px", fontWeight: 700, color: r.colour, width: "18px", flexShrink: 0 }}>{r.mark}</span>
+                <div>
+                  <p style={{ ...syne, fontSize: "14.5px", fontWeight: 700 }}>{r.title}</p>
+                  <p style={{ ...syne, fontSize: "13.5px", color: "rgba(10,22,40,0.7)", lineHeight: 1.6 }}>{r.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── THE LAW, live ── */}
-      <LawClock cta={false} />
+      {/* ── THE WITNESS NETWORK: how every client is covered ── */}
+      <section style={{ position: "relative", overflow: "hidden", padding: "7rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", backgroundImage: "url(/images/sentinel/signature.jpg)", backgroundSize: "cover", backgroundPosition: "center", filter: "saturate(0.7) brightness(0.9)" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, #0A1628 0%, rgba(10,22,40,0.86) 25%, rgba(10,22,40,0.86) 75%, #0A1628 100%)" }} />
+        <div style={{ maxWidth: "940px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>Included with Sentinel</p>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1.2rem" }}>
+              You join the Witness Network.
+              <br />
+              <span style={{ fontStyle: "italic", color: "#E5484D" }}>Automatically.</span>
+            </h2>
+            <p style={{ ...syne, fontSize: "15.5px", color: "rgba(244,241,234,0.75)", lineHeight: 1.8, maxWidth: "640px", margin: "0 auto" }}>
+              Nothing to install, nothing to set up. From your first month, every check is held by witnesses who don&apos;t work for us, so the proof doesn&apos;t rest on our word.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "1rem" }}>
+            {[
+              { n: "1", t: "Your monthly check", b: "We check your site and record what we found and when." },
+              { n: "2", t: "Sealed into the record", b: "It is chained to every record before it. Change or backdate one and the break shows." },
+              { n: "3", t: "Held by independent witnesses", b: "Every hour the record's fingerprint goes to witnesses we don't control. Only the fingerprint leaves us; your findings stay private." },
+            ].map((x) => (
+              <div key={x.n} style={{ background: "rgba(13,27,46,0.88)", border: "1px solid rgba(201,166,107,0.35)", borderRadius: "12px", padding: "1.5rem" }}>
+                <span style={{ ...mono, display: "inline-block", width: "30px", height: "30px", lineHeight: "30px", textAlign: "center", borderRadius: "50%", background: "#C9A66B", color: "#0A1628", fontWeight: 700, fontSize: "13px", marginBottom: "0.9rem" }}>{x.n}</span>
+                <p className="font-display" style={{ fontSize: "1.25rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.4rem" }}>{x.t}</p>
+                <p style={{ ...syne, fontSize: "14px", color: "rgba(244,241,234,0.65)", lineHeight: 1.65 }}>{x.b}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ ...syne, fontSize: "13.5px", color: "rgba(244,241,234,0.6)", textAlign: "center", marginTop: "2rem", lineHeight: 1.7 }}>
+            {proof
+              ? `Running every hour since ${formatProofDate(proof.since)}: ${num(proof.recordsSealed)} records sealed, ${proof.daysMissed === 0 ? "not one day missed" : `${num(proof.daysRunning - proof.daysMissed)} of ${num(proof.daysRunning)} days sealed`}.`
+              : "Running every hour, every day."}{" "}
+            <Link href="/witness-network" style={{ color: "#C9A66B", fontWeight: 700, textDecoration: "none" }}>How it works →</Link>
+          </p>
+        </div>
+      </section>
 
       {/* ── PRICE ── */}
       <section style={{ padding: "6rem 1.5rem", background: "#0D1B2E", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
@@ -288,6 +317,7 @@ export default async function SentinelPage() {
                 <span className="font-mono-fig" style={{ fontSize: "2.2rem", color: "#F4F1EA" }}>£{SENTINEL_MONTHLY}</span>
                 <span style={{ ...syne, fontSize: "14px", color: "rgba(244,241,234,0.6)" }}> a month</span>
               </p>
+              <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#F4F1EA", marginBottom: "0.6rem" }}>Everything from your audit, plus:</p>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.5rem", display: "grid", gap: "0.5rem" }}>
                 {["Your site checked every month", "Law changes explained for you", "Reviewed badge kept live", "Added to the Witness Network automatically", "Questions answered within a working day", "No contract, stop any time"].map((t) => (
                   <li key={t} style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.8)", display: "flex", gap: "10px" }}>
