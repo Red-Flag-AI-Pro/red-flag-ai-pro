@@ -1162,11 +1162,11 @@ Before you launch your next campaign, run through this checklist.
 
 Checking all 16 points manually takes time, and it's easy to miss something.
 
-Red Flag AI Pro checks your marketing copy against all 30 risk categories across 11 jurisdictions simultaneously. Paste in your sales page, ad copy, email sequence or VSL script and get:
+Red Flag AI Pro checks your business for you against all 30 risk categories across 11 jurisdictions. Give us your website and you get:
 
-✅ A 0 100 compliance risk score
-✅ Every violation explained in plain English
-✅ Exact rewrite suggestions for every issue
+✅ Your red flag, free: the one problem most likely to cost you
+✅ Every issue explained in plain English
+✅ The full audit, if you want every issue and how to clear it
 ✅ Coverage across FTC, CMA, ASA, GDPR, EU AI Act, ACCC and CASL
 
 [Get your red flag, free →](https://www.redflagaipro.com/get-checked)
@@ -1383,7 +1383,7 @@ A seller who includes "all sales final" in their terms knows that most buyers wi
 
 This is why Red Flag AI Pro includes a check for contract contradictions, checking whether a seller's guarantee language conflicts with their actual terms, and whether those terms attempt to remove statutory rights that cannot legally be removed.
 
-Before you buy from any online seller, paste their sales page or terms into Red Flag AI Pro. We will tell you whether their refund policy is legal, and what your rights actually are.
+Before you buy from any online seller, read their refund terms against the rules above. Selling online yourself? Give us your website and we will tell you whether your own refund policy holds up.
 
 [Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
@@ -1947,11 +1947,11 @@ Standard FTC/ASA format: *"Results are not typical. Individual results will vary
 
 ## Check Your VSL Script Before You Film
 
-Red Flag AI Pro can check your VSL script for all 30 compliance risk categories. Paste the script or upload the audio file and Whisper transcribes it automatically.
+Red Flag AI Pro can check your sales video and the pages around it for all 30 compliance risk categories, for you.
 
 Catch compliance issues before you spend money on production and traffic.
 
-[Check your VSL script →](https://www.redflagaipro.com/scans/new)
+[Get your red flag, free →](https://www.redflagaipro.com/get-checked)
     `,
   },
   {
