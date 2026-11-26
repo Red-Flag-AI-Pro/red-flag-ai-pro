@@ -1,43 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Syne, DM_Mono, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
 import { SiteAssistant } from "@/components/marketing/SiteAssistant";
 import { ConsentScripts } from "@/components/ConsentScripts";
+import "./fonts.css";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  display: "swap",
-  // 600 and 800 are used widely across the site; without loading them the
-  // browser synthesises (faux-bold) those weights and headings look smeared.
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
-});
-
-// Newsreader — editorial serif used for display headlines. Signals the
-// institutional, financial-grade credibility CFOs and compliance buyers expect.
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
-});
+// Fonts are served from /public/fonts (see fonts.css). These are the Latin
+// files the page needs first, loaded early so text renders in the right font
+// straight away. The list matches what Next.js used to preload.
+const PRELOAD_FONTS = [
+  "/fonts/0e96d314a90a6138-s.p.woff2",
+  "/fonts/4b9bb515ce6d026f-s.p.woff2",
+  "/fonts/5611c55482296524-s.p.woff2",
+  "/fonts/8a1d8947e5852e30-s.p.woff2",
+  "/fonts/b7ea2ab4a8ad1f81-s.p.woff2",
+  "/fonts/e4af272ccee01ff0-s.p.woff2",
+];
 
 export const metadata: Metadata = {
   title: {
@@ -141,8 +121,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmMono.variable} ${newsreader.variable}`}>
-      <body className={inter.className}>
+    <html lang="en">
+      <head>
+        {PRELOAD_FONTS.map((href) => (
+          <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
+        ))}
+      </head>
+      <body className="font-body">
         {children}
         <Analytics />
         <SpeedInsights />
