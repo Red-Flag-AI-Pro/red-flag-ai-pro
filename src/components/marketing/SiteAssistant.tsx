@@ -11,7 +11,7 @@ interface Msg {
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Hi, I'm the Red Flag assistant. Tell me what you're worried about, your ads, your AI use, a board asking for proof, and I'll point you to the free check that shows where you actually stand.",
+    "Hi, I'm the Red Flag assistant. I'm an AI, so for anything important email James at support@redflagaipro.com. Tell me what you're worried about, your ads, your AI use, a board asking for proof, and I'll point you to the free check that shows where you actually stand.",
 };
 
 // Turns bare paths and support email in the assistant's replies into real
@@ -122,8 +122,8 @@ export function SiteAssistant() {
             padding: "14px 16px", borderBottom: "1px solid rgba(255,255,255,0.08)", background: "#0A1628",
           }}>
             <div>
-              <p style={{ ...syne, color: "white", fontSize: "14px", fontWeight: 700, margin: 0 }}>Red Flag assistant</p>
-              <p style={{ color: "rgba(244,241,234,0.45)", fontSize: "11px", margin: "2px 0 0" }}>Answers about the product. Not legal advice.</p>
+              <p style={{ ...syne, color: "white", fontSize: "14px", fontWeight: 700, margin: 0 }}>Red Flag assistant (AI)</p>
+              <p style={{ color: "rgba(244,241,234,0.45)", fontSize: "11px", margin: "2px 0 0" }}>An AI that answers questions about the service. Not legal advice.</p>
             </div>
             <button
               onClick={() => setOpen(false)}
