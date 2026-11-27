@@ -23,11 +23,39 @@ export function SisterBusiness() {
       </p>
 
       <div style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-        {/* RecoverROI's own mark, as used on recoverroi.com */}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="60" height="60" role="img" aria-label="RecoverROI" style={{ flexShrink: 0, borderRadius: "13px" }}>
-          <rect width="64" height="64" rx="14" fill="#0b0912" />
-          <path d="M16 50 V16 H32 a9 9 0 0 1 0 18 H16 M27 34 L38 50" fill="none" stroke="#f3f0fa" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M40 50 V24 H52 a7 7 0 0 1 0 14 H40 M50 38 L58 50" fill="none" stroke="#A855F7" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* RecoverROI's own icon (logo B, 27 Nov 2026), as used on recoverroi.com */}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="60" height="60" role="img" aria-label="RecoverROI" style={{ flexShrink: 0 }}>
+          <defs>
+            <radialGradient id="rroi-bg" cx="0.5" cy="0.38" r="0.7">
+              <stop offset="0" stopColor="#3A1D66" />
+              <stop offset="0.6" stopColor="#160C2A" />
+              <stop offset="1" stopColor="#07050C" />
+            </radialGradient>
+            <linearGradient id="rroi-ink" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="210">
+              <stop offset="0" stopColor="#FFFFFF" />
+              <stop offset="0.55" stopColor="#E9E4F5" />
+              <stop offset="1" stopColor="#B9B1CC" />
+            </linearGradient>
+            <linearGradient id="rroi-pu" gradientUnits="userSpaceOnUse" x1="70" y1="40" x2="185" y2="150">
+              <stop offset="0" stopColor="#D8B4FE" />
+              <stop offset="0.45" stopColor="#A855F7" />
+              <stop offset="1" stopColor="#6D28D9" />
+            </linearGradient>
+            <filter id="rroi-gl" filterUnits="userSpaceOnUse" x="-200" y="-200" width="700" height="700">
+              <feGaussianBlur stdDeviation="10" />
+            </filter>
+          </defs>
+          <rect width="240" height="240" rx="52" fill="url(#rroi-bg)" />
+          <g transform="translate(120 120) scale(0.92) translate(-125 -125)">
+            <path d="M74 44 H134 A46 46 0 0 1 134 136 H112" fill="none" stroke="#A855F7" strokeWidth="30" strokeLinecap="round" opacity="0.55" filter="url(#rroi-gl)" />
+            <g fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24">
+              <path d="M74 204 V44" stroke="url(#rroi-ink)" />
+              <path d="M74 44 H134 A46 46 0 0 1 134 136 H112" stroke="url(#rroi-pu)" />
+              <path d="M122.3 156.1 L100 136 L122.3 115.9" stroke="url(#rroi-pu)" />
+              <path d="M132 150 L176 204" stroke="url(#rroi-ink)" />
+            </g>
+            <path d="M80 50 H132 A40 40 0 0 1 168 72" fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="5" strokeLinecap="round" />
+          </g>
         </svg>
         <div style={{ flex: "1 1 320px", minWidth: 0 }}>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: "1.1rem" }}>
