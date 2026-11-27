@@ -414,14 +414,14 @@ export default async function AuditPage({
           {/* Two comparison boxes side by side, this audit centred beneath them. */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "2px", marginBottom: "2px" }}>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "clamp(1.1rem, 4vw, 1.75rem) clamp(0.6rem, 3vw, 1.75rem)", textAlign: "center" }}>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Compliance lawyer</p>
-              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£400</p>
-              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>per hour</p>
+              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Senior solicitor, London</p>
+              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£579</p>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>an hour</p>
             </div>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "clamp(1.1rem, 4vw, 1.75rem) clamp(0.6rem, 3vw, 1.75rem)", textAlign: "center" }}>
-              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Full funnel audit</p>
-              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£2,400</p>
-              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>minimum</p>
+              <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Half a day of their time</p>
+              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£2,316</p>
+              <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>four hours</p>
             </div>
           </div>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
@@ -457,7 +457,7 @@ export default async function AuditPage({
           </div>
 
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center" }}>
-            One payment. Not per hour, not per month, not a retainer.
+            One payment. Not per hour, not per month, not a retainer. (Solicitor rate: court guideline hourly rate for London, 2026, gov.uk.)
           </p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "0.35rem" }}>
             Done personally, by the person who built the tool, or <a href="#request" style={{ color: "rgba(255,255,255,0.4)", textDecoration: "underline" }}>request it by email first</a> if you want to talk before you pay.

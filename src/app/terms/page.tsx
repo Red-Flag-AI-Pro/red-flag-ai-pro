@@ -31,7 +31,7 @@ export default function TermsPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Terms of Service
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 4 August 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 27 November 2026</p>
         </div>
       </section>
 
@@ -43,7 +43,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>1. About Red Flag AI Pro</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an AI powered marketing compliance checking and AI governance assessment service. By accessing or using our platform at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
+              Red Flag AI Pro (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is a done for you compliance and AI governance service. By using our website or our services at <strong style={{ color: "white" }}>www.redflagaipro.com</strong>, you agree to be bound by these Terms of Service.
             </p>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.25rem", marginTop: "1rem" }}>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
@@ -62,7 +62,7 @@ export default function TermsPage() {
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>2. Not Legal Advice: Important Disclaimer</h2>
             <div style={{ background: "#102943", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.5rem" }}>
               <p style={{ ...syne, fontSize: "14px", fontWeight: 600, color: "#E5484D", lineHeight: 1.8, marginBottom: "0.75rem" }}>
-                Red Flag AI Pro is an AI powered tool and does not constitute legal advice. Our checks and reports are provided for informational purposes only.
+                Red Flag AI Pro&apos;s red flags, checks, audits and reports are not legal advice. They are provided for informational purposes only.
               </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.9 }}>
                 Nothing produced by Red Flag AI Pro should be relied upon as a substitute for professional legal counsel. We strongly recommend consulting a qualified solicitor or compliance professional for definitive legal guidance specific to your business. Red Flag AI Pro accepts no liability for decisions made based solely on our check results.
@@ -88,7 +88,7 @@ export default function TermsPage() {
           <div>
             <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>4. Your Account</h2>
             <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-              You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at{" "}
+              If you have an account, you are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at{" "}
               <a href="mailto:support@redflagaipro.com" style={{ color: "#E5484D", textDecoration: "none" }}>support@redflagaipro.com</a>{" "}
               of any unauthorised use of your account.
             </p>
@@ -144,7 +144,7 @@ export default function TermsPage() {
 
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Done for you audit guarantee</p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                If the Done For You Audit finds nothing worth fixing on the site and AI use you asked us to review, we refund the full price you paid for it, and you keep the report and the badge. Where the audit does find issues, the price is not refundable once the report has been delivered, without affecting any rights you have in law.
+                If the Done For You Audit finds nothing worth fixing on the site and AI use you asked us to review, we refund the full price you paid for it, and you keep the report and the badge. &ldquo;Worth fixing&rdquo; means a finding that breaks a rule we name, quoted from your own page. The audit covers the ten areas listed on the checkout page, which you agree as its scope before you pay; if you want anything else looked at, tell us before we start. If you change your mind before work starts, email support@redflagaipro.com and we will refund you in full. Where the audit does find issues, the price is not refundable once the report has been delivered, without affecting any rights you have in law. Your audit is written for your business only. Nobody else, such as a lender, buyer or insurer, may rely on it unless we agree that in writing first.
               </p>
 
               <p style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "white", lineHeight: 1.9, marginTop: "0.5rem" }}>Subscription refunds</p>

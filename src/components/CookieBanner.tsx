@@ -28,7 +28,7 @@ export function CookieBanner() {
     <div className="cookie-banner fixed bottom-0 left-0 right-0 z-50 bg-gray-950 border-t border-gray-800 px-6 py-4">
       <div className="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-gray-400 text-center sm:text-left">
-          We use cookies for analytics to improve your experience. We do not sell your data.{" "}
+          We use optional cookies to measure our adverts and run our referral programme. We do not sell your data.{" "}
           <a href="/privacy" className="underline text-gray-300 hover:text-white">
             Privacy Policy
           </a>

@@ -31,7 +31,7 @@ export default function PrivacyPage() {
           <h1 style={{ ...syne, fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.75rem", color: "#F4F1EA" }}>
             Privacy Policy
           </h1>
-          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 4 August 2026</p>
+          <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Last updated: 27 November 2026</p>
         </div>
       </section>
 
@@ -64,7 +64,9 @@ export default function PrivacyPage() {
                 </thead>
                 <tbody>
                   {[
-                    ["Name & email address", "To create and manage your account"],
+                    ["Your website address, name and email, when you ask for your free red flag or buy an audit", "So James can check your website, send you your red flag or audit, and follow up with you"],
+                    ["Your audit (front sheet, findings and video walkthrough)", "Written for you by James from your public website and anything you send him. Not shared with anyone else."],
+                    ["Name & email address (account holders)", "To create and manage your account"],
                     ["Payment information", "Processed securely by Stripe, we never store card details"],
                     ["Copy you submit for checking", "To generate your compliance check results only"],
                     ["Check results and history", "To display your dashboard and check history"],
@@ -88,10 +90,13 @@ export default function PrivacyPage() {
 
           {/* 3 */}
           <div>
-            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Submitted Copy: Data Handling and Confidentiality</h2>
+            <h2 style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#E5484D", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1rem" }}>3. Your Audit, and Copy You Submit</h2>
             <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "1.5rem" }}>
+              <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: "1rem" }}>
+                <strong style={{ color: "white" }}>Your audit.</strong> When you ask for your red flag or buy an audit, James personally reads your public website and anything you send him. That human review is the service you are paying for. Your audit is written for you only: it is not shared, not published and not used to train AI models.
+              </p>
               <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.9 }}>
-                The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your check results</strong>. This is your data. It remains your data. We do not:
+                <strong style={{ color: "white" }}>Copy pasted into the self serve checker (existing accounts).</strong> The marketing copy you paste into Red Flag AI Pro is used <strong style={{ color: "white" }}>solely to generate your check results</strong>. This is your data. It remains your data. We do not:
               </p>
               <ul style={{ paddingLeft: "1.25rem", marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 {[
@@ -106,7 +111,7 @@ export default function PrivacyPage() {
               </ul>
               <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>You can delete your check history at any time from your dashboard. Deletion is permanent.</p>
               <p style={{ ...syne, fontSize: "12px", color: "#4ade80", lineHeight: 1.7, marginTop: "1rem", background: "rgba(74,222,128,0.08)", padding: "0.75rem", borderRadius: "6px", border: "1px solid rgba(74,222,128,0.15)" }}>
-                <strong>No human review, no training:</strong> Red Flag operates under contractual terms that prohibit human review, training, or onward disclosure of your data. This is equivalent to closed enterprise AI tools.
+                <strong>No training by AI providers:</strong> the AI providers we use work under contractual terms that stop them reviewing, training on or passing on your data.
               </p>
             </div>
           </div>
@@ -162,7 +167,8 @@ export default function PrivacyPage() {
                 ["Vercel", "Website hosting"],
                 ["OpenAI / Anthropic", "AI processing of check requests and the site assistant"],
                 ["DigiCert / freeTSA", "For Sentinel customers only: the cryptographic hash of certain governance records is sent to an independent time stamping authority to seal them with a verifiable timestamp. The record's content itself is never sent, only its hash."],
-                ["Witness Network peers", "Red Flag AI Pro's own company-level audit chain exchanges hourly cryptographic hashes with independent peer companies (currently sebbi.pro / AILeash) under the open, published Witness Network protocol. This exchange is company-level infrastructure only: it shares a hash of our own operational record, never your personal data, account details, or check content. See redflagaipro.com/witness-network."],
+                ["Witness Network peers", "Red Flag AI Pro's own company-level audit chain exchanges hourly cryptographic hashes with independent peer companies (currently sebbi.pro / AILeash and NexusTrinity) under the open, published Witness Network protocol. This exchange is company-level infrastructure only: it shares a hash of our own operational record, never your personal data, account details, or check content. See redflagaipro.com/witness-network."],
+                ["Resend", "Sending service emails, such as order confirmations and the notice James gets when you order"],
                 ["Loops", "Email marketing and transactional emails (your email address and plan tier are shared to send relevant communications). You can unsubscribe at any time."],
                 ["Google Ads", "Conversion data (e.g. signups) may be shared with Google to measure ad performance and show our ads to similar audiences (Customer Match). You can opt out via Google's Ads Settings."],
               ].map(([label, text]) => (
@@ -172,6 +178,9 @@ export default function PrivacyPage() {
               ))}
             </ul>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>All third parties are bound by appropriate data processing agreements.</p>
+            <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>
+              <strong style={{ color: "white" }}>Information leaving the UK.</strong> Some of these providers, including Stripe, Vercel, OpenAI, Anthropic, Resend, Loops and Google, are based in the United States, so your information can be handled there. When it is, it is covered by the safeguards UK law approves, such as the UK Extension to the EU US Data Privacy Framework or the standard contract clauses with the UK Addendum. Ask us and we will tell you which applies to which provider.
+            </p>
             <p style={{ ...syne, fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginTop: "0.75rem" }}>
               Sharing a report by link is optional and off by default. If you choose to share one, its score and flags become visible to anyone with the link until you turn sharing off again.
             </p>
@@ -185,6 +194,7 @@ export default function PrivacyPage() {
                 "Account data: retained while your account is active and for 30 days after deletion",
                 "Billing records: 7 years as required by UK law",
                 "Check history: retained until you delete it or close your account",
+                "Red flags and audits: kept for two years from delivery so we can answer questions about them, then deleted, sooner if you ask",
                 "Free tool emails: retained until you unsubscribe or ask us to delete them",
                 "Business prospect records: 12 months from last contact, then deleted (see section 4a)",
               ].map((item) => (

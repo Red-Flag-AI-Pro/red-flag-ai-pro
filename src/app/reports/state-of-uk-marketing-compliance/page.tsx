@@ -20,13 +20,6 @@ export const metadata: Metadata = {
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSProperties;
 
-function scoreColor(score: number | null) {
-  if (score === null) return "rgba(244,241,234,0.4)";
-  if (score >= 70) return "#4ade80";
-  if (score >= 40) return "#fbbf24";
-  return "#ff9b9e";
-}
-
 export default function StateOfUKMarketingCompliancePage() {
   return (
     <div style={{ background: "#0A1628", minHeight: "100vh" }}>
@@ -36,7 +29,7 @@ export default function StateOfUKMarketingCompliancePage() {
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
             <span style={{ width: "26px", height: "2px", background: "#E5484D" }} />
-            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Living report</p>
+            <p style={{ ...syne, fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(244,241,234,0.6)" }}>Report, checked 26 July 2026</p>
           </div>
           <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 500, color: "#F4F1EA", letterSpacing: "-0.015em", lineHeight: 1.15, marginBottom: "1.25rem" }}>
             <span style={{ color: "#E5484D" }}>{UNIQUE_RULING_COUNT} of {REPORT_TOTAL_CHECKED}</span> UK businesses we checked already have a live ASA ruling.
@@ -53,9 +46,6 @@ export default function StateOfUKMarketingCompliancePage() {
           <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.75, marginBottom: "1rem" }}>
             {REPORT_TOTAL_CHECKED} UK businesses were run through Red Flag&apos;s own compliance check on {new Date(REPORT_CHECKED_AT).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. Each ruling here was independently verified against the ASA&apos;s own public rulings register, deduplicated by ruling reference so the same decision is never counted twice under two spellings of a company name.
           </p>
-          <p style={{ ...syne, fontSize: "0.9rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.75 }}>
-            The score shown is Red Flag&apos;s own automated check score for that company&apos;s site at the time, out of 100. It is shown even where it is high, because several of these companies score well on an automated read of their copy while still carrying a real ASA ruling — the ruling often concerns something a text check alone would not catch, like a subscription trap or a missing influencer disclosure. That is a limit worth stating honestly, not a result worth hiding.
-          </p>
         </div>
       </section>
 
@@ -65,12 +55,11 @@ export default function StateOfUKMarketingCompliancePage() {
             Every ruling, linked
           </p>
           <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "620px" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "520px" }}>
               <thead>
                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
                   <th style={{ ...syne, textAlign: "left", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", padding: "0 1rem 0.75rem 0" }}>Company</th>
                   <th style={{ ...syne, textAlign: "left", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", padding: "0 1rem 0.75rem 0" }}>What ASA upheld</th>
-                  <th style={{ ...syne, textAlign: "left", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", padding: "0 1rem 0.75rem 0" }}>Our score</th>
                   <th style={{ ...syne, textAlign: "left", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(244,241,234,0.5)", padding: "0 0 0.75rem 0" }}>Ruling</th>
                 </tr>
               </thead>
@@ -82,7 +71,6 @@ export default function StateOfUKMarketingCompliancePage() {
                       <div style={{ ...mono, fontSize: "10.5px", color: "rgba(244,241,234,0.35)", marginTop: "2px" }}>{c.domain}</div>
                     </td>
                     <td style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.6)", padding: "0.85rem 1rem 0.85rem 0", verticalAlign: "top" }}>{c.categories}</td>
-                    <td style={{ ...mono, fontSize: "13px", fontWeight: 700, color: scoreColor(c.score), padding: "0.85rem 1rem 0.85rem 0", verticalAlign: "top" }}>{c.score === null ? "—" : c.score}</td>
                     <td style={{ padding: "0.85rem 0", verticalAlign: "top" }}>
                       <a href={c.ruling} target="_blank" rel="noopener noreferrer" style={{ ...syne, fontSize: "12px", color: "#E5484D", textDecoration: "none" }}>
                         ASA record →
