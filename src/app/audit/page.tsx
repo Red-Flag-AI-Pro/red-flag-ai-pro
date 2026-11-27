@@ -414,18 +414,22 @@ export default async function AuditPage({
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2px", marginBottom: "3rem" }}>
-            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
+          {/* Two comparison boxes side by side, this audit centred beneath them. */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "2px", marginBottom: "2px" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "clamp(1.1rem, 4vw, 1.75rem) clamp(0.6rem, 3vw, 1.75rem)", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Compliance lawyer</p>
-              <p style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem" }}>£400</p>
+              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£400</p>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>per hour</p>
             </div>
-            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "1.75rem", textAlign: "center" }}>
+            <div style={{ background: "#0D1B2E", border: "1px solid rgba(255,255,255,0.05)", padding: "clamp(1.1rem, 4vw, 1.75rem) clamp(0.6rem, 3vw, 1.75rem)", textAlign: "center" }}>
               <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", letterSpacing: "0.05em" }}>Full funnel audit</p>
-              <p style={{ ...syne, fontSize: "2rem", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem" }}>£2,400</p>
+              <p style={{ ...syne, fontSize: "clamp(1.35rem, 6vw, 2rem)", fontWeight: 800, color: "rgba(255,255,255,0.5)", marginBottom: "0.25rem", whiteSpace: "nowrap" }}>£2,400</p>
               <p style={{ ...mono, fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>minimum</p>
             </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
             <div style={{
+              width: "min(100%, max(280px, calc(50% - 1px)))",
               background: "linear-gradient(135deg, #1a0505 0%, #102943 100%)",
               border: "1px solid rgba(239,68,68,0.3)",
               padding: "1.75rem", textAlign: "center",
