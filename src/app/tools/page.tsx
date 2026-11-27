@@ -7,7 +7,7 @@ import { JURISDICTION_COUNT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Free Compliance and AI Governance Tools: Red Flag AI Pro",
   description:
-    "Free AI governance assessment, plus marketing compliance tools: a 30 category compliance checklist, an affiliate disclosure generator, and more, included free with every account.",
+    "Free AI governance assessment, plus marketing compliance tools: a compliance checklist, an affiliate disclosure generator and more. Free to use.",
   alternates: { canonical: "https://www.redflagaipro.com/tools" },
 };
 

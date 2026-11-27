@@ -6,7 +6,9 @@ import { RISK_CATEGORY_COUNT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "API Documentation: Red Flag AI Pro",
-  description: "REST API for checking marketing copy programmatically. Included on every paid plan.",
+  description: "REST API for existing Red Flag AI Pro accounts.",
+  // Self serve leftover, kept for existing users but out of search (27 Nov 2026).
+  robots: { index: false, follow: false },
 };
 
 function Code({ children }: { children: string }) {

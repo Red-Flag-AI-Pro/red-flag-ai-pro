@@ -273,7 +273,7 @@ export function ScanResultCard({ scan, flags, plan, print = false }: ScanResultC
               <div>
                 <p className="text-sm text-amber-900 font-semibold mb-0.5">Want someone to fix this for you?</p>
                 <p className="text-sm text-amber-300">
-                  I&apos;ll personally scan your full site and funnel, record a video walkthrough of every flag, and deliver a PDF report with a reviewed badge — in 48 hours.{" "}
+                  I&apos;ll personally check your full site and funnel, record a video walkthrough of every flag, and deliver a PDF report with a reviewed badge, within a few working days.{" "}
                   <a href="/audit" className="font-semibold underline hover:no-underline">Find out more →</a>
                 </p>
               </div>

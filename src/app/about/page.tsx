@@ -9,9 +9,9 @@ import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT } from "@/lib/constants";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "About Red Flag AI Pro: AI Governance Scoring and Compliance Platform",
+  title: "About Red Flag AI Pro: Compliance and AI Governance, Done For You",
   description:
-    `Red Flag AI Pro was built to solve the gap between AI compliance and AI governance. Immutable audit trails, named human sign-off, and compliance checking across ${JURISDICTION_COUNT} jurisdictions. Built by James Stokes for CFOs, legal and risk teams.`,
+    "Red Flag AI Pro is run by James Stokes. We check what your business says in public, and what your AI says for you, against the rules, and we do the work for you. Your first red flag is free.",
   alternates: { canonical: "https://www.redflagaipro.com/about" },
 };
 
@@ -96,7 +96,7 @@ export default function AboutPage() {
               margin: "0 auto",
             }}
           >
-            Red Flag started as a checker that catches compliance risk in your marketing copy before it ships. The same gap shows up at the next level: every organization has governance policies, but when a regulator asks, "Can you prove governance happened?" most organizations can&apos;t. Red Flag now closes both gaps.
+            Red Flag started by catching compliance risk in marketing copy before it went out. The same gap shows up at the next level: every organization has governance policies, but when a regulator asks, "Can you prove governance happened?" most organizations can&apos;t. Red Flag now closes both gaps.
           </p>
         </div>
       </section>
@@ -267,7 +267,7 @@ export default function AboutPage() {
               {
                 icon: "",
                 title: "Catch It Before It Ships",
-                desc: `Real time check on marketing copy against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions. The original problem we solved, still running every day.`,
+                desc: `Marketing copy checked against ${RISK_CATEGORY_COUNT} risk categories across ${JURISDICTION_COUNT} jurisdictions. Where Red Flag started.`,
               },
               {
                 icon: "",
@@ -387,7 +387,7 @@ export default function AboutPage() {
               It catches the risk in your marketing copy before it publishes.
               And it makes AI governance visible to a regulator or board, what
               is broken, what to fix first, and proof that it actually
-              happened. Nobody else on the market does both.
+              happened.
             </p>
           </div>
 

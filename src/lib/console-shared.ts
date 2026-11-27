@@ -282,7 +282,7 @@ export function replyMessage(p: Prospect): string {
     "",
     summary,
     "",
-    "The full audit lists every one: where it is on your site, why it matters, and the exact wording to fix it. You get it on video and in writing within 48 hours, with a reviewed badge for your site. It's £449, and if I find nothing worth fixing, you get your money back.",
+    "The full audit lists every one: where it is on your site, why it matters, and the exact wording to fix it. You get it on video and in writing within a few working days, with a reviewed badge for your site. It's £449, and if I find nothing worth fixing, you get your money back.",
     "",
     `Here's the link to book it: ${link}`,
     "",
@@ -380,7 +380,7 @@ export function callScript(p: Prospect): CallScript {
       {
         title: "The offer",
         say: [
-          `Here's what I do. For ${price}, one payment, I go through your whole site and how you use AI. You get every problem, why it matters and exactly what to change, on video and in writing, inside 48 hours.`,
+          `Here's what I do. For ${price}, one payment, I go through your whole site and how you use AI. You get every problem, why it matters and exactly what to change, on video and in writing, within a few working days.`,
           "If I find nothing worth fixing, you get your money back.",
         ],
       },

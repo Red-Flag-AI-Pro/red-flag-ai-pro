@@ -399,7 +399,7 @@ This is a screening document, not legal advice. It follows the ICO's own DPIA sc
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.7, marginTop: "1.5rem", textAlign: "center" }}>
         This tool gives a screening document, not legal advice or a substitute for a full DPIA. It follows the structure of the ICO&apos;s own screening checklist. Use the ICO&apos;s{" "}
-        <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-framework/data-protection-impact-assessments/" target="_blank" rel="noopener noreferrer" style={{ color: "#E5484D", textDecoration: "none" }}>
+        <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" target="_blank" rel="noopener noreferrer" style={{ color: "#E5484D", textDecoration: "none" }}>
           full DPIA guidance
         </a>{" "}
         to complete the assessment if one is required.

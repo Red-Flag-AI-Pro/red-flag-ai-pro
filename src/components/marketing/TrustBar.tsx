@@ -49,7 +49,7 @@ const FRAMEWORKS = [
 
 const ASSURANCES = [
   "Audit ready evidence on every assessment",
-  "Your data is never stored or sold",
+  "We never sell your data",
   "Mapped to real regulatory frameworks, not generic checklists",
 ];
 

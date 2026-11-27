@@ -182,7 +182,7 @@ export default function GovernanceAuditPage() {
               color: 'rgba(255,255,255,0.4)',
               lineHeight: 1.5,
             }}>
-              Instant results with 0-100 governance maturity score and peer benchmarking
+              Instant results with a 0 to 100 governance maturity score
             </p>
           </div>
 

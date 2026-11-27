@@ -192,7 +192,7 @@ export function AuditRequestForm() {
       </button>
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>
-        No payment taken here. One time, covers both compliance and governance, delivered within 48 hours of payment.
+        No payment taken here. One time, covers both compliance and governance, delivered within a few working days of payment.
         Your details go straight to the founder and are never shared.
       </p>
     </form>

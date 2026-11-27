@@ -49,7 +49,7 @@ export default async function PricingPage() {
               },
               {
                 title: "EU AI Act (Aug 2, 2026)",
-                desc: "Mandatory disclosure of AI generated content + governance evidence. Weeks away, not years.",
+                desc: "Mandatory disclosure of AI generated content + governance evidence. Already in force.",
               },
               {
                 title: "SEC 2026 Exams",
@@ -92,7 +92,7 @@ export default async function PricingPage() {
             <p style={{ ...syne, fontSize: "1.2rem", fontWeight: 700, color: "white", lineHeight: 1.6 }}>
               One unchecked ad with an undisclosed claim can trigger a fine before legal ever sees it. A regulator finding you can't prove governance afterward: enterprise reputation destroyed. Your insurance won't cover either.
             </p>
-            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>83% of organisations use AI. Only 25% have governance that would hold up to a regulator. 72% are increasing GRC spend right now, but 78% are still unprepared for the EU AI Act. EU AI Act Article 50 transparency duties have applied since 2 August 2026, even though high risk system deadlines were pushed to Dec 2027 and Aug 2028. Most compliance tools are built once and left to go stale. We re-check every jurisdiction against the official text, so you're never caught running on a rule that already moved.</p>
+            <p style={{ ...syne, fontSize: "12px", color: "rgba(255,255,255,0.5)", marginTop: "1rem" }}>EU AI Act Article 50 transparency duties have applied since 2 August 2026, even though high risk system deadlines were pushed to Dec 2027 and Aug 2028. Most compliance tools are built once and left to go stale. We re-check every jurisdiction against the official text, so you're never caught running on a rule that already moved.</p>
           </div>
         </div>
       </section>
@@ -111,7 +111,7 @@ export default async function PricingPage() {
           background: "radial-gradient(ellipse at center, rgba(229,72,77,0.08) 0%, transparent 65%)"
         }} />
         <div style={{ maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>{JURISDICTION_COUNT} jurisdictions covered across {RISK_CATEGORY_COUNT} risk categories. Wherever your business operates, you are protected.</p>
+          <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>{JURISDICTION_COUNT} jurisdictions covered across {RISK_CATEGORY_COUNT} risk categories, wherever your business operates.</p>
           <h1 className="font-display" style={{ fontSize: "clamp(2.3rem, 6vw, 3.6rem)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.08, marginBottom: "1rem", color: "#F4F1EA" }}>
             Catch what you said.<br /><span style={{ fontStyle: "italic", color: "#E5484D" }}>Then prove what you did.</span>
           </h1>
@@ -217,7 +217,7 @@ export default async function PricingPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>Why CFOs choose Sentinel</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2rem", color: "white" }}>
-            Governance that <span style={{ color: "#F4F1EA" }}>regulators accept.</span>
+            Governance you can <span style={{ color: "#F4F1EA" }}>show a regulator.</span>
           </h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
@@ -228,11 +228,11 @@ export default async function PricingPage() {
               },
               {
                 title: "Implementation Partner",
-                desc: "We don't just identify gaps. We build the infrastructure. You're not managing consultants; we're doing it.",
+                desc: "We don't just point out gaps. We do the work with you, so you're not left managing consultants.",
               },
               {
                 title: "Board Reporting",
-                desc: "Quarterly governance decks + financial impact modeling. Board sees risk declining, compliance improving.",
+                desc: "A plain monthly record of every check, ready to show your board.",
               },
               {
                 title: "Regulatory Readiness",

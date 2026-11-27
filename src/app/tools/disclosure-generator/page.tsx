@@ -43,7 +43,7 @@ export default function DisclosureGeneratorPage() {
             Affiliate &amp; sponsorship<br />disclosure generator
           </h1>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, maxWidth: "520px", margin: "0 auto" }}>
-            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get FTC and ASA compliant wording you can paste straight in, free.
+            &ldquo;#ad&rdquo; buried in a hashtag pile won&apos;t cut it. Pick your platform and relationship type, get disclosure wording written to the FTC and ASA guidance, ready to paste straight in, free.
           </p>
         </div>
       </section>

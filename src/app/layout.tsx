@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Red Flag AI Pro",
   },
   description:
-    "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
+    "Compliance and AI governance, done for you. Your first red flag is free. The full audit is £449, signed by James, with your money back if we find nothing worth fixing.",
   keywords: [
     // Core positioning
     "AI governance assessment",
@@ -75,13 +75,13 @@ export const metadata: Metadata = {
     siteName: "Red Flag AI Pro",
     title: "Red Flag AI Pro: AI Compliance and AI Governance, Done Properly.",
     description:
-      "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
+      "Compliance and AI governance, done for you. Your first red flag is free. The full audit is £449, signed by James, with your money back if we find nothing worth fixing.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Red Flag AI Pro: AI Governance Maturity Index for CFOs and compliance teams.",
+        alt: "Red Flag AI Pro: compliance and AI governance, done for you.",
       },
     ],
   },
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Red Flag AI Pro: AI Compliance and AI Governance, Done Properly.",
     description:
-      "Check your marketing copy for compliance risk. Prove your AI governance to regulators and boards. One platform, both halves, kept current as the law changes.",
+      "Compliance and AI governance, done for you. Your first red flag is free. The full audit is £449, signed by James, with your money back if we find nothing worth fixing.",
     images: ["/og-image.png"],
     creator: "@redflagaipro",
   },
@@ -138,39 +138,20 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "ProfessionalService",
               "name": "Red Flag AI Pro",
               "url": "https://www.redflagaipro.com",
-              "description": "AI governance assessment and assurance for CFOs, compliance and risk teams. Score your governance maturity across 6 dimensions, generate audit-ready evidence, and prove governance to regulators (EU AI Act, DORA, SEC, Munir). Free assessment.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "Web",
+              "description": "Compliance and AI governance, done for you, for UK businesses. Your first red flag is free. The full audit is £449, signed by James Stokes, with your money back if we find nothing worth fixing. Sentinel keeps it current for £199 a month.",
+              "areaServed": { "@type": "Country", "name": "United Kingdom" },
               "offers": [
-                {
-                  "@type": "Offer",
-                  "name": "Assessment",
-                  "price": "0",
-                  "priceCurrency": "GBP"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Pro",
-                  "price": "350",
-                  "priceCurrency": "GBP",
-                  "billingPeriod": "P1M"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Growth",
-                  "price": "1200",
-                  "priceCurrency": "GBP",
-                  "billingPeriod": "P1M"
-                },
+                { "@type": "Offer", "name": "Your red flag", "price": "0", "priceCurrency": "GBP" },
+                { "@type": "Offer", "name": "Compliance and AI governance audit", "price": "449", "priceCurrency": "GBP" },
                 {
                   "@type": "Offer",
                   "name": "Sentinel",
-                  "price": "5000",
+                  "price": "199",
                   "priceCurrency": "GBP",
-                  "billingPeriod": "P1M"
+                  "priceSpecification": { "@type": "UnitPriceSpecification", "price": "199", "priceCurrency": "GBP", "unitText": "MONTH" }
                 }
               ],
               "publisher": {

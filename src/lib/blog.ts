@@ -1078,7 +1078,7 @@ Red Flag AI Pro checks your email marketing copy for GDPR, CASL, PECR and CAN SP
     content: `
 ## Why a Compliance Checklist Matters in 2026
 
-Governments across the US, UK, EU, Australia and Canada have issued over **$6 billion in marketing compliance fines** in the last three years alone. The targets are not scammers, they are ordinary marketers, course creators, agencies and ecommerce brands who simply never checked their copy.
+Governments across the US, UK, EU, Australia and Canada fine businesses for their marketing copy every year. The targets are not scammers, they are ordinary marketers, course creators, agencies and ecommerce brands who simply never checked their copy.
 
 2026 is a particularly high risk year. The EU AI Act comes into force in August. The FTC has expanded its enforcement powers. The CMA has new authority to fine businesses directly without going to court.
 
@@ -2505,7 +2505,7 @@ This is the honest comparison.
 
 Red Flag AI Pro is a compliance checking tool, not a lawyer. For high stakes decisions, FCA regulated financial promotions, pharmaceutical claims, specific regulatory advice, you need qualified legal counsel.
 
-What Red Flag AI Pro does is catch the 90% of compliance issues that are detectable through language pattern analysis: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
+What Red Flag AI Pro does is catch the common compliance problems that show up in the words on the page: income claims, fake urgency, scarcity dark patterns, data privacy violations, missing disclaimers, contract contradictions, AI content disclosure failures.
 
 It is the first line of defence that means fewer problems reach the lawyer's desk, and when they do, there is already a documented review trail.
 
@@ -2880,7 +2880,7 @@ Enforcement is not theoretical. It's happening now.
 
 Organizations that close the visibility gap in the next 90 days will have plausible compliance in any audit. Organizations that wait will face audits where they cannot explain their own governance decisions.
 
-[Try our free Governance Readiness Audit →](https://www.redflagaipro.com/tools/ai-governance-audit)
+[Try our free Governance Readiness Audit →](https://www.redflagaipro.com/governance-audit)
     `,
   },
 ];

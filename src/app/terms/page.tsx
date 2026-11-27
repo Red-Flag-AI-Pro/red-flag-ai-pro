@@ -104,7 +104,7 @@ export default function TermsPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {[
                 ["Your red flag", "Free. You give us your website and we tell you the one problem most likely to cost you, the rule it breaks and how many more we found. No card and no account needed. The governance assessment is also free."],
-                ["Full audit", "£449, paid once, before the work starts. Every finding on your site and in how you use AI, and how to clear it, delivered within 48 hours with a reviewed badge. Covered by the guarantee in section 6."],
+                ["Full audit", "£449, paid once, before the work starts. Every finding on your site and in how you use AI, and how to clear it, delivered within a few working days with a reviewed badge. Covered by the guarantee in section 6."],
                 ["Sentinel", "£199 a month, starting after the full audit. Clients who join at the founding price keep it for as long as their subscription continues without a break. Billed monthly via Stripe. Larger firms, several sites or regulated teams are priced in writing before any charge is made."],
                 ["Earlier plans", "Accounts and subscriptions taken out before 26 November 2026 continue on the terms and price they were taken out on until they end or are cancelled."],
                 ["VAT", "All prices are inclusive of any applicable VAT where required by law."],

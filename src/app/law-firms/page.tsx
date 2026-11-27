@@ -229,7 +229,7 @@ export default function LawFirmsPage() {
             }}
           >
             In Munir v SSHD, unchecked AI output reached a tribunal and a solicitor was referred to the regulator.
-            Red Flag AI Pro gives your firm the answer that survives scrutiny: a sealed, timestamped record proving
+            Red Flag AI Pro gives your firm something to show when the question comes: a sealed, timestamped record proving
             every AI assisted document and every piece of marketing was checked before it left the building.
           </p>
 
@@ -629,7 +629,7 @@ export default function LawFirmsPage() {
             <Link href="/sentinel#request" style={{ color: "#E5484D", textDecoration: "underline" }}>
               Talk to us about Sentinel
             </Link>
-            , scoped and priced to your team.
+            , £199 a month.
           </p>
         </div>
       </section>

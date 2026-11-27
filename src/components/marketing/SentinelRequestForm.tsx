@@ -191,7 +191,7 @@ export function SentinelRequestForm() {
       </button>
 
       <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>
-        No payment taken here. Sentinel is scoped and priced to your team, then billed directly. Your details go
+        No payment taken here. Sentinel is £199 a month, billed directly. Your details go
         straight to the founder and are never shared.
       </p>
     </form>

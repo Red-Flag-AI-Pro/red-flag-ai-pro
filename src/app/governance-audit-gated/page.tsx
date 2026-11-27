@@ -130,7 +130,7 @@ export default function GovernanceAuditGatedPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ ...syne, fontSize: '12px', color: '#E5484D', marginBottom: '0.5rem', fontWeight: 700, textTransform: 'uppercase' }}>THE REALITY</p>
-            <p style={{ ...syne, fontSize: '1.05rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>83% of organizations use AI. Only 25% have adequate governance.</p>
+            <p style={{ ...syne, fontSize: '1.05rem', fontWeight: 700, color: 'white', marginBottom: '0.75rem' }}>Most organisations now use AI. Far fewer can show how it is governed.</p>
             <p style={{ ...syne, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>72% are increasing GRC spending. 78% are unprepared for EU AI Act.</p>
           </div>
         </div>

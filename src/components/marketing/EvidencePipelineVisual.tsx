@@ -5,7 +5,7 @@ const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as React.CSSP
 
 const STAGES = [
   { label: "CONTENT", detail: "A post, a message, an agent step, about to go live." },
-  { label: "CHECK", detail: "Screened against the active ruleset in milliseconds." },
+  { label: "CHECK", detail: "Checked against the active ruleset." },
   { label: "DECISION", detail: "Allow or block, with the specific flags behind it." },
   { label: "SEAL", detail: "Hashed and chained. Blocks get an independent timestamp." },
   { label: "VERIFY", detail: "Anyone can check the seal, publicly, no account needed." },

@@ -253,7 +253,7 @@ export function DisclosureGenerator() {
           textDecoration: "none",
           letterSpacing: "0.02em",
         }}>
-          Scan your full copy: free
+          Get your red flag: free
         </Link>
       </div>
 

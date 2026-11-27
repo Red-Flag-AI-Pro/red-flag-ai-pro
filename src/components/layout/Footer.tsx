@@ -91,7 +91,7 @@ export function Footer() {
 
         {/* Bottom strip */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", marginTop: "3rem", paddingTop: "1.75rem", display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "space-between", alignItems: "center" }}>
-          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)" }}>© {new Date().getFullYear()} Red Flag AI Pro. All rights reserved.</p>
+          <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)" }}>© {new Date().getFullYear()} Red Flag AI Pro, a trading name of James Stokes, sole trader, United Kingdom.</p>
           <p style={{ ...syne, fontSize: "12px", color: "rgba(244,241,234,0.4)" }}>
             Also by James Stokes:{" "}
             <a href="https://www.recoverroi.com" target="_blank" rel="noopener" style={{ color: "rgba(244,241,234,0.75)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>RecoverROI</a>

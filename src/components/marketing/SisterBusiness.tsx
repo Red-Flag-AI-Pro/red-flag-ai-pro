@@ -59,7 +59,7 @@ export function SisterBusiness() {
         </svg>
         <div style={{ flex: "1 1 320px", minWidth: 0 }}>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: "1.1rem" }}>
-            James also runs <strong style={{ color: "#F4F1EA" }}>RecoverROI</strong>, which finds where small businesses are losing customers and fixes it: full websites built from scratch, pages that load fast, proper tracking of what the site brings in, and enquiries that get answered. Every website RecoverROI builds is checked by Red Flag before it goes live.
+            James also runs <strong style={{ color: "#F4F1EA" }}>RecoverROI</strong>, which finds where small businesses are losing customers and fixes it: full websites built from scratch, pages that load fast, proper tracking of what the site brings in, and enquiries that get answered. Everything RecoverROI sets up for a client, the phone greeting, the texts and the website claims, is checked by Red Flag before it goes live.
           </p>
           <a
             href="https://www.recoverroi.com"

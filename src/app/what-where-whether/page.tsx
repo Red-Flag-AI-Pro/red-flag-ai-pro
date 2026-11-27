@@ -9,7 +9,7 @@ import { JURISDICTION_COUNT_WORD, RISK_CATEGORY_COUNT_WORD } from "@/lib/constan
 export const metadata: Metadata = {
   title: "What, Where, Whether",
   description:
-    "The three questions a regulator asks about anything you publish, and the framework behind Red Flag AI Pro's compliance checker: what was claimed, which jurisdiction's rules apply, and whether it's substantiated.",
+    "The three questions a regulator asks about anything you publish, and the framework behind every Red Flag AI Pro audit: what was claimed, which jurisdiction's rules apply, and whether it's substantiated.",
   alternates: { canonical: "https://www.redflagaipro.com/what-where-whether" },
   openGraph: {
     title: "What, Where, Whether",

@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Why Compliance and Governance Matter: Red Flag AI Pro",
-  description: "Real fines. Real losses. $6 billion in marketing compliance penalties in three years, plus what unproven AI governance costs when a regulator or board asks. See what it costs sellers, buyers, and CFOs to get this wrong.",
+  description: "Real fines. Real losses. What marketing compliance penalties cost, plus what unproven AI governance costs when a regulator or board asks. See what it costs sellers, buyers, and CFOs to get this wrong.",
   alternates: { canonical: "https://www.redflagaipro.com/why-compliance" },
 };
 
@@ -13,7 +13,7 @@ const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as const;
 const mono = { fontFamily: "'DM Mono', 'Courier New', monospace" } as const;
 
 const FINES = [
-  { country: "USA", body: "FTC", fine: "Up to $50,000", detail: "per violation, per day" },
+  { country: "USA", body: "FTC", fine: "Up to $53,088", detail: "per violation" },
   { country: "UK", body: "CMA / ASA", fine: "Up to £300,000", detail: "plus full campaign takedown" },
   { country: "EU", body: "GDPR", fine: "Up to €20 million", detail: "or 4% of global turnover" },
   { country: "Australia", body: "ACCC", fine: "Up to $50M AUD", detail: "per breach under ACL" },
@@ -44,7 +44,7 @@ export default function WhyCompliancePage() {
           <span style={{ fontStyle: "italic" }}>Both sides.</span>
         </h1>
         <p style={{ ...syne, fontSize: "1.1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto 1rem", lineHeight: 1.7 }}>
-          $6 billion in marketing compliance fines globally in the last three years. Same illegal copy: sellers face regulators, buyers lose money.
+          Regulators fine businesses for their marketing copy every year. Same illegal copy: sellers face regulators, buyers lose money.
         </p>
         <p className="font-display" style={{ fontSize: "3rem", fontWeight: 500, color: "#E5484D", marginBottom: "3rem" }}>$6B+</p>
         <Link href="/get-checked" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#E5484D", color: "white", ...syne, fontSize: "0.9rem", fontWeight: 700, padding: "13px 32px", borderRadius: "9999px", boxShadow: "0 8px 32px rgba(229,72,77,0.18)", textDecoration: "none" }}>

@@ -77,7 +77,7 @@ export function ContractRedFlags() {
             cursor: text.trim().length < 50 ? "not-allowed" : "pointer",
           }}
         >
-          {scanning ? "Scanning…" : "Scan for red flags →"}
+          {scanning ? "Checking…" : "Check for red flags →"}
         </button>
       </div>
 

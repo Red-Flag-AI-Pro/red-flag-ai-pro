@@ -18,9 +18,9 @@ import { JURISDICTION_COUNT, RISK_CATEGORY_COUNT, AUDIT_PRICE } from "@/lib/cons
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Red Flag AI Pro: Compliance Checking + AI Governance Proof",
+  title: "Red Flag AI Pro: Compliance and AI Governance, Done For You",
   description:
-    `Know your marketing is clean before you hit publish, and know your AI governance holds up before a regulator asks. Checked across ${JURISDICTION_COUNT} jurisdictions and ${RISK_CATEGORY_COUNT} risk categories, so the confidence is backed by something real.`,
+    `We find what on your website could get you fined, before a regulator or a competitor does. Your first red flag is free. The full audit is £${AUDIT_PRICE.amount}, signed, with your money back if we find nothing worth fixing.`,
   alternates: { canonical: "https://www.redflagaipro.com" },
 };
 
@@ -29,7 +29,7 @@ const jsonLd = {
   "@type": "Organization",
   name: "Red Flag AI Pro",
   url: "https://www.redflagaipro.com",
-  description: "AI Governance Assessment & Compliance Infrastructure for Enterprises",
+  description: "Compliance and AI governance, done for you, for UK businesses.",
 };
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;

@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import SignupForm from "./SignupForm";
+
+// Leftover from the self serve tool; kept working but out of search (27 Nov 2026).
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default function SignupPage() {
   return (

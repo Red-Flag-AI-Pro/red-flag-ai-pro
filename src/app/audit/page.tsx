@@ -22,11 +22,11 @@ const TICKER_ITEMS = [
   "Video Walkthrough",
   "PDF Report",
   "Reviewed Badge",
-  "48 Hour Delivery",
+  "Signed by James",
   "30 Risk Categories",
   "11 Jurisdictions",
   "Plain English",
-  "Compliant Rewrites",
+  "Suggested Rewrites",
   "FTC · ASA · GDPR · CMA · ACCC · CASL · LGPD · PDPA · DPDP · NDPR",
   "No Subscription",
   "By the Founder",
@@ -64,11 +64,11 @@ const STEPS = [
   {
     num: "02",
     title: "I run the check and review every flag personally",
-    body: "Using the same engine behind Red Flag AI Pro, plus my own pass through the results so nothing gets missed and nothing gets over explained.",
+    body: "Every page checked against all ten areas, then my own pass through every finding, so nothing gets missed and nothing gets over explained.",
   },
   {
     num: "03",
-    title: "You get the full package within 48 hours",
+    title: "You get the full package, checked and signed",
     body: "Video, PDF, badge: ready to act on immediately. No dashboard, no login, no learning curve.",
   },
 ];
@@ -84,11 +84,11 @@ const FAQS = [
   },
   {
     q: "What if my site comes back clean?",
-    a: "Then you get your money back in full, and you keep the clean report and the badge. That is the guarantee: nothing worth fixing, nothing to pay.",
+    a: "Then you get your money back in full, and you keep the clean report and the badge. That is the guarantee. \"Worth fixing\" means a finding that breaks a rule we name, quoted from your own page.",
   },
   {
     q: "Is this legal advice?",
-    a: "No. This audit is generated using Red Flag AI Pro's compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns. For regulated industries always confirm with a qualified professional.",
+    a: "No. Every finding is checked with our own tools and reviewed personally by James before delivery. It flags risk areas based on real enforcement patterns. For regulated industries always confirm with a qualified professional.",
   },
   {
     q: "How do I pay?",
@@ -181,7 +181,7 @@ export default async function AuditPage({
           <div className="animate-fade-up" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "1.75rem" }}>
             <span className="animate-pulse-red" style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5484D", flexShrink: 0, display: "inline-block" }} />
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D" }}>
-              Done for you · By the founder · 48 hours
+              Done for you · By the founder · Money back guarantee
             </p>
           </div>
 
@@ -200,7 +200,7 @@ export default async function AuditPage({
           </h1>
 
           <p className="animate-fade-up delay-2" style={{ ...syne, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 500, color: "rgba(244,241,234,0.8)", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto 2.25rem", textShadow: "0 1px 3px rgba(6,14,26,0.95), 0 2px 18px rgba(6,14,26,0.9)" }}>
-            No dashboard. No learning curve. No guessing what the flags mean. I check your full funnel and your AI use myself, for both compliance and governance risk, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, in 48 hours.
+            No dashboard. No learning curve. No guessing what the flags mean. I check your full funnel and your AI use myself, for both compliance and governance risk, record a video of every flag in plain English, and deliver a complete report plus a reviewed badge, checked and signed.
           </p>
 
           <div className="animate-fade-up delay-3" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.25rem" }}>
@@ -227,7 +227,7 @@ export default async function AuditPage({
           </div>
 
           <p className="animate-fade-up delay-4" style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.02em" }}>
-            One time payment · No subscription · Delivered within 48 hours · Money back if we find nothing worth fixing
+            One time payment · No subscription · Money back if we find nothing worth fixing
           </p>
         </div>
       </section>
@@ -362,16 +362,13 @@ export default async function AuditPage({
                     </div>
 
                     <div style={{ flex: 1 }}>
-                      <p style={{ ...syne, fontSize: "8px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", marginBottom: "4px" }}>Compliance Verified</p>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "4px", marginBottom: "3px" }}>
-                        <p style={{ ...syne, fontSize: "22px", fontWeight: 800, color: "#16a34a", lineHeight: 1 }}>100</p>
-                        <p style={{ ...syne, fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.25)" }}>/100</p>
-                      </div>
-                      <p style={{ ...mono, fontSize: "9px", color: "#16a34a", letterSpacing: "0.1em" }}>FULLY COMPLIANT</p>
+                      <p style={{ ...syne, fontSize: "8px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", marginBottom: "4px" }}>Checked and signed</p>
+                      <p style={{ ...syne, fontSize: "17px", fontWeight: 800, color: "#F4F1EA", lineHeight: 1.1, marginBottom: "3px" }}>Reviewed by Red Flag AI Pro</p>
+                      <p style={{ ...mono, fontSize: "9px", color: "#16a34a", letterSpacing: "0.1em" }}>10 AREAS CHECKED</p>
                     </div>
 
                     <div style={{ textAlign: "right", flexShrink: 0 }}>
-                      <p style={{ ...syne, fontSize: "8px", color: "rgba(255,255,255,0.25)", marginBottom: "3px" }}>Reviewed 8 Jun 2026</p>
+                      <p style={{ ...syne, fontSize: "8px", color: "rgba(255,255,255,0.25)", marginBottom: "3px" }}>Dated on delivery</p>
                       <p style={{ ...syne, fontSize: "8px", fontWeight: 700, color: "rgba(229,72,77,0.6)", letterSpacing: "0.05em" }}>RED FLAG AI PRO</p>
                     </div>
                   </div>
@@ -388,7 +385,7 @@ export default async function AuditPage({
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#E5484D", marginBottom: "1rem" }}>How it works</p>
             <h2 style={{ ...syne, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#F4F1EA" }}>
-              Three steps. 48 hours.
+              Three steps. Then it&apos;s done.
             </h2>
           </div>
 
@@ -445,7 +442,7 @@ export default async function AuditPage({
                 display: "inline-block", marginBottom: "0.75rem"
               }}>This audit</span>
               <p style={{ ...syne, fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "0.25rem", lineHeight: 1 }}>£{AUDIT_PRICE.amount}</p>
-              <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · 48 hours</p>
+              <p style={{ ...mono, fontSize: "10px", color: "#E5484D", letterSpacing: "0.1em", marginBottom: "1rem" }}>one time · compliance + governance · signed</p>
               <a href="/audit/checkout" style={{
                 display: "inline-flex", alignItems: "center",
                 background: "#E5484D", color: "white",
@@ -473,10 +470,10 @@ export default async function AuditPage({
         <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center", border: "1px solid rgba(201,166,107,0.45)", borderRadius: "14px", padding: "2.5rem 2rem", background: "rgba(201,166,107,0.06)" }}>
           <p style={{ ...syne, fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A66B", marginBottom: "1rem" }}>The guarantee</p>
           <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4vw, 2.3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, color: "#F4F1EA", marginBottom: "1rem" }}>
-            Nothing worth fixing? You don&apos;t pay.
+            Nothing worth fixing? You get it all back.
           </h2>
           <p style={{ ...syne, fontSize: "1rem", color: "rgba(244,241,234,0.7)", lineHeight: 1.75 }}>
-            If the full audit finds nothing worth fixing on your site or in how you use AI, you get your £{AUDIT_PRICE.amount} back in full, and you keep the clean report and the badge.
+            If the full audit finds nothing worth fixing on your site or in how you use AI, you get your £{AUDIT_PRICE.amount} back in full, and you keep the clean report and the badge. &ldquo;Worth fixing&rdquo; means a finding that breaks a rule we name, quoted from your own page.
           </p>
           <p style={{ ...syne, fontSize: "0.95rem", color: "rgba(244,241,234,0.6)", lineHeight: 1.7, marginTop: "1.25rem" }}>
             Want it kept clear after that?{" "}
@@ -501,7 +498,7 @@ export default async function AuditPage({
       {/* ── DISCLAIMER NOTE ── */}
       <div style={{ padding: "2rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "#0C1929" }}>
         <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.25)", lineHeight: 1.9, textAlign: "center", maxWidth: "660px", margin: "0 auto" }}>
-          This audit is generated using Red Flag AI Pro&apos;s compliance engine and reviewed personally before delivery. It flags risk areas based on real enforcement patterns. It is not a substitute for legal advice. For regulated industries (financial promotions, health claims, and similar) always confirm with a qualified professional.
+          Every finding is checked with our own tools and reviewed personally by James before delivery. It flags risk areas based on real enforcement patterns. It is not a substitute for legal advice. For regulated industries (financial promotions, health claims, and similar) always confirm with a qualified professional.
         </p>
       </div>
 
@@ -580,7 +577,7 @@ export default async function AuditPage({
       <section style={{ padding: "4.5rem 1.5rem", background: "#0C1929" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ ...syne, fontSize: "clamp(1.6rem, 4.5vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "1rem", color: "#F4F1EA" }}>
-            You&apos;ll either find out you&apos;re already safe.{" "}
+            You&apos;ll either find out nothing needs fixing.{" "}
             <span>or find out before it costs you.</span>
           </h2>
           <p style={{ ...syne, fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.8, marginBottom: "2.25rem" }}>
@@ -611,7 +608,7 @@ export default async function AuditPage({
           </div>
 
           <p style={{ ...syne, fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>
-            Delivered within 48 hours · One time payment · No subscription · Money back if we find nothing worth fixing
+            One time payment · No subscription · Money back if we find nothing worth fixing
           </p>
         </div>
       </section>

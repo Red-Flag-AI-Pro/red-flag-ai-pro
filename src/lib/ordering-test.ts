@@ -28,7 +28,7 @@ export const CHECKS: Record<string, CheckStatus> = {
     demonstrable_publicly: false,
     endpoint: null,
     note:
-      "Every scan is tied to the ruleset version that judged it at the moment " +
+      "Every check is tied to the ruleset version that judged it at the moment " +
       "of decision, not attached afterward. Built and live. Not yet exposed " +
       "as a public unauthenticated endpoint, only viewable inside an account.",
   },
@@ -95,7 +95,7 @@ export const CHECKS: Record<string, CheckStatus> = {
     demonstrable_publicly: true,
     endpoint: "/api/replay/challenge",
     note:
-      "The scanner's core scoring has no model call and no randomness, so " +
+      "The core scoring has no model call and no randomness, so " +
       "the same input under the same ruleset always produces the same " +
       "output. Submit content, get a sealed ticket back; resubmit the exact " +
       "same input to /api/replay/verify later and the ticket must match. " +

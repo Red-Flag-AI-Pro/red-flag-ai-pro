@@ -344,7 +344,7 @@ export default async function SentinelPage() {
               <p className="font-display" style={{ fontSize: "1.6rem", fontWeight: 500, color: "#F4F1EA", marginBottom: "0.4rem" }}>The full audit</p>
               <p className="font-mono-fig" style={{ fontSize: "2.2rem", color: "#F4F1EA", marginBottom: "0.8rem" }}>£{AUDIT_PRICE.amount}</p>
               <p style={{ ...syne, fontSize: "14.5px", color: "rgba(244,241,234,0.65)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                Every red flag on your site and how to clear it, on video and in writing within 48 hours, with your reviewed badge. Money back if we find nothing worth fixing.
+                Every red flag on your site and how to clear it, on video and in writing within a few working days, with your reviewed badge. Money back if we find nothing worth fixing.
               </p>
               <Link href="/audit" style={{ ...syne, fontSize: "14px", fontWeight: 700, color: "#F4F1EA", textDecoration: "none", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "9999px", padding: "10px 22px", display: "inline-block" }}>
                 About the audit
