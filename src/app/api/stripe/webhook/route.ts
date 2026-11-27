@@ -92,6 +92,7 @@ async function notifyAuditPaid(session: Stripe.Checkout.Session, isProgram = fal
           <p><strong>A ${product} was just paid for via instant checkout.</strong> Delivery is ${window}.</p>
           <p>Buyer: ${name ? `${name}, ` : ""}${email}<br/>
           Amount: £${amount}<br/>
+          Website: ${session.custom_fields?.find((f) => f.key === "website")?.text?.value ?? "not given"}<br/>
           Stripe session: ${session.id}</p>
           ${isProgram ? `<p>This is the six document program (DPIA, FRIA, AI use policy, incident reporting checklist, post market monitoring plan and Annex IV documentation). The customer is taken straight to the intake form after checkout and the documents generate automatically once they submit it — nothing for you to do unless they get in touch.</p>` : `<p>Reply straight to this email to reach the buyer and ask for their URL if they haven't sent it.</p>`}
         </div>`,
@@ -298,26 +299,30 @@ export async function POST(request: Request) {
         break;
       }
 
-      // Everything below (audit, subscriptions) requires an authenticated
-      // purchaser, matching the checkout route's auth guard.
-      if (!userId) break;
-
-      // One-time audit purchase — manually fulfilled done-for-you work, lands
-      // in audit_orders for James to work from.
+      // One-time audit purchase: manually fulfilled done for you work, lands
+      // in audit_orders for James to work from. Guest checkout since 27 Nov
+      // 2026, so user_id may be empty; the website comes from the Stripe
+      // custom field and the consent stamps from the session metadata.
       if (plan === "audit") {
+        const website = session.custom_fields?.find((f) => f.key === "website")?.text?.value ?? null;
         await supabase.from("audit_orders").insert({
-          user_id: userId,
+          user_id: userId ?? null,
           email: session.customer_email ?? session.customer_details?.email ?? "",
           stripe_session_id: session.id,
           stripe_payment_intent: session.payment_intent as string ?? null,
-          // Record what Stripe actually charged rather than a hardcoded figure
-          // (was stuck at the old £149 after the 4 Jul price rise to £199).
-          amount_gbp: session.amount_total != null ? session.amount_total / 100 : 199,
+          // Record what Stripe actually charged rather than a hardcoded figure.
+          amount_gbp: session.amount_total != null ? session.amount_total / 100 : AUDIT_PRICE.amount,
           status: "paid",
+          url_submitted: website,
+          notes: session.metadata?.consent_timestamp ? `Agreed terms, guarantee, £${AUDIT_PRICE.amount} cap and immediate start at ${session.metadata.consent_timestamp}` : null,
         });
         await notifyAuditPaid(session, false);
         break;
       }
+
+      // Everything below (subscriptions) requires an authenticated
+      // purchaser, matching the checkout route's auth guard.
+      if (!userId) break;
 
       // Full Governance Program purchase — unlike the audit, this is
       // delivered automatically through the intake form and generation

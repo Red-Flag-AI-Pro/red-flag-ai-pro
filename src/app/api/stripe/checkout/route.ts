@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   const plan = body.plan as "scanner" | "enterprise" | "sentinel" | "audit" | "program" | "report";
   const region = body.region as string | undefined;
   const toltReferral = body.tolt_referral as string | undefined;
-  const consent = body.consent as { agreedTerms?: boolean; agreedImmediateDelivery?: boolean; timestamp?: string } | undefined;
+  const consent = body.consent as { agreedTerms?: boolean; agreedImmediateDelivery?: boolean; agreedStart?: boolean; timestamp?: string } | undefined;
 
   // The report is the only guest checkout, no-account product we sell, so it
   // is the one place a buyer could otherwise pay with no record of agreeing
@@ -25,11 +25,17 @@ export async function POST(request: Request) {
   if (plan === "report" && (!consent?.agreedTerms || !consent?.agreedImmediateDelivery)) {
     return NextResponse.json({ error: "Consent required" }, { status: 400 });
   }
+  // The £449 audit is also guest checkout (27 Nov 2026). The checkout page
+  // shows the guarantee and the liability cap and asks the buyer to agree to
+  // both, and to the work starting straight away, before payment.
+  if (plan === "audit" && (!consent?.agreedTerms || !consent?.agreedStart)) {
+    return NextResponse.json({ error: "Consent required" }, { status: 400 });
+  }
 
   // The report is a guest-checkout product: a £4.99 PDF should never demand
   // account creation first. Delivery is handled by session id on the success
   // page, so no user record is needed. Everything else still requires auth.
-  if (!user && plan !== "report") {
+  if (!user && plan !== "report" && plan !== "audit") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -49,14 +55,14 @@ export async function POST(request: Request) {
   // prices are immutable, so referencing it would undercharge against the
   // advertised £199.
   if (plan === "audit") {
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
       customer: profile?.stripe_customer_id ?? undefined,
-      customer_email: profile?.stripe_customer_id ? undefined : user.email,
+      customer_email: profile?.stripe_customer_id ? undefined : user?.email,
+      custom_fields: [
+        { key: "website", label: { type: "custom", custom: "Your website address" }, type: "text" },
+      ],
       line_items: [
         {
           price_data: {
@@ -67,7 +73,14 @@ export async function POST(request: Request) {
           quantity: 1,
         },
       ],
-      metadata: { user_id: user.id, plan: "audit", ...(toltReferral ? { tolt_referral: toltReferral } : {}) },
+      metadata: {
+        ...(user ? { user_id: user.id } : {}),
+        plan: "audit",
+        consent_terms: "true",
+        consent_start: "true",
+        consent_timestamp: consent?.timestamp ?? new Date().toISOString(),
+        ...(toltReferral ? { tolt_referral: toltReferral } : {}),
+      },
       success_url: `${appUrl}/audit?success=1&plan=audit&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/audit?canceled=1`,
     });
