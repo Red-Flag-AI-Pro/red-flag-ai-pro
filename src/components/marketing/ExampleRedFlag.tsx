@@ -17,8 +17,8 @@ const ROWS = [
   {
     side: "What you said",
     where: "Sales page, above the price",
-    quote: "Only 3 places left at this price. Offer ends at midnight.",
-    problem: "The timer starts again every time the page is opened. That is a false limited time claim.",
+    quote: "Only 3 places left at this price. Ends at midnight.",
+    problem: "The timer starts again every time the page is opened, so the deadline is fake.",
     rule: "UK consumer law (DMCC Act 2024) bans it outright.",
     penalty: "The CMA can fine up to 10% of global turnover, with no court needed.",
   },

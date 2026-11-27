@@ -170,7 +170,7 @@ export default async function LandingPage() {
               {
                 tag: "AI governance · What you did",
                 title: "How your business uses AI.",
-                items: ["The chat or booking assistant on your website", "Pages, posts and replies written by AI", "Staff pasting client details into ChatGPT", "Software that helps decide who gets an appointment, a job or a refund"],
+                items: ["The chat or booking assistant on your website", "Pages, posts and replies drafted with AI tools", "Staff pasting client details into ChatGPT", "Software that helps decide who gets an appointment, a job or a refund"],
                 ask: "Who approved it, and could you prove it?",
                 accent: "#C9A66B",
               },
