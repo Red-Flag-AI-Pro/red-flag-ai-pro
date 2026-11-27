@@ -314,7 +314,7 @@ export async function POST(request: Request) {
           amount_gbp: session.amount_total != null ? session.amount_total / 100 : AUDIT_PRICE.amount,
           status: "paid",
           url_submitted: website,
-          notes: session.metadata?.consent_timestamp ? `Agreed terms, guarantee, £${AUDIT_PRICE.amount} cap and immediate start at ${session.metadata.consent_timestamp}` : null,
+          notes: session.metadata?.consent_timestamp ? `Agreed scope (ten standard areas), terms, guarantee, £${AUDIT_PRICE.amount} cap and immediate start at ${session.metadata.consent_timestamp}` : null,
         });
         await notifyAuditPaid(session, false);
         break;

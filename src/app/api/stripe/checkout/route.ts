@@ -78,6 +78,7 @@ export async function POST(request: Request) {
         plan: "audit",
         consent_terms: "true",
         consent_start: "true",
+        consent_scope: "ten standard areas",
         consent_timestamp: consent?.timestamp ?? new Date().toISOString(),
         ...(toltReferral ? { tolt_referral: toltReferral } : {}),
       },

@@ -11,6 +11,20 @@ import { AUDIT_PRICE } from "@/lib/constants";
 
 const syne = { fontFamily: "'Syne', system-ui, sans-serif" } as React.CSSProperties;
 const box = { borderRadius: "12px", padding: "1rem 1.1rem", marginBottom: "0.9rem" } as React.CSSProperties;
+// The ten areas every audit checks. Must match AREAS in the front sheet
+// generator (redflag-posters/audit-front-sheet/front_sheet.py).
+const SCOPE = [
+  "Prescription medicines advertised to the public",
+  "Health and medical claims",
+  "Vitamin and supplement claims",
+  "Absolute and unproven claims",
+  "Prices, offers and deadlines",
+  "Reviews and testimonials",
+  "Company details on your website",
+  "Privacy policy",
+  "Cookies and tracking consent",
+  "AI on your website",
+];
 const small = { ...syne, fontSize: "13px", color: "rgba(244,241,234,0.75)", lineHeight: 1.6 } as React.CSSProperties;
 
 export default function AuditCheckoutPage() {
@@ -68,6 +82,19 @@ export default function AuditCheckoutPage() {
             <li>Checked and signed by James Stokes.</li>
           </ul>
 
+          <div style={{ ...box, background: "rgba(244,241,234,0.04)", border: "1px solid rgba(244,241,234,0.14)" }}>
+            <p style={{ ...small, marginBottom: "0.5rem" }}>
+              <strong style={{ color: "#F4F1EA" }}>What we&rsquo;ll check.</strong>{" "}Every page of your website, against these ten areas.
+              Each one comes back as passed or to fix, so you see the clean half too.
+            </p>
+            <ol style={{ ...small, listStyle: "decimal", paddingLeft: "1.3rem", columns: 2, columnGap: "1.2rem", fontSize: "12px" }}>
+              {SCOPE.map((a) => <li key={a} style={{ breakInside: "avoid" }}>{a}</li>)}
+            </ol>
+            <p style={{ ...small, marginTop: "0.5rem", fontSize: "12px" }}>
+              Want something else looked at, like social media or a price list? Email support@redflagaipro.com before we start.
+            </p>
+          </div>
+
           <div style={{ ...box, background: "rgba(201,166,107,0.10)", border: "1px solid rgba(201,166,107,0.45)" }}>
             <p style={small}>
               <strong style={{ color: "#F4F1EA" }}>The guarantee.</strong>{" "}If we find nothing worth fixing, you get your £{AUDIT_PRICE.amount}{" "}back in full.{" "}
@@ -90,7 +117,7 @@ export default function AuditCheckoutPage() {
                 <Link href="/terms" target="_blank" style={{ color: "#E5484D", textDecoration: "underline" }}>Terms</Link>{" "}
                 and{" "}
                 <Link href="/privacy" target="_blank" style={{ color: "#E5484D", textDecoration: "underline" }}>Privacy Policy</Link>,
-                including the guarantee and the £{AUDIT_PRICE.amount} cap above.
+                and I agree the ten areas above as the scope of my audit, the guarantee and the £{AUDIT_PRICE.amount}{" "}cap.
               </span>
             </label>
             <label style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", cursor: "pointer" }}>
